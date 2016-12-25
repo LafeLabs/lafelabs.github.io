@@ -48,7 +48,6 @@ My name is Lafe.  I studied math, physics, and technology for 20 years(Berkeley 
   
 <a href = "ActionGeometry-v1.pdf">Download Action Geometry free pdf[very preliminary draft]</a>
 -->
-test
 
 </body>
 </html>
