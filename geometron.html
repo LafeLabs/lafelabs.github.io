@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Geometron: A Geometric Metalanguage</h1>
+
+First of all, the current versions of documentation and code for this can all be found on my github repository here:
+
+<a href = "https://github.com/LafeLabs/geometron">https://github.com/LafeLabs/geometron</a>
+
+Essentially the basis of the whole project is a simple idea: the human mind deals better with shapes than numbers, and our computer software should reflect this at all levels.  
+
+<p>
+What do I mean by that?  Several things.  For one thing, it means you care about relative position of things, not absolute position.  So while you don't really care if a window on your desktop is located a half inch higher or lower, if a line of text suddenly jumps up or down in the middle of a line by that much you really care a lot!  As it stands now when you interact with a computer you usually have either almost no control over geometry, as when I type this text and I cannot make it go at an arbitrary angle without some massive extra effort, or way too much control, as when you're moving a mouse pointer around trying to get something lined up just right and if you're doing it freehand can almost never get it right where you want it.  
+
+<p>
+
+With Geometron, I replace the infinite freedom of the mouse or the very limited freedom of the arrow keys in text with a set of operations concerning the nature of what I call a cursor, which is different than any cursor you might be used to.  The cursor has, at any given time, several properties in addition to its position in x and y space on the screen.  Those include a direction, a length, a scale factor by which all magnifications are carried out, and a step angle by which all rotations are carried out.  
+
+<p>
+
+Step angles are based on types of lattice that make sense, that we're used to using: square arrays(90 degrees), equilateral triangles(60 degrees and 120 degrees), fractions of the pentagon(72 degrees), and various divisions of those by 2 or 3.  All rotations are discrete, meaning they are not by some random angle, but are by whatever the current setting is of the step angle.  
+
+<p>
+
+Motions are based on a fixed length that the cursor has at any given time, and are again discrete.  The size of that fixed length can get scaled up or down by an amount which can be several different scale factors chosen for their geometric significance, including the square root of 2, the square root of 3, the Golden Ratio, 2, and 3.  
+
+<p>
+
+
+Probably none of this makes too much sense until you actually try it.  If you know something about code and have used the Processing programming language,go through my docs on github and check it out.  
+
+<p>
+
+Applications include:
+
+<ul>
+
+<li>Geometry education</li>
+<li>Scientific and mathematical typesetting(replacement for LaTeX)</li>
+<li>Circuit design and layout</li>
+<li>Creating custom marketing languages using a specific brand</li>
+<li>Creating custom glyph systems for language scholarship</li>
+<li>Rapidly creating images over text for memes on the Web</li>
+<li>Creating an information feed that mixes text and images to replace predatory Web 2.0 applications like Facebook</li>
+<li>Electronic lab notebooks</li>
+<li>Self Documenting</li>
+
+
+</ul>
+
+</body>
+</html>
+
