@@ -38,19 +38,23 @@ var keyRow4 = [];
 var keyAddressRow4 = [];
 
 
-var font1 = []; //mode 1
+var font = []; //mode 1
 var shapeSymbols = []; //mode 2
 var shapeActions = []; //mode 16
 var commandSymbolGlyphTable = []; //mode 3
 var manuscriptActions = []; //mode 4
-var manuscriptSymbols = []; //mode 5
 var backgroundFileTable = [];
 var backgroundIndex = 0;
 
-var result;
 
 function preload(){
-//	result = loadStrings('assets/test.txt');
+	
+	commandSymbolGlyphTable = loadStrings('https://lafelabs.github.io/geometronfiles/text/commandSymbolGlyphTable.txt');
+	font = loadStrings('https://lafelabs.github.io/geometronfiles/text/font.txt');
+	shapeSymbols = loadStrings('https://lafelabs.github.io/geometronfiles/text/shapeSymbols.txt');
+	shapeActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/shapeActions.txt');
+	manuscriptActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/manuscriptActions.txt');
+	
 }
 
 
