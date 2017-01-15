@@ -38,7 +38,24 @@ var keyRow4 = [];
 var keyAddressRow4 = [];
 
 
+var font1 = []; //mode 1
+var shapeSymbols = []; //mode 2
+var shapeActions = []; //mode 16
+var commandSymbolGlyphTable = []; //mode 3
+var manuscriptActions = []; //mode 4
+var manuscriptSymbols = []; //mode 5
+var backgroundFileTable = [];
+var backgroundIndex = 0;
+
+var result;
+
+function preload(){
+//	result = loadStrings('assets/test.txt');
+}
+
+
 function setup() {
+
   keyRow0 = ['1','2','3','7','0','-','='];
   keyAddressRow0 = [0304,0305,0306,0317,0300,0336,0337];
   keyRow1 = ['q','w','e','r','t','u','i','o','p'];
@@ -93,9 +110,14 @@ function draw() {
 }
 
 function keyTyped(){
-//	doTheThing(key2command(key));
-    currentGlyphString += key;
-    
+	if(key.charCodeAt(0) >= 040 && key.charCodeAt(0) <= 0176){
+    	currentGlyphString += key;
+	}
+	if(key.charAt(0) == '\b' && currentGlyphString.length > 0){
+        currentGlyphString = currentGlyphString.substring(0,currentGlyphString.length - 1);
+	}
+
+
 }
 
 function doGlyphString(localString){
