@@ -20,26 +20,37 @@ var tableMode = 4;
 //4: manuscript actions 
 //5: manuscript symbols
 
-var phi = 0.5*(sqrt(5) + 1);
+var phi;
 
 var currentGlyphString = "";
 
 
 //"~" is 0176 in octal and switches between ASCIImode true and false, should not go here
-var keyRow0 = ['1','2','3','7','0','-','='];
-var keyAddressRow0 = [0304,0305,0306,0317,0300,0336,0337];
-var keyRow1 = ['q','w','e','r','t','u','i','o','p'];
-var keyAddressRow1 = [0310,0311,0312,0313,0314,0370,0371,0360,0361];
-var keyRow2 = ['a','s','d','f','g','h','j','k','l',';'];
-var keyAddressRow2 = [0330,0331,0332,0333,0334,0335,0350,0351,0352,0353];
-var keyRow3 = ['z','x','c','v'];
-var keyAddressRow3 = [0340,0341,0342,0343];
-var keyRow4 = ['!','@','#','$','%','^','&','*','Q','W','E','R','T','Y','U','I'];
-var keyAddressRow4 = [0200,0201,0202,0203,0204,0205,0206,0207,0210,0211,0212,0213,0214,0215,0216,0217];
+var keyRow0 = [];
+var keyAddressRow0 = [];
+var keyRow1 = [];
+var keyAddressRow1 = [];
+var keyRow2 = [];
+var keyAddressRow2 = [];
+var keyRow3 = [];
+var keyAddressRow3 = [];
+var keyRow4 = [];
+var keyAddressRow4 = [];
 
 
 function setup() {
+  keyRow0 = ['1','2','3','7','0','-','='];
+  keyAddressRow0 = [0304,0305,0306,0317,0300,0336,0337];
+  keyRow1 = ['q','w','e','r','t','u','i','o','p'];
+  keyAddressRow1 = [0310,0311,0312,0313,0314,0370,0371,0360,0361];
+  keyRow2 = ['a','s','d','f','g','h','j','k','l',';'];
+  keyAddressRow2 = [0330,0331,0332,0333,0334,0335,0350,0351,0352,0353];
+  keyRow3 = ['z','x','c','v'];
+  keyAddressRow3 = [0340,0341,0342,0343];
+  keyRow4 = ['!','@','#','$','%','^','&','*','Q','W','E','R','T','Y','U','I'];
+  keyAddressRow4 = [0200,0201,0202,0203,0204,0205,0206,0207,0210,0211,0212,0213,0214,0215,0216,0217];
 
+  phi = 0.5*(sqrt(5) + 1);
   ellipseMode(CENTER);
   noFill();
   strokeWeight(1);
@@ -69,41 +80,53 @@ function setup() {
   hexagonY = y0;
   noFill();
 
-
+  currentGlyphString = "0";
+  
+//  currentGlyphString =   "=2w=cjh-caggcgggg-cahhcg-cahhcg-cahhcg-cahhcg-cahhcg-cahhcg-c-ca";
 }
 
 function draw() {
 	background(255);
+	doTheThing(0300);
+    doGlyphString(currentGlyphString);    
     drawCursor();
 }
 
 function keyTyped(){
+//	doTheThing(key2command(key));
+    currentGlyphString += key;
+    
+}
 
-	if(key === 'a'){
-		doTheThing(0330);
+function doGlyphString(localString){
+	for(j = 0;j < localString.length;j++){
+		doTheThing(key2command(localString.charAt(j)));
 	}
-	if(key === 's'){
-		doTheThing(0331);
-	}
-	if(key === 'd'){
-		doTheThing(0332);
-	}
-	if(key === 'f'){
-		doTheThing(0333);
-	}
-	if(key === 'g'){
-		doTheThing(0334);
-	}
-	if(key === 'h'){
-		doTheThing(0335);
-	}
-	if(key === 'j'){
-		doTheThing(0336);
-	}
-	if(key === 'k'){
-		doTheThing(0337);
-	}
+}
 
+function key2command(localChar){
+    for(i = 0;i<keyRow0.length;i++){
+    	if(localChar === keyRow0[i]){
+    		return(keyAddressRow0[i]);
+    	}
+    }
+
+	for(i = 0;i<keyRow1.length;i++){
+    	if(localChar === keyRow1[i]){
+    		return(keyAddressRow1[i]);
+    	}
+    }
+	for(i = 0;i<keyRow2.length;i++){
+    	if(localChar === keyRow2[i]){
+    		return(keyAddressRow2[i]);
+    	}
+    }
+	for(i = 0;i<keyRow3.length;i++){
+    	if(localChar === keyRow3[i]){
+    		return(keyAddressRow3[i]);
+    	}
+    }
+    	
 }
 
 function drawCursor(){
@@ -122,42 +145,10 @@ function drawCursor(){
 }
 
 
-function key2command(localChar){
-    var localInt = -1;
-    
-    for(index = 0;index < keyRow0.length; index++){
-     if(localChar == keyRow0[index]){
-         localInt = keyAddressRow0[index];
-     }
-  }
-  for(index = 0;index < keyRow1.length; index++){
-     if(localChar == keyRow1[index]){
-         localInt = keyAddressRow1[index];
-     }
-  }
-  for(index = 0;index < keyRow2.length; index++){
-     if(localChar == keyRow2[index]){
-         localInt = keyAddressRow2[index];
-     }
-  }
-  for(index = 0;index < keyRow3.length; index++){
-     if(localChar == keyRow3[index]){
-         localInt = keyAddressRow3[index];
-     }
-  }
-  for(index = 0;index < keyRow4.length; index++){
-     if(localChar == keyRow4[index]){
-         localInt = keyAddressRow4[index];
-     }
-  }
-  return localInt;
-}
 
 
 function doTheThing(localCommand){
     
-
-
     //geometric native action commands
     if(localCommand == 0300){
       x = x0;
