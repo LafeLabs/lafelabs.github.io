@@ -46,6 +46,7 @@ var manuscriptActions = []; //mode 4
 var backgroundFileTable = [];
 var backgroundIndex = 0;
 
+var baseImage;
 
 function preload(){
 	
@@ -53,8 +54,10 @@ function preload(){
 	font = loadStrings('https://lafelabs.github.io/geometronfiles/text/font.txt');
 	shapeSymbols = loadStrings('https://lafelabs.github.io/geometronfiles/text/shapeSymbols.txt');
 	shapeActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/shapeActions.txt');
-	manuscriptActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/manuscriptActions.txt');
-	
+	manuscriptActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/manuscriptActions.txt');	
+	backgroundFileTable = loadStrings("https://lafelabs.github.io/geometronfiles/text/backgroundTable.txt");
+
+	baseImage = loadImage("https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png");
 }
 
 
@@ -107,7 +110,9 @@ function setup() {
 }
 
 function draw() {
+	ASCIImode = false;
 	background(255);
+	image(baseImage);
 	doTheThing(0300);
     doGlyphString(currentGlyphString);    
     drawCursor();
@@ -122,6 +127,13 @@ function keyTyped(){
         currentGlyphString = currentGlyphString.substring(0,currentGlyphString.length - 1);
 	}
 
+}
+
+
+function printString(localString){
+	for(var j = 0;j < localString.length;j++){	
+		doTheThing(localString.charCodeAt(j));
+	}
 }
 
 function doGlyphString(localString){
@@ -178,8 +190,14 @@ function drawCursor(){
 
 
 function spellGlyph(localGlyphString){
+
+      theta = theta0;
+      thetaStep = PI/2;
+      scaleFactor = 2;
+
   x = spellX;
   y = spellY;
+  
   var tempInt = side;
   side = spellSide;
 
@@ -211,8 +229,8 @@ function spellGlyph(localGlyphString){
 
 function doTheThing(localCommand){
     
-    if(localCommand >= 0040 && localCommand < 0176){  //printable ASCII from space to before ~
-      for(searchIndex = 0;searchIndex <  font.length; searchIndex++){
+    if(localCommand >= 0040 && localCommand < 0176){  //printable ASCII from space thru ~
+      for(var searchIndex = 0;searchIndex <  font.length; searchIndex++){
         var localStringArray = split(font[searchIndex],':');
         var localString = localStringArray[1];  
         var tempAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
@@ -223,7 +241,7 @@ function doTheThing(localCommand){
     }
     
     if(localCommand >= 0200 && localCommand < 0277){//shapes
-      for(searchIndex = 0;searchIndex <  shapeActions.length; searchIndex++){
+      for(var searchIndex = 0;searchIndex <  shapeActions.length; searchIndex++){
         var localStringArray = split(shapeActions[searchIndex],':');
         var localString = localStringArray[1];  
         var tempAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
