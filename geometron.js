@@ -45,8 +45,9 @@ var commandSymbolGlyphTable = []; //mode 3
 var manuscriptActions = []; //mode 4
 var backgroundFileTable = [];
 var backgroundIndex = 0;
-
 var baseImage;
+
+var manuscriptPageindex = 0;
 
 function preload(){
 	
@@ -84,7 +85,7 @@ function setup() {
   thetaStep = PI/2;
   theta0 = -PI/2; 
   theta = theta0;
-  createCanvas(640, 480);
+  createCanvas(900, 600);
   x0 = 250;
   y0 = 250;
   x = x0;
@@ -129,6 +130,11 @@ function keyTyped(){
 
 }
 
+function printManuscriptPage(){
+
+
+
+}
 
 function printString(localString){
 	for(var j = 0;j < localString.length;j++){	
