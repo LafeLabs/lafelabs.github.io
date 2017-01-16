@@ -111,6 +111,7 @@ function draw() {
 	doTheThing(0300);
     doGlyphString(currentGlyphString);    
     drawCursor();
+
 }
 
 function keyTyped(){
@@ -121,35 +122,40 @@ function keyTyped(){
         currentGlyphString = currentGlyphString.substring(0,currentGlyphString.length - 1);
 	}
 
-
 }
 
 function doGlyphString(localString){
-	for(j = 0;j < localString.length;j++){
+	for(var j = 0;j < localString.length;j++){
+		var localCommand = key2command(localString.charAt(j));
 		doTheThing(key2command(localString.charAt(j)));
 	}
 }
 
 function key2command(localChar){
-    for(i = 0;i<keyRow0.length;i++){
+    for(var i = 0;i<keyRow0.length;i++){
     	if(localChar === keyRow0[i]){
     		return(keyAddressRow0[i]);
     	}
     }
 
-	for(i = 0;i<keyRow1.length;i++){
+	for(var i = 0;i<keyRow1.length;i++){
     	if(localChar === keyRow1[i]){
     		return(keyAddressRow1[i]);
     	}
     }
-	for(i = 0;i<keyRow2.length;i++){
+	for(var i = 0;i<keyRow2.length;i++){
     	if(localChar === keyRow2[i]){
     		return(keyAddressRow2[i]);
     	}
     }
-	for(i = 0;i<keyRow3.length;i++){
+	for(var i = 0;i<keyRow3.length;i++){
     	if(localChar === keyRow3[i]){
     		return(keyAddressRow3[i]);
+    	}
+    }
+	for(var i = 0;i<keyRow4.length;i++){
+    	if(localChar === keyRow4[i]){
+    		return(keyAddressRow4[i]);
     	}
     }
     	
@@ -172,8 +178,29 @@ function drawCursor(){
 
 
 
-
 function doTheThing(localCommand){
+    
+    if(localCommand >= 0040 && localCommand < 0176){  //printable ASCII from space to before ~
+      for(searchIndex = 0;searchIndex <  font.length; searchIndex++){
+        var localStringArray = split(font[searchIndex],':');
+        var localString = localStringArray[1];  
+        var tempAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        if(tempAddress == localCommand){
+           doGlyphString(localString);
+        }
+     }     
+    }
+    
+    if(localCommand >= 0200 && localCommand < 0277){//shapes
+      for(searchIndex = 0;searchIndex <  shapeActions.length; searchIndex++){
+        var localStringArray = split(shapeActions[searchIndex],':');
+        var localString = localStringArray[1];  
+        var tempAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        if(tempAddress == localCommand){
+           doGlyphString(localString);
+        }
+     }
+    }
     
     //geometric native action commands
     if(localCommand == 0300){
