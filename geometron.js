@@ -111,7 +111,7 @@ function draw() {
 	doTheThing(0300);
     doGlyphString(currentGlyphString);    
     drawCursor();
-
+	spellGlyph(currentGlyphString);
 }
 
 function keyTyped(){
@@ -176,6 +176,37 @@ function drawCursor(){
   line(x,y,x + side*cos(theta - thetaStep),y+side*sin(theta - thetaStep));
 }
 
+
+function spellGlyph(localGlyphString){
+  x = spellX;
+  y = spellY;
+  var tempInt = side;
+  side = spellSide;
+
+  for(var k = 0;k < localGlyphString.length;k++){
+     for(var l = 0;l <  commandSymbolGlyphTable.length; l++){
+        var localStringArray = split(commandSymbolGlyphTable[l],':');
+        var localString = localStringArray[1];  
+        var tempAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        if(tempAddress == key2command(localGlyphString.charAt(k))){
+           doGlyphString(localString); 
+        } 
+     }
+  textSize(12);
+  fill(0);
+  text(currentGlyphString.charAt(k),x - 0.7*spellSide,y + 0.6*spellSide);
+  noFill();
+
+
+    if(x > width - 20){
+      x = spellX;
+      y += 2*spellSide;
+    }
+  }
+
+  side = tempInt;
+
+}
 
 
 function doTheThing(localCommand){
