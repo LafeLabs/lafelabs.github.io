@@ -4,6 +4,8 @@ var glyphSpellingOn = true;
 var x,y,x0,y0;
 var spellX,spellY;
 var spellSide;
+var textSide;
+var textX,textY;
 var side;
 var scaleFactor, unit;
 var theta,theta0,thetaStep;
@@ -46,8 +48,11 @@ var manuscriptActions = []; //mode 4
 var backgroundFileTable = [];
 var backgroundIndex = 0;
 var baseImage;
-
 var manuscriptPageindex = 0;
+var currentPageAddress;
+var currentPageText;
+var currentPageAction;
+var currentImageLocation;
 
 function preload(){
 	
@@ -94,6 +99,9 @@ function setup() {
   spellX = 10;
   spellY = height - 100;
   spellSide = 20;
+  textSide = 40;
+  textX = 2*textSide;
+  textY = 2*textSide;
 
   triangleX = x0;
   triangleY = y0;
@@ -104,9 +112,14 @@ function setup() {
   hexagonX = x0;
   hexagonY = y0;
   noFill();
-
+  currentPageAddress = "";
   currentGlyphString = "0";
+  manuscriptPageindex = 3;
+  currentPageText = "text ALL CAPS";
+  currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
   
+  
+  loadManuscriptPage();
 //  currentGlyphString =   "=2w=cjh-caggcgggg-cahhcg-cahhcg-cahhcg-cahhcg-cahhcg-cahhcg-c-ca";
 }
 
@@ -118,6 +131,14 @@ function draw() {
     doGlyphString(currentGlyphString);    
     drawCursor();
 	spellGlyph(currentGlyphString);
+	doGlyphString(currentPageAction);
+	x = textX;
+	y = textY;
+  strokeWeight(3);
+	
+	printString(currentPageText);
+	  strokeWeight(1);
+
 }
 
 function keyTyped(){
@@ -130,16 +151,26 @@ function keyTyped(){
 
 }
 
-function printManuscriptPage(){
-
-
+function loadManuscriptPage(){
+	var localStringArray = split(manuscriptActions[manuscriptPageindex],':');
+	currentPageAddress = localStringArray[0];
+	currentPageAction = "0" + localStringArray[1];	
+	if(localStringArray.length > 2){
+		currentPageText = localStringArray[2];
+	}
+	if(localStringArray.length > 3){
+		currentImageLocation = localStringArray[3];
+	}
 
 }
 
 function printString(localString){
+	var localSide = side;
+	side = textSide;
 	for(var j = 0;j < localString.length;j++){	
 		doTheThing(localString.charCodeAt(j));
 	}
+	side = localSide;
 }
 
 function doGlyphString(localString){
