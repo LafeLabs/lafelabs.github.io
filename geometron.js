@@ -115,7 +115,7 @@ function setup() {
   currentPageAddress = "";
   currentGlyphString = "0";
   manuscriptPageindex = 3;
-  currentPageText = "text ALL CAPS";
+  currentPageText = "";
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
   
   
@@ -139,6 +139,19 @@ function draw() {
 	printString(currentPageText);
 	  strokeWeight(1);
 
+	triangle(0,height - 50,width,height-50,0.5*width,height);
+	triangle(0,50,width,50,0.5*width,0);
+	if(mouseY < 50){
+		fill(100,100);
+		rect(0,0,width,50);
+		noFill();
+	}
+	if(mouseY > height - 50){
+		fill(100,100);
+		rect(0,height-50,width,50);
+		noFill();
+	}
+
 }
 
 function keyTyped(){
@@ -149,6 +162,22 @@ function keyTyped(){
         currentGlyphString = currentGlyphString.substring(0,currentGlyphString.length - 1);
 	}
 
+}
+
+function mouseClicked(){
+	if(mouseY > height - 50){
+		manuscriptPageindex++;
+		if(manuscriptPageindex == manuscriptActions.length){
+			manuscriptPageindex = 0;
+		}
+	}
+	if(mouseY < 50){
+		manuscriptPageindex--;
+		if(manuscriptPageindex < 0){
+			manuscriptPageindex = manuscriptActions.length;
+		}
+	}
+  loadManuscriptPage();
 }
 
 function loadManuscriptPage(){
