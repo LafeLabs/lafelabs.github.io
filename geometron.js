@@ -174,7 +174,7 @@ function mouseClicked(){
 	if(mouseY < 50){
 		manuscriptPageindex--;
 		if(manuscriptPageindex < 0){
-			manuscriptPageindex = manuscriptActions.length;
+			manuscriptPageindex = manuscriptActions.length-1;
 		}
 	}
   loadManuscriptPage();
