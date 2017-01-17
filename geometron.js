@@ -114,7 +114,7 @@ function setup() {
   noFill();
   currentPageAddress = "";
   currentGlyphString = "0";
-  manuscriptPageindex = 3;
+  manuscriptPageindex = 0;
   currentPageText = "";
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
   

@@ -1,4 +1,4 @@
 0400:0:Geometron!:frontcover.png
 0401:0cfc:The cursor:cursor1.png
-0402:0zdzazfzaz:intro1.png
+0402:0zdzazfzaz:Introduction:intro1.png
 0403:0:Roots of Unity:rootsof1.png
