@@ -126,7 +126,7 @@ function setup() {
 function draw() {
 	ASCIImode = false;
 	background(255);
-	image(baseImage);
+	image(baseImage,0,50);
 	doTheThing(0300);
     doGlyphString(currentGlyphString);    
     drawCursor();
@@ -134,11 +134,9 @@ function draw() {
 	doGlyphString(currentPageAction);
 	x = textX;
 	y = textY;
-  strokeWeight(3);
-	
+    strokeWeight(3);
 	printString(currentPageText);
-	  strokeWeight(1);
-
+	strokeWeight(1);
 	triangle(0,height - 50,width,height-50,0.5*width,height);
 	triangle(0,50,width,50,0.5*width,0);
 	if(mouseY < 50){
@@ -182,13 +180,17 @@ function mouseClicked(){
 
 function loadManuscriptPage(){
 	var localStringArray = split(manuscriptActions[manuscriptPageindex],':');
+    print(localStringArray.length);
+
 	currentPageAddress = localStringArray[0];
 	currentPageAction = "0" + localStringArray[1];	
 	if(localStringArray.length > 2){
 		currentPageText = localStringArray[2];
 	}
 	if(localStringArray.length > 3){
-		currentImageLocation = localStringArray[3];
+		currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/" + localStringArray[3];
+		baseImage = loadImage(currentImageLocation);
+		print(currentImageLocation);
 	}
 
 }
