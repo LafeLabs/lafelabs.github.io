@@ -23,7 +23,6 @@ var tableMode = 4;
 //5: manuscript symbols
 
 var phi;
-
 var currentGlyphString = "";
 
 
@@ -54,7 +53,8 @@ var currentPageText;
 var currentPageAction;
 var currentImageLocation;
 var imageFeed = [];
-
+var imageStack = [];
+var imageStackIndex;
 
 function preload(){
 	//http://pastebin.com/raw/istthY6r   = font.txt
@@ -65,6 +65,9 @@ function preload(){
 	shapeActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/shapeActions.txt');
 	manuscriptActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/manuscriptActions.txt');	
 	backgroundFileTable = loadStrings("https://lafelabs.github.io/geometronfiles/text/backgroundTable.txt");
+
+	imageFeed = loadStrings("https://lafelabs.github.io/geometronfiles/text/imageFeed.txt");
+	imageStack = loadStrings("https://lafelabs.github.io/geometronfiles/text/imageStack.txt");
 
 	baseImage = loadImage("https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png");
 }
@@ -93,7 +96,7 @@ function setup() {
   thetaStep = PI/2;
   theta0 = -PI/2; 
   theta = theta0;
-  createCanvas(900, 600);
+  createCanvas(900, 900);
   x0 = 250;
   y0 = 250;
   x = x0;
@@ -120,39 +123,24 @@ function setup() {
   manuscriptPageindex = 0;
   currentPageText = "";
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
-  
-  
+
+  imageStackIndex = 0;  
+ // doTheThing(0362);
   loadManuscriptPage();
+  doTheThing(0362);
+
+
 //  currentGlyphString =   "=2w=cjh-caggcgggg-cahhcg-cahhcg-cahhcg-cahhcg-cahhcg-cahhcg-c-ca";
 }
 
 function draw() {
 	ASCIImode = false;
 	background(255);
-	image(baseImage,0,50);
+	image(baseImage,0,50,width,height);
 	doTheThing(0300);
     doGlyphString(currentGlyphString);    
     drawCursor();
 	spellGlyph(currentGlyphString);
-	doGlyphString(currentPageAction);
-	x = textX;
-	y = textY;
-    strokeWeight(3);
-	printString(currentPageText);
-	strokeWeight(1);
-	triangle(0,height - 50,width,height-50,0.5*width,height);
-	triangle(0,50,width,50,0.5*width,0);
-	if(mouseY < 50){
-		fill(100,100);
-		rect(0,0,width,50);
-		noFill();
-	}
-	if(mouseY > height - 50){
-		fill(100,100);
-		rect(0,height-50,width,50);
-		noFill();
-	}
-
 }
 
 function keyTyped(){
@@ -420,8 +408,9 @@ function doTheThing(localCommand){
        image(myImage,x,y,int(side),int(side));
     }
     if(localCommand == 0362){
-       var localImage = "http://i.imgur.com/" + "QfH1AQX.jpg";
-       
+       var localImageLocation = imageStack[imageStackIndex];
+       baseImage = loadImage(localImageLocation);
+              
     }
     if(localCommand == 0370){ //drop triangle marker
         triangleX = x;
