@@ -53,11 +53,14 @@ var currentPageAddress;
 var currentPageText;
 var currentPageAction;
 var currentImageLocation;
+var imageFeed = [];
+
 
 function preload(){
-	
+	//http://pastebin.com/raw/istthY6r   = font.txt
 	commandSymbolGlyphTable = loadStrings('https://lafelabs.github.io/geometronfiles/text/commandSymbolGlyphTable.txt');
 	font = loadStrings('https://lafelabs.github.io/geometronfiles/text/font.txt');
+	//font = loadStrings('http://pastebin.com/raw/istthY6r');
 	shapeSymbols = loadStrings('https://lafelabs.github.io/geometronfiles/text/shapeSymbols.txt');
 	shapeActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/shapeActions.txt');
 	manuscriptActions = loadStrings('https://lafelabs.github.io/geometronfiles/text/manuscriptActions.txt');	
@@ -415,6 +418,10 @@ function doTheThing(localCommand){
     }
     if(localCommand == 0361){//drop image
        image(myImage,x,y,int(side),int(side));
+    }
+    if(localCommand == 0362){
+       var localImage = "http://i.imgur.com/" + "QfH1AQX.jpg";
+       
     }
     if(localCommand == 0370){ //drop triangle marker
         triangleX = x;
