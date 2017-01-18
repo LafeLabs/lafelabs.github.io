@@ -119,7 +119,7 @@ function setup() {
   hexagonY = y0;
   noFill();
   currentPageAddress = "";
-  currentGlyphString = "0";
+  currentGlyphString = "0ddd-d-x~text~ffxfxfxzf~2";
   manuscriptPageindex = 0;
   currentPageText = "";
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
@@ -229,6 +229,11 @@ function spellGlyph(localGlyphString){
   var tempInt = side;
   side = spellSide;
 
+  var splitGlyphStringArray = split(localGlyphString,'~');
+
+for(var q = 0;q <splitGlyphStringArray.length;q++){
+  localGlyphString = splitGlyphStringArray[q];
+  if(q%2 ==0){
   for(var k = 0;k < localGlyphString.length;k++){
      for(var l = 0;l <  commandSymbolGlyphTable.length; l++){
         var localStringArray = split(commandSymbolGlyphTable[l],':');
@@ -240,7 +245,7 @@ function spellGlyph(localGlyphString){
      }
   textSize(12);
   fill(0);
-  text(currentGlyphString.charAt(k),x - 0.7*spellSide,y + 0.6*spellSide);
+  text(localGlyphString.charAt(k),x - 0.7*spellSide,y + 0.6*spellSide);
   noFill();
 
 
@@ -249,9 +254,11 @@ function spellGlyph(localGlyphString){
       y += 2*spellSide;
     }
   }
-
-  side = tempInt;
-
+ 
+  }
+  x += spellSide;
+}
+ side = tempInt;
 }
 
 
