@@ -45,6 +45,7 @@ var shapeActions = []; //mode 16
 var commandSymbolGlyphTable = []; //mode 3
 var manuscriptActions = []; //mode 4
 var backgroundFileTable = [];
+var currentGlyphTable = [];
 var backgroundIndex = 0;
 var baseImage;
 var manuscriptPageindex = 0;
@@ -119,14 +120,17 @@ function setup() {
   hexagonY = y0;
   noFill();
   currentPageAddress = "";
-  currentGlyphString = "0ddd-d-x~text~ffxfxfxzf~2";
+  currentGlyphString = "0";
   manuscriptPageindex = 0;
   currentPageText = "";
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
-
+  currentGlyphIndex = 0;
+  currentTableIndex = 0;
+  currentGlyphAddress = 0;
   imageStackIndex = 3;  
 //  doTheThing(0362);
 
+//	saveStrings(font,"foo.txt");
 
 }
 
@@ -141,6 +145,10 @@ function draw() {
 }
 
 function keyTyped(){
+
+	if(key.charCodeAt(0) < 0040){
+		rootMagic(key.charCodeAt(0));
+	}
 	if(key.charCodeAt(0) >= 040 && key.charCodeAt(0) <= 0176){
     	currentGlyphString += key;
 	}
@@ -153,8 +161,6 @@ function keyTyped(){
 
 function doGlyphString(localString){
 	var localStringArray = split(localString,'~');
-	
-	
 	for(var q = 0;q < localStringArray.length;q++){	
 		localString = localStringArray[q];
 		if(q%2 == 0){
@@ -261,6 +267,24 @@ for(var q = 0;q <splitGlyphStringArray.length;q++){
  side = tempInt;
 }
 
+function rootMagic(localCommand){
+	if(localCommand == 0004){
+		currentTableIndex = 0;
+        var localStringArray = split(manuscriptActions[currentTableIndex],':');
+        var localString = localStringArray[1];  
+        currentGlyphAddress = (int(localStringArray[0].charAt(1))- 060)*64 + (int(localStringArray[0].charAt(2))  - 060)*8 + int(localStringArray[0].charAt(3)) - 060;        
+        currentGlyphString = "";
+       for(var index = 0;index < localString.length;index++){
+          currentGlyphString += localString.charAt(index);
+        }  
+        tableMode = 0004;
+        currentGlyphTable = manuscriptActions; 
+	}
+	if(localCommand == 0023){
+		var tempGlyphArray = [currentGlyphString];
+		saveStrings(tempGlyphArray,"glyph.txt");
+	}
+}
 
 function doTheThing(localCommand){
     
