@@ -96,7 +96,7 @@ function setup() {
   thetaStep = PI/2;
   theta0 = -PI/2; 
   theta = theta0;
-  createCanvas(900, 900);
+  createCanvas(600, 600);
   x0 = 250;
   y0 = 250;
   x = x0;
@@ -124,8 +124,8 @@ function setup() {
   currentPageText = "";
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
 
-  imageStackIndex = 0;  
-  doTheThing(0362);
+  imageStackIndex = 3;  
+//  doTheThing(0362);
 
 
 }
@@ -133,11 +133,11 @@ function setup() {
 function draw() {
 	ASCIImode = false;
 	background(255);
-	image(baseImage,0,50,width,height);
-	doTheThing(0300);
+//	image(baseImage,0,50,width,height);
+
     doGlyphString(currentGlyphString);    
     drawCursor();
-
+    spellGlyph(currentGlyphString);
 }
 
 function keyTyped(){
@@ -151,19 +151,22 @@ function keyTyped(){
 }
 
 
-function printString(localString){
-	var localSide = side;
-	side = textSide;
-	for(var j = 0;j < localString.length;j++){	
-		doTheThing(localString.charCodeAt(j));
-	}
-	side = localSide;
-}
-
 function doGlyphString(localString){
-	for(var j = 0;j < localString.length;j++){
-		var localCommand = key2command(localString.charAt(j));
-		doTheThing(key2command(localString.charAt(j)));
+	var localStringArray = split(localString,'~');
+	
+	
+	for(var q = 0;q < localStringArray.length;q++){	
+		localString = localStringArray[q];
+		if(q%2 == 0){
+			for(var j = 0;j < localString.length;j++){
+				doTheThing(key2command(localString.charAt(j)));
+			}
+		}
+		if(q%2 == 1){
+			for(var j = 0;j < localString.length;j++){	
+				doTheThing(localString.charCodeAt(j));
+			}
+		}		
 	}
 }
 
@@ -374,7 +377,7 @@ function doTheThing(localCommand){
        image(myImage,x,y,int(side),int(side));
     }
     if(localCommand == 0362){
-       var localImageLocation = imageStack[imageStackIndex];
+       var localImageLocation = imageFeed[imageStackIndex];
        baseImage = loadImage(localImageLocation);
               
     }
