@@ -125,9 +125,12 @@ function setup() {
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
 
   imageStackIndex = 0;  
+ // doTheThing(0362);
+  loadManuscriptPage();
   doTheThing(0362);
 
 
+//  currentGlyphString =   "=2w=cjh-caggcgggg-cahhcg-cahhcg-cahhcg-cahhcg-cahhcg-cahhcg-c-ca";
 }
 
 function draw() {
@@ -137,7 +140,7 @@ function draw() {
 	doTheThing(0300);
     doGlyphString(currentGlyphString);    
     drawCursor();
-
+	spellGlyph(currentGlyphString);
 }
 
 function keyTyped(){
@@ -150,6 +153,38 @@ function keyTyped(){
 
 }
 
+function mouseClicked(){
+	if(mouseY > height - 50){
+		manuscriptPageindex++;
+		if(manuscriptPageindex == manuscriptActions.length){
+			manuscriptPageindex = 0;
+		}
+	}
+	if(mouseY < 50){
+		manuscriptPageindex--;
+		if(manuscriptPageindex < 0){
+			manuscriptPageindex = manuscriptActions.length-1;
+		}
+	}
+  loadManuscriptPage();
+}
+
+function loadManuscriptPage(){
+	var localStringArray = split(manuscriptActions[manuscriptPageindex],':');
+    print(localStringArray.length);
+
+	currentPageAddress = localStringArray[0];
+	currentPageAction = "0" + localStringArray[1];	
+	if(localStringArray.length > 2){
+		currentPageText = localStringArray[2];
+	}
+	if(localStringArray.length > 3){
+		currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/" + localStringArray[3];
+		baseImage = loadImage(currentImageLocation);
+		print(currentImageLocation);
+	}
+
+}
 
 function printString(localString){
 	var localSide = side;
