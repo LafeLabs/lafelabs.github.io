@@ -3,7 +3,7 @@
 0402:0ad--~Now press control-g to turn on glyph spelling~s==ssssdddddddddd--~hit a,s,d, and f again, and now try adding "z" ~aa=aaddddddddddddd
 0403:--aaaa~Add "-" and "=" to the mix, continue ~ffffsss~hitting motion and point keys, and add "x" for~ssddddddd~circles!~==sdddddssdssdd--dd~don't forget the delete key!~==aaaddd
 0404:--aaaddddd~now try "g" and "h" to rotate cursor, and add~ffffsss~"c" to draw line segments. ~s==ssssddddds--~try "cagcagcagcag" then use = or - and ~ssdddddddddddd~repeat~aaaaaaa==dddda
-0405:fd-aa-ddddddNon~Now let's take a closer look at the cursor~0ss:cursor1.png
+0405:fd-aa-ddddddNon~Now let's take a closer look at the cursor~0ssssss--adddddddaaa-~The blue and red lines what size will be after '-' and '+', and the side lines show where the~ffffffsss~cursor will point after a rotation.  "1,2 and 3" select what rotation angle wlll be ~sssddddddddddddddddddddddddddd~try to make these cursors~a=====dd-----sdd~the factor of zoom is set by "q,w,e,r".~====s-ssssd:cursor1.png
 0406:0
 0407:0
 0410:0
