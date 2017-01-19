@@ -1,8 +1,10 @@
 var ASCIImode = false;
 var backgroundOn = false;
 var glyphSpellingOn = false;
+var roctalOn = false;
 var x,y,x0,y0;
 var spellX,spellY;
+var roctalX,roctalY,roctalSide,roctalX0,roctalY0;
 var spellSide;
 var textSide;
 var textX,textY;
@@ -97,11 +99,17 @@ function setup() {
   thetaStep = PI/2;
   theta0 = -PI/2; 
   theta = theta0;
-  createCanvas(600, 600);
-  x0 = 250;
-  y0 = 250;
+  createCanvas(800, 600);
+  x0 = 150;
+  y0 = 150;
   x = x0;
   y = y0;
+  
+  roctalX = 0;
+  roctalY = 0;
+  roctalX0 = 0;
+  roctalY0 = 0;
+  roctalSide = 16;
   
   spellX = 10;
   spellY = height - 100;
@@ -131,11 +139,12 @@ function setup() {
 //  doTheThing(0362);
 
 //	saveStrings(font,"foo.txt");
+	
+	rootMagic(0004); //control-d, get manuscript
 
 }
 
 function draw() {
-	ASCIImode = false;
 	background(255);
     if(backgroundOn){
 		image(baseImage,0,50,width,height*baseImage.height/baseImage.width);
@@ -143,14 +152,25 @@ function draw() {
 	doTheThing(0300);
     doGlyphString(currentGlyphString);    
     drawCursor();
-    
     if(glyphSpellingOn){
     	spellGlyph(currentGlyphString);
+	}
+	if(roctalOn){
+		spellRoctal(currentGlyphString);
+	}
+}
+
+
+function keyPressed(){
+	if(keyCode == DOWN_ARROW){
+		rootMagic(0015);
+	}
+	if(keyCode == UP_ARROW){
+		rootMagic(0011);
 	}
 }
 
 function keyTyped(){
-
 	if(key.charCodeAt(0) < 0040){
 		rootMagic(key.charCodeAt(0));
 	}
@@ -227,6 +247,53 @@ function drawCursor(){
   rect(x,y,side,side);
 }
 
+function writeRoctal(localByte){
+	noFill();
+	rect(roctalX,roctalY,roctalSide,roctalSide);
+	fill(0);
+	noStroke();
+	rect(roctalX,roctalY,roctalSide/8,roctalSide/8);	
+	rect(roctalX + roctalSide/8,roctalY + roctalSide/8,roctalSide/8,roctalSide/8);	
+	for(var bitIndex = 0;bitIndex < 9;bitIndex++){
+		if((localByte >> (8 - bitIndex)) & 1 == 1){
+			fill(0);	
+		} 
+		else{
+			fill(255);
+		}
+		rect(roctalX + (1 + (bitIndex%3))*roctalSide/4,roctalY + (1 + floor(bitIndex/3))*roctalSide/4,roctalSide/4,roctalSide/4);
+	}
+	noFill();
+	stroke(0);
+}
+
+function spellRoctal(localGlyphString){
+    theta = theta0;
+    thetaStep = PI/2;
+    scaleFactor = 2;
+	roctalX = roctalX0;
+	roctalY = roctalY0;
+    var splitGlyphStringArray = split(localGlyphString,'~');
+	for(var q = 0;q <splitGlyphStringArray.length;q++){
+  		localGlyphString = splitGlyphStringArray[q];
+  		if(q%2 == 0){
+  			for(var k = 0;k < localGlyphString.length;k++){
+  				writeRoctal(key2command(localGlyphString.charAt(k)));
+  				  		roctalX += roctalSide;
+
+  			}
+  		}
+  		if(q%2 == 1){
+  			for(var k = 0;k < localGlyphString.length;k++){
+  				writeRoctal(localGlyphString.charCodeAt(k));
+  				  		roctalX += roctalSide;
+
+  			}  		
+  		}
+  	}
+
+}
+
 
 function spellGlyph(localGlyphString){
 
@@ -258,8 +325,6 @@ for(var q = 0;q <splitGlyphStringArray.length;q++){
   fill(0);
   text(localGlyphString.charAt(k),x - 0.7*spellSide,y + 0.6*spellSide);
   noFill();
-
-
     if(x > width - 20){
       x = spellX;
       y += 2*spellSide;
@@ -374,7 +439,16 @@ function rootMagic(localCommand){
           currentGlyphString += localString.charAt(index);
         }
 	}
-	if(localCommand == 0023){
+	if(localCommand == 0020){
+		var localImage;
+		localImage = get(0,0,width,height);
+    localImage.save();
+
+	}
+	if(localCommand == 0022){//ctrl-R roctal on/off
+		roctalOn = !roctalOn;
+	}
+	if(localCommand == 0023){//ctrl-S  save
 	  var localOctalAddress = "0";
       localOctalAddress += str(currentGlyphAddress >> 6);
       localOctalAddress += str((currentGlyphAddress >> 3)&7);
