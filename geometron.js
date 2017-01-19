@@ -436,11 +436,16 @@ function rootMagic(localCommand){
       }
         var localStringArray = split(currentGlyphTable[currentTableIndex],':');
         var localString = localStringArray[1];  
+        if(localStringArray.length == 3){
+           baseImage = loadImage(imageStackStub + localStringArray[2]);
+           backgroundOn = true;
+        }
         currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
         currentGlyphString = "";
         for(var index = 0;index < localString.length;index++){
           currentGlyphString += localString.charAt(index);
         }
+     	   
 	}
 	if(localCommand == 0020){
 		var localImage;
@@ -459,6 +464,9 @@ function rootMagic(localCommand){
 		currentGlyphTable[currentGlyphIndex] = localOctalAddress + ":" + currentGlyphString;
 		saveStrings(currentGlyphTable,"glyph.txt");
 	}
+	
+	
+	
 	if(localCommand == 031){ ////031 = 25 = control-y:toggle background image on/off
      	backgroundOn = !backgroundOn;
     }
