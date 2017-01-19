@@ -59,6 +59,8 @@ var imageFeed = [];
 var imageStack = [];
 var imageStackIndex;
 
+var imageStackStub;
+
 function preload(){
 	//http://pastebin.com/raw/istthY6r   = font.txt
 	commandSymbolGlyphTable = loadStrings('https://lafelabs.github.io/geometronfiles/text/commandSymbolGlyphTable.txt');
@@ -135,7 +137,8 @@ function setup() {
   currentGlyphIndex = 0;
   currentTableIndex = 0;
   currentGlyphAddress = 0;
-  imageStackIndex = 3;  
+  imageStackIndex = 3;
+  imageStackStub = "https://lafelabs.github.io/geometronfiles/images/";  
 //  doTheThing(0362);
 
 //	saveStrings(font,"foo.txt");

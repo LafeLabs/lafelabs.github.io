@@ -3,9 +3,9 @@
 0402:0ad--~Now press control-g to turn on glyph spelling~s==ssssdddddddddd--~hit a,s,d, and f again, and now try adding "z" ~aa=aaddddddddddddd
 0403:--aaaa~Add "-" and "=" to the mix, continue ~ffffsss~hitting motion and point keys, and add "x" for~ssddddddd~circles!~==sdddddssdssdd--dd~don't forget the delete key!~==aaaddd
 0404:--aaaddddd~now try "g" and "h" to rotate cursor, and add~ffffsss~"c" to draw line segments. ~s==ssssddddds--~try "cagcagcagcag" then use = or - and ~ssdddddddddddd~repeat~aaaaaaa==dddda
-0405:fd-aa-ddddddNon~Now let's take a closer look at the cursor:~0ss
-0406:
-0407:
-0410:
-0411:
-0412:
+0405:fd-aa-ddddddNon~Now let's take a closer look at the cursor~0ss:cursor1.png
+0406:0
+0407:0
+0410:0
+0411:0
+0412:0
