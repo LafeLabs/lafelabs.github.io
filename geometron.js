@@ -1,6 +1,6 @@
 var ASCIImode = false;
 var backgroundOn = false;
-var glyphSpellingOn = true;
+var glyphSpellingOn = false;
 var x,y,x0,y0;
 var spellX,spellY;
 var spellSide;
@@ -137,11 +137,16 @@ function setup() {
 function draw() {
 	ASCIImode = false;
 	background(255);
-//	image(baseImage,0,50,width,height);
-
+    if(backgroundOn){
+		image(baseImage,0,50,width,height*baseImage.height/baseImage.width);
+	}
+	doTheThing(0300);
     doGlyphString(currentGlyphString);    
     drawCursor();
-    spellGlyph(currentGlyphString);
+    
+    if(glyphSpellingOn){
+    	spellGlyph(currentGlyphString);
+	}
 }
 
 function keyTyped(){
@@ -268,11 +273,48 @@ for(var q = 0;q <splitGlyphStringArray.length;q++){
 }
 
 function rootMagic(localCommand){
-	if(localCommand == 0004){
+	if(localCommand == 0001){ //shape actions
+		currentTableIndex = 0;
+        var localStringArray = split(shapeActions[currentTableIndex],':');
+        var localString = localStringArray[1];  
+        currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        currentGlyphString = "";
+       for(var index = 0;index < localString.length;index++){
+          currentGlyphString += localString.charAt(index);
+        }  
+        tableMode = 0001;
+        currentGlyphTable = shapeActions; 
+	}
+	if(localCommand == 0002){ //shape symbols
+		currentTableIndex = 0;
+        var localStringArray = split(shapeSymbols[currentTableIndex],':');
+        var localString = localStringArray[1];  
+        currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        currentGlyphString = "";
+       for(var index = 0;index < localString.length;index++){
+          currentGlyphString += localString.charAt(index);
+        }  
+        tableMode = 0002;
+        currentGlyphTable = shapeSymbols; 
+	}
+	if(localCommand == 0003){ //command glyph symbols
+		currentTableIndex = 0;
+        var localStringArray = split(commandSymbolGlyphTable[currentTableIndex],':');
+        var localString = localStringArray[1];  
+        currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        currentGlyphString = "";
+       for(var index = 0;index < localString.length;index++){
+          currentGlyphString += localString.charAt(index);
+        }  
+        tableMode = 0002;
+        currentGlyphTable = commandSymbolGlyphTable; 
+	}
+
+	if(localCommand == 0004){ //manuscript actions
 		currentTableIndex = 0;
         var localStringArray = split(manuscriptActions[currentTableIndex],':');
         var localString = localStringArray[1];  
-        currentGlyphAddress = (int(localStringArray[0].charAt(1))- 060)*64 + (int(localStringArray[0].charAt(2))  - 060)*8 + int(localStringArray[0].charAt(3)) - 060;        
+        currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
         currentGlyphString = "";
        for(var index = 0;index < localString.length;index++){
           currentGlyphString += localString.charAt(index);
@@ -280,10 +322,70 @@ function rootMagic(localCommand){
         tableMode = 0004;
         currentGlyphTable = manuscriptActions; 
 	}
-	if(localCommand == 0023){
-		var tempGlyphArray = [currentGlyphString];
-		saveStrings(tempGlyphArray,"glyph.txt");
+	if(localCommand == 0006){//font
+		currentTableIndex = 0;
+        var localStringArray = split(font[currentTableIndex],':');
+        var localString = localStringArray[1];  
+        currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        currentGlyphString = "";
+       for(var index = 0;index < localString.length;index++){
+          currentGlyphString += localString.charAt(index);
+        }  
+        tableMode = 0006;
+        currentGlyphTable = font; 
 	}
+	
+	 if(localCommand == 7){//control-g, toggle spelling on/off
+     	glyphSpellingOn = !glyphSpellingOn;
+	 }
+	if(localCommand == 0011){
+	  var localOctalAddress = "0";
+      localOctalAddress += str(currentGlyphAddress >> 6);
+      localOctalAddress += str((currentGlyphAddress >> 3)&7);
+      localOctalAddress += str((currentGlyphAddress)&7);
+	  currentGlyphTable[currentTableIndex] = localOctalAddress + ":" + currentGlyphString;
+	  currentTableIndex--;
+	  if(currentTableIndex < 0){
+        currentTableIndex = currentGlyphTable.length - 1;
+      }
+        var localStringArray = split(currentGlyphTable[currentTableIndex],':');
+        var localString = localStringArray[1];  
+        currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        currentGlyphString = "";
+        for(var index = 0;index < localString.length;index++){
+          currentGlyphString += localString.charAt(index);
+        }
+	}
+	if(localCommand == 0015){
+	  var localOctalAddress = "0";
+      localOctalAddress += str(currentGlyphAddress >> 6);
+      localOctalAddress += str((currentGlyphAddress >> 3)&7);
+      localOctalAddress += str((currentGlyphAddress)&7);
+	  currentGlyphTable[currentTableIndex] = localOctalAddress + ":" + currentGlyphString;
+	  currentTableIndex++;
+	  if(currentTableIndex == currentGlyphTable.length){
+        currentTableIndex = 0;
+      }
+        var localStringArray = split(currentGlyphTable[currentTableIndex],':');
+        var localString = localStringArray[1];  
+        currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
+        currentGlyphString = "";
+        for(var index = 0;index < localString.length;index++){
+          currentGlyphString += localString.charAt(index);
+        }
+	}
+	if(localCommand == 0023){
+	  var localOctalAddress = "0";
+      localOctalAddress += str(currentGlyphAddress >> 6);
+      localOctalAddress += str((currentGlyphAddress >> 3)&7);
+      localOctalAddress += str((currentGlyphAddress)&7);
+		currentGlyphTable[currentGlyphIndex] = localOctalAddress + ":" + currentGlyphString;
+		saveStrings(currentGlyphTable,"glyph.txt");
+	}
+	if(localCommand == 031){ ////031 = 25 = control-y:toggle background image on/off
+     	backgroundOn = !backgroundOn;
+    }
+
 }
 
 function doTheThing(localCommand){
