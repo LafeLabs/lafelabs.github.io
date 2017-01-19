@@ -418,6 +418,14 @@ function rootMagic(localCommand){
       }
         var localStringArray = split(currentGlyphTable[currentTableIndex],':');
         var localString = localStringArray[1];  
+        if(localStringArray.length == 3){
+           baseImage = loadImage(imageStackStub + localStringArray[2]);
+           backgroundOn = true;
+        }
+        else{
+          backgroundOn = false;
+        }
+
         currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
         currentGlyphString = "";
         for(var index = 0;index < localString.length;index++){
@@ -439,6 +447,9 @@ function rootMagic(localCommand){
         if(localStringArray.length == 3){
            baseImage = loadImage(imageStackStub + localStringArray[2]);
            backgroundOn = true;
+        }
+        else{
+          backgroundOn = false;
         }
         currentGlyphAddress = (int(localStringArray[0].charCodeAt(1))- 060)*64 + (int(localStringArray[0].charCodeAt(2))  - 060)*8 + int(localStringArray[0].charCodeAt(3)) - 060;        
         currentGlyphString = "";
