@@ -272,7 +272,7 @@ function spellGlyph(localGlyphString){
   theta = theta0;
   thetaStep = Math.PI/2;
   scaleFactor = 2;
-
+ 
   x = spellX;
   y = spellY;
   
