@@ -49,6 +49,7 @@ function setGeometronGlobals(){
   hexagonY = y0;
   currentPageAddress = "";
   currentGlyphString = "0";
+  cursorString = "gchchcg";
   manuscriptPageindex = 0;
   currentPageText = "";
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
@@ -235,6 +236,15 @@ function doGlyphString(localString){
 			}
 		}		
 	}
+}
+
+function redrawCurrentGlyphString(addedString){
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	if(addedString.length !=0){
+		currentGlyphString += addedString;
+	}
+	doGlyphString(currentGlyphString);
+	doGlyphString(cursorString);
 }
 
 function key2command(localChar){
