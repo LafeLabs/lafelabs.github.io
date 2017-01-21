@@ -33,8 +33,8 @@ function setGeometronGlobals(){
   roctalSide = 16;
   
   spellX = 10;
-  spellY = 500;
-  spellSide = 20;
+  spellY = 550;
+  spellSide = 26;
   textSide = 40;
   textX = 2*textSide;
   textY = 2*textSide;
@@ -266,6 +266,42 @@ function key2command(localChar){
     }
     	
 }
+
+function spellGlyph(localGlyphString){
+
+  theta = theta0;
+  thetaStep = Math.PI/2;
+  scaleFactor = 2;
+
+  x = spellX;
+  y = spellY;
+  
+  var tempInt = side;
+  side = spellSide;
+
+  var splitGlyphStringArray = localGlyphString.split('~');
+
+for(var q = 0;q < splitGlyphStringArray.length;q++){
+  localGlyphString = splitGlyphStringArray[q];
+  if(q%2 ==0){
+  for(var k = 0;k < localGlyphString.length;k++){
+     for(var l = 0;l <  commandSymbolGlyphTable.length; l++){
+        var localStringArray = commandSymbolGlyphTable[l].split(':');
+        var localString = localStringArray[1];  
+        var tempAddress = (Number(localStringArray[0].charCodeAt(1))- 060)*64 + (Number(localStringArray[0].charCodeAt(2))  - 060)*8 + Number(localStringArray[0].charCodeAt(3)) - 060;        
+        if(tempAddress == key2command(localGlyphString.charAt(k))){
+           doGlyphString(localString); 
+        } 
+     }
+
+  }
+ 
+  }
+  x += spellSide;
+}
+ side = tempInt;
+}
+
 
 
 function doTheThing(localCommand){
