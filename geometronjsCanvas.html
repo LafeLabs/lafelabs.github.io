@@ -13,8 +13,15 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
 setGeometronGlobals();
+loadFont();
+loadCommandGlyphs();
+loadShapes();
+doGlyphString("0ds--~ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+doGlyphString("0ds-s-~abcdefghijklmnopqrstuvwxyz");
 doGlyphString("0cagcagcagcag");
 doGlyphString("0sfsfsxzg3ggazxggazx");
+doGlyphString("0ff%%%%%-%%%%%-%%%%%-%%%%%-%%%%%-%%%%%");
+
 </script>
 
 </body>
