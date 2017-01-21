@@ -1,6 +1,8 @@
 
 function setGeometronGlobals(){
 	
+  spellingOn = false;
+	
   keyRow0 = ['1','2','3','7','0','-','='];
   keyAddressRow0 = [0304,0305,0306,0317,0300,0336,0337];
   keyRow1 = ['q','w','e','r','t','u','i','o','p'];
@@ -245,6 +247,9 @@ function redrawCurrentGlyphString(addedString){
 	}
 	doGlyphString(currentGlyphString);
 	doGlyphString(cursorString);
+	if(spellingOn){
+		spellGlyph(currentGlyphString);
+	}
 }
 
 function key2command(localChar){
