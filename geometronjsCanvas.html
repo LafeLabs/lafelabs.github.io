@@ -17,6 +17,7 @@ loadFont();
 loadCommandGlyphs();
 loadShapes();
 
+
 //doGlyphString(currentGlyphString);
 
 //doGlyphString("0ds--~ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -31,17 +32,29 @@ loadShapes();
 
 <p>
 <input type = "text" onchange = "updateText()" id = "inputGlyph"><--Type text here</input>
+<!--<input type = "checkbox" id = "imageon">Image on/off</input>-->
 <p>
 <img src="geometronfiles/images/masterKeyboard.png" />
 <!--
 <button onclick="redrawCurrentGlyphString(keyRow2[0]);"><img src="geometronfiles/images/0330.png" /></button>
 -->
-
+<p>
+<!--<textarea rows="64" cols="100">
+shape table
+</textarea>
+-->
 <script>
 
 function updateText(){
 	currentGlyphString = document.getElementById("inputGlyph").value;
+	
+	var img = new Image();   // Create new img element
+    
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	if(imageOn){
+	   img.src = 'geometronfiles/images/thePentagon.png'; // Set source path
+	   ctx.drawImage(img,0,0);
+	}
 	doGlyphString(currentGlyphString);
 	doGlyphString(cursorString);
 	spellGlyph(currentGlyphString);

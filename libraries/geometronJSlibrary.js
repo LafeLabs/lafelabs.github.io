@@ -2,6 +2,7 @@
 function setGeometronGlobals(){
 	
   spellingOn = false;
+  imageOn = false;
 	
   keyRow0 = ['1','2','3','7','0','-','='];
   keyAddressRow0 = [0304,0305,0306,0317,0300,0336,0337];
@@ -97,8 +98,8 @@ function loadFont(){
     font.push("0076:f-adjgcggchhhksf");
     font.push("0077:f--dda-sxaacaaavhhjgvhkachh=sss-afff===");
     font.push("0100:f-da--x=vgvgg-acs=jhhvkaahhff==");
-    font.push("0101:fa-dggjjh=cggchkk-ah-chhcffaag==");
-    font.push("0102:f-d-d==c-a-afxssxffs==");
+    font.push("0101:w2jjhckh-fgg=c--aggchhsjh==1");
+    font.push("0102:1r---f===cah--cffcdavffvfscg=f--f===");
     font.push("0103:f-adgvhhjggvhhhhvkahhf=");
     font.push("0104:fd--f==c-ajhvhhvhkahh-f=f=");
     font.push("0105:f-d-d==ch-cd-c=dc-sg==fs");
