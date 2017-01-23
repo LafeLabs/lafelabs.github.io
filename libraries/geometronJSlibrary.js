@@ -35,10 +35,11 @@ function setGeometronGlobals(){
   roctalY0 = 0;
   roctalSide = 16;
   
-  spellX = 10;
-  spellY = 550;
-  spellSide = 26;
+  spellX = 2;
+  spellY = 18;
+  spellSide = 16;
   textSide = 40;
+  glyphsPerRow = 32;
   textX = 2*textSide;
   textY = 2*textSide;
 
@@ -301,6 +302,10 @@ for(var q = 0;q < splitGlyphStringArray.length;q++){
   localGlyphString = splitGlyphStringArray[q];
   if(q%2 ==0){
   for(var k = 0;k < localGlyphString.length;k++){
+     if(x >= glyphsPerRow*spellSide){
+     	x=spellX;
+     	y+= spellSide;
+     }
      for(var l = 0;l <  commandSymbolGlyphTable.length; l++){
         var localStringArray = commandSymbolGlyphTable[l].split(':');
         var localString = localStringArray[1];  
@@ -308,6 +313,7 @@ for(var q = 0;q < splitGlyphStringArray.length;q++){
         if(tempAddress == key2command(localGlyphString.charAt(k))){
            doGlyphString(localString); 
         } 
+        
      }
 
   }

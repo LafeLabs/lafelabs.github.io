@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<canvas id="myCanvas" width="600" height="600"
+<canvas id="myCanvas" width="600" height="400"
 style="border:1px solid #c3c3c3;">
 Your browser does not support the canvas element.
 </canvas>
@@ -17,32 +17,29 @@ loadFont();
 loadCommandGlyphs();
 loadShapes();
 
-//doGlyphString(currentGlyphString);
-
-//doGlyphString("0ds--~ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-//doGlyphString("0ds-s-~abcdefghijklmnopqrstuvwxyz");
-//doGlyphString("0cagcagcagcag");
-//doGlyphString("0sfsfsxzg3ggazxggazx");
-//doGlyphString("0ff%%%%%-%%%%%-%%%%%-%%%%%-%%%%%-%%%%%");
-//doGlyphString("0sfsfsxzg3ggazxggazx");
-//doGlyphString("hcgcgch");
-
 </script>
 
-<input type = "text" onchange = "updateShapeTableDisplay();" id = "shapeInput"><--022x here</input>
-<input type = "text" onchange = "updateFontTableDisplay();" id = "fontInput"><--font here</input>
+<!--<input type = "text" onchange = "updateShapeTableDisplay();" id = "shapeInput"><--022x here</input>-->
 
+<!--<input type = "text" onchange = "updateFontTableDisplay();" id = "fontInput"><--font here</input>-->
+<p>
+<button type="button">NEXT GLYPH</button><button type="button">PREV GLYPH</button>
 <p>
 <input type = "text" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
-<!--<input type = "checkbox" id = "imageon">Image on/off</input>-->
-<p>
-<img src="geometronfiles/images/masterKeyboard.png" />
-<!--
-<button onclick="redrawCurrentGlyphString(keyRow2[0]);"><img src="geometronfiles/images/0330.png" /></button>
--->
 <p>
 
-shape table:
+
+<canvas id="spellingCanvas" width="520" height="80"
+style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+
+<p>
+<img src="geometronfiles/images/masterKeyboard.png" />
+
+<p>
+
+<!--shape table:
 <p>
 <textarea id = "shapeTableDisplay" rows="64" cols="100">
 </textarea>
@@ -53,7 +50,7 @@ font table:
 <textarea id = "fontTableDisplay" rows="96" cols="100">
 
 </textarea>
-
+-->
 
 <script>
 
@@ -69,10 +66,16 @@ function updateText(){
 	}
 	doGlyphString(currentGlyphString);
 	doGlyphString(cursorString);
+	var canvas2 = document.getElementById("spellingCanvas");
+	ctx = canvas2.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	spellGlyph(currentGlyphString);
+	ctx = canvas.getContext("2d");
 }
 
-function updateShapeTableDisplay(){
+
+/*
+  function updateShapeTableDisplay(){
 
 	var currentShapeGlyph = document.getElementById("shapeInput").value;
 	var tempArray = currentShapeGlyph.split(':');
@@ -105,7 +108,7 @@ function updateFontTableDisplay(){
 		document.getElementById("fontTableDisplay").innerHTML += "\n"
 	}
 }
-
+*/
 
 </script>
 </body>
