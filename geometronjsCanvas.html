@@ -73,15 +73,34 @@ function updateText(){
 }
 
 function updateShapeTableDisplay(){
+
+	var currentShapeGlyph = document.getElementById("shapeInput").value;
+	var tempArray = currentShapeGlyph.split(':');
+	var foo = tempArray[0];//address of shape 02xx
+	var bar = foo.toString(8);
+
+	shapeActions[parseInt(tempArray[0],8) - 0200] = tempArray[0] + ":" + tempArray[1];
+	
 	document.getElementById("shapeTableDisplay").innerHTML =  "";
 	for(var zeep = 0;zeep<shapeActions.length;zeep++){
 		document.getElementById("shapeTableDisplay").innerHTML += shapeActions[zeep];
-		document.getElementById("shapeTableDisplay").innerHTML += "\n"
+		document.getElementById("shapeTableDisplay").innerHTML += "\n"		
 	}
 }
-function updateFontTableDisplay(){
+
+function updateFontTableDisplay(){	
+	//source of hebrew letters geometric font in public domain:https://commons.wikimedia.org/wiki/User:Razorbliss/gallery 
+
+	var currentLetterGlyph = document.getElementById("fontInput").value;
+	var tempArray = currentLetterGlyph.split(':');
+	var foo = tempArray[0].charCodeAt(0);
+	var bar = foo.toString(8);
+	font[tempArray[0].charCodeAt(0) - 32] = "0" + bar + ":" + tempArray[1];
+	
 	document.getElementById("fontTableDisplay").innerHTML =  "";
 	for(var zeep = 0;zeep<font.length;zeep++){
+	document.getElementById("fontTableDisplay").innerHTML += String.fromCharCode(32 + zeep);
+	document.getElementById("fontTableDisplay").innerHTML += ':';
 		document.getElementById("fontTableDisplay").innerHTML += font[zeep];
 		document.getElementById("fontTableDisplay").innerHTML += "\n"
 	}
