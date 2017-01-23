@@ -10,8 +10,8 @@ function setGeometronGlobals(){
   keyAddressRow1 = [0310,0311,0312,0313,0314,0370,0371,0360,0361];
   keyRow2 = ['a','s','d','f','g','h','j','k','l',';'];
   keyAddressRow2 = [0330,0331,0332,0333,0334,0335,0350,0351,0352,0353];
-  keyRow3 = ['z','x','c','v'];
-  keyAddressRow3 = [0340,0341,0342,0343];
+  keyRow3 = ['z','x','c','v','b','n','m',','];
+  keyAddressRow3 = [0340,0341,0342,0343,0344,0345,0346,0347];
   keyRow4 = ['!','@','#','$','%','^','&','*','Q','W','E','R','T','Y','U','I'];
   keyAddressRow4 = [0200,0201,0202,0203,0204,0205,0206,0207,0210,0211,0212,0213,0214,0215,0216,0217];
 
@@ -430,6 +430,30 @@ function doTheThing(localCommand){
     if(localCommand == 0343){
 		ctx.beginPath();
 		ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
+		ctx.stroke();
+    }
+    if(localCommand == 0344){
+		ctx.beginPath();
+		ctx.moveTo(x +side*Math.cos(theta - thetaStep),y +side*Math.sin(theta - thetaStep));
+		ctx.quadraticCurveTo(x +side*Math.cos(theta - thetaStep) + scaleFactor*side*Math.cos(theta),y +side*Math.sin(theta - thetaStep)+scaleFactor*side*Math.sin(theta),x + scaleFactor*side*Math.cos(theta),y + scaleFactor*side*Math.sin(theta));
+		ctx.stroke();
+    }
+    if(localCommand == 0345){
+		ctx.beginPath();
+		ctx.moveTo(x +side*Math.cos(theta + thetaStep),y +side*Math.sin(theta + thetaStep));
+		ctx.quadraticCurveTo(x +side*Math.cos(theta + thetaStep) + scaleFactor*side*Math.cos(theta),y +side*Math.sin(theta + thetaStep)+scaleFactor*side*Math.sin(theta),x + scaleFactor*side*Math.cos(theta),y + scaleFactor*side*Math.sin(theta));
+		ctx.stroke();
+    }
+        if(localCommand == 0346){
+		ctx.beginPath();
+		ctx.moveTo(x + side*(1/scaleFactor)*Math.cos(theta - thetaStep),y +side*(1/scaleFactor)*Math.sin(theta - thetaStep));
+		ctx.quadraticCurveTo(x +side*(1/scaleFactor)*Math.cos(theta - thetaStep) + scaleFactor*side*Math.cos(theta),y +side*(1/scaleFactor)*Math.sin(theta - thetaStep)+scaleFactor*side*Math.sin(theta),x + scaleFactor*side*Math.cos(theta),y + scaleFactor*side*Math.sin(theta));
+		ctx.stroke();
+    }
+    if(localCommand == 0347){
+		ctx.beginPath();
+		ctx.moveTo(x +side*(1/scaleFactor)*Math.cos(theta + thetaStep),y +side*(1/scaleFactor)*Math.sin(theta + thetaStep));
+		ctx.quadraticCurveTo(x +side*(1/scaleFactor)*Math.cos(theta + thetaStep) + scaleFactor*side*Math.cos(theta),y +side*(1/scaleFactor)*Math.sin(theta + thetaStep)+scaleFactor*side*Math.sin(theta),x + scaleFactor*side*Math.cos(theta),y + scaleFactor*side*Math.sin(theta));
 		ctx.stroke();
     }
     if(localCommand == 0350){
