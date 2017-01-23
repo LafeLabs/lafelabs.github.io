@@ -16,16 +16,19 @@ setGeometronGlobals();
 loadFont();
 loadCommandGlyphs();
 loadShapes();
+loadManuscript();
+doGlyphString(cursorString);
 
+currentGlyphTable = manuscriptActions;
 </script>
 
 <!--<input type = "text" onchange = "updateShapeTableDisplay();" id = "shapeInput"><--022x here</input>-->
 
 <!--<input type = "text" onchange = "updateFontTableDisplay();" id = "fontInput"><--font here</input>-->
 <p>
-<button type="button">NEXT GLYPH</button><button type="button">PREV GLYPH</button>
+<button type="button" onclick = "rootMagic(015);updateGlyph();updateText();">NEXT GLYPH</button><button type="button" onclick = "rootMagic(015);updateGlyph();updateText();">PREV GLYPH</button>
 <p>
-<input type = "text" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
+<input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
 <p>
 
 
@@ -54,8 +57,15 @@ font table:
 
 <script>
 
+function updateGlyph(){
+	document.getElementById("inputGlyph").value = currentGlyphString;
+}
+
 function updateText(){
+
 	currentGlyphString = document.getElementById("inputGlyph").value;
+	
+	currentGlyphTable[currentTableIndex] = currentPageAddress + ":" + currentGlyphString;
 	
 	var img = new Image();   // Create new img element
     

@@ -1,3 +1,11 @@
+//EVERYTHING IS PHYSICAL
+//EVERYTHING IS ALWAYS RECURSIVE
+//NO LAWS NO PROPERTY NO MINING NO NUMBERS
+//THE SOLE PURPOSE OF THE EXISTING SOFTWARE INDUSTRY IS TO CREATE AND MAINTAIN STRUCTURAL VIOLENCE
+//ALL COMPUTER "SCIENCE" IS AN EVIL RELIGION
+//ALL "TECH" COMPANIES ARE BASED ON FRAUD AND LIES
+//SMASH THE TECHNOCRATIC PRIESTHOOD
+//ALL CODE HERE ENTERED INTO PUBLIC DOMAIN WITH NO RESTRICTIONS WHATSOEVER
 
 function setGeometronGlobals(){
 	
@@ -24,8 +32,8 @@ function setGeometronGlobals(){
   theta = theta0;
 
 
-  x0 = 150;
-  y0 = 150;
+  x0 = 300;
+  y0 = 200;
   x = x0;
   y = y0;
   
@@ -51,15 +59,18 @@ function setGeometronGlobals(){
   pentagonY = y0;
   hexagonX = x0;
   hexagonY = y0;
-  currentPageAddress = "";
+  currentPageAddress = "0400";
   currentGlyphString = "0";
+  currentGlyphTable = [];
+  currentGlyphAddress = 0;//int
+  currentTableIndex = 0;
+  
   cursorString = "gchchcg";
   manuscriptPageindex = 0;
   currentPageText = "";
   currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
   currentGlyphIndex = 0;
-  currentTableIndex = 0;
-  currentGlyphAddress = 0;
+
   imageStackIndex = 3;
   imageStackStub = "https://lafelabs.github.io/geometronfiles/images/";  
 }
@@ -225,6 +236,19 @@ function loadShapes(){
 
 }
 
+function loadManuscript(){
+	manuscriptActions = [];
+    manuscriptActions.push("0400:0ssszxfzx");
+    manuscriptActions.push("0401:0ssscgcaz");
+    manuscriptActions.push("0402:0sszx~abc");
+    manuscriptActions.push("0403:0ssbnggbn");
+    manuscriptActions.push("0404:0ss####");
+    manuscriptActions.push("0405:0~A~--~A~-~A~x");
+    manuscriptActions.push("0406:0sjjjjchchchchchchchchchchc");
+    manuscriptActions.push("0407:0s~END");
+
+}
+
 function doGlyphString(localString){
 	var localStringArray = localString.split('~');
 	for(var q = 0;q < localStringArray.length;q++){	
@@ -324,7 +348,34 @@ for(var q = 0;q < splitGlyphStringArray.length;q++){
  side = tempInt;
 }
 
+function rootMagic(localCommand){
 
+	if(localCommand == 0011){//go to previous glyph in current glyph table
+		var localOctalAddress = currentGlyphAddress.toString(8);
+		currentGlyphTable[currentTableIndex] = localOctalAddress + ":" + currentGlyphString;
+		currentTableIndex--;
+		if(currentTableIndex < 0){
+        	currentTableIndex = currentGlyphTable.length - 1;
+    	}
+    	var localStringArray = currentGlyphTable[currentTableIndex].split(':');
+    	currentGlyphString = localStringArray[1];  
+    	currentGlyphAddress = (Number(localStringArray[0].charCodeAt(1))- 060)*64 + (Number(localStringArray[0].charCodeAt(2))  - 060)*8 + Number(localStringArray[0].charCodeAt(3)) - 060;        
+	}
+
+	if(localCommand == 0015){//go to previous glyph in current glyph table
+		var localOctalAddress = currentGlyphAddress.toString(8);
+		currentGlyphTable[currentTableIndex] = localOctalAddress + ":" + currentGlyphString;
+		currentTableIndex++;
+		if(currentTableIndex >= currentGlyphTable.length){
+        	currentTableIndex =  0;
+    	}
+    	var localStringArray = currentGlyphTable[currentTableIndex].split(':');
+    	currentGlyphString = localStringArray[1];  
+    	currentGlyphAddress = (Number(localStringArray[0].charCodeAt(1))- 060)*64 + (Number(localStringArray[0].charCodeAt(2))  - 060)*8 + Number(localStringArray[0].charCodeAt(3)) - 060;        
+
+	}
+	
+}
 
 function doTheThing(localCommand){
     
