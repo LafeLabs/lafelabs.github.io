@@ -17,7 +17,6 @@ loadFont();
 loadCommandGlyphs();
 loadShapes();
 
-
 //doGlyphString(currentGlyphString);
 
 //doGlyphString("0ds--~ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -30,6 +29,9 @@ loadShapes();
 
 </script>
 
+<input type = "text" onchange = "updateShapeTableDisplay();" id = "shapeInput"><--022x here</input>
+<input type = "text" onchange = "updateFontTableDisplay();" id = "fontInput"><--font here</input>
+
 <p>
 <input type = "text" onchange = "updateText()" id = "inputGlyph"><--Type text here</input>
 <!--<input type = "checkbox" id = "imageon">Image on/off</input>-->
@@ -39,10 +41,20 @@ loadShapes();
 <button onclick="redrawCurrentGlyphString(keyRow2[0]);"><img src="geometronfiles/images/0330.png" /></button>
 -->
 <p>
-<!--<textarea rows="64" cols="100">
-shape table
+
+shape table:
+<p>
+<textarea id = "shapeTableDisplay" rows="64" cols="100">
 </textarea>
--->
+<p>
+font table:
+
+<p>
+<textarea id = "fontTableDisplay" rows="96" cols="100">
+
+</textarea>
+
+
 <script>
 
 function updateText(){
@@ -59,6 +71,23 @@ function updateText(){
 	doGlyphString(cursorString);
 	spellGlyph(currentGlyphString);
 }
+
+function updateShapeTableDisplay(){
+	document.getElementById("shapeTableDisplay").innerHTML =  "";
+	for(var zeep = 0;zeep<shapeActions.length;zeep++){
+		document.getElementById("shapeTableDisplay").innerHTML += shapeActions[zeep];
+		document.getElementById("shapeTableDisplay").innerHTML += "\n"
+	}
+}
+function updateFontTableDisplay(){
+	document.getElementById("fontTableDisplay").innerHTML =  "";
+	for(var zeep = 0;zeep<font.length;zeep++){
+		document.getElementById("fontTableDisplay").innerHTML += font[zeep];
+		document.getElementById("fontTableDisplay").innerHTML += "\n"
+	}
+}
+
+
 </script>
 </body>
 </html>
