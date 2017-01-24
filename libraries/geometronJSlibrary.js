@@ -419,7 +419,6 @@ function rootMagic(localCommand){
 	
 	if(localCommand == 0011){//go to previous glyph in current glyph table
 		var localOctalAddress = "0" + currentGlyphAddress.toString(8);
-	//	console.log(localOctalAddress);
 		currentGlyphTable[currentTableIndex] = localOctalAddress + ":" + currentGlyphString;
 		currentTableIndex--;
 		if(currentTableIndex < 0){
@@ -427,13 +426,11 @@ function rootMagic(localCommand){
     	}
     	var localStringArray = currentGlyphTable[currentTableIndex].split(':');
     	currentGlyphString = localStringArray[1];  
-    	console.log(localStringArray[0]);
     	currentGlyphAddress = parseInt(localStringArray[0],8); 
 	}
 
 	if(localCommand == 0015){//go to next glyph in current glyph table
 		var localOctalAddress = "0" + currentGlyphAddress.toString(8);
-//		console.log(localOctalAddress);
 		currentGlyphTable[currentTableIndex] = localOctalAddress + ":" + currentGlyphString;
 		currentTableIndex++;
 		if(currentTableIndex >= currentGlyphTable.length){
@@ -441,7 +438,6 @@ function rootMagic(localCommand){
     	}
     	var localStringArray = currentGlyphTable[currentTableIndex].split(':');
     	currentGlyphString = localStringArray[1];  
-    	console.log(localStringArray[0]);
     	currentGlyphAddress = parseInt(localStringArray[0],8); 
 
 	}
@@ -455,9 +451,6 @@ function doTheThing(localCommand){
         var localStringArray = font[searchIndex].split(':');
         var localString = localStringArray[1];  
         var tempAddress = parseInt(localStringArray[0],8);
-        //(Number(localStringArray[0].charCodeAt(1))- 060)*64 + (Number(localStringArray[0].charCodeAt(2))  - 060)*8 + Number(localStringArray[0].charCodeAt(3)) - 060;        
-
-        //tempAddress = Number(localStringArray[0]);
         if(tempAddress == localCommand){
            doGlyphString(localString);
         }
