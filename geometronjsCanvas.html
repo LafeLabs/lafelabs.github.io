@@ -17,12 +17,16 @@ loadFont();
 loadCommandGlyphs();
 loadShapes();
 loadManuscript();
+loadShapeSymbols();
 
 currentGlyphTable = manuscriptActions;
 var tempStringArray = currentGlyphTable[currentTableIndex].split(':');
 currentGlyphString = tempStringArray[1];
+currentGlyphAddress = parseInt(tempStringArray[0],8);
+console.log(currentGlyphTable[currentTableIndex]);
 doGlyphString(currentGlyphString);
 doGlyphString(cursorString);
+
 
 </script>
 
@@ -30,10 +34,11 @@ doGlyphString(cursorString);
 
 <!--<input type = "text" onchange = "updateFontTableDisplay();" id = "fontInput"><--font here</input>-->
 <p>
-<button type="button" onclick = "rootMagic(011);updateGlyph();updateText();">PREV GLYPH</button>
-<button type="button" onclick = "rootMagic(015);updateGlyph();updateText();">NEXT GLYPH</button>
+<button type="button" onclick = "rootMagic(011);updateGlyph();doTheThing(0300);updateText();">PREV GLYPH</button>
+<button type="button" onclick = "rootMagic(015);updateGlyph();doTheThing(0300);updateText();">NEXT GLYPH</button>
+<button type="button" onclick = "printAddress();">print address</button>
 table select:
-<select>
+<select id = "tableSelect" onchange= "updateTable();">
   <option value="manuscriptActions">manuscriptActions</option>
   <option value="font">font</option>
   <option value="shapeActions">shapeActions</option>
@@ -44,6 +49,7 @@ table select:
 <p>
 <script>
 	document.getElementById("inputGlyph").value = currentGlyphString;
+	
 </script>
 
 <canvas id="spellingCanvas" width="520" height="80"
@@ -71,6 +77,45 @@ font table:
 
 <script>
 
+	var canvas2 = document.getElementById("spellingCanvas");
+	ctx = canvas2.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	spellGlyph(currentGlyphString);
+	ctx = canvas.getContext("2d");
+
+function printAddress(){
+	console.log(currentGlyphAddress);
+}
+
+
+function updateTable(){
+
+	var tableValue = document.getElementById("tableSelect").value;
+	if(tableValue == "font"){
+		rootMagic(0006);
+	}
+	if(tableValue == "manuscriptActions"){
+		rootMagic(0004);
+	}
+	if(tableValue == "shapeActions"){
+		rootMagic(0001);
+	}
+	if(tableValue == "shapeSymbols"){
+		rootMagic(0002);
+	}
+	
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	doGlyphString(currentGlyphString);
+	doGlyphString(cursorString);
+	ctx = canvas2.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	spellGlyph(currentGlyphString);
+	ctx = canvas.getContext("2d");
+
+    updateGlyph();
+
+}
+
 function updateGlyph(){
 	document.getElementById("inputGlyph").value = currentGlyphString;
 }
@@ -78,8 +123,7 @@ function updateGlyph(){
 function updateText(){
 
 	currentGlyphString = document.getElementById("inputGlyph").value;
-	
-	currentGlyphTable[currentTableIndex] = currentPageAddress + ":" + currentGlyphString;
+	currentGlyphTable[currentTableIndex] = currentGlyphAddress + ":" + currentGlyphString;
 	
 	var img = new Image();   // Create new img element
     
@@ -88,6 +132,7 @@ function updateText(){
 	   img.src = 'geometronfiles/images/thePentagon.png'; // Set source path
 	   ctx.drawImage(img,0,0);
 	}
+	doTheThing(0300);
 	doGlyphString(currentGlyphString);
 	doGlyphString(cursorString);
 	var canvas2 = document.getElementById("spellingCanvas");
