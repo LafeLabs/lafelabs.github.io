@@ -17,20 +17,34 @@ loadFont();
 loadCommandGlyphs();
 loadShapes();
 loadManuscript();
-doGlyphString(cursorString);
 
 currentGlyphTable = manuscriptActions;
+var tempStringArray = currentGlyphTable[currentTableIndex].split(':');
+currentGlyphString = tempStringArray[1];
+doGlyphString(currentGlyphString);
+doGlyphString(cursorString);
+
 </script>
 
 <!--<input type = "text" onchange = "updateShapeTableDisplay();" id = "shapeInput"><--022x here</input>-->
 
 <!--<input type = "text" onchange = "updateFontTableDisplay();" id = "fontInput"><--font here</input>-->
 <p>
-<button type="button" onclick = "rootMagic(015);updateGlyph();updateText();">NEXT GLYPH</button><button type="button" onclick = "rootMagic(015);updateGlyph();updateText();">PREV GLYPH</button>
+<button type="button" onclick = "rootMagic(011);updateGlyph();updateText();">PREV GLYPH</button>
+<button type="button" onclick = "rootMagic(015);updateGlyph();updateText();">NEXT GLYPH</button>
+table select:
+<select>
+  <option value="manuscriptActions">manuscriptActions</option>
+  <option value="font">font</option>
+  <option value="shapeActions">shapeActions</option>
+  <option value="shapeSymbols">shapeSymbols</option>
+</select>
 <p>
 <input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
 <p>
-
+<script>
+	document.getElementById("inputGlyph").value = currentGlyphString;
+</script>
 
 <canvas id="spellingCanvas" width="520" height="80"
 style="border:1px solid #c3c3c3;">

@@ -238,11 +238,11 @@ function loadShapes(){
 
 function loadManuscript(){
 	manuscriptActions = [];
-    manuscriptActions.push("0400:0ssszxfzx");
-    manuscriptActions.push("0401:0ssscgcaz");
-    manuscriptActions.push("0402:0sszx~abc");
-    manuscriptActions.push("0403:0ssbnggbn");
-    manuscriptActions.push("0404:0ss####");
+    manuscriptActions.push("0400:0addd--d~ABCDEFGHIJKLMNOPQRSTUVWXYZ~====d-d-d-fs-~abcdefghijklmnopqrstuvwxyz");
+    manuscriptActions.push("0401:0zxfzx");
+    manuscriptActions.push("0402:0%%%%%");
+    manuscriptActions.push("0403:0bnggbn");
+    manuscriptActions.push("0404:0---########");
     manuscriptActions.push("0405:0~A~--~A~-~A~x");
     manuscriptActions.push("0406:0sjjjjchchchchchchchchchchc");
     manuscriptActions.push("0407:0s~END");
