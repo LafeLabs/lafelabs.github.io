@@ -224,14 +224,15 @@ function loadShapes(){
     shapeActions.push("0204:2wch=caggc-");
     shapeActions.push("0205:2w=cahh-cahc");
     shapeActions.push("0206:-as-asca3jhhcggahhhhcggggggchhhgaggggchhhhhhcggahhhhcggggggchhahgggggchhhhhhcggahhhhcggggggchhaggggchhhhca21==");
-    shapeActions.push("0207:");
-    shapeActions.push("0210:c3jhe=r-aggge-chhh=s");
-    shapeActions.push("0211:cq1jh-aggchhs");
-    shapeActions.push("0213:3hcahhcahhca");
-    shapeActions.push("0214:3gcaggcaggca");
-    shapeActions.push("0215:3r=caggcaggcag");
-    shapeActions.push("0216:3r-cahhcahhcah");
-    shapeActions.push("0217:3ht-aggs=");
+    shapeActions.push("0207:0aadddd-~0207~0");
+    shapeActions.push("0210:--as-asca3jhhcggahhhhcggggggchhhgaggggchhhhhhcggahhhhcggggggchhahgggggchhhhhhcggahhhhcggggggchhaggggchhhhca21===");//resistor
+    shapeActions.push("0211:---ca=cahcggchagcggcgca-ca===");//capacitor
+    shapeActions.push("0212:r--hcggcajhhhq=cahhcahhhk-agr==");//ground
+    shapeActions.push("0213:t--nf-f=b-ddggbnhhff===");//loop in a transformer
+    shapeActions.push("0214:----ca====t-=g--fb==RRRR--nfhca----ca======r");//inductor
+    shapeActions.push("0215:0");
+    shapeActions.push("0216:0");
+    shapeActions.push("0217:0");
 }
 
 function loadShapeSymbols(){
@@ -250,9 +251,9 @@ function loadShapeSymbols(){
 function loadManuscript(){
 	manuscriptActions = [];
     manuscriptActions.push("0400:0addd--d~ABCDEFGHIJKLMNOPQRSTUVWXYZ~====d-d-d-fs-~abcdefghijklmnopqrstuvwxyz");
-    manuscriptActions.push("0401:0zxfzx");
+    manuscriptActions.push("0401:0ThhfWgcagagcahsh-azhca=E-adaafzca=hTTaggTddhhdT-dss=----d====c---f===c0sssaTsf aggTggag-cag=Wh-cggch=Qssssg");
     manuscriptActions.push("0402:0%%%%%");
-    manuscriptActions.push("0403:0bnggbn");
+    manuscriptActions.push("0403:0--EEEEE");
     manuscriptActions.push("0404:0---########");
     manuscriptActions.push("0405:0~A~--~A~-~A~x");
     manuscriptActions.push("0406:0sjjjjchchchchchchchchchchc");
