@@ -63,15 +63,15 @@ function setGeometronGlobals(){
   currentGlyphTable = [];
   currentGlyphAddress = 0400;//int
   currentTableIndex = 0;
-  
   cursorString = "gchchcg";
   manuscriptPageindex = 0;
-  currentPageText = "";
-  currentImageLocation = "https://lafelabs.github.io/geometronfiles/images/masterKeyboard.png";
-  currentGlyphIndex = 0;
 
-  imageStackIndex = 3;
-  imageStackStub = "https://lafelabs.github.io/geometronfiles/images/";  
+  imageTableIndex = 0;
+  imageStub = "geometronfiles/images/";  
+
+	var imageTextLocal = "sky.png\nairelemental.png\ncrystalCityMap.png\ncursor1.png\nfrontcover.png\nintro1.png\nlongbridgepark.png\nrootsof1.png\nalaskabeach.png\nthePentagon.png\ndime.png";
+	imageTable = imageTextLocal.split('\n');
+
 }
 
 function loadFont(){
@@ -441,7 +441,22 @@ function rootMagic(localCommand){
     	currentGlyphAddress = parseInt(localStringArray[0],8); 
 
 	}
+	if(localCommand == 024){//go to previous image in table
+		imageTableIndex--;
+		if(imageTableIndex < 0){
+			imageTableIndex = imageTable.length -1;
+		}	
+	}
+	if(localCommand == 025){//go to next image in table
+		imageTableIndex++;
+		if(imageTableIndex >= imageTable.length){
+			imageTableIndex = 0;
+		}	
+	}
 	
+	if(localCommand == 031){ ////031 = 25 = control-y:toggle background image on/off
+     	imageOn = !imageOn;
+    }	
 }
 
 function doTheThing(localCommand){
@@ -600,8 +615,6 @@ function doTheThing(localCommand){
   //     image(myImage,x,y,int(side),int(side));
     }
     if(localCommand == 0362){
-       var localImageLocation = imageFeed[imageStackIndex];
-       baseImage = loadImage(localImageLocation);
               
     }
     if(localCommand == 0370){ //drop triangle marker

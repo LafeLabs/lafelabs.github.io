@@ -40,8 +40,10 @@ table select:
   <option value="shapeActions">shapeActions</option>
   <option value="shapeSymbols">shapeSymbols</option>
 </select>
+<input type = "checkbox" value = false onchange = "rootMagic(0031);updateText();">Image on?</input>
 <p>
 <input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
+<button onclick = 'rootMagic(024);updateText()'>previous image</button><button onclick = 'rootMagic(025);updateText()'>next image</button>
 <p>
 <script>
 	document.getElementById("inputGlyph").value = currentGlyphString;
@@ -56,18 +58,22 @@ Your browser does not support the canvas element.
 <p>
 <img src="geometronfiles/images/masterKeyboard.png" />
 <p>
-shape table:<button type="button" onclick = "loadShapes();">&#8593;LOAD SHAPES&#8593;</button><button type="button" onclick = "updateShapeTableDisplay();">&#8595;SAVE SHAPES&#8595;</button>
+shape table:<button type="button" onclick = "loadShapesFromWindow();">&#8593;LOAD SHAPES&#8593;</button><button type="button" onclick = "updateShapeTableDisplay();">&#8595;SAVE SHAPES&#8595;</button>
 <p>
 <textarea id = "shapeTableDisplay" rows="4" cols="80">
 </textarea>
 <p>
-font table:<button type="button" onclick = "loadFont();">&#8593;LOAD FONT&#8593;</button><button type="button" onclick = "updateFontTableDisplay();">&#8595;SAVE FONT&#8595;</button>
-
-
+font table:<button type="button" onclick = "loadFontFromWindow();">&#8593;LOAD FONT&#8593;</button><button type="button" onclick = "updateFontTableDisplay();">&#8595;SAVE FONT&#8595;</button>
 <p>
 <textarea id = "fontTableDisplay" rows="4" cols="80">
-
 </textarea>
+
+<p>
+manuscript table:<button type="button" onclick = "loadManuscriptFromWindow();">&#8593;LOAD MANUSCRIPT&#8593;</button><button type="button" onclick = "updateManuscriptTableDisplay();">&#8595;SAVE MANUSCRIPT&#8595;</button>
+<p>
+<textarea id = "manuscriptTableDisplay" rows="4" cols="80">
+</textarea>
+
 
 <script>
 
@@ -78,7 +84,7 @@ font table:<button type="button" onclick = "loadFont();">&#8593;LOAD FONT&#8593;
 	ctx = canvas.getContext("2d");
 	updateShapeTableDisplay();
 	updateFontTableDisplay();
-
+	updateManuscriptTableDisplay();
 function updateTable(){
 
 	var tableValue = document.getElementById("tableSelect").value;
@@ -120,7 +126,7 @@ function updateText(){
     
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	if(imageOn){
-	   img.src = 'geometronfiles/images/thePentagon.png'; // Set source path
+	   img.src = imageStub + imageTable[imageTableIndex]; // Set source path
 	   ctx.drawImage(img,0,0);
 	}
 	doTheThing(0300);
@@ -149,14 +155,48 @@ function updateFontTableDisplay(){
 	}
 }
 
-function loadFont(){//load a font from the text area into local memory
-	var localFont = document.getElementById("fontTableDisplay").innerHTML;
-	font = localFont.split("\n");
+function updateManuscriptTableDisplay(){
+
+	document.getElementById("manuscriptTableDisplay").innerHTML =  "";
+	for(var zeep = 0;zeep<manuscriptActions.length;zeep++){
+		document.getElementById("manuscriptTableDisplay").innerHTML += manuscriptActions[zeep];
+		document.getElementById("manuscriptTableDisplay").innerHTML += "\n"
+	}
+
 }
-function loadShapes(){
-	var localShapes = document.getElementById("shapeTableDisplay").innerHTML;
+
+function loadFontFromWindow(){//load a font from the text area into local memory
+	rootMagic(06);
+	var localFont = document.getElementById("fontTableDisplay").value;
+		rootMagic(06);
+
+	font = localFont.split("\n");
+	updateGlyph();
+	doTheThing(0300);
+	updateText();	
+
+}
+function loadShapesFromWindow(){
+	rootMagic(01);
+	var localShapes = document.getElementById("shapeTableDisplay").value;
+		rootMagic(01);
+
 	shapeActions = localShapes.split("\n");
-	console.log(localShapes);
+	updateGlyph();
+	doTheThing(0300);
+	updateText();	
+}
+function loadManuscriptFromWindow(){
+		rootMagic(04);
+
+	var localManuscript = document.getElementById("manuscriptTableDisplay").value;
+	manuscriptActions = localManuscript.split("\n");
+		rootMagic(04);
+
+	updateGlyph();
+	doTheThing(0300);
+	updateText();	
+
 }
 
 
