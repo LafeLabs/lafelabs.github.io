@@ -36,8 +36,6 @@ currentGlyphAddress = parseInt(tempStringArray[0],8);
 doGlyphString(currentGlyphString);
 doGlyphString(cursorString);
 
-
-
 </script>
 
 <p>
@@ -83,6 +81,10 @@ manuscript table:<button type="button" onclick = "loadManuscriptFromWindow();">&
 <p>
 <textarea id = "manuscriptTableDisplay" rows="4" cols="80">
 </textarea>
+<p>
+<button onClick = "buildSvg()">GRAB SVG CODE</button>
+<textarea id = "svgText" rows="4" cols="80">
+</textarea>
 
 
 <script>
@@ -95,6 +97,26 @@ manuscript table:<button type="button" onclick = "loadManuscriptFromWindow();">&
 	updateShapeTableDisplay();
 	updateFontTableDisplay();
 	updateManuscriptTableDisplay();
+	
+function buildSvg(){
+
+   svgFile = [];
+   svgFile.push("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");    
+   svgFile.push("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
+   svgFile.push("viewBox=\"0 0 600 600\" width=\"600\" height=\"600\" id=\"starter_svg\">");     
+	doGlyphString(currentGlyphString);
+  svgFile.push("</svg>");       
+  
+  document.getElementById("svgText").value = "";
+
+	for(var zeep = 0;zeep < svgFile.length;zeep++){
+		document.getElementById("svgText").value += svgFile[zeep];
+		document.getElementById("svgText").value += "\n"
+	}
+
+
+}
+	
 function updateTable(){
 
 	var tableValue = document.getElementById("tableSelect").value;

@@ -72,6 +72,13 @@ function setGeometronGlobals(){
 	var imageTextLocal = "sky.png\nairelemental.png\ncrystalCityMap.png\ncursor1.png\nfrontcover.png\nintro1.png\nlongbridgepark.png\nrootsof1.png\nalaskabeach.png\nthePentagon.png\ndime.png\nhebrew1.png\nhebrew2.png\nhebrew3.png\nhebrew4.png";
 	imageTable = imageTextLocal.split('\n');
 
+	svgFile = [];
+
+   svgFile.push("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");    
+   svgFile.push("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
+   svgFile.push("viewBox=\"0 0 600 600\" width=\"600\" height=\"600\" id=\"starter_svg\">");     
+
+
 }
 
 function loadFont(){
@@ -239,7 +246,7 @@ function loadShapes(){
     shapeActions.push("0222:t-r-caaaaacss=xd-jhchhchhchhc=hkff-jgchhchhchhchhhkddaaa=t=r");
     shapeActions.push("0223:--caaacssg=chhc-gaahjh=q=chhchhhk-r-a==");
     shapeActions.push("0224:r---ca=axaxa-ca===");
-    shapeActions.push("0225:0");
+    shapeActions.push("0225:r---ca=cagchhcgahchhcjgq=cggcgggk-rca-ca===");
     shapeActions.push("0226:0");
     shapeActions.push("0227:0");
 
@@ -564,12 +571,27 @@ function doTheThing(localCommand){
     if(localCommand == 0340){
 		ctx.beginPath();
 		ctx.arc(x, y, 3, 0, 2 * Math.PI);
-		ctx.fill();
+		ctx.fill();	
+	    localString = "  <circle cx=\"";
+        localString += x.toString();
+        localString += "\" cy=\"";
+        localString += y.toString();
+        localString += "\" r=\"4\" stroke=\"black\" stroke-width=\"3\" fill=\"black\" />";
+	    svgFile.push(localString);     
     }
     if(localCommand == 0341){
 		ctx.beginPath();
 		ctx.arc(x, y, side, 0, 2 * Math.PI);
 		ctx.stroke();
+		localString = "  <circle cx=\"";
+        localString += x.toString();
+        localString += "\" cy=\"";
+        localString += y.toString();
+        localString += "\" r=\"";
+        localString += side.toString();    
+        localString += "\" stroke=\"black\" stroke-width=\"3\" fill=\"none\" />";
+	    svgFile.push(localString);     
+
     }
     if(localCommand == 0342){
 		ctx.beginPath();
@@ -577,11 +599,31 @@ function doTheThing(localCommand){
 		ctx.moveTo(x,y);
 		ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
 		ctx.stroke();
+
+		localString  = "  <line x1=\"" + x.toString() + "\" y1=\"" + y.toString() + "\" x2=\"";
+		localInt = x + side*Math.cos(theta);
+		localString += localInt.toString();
+		localInt = y + side*Math.sin(theta);
+		localString += localInt.toString();		
+		localString += "\" style=\"stroke:black;stroke-width:2\" />";
+		svgFile.push(localString);
     }
     if(localCommand == 0343){
 		ctx.beginPath();
 		ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
 		ctx.stroke();
+		
+		
+		localString = "  <path d=\"M";
+		localInt = x + side*Math.cos(theta - thetaStep);
+		localString += localInt.toString();
+		localString += " ";
+		localInt = y + side*Math.sin(theta - thetaStep);
+		svgFile.push(localString);
+		svgFile.push("stroke=\"black\"");
+		svgFile.push("stroke-width=\"3\" fill=\"none\" />");
+		
+		
     }
     if(localCommand == 0344){
 		ctx.beginPath();

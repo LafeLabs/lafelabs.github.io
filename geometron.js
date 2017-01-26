@@ -58,8 +58,10 @@ var currentImageLocation;
 var imageFeed = [];
 var imageStack = [];
 var imageStackIndex;
-
 var imageStackStub;
+
+var svgFile = [];
+
 
 function preload(){
 	//http://pastebin.com/raw/istthY6r   = font.txt
