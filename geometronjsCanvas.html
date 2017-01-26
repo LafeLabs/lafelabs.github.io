@@ -1,5 +1,16 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+<title>Geometron: Geometry Based Meta-Language</title>
+
+
+<script language="javascript" type="text/javascript" src="libraries/geometronJSlibrary.js"></script>
+<script type="text/javascript"
+   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+</head>
 <body>
 
 <canvas id="myCanvas" width="600" height="400"
@@ -7,7 +18,6 @@ style="border:1px solid #c3c3c3;">
 Your browser does not support the canvas element.
 </canvas>
 
-<script language="javascript" type="text/javascript" src="libraries/geometronJSlibrary.js"></script>
 <script>
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
@@ -27,8 +37,8 @@ doGlyphString(currentGlyphString);
 doGlyphString(cursorString);
 
 
-</script>
 
+</script>
 
 <p>
 <button type="button" onclick = "rootMagic(011);updateGlyph();doTheThing(0300);updateText();">PREV GLYPH</button>

@@ -20,8 +20,8 @@ function setGeometronGlobals(){
   keyAddressRow2 = [0330,0331,0332,0333,0334,0335,0350,0351,0352,0353];
   keyRow3 = ['z','x','c','v','b','n','m',','];
   keyAddressRow3 = [0340,0341,0342,0343,0344,0345,0346,0347];
-  keyRow4 = ['!','@','#','$','%','^','&','*','Q','W','E','R','T','Y','U','I'];
-  keyAddressRow4 = [0200,0201,0202,0203,0204,0205,0206,0207,0210,0211,0212,0213,0214,0215,0216,0217];
+  keyRow4 = ['!','@','#','$','%','^','&','*','Q','W','E','R','T','Y','U','I','A','S','D','F','G','H','J','K'];
+  keyAddressRow4 = [0200,0201,0202,0203,0204,0205,0206,0207,0210,0211,0212,0213,0214,0215,0216,0217,0220,0221,0222,0223,0224,0225,0226,0227];
 
   phi = 0.5*(Math.sqrt(5) + 1);
   unit = 75;
@@ -69,7 +69,7 @@ function setGeometronGlobals(){
   imageTableIndex = 0;
   imageStub = "geometronfiles/images/";  
 
-	var imageTextLocal = "sky.png\nairelemental.png\ncrystalCityMap.png\ncursor1.png\nfrontcover.png\nintro1.png\nlongbridgepark.png\nrootsof1.png\nalaskabeach.png\nthePentagon.png\ndime.png";
+	var imageTextLocal = "sky.png\nairelemental.png\ncrystalCityMap.png\ncursor1.png\nfrontcover.png\nintro1.png\nlongbridgepark.png\nrootsof1.png\nalaskabeach.png\nthePentagon.png\ndime.png\nhebrew1.png\nhebrew2.png\nhebrew3.png\nhebrew4.png";
 	imageTable = imageTextLocal.split('\n');
 
 }
@@ -230,9 +230,19 @@ function loadShapes(){
     shapeActions.push("0212:r--hcggcajhhhq=cahhcahhhk-agr==");//ground
     shapeActions.push("0213:t--nf-f=b-ddggbnhhff===");//loop in a transformer
     shapeActions.push("0214:----ca====t-=g--fb==RRRR--nfhca----ca======r");//inductor
-    shapeActions.push("0215:0");
-    shapeActions.push("0216:0");
-    shapeActions.push("0217:0");
+    shapeActions.push("0215:ct-ar-d1jh=q=c-fgg=c-r-dhkaaaat=r=");//"x" josephson junction
+    shapeActions.push("0216:t-cagr-cggchh=thr-d1j=c-h=q=c-fgcg=c-r-dhkaagchhcgcacat=r=");//xbox jj
+    shapeActions.push("0217:r1--ax---sssdddds===~V~sd==---fa===");
+
+    shapeActions.push("0220:r--gchhcgt-aahcggcdcacssscacahs=r==gg");
+    shapeActions.push("0221:--m,ggm,hca---axs===s-scahaaaah===cfca");
+    shapeActions.push("0222:t-r-caaaaacss=xd-jhchhchhchhc=hkff-jgchhchhchhchhhkddaaa=t=r");
+    shapeActions.push("0223:--caaacssg=chhc-gaahjh=q=chhchhhk-r-a==");
+    shapeActions.push("0224:r---ca=axaxa-ca===");
+    shapeActions.push("0225:0");
+    shapeActions.push("0226:0");
+    shapeActions.push("0227:0");
+
 }
 
 function loadShapeSymbols(){
@@ -250,14 +260,14 @@ function loadShapeSymbols(){
 
 function loadManuscript(){
 	manuscriptActions = [];
-    manuscriptActions.push("0400:0addd--d~ABCDEFGHIJKLMNOPQRSTUVWXYZ~====d-d-d-fs-~abcdefghijklmnopqrstuvwxyz");
+    manuscriptActions.push("0400:0zx");
     manuscriptActions.push("0401:0ThhfWgcagagcahsh-azhca=E-adaafzca=hTTaggTddhhdT-dss=----d====c---f===c0sssaTsf aggTggag-cag=Wh-cggch=Qssssg");
-    manuscriptActions.push("0402:0%%%%%");
+    manuscriptActions.push("0402:0ThcahWhchhcagQgcahz-caggaaaaEcaaaa-ax--ssdd==~V~0dd");
     manuscriptActions.push("0403:0--EEEEE");
-    manuscriptActions.push("0404:0---########");
-    manuscriptActions.push("0405:0~A~--~A~-~A~x");
-    manuscriptActions.push("0406:0sjjjjchchchchchchchchchchc");
-    manuscriptActions.push("0407:0s~END");
+    manuscriptActions.push("0404:0DdhhTEfOhhEahcaFssshhcacagS");
+    manuscriptActions.push("0405:0dd==~A~jjhkk-~A~-jjhkk~A~-jjhkk~A~-jjhkk~A~-jjhkk~A~-jjhkk~A~-jjhkk~A~");
+manuscriptActions.push("0406:0addd--d~ABCDEFGHIJKLMNOPQRSTUVWXYZ~====d-d-d-fs-~abcdefghijklmnopqrstuvwxyz");
+    manuscriptActions.push("0407:0dddaff--~STOP~jhk~STOP~jhk~STOP~jhk~STOP~jhk~STOP~jhk~STOP~jhk~STOP~jhk~STOP~0-ddds~STOP~0aa");
 
 }
 
