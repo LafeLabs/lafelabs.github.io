@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Geometron: Geometry Based Meta-Language</title>
+<title>Quantum Geometron Schematic Builder</title>
 
 
 <script language="javascript" type="text/javascript" src="libraries/geometronJSlibrary.js"></script>
@@ -11,10 +11,6 @@
 <body>
 
 <canvas id="myCanvas" width="600" height="400"
-style="border:1px solid #c3c3c3;">
-Your browser does not support the canvas element.
-</canvas>
-<canvas id="controlCanvas" onclick = "controlResponse();"  width="400" height="400"
 style="border:1px solid #c3c3c3;">
 Your browser does not support the canvas element.
 </canvas>
@@ -44,17 +40,9 @@ doGlyphString(cursorString);
 <p>
 <button type="button" onclick = "rootMagic(011);updateGlyph();doTheThing(0300);updateText();">PREV GLYPH</button>
 <button type="button" onclick = "rootMagic(015);updateGlyph();doTheThing(0300);updateText();">NEXT GLYPH</button>
-table select:
-<select id = "tableSelect" onchange= "updateTable();">
-  <option value="manuscriptActions">manuscriptActions</option>
-  <option value="font">font</option>
-  <option value="shapeActions">shapeActions</option>
-  <option value="shapeSymbols">shapeSymbols</option>
-</select>
-<input type = "checkbox" value = false onchange = "rootMagic(0031);updateText();">Image on?</input>
+
 <p>
-<input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
-<button onclick = 'rootMagic(024);updateText()'>previous image</button><button onclick = 'rootMagic(025);updateText()'>next image</button>
+<input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here, using guide below to label your keys with commands</input>
 <p>
 <script>
 	document.getElementById("inputGlyph").value = currentGlyphString;
@@ -67,23 +55,18 @@ Your browser does not support the canvas element.
 </canvas>
 
 <p>
-<img src="geometronfiles/images/masterKeyboard.png" />
+Keyboard to command conversion(not buttons, just a guide): 
 <p>
-shape table:<button type="button" onclick = "loadShapesFromWindow();">&#8593;LOAD SHAPES&#8593;</button><button type="button" onclick = "updateShapeTableDisplay();">&#8595;SAVE SHAPES&#8595;</button>
-<p>
-<textarea id = "shapeTableDisplay" rows="4" cols="80">
-</textarea>
-<p>
-font table:<button type="button" onclick = "loadFontFromWindow();">&#8593;LOAD FONT&#8593;</button><button type="button" onclick = "updateFontTableDisplay();">&#8595;SAVE FONT&#8595;</button>
-<p>
-<textarea id = "fontTableDisplay" rows="4" cols="80">
-</textarea>
+use lowercase for all these keys:
 
 <p>
-manuscript table:<button type="button" onclick = "loadManuscriptFromWindow();">&#8593;LOAD MANUSCRIPT&#8593;</button><button type="button" onclick = "updateManuscriptTableDisplay();">&#8595;SAVE MANUSCRIPT&#8595;</button>
+<img src="geometronfiles/images/masterKeyboard.png" />
 <p>
-<textarea id = "manuscriptTableDisplay" rows="4" cols="80">
-</textarea>
+USE UPPERCASE FOR ALL THESE KEYS
+<p>
+<img src="geometronfiles/images/symbolArray.png" />
+<p>
+
 <p>
 <button onClick = "buildSvg()">GRAB SVG CODE</button>
 <textarea id = "svgText" rows="4" cols="80">

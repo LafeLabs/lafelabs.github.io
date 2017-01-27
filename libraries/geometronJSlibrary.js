@@ -101,7 +101,7 @@ function loadFont(){
     font.push("0056:f-d--xfff===");
     font.push("0057:fdjhq=c-rgkf");
     font.push("0060:f-ad-xjh=chhhhchhhksf=");
-    font.push("0061:f-d--agchhcg==ca-cajgggcgka=a--a==ggf=");
+    font.push("0061:r--d==f-d--agchhcg==ca-cajgggq-c=rgka=a--a==gg-f==");
     font.push("0062:f-ad-j-vhhvhhahcggggcgghksgchhcgss==f=");
     font.push("0063:f-da-j-aavhhvhhjgvhaakkggjjhvhhhkvhhvkhh==fs=");
     font.push("0064:f-d=c-agcahjhcgks=-f-f==");
@@ -231,7 +231,7 @@ function loadShapes(){
     shapeActions.push("0203:1qjh-cahhcag=sc");
     shapeActions.push("0204:2wch=caggc-");
     shapeActions.push("0205:2w=cahh-cahc");
-    shapeActions.push("0206:-as-asca3jhhcggahhhhcggggggchhhgaggggchhhhhhcggahhhhcggggggchhahgggggchhhhhhcggahhhhcggggggchhaggggchhhhca21==");
+    shapeActions.push("0206:z");
     shapeActions.push("0207:0aadddd-~0207~0");
     shapeActions.push("0210:--as-asca3jhhcggahhhhcggggggchhhgaggggchhhhhhcggahhhhcggggggchhahgggggchhhhhhcggahhhhcggggggchhaggggchhhhca21===");//resistor
     shapeActions.push("0211:---ca=cahcggchagcggcgca-ca===");//capacitor
@@ -255,7 +255,7 @@ function loadShapes(){
 
 function loadShapeSymbols(){
 	shapeSymbols = [];
-    shapeSymbols.push("0200:f!--ad=!-sf==");
+    shapeSymbols.push("0200:f!--ad=!-sf==");  //! square
     shapeSymbols.push("0201:f!@@@@@@====agsr---af====");
     shapeSymbols.push("0202:f!-da!q####gg====rfs=");
     shapeSymbols.push("0203:f!");
@@ -264,20 +264,20 @@ function loadShapeSymbols(){
     shapeSymbols.push("0206:f!");
     shapeSymbols.push("0207:f!");
 
-    shapeSymbols.push("0210:f!-ahss=Qg-s=");
-    shapeSymbols.push("0211:f!-ahss=Wg-s=");
-    shapeSymbols.push("0212:f!");
+    shapeSymbols.push("0210:f!-ahss=Qg-s=");//Q  resistor
+    shapeSymbols.push("0211:f!-ahss=Wg-s=");//W  capacitor
+    shapeSymbols.push("0212:f!-adhhscahq-caggjh=caggcaggg-chhkd=rfs=");//E triangle ground
     shapeSymbols.push("0213:f!");
-    shapeSymbols.push("0214:f!-ahss=Tg-s=");
-    shapeSymbols.push("0215:f!");
-    shapeSymbols.push("0216:f!");
-    shapeSymbols.push("0217:f!");
-    shapeSymbols.push("0220:f!");
-    shapeSymbols.push("0221:f!");
-    shapeSymbols.push("0222:f!");
-    shapeSymbols.push("0223:f!");
-    shapeSymbols.push("0224:f!");
-    shapeSymbols.push("0225:f!");
+    shapeSymbols.push("0214:f!-ahss=Tg-s=");//T  inductor
+    shapeSymbols.push("0215:f!-ahss=Yg-s=");//Y  X junction
+    shapeSymbols.push("0216:f!-ahss=Ug-s=");//U box junction
+    shapeSymbols.push("0217:f!-ad-s==I--ffs==");//I voltage source
+    shapeSymbols.push("0220:f!-ad-sgg==A-cf-s==");//A multi line ground
+    shapeSymbols.push("0221:f!-adSg-s==");//S  coax
+    shapeSymbols.push("0222:f!-d=D-f=s");//D SQUID
+    shapeSymbols.push("0223:f!d-ah=F-gs=");//F RF amp
+    shapeSymbols.push("0224:f!-d=G-f=s");//G current source
+    shapeSymbols.push("0225:f!-d=H-f=s");//H diode
     shapeSymbols.push("0226:f!");
     shapeSymbols.push("0227:f!");
 
