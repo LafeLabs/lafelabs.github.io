@@ -264,6 +264,23 @@ function loadShapeSymbols(){
     shapeSymbols.push("0206:f!");
     shapeSymbols.push("0207:f!");
 
+    shapeSymbols.push("0210:f!-ahss=Qg-s=");
+    shapeSymbols.push("0211:f!-ahss=Wg-s=");
+    shapeSymbols.push("0212:f!");
+    shapeSymbols.push("0213:f!");
+    shapeSymbols.push("0214:f!-ahss=Tg-s=");
+    shapeSymbols.push("0215:f!");
+    shapeSymbols.push("0216:f!");
+    shapeSymbols.push("0217:f!");
+    shapeSymbols.push("0220:f!");
+    shapeSymbols.push("0221:f!");
+    shapeSymbols.push("0222:f!");
+    shapeSymbols.push("0223:f!");
+    shapeSymbols.push("0224:f!");
+    shapeSymbols.push("0225:f!");
+    shapeSymbols.push("0226:f!");
+    shapeSymbols.push("0227:f!");
+
 }
 
 function loadManuscript(){
@@ -360,15 +377,25 @@ for(var q = 0;q < splitGlyphStringArray.length;q++){
      	x=spellX;
      	y+= spellSide;
      }
+     
      for(var l = 0;l <  commandSymbolGlyphTable.length; l++){
         var localStringArray = commandSymbolGlyphTable[l].split(':');
         var localString = localStringArray[1];  
         var tempAddress = (Number(localStringArray[0].charCodeAt(1))- 060)*64 + (Number(localStringArray[0].charCodeAt(2))  - 060)*8 + Number(localStringArray[0].charCodeAt(3)) - 060;        
         if(tempAddress == key2command(localGlyphString.charAt(k))){
            doGlyphString(localString); 
-        } 
-        
+        }   
      }
+     
+     for(var l = 0;l <  shapeSymbols.length; l++){
+        var localStringArray = shapeSymbols[l].split(':');
+        var localString = localStringArray[1];  
+        var tempAddress = (Number(localStringArray[0].charCodeAt(1))- 060)*64 + (Number(localStringArray[0].charCodeAt(2))  - 060)*8 + Number(localStringArray[0].charCodeAt(3)) - 060;        
+        if(tempAddress == key2command(localGlyphString.charAt(k))){
+           doGlyphString(localString); 
+        }   
+     }
+     
 
   }
  
