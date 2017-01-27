@@ -11,6 +11,7 @@ function setGeometronGlobals(){
 	
   spellingOn = false;
   imageOn = false;
+  inPath = false;//move to true after path started, back to false after path ended
 	
   keyRow0 = ['1','2','3','7','0','-','='];
   keyAddressRow0 = [0304,0305,0306,0317,0300,0336,0337];
@@ -76,7 +77,7 @@ function setGeometronGlobals(){
 
 //   svgFile.push("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");    
    svgFile.push("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
-   svgFile.push("viewBox=\"0 0 600 600\" width=\"600\" height=\"600\" id=\"starter_svg\">");     
+   svgFile.push("viewBox=\"0 0 600 600\" width=\"600\" height=\"600\" id=\"geometron_svg\">");     
 
 
 }
@@ -568,21 +569,36 @@ function doTheThing(localCommand){
     if(localCommand == 0337){
       side *= scaleFactor; // +
     }
-    if(localCommand == 0340){
+    if(localCommand == 0340){  //point
 		ctx.beginPath();
 		ctx.arc(x, y, 3, 0, 2 * Math.PI);
 		ctx.fill();	
+	    
+	    
+	    if(inPath){  //if we're in a path it's over now				
+			svgFile.push("\"");
+			svgFile.push("style=\"stroke:black;stroke-width:2\" fill=\"none\" />");
+			inPath = false;
+		}
 	    localString = "  <circle cx=\"";
         localString += x.toString();
         localString += "\" cy=\"";
         localString += y.toString();
         localString += "\" r=\"4\" stroke=\"black\" stroke-width=\"3\" fill=\"black\" />";
 	    svgFile.push(localString);     
+	       inPath = false;
     }
-    if(localCommand == 0341){
+    if(localCommand == 0341){  //circle
 		ctx.beginPath();
 		ctx.arc(x, y, side, 0, 2 * Math.PI);
 		ctx.stroke();
+		
+		
+		if(inPath){  //if we're in a path it's over now			
+			svgFile.push("\"");
+			svgFile.push("style=\"stroke:black;stroke-width:2\" fill=\"none\" />");
+			inPath = false;
+		}
 		localString = "  <circle cx=\"";
         localString += x.toString();
         localString += "\" cy=\"";
@@ -591,25 +607,31 @@ function doTheThing(localCommand){
         localString += side.toString();    
         localString += "\" stroke=\"black\" stroke-width=\"3\" fill=\"none\" />";
 	    svgFile.push(localString);     
-
+	    
+   inPath = false;
     }
-    if(localCommand == 0342){
+    if(localCommand == 0342){   //line
 		ctx.beginPath();
 		ctx.lineWidth = 2;
 		ctx.moveTo(x,y);
 		ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
 		ctx.stroke();
 		
-		localString  = "  <line x1=\"" + x.toString() + "\" y1=\"" + y.toString() + "\" x2=\"";
+		localString = "";
+		if(!inPath){
+			localString += "  <path d=\"";	
+			inPath = true;
+		}
+		localString += "M"
+		localString += x.toString();
+		localString += " ";
+		localString += y.toString();
+		localString += " L"
 		localInt = x + side*Math.cos(theta);
 		localString += localInt.toString();
-
-		localString += "\" y2=\"";
+		localString += " ";
 		localInt = y + side*Math.sin(theta);
-		localString += localInt.toString();		
-
-		
-		localString += "\" style=\"stroke:black;stroke-width:2\" />";
+		localString += localInt.toString();
 		svgFile.push(localString);
     }
     if(localCommand == 0343){
@@ -617,8 +639,12 @@ function doTheThing(localCommand){
 		ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
 		ctx.stroke();
 		
-		
-		localString = "  <path d=\"M";
+		localString = "";
+		if(!inPath){
+			localString += "  <path d=\"";	
+			inPath = true;
+		}
+		localString += "M";
 		localInt = x + side*Math.cos(theta - thetaStep);
 		localString += localInt.toString();
 		localString += " ";
@@ -630,10 +656,8 @@ function doTheThing(localCommand){
 		localInt = x + side*Math.cos(theta + thetaStep);
 		localString += localInt.toString() + " ";
 		localInt = y + side*Math.sin(theta + thetaStep);
-		localString += localInt.toString() + "\"";
+		localString += localInt.toString() + " ";
 		svgFile.push(localString);
-		svgFile.push("stroke=\"black\"");		
-        svgFile.push("stroke-width=\"3\" fill=\"none\" />");
         
     }
     if(localCommand == 0344){
@@ -642,7 +666,12 @@ function doTheThing(localCommand){
 		ctx.quadraticCurveTo(x +side*Math.cos(theta - thetaStep) + scaleFactor*side*Math.cos(theta),y +side*Math.sin(theta - thetaStep)+scaleFactor*side*Math.sin(theta),x + scaleFactor*side*Math.cos(theta),y + scaleFactor*side*Math.sin(theta));
 		ctx.stroke();
 		
-		localString = "  <path d=\"M";
+		localString = "";
+		if(!inPath){
+			localString += "  <path d=\"";
+			inPath = true;	
+		}
+		localString += "M";
 		localInt = x + side*Math.cos(theta - thetaStep);
 		localString += localInt.toString();
 		localString += " ";
@@ -655,10 +684,8 @@ function doTheThing(localCommand){
 		localInt = x + scaleFactor*side*Math.cos(theta);
 		localString += localInt.toString() + " ";
 		localInt = y + scaleFactor*side*Math.sin(theta);
-		localString += localInt.toString() + "\"";
+		localString += localInt.toString();
 		svgFile.push(localString);
-		svgFile.push("stroke=\"black\"");		
-        svgFile.push("stroke-width=\"3\" fill=\"none\" />");
 
     }
     if(localCommand == 0345){
@@ -667,7 +694,12 @@ function doTheThing(localCommand){
 		ctx.quadraticCurveTo(x +side*Math.cos(theta + thetaStep) + scaleFactor*side*Math.cos(theta),y +side*Math.sin(theta + thetaStep)+scaleFactor*side*Math.sin(theta),x + scaleFactor*side*Math.cos(theta),y + scaleFactor*side*Math.sin(theta));
 		ctx.stroke();
 		
-		localString = "  <path d=\"M";
+		localString = "";
+		if(!inPath){
+			localString += "  <path d=\"";	
+			inPath = true;
+		}
+		localString += "M";
 		localInt = x + side*Math.cos(theta + thetaStep);
 		localString += localInt.toString();
 		localString += " ";
@@ -680,10 +712,8 @@ function doTheThing(localCommand){
 		localInt = x + scaleFactor*side*Math.cos(theta);
 		localString += localInt.toString() + " ";
 		localInt = y + scaleFactor*side*Math.sin(theta);
-		localString += localInt.toString() + "\"";
+		localString += localInt.toString();
 		svgFile.push(localString);
-		svgFile.push("stroke=\"black\"");		
-        svgFile.push("stroke-width=\"3\" fill=\"none\" />");
     }
         if(localCommand == 0346){
 		ctx.beginPath();
@@ -691,7 +721,12 @@ function doTheThing(localCommand){
 		ctx.quadraticCurveTo(x +side*(1/scaleFactor)*Math.cos(theta - thetaStep) + scaleFactor*side*Math.cos(theta),y +side*(1/scaleFactor)*Math.sin(theta - thetaStep)+scaleFactor*side*Math.sin(theta),x + scaleFactor*side*Math.cos(theta),y + scaleFactor*side*Math.sin(theta));
 		ctx.stroke();
 		
-		localString = "  <path d=\"M";
+		localString = "";
+		if(!inPath){
+			localString += "  <path d=\"";	
+			inPath = true;
+		}
+		localString += "M";
 		localInt = x + side*(1/scaleFactor)*Math.cos(theta - thetaStep);
 		localString += localInt.toString();
 		localString += " ";
@@ -704,10 +739,8 @@ function doTheThing(localCommand){
 		localInt = x + scaleFactor*side*Math.cos(theta);
 		localString += localInt.toString() + " ";
 		localInt = y + scaleFactor*side*Math.sin(theta);
-		localString += localInt.toString() + "\"";
+		localString += localInt.toString();
 		svgFile.push(localString);
-		svgFile.push("stroke=\"black\"");		
-        svgFile.push("stroke-width=\"3\" fill=\"none\" />");
 
     }
     if(localCommand == 0347){
@@ -715,7 +748,12 @@ function doTheThing(localCommand){
 		ctx.moveTo(x +side*(1/scaleFactor)*Math.cos(theta + thetaStep),y +side*(1/scaleFactor)*Math.sin(theta + thetaStep));
 		ctx.quadraticCurveTo(x +side*(1/scaleFactor)*Math.cos(theta + thetaStep) + scaleFactor*side*Math.cos(theta),y +side*(1/scaleFactor)*Math.sin(theta + thetaStep)+scaleFactor*side*Math.sin(theta),x + scaleFactor*side*Math.cos(theta),y + scaleFactor*side*Math.sin(theta));
 		ctx.stroke();
-		localString = "  <path d=\"M";
+		localString = "";
+		if(!inPath){
+			localString += "  <path d=\"";	
+			inPath = true;
+		}
+		localString += "M";
 		localInt = x + side*(1/scaleFactor)*Math.cos(theta + thetaStep);
 		localString += localInt.toString();
 		localString += " ";
@@ -728,10 +766,8 @@ function doTheThing(localCommand){
 		localInt = x + scaleFactor*side*Math.cos(theta);
 		localString += localInt.toString() + " ";
 		localInt = y + scaleFactor*side*Math.sin(theta);
-		localString += localInt.toString() + "\"";
+		localString += localInt.toString();
 		svgFile.push(localString);
-		svgFile.push("stroke=\"black\"");		
-        svgFile.push("stroke-width=\"3\" fill=\"none\" />");
 
     }
     if(localCommand == 0350){
