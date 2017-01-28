@@ -26,12 +26,28 @@ loadFont();
 loadCommandGlyphs();
 loadShapes();
 loadManuscript();
+
+	manuscriptActions = [];
+    manuscriptActions.push("0400:0ddcagcagcagcag0f");
+    manuscriptActions.push("0401:0dddIhhQEfff");
+				manuscriptActions.push("0402:0dddhcahThch-f=c--f==c--ff==Thcajhzq-1HhahhHsgahHshHzsjhq=zcakE-ah--at=chh-aa=chh-ar==ajgq=azh=rkcahWEahca----ax===ga");
+
+    manuscriptActions.push("0403:0dQhcahWgcagTgcazdzcg--ca==Ea-a-s=--==");
+    manuscriptActions.push("0404:0ddDhcaFhWEagaagaEazgcagGAahhgghaaazca----axs====gss");
+    manuscriptActions.push("0405:0");
+
 loadShapeSymbols();
 
 currentGlyphTable = manuscriptActions;
 var tempStringArray = currentGlyphTable[currentTableIndex].split(':');
 currentGlyphString = tempStringArray[1];
 currentGlyphAddress = parseInt(tempStringArray[0],8);
+doGlyphString(currentGlyphString);
+doGlyphString(cursorString);
+currentGlyphString = tempStringArray[1];
+currentGlyphAddress = parseInt(tempStringArray[0],8);
+
+doGlyphString(manuscriptActions);
 doGlyphString(currentGlyphString);
 doGlyphString(cursorString);
 
