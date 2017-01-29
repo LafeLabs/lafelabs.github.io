@@ -1,0 +1,113 @@
+<geometron>
+	<rootMagic>
+		<spell address = "0000">
+			<description>Genesis code: thus spake the Code: let there by Code.  I am the root of all things, code of code.</description>
+			<action language = "javascript">			
+				//put code here that turns xml into .js code using js
+			</action>
+			<action language = "processing">			
+				//put code here that turns xml into processing code using processing
+			</action>
+		</spell>
+
+	</rootMagic>
+	<font><!--0037 is the "unit separator" in the original ASCII, use this!-->
+		<letter address = "0040">
+			<description>space</description>
+			<action language  = "geometron">0333</action>
+		</letter>
+		<letter address = "0041">
+			<description>!</description>
+			<action language = "geometron">
+0333,0336,0336,0332,0332,0332,0330,0336,0331,0336,0341,0330,0330,0330,0337,0337,0337,0342,0336,0336,0336,0331,0331,0331,0331,0331,0337,0337,0333,0337,0337
+			</action>		
+		</letter>
+		<letter address = "0041">
+			<description>"</description>
+			<action language = "geometron">
+				0333,0330,0336,0332,0336,0332,0331,0342,0333,0342,0333,0330,0337,0337,0331
+			</action>
+		</letter>
+
+	
+	</font>
+	<shapesActions>
+		<shape address = "0200">
+			<description>square</description>
+			<action language  = "geometron" encoding = "string">
+				1cagcagcagcag
+			</action>
+		</shape>
+	</shapesActions>
+	<shapeSymbols>
+	
+	</shapeSymbols>
+	<commandActions>
+		<command address = "0330">
+			<description>Move by "side" in direction "theta"</description>
+			<action language = "javascript">
+		  		x += side*Math.cos(theta);   
+	      		y += side*Math.sin(theta); 
+			</action>
+		</command>
+		<command  address = "0331">
+			<description>Move by "side" in direction "theta + PI"</description>
+			<action language = "javascript">
+		    	x -= side*Math.cos(theta);   
+      			y -= side*Math.sin(theta); 
+			</action>
+		</command>
+		<command address = "0332">
+			<description>Move by "side" in direction "theta - thetaStep"</description>
+			<action language = "javascript">
+			    x += side*Math.cos(theta - thetaStep);
+      			y += side*Math.sin(theta - thetaStep);
+			</action>
+		</command>
+		<command address = "0333">
+			<description>Move by "side" in direction "theta + thetaStep"</description>
+			<action language = "javascript">
+		    	x += side*Math.cos(theta + thetaStep);
+      			y += side*Math.sin(theta + thetaStep);
+			</action>
+		</command>
+		<command address = "0334">
+			<description>rotate by thetaStep in CCW direction</description>
+			<action language = "javascript">
+		    	theta -= thetaStep; // CCW
+			</action>
+		</command>
+		<command address = "0335">
+			<description>rotate by thetaStep in CW direction</description>
+			<action language = "javascript">
+		    	theta += thetaStep; // CW
+			</action>
+		</command>
+		<command address = "0336">
+			<description>divide side by scaleFactor</description>
+			<action language = "javascript">
+		    	side /= scaleFactor; // -
+			</action>
+		</command>
+		<command address = "0337">
+			<description>multiply side by scaleFactor</description>
+			<action language = "javascript">
+		    	side *= scaleFactor; // +
+			</action>
+		</command>
+	</commandActions>
+	<commandSymbols>
+		<symbol  address = "0330">
+			<description>0330 symbol glyph</description>
+			<action language = "geometron" encoding = "string">
+				f!r--ad-d=cgcahcag-cahjh=q=cahhcahhh-r-cakhssssfff===
+			</action>
+			<address>0340</address>
+			<description>0340 symbol glyph</description>
+			<action language = "geometron" encoding = "octal">
+				0333,0200,0336,0330,0332,0340,0333,0331
+			</action>			
+		</symbol>
+	</commandSymbols>
+	
+</geometron>
