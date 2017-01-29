@@ -1,0 +1,44 @@
+<glyphTable>
+	<type>globals</type>
+	<glyph>
+		<address>0700</address>
+		<description>x,y position of cursor in absolute units</description>
+		<name>x,y</name>
+		<default>0,0</default>
+	</glyph>
+	<glyph>
+		<address>0702</address>
+		<description>current cursor length in absolute units</description>
+		<name>side</name>
+		<default>50</default>
+	</glyph>
+	<glyph>
+		<address>0703</address>
+		<description>current cursor direction in absolute angular units</description>
+		<name>theta</name>
+		<default>0</default>
+	</glyph>
+	<glyph>
+		<address>0704</address>
+		<description>angular step value in absolute units</description>
+		<name>thetaStep</name>
+		<default>90</default>
+	</glyph>
+	<glyph>
+		<address>0705</address>
+		<description>factor by which discrete zoom happen, relative units</description>
+		<name>scaleFactor</name>
+		<default>2</default>
+	</glyph>
+	<glyph>
+		<address>0770</address>
+		<description>location of triangle marker</description>
+		<name>triangleX,triangleY</name>
+		<default>0,0</default>	
+	</glyph>
+	<glyph>
+		<address>0710</address>
+		
+	</glyph>
+	
+</glyphTable>

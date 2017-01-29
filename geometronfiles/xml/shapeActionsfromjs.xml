@@ -1,0 +1,256 @@
+<glyphTable>
+    <type>shapeActions</type>
+    <glyph>
+        <address>0200</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1cagcagcagcag
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0201</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                3jgcaggggcaggggcaggg
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0202</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1chcagjgq=c
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0203</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1qjh-cahhcag=sc
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0204</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                2wch=caggc-
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0205</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                2w=cahh-cahc
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0206</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                z
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0207</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                0aadddd-~0207~0
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0211</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1---ca=cahcggchagcggcgca-ca===
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0212</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1r--hcggcajhhhq=cahhcahhhk-agr==
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0213</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1t--nf-f=b-ddggbnhhff===
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0214</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1----ca====t-=g--fb==RRRR--nfhca----ca======r
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0215</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1ct-ar-d1jh=q=c-fgg=c-r-dhkaaaat=r=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0216</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1t-cagr-cggchh=thr-d1j=c-h=q=c-fgcg=c-r-dhkaagchhcgcacat=r=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0217</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                r1--ax---sssdddds===~V~sd==---fa===
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0220</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1r--gchhcgt-aahcggcdcacssscacahs=r==gg
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0221</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1--m,ggm,hca---axs===s-scahaaaah===cfca
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0222</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1t-r-caaaaacss=xd-jhchhchhchhc=hkff-jgchhchhchhchhhkddaaa=t=r
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0223</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1--caaacssg=chhc-gaahjh=q=chhchhhk-r-a==
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0224</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1r---ca=axaxa-ca===
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0225</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                1r---ca=cagchhcgahchhcjgq=cggcgggk-rca-ca===
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0226</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                0
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0227</address>
+        <description>shape action</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                0
+            </code>
+        </action>
+     </glyph>
+</glyphtable>

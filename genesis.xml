@@ -1,0 +1,14 @@
+<glyph>
+	<address>0000</address>
+	<description>genesis glyph, glyph of glyphs, originator of the World</description>
+	<action id = "genesis">
+		<language>processing</language>
+		<encoding>string</encoding>
+		<code>
+			String[] xml2js(String[] xmlGlyphTable,String tableName){
+			
+			
+			}
+		</code>
+	</action>
+</glyph>

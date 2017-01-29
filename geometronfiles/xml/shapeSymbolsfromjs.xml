@@ -1,0 +1,267 @@
+<glyphTable>
+    <type>shapeSymbols</type>
+    <glyph>
+        <address>0200</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!--ad=!-sf==
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0201</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!@@@@@@====agsr---af====
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0202</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-da!q####gg====rfs=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0203</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0204</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0205</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0206</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0207</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0210</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-ahss=Qg-s=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0211</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-ahss=Wg-s=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0212</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-adhhscahq-caggjh=caggcaggg-chhkd=rfs=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0213</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0214</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-ahss=Tg-s=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0215</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-ahss=Yg-s=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0216</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-ahss=Ug-s=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0217</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-ad-s==I--ffs==
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0220</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-ad-sgg==A-cf-s==
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0221</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-adSg-s==
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0222</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-d=D-f=s
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0223</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!d-ah=F-gs=
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0224</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-d=G-f=s
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0225</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!-d=H-f=s
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0226</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!
+            </code>
+        </action>
+     </glyph>
+    <glyph>
+        <address>0227</address>
+        <description>shape symbol</description>
+        <action>
+            <language>geometron</language>
+            <encoding>string</encoding>
+            <code>
+                f!
+            </code>
+        </action>
+     </glyph>
+</glyphtable>
