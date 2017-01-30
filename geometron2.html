@@ -43,36 +43,56 @@
 			}
 		}
 		if(x == 38){//up arrow decrements value of editAddress
+			var oldEditAddress = editAddress;
 			editAddress--;
 			var oldEditGlyph = editGlyph;
 			for(var index = 0;index < currentTable.length;index ++){
 				var tempArray = currentTable[index].split(":")
-				if(Number(tempArray[0]) == editAddress){
+				if(parseInt(tempArray[0],8) == editAddress){
 					editGlyph = tempArray[1];					
 				}
-				if(Number(tempArray[0]) == editAddress + 1){
-					currentTable[index] = "0" + editAddress.toString(8) + ":" + oldEditGlyph;					
+				if(parseInt(tempArray[0],8) == oldEditAddress){
+					currentTable[index] = "0" + oldEditAddress.toString(8) + ":" + oldEditGlyph;					
 				}
 			}
 			var tempStringArray = editGlyph.split(",");
 			cursorPosition = tempStringArray.length;
 		}
 		if(x == 40){//down arrow increments value of editAddress
+ 			var oldEditAddress = editAddress;
  			editAddress++;
 			var oldEditGlyph = editGlyph;
-			for(var index = 0;index < currentTable.length;index ++){
+			for(var index = 0;index < currentTable.length;index++){
 				var tempArray = currentTable[index].split(":")
-				if(Number(tempArray[0]) == editAddress){
+				if(parseInt(tempArray[0],8) == editAddress){
 					editGlyph = tempArray[1];					
 				}
-				if(Number(tempArray[0]) == editAddress - 1){
-					currentTable[index] = "0" + editAddress.toString(8) + ":" + oldEditGlyph;					
+				if(parseInt(tempArray[0],8) == oldEditAddress){
+					currentTable[index] = "0" + oldEditAddress.toString(8) + ":" + oldEditGlyph;					
 				}
 			}
 			var tempStringArray = editGlyph.split(",");
 			cursorPosition = tempStringArray.length;
  		}
 		if(x == 8){//delete
+
+    		var tempCommandString = "0" + currentKeyCommand.toString(8); 
+			var tempString = "";
+	 		var tempStringArray = editGlyph.split(",");
+	 		for(var index = 0;index < cursorPosition - 1;index++){
+				tempString += tempStringArray[index];
+				tempString += ",";
+	 		}
+
+	 		for(var index = cursorPosition;index < tempStringArray.length;index++){
+				tempString += tempStringArray[index];
+				tempString += ",";					
+	 		}
+			cursorPosition -= 1;    
+			if(tempString.endsWith(",")){
+				tempString = tempString.substring(0,tempString.length - 1);
+			}
+			editGlyph = tempString;					
 
 		}
 
@@ -123,6 +143,7 @@
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.font="30px Arial";
 		ctx.fillText("0" + editAddress.toString(8),5,35);
+		doTheThing(0300);
 		drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");
 		
 		ctx = readonlycanvas.getContext("2d");

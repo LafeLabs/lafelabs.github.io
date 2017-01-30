@@ -2,15 +2,22 @@
 function initGeometron(){
 
   inPath = false;//move to true after path started, back to false after path ended
-	svgFile = [];
+  svgFile = [];
 
-     editAddress = 0101;
-     editGlyph = "0300,0340,0341";
-     readAddress = 0400;
-     readGlyph = "0300,0340";
-     cursorPosition = 3;
-	 loadTable();	
-	 
+  editAddress = 0101;
+  editGlyph = "0300";
+  readAddress = 0400;
+  readGlyph = "0300,0340";
+  cursorPosition = 1;
+  loadTable();	
+  for(var index = 0;index < currentTable.length;index++){
+		var localArray = currentTable[index].split(':');
+		if(parseInt(localArray[0],8) == editAddress){
+			editGlyph = localArray[1];
+		}
+   }
+
+  
   phi = 0.5*(Math.sqrt(5) + 1);
   unit = 50;
   scaleFactor = 2;
@@ -18,8 +25,8 @@ function initGeometron(){
   thetaStep = Math.PI/2;
   theta0 = -Math.PI/2; 
   theta = theta0;
-  x0 = side + 5;
-  y0 = side + 5;
+  x0 = 200;
+  y0 = 200;
   x = x0;
   y = y0;
   triangleX = x0;
@@ -33,14 +40,12 @@ function initGeometron(){
 	 	 	 
 }
 
+
 function updateGlyphs(){
 	for(var index = 0;index < currentTable.length;index++){
 		var localArray = currentTable.split(':');
-		if(Number(localArray[0]) == editAddress){
-			readGlyph = localArray[1];
-		}
-		else{
-			readGlyph = "0300";
+		if(parseInt(localArray[0],8) == editAddress){
+			editGlyph = localArray[1];
 		}
 	}
 
@@ -401,9 +406,16 @@ function doTheThing(localCommand){
     if(localCommand == 0361){//drop image
   //     image(myImage,x,y,int(side),int(side));
     }
-    if(localCommand == 0362){
+    if(localCommand == 0362){//turn background image on
               
     }
+    if(localCommand == 0363){//move to previous background image
+              
+    }
+    if(localCommand == 0364){//move to next background image
+              
+    }
+
     if(localCommand == 0370){ //drop triangle marker
         triangleX = x;
         triangleY =y;
