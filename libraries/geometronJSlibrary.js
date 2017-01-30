@@ -82,6 +82,26 @@ function setGeometronGlobals(){
 
 }
 
+
+	function redraw(){
+	    var canvas = document.getElementById("editGlyphDisplay");
+        var readonlycanvas = document.getElementById("readonlyGlyphDisplay");
+
+		ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.font="30px Arial";
+		ctx.fillText(editAddress.toString(8),5,35);
+		rootMagic(0020);//draw glyph at current editAddress on current canvas
+		rootMagic(0021);//draw cursor after current glyph 
+
+		ctx = readonlycanvas.getContext("2d");
+		ctx.clearRect(0, 0, readonlycanvas.width, readonlycanvas.height);
+		ctx.font="30px Arial";
+		ctx.fillText(readAddress.toString(8),5,35);
+		
+		
+	}   	
+
 function loadFont(){
 	font = [];
     font.push("0040:f");

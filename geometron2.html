@@ -2,28 +2,150 @@
 <html>
 <head>
 	<title>Geometron: Geometry Based Meta-Language</title>
+<script src="libraries/geometron2library.js"></script>
 </head>
+<body onkeydown = "keystrokeEvent(event)">
 
-<body>
-<canvas id="readonlyGlyphDisplay" width="400" height="400"style="border:1px solid;">
-</canvas>
+<script>
+	initGeometron();
+</script>
+
+
 <canvas id="editGlyphDisplay" width="400" height="400"style="border:1px solid;">
 </canvas>
-<p>
-<canvas id="readonlyGlyphDisplay" width="800" height="80"style="border:1px solid;">
+<canvas id="readonlyGlyphDisplay" width="400" height="400"style="border:1px solid;">
 </canvas>
 <p>
+<button onClick = "rootMagic(0016)">Previous Page</button>
+<button onClick = "rootMagic(0017)">Next Page</button>
 <p>
-		use lowercase for all these keys:
+<canvas id="glyphSpellingDisplay" width="800" height="80"style="border:1px solid;">
+</canvas>
 <p>
-	<img src="geometronfiles/images/masterKeyboard.png" />
-<p>
-	USE UPPERCASE FOR ALL THESE KEYS:
-<p>
-	<img src="geometronfiles/images/symbolArray.png" />
-<p>
-<textarea id = "textIO" rows="4" cols="80">
-</textarea>
+
+<script>
+	redraw();
+	
+	function keystrokeEvent(event){
+		var x = event.which || event.keyCode; 
+	//	y = x.toString();		
+		if(x == 39){//right
+			cursorPosition++;
+			var tempStringArray = editGlyph.split(",");
+			if(cursorPosition > tempStringArray.length){
+				cursorPosition = tempStringArray.length;
+			}
+		}
+		if(x == 37){//left
+			cursorPosition--;
+			if(cursorPosition < 0){
+				cursorPosition = 0;
+			}
+		}
+		if(x == 38){//up arrow decrements value of editAddress
+			editAddress--;
+			var oldEditGlyph = editGlyph;
+			for(var index = 0;index < currentTable.length;index ++){
+				var tempArray = currentTable[index].split(":")
+				if(Number(tempArray[0]) == editAddress){
+					editGlyph = tempArray[1];					
+				}
+				if(Number(tempArray[0]) == editAddress + 1){
+					currentTable[index] = "0" + editAddress.toString(8) + ":" + oldEditGlyph;					
+				}
+			}
+			var tempStringArray = editGlyph.split(",");
+			cursorPosition = tempStringArray.length;
+		}
+		if(x == 40){//down arrow increments value of editAddress
+ 			editAddress++;
+			var oldEditGlyph = editGlyph;
+			for(var index = 0;index < currentTable.length;index ++){
+				var tempArray = currentTable[index].split(":")
+				if(Number(tempArray[0]) == editAddress){
+					editGlyph = tempArray[1];					
+				}
+				if(Number(tempArray[0]) == editAddress - 1){
+					currentTable[index] = "0" + editAddress.toString(8) + ":" + oldEditGlyph;					
+				}
+			}
+			var tempStringArray = editGlyph.split(",");
+			cursorPosition = tempStringArray.length;
+ 		}
+		if(x == 8){//delete
+
+		}
+
+	    keyString = "1230yuqwertasdfghjkl;zxcvbnm,";
+  keyAddresses = [0304,0305,0306,0300,0336,0337,0310,0311,0312,0313,0314,0330,0331,0332,0333,0334,0335,0350,0351,0352,0353,0340,0341,0342,0343,0344,0345,0346,0347];
+		y = String.fromCharCode(x);
+		y = y.toLowerCase();
+		//console.log(y);
+		currentKeyCommand = -1;		
+		for(var i = 0;i < keyString.length;i++){
+			if(y == keyString.charAt(i)){
+	    		currentKeyCommand = keyAddresses[i];
+			}
+    	}		
+    	if(currentKeyCommand > 0){    	
+    		var tempCommandString = "0" + currentKeyCommand.toString(8); 
+			var tempString = "";
+	 		var tempStringArray = editGlyph.split(",");
+	 		if(cursorPosition > tempStringArray.length){
+	 			cursorPosition = tempStringArray.length;
+	 		}
+	 		for(var index = 0;index < cursorPosition;index++){
+				tempString += tempStringArray[index];
+				tempString += ",";
+	 		}
+			tempString += tempCommandString; 		
+			tempString += ",";
+	 		for(var index = cursorPosition;index < tempStringArray.length;index++){
+				tempString += tempStringArray[index];
+				tempString += ",";					
+	 		}
+			cursorPosition += 1;    
+			if(tempString.endsWith(",")){
+				tempString = tempString.substring(0,tempString.length - 1);
+			}
+			editGlyph = tempString;					
+		}
+		console.log(editGlyph);
+        redraw();
+	}
+	
+	
+	function redraw(){
+	    canvas = document.getElementById("editGlyphDisplay");
+        readonlycanvas = document.getElementById("readonlyGlyphDisplay");
+        spellcanvas = document.getElementById("glyphSpellingDisplay");
+		ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.font="30px Arial";
+		ctx.fillText("0" + editAddress.toString(8),5,35);
+		drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");
+		
+		ctx = readonlycanvas.getContext("2d");
+		ctx.clearRect(0, 0, readonlycanvas.width, readonlycanvas.height);
+		ctx.font="30px Arial";
+		ctx.fillText("0" + readAddress.toString(8),5,35);
+		drawGlyph(readGlyph);
+		//draw readonly glyph
+		
+		ctx = spellcanvas.getContext("2d");
+		ctx.clearRect(0, 0, spellcanvas.width, spellcanvas.height);
+		side = 38;
+		x = 2;
+		y = 40;
+		spellGlyph(editGlyph);
+		x = 2 + cursorPosition*side;
+		y += 2;
+		doTheThing(0340);
+		//draw spell glyph
+		//draw spell cursor
+ }   	
+	 
+</script>
 
 </body>
 </html>

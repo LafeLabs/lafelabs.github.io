@@ -6,7 +6,7 @@
 		<encoding>string</encoding>
 		<code>
 			String[] xml2js(String[] xmlGlyphTable,String tableName){
-			
+				
 			
 			}
 		</code>
