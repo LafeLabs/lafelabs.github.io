@@ -13,8 +13,6 @@
 
 <canvas id="editGlyphDisplay" width="400" height="400"style="border:1px solid;">
 </canvas>
-<canvas id="readonlyGlyphDisplay" width="400" height="400"style="border:1px solid;">
-</canvas>
 <p>
 <canvas onClick = "buttonEvent(0330)" id="buttoncanvas0" width="40" height="40"style="border:1px solid;">
 </canvas>
@@ -33,9 +31,63 @@
 <canvas onClick = "buttonEvent(0337)" id="buttoncanvas7" width="40" height="40"style="border:1px solid;">
 </canvas>
 <p>
+<canvas onClick = "buttonEvent(0340)" id="buttoncanvas10" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0341)" id="buttoncanvas11" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0342)" id="buttoncanvas12" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0343)" id="buttoncanvas13" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0350)" id="buttoncanvas14" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0351)" id="buttoncanvas15" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0352)" id="buttoncanvas16" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0353)" id="buttoncanvas17" width="40" height="40"style="border:1px solid;">
+</canvas>
+<p>
+<canvas onClick = "buttonEvent(0300)" id="buttoncanvas20" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0310)" id="buttoncanvas21" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0311)" id="buttoncanvas22" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0313)" id="buttoncanvas23" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0314)" id="buttoncanvas24" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0304)" id="buttoncanvas25" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0305)" id="buttoncanvas26" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0306)" id="buttoncanvas27" width="40" height="40"style="border:1px solid;">
+</canvas>
+<p>
+
+<canvas onClick = "buttonEvent(0200)" id="buttoncanvas30" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0210)" id="buttoncanvas31" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0211)" id="buttoncanvas32" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0214)" id="buttoncanvas33" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0212)" id="buttoncanvas34" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0215)" id="buttoncanvas35" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0216)" id="buttoncanvas36" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0217)" id="buttoncanvas37" width="40" height="40"style="border:1px solid;">
+</canvas>
+<p>
+
+
 
 <p>
-<canvas id="glyphSpellingDisplay" width="800" height="80"style="border:1px solid;">
+<canvas id="glyphSpellingDisplay" width="800" height="42"style="border:1px solid;">
 </canvas>
 <p>
 
@@ -188,24 +240,44 @@
 	    buttoncanvas5 = document.getElementById("buttoncanvas5");
 	    buttoncanvas6 = document.getElementById("buttoncanvas6");
 	    buttoncanvas7 = document.getElementById("buttoncanvas7");
+		buttoncanvas10 = document.getElementById("buttoncanvas10");
+	    buttoncanvas11 = document.getElementById("buttoncanvas11");
+	    buttoncanvas12 = document.getElementById("buttoncanvas12");
+	    buttoncanvas13 = document.getElementById("buttoncanvas13");
+	    buttoncanvas14 = document.getElementById("buttoncanvas14");
+	    buttoncanvas15 = document.getElementById("buttoncanvas15");
+	    buttoncanvas16 = document.getElementById("buttoncanvas16");
+	    buttoncanvas17 = document.getElementById("buttoncanvas17");
+		buttoncanvas20 = document.getElementById("buttoncanvas20");
+	    buttoncanvas21 = document.getElementById("buttoncanvas21");
+	    buttoncanvas22 = document.getElementById("buttoncanvas22");
+	    buttoncanvas23 = document.getElementById("buttoncanvas23");
+	    buttoncanvas24 = document.getElementById("buttoncanvas24");
+	    buttoncanvas25 = document.getElementById("buttoncanvas25");
+	    buttoncanvas26 = document.getElementById("buttoncanvas26");
+	    buttoncanvas27 = document.getElementById("buttoncanvas27");
+		buttoncanvas30 = document.getElementById("buttoncanvas30");
+	    buttoncanvas31 = document.getElementById("buttoncanvas31");
+	    buttoncanvas32 = document.getElementById("buttoncanvas32");
+	    buttoncanvas33 = document.getElementById("buttoncanvas33");
+	    buttoncanvas34 = document.getElementById("buttoncanvas34");
+	    buttoncanvas35 = document.getElementById("buttoncanvas35");
+	    buttoncanvas36 = document.getElementById("buttoncanvas36");
+	    buttoncanvas37 = document.getElementById("buttoncanvas37");
+
 
 		
 		ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.font="30px Arial";
-		ctx.fillText("0" + editAddress.toString(8),5,35);
+//		ctx.fillText("0" + editAddress.toString(8),5,35);
 		doTheThing(0300);
-		drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");
+		drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
 		
-		ctx = readonlycanvas.getContext("2d");
-		ctx.clearRect(0, 0, readonlycanvas.width, readonlycanvas.height);
-		ctx.font="30px Arial";
-		ctx.fillText("0" + readAddress.toString(8),5,35);
-		drawGlyph(readGlyph);
-		//draw readonly glyph
 		
 		ctx = spellcanvas.getContext("2d");
 		ctx.clearRect(0, 0, spellcanvas.width, spellcanvas.height);
+		doTheThing(0300);
 		side = 38;
 		x = 2;
 		y = 40;
@@ -262,9 +334,154 @@
 		x = 2;
 		y = 39;
 		spellGlyph("0337");
+		ctx = buttoncanvas10.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0340");
+		ctx = buttoncanvas11.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0341");
+		ctx = buttoncanvas12.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0342");
+		ctx = buttoncanvas13.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0343");
+		ctx = buttoncanvas14.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0350");
+		ctx = buttoncanvas15.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0351");
+		ctx = buttoncanvas16.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0352");
+		ctx = buttoncanvas17.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0352");
+		ctx = buttoncanvas20.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0300");
+		ctx = buttoncanvas21.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0310");
+		ctx = buttoncanvas22.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0311");
+		ctx = buttoncanvas23.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0313");
+		ctx = buttoncanvas24.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0314");
+		ctx = buttoncanvas25.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0304");
+		ctx = buttoncanvas26.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0305");
+		ctx = buttoncanvas27.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0306");
+
+		ctx = buttoncanvas30.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0200");
+		ctx = buttoncanvas31.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0210");
+		ctx = buttoncanvas32.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0211");
+		ctx = buttoncanvas33.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0214");
+		ctx = buttoncanvas34.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0212");
+		ctx = buttoncanvas35.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0215");
+		ctx = buttoncanvas36.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0216");
+		ctx = buttoncanvas37.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0217");
 
  }   	
-	 
+ 	 
 </script>
 
 </body>
