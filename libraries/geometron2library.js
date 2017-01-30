@@ -4,7 +4,7 @@ function initGeometron(){
   inPath = false;//move to true after path started, back to false after path ended
   svgFile = [];
 
-  editAddress = 0101;
+  editAddress = 0440;
   editGlyph = "0300";
   readAddress = 0400;
   readGlyph = "0300,0340";

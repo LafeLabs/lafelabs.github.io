@@ -16,8 +16,24 @@
 <canvas id="readonlyGlyphDisplay" width="400" height="400"style="border:1px solid;">
 </canvas>
 <p>
-<button onClick = "rootMagic(0016)">Previous Page</button>
-<button onClick = "rootMagic(0017)">Next Page</button>
+<canvas onClick = "buttonEvent(0330)" id="buttoncanvas0" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0331)" id="buttoncanvas1" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0332)" id="buttoncanvas2" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0333)" id="buttoncanvas3" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0334)" id="buttoncanvas4" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0335)" id="buttoncanvas5" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0336)" id="buttoncanvas6" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0337)" id="buttoncanvas7" width="40" height="40"style="border:1px solid;">
+</canvas>
+<p>
+
 <p>
 <canvas id="glyphSpellingDisplay" width="800" height="80"style="border:1px solid;">
 </canvas>
@@ -25,6 +41,31 @@
 
 <script>
 	redraw();
+	
+	function buttonEvent(localCommand){
+	      	var tempCommandString = "0" + localCommand.toString(8); 
+			var tempString = "";
+	 		var tempStringArray = editGlyph.split(",");
+	 		if(cursorPosition > tempStringArray.length){
+	 			cursorPosition = tempStringArray.length;
+	 		}
+	 		for(var index = 0;index < cursorPosition;index++){
+				tempString += tempStringArray[index];
+				tempString += ",";
+	 		}
+			tempString += tempCommandString; 		
+			tempString += ",";
+	 		for(var index = cursorPosition;index < tempStringArray.length;index++){
+				tempString += tempStringArray[index];
+				tempString += ",";					
+	 		}
+			cursorPosition += 1;    
+			if(tempString.endsWith(",")){
+				tempString = tempString.substring(0,tempString.length - 1);
+			}
+			editGlyph = tempString;					
+			redraw();
+	}
 	
 	function keystrokeEvent(event){
 		var x = event.which || event.keyCode; 
@@ -139,6 +180,16 @@
 	    canvas = document.getElementById("editGlyphDisplay");
         readonlycanvas = document.getElementById("readonlyGlyphDisplay");
         spellcanvas = document.getElementById("glyphSpellingDisplay");
+		buttoncanvas0 = document.getElementById("buttoncanvas0");
+	    buttoncanvas1 = document.getElementById("buttoncanvas1");
+	    buttoncanvas2 = document.getElementById("buttoncanvas2");
+	    buttoncanvas3 = document.getElementById("buttoncanvas3");
+	    buttoncanvas4 = document.getElementById("buttoncanvas4");
+	    buttoncanvas5 = document.getElementById("buttoncanvas5");
+	    buttoncanvas6 = document.getElementById("buttoncanvas6");
+	    buttoncanvas7 = document.getElementById("buttoncanvas7");
+
+		
 		ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.font="30px Arial";
@@ -162,8 +213,56 @@
 		x = 2 + cursorPosition*side;
 		y += 2;
 		doTheThing(0340);
-		//draw spell glyph
-		//draw spell cursor
+		
+		ctx = buttoncanvas0.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0330");
+		ctx = buttoncanvas1.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0331");
+		ctx = buttoncanvas2.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0332");
+		ctx = buttoncanvas3.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0333");
+		ctx = buttoncanvas4.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0334");
+		ctx = buttoncanvas5.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0335");
+		ctx = buttoncanvas6.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0336");
+		ctx = buttoncanvas7.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0337");
+
  }   	
 	 
 </script>
