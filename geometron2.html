@@ -83,17 +83,64 @@
 <canvas onClick = "buttonEvent(0217)" id="buttoncanvas37" width="40" height="40"style="border:1px solid;">
 </canvas>
 <p>
-
-
+<canvas onClick = "buttonEvent(0220)" id="buttoncanvas40" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0221)" id="buttoncanvas41" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0222)" id="buttoncanvas42" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0223)" id="buttoncanvas43" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0224)" id="buttoncanvas44" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(0225)" id="buttoncanvas45" width="40" height="40"style="border:1px solid;">
+</canvas>
 
 <p>
 <canvas id="glyphSpellingDisplay" width="800" height="42"style="border:1px solid;">
 </canvas>
 <p>
 
+<p>
+<button onClick = "buildSvg()">GRAB SVG CODE</button>
+<p>
+<textarea id = "svgText" rows="4" cols="80">
+</textarea>
+
 <script>
 	redraw();
 	
+	function buildSvg(){
+
+   svgFile = [];
+ //  svgFile.push("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");    
+   svgFile.push("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
+   svgFile.push("viewBox=\"0 0 600 600\" width=\"600\" height=\"600\" id=\"geometron_svg\">");     
+   
+   inPath = false;
+   	  
+   	  drawGlyph(editGlyph);
+
+	if(inPath){  //did the glyph end in the middle of a path? if so end it here				
+		svgFile.push("\"");
+		svgFile.push("style=\"stroke:black;stroke-width:2\" fill=\"none\" />");
+		inPath = false;
+	}
+
+  svgFile.push("</svg>");       
+
+
+  
+  document.getElementById("svgText").value = "";
+
+	for(var zeep = 0;zeep < svgFile.length;zeep++){
+		document.getElementById("svgText").value += svgFile[zeep];
+		document.getElementById("svgText").value += "\n"
+	}
+
+
+}
+
 	function buttonEvent(localCommand){
 	      	var tempCommandString = "0" + localCommand.toString(8); 
 			var tempString = "";
@@ -264,6 +311,13 @@
 	    buttoncanvas35 = document.getElementById("buttoncanvas35");
 	    buttoncanvas36 = document.getElementById("buttoncanvas36");
 	    buttoncanvas37 = document.getElementById("buttoncanvas37");
+
+		buttoncanvas40 = document.getElementById("buttoncanvas40");
+	    buttoncanvas41 = document.getElementById("buttoncanvas41");
+	    buttoncanvas42 = document.getElementById("buttoncanvas42");
+	    buttoncanvas43 = document.getElementById("buttoncanvas43");
+	    buttoncanvas44 = document.getElementById("buttoncanvas44");
+	    buttoncanvas45 = document.getElementById("buttoncanvas45");
 
 
 		
@@ -479,6 +533,44 @@
 		x = 2;
 		y = 39;
 		spellGlyph("0217");//voltage source
+
+
+		ctx = buttoncanvas40.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0220");//square
+		ctx = buttoncanvas41.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0221");//resistor
+		ctx = buttoncanvas42.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0222");//capacitor
+		ctx = buttoncanvas43.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0223");//inductor
+		ctx = buttoncanvas44.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0224");//triangle ground
+		ctx = buttoncanvas45.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;
+		spellGlyph("0225");//x junction
 
  }   	
  	 
