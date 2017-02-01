@@ -1,13 +1,35 @@
 
+function keystring2command(localKeyString){//from a key sequence to a command address seq.
+  
+  var localCommandString = "";
+  for(var glyphIndex = 0;glyphIndex < localKeyString.length;glyphIndex++){
+  	for(var keyIndex = 0;keyIndex < keyStringFull.length;keyIndex++){
+  		if(localKeyString.charAt(glyphIndex)==keyStringFull.charAt(keyIndex)){
+  			localCommandString += addressStringArray[keyIndex] + ",";
+  		}
+  	}
+  }  
+  return localCommandString.substring(0,localCommandString.length - 1);	//remove commma at end
+}
+
+
 function initGeometron(){
 
+  keyStringFull = "1234567890";
+  addressStringFull = "0304,0305,0306,0310,0311,0312,0313,0314,0223,0300,";
+  keyStringFull += "qwertyuiop";
+  addressStringFull += "0200,0210,0211,0214,0212,0215,0216,0217,0220,0221,";
+  keyStringFull += "asdfghjkl;";
+  addressStringFull += "0330,0331,0332,0333,0334,0335,0336,0337,0350,0351,";
+  keyStringFull += "zxcvbnm,./";
+  addressStringFull += "0340,0341,0342,0343,0226,0224,0225,0222,0352,0353";
+  addressStringArray = addressStringFull.split(",");
+  
   inPath = false;//move to true after path started, back to false after path ended
   svgFile = [];
 
   editAddress = 0440;
   editGlyph = "0300";
-  readAddress = 0400;
-  readGlyph = "0300,0340";
   cursorPosition = 1;
   loadTable();	
   for(var index = 0;index < currentTable.length;index++){
@@ -54,36 +76,6 @@ function updateGlyphs(){
 
 	 
 function rootMagic(localCommand){
-	if(localCommand == 0001){//shape actions
-		editAddress = 0200;
-		cursorPosition = 0;
-	}
-	if(localCommand == 0002){//shape symbols
-		editAddress = 01200;
-		cursorPosition = 0;
-	}
-	if(localCommand == 0003){//command symbols
-		editAddress = 01300;
-		cursorPosition = 0;
-	}
-	if(localCommand == 0004){//manuscript actions
-		editAddress = 0400;
-		cursorPosition = 0;
-	}
-	if(localCommand == 0006){//manuscript actions
-		editAddress = 0101; //start at capital A
-		cursorPosition = 0;
-	}
-	
-	if(localCommand == 0010){//delete command in current glyph behind cursorIndex
-		
-	}
-	if(localCommand == 0020){//draw current edit glyph
-		
-		
-		
-	}
-
 }
 
 

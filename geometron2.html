@@ -4,97 +4,103 @@
 	<title>Geometron: Geometry Based Meta-Language</title>
 <script src="libraries/geometron2library.js"></script>
 </head>
-<body onkeydown = "keystrokeEvent(event)">
+<body>
 
 <script>
 	initGeometron();
 </script>
 
+<canvas id="editGlyphDisplay" width="500" height="500"style="border:1px solid;">
+</canvas>
+<p>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[0],8))" id="buttoncanvas0" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[1],8))" id="buttoncanvas1" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[2],8))" id="buttoncanvas2" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[3],8))" id="buttoncanvas3" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[4],8))" id="buttoncanvas4" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[5],8))" id="buttoncanvas5" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[6],8))" id="buttoncanvas6" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[7],8))" id="buttoncanvas7" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[8],8))" id="buttoncanvas8" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[9],8))" id="buttoncanvas9" width="40" height="40"style="border:1px solid;">
+</canvas>
 
-<canvas id="editGlyphDisplay" width="400" height="400"style="border:1px solid;">
-</canvas>
 <p>
-<canvas onClick = "buttonEvent(0330)" id="buttoncanvas0" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[10],8))" id="buttoncanvas10" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0331)" id="buttoncanvas1" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[11],8))" id="buttoncanvas11" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0332)" id="buttoncanvas2" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[12],8))" id="buttoncanvas12" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0333)" id="buttoncanvas3" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[13],8))" id="buttoncanvas13" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0334)" id="buttoncanvas4" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[14],8))" id="buttoncanvas14" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0335)" id="buttoncanvas5" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[15],8))" id="buttoncanvas15" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0336)" id="buttoncanvas6" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[16],8))" id="buttoncanvas16" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0337)" id="buttoncanvas7" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[17],8))" id="buttoncanvas17" width="40" height="40"style="border:1px solid;">
 </canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[18],8))" id="buttoncanvas18" width="40" height="40"style="border:1px solid;">
+</canvas>
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[19],8))" id="buttoncanvas19" width="40" height="40"style="border:1px solid;">
+</canvas>
+
 <p>
-<canvas onClick = "buttonEvent(0340)" id="buttoncanvas10" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[20],8))" id="buttoncanvas20" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0341)" id="buttoncanvas11" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[21],8))" id="buttoncanvas21" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0342)" id="buttoncanvas12" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[22],8))" id="buttoncanvas22" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0343)" id="buttoncanvas13" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[23],8))" id="buttoncanvas23" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0350)" id="buttoncanvas14" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[24],8))" id="buttoncanvas24" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0351)" id="buttoncanvas15" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[25],8))" id="buttoncanvas25" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0352)" id="buttoncanvas16" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[26],8))" id="buttoncanvas26" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0353)" id="buttoncanvas17" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[27],8))" id="buttoncanvas27" width="40" height="40"style="border:1px solid;">
 </canvas>
-<p>
-<canvas onClick = "buttonEvent(0300)" id="buttoncanvas20" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[28],8))" id="buttoncanvas28" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0310)" id="buttoncanvas21" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[29],8))" id="buttoncanvas29" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0311)" id="buttoncanvas22" width="40" height="40"style="border:1px solid;">
-</canvas>
-<canvas onClick = "buttonEvent(0313)" id="buttoncanvas23" width="40" height="40"style="border:1px solid;">
-</canvas>
-<canvas onClick = "buttonEvent(0314)" id="buttoncanvas24" width="40" height="40"style="border:1px solid;">
-</canvas>
-<canvas onClick = "buttonEvent(0304)" id="buttoncanvas25" width="40" height="40"style="border:1px solid;">
-</canvas>
-<canvas onClick = "buttonEvent(0305)" id="buttoncanvas26" width="40" height="40"style="border:1px solid;">
-</canvas>
-<canvas onClick = "buttonEvent(0306)" id="buttoncanvas27" width="40" height="40"style="border:1px solid;">
-</canvas>
+
 <p>
 
-<canvas onClick = "buttonEvent(0200)" id="buttoncanvas30" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[30],8))" id="buttoncanvas30" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0210)" id="buttoncanvas31" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[31],8))" id="buttoncanvas31" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0211)" id="buttoncanvas32" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[32],8))" id="buttoncanvas32" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0214)" id="buttoncanvas33" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[33],8))" id="buttoncanvas33" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0212)" id="buttoncanvas34" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[34],8))" id="buttoncanvas34" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0215)" id="buttoncanvas35" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[35],8))" id="buttoncanvas35" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0216)" id="buttoncanvas36" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[36],8))" id="buttoncanvas36" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0217)" id="buttoncanvas37" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[37],8))" id="buttoncanvas37" width="40" height="40"style="border:1px solid;">
 </canvas>
-<p>
-<canvas onClick = "buttonEvent(0220)" id="buttoncanvas40" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[38],8))" id="buttoncanvas38" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0221)" id="buttoncanvas41" width="40" height="40"style="border:1px solid;">
+<canvas onClick = "buttonEvent(parseInt(addressStringArray[39],8))" id="buttoncanvas39" width="40" height="40"style="border:1px solid;">
 </canvas>
-<canvas onClick = "buttonEvent(0222)" id="buttoncanvas42" width="40" height="40"style="border:1px solid;">
-</canvas>
-<canvas onClick = "buttonEvent(0223)" id="buttoncanvas43" width="40" height="40"style="border:1px solid;">
-</canvas>
-<canvas onClick = "buttonEvent(0224)" id="buttoncanvas44" width="40" height="40"style="border:1px solid;">
-</canvas>
-<canvas onClick = "buttonEvent(0225)" id="buttoncanvas45" width="40" height="40"style="border:1px solid;">
-</canvas>
+
 
 <p>
 <canvas id="glyphSpellingDisplay" width="800" height="42"style="border:1px solid;">
@@ -166,115 +172,6 @@
 			redraw();
 	}
 	
-	function keystrokeEvent(event){
-		var x = event.which || event.keyCode; 
-	//	y = x.toString();		
-		if(x == 39){//right
-			cursorPosition++;
-			var tempStringArray = editGlyph.split(",");
-			if(cursorPosition > tempStringArray.length){
-				cursorPosition = tempStringArray.length;
-			}
-		}
-		if(x == 37){//left
-			cursorPosition--;
-			if(cursorPosition < 0){
-				cursorPosition = 0;
-			}
-		}
-		if(x == 38){//up arrow decrements value of editAddress
-			var oldEditAddress = editAddress;
-			editAddress--;
-			var oldEditGlyph = editGlyph;
-			for(var index = 0;index < currentTable.length;index ++){
-				var tempArray = currentTable[index].split(":")
-				if(parseInt(tempArray[0],8) == editAddress){
-					editGlyph = tempArray[1];					
-				}
-				if(parseInt(tempArray[0],8) == oldEditAddress){
-					currentTable[index] = "0" + oldEditAddress.toString(8) + ":" + oldEditGlyph;					
-				}
-			}
-			var tempStringArray = editGlyph.split(",");
-			cursorPosition = tempStringArray.length;
-		}
-		if(x == 40){//down arrow increments value of editAddress
- 			var oldEditAddress = editAddress;
- 			editAddress++;
-			var oldEditGlyph = editGlyph;
-			for(var index = 0;index < currentTable.length;index++){
-				var tempArray = currentTable[index].split(":")
-				if(parseInt(tempArray[0],8) == editAddress){
-					editGlyph = tempArray[1];					
-				}
-				if(parseInt(tempArray[0],8) == oldEditAddress){
-					currentTable[index] = "0" + oldEditAddress.toString(8) + ":" + oldEditGlyph;					
-				}
-			}
-			var tempStringArray = editGlyph.split(",");
-			cursorPosition = tempStringArray.length;
- 		}
-		if(x == 8){//delete
-
-    		var tempCommandString = "0" + currentKeyCommand.toString(8); 
-			var tempString = "";
-	 		var tempStringArray = editGlyph.split(",");
-	 		for(var index = 0;index < cursorPosition - 1;index++){
-				tempString += tempStringArray[index];
-				tempString += ",";
-	 		}
-
-	 		for(var index = cursorPosition;index < tempStringArray.length;index++){
-				tempString += tempStringArray[index];
-				tempString += ",";					
-	 		}
-			cursorPosition -= 1;    
-			if(tempString.endsWith(",")){
-				tempString = tempString.substring(0,tempString.length - 1);
-			}
-			editGlyph = tempString;					
-
-		}
-
-	    keyString = "1230yuqwertasdfghjkl;zxcvbnm,";
-  keyAddresses = [0304,0305,0306,0300,0336,0337,0310,0311,0312,0313,0314,0330,0331,0332,0333,0334,0335,0350,0351,0352,0353,0340,0341,0342,0343,0344,0345,0346,0347];
-		y = String.fromCharCode(x);
-		y = y.toLowerCase();
-		//console.log(y);
-		currentKeyCommand = -1;		
-		for(var i = 0;i < keyString.length;i++){
-			if(y == keyString.charAt(i)){
-	    		currentKeyCommand = keyAddresses[i];
-			}
-    	}		
-    	if(currentKeyCommand > 0){    	
-    		var tempCommandString = "0" + currentKeyCommand.toString(8); 
-			var tempString = "";
-	 		var tempStringArray = editGlyph.split(",");
-	 		if(cursorPosition > tempStringArray.length){
-	 			cursorPosition = tempStringArray.length;
-	 		}
-	 		for(var index = 0;index < cursorPosition;index++){
-				tempString += tempStringArray[index];
-				tempString += ",";
-	 		}
-			tempString += tempCommandString; 		
-			tempString += ",";
-	 		for(var index = cursorPosition;index < tempStringArray.length;index++){
-				tempString += tempStringArray[index];
-				tempString += ",";					
-	 		}
-			cursorPosition += 1;    
-			if(tempString.endsWith(",")){
-				tempString = tempString.substring(0,tempString.length - 1);
-			}
-			editGlyph = tempString;					
-		}
-		console.log(editGlyph);
-        redraw();
-	}
-	
-	
 	function redraw(){
 	    canvas = document.getElementById("editGlyphDisplay");
         readonlycanvas = document.getElementById("readonlyGlyphDisplay");
@@ -287,6 +184,8 @@
 	    buttoncanvas5 = document.getElementById("buttoncanvas5");
 	    buttoncanvas6 = document.getElementById("buttoncanvas6");
 	    buttoncanvas7 = document.getElementById("buttoncanvas7");
+	    buttoncanvas8 = document.getElementById("buttoncanvas8");
+	    buttoncanvas9 = document.getElementById("buttoncanvas9");
 		buttoncanvas10 = document.getElementById("buttoncanvas10");
 	    buttoncanvas11 = document.getElementById("buttoncanvas11");
 	    buttoncanvas12 = document.getElementById("buttoncanvas12");
@@ -295,6 +194,8 @@
 	    buttoncanvas15 = document.getElementById("buttoncanvas15");
 	    buttoncanvas16 = document.getElementById("buttoncanvas16");
 	    buttoncanvas17 = document.getElementById("buttoncanvas17");
+	    buttoncanvas18 = document.getElementById("buttoncanvas18");
+	    buttoncanvas19 = document.getElementById("buttoncanvas19");
 		buttoncanvas20 = document.getElementById("buttoncanvas20");
 	    buttoncanvas21 = document.getElementById("buttoncanvas21");
 	    buttoncanvas22 = document.getElementById("buttoncanvas22");
@@ -303,6 +204,8 @@
 	    buttoncanvas25 = document.getElementById("buttoncanvas25");
 	    buttoncanvas26 = document.getElementById("buttoncanvas26");
 	    buttoncanvas27 = document.getElementById("buttoncanvas27");
+	    buttoncanvas28 = document.getElementById("buttoncanvas28");
+	    buttoncanvas29 = document.getElementById("buttoncanvas29");
 		buttoncanvas30 = document.getElementById("buttoncanvas30");
 	    buttoncanvas31 = document.getElementById("buttoncanvas31");
 	    buttoncanvas32 = document.getElementById("buttoncanvas32");
@@ -311,20 +214,15 @@
 	    buttoncanvas35 = document.getElementById("buttoncanvas35");
 	    buttoncanvas36 = document.getElementById("buttoncanvas36");
 	    buttoncanvas37 = document.getElementById("buttoncanvas37");
-
-		buttoncanvas40 = document.getElementById("buttoncanvas40");
-	    buttoncanvas41 = document.getElementById("buttoncanvas41");
-	    buttoncanvas42 = document.getElementById("buttoncanvas42");
-	    buttoncanvas43 = document.getElementById("buttoncanvas43");
-	    buttoncanvas44 = document.getElementById("buttoncanvas44");
-	    buttoncanvas45 = document.getElementById("buttoncanvas45");
+	    buttoncanvas38 = document.getElementById("buttoncanvas38");
+	    buttoncanvas39 = document.getElementById("buttoncanvas39");
 
 
 		
 		ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.font="30px Arial";
-//		ctx.fillText("0" + editAddress.toString(8),5,35);
+		ctx.fillText("0" + editAddress.toString(8),5,35);
 		doTheThing(0300);
 		drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
 		
@@ -340,240 +238,59 @@
 		y += 2;
 		doTheThing(0340);
 		
-		ctx = buttoncanvas0.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0330");
-		ctx = buttoncanvas1.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0331");
-		ctx = buttoncanvas2.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0332");
-		ctx = buttoncanvas3.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0333");
-		ctx = buttoncanvas4.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0334");
-		ctx = buttoncanvas5.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0335");
-		ctx = buttoncanvas6.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0336");
-		ctx = buttoncanvas7.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0337");
-		ctx = buttoncanvas10.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0340");
-		ctx = buttoncanvas11.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0341");
-		ctx = buttoncanvas12.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0342");
-		ctx = buttoncanvas13.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0343");
-		ctx = buttoncanvas14.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0350");
-		ctx = buttoncanvas15.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0351");
-		ctx = buttoncanvas16.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0352");
-		ctx = buttoncanvas17.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0352");
-		ctx = buttoncanvas20.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0300");
-		ctx = buttoncanvas21.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0310");
-		ctx = buttoncanvas22.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0311");
-		ctx = buttoncanvas23.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0313");
-		ctx = buttoncanvas24.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0314");
-		ctx = buttoncanvas25.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0304");
-		ctx = buttoncanvas26.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0305");
-		ctx = buttoncanvas27.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0306");
+		
+		
+		buildButton(buttoncanvas0,0);
+		buildButton(buttoncanvas1,1);
+		buildButton(buttoncanvas2,2);
+		buildButton(buttoncanvas3,3);
+		buildButton(buttoncanvas4,4);
+		buildButton(buttoncanvas5,5);
+		buildButton(buttoncanvas6,6);
+		buildButton(buttoncanvas7,7);
+		buildButton(buttoncanvas8,8);
+		buildButton(buttoncanvas9,9);
+		buildButton(buttoncanvas10,10);
+		buildButton(buttoncanvas11,11);
+		buildButton(buttoncanvas12,12);
+		buildButton(buttoncanvas13,13);
+		buildButton(buttoncanvas14,14);
+		buildButton(buttoncanvas15,15);
+		buildButton(buttoncanvas16,16);
+		buildButton(buttoncanvas17,17);
+		buildButton(buttoncanvas18,18);
+		buildButton(buttoncanvas19,19);
+		buildButton(buttoncanvas20,20);
+		buildButton(buttoncanvas21,21);
+		buildButton(buttoncanvas22,22);
+		buildButton(buttoncanvas23,23);
+		buildButton(buttoncanvas24,24);
+		buildButton(buttoncanvas25,25);
+		buildButton(buttoncanvas26,26);
+		buildButton(buttoncanvas27,27);
+		buildButton(buttoncanvas28,28);
+		buildButton(buttoncanvas29,29);
 
-		ctx = buttoncanvas30.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0200");//square
-		ctx = buttoncanvas31.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0210");//resistor
-		ctx = buttoncanvas32.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0211");//capacitor
-		ctx = buttoncanvas33.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0214");//inductor
-		ctx = buttoncanvas34.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0212");//triangle ground
-		ctx = buttoncanvas35.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0215");//x junction
-		ctx = buttoncanvas36.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0216");//x in a box junction
-		ctx = buttoncanvas37.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0217");//voltage source
-
-
-		ctx = buttoncanvas40.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0220");//square
-		ctx = buttoncanvas41.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0221");//resistor
-		ctx = buttoncanvas42.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0222");//capacitor
-		ctx = buttoncanvas43.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0223");//inductor
-		ctx = buttoncanvas44.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0224");//triangle ground
-		ctx = buttoncanvas45.getContext("2d");
-		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
-		side = 38;
-		x = 2;
-		y = 39;
-		spellGlyph("0225");//x junction
-
+		buildButton(buttoncanvas30,30);
+		buildButton(buttoncanvas31,31);
+		buildButton(buttoncanvas32,32);
+		buildButton(buttoncanvas33,33);
+		buildButton(buttoncanvas34,34);
+		buildButton(buttoncanvas35,35);
+		buildButton(buttoncanvas36,36);
+		buildButton(buttoncanvas37,37);
+		buildButton(buttoncanvas38,38);
+		buildButton(buttoncanvas39,39);
  }   	
- 	 
+ 
+ function buildButton(localCanvas,localIndex){
+ 		ctx = localCanvas.getContext("2d");
+		ctx.clearRect(0, 0, buttoncanvas1.width, buttoncanvas1.height);
+		side = 38;
+		x = 2;
+		y = 39;		
+		spellGlyph(addressStringArray[localIndex]);
+ }	 
 </script>
 
 </body>
