@@ -111,7 +111,7 @@
 <p>
 
 <p>
-<button onClick = "buildSvg()">GRAB SVG CODE</button>
+<button onClick = "buildSvg()">GRAB SVG CODE</button><button onClick = "exportByteCode()">EXPORT BYTE CODE</button><button onClick = "importByteCode()">IMPORT BYTE CODE</button>
 <p>
 <textarea id = "svgText" rows="4" cols="80">
 </textarea>
@@ -138,15 +138,21 @@
   svgFile.push("</svg>");       
 
   
-  document.getElementById("svgText").value = "";
+    document.getElementById("svgText").value = "";
 
 	for(var zeep = 0;zeep < svgFile.length;zeep++){
 		document.getElementById("svgText").value += svgFile[zeep];
 		document.getElementById("svgText").value += "\n"
 	}
-
-
 }
+	function exportByteCode(){
+		document.getElementById("svgText").value = editGlyph;
+	}
+	
+	function importByteCode(){
+		editGlyph = document.getElementById("svgText").value;
+		redraw();
+	}
 
 	function buttonEvent(localCommand){
 	      	var tempCommandString = "0" + localCommand.toString(8); 

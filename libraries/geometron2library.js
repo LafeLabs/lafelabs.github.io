@@ -22,7 +22,7 @@ function initGeometron(){
   keyStringFull += "asdfghjkl;";
   addressStringFull += "0330,0331,0332,0333,0334,0335,0336,0337,0350,0351,";
   keyStringFull += "zxcvbnm,./";
-  addressStringFull += "0340,0341,0342,0343,0226,0224,0225,0222,0352,0353";
+  addressStringFull += "0340,0341,0342,0343,0362,0224,0225,0222,0352,0353";
   addressStringArray = addressStringFull.split(",");
   
   inPath = false;//move to true after path started, back to false after path ended
