@@ -13,7 +13,8 @@ function keystring2command(localKeyString){//from a key sequence to a command ad
 
 
 function initGeometron(){
-	var img = new Image();
+  var img = new Image();
+  imageIndex = 07;
 	
   keyStringFull = "1234567890";
   addressStringFull = "0304,0305,0306,0310,0311,0312,0313,0314,0223,0300,";
@@ -28,7 +29,7 @@ function initGeometron(){
   inPath = false;//move to true after path started, back to false after path ended
   svgFile = [];
 
-  editAddress = 0440;
+  editAddress = 0101;
   editGlyph = "0300";
   cursorPosition = 1;
   loadTable();	
@@ -77,6 +78,27 @@ function updateGlyphs(){
 
 	 
 function rootMagic(localCommand){
+	if(localCommand == 0010){
+		backgroundImageOn = !backgroundImageOn;
+		redraw();	
+	}
+	if(localCommand == 0011){//move to next image
+		imageIndex++;
+		if(imageIndex >= imageTable.length){
+			imageIndex = 0;
+		}
+		doTheThing(0500 + imageIndex);
+		redraw();
+	}
+	if(localCommand == 0012){//move to prev image
+		imageIndex--;
+		if(imageIndex < 0){
+			imageIndex = imageTable.length - 1;
+		}
+		doTheThing(0500 + imageIndex);
+		redraw();
+	}
+	
 }
 
 
@@ -108,6 +130,8 @@ function getImage(localCommand){
 
 
 function doTheThing(localCommand){
+
+
     
     if(localCommand >= 0500 && localCommand <= 0600){
     	getImage(localCommand);    
@@ -417,10 +441,10 @@ function doTheThing(localCommand){
   //     image(myImage,x,y,int(side),int(side));
     }
     if(localCommand == 0362){//turn background image on
-       backgroundImageOn = !backgroundImageOn;
+       backgroundImageOn = true;
     }
-    if(localCommand == 0363){//move to previous background image
-        
+    if(localCommand == 0363){//turn background image off
+       backgroundImageOn = false; 
     }
     if(localCommand == 0364){//move to next background image
               
@@ -479,7 +503,7 @@ function loadTable(){
         imageTable.push("0510:293:424:alaskabeach.png");
         imageTable.push("0511:987:584:thePentagon.png");
         imageTable.push("0512:800:800:dime.png");
-
+        imageTable.push("0513:1314:600:dcmap1.png");
 
 
      currentTable = [];

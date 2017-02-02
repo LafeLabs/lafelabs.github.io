@@ -13,8 +13,14 @@
 
 </script>
 
-<canvas onClick = "doTheThing(0362);redraw();" id="editGlyphDisplay" width="500" height="500"style="border:1px solid;">
+<canvas id="editGlyphDisplay" width="500" height="500"style="border:1px solid;">
 </canvas>
+<p>
+
+<button onClick = "rootMagic(010);">IMAGE ON/OFF</button>
+<button onClick = "rootMagic(011);">NEXT IMAGE</button>
+<button onClick = "rootMagic(012);">PREV IMAGE</button>
+
 <p>
 <canvas onClick = "buttonEvent(parseInt(addressStringArray[0],8))" id="buttoncanvas0" width="40" height="40"style="border:1px solid;">
 </canvas>
@@ -108,8 +114,6 @@
 <p>
 <canvas id="glyphSpellingDisplay" width="800" height="42"style="border:1px solid;">
 </canvas>
-<p>
-
 <p>
 <button onClick = "buildSvg()">GRAB SVG CODE</button><button onClick = "exportByteCode()">EXPORT BYTE CODE</button><button onClick = "importByteCode()">IMPORT BYTE CODE</button>
 <p>
