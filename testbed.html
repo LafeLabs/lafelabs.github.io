@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geometron: Geometry Based Meta-Language</title>
+<script src="libraries/geometron2library.js"></script>
+</head>
+<body>
+
+<script>
+	initGeometron();
+</script>
+
+<canvas id="editGlyphDisplay" width="600px" height="600px"style="border:1px solid;">
+</canvas>
+<p>
+
+<p>
+
+<script>
+		doTheThing(0503);		
+        var canvas = document.getElementById('editGlyphDisplay'); 
+        var ctx = document.getElementById('editGlyphDisplay').getContext('2d');
+  		canvas.height = Number(currentImageHeight);
+  		canvas.width = Number(currentImageWidth);
+  	    var img = new Image();
+ 	    img.onload = function() {
+     	 ctx.drawImage(img, 0, 0);
+ 	    };
+   	    img.src = currentImageURL;
+
+
+</script>
+
+</body>
+</html>

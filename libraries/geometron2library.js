@@ -1,4 +1,3 @@
-
 function keystring2command(localKeyString){//from a key sequence to a command address seq.
   
   var localCommandString = "";
@@ -14,7 +13,8 @@ function keystring2command(localKeyString){//from a key sequence to a command ad
 
 
 function initGeometron(){
-
+	var img = new Image();
+	
   keyStringFull = "1234567890";
   addressStringFull = "0304,0305,0306,0310,0311,0312,0313,0314,0223,0300,";
   keyStringFull += "qwertyuiop";
@@ -47,8 +47,8 @@ function initGeometron(){
   thetaStep = Math.PI/2;
   theta0 = -Math.PI/2; 
   theta = theta0;
-  x0 = 200;
-  y0 = 200;
+  x0 = 250;
+  y0 = 250;
   x = x0;
   y = y0;
   triangleX = x0;
@@ -59,7 +59,8 @@ function initGeometron(){
   pentagonY = y0;
   hexagonX = x0;
   hexagonY = y0;
-	 	 	 
+  backgroundImageOn = false;	
+  doTheThing(0500);
 }
 
 
@@ -94,7 +95,24 @@ function spellGlyph(localString){
 }
 
 
+function getImage(localCommand){	
+	for(var localIndex = 0;localIndex < imageTable.length;localIndex++){
+		var tempArray  = imageTable[localIndex].split(':');
+			if(parseInt(tempArray[0],8) == localCommand){
+				currentImageWidth = tempArray[1];
+				currentImageHeight = tempArray[2];
+			    currentImageURL = imageURLbase + tempArray[3];
+			}
+	}
+}
+
+
 function doTheThing(localCommand){
+    
+    if(localCommand >= 0500 && localCommand <= 0600){
+    	getImage(localCommand);    
+    }
+    
     
     if(localCommand >= 0040 && localCommand <= 0277){//and fonts
 		 for(var symbolSearchIndex = 0;symbolSearchIndex < currentTable.length;symbolSearchIndex++){
@@ -399,10 +417,10 @@ function doTheThing(localCommand){
   //     image(myImage,x,y,int(side),int(side));
     }
     if(localCommand == 0362){//turn background image on
-              
+       backgroundImageOn = !backgroundImageOn;
     }
     if(localCommand == 0363){//move to previous background image
-              
+        
     }
     if(localCommand == 0364){//move to next background image
               
@@ -446,6 +464,23 @@ function doTheThing(localCommand){
 
 
 function loadTable(){
+
+
+		imageURLbase = "geometronfiles/images/"
+        imageTable= [];
+        imageTable.push("0500:588:581:airelemental.png");
+        imageTable.push("0501:400:1133:crystalCityMap.png");
+        imageTable.push("0502:531:492:cursor1.png");
+        imageTable.push("0503:458:391:frontcover.png");
+        imageTable.push("0504:567:481:intro1.png");
+        imageTable.push("0505:855:633:longbridgepark.png");
+        imageTable.push("0506:454:442:rootsof1.png");
+        imageTable.push("0507:498:338:sky.png");
+        imageTable.push("0510:293:424:alaskabeach.png");
+        imageTable.push("0511:987:584:thePentagon.png");
+        imageTable.push("0512:800:800:dime.png");
+
+
 
      currentTable = [];
     currentTable.push("0040:0333");

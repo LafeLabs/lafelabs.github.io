@@ -8,9 +8,12 @@
 
 <script>
 	initGeometron();
+	backgroundImageOn = false;
+	doTheThing(0507);		
+
 </script>
 
-<canvas id="editGlyphDisplay" width="500" height="500"style="border:1px solid;">
+<canvas onClick = "doTheThing(0362);redraw();" id="editGlyphDisplay" width="500" height="500"style="border:1px solid;">
 </canvas>
 <p>
 <canvas onClick = "buttonEvent(parseInt(addressStringArray[0],8))" id="buttoncanvas0" width="40" height="40"style="border:1px solid;">
@@ -132,9 +135,7 @@
 		svgFile.push("style=\"stroke:black;stroke-width:2\" fill=\"none\" />");
 		inPath = false;
 	}
-
   svgFile.push("</svg>");       
-
 
   
   document.getElementById("svgText").value = "";
@@ -168,7 +169,7 @@
 			if(tempString.endsWith(",")){
 				tempString = tempString.substring(0,tempString.length - 1);
 			}
-			editGlyph = tempString;					
+			editGlyph = tempString;				
 			redraw();
 	}
 	
@@ -219,13 +220,34 @@
 
 
 		
+		if(backgroundImageOn){
 		ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		canvas.height = Number(currentImageHeight);
+		canvas.width = Number(currentImageWidth);
+  	    img = new Image();
+ 	    img.onload = function() {
+ 	    		ctx = canvas.getContext("2d");
+     	 		ctx.drawImage(img, 0, 0);
+     	 		ctx.font="30px Arial";
+				ctx.fillText("0" + editAddress.toString(8),5,35);
+				doTheThing(0300);
+				drawGlyph(editGlyph);					drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+ 
+ 	    };
+   	    img.src = currentImageURL;
+ 	    }
+ 	    
+ 	    else{
+
+ 	    ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
 		ctx.font="30px Arial";
 		ctx.fillText("0" + editAddress.toString(8),5,35);
 		doTheThing(0300);
 		drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
-		
+		}
 		
 		ctx = spellcanvas.getContext("2d");
 		ctx.clearRect(0, 0, spellcanvas.width, spellcanvas.height);
