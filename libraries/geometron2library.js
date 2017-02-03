@@ -29,10 +29,15 @@ function initGeometron(){
   inPath = false;//move to true after path started, back to false after path ended
   svgFile = [];
 
-  editAddress = 0101;
+  editAddress = 0400;
+  tableBottom = 0400;
+  tableTop = 0407;
+
   editGlyph = "0300";
   cursorPosition = 1;
   loadTable();	
+  
+  
   for(var index = 0;index < currentTable.length;index++){
 		var localArray = currentTable[index].split(':');
 		if(parseInt(localArray[0],8) == editAddress){
@@ -98,6 +103,48 @@ function rootMagic(localCommand){
 		doTheThing(0500 + imageIndex);
 		redraw();
 	}
+	if(localCommand == 0013){
+	    
+	    for(var index = 0;index < currentTable.length;index++){
+			var localArray = currentTable[index].split(':');
+			if(parseInt(localArray[0],8) == editAddress){
+				currentTable[index] = "0" + editAddress.toString(8) + ":" + editGlyph;
+			}
+   		}
+	
+		editAddress++;
+		if(editAddress > tableTop){
+			editAddress = tableBottom;
+		}
+		for(var index = 0;index < currentTable.length;index++){
+			var localArray = currentTable[index].split(':');
+			if(parseInt(localArray[0],8) == editAddress){
+				editGlyph = localArray[1];
+			}
+   		}
+
+		redraw();
+	}
+	if(localCommand == 0014){
+		for(var index = 0;index < currentTable.length;index++){
+			var localArray = currentTable[index].split(':');
+			if(parseInt(localArray[0],8) == editAddress){
+				currentTable[index] = "0" + editAddress.toString(8) + ":" + editGlyph;
+			}
+   		}
+
+		editAddress--;
+		if(editAddress < tableBottom){
+			editAddress = tableTop;
+		}
+		for(var index = 0;index < currentTable.length;index++){
+			var localArray = currentTable[index].split(':');
+			if(parseInt(localArray[0],8) == editAddress){
+				editGlyph = localArray[1];
+			}
+   		}
+		redraw();
+	}
 	
 }
 
@@ -130,9 +177,6 @@ function getImage(localCommand){
 
 
 function doTheThing(localCommand){
-
-
-    
     if(localCommand >= 0500 && localCommand <= 0600){
     	getImage(localCommand);    
     }
@@ -686,5 +730,38 @@ function loadTable(){
     currentTable.push("0225:0304,0313,0336,0336,0336,0342,0330,0337,0342,0330,0334,0342,0335,0335,0342,0334,0330,0335,0342,0335,0335,0342,0350,0334,0310,0337,0342,0334,0334,0342,0334,0334,0334,0351,0336,0313,0342,0330,0336,0342,0330,0337,0337,0337");
     currentTable.push("0226:0300");
     currentTable.push("0227:0300");
+
+currentTable.push("0400:0340,0341,0333,0341,0340");	currentTable.push("0401:0300,0331,0331,0210,0211,0214,0217,0334,0334,0330,0330,0330,0212,0332,0332");
+currentTable.push("0402:0300,0332,0332,0332,0330,0330,0330,0330,0336,0115,0105,0115,0105,040,0124,0111,0115,0105,041,0331,0331,0337,0337,0332,0336,0336,0332,0332,0332,0332,0332,0332,0332,0332,0332,0107,0105,0117,0115,0105,0124,0122,0117,0116,040,0103,0125,0102,0105,040,0132,0105,0122,0117,040");
+currentTable.push("0403:0300");
+currentTable.push("0404:0300");
+currentTable.push("0405:0300");
+currentTable.push("0406:0300");
+currentTable.push("0407:0300");
+currentTable.push("0410:0340,0341,0333,0341,0340");
+currentTable.push("0411:0340,0341,0333,0341,0340");
+currentTable.push("0412:0300");
+currentTable.push("0413:0300");
+currentTable.push("0414:0300");
+currentTable.push("0415:0300");
+currentTable.push("0416:0300");
+currentTable.push("0417:0300");
+currentTable.push("0420:0340,0341,0333,0341,0340");
+currentTable.push("0421:0340,0341,0333,0341,0340");
+currentTable.push("0422:0300");
+currentTable.push("0423:0300");
+currentTable.push("0424:0300");
+currentTable.push("0425:0300");
+currentTable.push("0426:0300");
+currentTable.push("0427:0300");
+currentTable.push("0430:0340,0341,0333,0341,0340");
+currentTable.push("0431:0340,0341,0333,0341,0340");
+currentTable.push("0432:0300");
+currentTable.push("0433:0300");
+currentTable.push("0434:0300");
+currentTable.push("0435:0300");
+currentTable.push("0436:0300");
+currentTable.push("0437:0300");
+
 
 }

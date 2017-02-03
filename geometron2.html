@@ -3,6 +3,7 @@
 <head>
 	<title>Geometron: Geometry Based Meta-Language</title>
 <script src="libraries/geometron2library.js"></script>
+
 </head>
 <body>
 
@@ -18,8 +19,10 @@
 <p>
 
 <button onClick = "rootMagic(010);">IMAGE ON/OFF</button>
-<button onClick = "rootMagic(011);">NEXT IMAGE</button>
 <button onClick = "rootMagic(012);">PREV IMAGE</button>
+<button onClick = "rootMagic(011);">NEXT IMAGE</button>
+<button onClick = "rootMagic(014);">PREV GLYPH</button>
+<button onClick = "rootMagic(013);">NEXT GLYPH</button>
 
 <p>
 <canvas onClick = "buttonEvent(parseInt(addressStringArray[0],8))" id="buttoncanvas0" width="40" height="40"style="border:1px solid;">
@@ -115,7 +118,15 @@
 <canvas id="glyphSpellingDisplay" width="800" height="42"style="border:1px solid;">
 </canvas>
 <p>
-<button onClick = "buildSvg()">GRAB SVG CODE</button><button onClick = "exportByteCode()">EXPORT BYTE CODE</button><button onClick = "importByteCode()">IMPORT BYTE CODE</button>
+<button onClick = "cursorBACK()">CURSOR BACK</button>
+<button onClick = "cursorFWD()">CURSOR FWD</button>
+<button onClick = "cursorDEL()">CURSOR DEL</button>
+<p>
+<button onClick = "buildSvg()">GRAB SVG CODE</button>
+<button onClick = "exportByteCode()">EXPORT BYTE CODE</button>
+<button onClick = "importByteCode()">IMPORT BYTE CODE</button>
+<button onClick = "importASCII()">IMPORT ASCII</button>
+<button onClick = "exportjs()">EXPORT JAVASCRIPT TABLE</button>
 <p>
 <textarea id = "svgText" rows="4" cols="80">
 </textarea>
@@ -123,6 +134,36 @@
 <script>
 	redraw();
 	
+	
+	function cursorFWD(){
+	    var tempStringArray = editGlyph.split(",");
+		cursorPosition++;
+		if(cursorPosition > tempStringArray.length){
+			cursorPosition = 0;
+		}		
+		redraw();
+	}
+	function cursorBACK(){
+	    var tempStringArray = editGlyph.split(",");
+		cursorPosition--;
+		if(cursorPosition <0){
+		 cursorPosition = tempStringArray.length;
+		}	
+		redraw();
+	}
+	function cursorDEL(){
+		var tempStringArray = editGlyph.split(",");
+		editGlyph = "";
+		for(index =0; index < cursorPosition - 1;index++){
+			editGlyph += tempStringArray[index] + ",";
+		}
+		for(index =cursorPosition; index < tempStringArray.length - 1;index++){
+			editGlyph += tempStringArray[index] + ",";
+		}
+		cursorPosition--;
+		redraw();
+
+	}
 	function buildSvg(){
 
    svgFile = [];
@@ -149,12 +190,37 @@
 		document.getElementById("svgText").value += "\n"
 	}
 }
+
+	function exportjs(){
+		var tempJSstring = "";
+		for(var localAddress = tableBottom;localAddress < tableTop;localAddress++){
+			tempJSstring += "	currentTable.push(\"0";
+			tempJSstring += localAddress.toString(8) + ":"; 
+			for(var index2 = 0;index2 < currentTable.length;index2++){
+				 var localStringArray = currentTable[index2].split(":");
+				 if(parseInt(localStringArray[0],8) ==  localAddress){
+					tempJSstring += localStringArray[1];
+				 } 
+			}
+			tempJSstring += "\");\n"
+		}
+			document.getElementById("svgText").value = tempJSstring;
+	}
+	
 	function exportByteCode(){
 		document.getElementById("svgText").value = editGlyph;
 	}
 	
 	function importByteCode(){
 		editGlyph = document.getElementById("svgText").value;
+		redraw();
+	}
+	function importASCII(){
+		asciiInput = document.getElementById("svgText").value;
+		for(var index = 0;index < asciiInput.length;index++){
+			editGlyph += ",0" + asciiInput.charCodeAt(index).toString(8);
+		}
+		cursorPosition += asciiInput.length+2;
 		redraw();
 	}
 
