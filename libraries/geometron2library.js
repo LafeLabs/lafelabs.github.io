@@ -731,14 +731,15 @@ function loadTable(){
     currentTable.push("0226:0300");
     currentTable.push("0227:0300");
 
-currentTable.push("0400:0340,0341,0333,0341,0340");	currentTable.push("0401:0300,0331,0331,0210,0211,0214,0217,0334,0334,0330,0330,0330,0212,0332,0332");
-currentTable.push("0402:0300,0332,0332,0332,0330,0330,0330,0330,0336,0115,0105,0115,0105,040,0124,0111,0115,0105,041,0331,0331,0337,0337,0332,0336,0336,0332,0332,0332,0332,0332,0332,0332,0332,0332,0107,0105,0117,0115,0105,0124,0122,0117,0116,040,0103,0125,0102,0105,040,0132,0105,0122,0117,040");
+currentTable.push("0400:0300");	
+currentTable.push("0401:0300");
+currentTable.push("0402:0300");
 currentTable.push("0403:0300");
 currentTable.push("0404:0300");
 currentTable.push("0405:0300");
 currentTable.push("0406:0300");
 currentTable.push("0407:0300");
-currentTable.push("0410:0340,0341,0333,0341,0340");
+currentTable.push("0410:0300");
 currentTable.push("0411:0340,0341,0333,0341,0340");
 currentTable.push("0412:0300");
 currentTable.push("0413:0300");
