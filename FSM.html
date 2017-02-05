@@ -27,6 +27,7 @@
 	washingtonCircleNW = "0300,0313,0330,0332,0336,0336,0336,0330,0336,0336,0336,0330,0332,0336,0333,0333,0337,0337,0337,0341,0336,0341";
 	fourteenthplus  = "0300,0313,0336,0336,0336,0330,0330,0333,0336,0336,0336,0332,0331,0337,0337,0337,0337,0337,0342,0330,0342,0342,0331,0331,0336,0336,0333,0331,0331,0336,0330,0337,0337,0337,0337,0342,0330,0342,0300";
 	potomacshore = "0300,0336,0332,0331,0336,0330,0332,0332,0350,0334,0331,0336,0336,0331,0332,0337,0337,0337,0310,0336,0342,0330,0334,0334,0331,0350,0335,0343,0335,0330,0334,0334,0334,0331,0335,0343,0300";
+	washingtonMonument = "0300,0313,0336,0336,0336,0336,0350,0334,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0330,0334,0334,0334,0310,0337,0342,0330,0304,0334,0342,0330,0334,0342,0330,0334,0342,0300";
     editGlyph = "0300";
     //constitutionAve + ",0300," + reflectingPool + "," + pennAve;
    keyStringFull = "1234567890";
@@ -349,7 +350,7 @@
      	 		ctx.font="30px Arial";
 				ctx.fillText("0" + editAddress.toString(8),5,35);
 				doTheThing(0300);
-				drawGlyph(pennAve + "," + constitutionAve + "," + reflectingPool + "," + independenceAve + ","+ yellowLine + "," + washingtonCircleNW + "," + fourteenthplus + "," + potomacshore);
+				drawGlyph(pennAve + "," + constitutionAve + "," + reflectingPool + "," + independenceAve + ","+ yellowLine + "," + washingtonCircleNW + "," + fourteenthplus + "," + potomacshore + "," + washingtonMonument);
 				drawGlyph(editGlyph);					drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
  
  	    };
@@ -364,7 +365,7 @@
 		ctx.font="30px Arial";
 		ctx.fillText("0" + editAddress.toString(8),5,35);
 		doTheThing(0300);
-		drawGlyph(pennAve + "," + constitutionAve + "," + reflectingPool + "," + independenceAve+ ","+ yellowLine + "," + washingtonCircleNW + "," + fourteenthplus + "," + potomacshore);
+		drawGlyph(pennAve + "," + constitutionAve + "," + reflectingPool + "," + independenceAve+ ","+ yellowLine + "," + washingtonCircleNW + "," + fourteenthplus + "," + potomacshore + "," + washingtonMonument);
 		drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
 		}
 		

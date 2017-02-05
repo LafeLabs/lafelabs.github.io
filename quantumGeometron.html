@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quantum Geometron: Geometry Based Meta-Language for Quantum Information Science</title>
+<script src="libraries/geometron2library.js"></script>
+
+</head>
+<body>
+
+<script>
+	initGeometron();
+	backgroundImageOn = false;
+	doTheThing(0507);		
+</script>
+
+<canvas id="editGlyphDisplay" width="512" height="384"style="border:1px solid;">
+</canvas>
+<p>
+<canvas id="glyphSpellingDisplay" width="800" height="42"style="border:1px solid;">
+</canvas>
+<p>
+<input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
+<button onClick = "rootMagic(014);">PREV GLYPH</button>
+<button onClick = "rootMagic(013);">NEXT GLYPH</button>
+<p>
+<button onClick = "buildSvg()">GRAB SVG CODE</button>
+<button onClick = "exportByteCode()">EXPORT BYTE CODE</button>
+<button onClick = "importByteCode()">IMPORT BYTE CODE</button>
+<button onClick = "importASCII()">IMPORT ASCII</button>
+<button onClick = "exportjs()">EXPORT JAVASCRIPT TABLE</button>
+<p>
+<textarea id = "svgText" rows="4" cols="80">
+</textarea>
+<p>
+
+<script>
+	redraw();	
+	function buildSvg(){
+
+   svgFile = [];
+ //  svgFile.push("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");    
+   svgFile.push("<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\"");
+   svgFile.push("viewBox=\"0 0 512 384\" width=\"512\" height=\"384\" id=\"geometron_svg\">");     
+   
+   inPath = false;
+   	  
+   	  drawGlyph(editGlyph);
+
+	if(inPath){  //did the glyph end in the middle of a path? if so end it here				
+		svgFile.push("\"");
+		svgFile.push("style=\"stroke:black;stroke-width:2\" fill=\"none\" />");
+		inPath = false;
+	}
+  svgFile.push("</svg>");       
+
+  
+    document.getElementById("svgText").value = "";
+
+	for(var zeep = 0;zeep < svgFile.length;zeep++){
+		document.getElementById("svgText").value += svgFile[zeep];
+		document.getElementById("svgText").value += "\n"
+	}
+}
+
+	function exportjs(){
+		var tempJSstring = "";
+		for(var localAddress = tableBottom;localAddress < tableTop;localAddress++){
+			tempJSstring += "	currentTable.push(\"0";
+			tempJSstring += localAddress.toString(8) + ":"; 
+			for(var index2 = 0;index2 < currentTable.length;index2++){
+				 var localStringArray = currentTable[index2].split(":");
+				 if(parseInt(localStringArray[0],8) ==  localAddress){
+					tempJSstring += localStringArray[1];
+				 } 
+			}
+			tempJSstring += "\");\n"
+		}
+			document.getElementById("svgText").value = tempJSstring;
+	}
+	
+	function exportByteCode(){
+		document.getElementById("svgText").value = editGlyph;
+	}
+	
+	function importByteCode(){
+		editGlyph = document.getElementById("svgText").value;
+		redraw();
+	}
+	function importASCII(){
+		asciiInput = document.getElementById("svgText").value;
+		for(var index = 0;index < asciiInput.length;index++){
+			editGlyph += ",0" + asciiInput.charCodeAt(index).toString(8);
+		}
+		cursorPosition += asciiInput.length+2;
+		redraw();
+	}
+
+	
+	function updateText(){
+	    currentGlyphString = document.getElementById("inputGlyph").value;
+		editGlyph = keystring2command(currentGlyphString);
+		redraw();
+	}
+	function redraw(){
+	    canvas = document.getElementById("editGlyphDisplay");
+        readonlycanvas = document.getElementById("readonlyGlyphDisplay");
+        spellcanvas = document.getElementById("glyphSpellingDisplay");
+		
+		if(backgroundImageOn){
+		ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		canvas.height = Number(currentImageHeight);
+		canvas.width = Number(currentImageWidth);
+  	    img = new Image();
+ 	    img.onload = function() {
+ 	    		ctx = canvas.getContext("2d");
+     	 		ctx.drawImage(img, 0, 0);
+     	 		ctx.font="30px Arial";
+				ctx.fillText("0" + editAddress.toString(8),5,35);
+				doTheThing(0300);
+				drawGlyph(editGlyph);					drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+ 
+ 	    };
+   	    img.src = currentImageURL;
+ 	    }
+ 	    
+ 	    else{
+
+ 	    ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+		ctx.font="30px Arial";
+		ctx.fillText("0" + editAddress.toString(8),5,35);
+		doTheThing(0300);
+		drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+		}
+		
+		ctx = spellcanvas.getContext("2d");
+		ctx.clearRect(0, 0, spellcanvas.width, spellcanvas.height);
+		doTheThing(0300);
+		side = 38;
+		x = 2;
+		y = 40;
+		spellGlyph(editGlyph);
+		x = 2 + cursorPosition*side;
+		y += 2;
+		doTheThing(0340);
+				
+}   	
+
+
+ 	 
+</script>
+
+</body>
+</html>
