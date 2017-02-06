@@ -22,8 +22,8 @@
 </canvas>
 <p>
 <input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
-<button onClick = "rootMagic(014);">PREV GLYPH</button>
-<button onClick = "rootMagic(013);">NEXT GLYPH</button>
+<button onClick = "previousGlyph();">PREV GLYPH</button>
+<button onClick = "nextGlyph();">NEXT GLYPH</button>
 <p>
 <button onClick = "buildSvg()">GRAB SVG CODE</button>
 <button onClick = "exportByteCode()">EXPORT BYTE CODE</button>
@@ -132,6 +132,15 @@
 		editGlyph = keystring2command(currentGlyphString);
 		redraw();
 	}
+	function nextGlyph(){
+		rootMagic(013);
+ 	    document.getElementById("inputGlyph").value = commandString2keyString(editGlyph);
+	}
+	function previousGlyph(){
+		rootMagic(014);
+ 	    document.getElementById("inputGlyph").value = commandString2keyString(editGlyph);
+	}
+
 	function redraw(){
 	    canvas = document.getElementById("editGlyphDisplay");
         readonlycanvas = document.getElementById("readonlyGlyphDisplay");

@@ -45,9 +45,9 @@ function initGeometron(){
   inPath = false;//move to true after path started, back to false after path ended
   svgFile = [];
 
-  editAddress = 0401;
+  editAddress = 0400;
   tableBottom = 0400;
-  tableTop = 0470;
+  tableTop = 0437;
 
   editGlyph = "0300";
   cursorPosition = 1;
@@ -137,7 +137,6 @@ function rootMagic(localCommand){
 				editGlyph = localArray[1];
 			}
    		}
-
 		redraw();
 	}
 	if(localCommand == 0014){
