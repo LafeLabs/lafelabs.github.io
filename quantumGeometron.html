@@ -35,9 +35,17 @@
 <textarea id = "svgText" rows="4" cols="80">
 </textarea>
 <p>
+<canvas id="keymapDisplay" width="450" height="200"style="border:1px solid;">
+</canvas>
 
 <script>
+
 	redraw();	
+	keymapCanvas = document.getElementById("keymapDisplay");
+	ctx = keymapCanvas.getContext("2d");
+	drawGlyph(keyboardTable);
+	
+	
 	function buildSvg(){
 
    svgFile = [];
@@ -165,10 +173,10 @@
 		x = 2;
 		y = 24;
 		spellGlyph(editGlyph);
-		x = 2 + cursorPosition*side;
-		y += 2;
-		doTheThing(0340);
-			document.getElementById("inputGlyph").value = commandString2keyString(editGlyph);
+//		x = 2 + cursorPosition*side;
+//		y += 2;
+//		doTheThing(0340);
+		//document.getElementById("inputGlyph").value = commandString2keyString(editGlyph);
 		
 }   	
 
