@@ -30,6 +30,7 @@
 <button onClick = "importByteCode()">IMPORT BYTE CODE</button>
 <button onClick = "importASCII()">IMPORT ASCII</button>
 <button onClick = "exportjs()">EXPORT JAVASCRIPT TABLE</button>
+<button onClick = "gotoAddress()">GOTO ADDRESS</button>
 <p>
 <textarea id = "svgText" rows="4" cols="80">
 </textarea>
@@ -80,6 +81,26 @@
 			document.getElementById("svgText").value = tempJSstring;
 	}
 	
+	function gotoAddress(){
+	  var localValue = document.getElementById("svgText").value
+	  for(var index = 0;index < currentTable.length;index++){
+	  var localArray = currentTable[index].split(':');
+	  if(parseInt(localArray[0],8) == editAddress){
+				currentTable[index] = "0" + editAddress.toString(8) + ":" + editGlyph;
+		  }
+   	    }
+
+	    editAddress= parseInt(localValue,8);
+
+		for(var index = 0;index < currentTable.length;index++){
+			var localArray = currentTable[index].split(':');
+			if(parseInt(localArray[0],8) == editAddress){
+				editGlyph = localArray[1];
+			}
+   		}
+
+	  redraw();
+	}
 	function exportByteCode(){
 		document.getElementById("svgText").value = editGlyph;
 	}
