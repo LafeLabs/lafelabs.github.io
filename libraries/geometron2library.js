@@ -35,17 +35,21 @@ function commandString2keyString(localCommandString){
 		}
 		var thisCode = parseInt(localCommandArray[outerIndex],8); 
 		var nextCode = parseInt(localCommandArray[outerIndex+1],8); 
-		if(((040<=thisCode)&&(thisCode <= 0176)) && !((040<=nextCode)&&(nextCode <= 0176))){
-			localKeyString += String.fromCharCode(thisCode);
+		if(((040<=thisCode)&&(thisCode <= 0175)) && !((040<=nextCode)&&(nextCode <= 0175))){
+			if(localASCIIboolean){
+				localKeyString += String.fromCharCode(thisCode);
+			}
 			localKeyString += "\\~";
-			localASCIIboolean = !localASCIIboolean;
+			localASCIIboolean = false;
 		}
-		if( !((040<=thisCode)&&(thisCode <= 0176)) && ((040<=nextCode)&&(nextCode <= 0176))){
+		if( !((040<=thisCode)&&(thisCode <= 0175)) && ((040<=nextCode)&&(nextCode <= 0175))){
 			localKeyString += "\\~";
-			localASCIIboolean = !localASCIIboolean;
+			localASCIIboolean = true;
 		}
-		if((040<=thisCode)&&(thisCode <= 0176)){
-			localKeyString += String.fromCharCode(thisCode);
+		if((040<=thisCode)&&(thisCode <= 0175)){
+			if(localASCIIboolean){
+				localKeyString += String.fromCharCode(thisCode);
+			}
 		}
 	}
 	return localKeyString;
@@ -783,7 +787,7 @@ function loadTable(){
 currentTable.push("0400:0300");	
 currentTable.push("0401:0300");
 currentTable.push("0402:0300");
-currentTable.push("0403:0300");
+currentTable.push("0403:0300,0330,0330,0330,0332,0332,0332,0124,0111,0124,0114,0105,0340,0331,0332,0330,0331,0332,0332,0336,0336,0167,0157,0162,0144,0163,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0337,0337,0214,0211,0333,0333");
 currentTable.push("0404:0300");
 currentTable.push("0405:0300");
 currentTable.push("0406:0300");

@@ -12,7 +12,7 @@
 	backgroundImageOn = false;
 	doTheThing(0507);		
 		
-	
+	console.log(commandString2keyString("0300,0101,0330"));
 </script>
 
 <canvas id="editGlyphDisplay" width="512" height="384"style="border:1px solid;">
@@ -139,6 +139,7 @@
 	function previousGlyph(){
 		rootMagic(014);
  	    document.getElementById("inputGlyph").value = commandString2keyString(editGlyph);
+		currentGlyphString = commandString2keyString(editGlyph);
 	}
 
 	function redraw(){
