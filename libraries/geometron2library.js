@@ -1,16 +1,30 @@
 function keystring2command(localKeyString){//from a key sequence to a command address seq.
-  
+  var localASCIIboolean = false;
   var localCommandString = "";
   for(var glyphIndex = 0;glyphIndex < localKeyString.length;glyphIndex++){
+      if(localKeyString.charAt(glyphIndex-2)=="\\" && localKeyString.charAt(glyphIndex-1) == "~"){
+	  		localASCIIboolean = !localASCIIboolean;
+  	}
+
   	for(var keyIndex = 0;keyIndex < keyStringFull.length;keyIndex++){
+  		 
   		if(localKeyString.charAt(glyphIndex)==keyStringFull.charAt(keyIndex)){
-  			localCommandString += addressStringArray[keyIndex] + ",";
+			if(!localASCIIboolean){
+  				localCommandString += addressStringArray[keyIndex] + ",";
+  			}
   		}
   	}
+    if(localASCIIboolean){
+    	var localCharCode = localKeyString.charCodeAt(glyphIndex);
+  	    if(!( localKeyString.charAt(glyphIndex-1) == "\\" &&localKeyString.charAt(glyphIndex) == "~")&&!( localKeyString.charAt(glyphIndex) == "\\" &&localKeyString.charAt(glyphIndex+1) == "~")){
+  	    localCommandString += "0" + localCharCode.toString(8) + ",";	  	    
+  	    }
+    }
   }  
   return localCommandString.substring(0,localCommandString.length - 1);	//remove commma at end
 }
 function commandString2keyString(localCommandString){
+    var localASCIIboolean = false;
 	var localKeyString = "";
     var localCommandArray = localCommandString.split(",");
 	for(var outerIndex = 0;outerIndex < localCommandArray.length;outerIndex++){
@@ -19,8 +33,21 @@ function commandString2keyString(localCommandString){
 				localKeyString += keyStringFull.charAt(innerIndex);
 			}
 		}
+		var thisCode = parseInt(localCommandArray[outerIndex],8); 
+		var nextCode = parseInt(localCommandArray[outerIndex+1],8); 
+		if(((040<=thisCode)&&(thisCode <= 0176)) && !((040<=nextCode)&&(nextCode <= 0176))){
+			localKeyString += String.fromCharCode(thisCode);
+			localKeyString += "\\~";
+			localASCIIboolean = !localASCIIboolean;
+		}
+		if( !((040<=thisCode)&&(thisCode <= 0176)) && ((040<=nextCode)&&(nextCode <= 0176))){
+			localKeyString += "\\~";
+			localASCIIboolean = !localASCIIboolean;
+		}
+		if((040<=thisCode)&&(thisCode <= 0176)){
+			localKeyString += String.fromCharCode(thisCode);
+		}
 	}
-
 	return localKeyString;
 	
 }
@@ -173,6 +200,9 @@ function drawGlyph(localString){
 function spellGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
+	    if((parseInt(tempArray[index],8) >= 040) && (parseInt(tempArray[index],8) <= 0176)){
+	    	doTheThing(parseInt(tempArray[index],8));
+	    }
 		doTheThing(parseInt(tempArray[index],8) + 01000);
 	}
 }
