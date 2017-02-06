@@ -10,12 +10,26 @@ function keystring2command(localKeyString){//from a key sequence to a command ad
   }  
   return localCommandString.substring(0,localCommandString.length - 1);	//remove commma at end
 }
+function commandString2keyString(localCommandString){
+	var localKeyString = "";
+    var localCommandArray = localCommandString.split(",");
+	for(var outerIndex = 0;outerIndex < localCommandArray.length;outerIndex++){
+		for(var  innerIndex = 0;innerIndex < addressStringArray.length;innerIndex++){
+			if(addressStringArray[innerIndex]==localCommandArray[outerIndex]){
+				localKeyString += keyStringFull.charAt(innerIndex);
+			}
+		}
+	}
+
+	return localKeyString;
+	
+}
 
 
 function initGeometron(){
   var img = new Image();
   imageIndex = 07;
-	
+  spellLine = 800;
   keyStringFull = "1234567890";
   addressStringFull = "0304,0305,0306,0310,0311,0312,0313,0314,0223,0300,";
   keyStringFull += "qwertyuiop";
@@ -29,9 +43,9 @@ function initGeometron(){
   inPath = false;//move to true after path started, back to false after path ended
   svgFile = [];
 
-  editAddress = 0400;
-  tableBottom = 060;
-  tableTop = 0177;
+  editAddress = 0200;
+  tableBottom = 0200;
+  tableTop = 0237;
 
   editGlyph = "0300";
   cursorPosition = 1;
@@ -111,7 +125,6 @@ function rootMagic(localCommand){
 				currentTable[index] = "0" + editAddress.toString(8) + ":" + editGlyph;
 			}
    		}
-	
 		editAddress++;
 		if(editAddress > tableTop){
 			editAddress = tableBottom;
@@ -195,6 +208,10 @@ function doTheThing(localCommand){
     	for(var symbolSearchIndex = 0;symbolSearchIndex < currentTable.length;symbolSearchIndex++){
     		var tempSymbolLocalArray = currentTable[symbolSearchIndex].split(":");
     		if(parseInt(tempSymbolLocalArray[0],8) == localCommand){
+    			if(x > spellLine){
+    				y += 1.5*side;
+    				x = 2;
+    			}
     			drawGlyph(tempSymbolLocalArray[1]);
     		}
     	}
@@ -763,7 +780,7 @@ currentTable.push("0433:0300");
 currentTable.push("0434:0300");
 currentTable.push("0435:0300");
 currentTable.push("0436:0300");
-currentTable.push("0437:0300");
+currentTable.push("0437:0300,0330,0332,0332,0332,0332,0332,0330,0330,0123,0114,0111,0104,0105,040,0124,0111,0124,0114,0105,0330,0330,0330,0330,0330,0330,0332,0332,0332,0332,0300,0330,0332,0332,0332,0330,0336,0336,0336,0341,0337,0331,0333,0337,0142,0165,0154,0154,0145,0164,040,0160,0157,0151,0156,0164,0337,0337,0337,0336,0336,0336,0330,0331,0331,0331,0331,0331,0331,0331,0332,0332,0332,0332,0337,0214,0330,0331,0331,0331,0330,0333,0211,0334,0342,0330,0340,0330,0334,0334,0342,0342,0335,0210,0334,0342,0330,0340,0342,0335,0336,0336,0342,0330,0337,0337,0336,0337,0212,0330,0336,0336,0330,0337,0342,0330,0337,0217,0333,0333,0333,0333,0331,0332,0332,0336,0336,0332,0332,0331,0337,,0103,0332,0332,0332,0332,0332,0332,0332,0332,0336,0333,0337,0122,0333,0333,0333,0333,0333,0333,0333,0333,0332,0332,0332,0332,0332,0114");
 
 
 }

@@ -11,12 +11,14 @@
 	initGeometron();
 	backgroundImageOn = false;
 	doTheThing(0507);		
+		
+	
 </script>
 
 <canvas id="editGlyphDisplay" width="512" height="384"style="border:1px solid;">
 </canvas>
 <p>
-<canvas id="glyphSpellingDisplay" width="800" height="42"style="border:1px solid;">
+<canvas id="glyphSpellingDisplay" width="804" height="60"style="border:1px solid;">
 </canvas>
 <p>
 <input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
@@ -138,14 +140,15 @@
 		ctx = spellcanvas.getContext("2d");
 		ctx.clearRect(0, 0, spellcanvas.width, spellcanvas.height);
 		doTheThing(0300);
-		side = 38;
+		side = 20;
 		x = 2;
-		y = 40;
+		y = 24;
 		spellGlyph(editGlyph);
 		x = 2 + cursorPosition*side;
 		y += 2;
 		doTheThing(0340);
-				
+			document.getElementById("inputGlyph").value = commandString2keyString(editGlyph);
+		
 }   	
 
 
