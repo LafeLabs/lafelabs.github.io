@@ -56,9 +56,44 @@ function commandString2keyString(localCommandString){
 	
 }
 
+function roctalChar(localAddress){
+	doTheThing(0304);//fourfold symmetry
+	doTheThing(0313);//2x scaling
+	doTheThing(0336);//halve
+	doTheThing(0336);//halve again to 1/4 "side"
+	doTheThing(0336);//halve again to 1/8 "side"
+	doTheThing(0366);//calibration square 1
+	doTheThing(0331);//move back
+	doTheThing(0333);//move right
+	doTheThing(0366);//calibration square 2
+	doTheThing(0331);//move back
+	doTheThing(0333);//move right one bit
+	doTheThing(0337);//back up to 1/4 scale
+	doTheThing(0333);//move right one bit
+
+	for(var bitIndex = 7;bitIndex >= 0;bitIndex--){
+		if(((localAddress>>bitIndex)&1)==1){
+			doTheThing(0366);//first data square
+		}
+		doTheThing(0333);
+		if((bitIndex == 6)||(bitIndex == 3)){
+			doTheThing(0331);
+			doTheThing(0332);		
+			doTheThing(0332);		
+			doTheThing(0332);		
+		}
+	}
+	doTheThing(0331);//move back to corner
+	doTheThing(0337);//back up to 1/2 scale
+	doTheThing(0337);//back up to 1 scale
+	doTheThing(0200);//square
+	doTheThing(0330);//move forward to make this like other symbol glyphs
+}
+
 
 function initGeometron(){
   var img = new Image();
+  
   imageIndex = 07;
   spellLine = 800;
   keyStringFull = "1234567890";
@@ -239,7 +274,7 @@ function doTheThing(localCommand){
     	}    
     }
     
-    if(localCommand > 01000){
+    if((localCommand > 01000) && (localCommand < 02000)){
     	for(var symbolSearchIndex = 0;symbolSearchIndex < currentTable.length;symbolSearchIndex++){
     		var tempSymbolLocalArray = currentTable[symbolSearchIndex].split(":");
     		if(parseInt(tempSymbolLocalArray[0],8) == localCommand){
@@ -250,6 +285,9 @@ function doTheThing(localCommand){
     			drawGlyph(tempSymbolLocalArray[1]);
     		}
     	}
+    }
+    if((localCommand > 02000)&&(localCommand < 03000)){
+    	roctalChar(localCommand - 02000);
     }
     
     //geometric native action commands
@@ -287,6 +325,14 @@ function doTheThing(localCommand){
     }
     if(localCommand == 0317){
        side = unit; 
+    }
+    if(localCommand == 0320){
+		ctx.strokeStyle="black";
+    	ctx.lineWidth = 1;    	
+    }
+    if(localCommand == 0321){
+		ctx.strokeStyle="yellow";
+    	ctx.lineWidth = 5;    	
     }
     
     if(localCommand == 0330){
@@ -342,21 +388,6 @@ function doTheThing(localCommand){
 		ctx.stroke();
 		
 		
-		if(inPath){  //if we're in a path it's over now			
-			svgFile.push("\"");
-			svgFile.push("style=\"stroke:black;stroke-width:2\" fill=\"none\" />");
-			inPath = false;
-		}
-		localString = "  <circle cx=\"";
-        localString += x.toString();
-        localString += "\" cy=\"";
-        localString += y.toString();
-        localString += "\" r=\"";
-        localString += side.toString();    
-        localString += "\" stroke=\"black\" stroke-width=\"3\" fill=\"none\" />";
-	    svgFile.push(localString);     
-	    
-   inPath = false;
     }
     if(localCommand == 0342){   //line
 		ctx.beginPath();
@@ -531,21 +562,52 @@ function doTheThing(localCommand){
       thetaStep *= 3; //3angle
     }
     if(localCommand == 0360){//grab image
+
 //      myImage = get(int(x),int(y),int(side),int(side));
+   //http://www.w3schools.com/tags/canvas_getimagedata.asp
+//var imgData=ctx.getImageData(10,10,50,50);
+//ctx.putImageData(imgData,10,70);
     }
     if(localCommand == 0361){//drop image
   //     image(myImage,x,y,int(side),int(side));
+//var imgData=ctx.getImageData(10,10,50,50);
+//ctx.putImageData(imgData,10,70);
     }
-    if(localCommand == 0362){//turn background image on
-       backgroundImageOn = true;
+    if(localCommand == 0362){
+
     }
-    if(localCommand == 0363){//turn background image off
-       backgroundImageOn = false; 
+    if(localCommand == 0363){
+ 
     }
-    if(localCommand == 0364){//move to next background image
+    if(localCommand == 0364){
               
     }
+	if(localCommand == 0366){//closed square
+		ctx.fillRect(x,y,side,side);
+		
+		
+		if(inPath){  //if we're in a path it's over now			
+			svgFile.push("\"");
+			svgFile.push("style=\"stroke:black;stroke-width:2\" fill=\"none\" />");
+			inPath = false;
+		}
+		localString = "  <rect x=\"";
+        localString += x.toString();
+        localString += "\" y=\"";
+        localString += y.toString();
+        localString += "\" height=\"";
+        localString += side.toString();    
+        localString += "\" width=\"";
+        localString += side.toString();     
+        localString += "\" stroke=\"black\" stroke-width=\"1\" fill=\"none\" />";
+	    svgFile.push(localString);     
+	    
+   inPath = false;
 
+		
+//  <rect width="400" height="100" style="fill:rgb(0,0,255);stroke-width:10;stroke:rgb(0,0,0)" />
+
+	}
     if(localCommand == 0370){ //drop triangle marker
         triangleX = x;
         triangleY =y;
