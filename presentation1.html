@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quantum Geometron: Geometry Based Meta-Language for Quantum Information Science</title>
+<script src="libraries/geometron2library.js"></script>
+
+</head>
+<body>
+
+<script>
+	initGeometron();
+	backgroundImageOn = false;
+//	x0 = 400;
+//	y0 = 250;
+		
+</script>
+<canvas id="slide1" width="800" height="500"style="border:1px solid;">
+</canvas>
+
+<script>
+
+	glyph1 = "0300,0330,0332,0332,0332,0332,0332,0330,0330,0336,0333,0333,0333,0333,0333,0333,0333,0330,0337,0107,0145,0157,0155,0145,0164,0162,0157,0156,072,0331,0332,0332,0332,0332,0332,0332,0332,0332,0336,0141,040,0107,0145,0157,0155,0145,0164,0162,0151,0143,040,0115,0145,0164,0141,0154,0141,0156,0147,0165,0141,0147,0145,0336,0330,0337,052,0331,0337,0337,0331,0331,0332,0332,0332,0332,0332,0331,0336,0336,052,040,0154,0141,0156,0147,0165,0141,0147,0145,040,0164,0157,040,0142,0165,0151,0154,0144,040,0154,0141,0156,0147,0165,0141,0147,0145,0163,0337";
+	slide1 = document.getElementById("slide1");
+	ctx = slide1.getContext("2d");
+			ctx.lineWidth = 2;
+
+	drawGlyph(glyph1);
+	 
+</script>
+
+</body>
+</html>

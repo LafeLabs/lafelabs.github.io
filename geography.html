@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to get your coordinates relative to the Washington Monument, in units of distance from Washington Monument to Lincoln Memorial(which is around a mile.)</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+x0 = -77.035258;//decimal degrees longitude West of Washington Monument
+y0 = 38.889469;//decimal degrees North latitude of WM
+
+unit = Math.abs(77.035258 - 77.0498579);
+
+// lincoln memorial northern corner of stairs: 38.8894422,-77.0498579
+
+var zeep = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        zeep.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+
+	x = (position.coords.longitude - x0)/unit; //units
+	y = (position.coords.latitude - y0)/unit;  //units
+    
+    x = x.toFixed(2)
+    y = y.toFixed(2)
+
+	zeep.innerHTML = Math.abs(x);
+	if(x>0){
+		zeep.innerHTML += "   East";
+	}
+	else{
+		zeep.innerHTML += "   West";	
+	}
+	zeep.innerHTML += "<br>" + Math.abs(y);
+	if(y > 0){
+		zeep.innerHTML += "  North";	
+	}
+	if(y < 0){
+		zeep.innerHTML += "  South";	
+	}
+	
+
+//    zeep.innerHTML = "north: " + y + 
+ //   "<br>east: " + x;
+    
+//    zeep.innerHTML += "<br> ";
+    
+    
+    
+}
+
+
+
+</script>
+
+</body>
+</html>
