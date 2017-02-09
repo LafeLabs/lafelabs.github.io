@@ -9,3 +9,7 @@
 0510:293:424:alaskabeach.png
 0511:987:584:thePentagon.png
 0512:800:800:dime.png
+0513:477:573:hebrew1.png
+0514:486:578:hebrew2.png
+0515:678:214:hebrew3.png
+0516:817:198:hebrew4.png

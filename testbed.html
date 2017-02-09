@@ -10,14 +10,15 @@
 	initGeometron();
 </script>
 
-<canvas id="editGlyphDisplay" width="600px" height="600px"style="border:1px solid;">
+<canvas id="editGlyphDisplay" width="900px" height="900px"style="border:1px solid;">
 </canvas>
 <p>
 
 <p>
 
 <script>
-		doTheThing(0503);		
+
+//		doTheThing(0503);		
         var canvas = document.getElementById('editGlyphDisplay'); 
 
         var ctx = document.getElementById('editGlyphDisplay').getContext('2d');
@@ -25,8 +26,11 @@
   		canvas.width = Number(currentImageWidth);
   	    var img = new Image();
  	    img.onload = function() {
-     	 ctx.drawImage(img, 0, 0);
+     	 	ctx.drawImage(img, 0, 0);
  	    };
+ 	    secretCode = "p21JC6L";
+currentImageURL = "http://imgur.com/" + secretCode +".png";
+   	    currentImageURL = "https://upload.wikimedia.org/wikipedia/en/c/c3/Blofeldpleasance67.jpg";
    	    img.src = currentImageURL;
 
 
