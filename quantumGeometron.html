@@ -10,7 +10,9 @@
 <script>
 	initGeometron();
 	backgroundImageOn = false;	
-	doTheThing(0507);		
+
+	
+	//doTheThing(0507);		
 		
 </script>
 
@@ -23,6 +25,9 @@
 <input type = "text" value  = "0" onkeyup = "updateText()" id = "inputGlyph"><--Type text here</input>
 <button onClick = "previousGlyph();">PREV GLYPH</button>
 <button onClick = "nextGlyph();">NEXT GLYPH</button>
+<button onclick = "rootMagic(0010);">IMAGE ON/OFF</button>
+<p>
+<input type = "text" value  = "https://upload.wikimedia.org/wikipedia/commons/7/7b/OlympicMarmot1_%28mirrored%29.jpg" onchange = "updateImageUrl()" id = "inputURL"><--imageURL</input>
 <p>
 <button onClick = "buildSvg()">GRAB SVG CODE</button>
 <button onClick = "exportByteCode()">EXPORT BYTE CODE</button>
@@ -43,7 +48,11 @@
 	keymapCanvas = document.getElementById("keymapDisplay");
 	ctx = keymapCanvas.getContext("2d");
 	drawGlyph(keyboardTable);
-	
+	updateImageUrl();	
+	function updateImageUrl(){
+		currentImageURL = document.getElementById("inputURL").value;
+		redraw();
+	}
 	
 	function buildSvg(){
 
@@ -149,12 +158,13 @@
 		if(backgroundImageOn){
 		ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		canvas.height = Number(currentImageHeight);
-		canvas.width = Number(currentImageWidth);
+		//canvas.height = Number(currentImageHeight);
+	//	canvas.width = Number(currentImageWidth);
   	    img = new Image();
  	    img.onload = function() {
  	    		ctx = canvas.getContext("2d");
-     	 		ctx.drawImage(img, 0, 0);
+ 	    		
+     	 		ctx.drawImage(img, 0, 0,canvas.width,img.height*(canvas.width/img.width));
      	 		ctx.font="30px Arial";
 				ctx.fillText("0" + editAddress.toString(8),5,35);
 				doTheThing(0300);
@@ -162,6 +172,7 @@
  
  	    };
    	    img.src = currentImageURL;
+ 	    console.log(currentImageURL);
  	    }
  	    
  	    else{
