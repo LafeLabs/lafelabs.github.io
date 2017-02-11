@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Action Geometry</title>
+<script src="libraries/geometron2library.js">
+</script>
+
+</head>
+<body>
+
+<script>
+	initGeometron();
+
+ 	currentImageURL = "https://upload.wikimedia.org/wikipedia/commons/1/18/ChicagoAnarchists.jpg";
+backgroundImageOn = false;
+</script>
+
+<canvas id="page1" width="800" height="500"style="border:1px solid;">
+</canvas>
+
+<script>
+
+wordStack = [];
+wordStack.push("word one");	
+wordStack.push("word two");	
+
+canvas = document.getElementById("page1");	
+canvasThingy(0401);
+
+
+function canvasThingy(glyph){	
+
+	if(backgroundImageOn){
+		ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	
+		img = new Image();
+		img.onload = function() {
+			ctx.drawImage(img, 0, 0,canvas.width,img.height*(canvas.width/img.width));
+			doTheThing(0300);
+			doTheThing(glyph);
+		};	
+		img.src = currentImageURL;	
+    }
+    else{
+    	ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		doTheThing(0300);
+		doTheThing(glyph);
+
+    }
+    
+}	 
+</script>
+
+</body>
+</html>

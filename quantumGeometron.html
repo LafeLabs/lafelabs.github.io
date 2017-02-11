@@ -4,6 +4,7 @@
 	<title>Quantum Geometron: Geometry Based Meta-Language for Quantum Information Science</title>
 <script src="libraries/geometron2library.js"></script>
 
+
 </head>
 <body>
 
@@ -29,12 +30,13 @@
 <p>
 <input type = "text" value  = "https://upload.wikimedia.org/wikipedia/commons/7/7b/OlympicMarmot1_%28mirrored%29.jpg" onchange = "updateImageUrl()" id = "inputURL"><--imageURL</input>
 <p>
-<button onClick = "buildSvg()">GRAB SVG CODE</button>
+<button onClick = "buildSvg()">EXPORT SVG CODE</button>
 <button onClick = "exportByteCode()">EXPORT BYTE CODE</button>
 <button onClick = "importByteCode()">IMPORT BYTE CODE</button>
-<button onClick = "importASCII()">IMPORT ASCII</button>
-<button onClick = "exportjs()">EXPORT JAVASCRIPT TABLE</button>
-<button onClick = "gotoAddress()">GOTO ADDRESS</button>
+<button onClick = "importASCII();">IMPORT ASCII</button>
+<button onClick = "exportjs();">EXPORT JAVASCRIPT TABLE</button>
+<button onClick = "gotoAddress();">GOTO ADDRESS</button>
+<button onClick = "importWordStack();">IMPORT WORD STACK</button>
 <p>
 <textarea id = "svgText" rows="4" cols="80">
 </textarea>
@@ -49,6 +51,7 @@
 	ctx = keymapCanvas.getContext("2d");
 	drawGlyph(keyboardTable);
 	updateImageUrl();	
+	
 	function updateImageUrl(){
 		currentImageURL = document.getElementById("inputURL").value;
 		redraw();
@@ -121,6 +124,16 @@
 		document.getElementById("svgText").value = editGlyph;
 	}
 	
+	function importWordStack(){
+		var tempWordString= document.getElementById("svgText").value;
+		var tempWordArray = tempWordString.split("\n");
+		wordStack = [];
+		for(var windex = 0;windex < tempWordArray.length;windex++){
+			wordStack.push(tempWordArray[windex]);
+		}
+		redraw();
+	}
+
 	function importByteCode(){
 		editGlyph = document.getElementById("svgText").value;
 		redraw();
@@ -140,6 +153,7 @@
 		editGlyph = keystring2command(currentGlyphString);
 		redraw();
 	}
+	
 	function nextGlyph(){
 		rootMagic(013);
  	    document.getElementById("inputGlyph").value = commandString2keyString(editGlyph);
