@@ -17,18 +17,65 @@ backgroundImageOn = false;
 
 <canvas id="page1" width="800" height="500"style="border:1px solid;">
 </canvas>
+<canvas id="page2" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page3" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page4" width="800" height="500"style="border:1px solid;">
+</canvas>
 
 <script>
 
-wordStack = [];
-wordStack.push("word one");	
-wordStack.push("word two");	
-
 canvas = document.getElementById("page1");	
-canvasThingy(0401);
+wordStack = [];
+wordStack.push("Geometron");	
+wordStack.push("A Geometric Meta-Language");
+wordStack.push("Lafe Spietz");
+wordStack.push("www.lafelabs.org");
+wordStack.push("Feb 2017");	
+currentGlyph = ("0300,0332,0332,0330,0336,0330,0332,0364,0331,0331,0310,0336,0313,0330,0364,0331,0331,0336,0333,0333,0333,0333,0333,0364,0331,0331,0364,0331,0331,0364");
+backgroundImageOn = false;
+//set: image location, size, position, other globals
+canvasThingy();
+
+canvas = document.getElementById("page2");	
+wordStack = [];
+wordStack.push("What is a Meta-Language?");	
+wordStack.push("A Language to build languages");
+wordStack.push("Geometric:");
+wordStack.push("A system where numbers follow geometry,");
+wordStack.push("Geometry is always more fundamental");	
+currentGlyph = ("0300,0332,0332,0332,0336,0336,0332,0337,0337,0330,0336,0330,0332,0364,0331,0331,0310,0336,0313,0330,0364,0331,0331,0336,0333,0333,0333,0333,0333,0364,0331,0331,0364,0331,0331,0364");
+backgroundImageOn = false;
+//set: image location, size, position, other globals
+canvasThingy();
+
+canvas = document.getElementById("page3");	
+wordStack = [];
+wordStack.push("Glyph construction");	
+wordStack.push("All glyphs have an address");
+wordStack.push("All addresses are octal, have both an action and a symbol");
+wordStack.push("All information can be physically encoded at any level");
+wordStack.push("Everything is fractal");	
+currentGlyph = ("0300,0332,0332,0332,0336,0336,0332,0337,0337,0330,0336,0330,0332,0364,0331,0331,0310,0336,0313,0330,0364,0331,0331,0336,0333,0333,0333,0333,0333,0364,0331,0331,0364,0331,0331,0364");
+backgroundImageOn = false;
+//set: image location, size, position, other globals
+canvasThingy();
+
+canvas = document.getElementById("page4");	
+wordStack = [];
+wordStack.push("Glyphs: Symbol and Action");	
+wordStack.push("independent of both human and machine language");
+wordStack.push("(pure geometry)");
+currentGlyph = ("0300,0330,0332,0332,0332,0336,0330,0332,0332,0336,0333,0337,0364,0331,0331,0331,0336,0330,0333,0364,0331,0331,0333,0333,0333,0333,0333,0333,0333,0333,0333,0364,0331,0331,0335,0335,0332,0332,0332,0332,0331,0337,0243,0335,0335,0332,0332,0332,0332,0331,01335,01335,01332,01332,01332,01332,01331,01334");
+backgroundImageOn = true;
+//set: image location, size, position, other globals
+currentImageURL = "geometronfiles/images/intro1.png";
+canvasThingy();
 
 
-function canvasThingy(glyph){	
+
+function canvasThingy(){	
 
 	if(backgroundImageOn){
 		ctx = canvas.getContext("2d");
@@ -38,7 +85,7 @@ function canvasThingy(glyph){
 		img.onload = function() {
 			ctx.drawImage(img, 0, 0,canvas.width,img.height*(canvas.width/img.width));
 			doTheThing(0300);
-			doTheThing(glyph);
+			drawGlyph(currentGlyph);
 		};	
 		img.src = currentImageURL;	
     }
@@ -46,7 +93,7 @@ function canvasThingy(glyph){
     	ctx = canvas.getContext("2d");
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		doTheThing(0300);
-		doTheThing(glyph);
+		drawGlyph(currentGlyph);
 
     }
     
