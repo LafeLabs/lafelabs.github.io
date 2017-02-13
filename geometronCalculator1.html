@@ -11,27 +11,29 @@
 	initGeometron();
 	//console.log(domain);
 	processStack  = [0,0,0,0];
-	constantStack = [0,0,0,0];
-	
+	A =0;
+	B =0;
+	C =0;
+	D =0;
 	calculatorString  = "";
 	computeChain = [];
 	//domain is variable, input numbers are constants
 </script>
 
-Start:<input id = "start" value = "0" onchange = "compute()"></input>
+Start:<input id = "start" value = "0.1" onchange = "compute()"></input>
 <p>
-Stop:<input id = "stop" value  = "10" onchange = "compute()"></input>
+Stop:<input id = "stop" value  = "80" onchange = "compute()"></input>
 <p>
-Number of Points:<input id = "numPoints" value = "100" onchange = "compute()"></input>
+Number of Points:<input id = "numPoints" value = "200" onchange = "compute()"></input>
 <p>
 Command String:
-<input id = "command" type = "text" onkeyup = "compute()" value = "qqa"></input>
+<input id = "command" type = "text" onkeyup = "compute()" value = "qwfgvqzd"></input>
 Command Glyph:<textarea rows="1" cols="40" id = "commandGlyphString"></textarea>
 <p>
-Constant 0:<input id = "constant0" type = "text" onchange = "compute()" value = "0"></input>
-Constant 1:<input id = "constant1" type = "text" onchange = "compute()" value = "0"></input>
-Constant 2:<input id = "constant2" type = "text" onchange = "compute()" value = "0"></input>
-Constant 3:<input id = "constant3" type = "text" onchange = "compute()" value = "0"></input>
+A:<input id = "A" type = "text" onchange = "compute()" value = "30"></input>
+B:<input id = "B" type = "text" onchange = "compute()" value = "0"></input>
+C:<input id = "C" type = "text" onchange = "compute()" value = "0"></input>
+D:<input id = "D" type = "text" onchange = "compute()" value = "0"></input>
 <p id = "glyphStringOutput">
 </p>
 Input:<p>
@@ -54,8 +56,8 @@ function commandUpdate(){
 	var commandMap = "0700,0701,0702,0703,0704,0705";
 	keyMap += "asdfg";
 	commandMap += ",0740,0741,0742,0743,0744";
-	keyMap += "z";
-	commandMap += ",0750";
+	keyMap += "zxcv";
+	commandMap += ",0750,0751,0752,0753";
 	inputCommandString = document.getElementById("command").value; 
 	computeChain = [];
 	var commandMapArray  = commandMap.split(",");
@@ -72,14 +74,23 @@ function commandUpdate(){
 
 function compute(){
 
+
+
   numPoints = parseFloat(document.getElementById("numPoints").value);
   domainStart = parseFloat(document.getElementById("start").value);
   domainStop = parseFloat(document.getElementById("stop").value);
+
+  A = parseFloat(document.getElementById("A").value);
+  B = parseFloat(document.getElementById("B").value);
+  C = parseFloat(document.getElementById("C").value);
+  D = parseFloat(document.getElementById("D").value);
+
   delta = (domainStop - domainStart)/(numPoints - 1.0);
   domain  = [];
   for(var domainIndex = 0;domainIndex < numPoints;domainIndex++){
   	domain.push(domainStart + domainIndex*delta);
   }
+
 
   commandUpdate();
 
@@ -93,6 +104,12 @@ function compute(){
 
 //	processStack[0] = document.getElementById("domain").value;
 
+	for(var domainIndex = 0;domainIndex < domain.length;domainIndex++){
+		
+		domain[domainIndex] = parseFloat(domain[domainIndex].toFixed(2));
+		image[domainIndex] = parseFloat(image[domainIndex].toFixed(2));
+	}
+
 	document.getElementById("input").innerHTML = domain;
 	document.getElementById("output").innerHTML = image;
 	document.getElementById("glyphStringOutput").innerHTML = calculatorString;
@@ -105,7 +122,7 @@ function plotFunction(){
 	canvas = document.getElementById("plotDisplay");
 	ctx = canvas.getContext("2d");
 	ctx.lineWidth = 2;
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 //javascript is dumber than a sack of hammers mixed with poo: 
 	domainMinimum = domain[0];
@@ -113,6 +130,9 @@ function plotFunction(){
 	imageMinimum = image[0];
 	imageMaximum = image[0];
 	for(var domainIndex = 0;domainIndex < domain.length;domainIndex++){
+		
+		
+		
 		if(domain[domainIndex] > domainMaximum){
 			domainMaximum = domain[domainIndex];
 		}
@@ -130,20 +150,17 @@ function plotFunction(){
 	X0 =(domainMaximum - domainMinimum)/2;
 	Y0 =(imageMaximum - imageMinimum)/2;
 	
-	console.log(domainMinimum);
-	console.log(domainMaximum);
-	console.log(imageMinimum);
-	console.log(imageMaximum);
-
 	windowStartX = 50;
 	windowSizeX = 400;
 	windowStartY = 450;
 	windowSizeY = 400;
 	ctx.strokeRect(windowStartX,windowStartY - windowSizeY,windowSizeX,windowSizeY);
-
-// X = windowStartX + X*(windowSizeX/(Math.abs(domainMaximum - domainMinimum)))
-// Y = windowStartY - Y*(windowSizeY/(Math.abs(imageMaximum - imageMinimum)))
-
+    ctx.font="25px Arial";
+	ctx.fillText(domainMinimum.toString(),50,485);
+	ctx.fillText(domainMaximum.toString(),425,485);
+	ctx.fillText(imageMinimum.toString(),5,450);
+	ctx.fillText(imageMaximum.toString(),5,65);
+	
 	ctx.beginPath();
 
 	for(var plotIndex = 0;plotIndex < domain.length-1;plotIndex++){
@@ -176,34 +193,32 @@ function doTheMath(localCommand){
 		calculatorString += "X ";
 		commandGlyphString += "0700,";
 	}
-
 	if(localCommand == 0701){ //
+		processStack.push(A);
+		calculatorString += "A ";
+		commandGlyphString += "0702,";
+	}
+	if(localCommand == 0702){ //
+		processStack.push(B);
+		calculatorString += "B ";
+		commandGlyphString += "0703,";
+	}
+	if(localCommand == 0703){ //
+		processStack.push(C);
+		calculatorString += "C ";
+		commandGlyphString += "0704,";
+	}
+	if(localCommand == 0704){ //
+		processStack.push(D);
+		calculatorString += "D ";
+		commandGlyphString += "0705,";
+	}
+	if(localCommand == 0705){ //
 		processStack.push(Y);
 		calculatorString += "Y ";
 		commandGlyphString += "0701,";
 		calculatorString += "Y ";
 	}
-	if(localCommand == 0702){ //
-		processStack.push(constantStack[0]);
-		calculatorString += "A ";
-		commandGlyphString += "0702,";
-	}
-	if(localCommand == 0703){ //
-		processStack.push(constantStack[1]);
-		calculatorString += "B ";
-		commandGlyphString += "0703,";
-	}
-	if(localCommand == 0704){ //
-		processStack.push(constantStack[2]);
-		calculatorString += "C ";
-		commandGlyphString += "0704,";
-	}
-	if(localCommand == 0705){ //
-		processStack.push(constantStack[3]);
-		calculatorString += "D ";
-		commandGlyphString += "0705,";
-	}
-
 	if(localCommand == 0740){  //plus
 		var tempX = processStack.pop();
 		var tempY = processStack.pop();
@@ -214,7 +229,7 @@ function doTheMath(localCommand){
 	if(localCommand == 0741){ //minus
 		var tempX = processStack.pop();
 		var tempY = processStack.pop();
-		processStack.push(tempX - tempY);
+		processStack.push(tempY - tempX);
 
 		calculatorString += " - ";
 		commandGlyphString += "0741,";
@@ -232,7 +247,7 @@ function doTheMath(localCommand){
 	if(localCommand == 0743){ //divide
 		var tempX = processStack.pop();
 		var tempY = processStack.pop();
-		processStack.push(tempX / tempY);
+		processStack.push(tempY/tempX);
 
 		calculatorString += " / ";
 		commandGlyphString += "0743,";
@@ -254,7 +269,26 @@ function doTheMath(localCommand){
 		calculatorString += " SIN ";
 		commandGlyphString += "0750,";	
 	}
-	
+	if(localCommand == 0751){
+		var tempX = processStack.pop();
+		processStack.push(Math.cos(tempX));
+		calculatorString += " COS ";
+		commandGlyphString += "0751,";	
+	}
+	if(localCommand == 0752){
+		var tempX = processStack.pop();
+		
+		processStack.push(Math.tan(tempX));
+		calculatorString += " TAN ";
+		commandGlyphString += "0752,";	
+	}
+	if(localCommand == 0753){
+		var tempX = processStack.pop();
+		processStack.push(Math.exp(tempX));
+		calculatorString += " EXP ";
+		commandGlyphString += "0753,";	
+	}
+
 }
 
 
