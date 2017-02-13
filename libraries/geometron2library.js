@@ -166,10 +166,17 @@ function initGeometron(){
   backgroundImageOn = false;	
   doTheThing(0500);
   
-  numberOfPoints = 100;
-  domainStart = -10;
+  numPoints = 100;
+  domainStart = 0;
   domainStop = 10;
-
+  X = 0;//globals for mathOtron
+  Y = 0;
+  delta = (domainStop - domainStart)/(numPoints - 1.0);
+  domain  = [];
+  for(var domainIndex = 0;domainIndex < numPoints;domainIndex++){
+  	domain.push(domainStart + domainIndex*delta);
+  }
+  
 //pixels ---> domain units --> function glyph --> codomain/range units --> pixels
 //math operations all live in 0700's, as do constants and HP calculator stack
 //could I parse latex and output a function glyph?  

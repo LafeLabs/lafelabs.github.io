@@ -11,6 +11,8 @@
 <script>
 	initGeometron();
 
+	//imageParams = [sx,sy,swidth,sheight,x,y,width,height];
+	imageParams = [0,0,500,500,1000,100,500,500];
  	currentImageURL = "https://upload.wikimedia.org/wikipedia/commons/1/18/ChicagoAnarchists.jpg";
 backgroundImageOn = false;
 </script>
@@ -23,10 +25,17 @@ backgroundImageOn = false;
 </canvas>
 <canvas id="page4" width="800" height="500"style="border:1px solid;">
 </canvas>
+<canvas id="page5" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page6" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page7" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page8" width="800" height="500"style="border:1px solid;">
+</canvas>
 
 <script>
 
-canvas = document.getElementById("page1");	
 wordStack = [];
 wordStack.push("Geometron");	
 wordStack.push("A Geometric Meta-Language");
@@ -34,11 +43,9 @@ wordStack.push("Lafe Spietz");
 wordStack.push("www.lafelabs.org");
 wordStack.push("Feb 2017");	
 currentGlyph = ("0300,0332,0332,0330,0336,0330,0332,0364,0331,0331,0310,0336,0313,0330,0364,0331,0331,0336,0333,0333,0333,0333,0333,0364,0331,0331,0364,0331,0331,0364");
-backgroundImageOn = false;
-//set: image location, size, position, other globals
-canvasThingy();
+ctx = document.getElementById("page1").getContext("2d");	
+drawGlyph(currentGlyph);
 
-canvas = document.getElementById("page2");	
 wordStack = [];
 wordStack.push("What is a Meta-Language?");	
 wordStack.push("A Language to build languages");
@@ -46,11 +53,11 @@ wordStack.push("Geometric:");
 wordStack.push("A system where numbers follow geometry,");
 wordStack.push("Geometry is always more fundamental");	
 currentGlyph = ("0300,0332,0332,0332,0336,0336,0332,0337,0337,0330,0336,0330,0332,0364,0331,0331,0310,0336,0313,0330,0364,0331,0331,0336,0333,0333,0333,0333,0333,0364,0331,0331,0364,0331,0331,0364");
-backgroundImageOn = false;
-//set: image location, size, position, other globals
-canvasThingy();
+ctx = document.getElementById("page2").getContext("2d");	
+drawGlyph(currentGlyph);
 
-canvas = document.getElementById("page3");	
+//set: image location, size, position, other globals
+
 wordStack = [];
 wordStack.push("Glyph construction");	
 wordStack.push("All glyphs have an address");
@@ -58,46 +65,82 @@ wordStack.push("All addresses are octal, have both an action and a symbol");
 wordStack.push("All information can be physically encoded at any level");
 wordStack.push("Everything is fractal");	
 currentGlyph = ("0300,0332,0332,0332,0336,0336,0332,0337,0337,0330,0336,0330,0332,0364,0331,0331,0310,0336,0313,0330,0364,0331,0331,0336,0333,0333,0333,0333,0333,0364,0331,0331,0364,0331,0331,0364");
-backgroundImageOn = false;
 //set: image location, size, position, other globals
-canvasThingy();
+ctx = document.getElementById("page3").getContext("2d");	
+drawGlyph(currentGlyph);
 
-canvas = document.getElementById("page4");	
+
 wordStack = [];
 wordStack.push("Glyphs: Symbol and Action");	
 wordStack.push("independent of both human and machine language");
 wordStack.push("(pure geometry)");
 currentGlyph = ("0300,0330,0332,0332,0332,0336,0330,0332,0332,0336,0333,0337,0364,0331,0331,0331,0336,0330,0333,0364,0331,0331,0333,0333,0333,0333,0333,0333,0333,0333,0333,0364,0331,0331,0335,0335,0332,0332,0332,0332,0331,0337,0243,0335,0335,0332,0332,0332,0332,0331,01335,01335,01332,01332,01332,01332,01331,01334");
-backgroundImageOn = true;
-//set: image location, size, position, other globals
 currentImageURL = "geometronfiles/images/intro1.png";
-canvasThingy();
+ctx = document.getElementById("page4").getContext("2d");	
+drawGlyph(currentGlyph);
+
+img = new Image();
+img.onload = function() {
+	wordStack = [];
+	wordStack.push("Ground Squirrel");	
+	wordStack.push("Everything Relative");	
+	wordStack.push("2");	
+	wordStack.push("3");	
+	ctx = document.getElementById("page5").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [0,0,img.width,img.height,200,120,img.width,img.height];
+ctx.drawImage(img,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	doTheThing(0300);
+	currentGlyph = ("0300,0330,0332,0332,0332,0336,0330,0332,0332,0336,0333,0337,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "https://upload.wikimedia.org/wikipedia/commons/7/7b/OlympicMarmot1_%28mirrored%29.jpg";
+img.src = currentImageURL;	
+
+wordStack = [];
+wordStack.push("Square Root of Two:");	
+wordStack.push("independent of both human and machine language");
+wordStack.push("(pure geometry)");
+currentGlyph = ("0300,0332,0200,0310,0337,0350,0334,0200,0300,0336,0331,0331,0331,0332,0332,0332,0332,0331,0332,0332,0332,0336,01200,01310,01337,01350,01334,01200,0300,0330,0332,0332,0332,0336,0330,0332,0332,0336,0333,0337,0364,0300,0333,0333,0331,0332,0337,0310,0342,0330,0350,0335,0335,0335,0336,0342,0330,0335,0335,0342,0300,0331,0331,0336,0336,0333,01310,01342,01330,01350,01335,01335,01335,01336,01342,01330,01335,01335,01342");
+ctx = document.getElementById("page6").getContext("2d");	
+drawGlyph(currentGlyph);
 
 
+wordStack = [];
+wordStack.push("Cursor:");	
+wordStack.push("Cartoon Representation of Global Variables");
+currentGlyph = ("0300,0330,0332,0332,0332,0336,0330,0332,0332,0336,0333,0337,0364,0330,0333,0331,0331,0336,0331,0330,0332,0332,0336,0333,0337,0364");
+//ctx = document.getElementById("page7").getContext("2d");	
+//drawGlyph(currentGlyph);
 
-function canvasThingy(){	
+img2 = new Image();
+img2.onload = function() {
+	wordStack = [];
+	wordStack.push("Cursor:");	
+	wordStack.push("Cartoon Representation of Global Variables");
+	ctx = document.getElementById("page7").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [0,0,img2.width,img2.height,100,120,img2.width,0.8*img2.height];
+ctx.drawImage(img2,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	doTheThing(0300);
+currentGlyph = ("0300,0330,0332,0332,0332,0336,0330,0330,0332,0332,0336,0333,0337,0364,0330,0333,0331,0331,0336,0331,0330,0332,0332,0336,0333,0337,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "geometronfiles/images/cursor1.png";
+img2.src = currentImageURL;	
 
-	if(backgroundImageOn){
-		ctx = canvas.getContext("2d");
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-	
-		img = new Image();
-		img.onload = function() {
-			ctx.drawImage(img, 0, 0,canvas.width,img.height*(canvas.width/img.width));
-			doTheThing(0300);
-			drawGlyph(currentGlyph);
-		};	
-		img.src = currentImageURL;	
-    }
-    else{
-    	ctx = canvas.getContext("2d");
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		doTheThing(0300);
-		drawGlyph(currentGlyph);
+wordStack = [];
+wordStack.push("Alice");	
+wordStack.push("Bob");
+wordStack.push("Quantum Channel");
+wordStack.push("Quantum Information");
+currentGlyph = ("0300,0336,0332,0332,0332,0332,0332,0332,0332,0332,0310,0336,0313,0333,0244,0333,0336,0336,0331,0332,0332,0337,0337,0364,0333,0333,0333,0333,0333,0334,0334,0336,0330,0331,0331,0331,0337,0337,0333,0332,0336,0333,0332,0332,0336,0333,0337,0337,0246,0335,0335,0331,0247,0333,0247,0333,0247,0333,0247,0333,0246,0333,0336,0336,0332,0330,0330,0330,0331,0337,0337,0336,0244,0364,0330,0330,0330,0330,0332,0332,0332,0332,0332,0332,0332,0332,0332,0331,0331,0331,0331,0331,0330,0336,0336,0331,0337,0364,0337,0337,0330,0330,0332,0330,0336,0332,0332,0364");
+ctx = document.getElementById("page8").getContext("2d");	
+drawGlyph(currentGlyph);
 
-    }
-    
-}	 
+
 </script>
 
 </body>

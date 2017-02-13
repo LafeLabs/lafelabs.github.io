@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geometron Calculator</title>
+<script src="libraries/geometron2library.js">
+</script>
+</head>
+<body>
+
+<script>
+	initGeometron();
+	//console.log(domain);
+	processStack  = [0,0,0,0];
+	constantStack = [0,0,0,0];
+	
+	calculatorString  = "";
+	computeChain = [];
+	//domain is variable, input numbers are constants
+</script>
+
+Start:<input id = "start" value = "0" onchange = "compute()"></input>
+<p>
+Stop:<input id = "stop" value  = "10" onchange = "compute()"></input>
+<p>
+Number of Points:<input id = "numPoints" value = "100" onchange = "compute()"></input>
+<p>
+Command String:
+<input id = "command" type = "text" onkeyup = "compute()" value = "qqa"></input>
+Command Glyph:<textarea rows="1" cols="40" id = "commandGlyphString"></textarea>
+<p>
+Constant 0:<input id = "constant0" type = "text" onchange = "compute()" value = "0"></input>
+Constant 1:<input id = "constant1" type = "text" onchange = "compute()" value = "0"></input>
+Constant 2:<input id = "constant2" type = "text" onchange = "compute()" value = "0"></input>
+Constant 3:<input id = "constant3" type = "text" onchange = "compute()" value = "0"></input>
+<p id = "glyphStringOutput">
+</p>
+Input:<p>
+<textarea id = "input" rows="4" cols="40">
+</textarea>
+</p>
+Output:<p>
+<textarea id = "output" rows="4" cols="40">
+</textarea>
+<p>
+<canvas id="plotDisplay" width="500" height="500"style="border:1px solid;">
+</canvas>
+
+
+<script>
+
+compute();
+function commandUpdate(){
+	var keyMap = "qwerty";
+	var commandMap = "0700,0701,0702,0703,0704,0705";
+	keyMap += "asdfg";
+	commandMap += ",0740,0741,0742,0743,0744";
+	keyMap += "z";
+	commandMap += ",0750";
+	inputCommandString = document.getElementById("command").value; 
+	computeChain = [];
+	var commandMapArray  = commandMap.split(",");
+
+	for(var inputIndex = 0;inputIndex < inputCommandString.length;inputIndex++){	
+		for(var keyIndex = 0;keyIndex < keyMap.length;keyIndex++){
+			if(keyMap[keyIndex] == inputCommandString[inputIndex]){
+				computeChain.push(parseInt(commandMapArray[keyIndex],8));
+			}
+		}
+	}
+	
+}
+
+function compute(){
+
+  numPoints = parseFloat(document.getElementById("numPoints").value);
+  domainStart = parseFloat(document.getElementById("start").value);
+  domainStop = parseFloat(document.getElementById("stop").value);
+  delta = (domainStop - domainStart)/(numPoints - 1.0);
+  domain  = [];
+  for(var domainIndex = 0;domainIndex < numPoints;domainIndex++){
+  	domain.push(domainStart + domainIndex*delta);
+  }
+
+  commandUpdate();
+
+  image = [];
+  for(var domainIndex = 0;domainIndex < numPoints;domainIndex++){
+	X = domain[domainIndex];
+	doMathArray(computeChain);
+  	Y = processStack[processStack.length - 1];
+  	image.push(Y);
+  }
+
+//	processStack[0] = document.getElementById("domain").value;
+
+	document.getElementById("input").innerHTML = domain;
+	document.getElementById("output").innerHTML = image;
+	document.getElementById("glyphStringOutput").innerHTML = calculatorString;
+	document.getElementById("commandGlyphString").innerHTML = commandGlyphString;
+	plotFunction();
+
+}
+
+function plotFunction(){
+	canvas = document.getElementById("plotDisplay");
+	ctx = canvas.getContext("2d");
+	ctx.lineWidth = 2;
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+//javascript is dumber than a sack of hammers mixed with poo: 
+	domainMinimum = domain[0];
+	domainMaximum = domain[0];
+	imageMinimum = image[0];
+	imageMaximum = image[0];
+	for(var domainIndex = 0;domainIndex < domain.length;domainIndex++){
+		if(domain[domainIndex] > domainMaximum){
+			domainMaximum = domain[domainIndex];
+		}
+		if(domain[domainIndex] < domainMinimum){
+			domainMinimum = domain[domainIndex];
+		}
+		if(image[domainIndex] > imageMaximum){
+			imageMaximum = image[domainIndex];
+		}
+		if(image[domainIndex] < imageMinimum){
+			imageMinimum = image[domainIndex];
+		}	
+	} 
+	
+	X0 =(domainMaximum - domainMinimum)/2;
+	Y0 =(imageMaximum - imageMinimum)/2;
+	
+	console.log(domainMinimum);
+	console.log(domainMaximum);
+	console.log(imageMinimum);
+	console.log(imageMaximum);
+
+	windowStartX = 50;
+	windowSizeX = 400;
+	windowStartY = 450;
+	windowSizeY = 400;
+	ctx.strokeRect(windowStartX,windowStartY - windowSizeY,windowSizeX,windowSizeY);
+
+// X = windowStartX + X*(windowSizeX/(Math.abs(domainMaximum - domainMinimum)))
+// Y = windowStartY - Y*(windowSizeY/(Math.abs(imageMaximum - imageMinimum)))
+
+	ctx.beginPath();
+
+	for(var plotIndex = 0;plotIndex < domain.length-1;plotIndex++){
+		
+		X = windowStartX + plotIndex*windowSizeX/(domain.length - 1);
+		Y = image[plotIndex];
+		Y = windowStartY - (Y - imageMinimum)*(windowSizeY/(Math.abs(imageMaximum - imageMinimum)));		
+		ctx.moveTo(X,Y);
+		X = windowStartX + (plotIndex+1)*windowSizeX/(domain.length - 1);
+		Y = image[plotIndex + 1];
+		Y = windowStartY - (Y - imageMinimum)*(windowSizeY/(Math.abs(imageMaximum - imageMinimum)));		
+		ctx.lineTo(X,Y);
+		ctx.stroke();
+		
+	}
+}
+
+function doMathArray(localGlyph){
+	calculatorString = "";
+	commandGlyphString = "";
+	for(var index =0;index < localGlyph.length;index++){
+		doTheMath(localGlyph[index]);
+	}
+}
+
+function doTheMath(localCommand){
+
+	if(localCommand == 0700){ 
+		processStack.push(X);
+		calculatorString += "X ";
+		commandGlyphString += "0700,";
+	}
+
+	if(localCommand == 0701){ //
+		processStack.push(Y);
+		calculatorString += "Y ";
+		commandGlyphString += "0701,";
+		calculatorString += "Y ";
+	}
+	if(localCommand == 0702){ //
+		processStack.push(constantStack[0]);
+		calculatorString += "A ";
+		commandGlyphString += "0702,";
+	}
+	if(localCommand == 0703){ //
+		processStack.push(constantStack[1]);
+		calculatorString += "B ";
+		commandGlyphString += "0703,";
+	}
+	if(localCommand == 0704){ //
+		processStack.push(constantStack[2]);
+		calculatorString += "C ";
+		commandGlyphString += "0704,";
+	}
+	if(localCommand == 0705){ //
+		processStack.push(constantStack[3]);
+		calculatorString += "D ";
+		commandGlyphString += "0705,";
+	}
+
+	if(localCommand == 0740){  //plus
+		var tempX = processStack.pop();
+		var tempY = processStack.pop();
+		processStack.push(tempX + tempY);
+		calculatorString += " + ";
+		commandGlyphString += "0740,";
+	}
+	if(localCommand == 0741){ //minus
+		var tempX = processStack.pop();
+		var tempY = processStack.pop();
+		processStack.push(tempX - tempY);
+
+		calculatorString += " - ";
+		commandGlyphString += "0741,";
+
+	}
+	if(localCommand == 0742){  //times
+		var tempX = processStack.pop();
+		var tempY = processStack.pop();
+		processStack.push(tempX * tempY);
+
+		calculatorString += " * ";
+		commandGlyphString += "0742,";
+
+	}
+	if(localCommand == 0743){ //divide
+		var tempX = processStack.pop();
+		var tempY = processStack.pop();
+		processStack.push(tempX / tempY);
+
+		calculatorString += " / ";
+		commandGlyphString += "0743,";
+		
+	}
+	if(localCommand == 0744){ //x = -x
+		var tempX = processStack.pop();
+		processStack.push(-tempX);
+		calculatorString += " (-x) ";	
+		commandGlyphString += "0744,";
+	
+	}
+	
+	
+	if(localCommand == 0750){
+		var tempX = processStack.pop();
+		
+		processStack.push(Math.sin(tempX));
+		calculatorString += " SIN ";
+		commandGlyphString += "0750,";	
+	}
+	
+}
+
+
+
+</script>
+
+</body>
+</html>
