@@ -4,6 +4,7 @@
 	<title>Geometron Calculator</title>
 <script src="libraries/geometron2library.js">
 </script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 
@@ -35,6 +36,14 @@ B:<input id = "B" type = "text" onchange = "compute()" value = "0"></input>
 C:<input id = "C" type = "text" onchange = "compute()" value = "0"></input>
 D:<input id = "D" type = "text" onchange = "compute()" value = "0"></input>
 <p id = "glyphStringOutput">
+</p>
+
+<p id = "latexEquation">
+
+<!--When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$-->
+
+$$y = e^{-t/\tau}\sin{t}$$
 </p>
 Input:<p>
 <textarea id = "input" rows="4" cols="40">

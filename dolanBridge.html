@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dolan Bridge</title>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="libraries/geometron2library.js">
+</script>
+</head>
+<body>
+<script>
+initGeometron();
+x0 = 125;
+y0 = 125;
+</script>
+
+
+
+<canvas id="plotDisplay" width="250" height="250"style="border:1px solid;">
+</canvas>
+<p>
+bridge Width w [\(\mu\)m]:<input id = "width" value = "1.2" onchange = "compute()"></input>
+<p>
+bridge Thickness t [\(\mu\)m]:<input id = "thickness" value = "0.8" onchange = "compute()"></input>
+<p>
+Height h [\(\mu\)m]:<input id = "height" value = "1.6" onchange = "compute()"></input>
+<p>
+\(\theta_1\)[degrees]:<input id = "theta1" value = "30" onchange = "compute()"></input>
+<p>
+\(\theta_2\)[degrees]:<input id = "theta2" value = "30" onchange = "compute()"></input>
+<p>
+
+<p id = "x1">
+\(x_1 = h\tan{\theta_1}\)
+</p>
+<p id = "x1output">
+ = 
+</p>
+<p id = "x2">
+\(x_2 = w - h\tan{\theta_2}\)
+</p>
+<p id = "x2output">
+  = 
+</p>
+<p>
+\(\Delta x = h(\tan{\theta_2} + \tan{\theta_2}) - w\)
+</p>
+<p id = "DeltaX">
+ = 
+</p>
+
+<canvas id="outputDisplay" width="250" height="250"style="border:1px solid;">
+</canvas>
+
+
+<script>
+compute();
+
+
+
+function compute(){
+
+	theta1 = document.getElementById("theta1").value;
+	theta2 = document.getElementById("theta2").value;
+	theta1 *= Math.PI/180;
+	theta2 *= Math.PI/180;
+	
+	w = document.getElementById("width").value;
+	h = document.getElementById("height").value;
+	x1 = h*Math.tan(theta1);
+    x2 = w - h*Math.tan(theta2);
+	DeltaX = x1-x2;
+    
+	document.getElementById("x1output").innerHTML = "  =  " +  x1.toFixed(1);
+	document.getElementById("x2output").innerHTML = "  =  " +  x2.toFixed(1);
+    document.getElementById("DeltaX").innerHTML = "  =  " +  DeltaX.toFixed(1);
+
+	canvas = document.getElementById("plotDisplay");
+	ctx = canvas.getContext("2d");
+	//ctx.font="20px Arial";
+	//ctx.fillText("Dolan Bridge Calculator",5,35);
+
+currentGlyph= "0300,0331,0337,0334,0342,0335,0335,0342,0334,0336,0330,0335,0336,0342,0335,0335,0342,0330,0335,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0335,0335,0332,0330,0336,0336,0335,0335,0331,0331,0331,0243,0335,0335,0330,0336,0336,0330,0330,0333,0337,0337,0332,0330,0337,0167,0331,0331,0335,0332,0333,0333,0330,0330,0336,0336,0333,0333,0333,0331,0331,0336,0330,0337,0337,0337,0337,0336,0332,0336,0336,0330,0330,0330,0335,0335,0243,0335,0333,0333,0337,0164,0335,0331,0331,0331,0332,0332,0332,0333,0333,0333,0333,0333,0333,0333,0333,0333,0335,0335,0330,0331,0331,0331,0243,0335,0333,0333,0150,0333,0333,0333";
+x0 = 125;
+y0 = 125;
+drawGlyph(currentGlyph);
+
+	canvas = document.getElementById("outputDisplay");
+	ctx = canvas.getContext("2d");
+
+
+}
+
+</script>
+
+</body>
+</html>

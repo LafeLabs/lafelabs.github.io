@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geometronics: Home of Geometron</title>
+<script src="libraries/geometron2library.js">
+</script>
+
+</head>
+<body>
+
+<script>
+	initGeometron();
+	//imageParams = [sx,sy,swidth,sheight,x,y,width,height];
+	imageParams = [0,0,500,500,1000,100,500,500];
+</script>
+
+<canvas id="page1" width="1000" height="600"style="border:1px solid;">
+</canvas>
+
+<script>
+
+
+img = new Image();
+img.onload = function() {
+	wordStack = [];
+	wordStack.push("Ground Squirrel");	
+	wordStack.push("Everything Relative");	
+	wordStack.push("2");	
+	wordStack.push("3");	
+	ctx = document.getElementById("page1").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [0,0,img.width,img.height,200,120,img.width,img.height];
+ctx.drawImage(img,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	doTheThing(0300);
+	currentGlyph = ("0300,0330,0332,0332,0332,0336,0330,0332,0332,0336,0333,0337,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "https://upload.wikimedia.org/wikipedia/commons/7/7b/OlympicMarmot1_%28mirrored%29.jpg";
+img.src = currentImageURL;	
+
+
+
+</script>
+
+</body>
+</html>

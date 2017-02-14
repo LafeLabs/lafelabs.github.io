@@ -35,6 +35,7 @@
 <button onClick = "importByteCode()">IMPORT BYTE CODE</button>
 <button onClick = "importASCII();">IMPORT ASCII</button>
 <button onClick = "exportjs();">EXPORT JAVASCRIPT TABLE</button>
+<button onClick = "exportjspage();">EXPORT JAVASCRIPT PAGE CODE</button>
 <button onClick = "gotoAddress();">GOTO ADDRESS</button>
 <button onClick = "importWordStack();">IMPORT WORD STACK</button>
 <p>
@@ -50,8 +51,8 @@
 
 	redraw();	
 	keymapCanvas = document.getElementById("keymapDisplay");
-	ctx = keymapCanvas.getContext("2d");
-	drawGlyph(keyboardTable);
+//	ctx = keymapCanvas.getContext("2d");
+//	drawGlyph(keyboardTable);
 	updateImageUrl();	
 	
 	function updateImageUrl(){
@@ -101,7 +102,23 @@
 		}
 			document.getElementById("svgText").value = tempJSstring;
 	}
-	
+	function exportjspage(){
+		var tempJSstring = "";
+		tempJSstring += "wordStack = [];";
+		for(var wordIndex = 0;wordIndex < wordStack.length;wordIndex++){
+			tempJSstring += "wordStack.push(\"";
+			tempJSstring += wordStack[wordIndex];
+			tempJSstring += "\");\n";
+		}
+		tempJSstring += "currentGlyph = (\"";
+		tempJSstring += editGlyph;
+		tempJSstring += "\");\n";
+		tempJSstring += "ctx = document.getElementById(\"page8\").getContext(\"2d\");\n";	
+		tempJSstring += "drawGlyph(currentGlyph);\n";
+
+
+		document.getElementById("svgText").value = tempJSstring;
+	}
 	function gotoAddress(){
 	  var localValue = document.getElementById("svgText").value
 	  for(var index = 0;index < currentTable.length;index++){
