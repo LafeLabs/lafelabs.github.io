@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wire Calculator</title>
+<script src="libraries/coilLibrary.js">
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+
+Wire Size in <a href = "https://en.wikipedia.org/wiki/American_wire_gauge">AWG(American Wire Gauge)</a>:<input id = "AWGin" onchange = "compute()" value = 27 maxlength = "3"></input>
+<p id = "diameter_mm">
+diameter = 
+</p>
+<p id = "Rlen">
+Resistance/length = 
+</p>
+<p>
+Major torus radius[cm]:<input id = "major_radius" onchange = "compute()" value = 1.2></input>
+</p>
+<p>
+Side size of square torus[cm]:<input id = "a" onchange = "compute()" value = 0.8></input>
+</p>
+
+<p id = "turns">
+Number of turns = 
+</p>
+<p id = "length">
+Length = 
+</p>
+<p id = "Rtotal">
+Resistance = 
+</p>
+
+<script>
+	loadAWG();
+	
+	compute();
+	function compute(){
+		var currentAWG = document.getElementById("AWGin").value;
+		document.getElementById("diameter_mm").innerHTML = "diameter = ";
+		document.getElementById("diameter_mm").innerHTML += diameter_mm[currentAWG-1].toFixed(3);		
+		document.getElementById("diameter_mm").innerHTML += " mm = ";
+
+		document.getElementById("diameter_mm").innerHTML += diameter_in[currentAWG-1].toFixed(3);		
+		document.getElementById("diameter_mm").innerHTML += " in. = ";
+		
+		document.getElementById("diameter_mm").innerHTML += diameter_mils[currentAWG-1].toFixed(0);		
+		document.getElementById("diameter_mm").innerHTML += " mils = ";
+		document.getElementById("diameter_mm").innerHTML += diameter_microns[currentAWG-1].toFixed(0);		
+		document.getElementById("diameter_mm").innerHTML += " microns ";
+
+		document.getElementById("Rlen").innerHTML = "Resistance/length = ";
+		document.getElementById("Rlen").innerHTML += RperLength_meters[currentAWG-1].toFixed(3);		
+		document.getElementById("Rlen").innerHTML += " Ohm/m = ";
+		document.getElementById("Rlen").innerHTML += RperLength_feet[currentAWG-1].toFixed(3);		
+		document.getElementById("Rlen").innerHTML += " Ohm/ft";
+		
+		major_radius = document.getElementById("major_radius").value;
+		
+		
+		d = diameter_mm[currentAWG-1].toFixed(3)/10;
+		a = document.getElementById("a").value;
+		n = (a*a/(d*d));
+        document.getElementById("turns").innerHTML = "Number of turns = "
+		document.getElementById("turns").innerHTML += n.toFixed(0);
+		
+		wireLength = n*2*Math.PI*major_radius/100;//convert to m
+		wireLength_feet = wireLength*100/(2.54*12);
+		document.getElementById("length").innerHTML = "Length = ";
+		document.getElementById("length").innerHTML += wireLength.toFixed(0);
+		document.getElementById("length").innerHTML += " meters = ";
+		document.getElementById("length").innerHTML += wireLength_feet.toFixed(0);
+		document.getElementById("length").innerHTML += " feet";
+		
+		resistance = RperLength_meters[currentAWG-1]*wireLength;
+		
+		document.getElementById("Rtotal").innerHTML = "Resistance = ";
+		document.getElementById("Rtotal").innerHTML += resistance.toFixed(1);
+		document.getElementById("Rtotal").innerHTML += " Ohms";
+		
+	}
+</script>
+<p>
+
+<p>
+</body>
+</html>
