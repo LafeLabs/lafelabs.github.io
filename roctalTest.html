@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Roctal Test</title>
+<script src="libraries/geometron2library.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+
+<canvas id="roctalDisplay" width="512" height="2048" style="border:1px solid;">
+</canvas>
+<button onClick = "textArea2roctal();">PRINT ROCTAL FROM ASCII</button>
+<script>
+	
+		
+
+		
+</script>
+
+<p>
+<textarea id = "textInput" rows="4" cols="40" value = "ABC">
+</textarea>
+<p>
+<script>
+
+	textArea2roctal();
+	function textArea2roctal(){
+	
+		initGeometron();
+
+	    canvas = document.getElementById("roctalDisplay");		
+		ctx = canvas.getContext("2d");
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+		x = 0;
+		y = 0;
+		x0 = 0;
+		y0 = -384;
+		unit = 256;
+		side = unit;
+	
+		currentGlyph = "0300,";
+		numberOfLevels = 8;
+		for(var outerIndex =  2;outerIndex < numberOfLevels;outerIndex++){
+			currentGlyph += "0300,";
+			for(var innerIndex = 0;innerIndex < outerIndex;innerIndex++){
+				currentGlyph += "0331,0336,";
+			}
+			for(var innerIndex = 0;innerIndex < Math.pow(2,outerIndex);innerIndex++){
+				currentGlyph += "0366,0333,0333,";
+			}
+		}
+
+		currentGlyph += "0300,";
+			for(var innerIndex = 0;innerIndex < numberOfLevels;innerIndex++){
+				currentGlyph += "0331,0336,";
+			}
+			for(var innerIndex = 0;innerIndex < 4;innerIndex++){
+				currentGlyph += "0337,";
+			}
+
+		drawGlyph(currentGlyph);
+
+		var localText = document.getElementById("textInput").value;
+		roctalPrintString(localText);
+	
+		y0 = 512 - 384;
+		drawGlyph(currentGlyph);
+
+	
+	
+	}
+	
+	
+	
+</script>
+
+
+</body>
+</html>

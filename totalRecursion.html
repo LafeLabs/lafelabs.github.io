@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>REPLICATE!</title>
+<script src="libraries/geometron2library.js"></script>
+
+</head>
+<body>
+<p id = "PARAGRAPH">
+	<button onClick = "REPLICATE()">REPLICATE!</button>
+	<button onClick = "DESTROY()">DESTROY!</button>
+
+</p>
+<p id = "htmlFromText">
+</p>
+<button onClick = "html2html()">convert</button>
+<p>
+<textarea id = "textInput" rows="4" cols="80" value = "	<button onClick = >REPLICATE<button>" >
+</textarea>
+</p>
+
+<script>
+
+function DESTROY(){
+	document.getElementById("PARAGRAPH").innerHTML = "";
+}
+function REPLICATE(){
+	document.getElementById("PARAGRAPH").innerHTML += "\n";
+	document.getElementById("PARAGRAPH").innerHTML += "	<button onClick = \"REPLICATE()\">REPLICATE!</button>";
+}
+
+function html2html(){
+	document.getElementById("htmlFromText").innerHTML = document.getElementById("textInput").value;
+
+
+}
+
+
+</script>
+</body>
+</html>

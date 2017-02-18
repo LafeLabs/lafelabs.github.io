@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Roctal Input</title>
+<script src="libraries/geometron2library.js">
+</script>
+
+</head>
+<body>
+
+<script>
+	initGeometron();
+
+	//imageParams = [sx,sy,swidth,sheight,x,y,width,height];
+	imageParams = [0,0,525,649,0,0,525,649];
+
+ 	currentImageURL = "http://i.imgur.com/ryJI758.png";
+
+	oneColor = [0,0,0];
+	zeroColor = [255,255,255];
+
+</script>
+
+<canvas id="roctalImage" width="700" height="700"style="border:1px solid;">
+</canvas>
+<script>
+
+
+img = new Image();
+img.onload = function() {
+
+	ctx = document.getElementById("roctalImage").getContext("2d");	
+
+	imageParams = [0,0,img.width,img.height,0,0,img.width,img.height];
+ctx.drawImage(img,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+
+	x0 = 7;
+	y0 = 5;
+	side = 64;
+	getDistances();
+	x0 += side;
+	getDistances();
+	x0 += side;
+	getDistances();
+	x0 += side;
+	getDistances();
+	x0 += side;
+	getDistances();
+	x0 += side;
+	getDistances();
+	x0 += side;
+	getDistances();
+	x0 += side;
+	getDistances();
+
+	x0 -= 8*side;
+	y0 += side;
+	side /= 2;
+	getDistances();
+	x0 += side;
+	getDistances();
+	x0 += side;
+	getDistances();
+	x0 += side;
+	getDistances();
+	
+};	
+
+img.src = currentImageURL;	
+
+function getDistances(){
+	var imgData=ctx.getImageData(x0,y0,side,side).data;		
+	zeroDistance = 0;
+	oneDistance = 0;
+	for(var index = 0;index < imgData.length/4;index++){
+		oneDistance += (imgData[index*4] - oneColor[0])*(imgData[index*4] - oneColor[0]);
+		oneDistance += (imgData[index*4+1] - oneColor[1])*(imgData[index*4+1] - oneColor[1]);
+		oneDistance += (imgData[index*4+2] - oneColor[2])*(imgData[index*4+2] - oneColor[2]);
+	zeroDistance += (imgData[index*4] - zeroColor[0])*(imgData[index*4] - zeroColor[0]);
+	zeroDistance += (imgData[index*4+1] - zeroColor[1])*(imgData[index*4+1] - zeroColor[1]);
+    zeroDistance += (imgData[index*4+2] - zeroColor[2])*(imgData[index*4+2] - zeroColor[2]);
+
+	}
+	oneDistance /= imgData.length/4;
+	zeroDistance /= imgData.length/4;
+	oneDistance /= 3;
+	zeroDistance /= 3;
+	
+	oneDistance = Math.sqrt(oneDistance);
+	zeroDistance = Math.sqrt(zeroDistance);
+	console.log(oneDistance);
+//	console.log(zeroDistance);
+
+
+
+}
+
+
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+<script>
+//http://i.imgur.com/ryJI758.jpg
+
+</script>

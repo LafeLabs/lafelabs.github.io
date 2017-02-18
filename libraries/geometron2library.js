@@ -56,6 +56,19 @@ function commandString2keyString(localCommandString){
 	
 }
 
+function roctalPrintString(localString){
+	for(var index = 0;index < localString.length;index++){
+		var localCode = localString.charCodeAt(index);	
+	    roctalChar(localCode);
+	    if(x >= 512){
+	    	x = 0;
+	    	y += side;
+	    }
+	}
+
+}
+
+
 function roctalChar(localAddress){
 	doTheThing(0304);//fourfold symmetry
 	doTheThing(0313);//2x scaling
@@ -86,7 +99,7 @@ function roctalChar(localAddress){
 	doTheThing(0331);//move back to corner
 	doTheThing(0337);//back up to 1/2 scale
 	doTheThing(0337);//back up to 1 scale
-	doTheThing(0200);//square
+//	doTheThing(0200);//square
 	doTheThing(0330);//move forward to make this like other symbol glyphs
 }
 
