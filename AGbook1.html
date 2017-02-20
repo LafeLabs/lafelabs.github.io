@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Action Geometry</title>
+	<title>Quantum Geometron Intro Slides</title>
 <script src="libraries/geometron2library.js">
 </script>
 
@@ -34,6 +34,26 @@ backgroundImageOn = false;
 <canvas id="page8" width="800" height="500"style="border:1px solid;">
 </canvas>
 <canvas id="page9" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page10" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page11" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page12" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page13" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page14" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page15" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page16" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page17" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page18" width="800" height="500"style="border:1px solid;">
+</canvas>
+<canvas id="page19" width="800" height="500"style="border:1px solid;">
 </canvas>
 
 <script>
@@ -150,6 +170,140 @@ wordStack.push("Actual Information Flow");
 currentGlyph = ("0300,0331,0332,0332,0332,0332,0330,0336,0336,0244,0331,0336,0330,0337,0364,0333,0333,0333,0333,0337,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0336,0330,0337,0336,0244,0364,0332,0332,0332,0332,0332,0332,0332,0333,0333,0333,0331,0331,0337,0337,0246,0334,0334,0333,0333,0331,0333,0246,0335,0335,0331,0247,0333,0247,0333,0247,0336,0336,0330,0330,0331,0332,0332,0332,0332,0332,0332,0332,0332,0336,0330,0337,0333,0333,0333,0364,0337,0330,0330,0330,0330,0332,0332,0332,0336,0311,0337,0364");
 ctx = document.getElementById("page9").getContext("2d");	
 drawGlyph(currentGlyph);
+
+
+wordStack = [];wordStack.push("Fast Schematic Creation:");
+wordStack.push("one command=one component");
+wordStack.push("glyphs");
+currentGlyph = ("0300,0336,0330,0330,0332,0332,0330,0332,0332,0332,0332,0332,0364,0337,0333,0333,0333,0331,0331,0336,0332,0332,0331,0210,0211,0214,0336,0333,0337,0331,0336,0364,0331,0331,0331,0333,0333,0333,0333,0331,0331,0364,0331,0331,0336,0331,0337,0337,01210,01211,01214");
+ctx = document.getElementById("page10").getContext("2d");
+drawGlyph(currentGlyph);
+
+wordStack = [];wordStack.push("Quantum Gate Creation:");
+wordStack.push("Just a couple dozen keystrokes");
+wordStack.push("No powerpoint or Illustrator");
+wordStack.push("Exportable as .svg");
+
+currentGlyph = ("0300,0330,0332,0330,0332,0336,0331,0332,0332,0332,0364,0331,0331,0331,0330,0333,0240,0241,0242,0330,0332,0332,0335,0342,0330,0334,0240,0335,0342,0330,0342,0330,0334,0230,0242,0332,0332,0332,0332,0332,0331,0331,0241,0335,0342,0330,0342,0330,0342,0330,0334,0232,0231,0242,0331,0331,0336,0332,0332,0332,0332,0332,0364,0331,0331,0364,0331,0331,0364");
+ctx = document.getElementById("page11").getContext("2d");
+drawGlyph(currentGlyph);
+
+
+wordStack = [];wordStack.push("Easily Customizable:");
+wordStack.push("SQUID");
+wordStack.push("SQUID array");
+currentGlyph = ("0300,0330,0332,0330,0332,0332,0331,0336,0330,0364,0331,0331,0335,0222,0336,0330,0364,0337,0333,0333,0331,0222,0222,0222,0222,0222,0222,0222,0222,0222,0334,0330,0331,0331,0331,0332,0332,0332,0332,0332,0332,0332,0336,0364");
+ctx = document.getElementById("page12").getContext("2d");
+drawGlyph(currentGlyph);
+
+
+
+img3 = new Image();
+img3.onload = function() {
+wordStack = [];wordStack.push("custom keyboard");
+	ctx = document.getElementById("page13").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [50,200,.7*img3.width,.7*img3.height,0,100,.25*img3.width,0.25*img3.height];
+ctx.drawImage(img3,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	currentGlyph = ("0300,0330,0330,0332,0332,0336,0332,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "https://i.imgur.com/j3eJMPW.jpg";
+img3.src = currentImageURL;	
+
+
+img4 = new Image();
+img4.onload = function() {
+wordStack = [];wordStack.push("Command Table 0300's Octal");
+	ctx = document.getElementById("page14").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [300,400,.7*img4.width,.7*img4.height,200,50,.25*img4.width,0.25*img4.height];
+ctx.drawImage(img4,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	currentGlyph = ("0300,0330,0330,0332,0332,0336,0332,0336,0332,0332,0332,0310,0337,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "https://i.imgur.com/7gmjjal.jpg";
+img4.src = currentImageURL;	
+
+
+img5 = new Image();
+img5.onload = function() {
+wordStack = [];wordStack.push("Roots of Unity:");
+wordStack.push("Everything is Physical");
+	ctx = document.getElementById("page15").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [300,400,.7*img5.width,.7*img5.height,200,50,.25*img5.width,0.25*img5.height];
+ctx.drawImage(img5,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	currentGlyph = ("0300,0330,0330,0332,0332,0336,0332,0336,0332,0332,0332,0310,0337,0364,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "https://i.imgur.com/LuEw0XC.jpg";
+img5.src = currentImageURL;	
+
+img6 = new Image();
+img6.onload = function() {
+wordStack = [];wordStack.push("Spirals:");
+wordStack.push("Everything is Fractal and Recursive");
+	ctx = document.getElementById("page16").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [150,200,.8*img6.width,.8*img6.height,300,20,.2*img6.width,0.2*img6.height];
+ctx.drawImage(img6,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	currentGlyph = ("0300,0330,0330,0332,0332,0336,0332,0336,0332,0332,0332,0310,0337,0364,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "https://i.imgur.com/0caJyLo.jpg";
+img6.src = currentImageURL;	
+
+img7 = new Image();
+img7.onload = function() {
+wordStack = [];wordStack.push("Paper/Tape Implementation:");
+wordStack.push("no computer needed!");
+	ctx = document.getElementById("page17").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [150,200,.8*img7.width,.8*img7.height,300,20,.2*img7.width,0.2*img7.height];
+ctx.drawImage(img7,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	currentGlyph = ("0300,0330,0330,0332,0332,0336,0332,0336,0332,0332,0332,0310,0337,0364,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "https://i.imgur.com/nrsEwCa.jpg";
+img7.src = currentImageURL;	
+
+
+wordStack = [];wordStack.push("words in");
+wordStack.push("shapes");
+wordStack.push("flowcharts");
+wordStack.push("digraphs");
+wordStack.push("org charts");
+wordStack.push("easy");
+currentGlyph = ("0300,0336,0332,0337,0332,0332,0330,0336,0310,0244,0331,0330,0310,0336,0364,0331,0364,0331,0331,0331,0331,0331,0332,0332,0332,0330,0332,0332,0244,0336,0364,0337,0337,0333,0333,0333,0336,0244,0310,0336,0364,0337,0333,0333,0333,0333,0333,0244,0310,0336,0364,0330,0330,0330,0332,0332,0332,0332,0332,0330,0335,0335,0337,0337,0245,0334,0311,0350,0350,0335,0337,0337,0245,0335,0350,0350,0335,0335,0335,0350,0334,0337,0245,0334,0350,0350,0350,0335,0304,0335,0335,0333,0334,0336,0336,0331,0310,0336,0331,0313,0243,0335,0333,0333,0331,0310,0330,0336,0336,0336,0336,0331,0333,0337,0337,0337,0364");
+ctx = document.getElementById("page18").getContext("2d");
+drawGlyph(currentGlyph);
+
+
+img8 = new Image();
+img8.onload = function() {
+wordStack = [];
+wordStack.push("Physical Data:");
+wordStack.push("Simple");
+wordStack.push("Fractal");
+wordStack.push("Machine Independent");
+	ctx = document.getElementById("page19").getContext("2d");	
+	//ctx.drawImage(img, 0, 0,ctx.width,img.height*(ctx.width/img.width));
+	imageParams = [0,0,img8.width,img8.height,400,0,.7*img8.width,0.7*img8.height];
+ctx.drawImage(img8,imageParams[0],imageParams[1],imageParams[2],imageParams[3],imageParams[4],imageParams[5],imageParams[6],imageParams[7]);
+//ctx.drawImage(img,0,0,img.width,img.height,200,120,img.width,img.height);
+	currentGlyph = ("0300,0330,0330,0332,0332,0336,0332,0336,0332,0332,0332,0310,0337,0364,0331,0331,0331,0364,0331,0331,0331,0331,0331,0364,0331,0331,0331,0331,0364");
+	drawGlyph(currentGlyph);
+};	
+currentImageURL = "https://i.imgur.com/ryJI758.png";
+img8.src = currentImageURL;	
+
+
 
 
 </script>

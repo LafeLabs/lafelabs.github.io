@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SQUID Calculator</title>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+</head>
+<body>
+
+
+<h3>SQUID Amp Calculation Document</h3>
+Side of square [&#x3BCm]:<input id = "sideIn" onchange = "compute1()" value = 4 size = "7"></input>
+Diameter of circle [&#x3BCm]:<input id = "diameterIn" onchange = "compute1()" value = 4 size = "7"></input>
+<p>
+
+
+<form id = "getShape">
+  <input type="radio" name="shape" onchange = "compute1()" value="square" checked>Square<br>
+  <input type="radio" name="shape" onchange = "compute1()" value="circle">Circle<br>
+</form>
+
+<p id = "area">
+area = 
+</p>
+<p>
+$$1 \unicode[Times]{x3BC}\textrm{m}^2 = 1 \unicode[Times]{x3BC}\textrm{m}^2 \left(\frac{1 \textrm{cm}}{10000 \unicode[Times]{x3BC}\textrm{m}}\right)^2 = 1 \times 10^{-8} \textrm{cm}^2$$
+</p>
+=<input type = "text" id = "areaCm" size = "7"></input> cm<sup>2</sup>
+<p>
+<h4>Current Density:</h4>
+<p>
+<input id = "Jc" type = "text" value = "100" size = "5" onchange = "Acm2micro()"></input> A/cm<sup>2</sup>
+</p>
+<p>
+$$  \textrm{1 A/cm}^2 = \textrm{1 A/cm}^2\left(\frac{10^6 \unicode[Times]{x3BC}A }{1 \textrm{A}}\right)\left(\frac{10^{-8}\textrm{cm}^2}{1 \unicode[Times]{x3BC}\textrm{m}^2}\right) = 10^{-2} \unicode[Times]{x3BC}\textrm{A}/\unicode[Times]{x3BC}\textrm{m}^2$$
+</p>
+<p>
+<input id = "Jc2" type = "text" value = "1" size = "5" onchange = "micro2Acm()"></input> $\unicode[Times]{x3BC}\textrm{A}/\unicode[Times]{x3BC}\textrm{m}^2$
+</p>
+<h4>Critical Current:</h4>
+<p>
+<input id = "Ic" type = "text" value = "16" size = "5" onchange = "compute()"></input> $\unicode[Times]{x3BC}\textrm{A}$
+
+</p>
+
+
+<script>
+	
+	compute1();
+	function compute1(){
+
+		sideLength = document.getElementById("sideIn").value;
+		diameter = document.getElementById("diameterIn").value;
+
+		var shapes = document.getElementsByName("shape");
+		for(var i = 0; i < shapes.length; i++) {
+   			if(shapes[i].checked == true) {
+       			selectedShape = shapes[i].value;
+   			}
+ 		}
+
+		junctionShape = selectedShape;
+		
+		if(junctionShape == "square"){
+			area = sideLength*sideLength;
+		}
+		if(junctionShape == "circle"){
+			area = Math.PI*0.25*diameter*diameter;
+		}
+
+		document.getElementById("area").innerHTML = "area = ";
+		document.getElementById("area").innerHTML += area.toFixed(2);
+		document.getElementById("area").innerHTML += " [&#x3BC";
+		document.getElementById("area").innerHTML += "m]";
+		document.getElementById("area").innerHTML += "<sup>2</sup>";
+        document.getElementById("areaCm").value = area*1e-8;
+
+//$\unicode[Times]{x3BC}$m$^2$ in latex which wont work here on reload for some reason
+		
+		//compute Ic
+		//compute Lj
+		//compute junction capacitance
+		//allow for added shunt capacitance
+		//input betal and betac
+		//compute Rn from Ic and gap
+		//plot predicted IV curve
+		//lengths and inductance estimates
+		//stray capacitance estimates
+		//svg design with exporter of chip
+		//chip schematic
+		//board pads that mate to chip
+		//coil calculations: number of turns, current, B, phi, etc
+		//
+		computeIc();
+	}
+	function Acm2micro(){
+		document.getElementById("Jc2").value = document.getElementById("Jc").value/100;
+		computeIc();
+	}
+	function micro2Acm(){
+		document.getElementById("Jc").value = document.getElementById("Jc2").value*100;
+		computeIc();
+	}
+	function computeIc(){
+		Ic = document.getElementById("Jc2").value*area;
+		document.getElementById("Ic").value = Ic;
+	}
+	
+</script>
+<p>
+
+<p>
+</body>
+</html>
