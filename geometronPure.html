@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geometron File Editor</title>
+<script src="libraries/geometron2library.js">
+</script>
+</head>
+<body>
+<script>
+initGeometron();
+
+var foo = currentTable[101].split(":");
+var bar = parseInt(foo[0],8);
+console.log("0" + bar.toString(8));
+
+//still need to add keymapping
+
+globalAddress = 0700;
+wordAddress = 0600;
+imageAddress = 0500;
+pageAddress = 0400;
+commandAddress = 0300;
+shapeAddress = 0200;
+letterAddress = 0101;
+rootAddress = 0000;
+
+</script>
+<p>
+<u><h4>Global Math Javascript (0700-0777):</h4></u>
+<b>
+<p id = "addr700">
+0700
+</p>
+</b>
+<button onClick = "previousGlobal();">PREV</button><button onClick = "nextGlobal();">NEXT</button>
+<p>
+Function Name:
+<p>
+<textarea id = "text01700" rows="1" cols="20">
+</textarea>
+<p>
+Function Code:
+<p>
+<textarea id = "text0700" rows="6" cols="40">
+</textarea>
+
+<u><h4>Human Words (0600-0677):</h4></u>
+<b>
+<p id = "addr600">
+0600
+</p>
+</b>
+<button onClick = "previousWord();">PREV</button><button onClick = "nextWord();">NEXT</button>
+<p>
+Name:
+<p>
+<textarea id = "text01600" rows="1" cols="20">
+</textarea>
+<p>
+Text:
+<p>
+<textarea id = "text0600" rows="2" cols="40">
+</textarea>
+<p>
+<u><h4>Image URLs (0500-0577):</h4></u>
+<b>
+<p id = "addr500">
+0500
+</p>
+</b>
+<button onClick = "previousImage();">PREV</button><button onClick = "nextImage();">NEXT</button>
+<p>
+Name of Image:
+<p>
+<textarea id = "text01500" rows="1" cols="20">
+</textarea>
+<p>
+Image URL
+<p>
+<textarea id = "text0500" rows="1" cols="40">
+</textarea>
+<p>
+<img src="https://i.imgur.com/ryJI758.png" alt="current image" height="300" width="300">
+<p>
+
+<u><h4>Scroll (0400 - 0477):</h4></u>
+<b>
+<p id = "addr400">
+0400
+</p>
+</b>
+<button onClick = "previousPage();">PREV</button><button onClick = "nextPage();">NEXT</button>
+<p>
+Glyph Title:
+<p>
+<textarea id = "text01400" rows="1" cols="20">
+</textarea>
+<p>
+Glyph keystrokes:
+<p>
+<textarea id = "text0400" rows="1" cols="40">
+</textarea>
+<p>
+Glyph-Glyph Spelling:
+<p>
+<canvas id = "spellCanvas" width = "800" height="50"style="border:1px solid;" > </canvas>
+<p>
+Current Page Glyph
+<p>
+<canvas width = "800" height="500"style="border:1px solid;" > </canvas>
+<p id = "glyphText">
+</p>
+SVG Export ASCII:
+<p>
+<textarea id = "svgExport" rows="2" cols="40">
+</textarea>
+
+<u><h4>Geometry Commands (0300-0377):</h4></u>
+<b>
+<p id = "addr300">
+0300
+</p>
+</b>
+<button onClick = "previousCommand();">PREV</button><button onClick = "nextCommand();">NEXT</button>
+<p>
+Javascript Function Code:
+<p>
+<textarea id = "text0700" rows="6" cols="40">
+</textarea>
+<p>
+Command Symbol Glyph:
+<p>
+<canvas id = "commandGlyphCanvas" width = "200" height="200"style="border:1px solid;" > </canvas>
+<p>
+<input type = "text" value  = "0" onkeyup = "updateText1()" id = "inputGlyphCommand"><--Keystrokes for symbol glyph</input>
+<p>
+Glyph-Glyph Spelling of Symbol Glyph:
+<p>
+<canvas id = "spellCanvas2" width = "800" height="50"style="border:1px solid;" > </canvas>
+<p>
+
+<u><h4>Shape Table (0200-0277):</h4></u>
+<b>
+<p id = "addr200">
+0200
+</p>
+</b>
+<button onClick = "previousShape();">PREV</button><button onClick = "nextShape();">NEXT</button>
+<p>
+Shape:
+<p>
+<canvas id = "shapeCanvas" width = "200" height="200"style="border:1px solid;" > </canvas>
+<p>
+<input type = "text" value  = "0" onkeyup = "updateText2()" id = "inputGlyphShape"><--Keystrokes for shape</input>
+<p>
+Glyph-Glyph Spelling of Shape:
+<p>
+<canvas id = "spellCanvas3" width = "800" height="50"style="border:1px solid;" > </canvas>
+<p>
+<u><h4>Font (0040 - 0176):</h4></u>
+<b>
+<p id = "addrFont">
+0101
+</p>
+</b>
+<button onClick = "previousLetter();">PREV</button><button onClick = "nextLetter();">NEXT</button>
+<p>
+Letter Name:
+<p>
+<textarea id = "letterName" rows="1" cols="12">
+</textarea>
+<p>
+Letter Action:
+<p>
+<canvas id = "letterCanvas" width = "200" height="200"style="border:1px solid;" > </canvas>
+<p>
+<input type = "text" value  = "0" onkeyup = "updateText3()" id = "inputGlyphLetter"><--Keystrokes for letter</input>
+<p>
+Glyph-Glyph Spelling of Letter:
+<p>
+<canvas id = "spellCanvas3" width = "800" height="50"style="border:1px solid;" > </canvas>
+<p>
+
+<u><h4>Root Magic Javascript (0000-0037):</h4></u>
+<p id = "addrRoot">
+<b>0000</b>
+</p>
+<button onClick = "previousRoot();">PREV</button><button onClick = "nextRoot();">NEXT</button>
+<p>
+Function Name:
+<p>
+<textarea id = "text01000" rows="1" cols="20">
+</textarea>
+<p>
+Function Javascript Code:
+<p>
+<textarea id = "text0000" rows="6" cols="40">
+</textarea>
+<p>
+<u><h4>Bytecode IO:</h4></u>
+<p>
+<textarea id = "bytecodeIO" rows="10" cols="80">
+</textarea>
+<script>
+
+function previousGlobal(){
+	globalAddress--;
+	if(globalAddress < 0700){
+		globalAddress = 0777;
+	}
+	document.getElementById("addr700").innerHTML = "0";
+	document.getElementById("addr700").innerHTML += globalAddress.toString(8);	
+}
+function nextGlobal(){
+	globalAddress++;
+	if(globalAddress > 0777){
+		globalAddress = 0700;
+	}
+	document.getElementById("addr700").innerHTML = "0";
+	document.getElementById("addr700").innerHTML += globalAddress.toString(8);	
+}
+
+function previousWord(){
+	wordAddress--;
+	if(wordAddress < 0600){
+		wordAddress = 0677;
+	}
+	document.getElementById("addr600").innerHTML = "0";
+	document.getElementById("addr600").innerHTML += wordAddress.toString(8);	
+}
+function nextWord(){
+	wordAddress++;
+	if(wordAddress > 0677){
+		wordAddress = 0600;
+	}
+	document.getElementById("addr600").innerHTML = "0";
+	document.getElementById("addr600").innerHTML += wordAddress.toString(8);	
+}
+
+function previousImage(){
+	imageAddress--;
+	if(imageAddress < 0500){
+		imageAddress = 0577;
+	}
+	document.getElementById("addr500").innerHTML = "0";
+	document.getElementById("addr500").innerHTML += imageAddress.toString(8);	
+}
+function nextImage(){
+	imageAddress++;
+	if(imageAddress > 0577){
+		imageAddress = 0500;
+	}
+	document.getElementById("addr500").innerHTML = "0";
+	document.getElementById("addr500").innerHTML += imageAddress.toString(8);	
+}
+
+
+function previousPage(){
+	pageAddress--;
+	if(pageAddress < 0400){
+		pageAddress = 0477;
+	}
+	document.getElementById("addr400").innerHTML = "0";
+	document.getElementById("addr400").innerHTML += pageAddress.toString(8);	
+}
+function nextPage(){
+	pageAddress++;
+	if(pageAddress > 0477){
+		pageAddress = 0400;
+	}
+	document.getElementById("addr400").innerHTML = "0";
+	document.getElementById("addr400").innerHTML += pageAddress.toString(8);	
+}
+
+function previousCommand(){
+	commandAddress--;
+	if(commandAddress < 0300){
+		commandAddress = 0377;
+	}
+	document.getElementById("addr300").innerHTML = "0";
+	document.getElementById("addr300").innerHTML += commandAddress.toString(8);	
+}
+function nextCommand(){
+	commandAddress++;
+	if(commandAddress > 0377){
+		commandAddress = 0300;
+	}
+	document.getElementById("addr300").innerHTML = "0";
+	document.getElementById("addr300").innerHTML += commandAddress.toString(8);	
+}
+
+function previousShape(){
+	shapeAddress--;
+	if(shapeAddress < 0200){
+		shapeAddress = 0277;
+	}
+	document.getElementById("addr200").innerHTML = "0";
+	document.getElementById("addr200").innerHTML += shapeAddress.toString(8);	
+}
+function nextShape(){
+	shapeAddress++;
+	if(shapeAddress > 0277){
+		shapeAddress = 0200;
+	}
+	document.getElementById("addr200").innerHTML = "0";
+	document.getElementById("addr200").innerHTML += shapeAddress.toString(8);	
+}
+
+function previousLetter(){
+	letterAddress--;
+	if(letterAddress < 0040){
+		letterAddress = 0176;
+	}
+	document.getElementById("addrFont").innerHTML = "0";
+	document.getElementById("addrFont").innerHTML += letterAddress.toString(8);	
+}
+function nextLetter(){
+	letterAddress++;
+	if(letterAddress > 0176){
+		letterAddress = 0040;
+	}
+	document.getElementById("addrFont").innerHTML = "0";
+	document.getElementById("addrFont").innerHTML += letterAddress.toString(8);	
+}
+
+function previousRoot(){
+	rootAddress--;
+	if(rootAddress < 0000){
+		rootAddress = 0037;
+	}
+	document.getElementById("addrRoot").innerHTML = "0";
+	document.getElementById("addrRoot").innerHTML += rootAddress.toString(8);	
+}
+function nextRoot(){
+	rootAddress++;
+	if(rootAddress > 0037){
+		rootAddress = 0000;
+	}
+	document.getElementById("addrRoot").innerHTML = "0";
+	document.getElementById("addrRoot").innerHTML += rootAddress.toString(8);	
+}
+
+
+
+</script>
+</body>
+</html>

@@ -10,19 +10,21 @@ MathJax.Hub.Config({
   }
 });
 </script>
+<script src="libraries/geometron2library.js">
+</script>
 </head>
 <body>
 
 
 <h3>SQUID Amp Calculation Document</h3>
-Side of square [&#x3BCm]:<input id = "sideIn" onchange = "compute1()" value = 4 size = "7"></input>
-Diameter of circle [&#x3BCm]:<input id = "diameterIn" onchange = "compute1()" value = 4 size = "7"></input>
+Side of square [&#x3BCm]:<input id = "sideIn" onchange = "compute1()" value = 5 size = "7"></input>
+Diameter of circle [&#x3BCm]:<input id = "diameterIn" onchange = "compute1()" value = 5 size = "7"></input>
 <p>
 
 
 <form id = "getShape">
-  <input type="radio" name="shape" onchange = "compute1()" value="square" checked>Square<br>
-  <input type="radio" name="shape" onchange = "compute1()" value="circle">Circle<br>
+  <input type="radio" name="shape" onchange = "compute1()" value="square">Square<br>
+  <input type="radio" name="shape" onchange = "compute1()" value="circle" checked>Circle<br>
 </form>
 
 <p id = "area">
@@ -45,13 +47,33 @@ $$  \textrm{1 A/cm}^2 = \textrm{1 A/cm}^2\left(\frac{10^6 \unicode[Times]{x3BC}A
 </p>
 <h4>Critical Current:</h4>
 <p>
-<input id = "Ic" type = "text" value = "16" size = "5" onchange = "compute()"></input> $\unicode[Times]{x3BC}\textrm{A}$
-
+<input id = "Ic" type = "text" value = "16" size = "5" onchange = "compute1()"></input> $\unicode[Times]{x3BC}\textrm{A}$
 </p>
+
+<h4>Josephson Inductance:</h4>
+$$L_J = \frac{\Phi_0}{2\pi I_c}$$
+$$\Phi_0 = 2.07X10^{-15} \textrm{Wb}$$
+
+<p>
+
+L<sub>J</sub><input id = "L_J" type = "text" value = "16" size = "20"></input> 
+pH
+</p>
+<p>
+<h4>Two Junction SQUID</h4>
+<p>
+L<sub>J</sub><input id = "L_J0" type = "text" value = "16" size = "20"></input> 
+pH
+<p>
+$$L_J(\Phi) = \frac{L_J(0)}{\cos(\pi\Phi/\Phi_0)}$$
+</p>
+
+Number of junctions in array
+
 
 
 <script>
-	
+	phi0 = 2.07e-15;
 	compute1();
 	function compute1(){
 
@@ -81,6 +103,14 @@ $$  \textrm{1 A/cm}^2 = \textrm{1 A/cm}^2\left(\frac{10^6 \unicode[Times]{x3BC}A
 		document.getElementById("area").innerHTML += "<sup>2</sup>";
         document.getElementById("areaCm").value = area*1e-8;
 
+		computeIc();
+
+		phi0 = 2.07e-15;
+		L_J = 1e12*phi0/(2*Math.PI*Ic*1e-6);
+		document.getElementById("L_J").value = L_J.toFixed(3);
+	//	document.getElementById("L_J2").value = 0.5*L_J.toFixed(3);
+
+		
 //$\unicode[Times]{x3BC}$m$^2$ in latex which wont work here on reload for some reason
 		
 		//compute Ic
@@ -97,7 +127,6 @@ $$  \textrm{1 A/cm}^2 = \textrm{1 A/cm}^2\left(\frac{10^6 \unicode[Times]{x3BC}A
 		//board pads that mate to chip
 		//coil calculations: number of turns, current, B, phi, etc
 		//
-		computeIc();
 	}
 	function Acm2micro(){
 		document.getElementById("Jc2").value = document.getElementById("Jc").value/100;
@@ -110,11 +139,76 @@ $$  \textrm{1 A/cm}^2 = \textrm{1 A/cm}^2\left(\frac{10^6 \unicode[Times]{x3BC}A
 	function computeIc(){
 		Ic = document.getElementById("Jc2").value*area;
 		document.getElementById("Ic").value = Ic;
+				L_J = 1e12*phi0/(2*Math.PI*Ic*1e-6);
+				console.log(L_J);
+		document.getElementById("L_J").value = L_J;
+		L_J0 = 0.5*L_J;
+		document.getElementById("L_J0").value = 0.5*L_J;
 	}
-	
 </script>
 <p>
+<h4>SQUID Array</h4>
+<p>
+Number of Squids:<input size = "5" value = "10" id = "nInput" onchange = "compute2()"></input>
+</p>
+<p>
+Total Array Zero Bias Inductance:<input size = "5" value = "80" id = "L_Jn"></input>
+</p>
 
+<canvas id="page1" width="400" height="400"style="border:1px solid;">
+</canvas>
+<p>
+Flux bias in fraction of a flux quantum:<input size = "7" id = "fluxInput" value = "0.4" onchange = "fluxCompute()"></input>
+<p>
+Total L<sub>J</sub> [pH]:<input size = "7" id = "totalLj" onchange = "fluxCompute()"></input>
+<p>
+<canvas id="page2" width="400" height="400"style="border:1px solid;">
+</canvas>
+<p>
+$$Z_L = $$
+<script>
+compute2();
+fluxCompute();
+function compute2(){
+	numberOfJunctions = document.getElementById("nInput").value;
+	L_Jn = numberOfJunctions*L_J0;
+	document.getElementById("L_Jn").value = L_Jn;
+}
+
+
+
+function fluxCompute(){
+	LJ = L_Jn/Math.cos(document.getElementById("fluxInput").value*Math.PI);
+	document.getElementById("totalLj").value = LJ;
+	ctx = document.getElementById("page1").getContext("2d");	
+ctx.clearRect(0, 0, 400, 400);
+ctx.lineWidth = 2;
+ctx.beginPath();
+ctx.strokeRect(50,50,300,300);
+for(var index = 0;index < 300;index++){
+	ctx.moveTo(50 + index,350 - 5*L_J0/Math.abs(Math.cos(index*2*Math.PI/300)) );		
+	ctx.lineTo(50 + index+1,350 - 5*L_J0/Math.abs(Math.cos((index+1)*2*Math.PI/300)) );
+	ctx.stroke();
+	}
+
+ctx.beginPath();
+ctx.moveTo(50,350-LJ);
+ctx.lineTo(350,350-LJ);
+ctx.stroke();
+}
+
+initGeometron();
+x0 = 200;
+y0 = 200;
+wordStack = [];wordStack.push("C_in");
+wordStack.push("C_1");
+wordStack.push("L_J");
+wordStack.push("L_G");
+currentGlyph = ("0300,0336,0332,0337,0330,0335,0335,0336,0214,0336,0222,0222,0222,0336,0330,0336,0331,0337,0340,0330,0340,0330,0340,0330,0337,0222,0222,0337,0336,0342,0330,0337,0212,0336,0336,0330,0340,0335,0337,0337,0337,0342,0330,0334,0342,0330,0211,0336,0342,0332,0332,0330,0336,0331,0342,0330,0335,0337,0342,0330,0340,0342,0334,0211,0336,0336,0336,0330,0341,0337,0331,0331,0331,0331,0331,0336,0330,0337,0337,0337,0333,0333,0333,0332,0332,0332,0332,0336,0330,0333,0333,0333,0364,0331,0331,0331,0331,0331,0333,0333,0333,0364,0332,0332,0332,0332,0332,0332,0332,0332,0330,0330,0331,0331,0331,0332,0364,0330,0330,0330,0364");
+ctx = document.getElementById("page2").getContext("2d");
+drawGlyph(currentGlyph);
+
+</script>
 <p>
 </body>
 </html>
