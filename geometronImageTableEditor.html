@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geometron Image Table Editor</title>
+<script src="libraries/geometron2library.js">
+</script>
+</head>
+<body>
+<script>
+initGeometron();
+
+
+
+</script>
+<h2>Geometron Image Table Editor</h2>
+<p>
+<button onClick = "previousAddress()">PREVIOUS</button><button onclick = "nextAddress()">NEXT</button>
+<p>
+<b>Address:</b><input type = "text" size = "6" value  = "0500" id = "addressInput" onchange = "manualAddress()"></input>
+<p>
+<b>Name:</b><input type = "text" size = "10" id = "nameInput" onChange = "updateName()"></input>
+<p>
+<b>Image URL:</b>
+<p>
+<input size = "40" id = "imageURL" onChange = "updateImage()" value = "https://i.imgur.com/ryJI758.png"></input>
+<p>
+<p>
+<img src="https://i.imgur.com/ryJI758.png" alt="current image" height="300" width="300" id = "myImage">
+<p>
+
+<p>
+<button onClick = "importBytecode()">IMPORT</button><button onClick = "exportBytecode()">EXPORT</button><button onClick = "exportFullTable()">EXPORT FULL TABLE</button>
+<p>
+<b>Byte Code:</b>
+<p>
+<textarea rows = "2" cols = "40" id = "byteCode"></textarea>
+<p>
+
+<script>
+baseAddress = 0500;
+tableIndex = 0;
+currentAddress = baseAddress+tableIndex;
+actionTable = [];
+urlCode = string2byteCode("https://i.imgur.com/ryJI758.png");
+for(var index = 0;index < 0100;index++){
+	actionTable.push(urlCode);
+}
+nameTable = [];
+for(var index = 0;index < 0100;index++){
+	nameTable.push("");
+}
+
+
+
+function updateImage(){
+	
+	document.getElementById("myImage").src = document.getElementById("imageURL").value;
+	actionTable[tableIndex] = document.getElementById("imageURL").value;
+
+}
+
+function updateName(){
+	nameTable[tableIndex] = string2byteCode(document.getElementById("nameInput").value);
+}
+
+function exportBytecode(){
+	var inputString = document.getElementById("imageURL").value;
+	var inputName = document.getElementById("nameInput").value;
+	var outputString = "";
+	outputString += "0" + currentAddress.toString(8) + ":";
+	outputString += string2byteCode(inputString);
+	
+	outputString += "\n";
+
+	outputString += "0" + (currentAddress + 01000).toString(8) + ":";
+	outputString += string2byteCode(inputName);
+	
+	document.getElementById("byteCode").value = outputString;
+}
+
+function exportFullTable(){
+
+	document.getElementById("byteCode").value = "";
+	for(var cubeIndex = 0;cubeIndex < 0100;cubeIndex++){
+		var outputString = "";
+		outputString += "0" + (cubeIndex + baseAddress).toString(8) + ":";
+		outputString += string2byteCode(actionTable[cubeIndex]);
+		outputString += "\n";
+		outputString += "0" + (cubeIndex + baseAddress + 01000).toString(8) + ":";
+		outputString += string2byteCode(nameTable[cubeIndex]);
+		outputString += "\n";
+		document.getElementById("byteCode").value += outputString;
+	}
+}
+
+function importBytecode(){
+	var inputString = document.getElementById("byteCode").value;
+	var inputStringArray = inputString.split("\n");
+	for(var index = 0;index < inputStringArray.length;index++){
+		if(inputStringArray[index].length > 0){
+			var splitArray = inputStringArray[index].split(":");
+			var localAddress = parseInt(splitArray[0],8);
+			if((localAddress > 0500) && (localAddress < 0600)){			
+				actionTable[localAddress - 0500] = splitArray[1];
+			}
+			if((localAddress > 01500) && (localAddress < 01600)){
+				nameTable[localAddress-01500] = splitArray[1];			
+			}
+			
+		}
+	}
+	
+	document.getElementById("imageURL").value = byteCode2string(actionTable[tableIndex]);
+	document.getElementById("nameInput").value = byteCode2string(nameTable[tableIndex]);
+	updateImage();
+
+}
+
+function previousAddress(){
+	actionTable[tableIndex] = string2byteCode(document.getElementById("imageURL").value);
+	nameTable[tableIndex] = string2byteCode(document.getElementById("nameInput").value);	
+	tableIndex--;
+	if(tableIndex < 0 ){
+		tableIndex = 077;
+	}
+	currentAddress = baseAddress+tableIndex;
+	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
+	document.getElementById("imageURL").value = byteCode2string(actionTable[tableIndex]);
+	document.getElementById("nameInput").value = byteCode2string(nameTable[tableIndex]);
+	updateName();
+	updateImage();
+
+}
+function nextAddress(){
+
+	actionTable[tableIndex] = string2byteCode(document.getElementById("imageURL").value);
+	nameTable[tableIndex] = string2byteCode(document.getElementById("nameInput").value);
+	tableIndex++;
+	if(tableIndex > 077){
+		tableIndex = 0;
+	}
+	currentAddress = baseAddress+tableIndex;
+	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
+
+	document.getElementById("imageURL").value = byteCode2string(actionTable[tableIndex]);
+	document.getElementById("nameInput").value = byteCode2string(nameTable[tableIndex]);
+updateName();
+updateImage();
+}
+
+function manualAddress(){
+	currentAddress = parseInt(document.getElementById("addressInput").value,8);
+		document.getElementById("textText").value = byteCode2string(actionTable[tableIndex]);
+	document.getElementById("nameInput").value = byteCode2string(nameTable[tableIndex]);
+
+}
+
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		localString += String.fromCharCode(parseInt(stringArray[index],8));
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		localByteCode += "0";
+		localByteCode += tempCharCode.toString(8);
+		localByteCode += ",";
+	}
+	return localByteCode;
+}
+
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		localString += String.fromCharCode(parseInt(stringArray[index],8));
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		if(tempCharCode != 0){
+			localByteCode += "0";
+			localByteCode += tempCharCode.toString(8);
+			localByteCode += ",";
+		}
+	}
+	return localByteCode;
+}
+
+</script>
+</body>
+</html>

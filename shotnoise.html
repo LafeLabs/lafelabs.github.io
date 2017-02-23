@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shot Noise Calculator</title>
+<script src="libraries/geometron2library.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<u><h4>Input Array</h4></u>
+Start:<input id  = "startInput" size = "6" value = "-5" onchange = "doTheMath(0700)"></input>
+<p>
+Stop:<input id = "stopInput" size = "6" value = "5" type = "text" onchange = "doTheMath(0700)"></input>
+<p>
+Number of Points:<input id = "numPointsInput" size = "5" value = "100" type = "text" onchange = "doTheMath(0700)"></input>
+<p>
+Name:<input id = "nameInput" type = "text" size = "6" value = "x" onchange = "doTheMath(0700)"></input>
+<p id = "inputLabel">
+Numbers:
+<p>
+<textarea id  = "inputArrayText" rows = "4" cols = "20"></textarea>
+<p>
+<u><h4>Constants:</h4></u>
+<p id = "constant1name">
+constant1:</p>
+<input id = "constant1value" type = "text" size = "6" value = "1" onchange = "doTheMath(0701)"></input>
+name:<input id = "constant1nameInput" type = "text" size = "6" value = "T" onchange = "doTheMath(0701)"></input>
+</p>
+<p id = "constant2name">
+constant2:</p>
+<input id = "constant2value" type = "text" size = "6" value = "1" onchange = "doTheMath(0701)"></input>
+name:<input id = "constant2nameInput" type = "text" size = "6" value = "T_N" onchange = "doTheMath(0701)"></input>
+</p>
+<p id = "constant3name">
+constant3:</p>
+<input id = "constant3value" type = "text" size = "6" value = "1" onchange = "doTheMath(0701)"></input>
+name:<input id = "constant3nameInput" type = "text" size = "6" value = "G" onchange = "doTheMath(0701)"></input>
+</p>
+
+<p id = "mathp">
+</p>
+<p>
+<canvas id = "plot1" width = "500" height = "500" style="border:1px solid;"></canvas>
+<p>
+<textarea id = "csvdata" rows = "10" cols = "40">	
+</textarea>
+<script>
+
+doTheMath(0700);//input x
+doTheMath(0701);//input constants
+
+
+outputArray = [];
+for(var index = 0;index < inputArray.length;index++){
+	outputArray.push(constant1*(constant2 + constant3*xcothx(inputArray[index])));
+}
+
+
+document.getElementById("csvdata").value = "";
+for(var index = 0;index < inputArray.length;index++){
+	var dataString = "";
+	dataString += inputArray[index].toString();
+	dataString += ",";
+	dataString += outputArray[index].toString();
+	dataString += "\n";
+	document.getElementById("csvdata").value += dataString;
+}
+
+ctx = document.getElementById("plot1").getContext("2d");
+doTheMath(0702);//plot
+
+function doMathArray(localGlyph){
+	calculatorString = "";
+	commandGlyphString = "";
+	for(var index =0;index < localGlyph.length;index++){
+		doTheMath(localGlyph[index]);
+	}
+}
+
+function getEquation(localCommand){
+	if(localCommand == 01700){
+		myString = "$$P = G\\left(T_N + T\\frac{eV}{2k_BT}\coth{\\frac{eV}{2k_BT}}\\right)$$";	
+	}
+	if(localCommand == 01701){
+		myString = "$$T^{sys}_n = AT^{amp}_n + (A-1)T$$";
+	}
+	if(localCommand == 01702){
+		myString = "$$x \\equiv \\frac{eV}{2k_BT}$$";
+	}
+	if(localCommand == 01703){
+		myString = "$$P = G\\left(T_N + Tx\\coth{x}\\right)$$";	
+	}
+	
+
+}
+
+function doTheMath(localCommand){
+
+	if(localCommand == 0700){ 
+		inputArray = [];
+		numPoints = parseFloat(document.getElementById("numPointsInput").value);
+		startX = parseFloat(document.getElementById("startInput").value);
+		stopX = parseFloat(document.getElementById("stopInput").value);
+		
+		for(var index = 0;index <  numPoints;index++){
+			inputArray.push(startX + index*(stopX - startX)/(numPoints-1));
+		}
+		dataPoint = inputArray[0];
+		xName = document.getElementById("nameInput").value;
+		document.getElementById("inputArrayText").value = "";
+		for(var index = 0;index < inputArray.length;index++){
+			var dataString = "";
+			dataString += inputArray[index].toString();
+			dataString += "\n";
+			document.getElementById("inputArrayText").value += dataString;
+		}
+	}
+	if(localCommand == 0701){ //
+		constant1 = parseFloat(document.getElementById("constant1value").value);
+		constant2 = parseFloat(document.getElementById("constant2value").value);
+		constant3 = parseFloat(document.getElementById("constant3value").value);
+
+		constant1name = document.getElementById("constant1nameInput").value;
+		constant2name = document.getElementById("constant2nameInput").value;
+		constant3name = document.getElementById("constant3nameInput").value;
+
+		document.getElementById("constant1name").innerHTML = "$$" + constant1name + "$$";
+		document.getElementById("constant2name").innerHTML = "$$" + constant2name + "$$";
+		document.getElementById("constant3name").innerHTML = "$$" + constant3name + "$$";
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
+	}
+	if(localCommand == 0702){ //
+		doThePlot();
+	}
+
+	if(localCommand == 0710){
+		mathStack = [0,0,0,0];
+	}
+	if(localCommand == 0711){
+		latexStack = ["","","",""];		
+	}
+	if(localCommand == 0712){//push x
+		mathStack[3] = mathStack[2];
+		mathStack[2] = mathStack[1];
+		mathStack[1] = mathStack[0];
+		mathStack[0] = dataPoint;
+	}
+	if(localCommand == 0712){//push constant1
+		mathStack[3] = mathStack[2];
+		mathStack[2] = mathStack[1];
+		mathStack[1] = mathStack[0];
+		mathStack[0] = constant1;
+	}
+	if(localCommand == 0712){//push constant2
+		mathStack[3] = mathStack[2];
+		mathStack[2] = mathStack[1];
+		mathStack[1] = mathStack[0];
+		mathStack[0] = constant2;
+	}
+	if(localCommand == 0712){//push constant3
+		mathStack[3] = mathStack[2];
+		mathStack[2] = mathStack[1];
+		mathStack[1] = mathStack[0];
+		mathStack[0] = constant3;
+	}
+	if(localCommand == 0712){//push x latex
+		latexStack[3] = latexStack[2];
+		latexStack[2] = latexStack[1];
+		latexStack[1] = latexStack[0];
+		latexStack[0] = xName;
+	}
+	if(localCommand == 0712){//push constant1 latex
+		latexStack[3] = latexStack[2];
+		latexStack[2] = latexStack[1];
+		latexStack[1] = latexStack[0];
+		latexStack[0] = constant1name;
+	}
+	if(localCommand == 0712){//push constant2 latex
+		latexStack[3] = latexStack[2];
+		latexStack[2] = latexStack[1];
+		latexStack[1] = latexStack[0];
+		latexStack[0] = constant2name;
+	}
+	if(localCommand == 0712){//push constant3 latex
+		latexStack[3] = latexStack[2];
+		latexStack[2] = latexStack[1];
+		latexStack[1] = latexStack[0];
+		latexStack[0] = constant3name;
+	}
+
+	
+	if(localCommand == 0740){  //plus math
+		mathStack[0] = mathStack[1] + mathStack[0];
+		mathStack[1] = mathStack[2];
+		mathStack[2] = mathStack[3];
+		mathStack[3] = 0;		
+	}
+	if(localCommand == 0741){ //minus math
+		mathStack[0] = mathStack[1] - mathStack[0];
+		mathStack[1] = mathStack[2];
+		mathStack[2] = mathStack[3];
+		mathStack[3] = 0;
+	}
+	if(localCommand == 0742){  //times math
+		mathStack[0] = mathStack[1]*mathStack[0];
+		mathStack[1] = mathStack[2];
+		mathStack[2] = mathStack[3];
+		mathStack[3] = 0;
+	}
+	if(localCommand == 0743){ //divide math
+		mathStack[0] = mathStack[1]/mathStack[0];
+		mathStack[1] = mathStack[2];
+		mathStack[2] = mathStack[3];
+		mathStack[3] = 0;
+	}
+	if(localCommand == 0744){ //x = -x
+		mathStack[0] = -mathStack[0];
+	}	
+
+	if(localCommand == 0750){//plus latex
+		latexStack[0] = latexStack[1] + " + " + latexStack[0];
+		latexStack[1] = latexStack[2];
+		latexStack[2] = latexStack[3];
+		latexStack[3] = "";		
+	}
+	if(localCommand == 0751){ //minus latex
+		latexStack[0] = latexStack[1] + " - " + latexStack[0];
+		latexStack[1] = latexStack[2];
+		latexStack[2] = latexStack[3];
+		latexStack[3] = "";		
+	}
+	if(localCommand == 0752){//times latex, no symbol used
+		latexStack[0] = latexStack[1] + " " + latexStack[0];
+		latexStack[1] = latexStack[2];
+		latexStack[2] = latexStack[3];
+		latexStack[3] = "";		
+	}
+	if(localCommand == 0753){//divide in latex, with a fraction
+		latexStack[0] = "\\frac{" + latexStack[1] + " }{" + latexStack[0] + "}";
+		latexStack[1] = latexStack[2];
+		latexStack[2] = latexStack[3];
+		latexStack[3] = "";		
+	}
+	
+	if(localCommand == 0770){// big round perenthesis around curent expression
+		latexStack[0] = "\\left(" + latexStack[0] + "\\right)";		
+	}
+}
+
+function xcothx(inputX){
+	if(inputX == 0){
+		return 1;
+	}
+	else{
+		return inputX/Math.tanh(inputX);
+	}
+}
+
+function doThePlot(){
+	ctx.lineWidth = 2;
+	ctx.clearRect(0, 0, 500, 500);
+	ctx.beginPath();
+
+		windowStartX = 50;
+		windowSizeX = 400;
+		windowStartY = 450;
+		windowSizeY = 400;
+
+		imageMinimum = outputArray[0];
+		imageMaximum = outputArray[0];
+		for(var domainIndex = 0;domainIndex < inputArray.length;domainIndex++){
+				
+			if(outputArray[domainIndex] > imageMaximum){
+				imageMaximum = outputArray[domainIndex];
+			}
+			if(outputArray[domainIndex] < imageMinimum){
+				imageMinimum = outputArray[domainIndex];
+			}	
+		} 
+	for(var plotIndex = 0;plotIndex < inputArray.length-1;plotIndex++){
+	
+		X = windowStartX + plotIndex*windowSizeX/(inputArray.length - 1);
+		Y = outputArray[plotIndex];
+		Y = windowStartY - (Y - imageMinimum)*(windowSizeY/(Math.abs(imageMaximum - imageMinimum)));		
+		ctx.moveTo(X,Y);
+		X = windowStartX + (plotIndex+1)*windowSizeX/(inputArray.length - 1);
+
+		Y = outputArray[plotIndex + 1];
+		Y = windowStartY - (Y - imageMinimum)*(windowSizeY/(Math.abs(imageMaximum - imageMinimum)));		
+		ctx.lineTo(X,Y);
+		ctx.stroke();
+	
+	}
+
+	ctx.strokeRect(50,50,400,400);
+
+	ctx.moveTo(50,50);
+	ctx.lineTo(35,50);
+	ctx.stroke();
+	ctx.moveTo(50,450);
+	ctx.lineTo(35,450);
+	ctx.stroke();
+	ctx.moveTo(50,250);
+	ctx.lineTo(35,250);
+	ctx.stroke();
+
+	ctx.moveTo(50,150);
+	ctx.lineTo(45,150);
+	ctx.stroke();
+	ctx.moveTo(50,350);
+	ctx.lineTo(45,350);
+	ctx.stroke();
+
+	ctx.moveTo(50,450);
+	ctx.lineTo(50,465);
+	ctx.stroke();
+
+	ctx.moveTo(450,450);
+	ctx.lineTo(450,465);
+	ctx.stroke();
+	ctx.moveTo(250,450);
+	ctx.lineTo(250,465);
+	ctx.stroke();
+
+	ctx.moveTo(150,450);
+	ctx.lineTo(150,455);
+	ctx.stroke();
+	ctx.moveTo(350,450);
+	ctx.lineTo(350,455);
+	ctx.stroke();
+
+
+
+}
+
+/*
+$$P = G\left(T_N + T\frac{eV}{2k_BT}\coth{\frac{eV}{2k_BT}}\right)$$
+$$n = n_{\textrm{amp}} + \frac{1}{2}\left(u  + \frac{1}{2}\right)\coth{\left(\frac{u + \frac{1}{2}}{t}\right)}+ \frac{1}{2}\left(u  - \frac{1}{2}\right)\coth{\left(\frac{u - \frac{1}{2}}{t}\right)}$$
+$$n_{\textrm{attenuation}} = (A-1)\frac{1}{2}\coth{\left(\frac{hf}{2k_BT}\right)}$$
+$$n\equiv \frac{kT_{noise}}{hf}$$
+$$u \equiv \frac{eV}{hf}$$
+$$t \equiv \frac{kT}{hf}$$
+$$T^{sys}_n = AT^{amp}_n + (A-1)T$$
+$$p = G\left[n + \frac{1}{4}(u+1)\coth{\left(\frac{u+1}{2t}\right)}  + \frac{1}{4}(u-1)\coth{\left(\frac{u-1}{2t}\right)}\right]$$
+
+*/
+</script>
+
+</body>
+</html>

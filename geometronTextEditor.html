@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geometron Table Text Editor</title>
+<script src="libraries/geometron2library.js">
+</script>
+</head>
+<body>
+<script>
+initGeometron();
+currentAddress = 0600;
+
+actionTable = [];
+for(var index = 0;index < 01000;index++){
+	actionTable.push("");
+}
+nameTable = [];
+for(var index = 0;index < 01000;index++){
+	nameTable.push("");
+}
+
+</script>
+<h2>Geometron Table Text Editor</h2>
+<p>
+<button onClick = "previousAddress()">PREVIOUS</button><button onclick = "nextAddress()">NEXT</button>
+<p>
+<b>Address:</b><input type = "text" size = "6" value  = "0600" id = "addressInput" onchange = "manualAddress()"></input>
+<p>
+<b>Name:</b><input type = "text" size = "10" value = "name" id = "nameInput" onChange = "updateName()"></input>
+<p>
+<b>Text:</b>
+<p>
+<textarea rows = "20" cols = "40" id = "textText"></textarea>
+<p>
+<button onClick = "importBytecode()">IMPORT</button><button onClick = "exportBytecode()">EXPORT</button><button onClick = "exportFullCubes()">EXPORT FULL CUBES</button>
+<p>
+<b>Byte Code:</b>
+<p>
+<textarea rows = "2" cols = "40" id = "byteCode"></textarea>
+<p>
+<script>
+
+function updateName(){
+	nameTable[currentAddress] = string2byteCode(document.getElementById("nameInput").value);
+}
+
+function exportBytecode(){
+	var inputString = document.getElementById("textText").value;
+	var inputName = document.getElementById("nameInput").value;
+	var outputString = "";
+	outputString += "0" + currentAddress.toString(8) + ":";
+	outputString += string2byteCode(inputString);
+	
+	outputString += "\n";
+
+	outputString += "0" + (currentAddress + 01000).toString(8) + ":";
+	outputString += string2byteCode(inputName);
+	
+	document.getElementById("byteCode").value = outputString;
+}
+
+function exportFullCubes(){
+
+	document.getElementById("byteCode").value = "";
+	for(var cubeIndex = 0;cubeIndex < 01000;cubeIndex++){
+		var outputString = "";
+		outputString += "0" + cubeIndex.toString(8) + ":";
+		outputString += actionTable[cubeIndex];
+		outputString += "\n";
+		outputString += "0" + (cubeIndex + 01000).toString(8) + ":";
+		outputString += nameTable[cubeIndex];
+		outputString += "\n";
+	
+		document.getElementById("byteCode").value += outputString;
+	}
+}
+
+function importBytecode(){
+	var inputString = document.getElementById("byteCode").value;
+	var inputStringArray = inputString.split("\n");
+	for(var index = 0;index < inputStringArray.length;index++){
+		if(inputStringArray[index].length > 0){
+			var splitArray = inputStringArray[index].split(":");
+			var localAddress = parseInt(splitArray[0],8);
+			if(localAddress < 01000){
+				actionTable[localAddress] = splitArray[1];
+			}
+			if(localAddress > 01000){
+				nameTable[localAddress-01000] = splitArray[1];			
+			}
+			
+		}
+	}
+	
+	document.getElementById("textText").value = byteCode2string(actionTable[currentAddress]);
+	document.getElementById("nameInput").value = byteCode2string(nameTable[currentAddress]);
+
+}
+
+function previousAddress(){
+	
+	actionTable[currentAddress] = string2byteCode(document.getElementById("textText").value);
+	nameTable[currentAddress] = string2byteCode(document.getElementById("nameInput").value);
+		
+	currentAddress--;
+	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
+	document.getElementById("textText").value = byteCode2string(actionTable[currentAddress]);
+	document.getElementById("nameInput").value = byteCode2string(nameTable[currentAddress]);
+	updateName();
+
+}
+function nextAddress(){
+
+	actionTable[currentAddress] = string2byteCode(document.getElementById("textText").value);
+	nameTable[currentAddress] = string2byteCode(document.getElementById("nameInput").value);
+
+	currentAddress++;
+	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
+
+	document.getElementById("textText").value = byteCode2string(actionTable[currentAddress]);
+	document.getElementById("nameInput").value = byteCode2string(nameTable[currentAddress]);
+updateName();
+}
+
+function manualAddress(){
+	currentAddress = parseInt(document.getElementById("addressInput").value,8);
+		document.getElementById("textText").value = byteCode2string(actionTable[currentAddress]);
+	document.getElementById("nameInput").value = byteCode2string(nameTable[currentAddress]);
+
+}
+
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		localString += String.fromCharCode(parseInt(stringArray[index],8));
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		localByteCode += "0";
+		localByteCode += tempCharCode.toString(8);
+		localByteCode += ",";
+	}
+	return localByteCode;
+}
+
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		localString += String.fromCharCode(parseInt(stringArray[index],8));
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		if(tempCharCode != 0){
+			localByteCode += "0";
+			localByteCode += tempCharCode.toString(8);
+			localByteCode += ",";
+		}
+	}
+	return localByteCode;
+}
+
+</script>
+</body>
+</html>

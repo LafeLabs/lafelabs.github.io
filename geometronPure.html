@@ -9,24 +9,86 @@
 <script>
 initGeometron();
 
-var foo = currentTable[101].split(":");
-var bar = parseInt(foo[0],8);
-console.log("0" + bar.toString(8));
-
 //still need to add keymapping
 
+IOtabletBase = 01300;
+
 globalAddress = 0700;
+globalActionTablet = [];
+globalSymbolTablet = [];
 wordAddress = 0600;
+wordTablet = [];
+wordNameTablet = [];
 imageAddress = 0500;
+imageURLTablet = [];
+imageNameTablet = [];
 pageAddress = 0400;
+scrollTablet = [];
+scrollNameTablet = [];
 commandAddress = 0300;
+commandSymbolTablet = [];
+commandActionTablet = [];
 shapeAddress = 0200;
+shapeActionTablet = [];
+shapeSymbolTablet = [];
 letterAddress = 0101;
+fontTablet = [];
+letterNameTablet = [];
 rootAddress = 0000;
+rootTablet = [];
+rootNameTablet = [];
+
+for(var index = 0;index < 0100;index++){
+	globalActionTablet.push("057,057,0152,0141,0166,0141,0163,0143,0162,0151,0160,0164,040,0143,0157,0144,0145,"); //07XX
+	globalSymbolTablet.push("0146,0165,0156,0143,0164,0151,0157,0156,040,0156,0141,0155,0145,")			//017XX
+	wordTablet.push("0167,0157,0162,0144,");									//06XX
+	wordNameTablet.push("0167,0157,0162,0144,040,0156,0141,0155,0145,");						//016XX
+	imageURLTablet.push("0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0162,0171,0112,0111,067,065,070,056,0160,0156,0147");						//05XX
+	imageNameTablet.push("0151,0155,0141,0147,0145,040,0156,0141,0155,0145,");						//015XX
+	scrollTablet.push("0300");								//04XX
+	scrollNameTablet.push("0160,0141,0147,0145,040,0156,0141,0155,0145,");				    //014XX
+	commandSymbolTablet.push("0333,0200");					//013XX
+	commandActionTablet.push("0101");//03XX
+	shapeActionTablet.push("0300");							//02XX
+	shapeSymbolTablet.push("0333,0200");					//012XX
+}
+for(var index = 0;index < 0040;index++){
+	rootTablet.push("057,057,0152,0141,0166,0141,0163,0143,0162,0151,0160,0164,040,0143,0157,0144,0145,");
+	rootNameTablet.push("0146,0165,0156,0143,0164,0151,0157,0156,040,0156,0141,0155,0145,");
+}
+
+for(var index = 040;index <= 0176;index++){
+	
+	fontTablet.push("0342");
+	letterNameTablet.push("0154,0145,0164,0164,0145,0162,040,0156,0141,0155,0145,");
+
+}
+
+
 
 </script>
+<h2>Geometron Tablet Stack Editor</h2>
+<p>
+<u><h4>Keyboard Key Mapping:</h4></u>
+<p>
+1234567890<p>
+qwertyuiop<p>
+asdfghjkl;<p>
+zxcvbnm,./<p>
+<p>
+<u><h4>Bytecode IO:</h4></u>
+<p>
+
+<button onClick = "importTablet()">import</button>
+
+<button onClick = "exportTablet(0300);exportTablet(01300);">export</button>
+baseAddress: <input type  = "text" id = "baseAddressInput" size = "5" value = "0200"></input>
+<p>
+<textarea id = "bytecodeIO" rows="1" cols="40">
+</textarea>
 <p>
 <u><h4>Global Math Javascript (0700-0777):</h4></u>
+
 <b>
 <p id = "addr700">
 0700
@@ -70,17 +132,16 @@ Text:
 </b>
 <button onClick = "previousImage();">PREV</button><button onClick = "nextImage();">NEXT</button>
 <p>
+Image URL:
+<input id = "text0500" type = "text" onchange = "updateImage();">
+</input>
 Name of Image:
+<input id = "text01500" type = "text" onchange = "updateImage();">
+</input>
+
 <p>
-<textarea id = "text01500" rows="1" cols="20">
-</textarea>
 <p>
-Image URL
-<p>
-<textarea id = "text0500" rows="1" cols="40">
-</textarea>
-<p>
-<img src="https://i.imgur.com/ryJI758.png" alt="current image" height="300" width="300">
+<img src="https://i.imgur.com/ryJI758.png" alt="current image" height="300" width="300" id = "myImage">
 <p>
 
 <u><h4>Scroll (0400 - 0477):</h4></u>
@@ -116,6 +177,7 @@ SVG Export ASCII:
 </textarea>
 
 <u><h4>Geometry Commands (0300-0377):</h4></u>
+<p>
 <b>
 <p id = "addr300">
 0300
@@ -125,7 +187,7 @@ SVG Export ASCII:
 <p>
 Javascript Function Code:
 <p>
-<textarea id = "text0700" rows="6" cols="40">
+<textarea id = "text0300" rows="6" cols="40">
 </textarea>
 <p>
 Command Symbol Glyph:
@@ -147,15 +209,34 @@ Glyph-Glyph Spelling of Symbol Glyph:
 </b>
 <button onClick = "previousShape();">PREV</button><button onClick = "nextShape();">NEXT</button>
 <p>
-Shape:
+Shape Action:
 <p>
 <canvas id = "shapeCanvas" width = "200" height="200"style="border:1px solid;" > </canvas>
 <p>
-<input type = "text" value  = "0" onkeyup = "updateText2()" id = "inputGlyphShape"><--Keystrokes for shape</input>
+<input type = "text" value  = "0" onkeyup = "updateText2()" id = "inputGlyphShape"><--Keystrokes for shape action</input>
 <p>
 Glyph-Glyph Spelling of Shape:
 <p>
 <canvas id = "spellCanvas3" width = "800" height="50"style="border:1px solid;" > </canvas>
+<p>
+<textarea id = "bytecode200s" rows = "1" cols = 80"></textarea>
+<p>
+
+Shape Symbol:
+<p>
+<canvas id = "shapeSymbolCanvas" width = "200" height="200"style="border:1px solid;" > </canvas>
+<p>
+<input type = "text" value  = "0" onkeyup = "updateText2b()" id = "inputGlyphShapeSymbol"><--Keystrokes for shape symbol</input>
+<p>
+Glyph-Glyph Spelling of Shape:
+<p>
+<canvas id = "spellCanvas3b" width = "800" height="50"style="border:1px solid;" > </canvas>
+<p>
+<textarea id = "bytecode200sSymbol" rows = "1" cols = 80"></textarea>
+<p>
+
+
+
 <p>
 <u><h4>Font (0040 - 0176):</h4></u>
 <b>
@@ -178,13 +259,15 @@ Letter Action:
 <p>
 Glyph-Glyph Spelling of Letter:
 <p>
-<canvas id = "spellCanvas3" width = "800" height="50"style="border:1px solid;" > </canvas>
+<canvas id = "spellCanvas4" width = "800" height="50"style="border:1px solid;" > </canvas>
 <p>
 
 <u><h4>Root Magic Javascript (0000-0037):</h4></u>
+<b>
 <p id = "addrRoot">
-<b>0000</b>
+0000
 </p>
+</b>
 <button onClick = "previousRoot();">PREV</button><button onClick = "nextRoot();">NEXT</button>
 <p>
 Function Name:
@@ -203,40 +286,141 @@ Function Javascript Code:
 </textarea>
 <script>
 
+
+for(var index = 0;index < currentTable.length;index++){
+		var localArray = currentTable[index].split(":");
+		if(parseInt(localArray[0],8) == shapeAddress){
+			currentShape = localArray[1];				
+		}
+ 	}
+
+for(var index = 0;index < currentTable.length;index++){
+		var localArray = currentTable[index].split(":");
+		if(parseInt(localArray[0],8) == shapeAddress + 01000){
+			currentShapeSymbol = localArray[1];				
+		}
+ 	} 	
+ 	
+ 	document.getElementById("inputGlyphShape").value = commandString2keyString(currentShape);
+ 	document.getElementById("inputGlyphShapeSymbol").value = commandString2keyString(currentShapeSymbol);
+
+	updateText2();
+	updateText2b();
+
+function updateText2(){
+	currentShape = keystring2command(document.getElementById("inputGlyphShape").value);	
+	ctx = document.getElementById("shapeCanvas").getContext("2d");	
+	ctx.clearRect(0, 0, 200, 200);
+	x0 = 100;
+	y0 = 100;
+	unit = 25;
+	side = unit;
+	doTheThing(0300);
+	drawGlyph(currentShape);
+drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+	ctx = document.getElementById("spellCanvas3").getContext("2d");
+	ctx.clearRect(0, 0, 800, 50);
+	doTheThing(0300);
+	side = 20;
+	x = 2;
+	y = 24;
+	spellGlyph(currentShape);
+	document.getElementById("bytecode200s").value = currentShape;
+}
+
+
+function updateText2b(){
+	currentShapeSymbol = keystring2command(document.getElementById("inputGlyphShapeSymbol").value);	
+	ctx = document.getElementById("shapeSymbolCanvas").getContext("2d");	
+	ctx.clearRect(0, 0, 200, 200);
+	x0 = 100;
+	y0 = 100;
+	unit = 25;
+	side = unit;
+	doTheThing(0300);
+	drawGlyph(currentShapeSymbol);
+drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+	ctx = document.getElementById("spellCanvas3b").getContext("2d");
+	ctx.clearRect(0, 0, 800, 50);
+	doTheThing(0300);
+	side = 20;
+	x = 2;
+	y = 24;
+	spellGlyph(currentShapeSymbol);
+	document.getElementById("bytecode200sSymbol").value = currentShapeSymbol;
+}
+
+
+
 function previousGlobal(){
+	globalActionTablet[globalAddress - 0700] = string2byteCode(document.getElementById("text0700").value);
+	globalSymbolTablet[globalAddress - 0700] = string2byteCode(document.getElementById("text01700").value);
+	
 	globalAddress--;
 	if(globalAddress < 0700){
 		globalAddress = 0777;
 	}
 	document.getElementById("addr700").innerHTML = "0";
 	document.getElementById("addr700").innerHTML += globalAddress.toString(8);	
+	updateGlobal();
 }
 function nextGlobal(){
+	globalActionTablet[globalAddress - 0700] = string2byteCode(document.getElementById("text0700").value);
+	globalSymbolTablet[globalAddress - 0700] = string2byteCode(document.getElementById("text01700").value);
+	
 	globalAddress++;
 	if(globalAddress > 0777){
 		globalAddress = 0700;
 	}
 	document.getElementById("addr700").innerHTML = "0";
 	document.getElementById("addr700").innerHTML += globalAddress.toString(8);	
+updateGlobal();
 }
+updateGlobal();
+function updateGlobal(){
 
+	var localByteCode = globalActionTablet[globalAddress - 0700];
+	document.getElementById("text0700").value = byteCode2string(localByteCode);
+	var localByteCode = globalSymbolTablet[globalAddress - 0700];
+	document.getElementById("text01700").value = byteCode2string(localByteCode);
+
+	
+}
 function previousWord(){
+
+	wordTablet[wordAddress - 0600] = string2byteCode(document.getElementById("text0600").value);
+	wordNameTablet[wordAddress - 0600] = string2byteCode(document.getElementById("text01600").value);
+
 	wordAddress--;
 	if(wordAddress < 0600){
 		wordAddress = 0677;
 	}
 	document.getElementById("addr600").innerHTML = "0";
 	document.getElementById("addr600").innerHTML += wordAddress.toString(8);	
+updateWord();
 }
 function nextWord(){
+	wordTablet[wordAddress - 0600] = string2byteCode(document.getElementById("text0600").value);
+	wordNameTablet[wordAddress - 0600] = string2byteCode(document.getElementById("text01600").value);
+
 	wordAddress++;
 	if(wordAddress > 0677){
 		wordAddress = 0600;
 	}
 	document.getElementById("addr600").innerHTML = "0";
 	document.getElementById("addr600").innerHTML += wordAddress.toString(8);	
+updateWord();
 }
 
+updateWord();
+function updateWord(){
+
+	var localByteCode = wordTablet[wordAddress - 0600];
+	document.getElementById("text0600").value = byteCode2string(localByteCode);
+	var localByteCode = wordNameTablet[wordAddress - 0600];
+	document.getElementById("text01600").value = byteCode2string(localByteCode);
+
+}
 function previousImage(){
 	imageAddress--;
 	if(imageAddress < 0500){
@@ -254,6 +438,17 @@ function nextImage(){
 	document.getElementById("addr500").innerHTML += imageAddress.toString(8);	
 }
 
+updateImage();
+function updateImage(){
+
+	var localByteCode = imageURLTablet[imageAddress - 0500];
+	document.getElementById("text0500").value = byteCode2string(localByteCode);
+	var localByteCode = imageNameTablet[imageAddress - 0500];
+	document.getElementById("text01500").value = byteCode2string(localByteCode);
+	document.getElementById("myImage").src = document.getElementById("text0500").value;
+	
+	console.log("foo");w
+}
 
 function previousPage(){
 	pageAddress--;
@@ -296,6 +491,27 @@ function previousShape(){
 	}
 	document.getElementById("addr200").innerHTML = "0";
 	document.getElementById("addr200").innerHTML += shapeAddress.toString(8);	
+	
+	
+	for(var index = 0;index < currentTable.length;index++){
+		var localArray = currentTable[index].split(":");
+		if(parseInt(localArray[0],8) == shapeAddress){
+			currentShape = localArray[1];				
+		}
+ 	}
+    for(var index = 0;index < currentTable.length;index++){
+		var localArray = currentTable[index].split(":");
+		if(parseInt(localArray[0],8) == shapeAddress + 01000){
+			currentShapeSymbol = localArray[1];				
+		}
+ 	} 	
+ 	 	
+ 	document.getElementById("inputGlyphShapeSymbol").value = commandString2keyString(currentShapeSymbol);
+ 	
+ 	document.getElementById("inputGlyphShape").value = commandString2keyString(currentShape);
+	updateText2();
+	updateText2b();
+
 }
 function nextShape(){
 	shapeAddress++;
@@ -304,6 +520,28 @@ function nextShape(){
 	}
 	document.getElementById("addr200").innerHTML = "0";
 	document.getElementById("addr200").innerHTML += shapeAddress.toString(8);	
+	
+	
+	    for(var index = 0;index < currentTable.length;index++){
+		var localArray = currentTable[index].split(":");
+		if(parseInt(localArray[0],8) == shapeAddress + 01000){
+			currentShapeSymbol = localArray[1];				
+		}
+ 	} 	
+ 	 	
+ 	document.getElementById("inputGlyphShapeSymbol").value = commandString2keyString(currentShapeSymbol);
+
+	for(var index = 0;index < currentTable.length;index++){
+		var localArray = currentTable[index].split(":");
+		if(parseInt(localArray[0],8) == shapeAddress){
+			currentShape = localArray[1];				
+		}
+ 	}
+ 	
+ 	document.getElementById("inputGlyphShape").value = commandString2keyString(currentShape);
+	updateText2();
+	updateText2b();
+
 }
 
 function previousLetter(){
@@ -341,6 +579,226 @@ function nextRoot(){
 }
 
 
+function exportTablet(){
+	IOtabletBase = parseInt(document.getElementById("baseAddressInput").value,8);
+	document.getElementById("bytecodeIO").value = "";
+	
+	if(IOtabletBase == 0700){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(globalActionTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+if(IOtabletBase == 01700){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(globalSymbolTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+
+
+	if(IOtabletBase == 0600){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(wordTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+	if(IOtabletBase == 01600){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(wordNameTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+if(IOtabletBase == 0500){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(imageURLTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+	if(IOtabletBase == 01500){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(imageNameTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+if(IOtabletBase == 0400){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += scrollTablet[index];
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+	if(IOtabletBase == 01400){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(scrollNameTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+if(IOtabletBase == 0300){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(commandActionTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+	if(IOtabletBase == 01300){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += commandSymbolTablet[index];
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+
+	if(IOtabletBase == 01200){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += shapeSymbolTablet[index];
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+	if(IOtabletBase == 0200){
+		for(var index = 0;index < 0100;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += shapeActionTablet[index];
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+
+	if(IOtabletBase == 01040){
+		for(var index = 040;index <= 0176;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index - 040).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(letterNameTablet[index - 040]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+	if(IOtabletBase == 0040){
+		for(var index = 040;index <= 0176;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index - 040).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += fontTablet[index - 040];
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+	if(IOtabletBase == 0000){
+		for(var index = 0;index < 040;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(rootTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+if(IOtabletBase == 01000){
+		for(var index = 0;index < 040;index++){
+			document.getElementById("bytecodeIO").value += "0" + (IOtabletBase + index).toString(8) + ":";
+			document.getElementById("bytecodeIO").value += string2byteCode(rootNameTablet[index]);
+			document.getElementById("bytecodeIO").value += "\n";
+		}
+	}
+
+}
+
+function importTablet(){
+	var localTablet = document.getElementById("bytecodeIO").value;
+	var tabletArrayTrash = localTablet.split("\n");
+	var tabletArray = [];
+	for(var index = 0;index < tabletArrayTrash.length;index++){
+		if(tabletArrayTrash[index].trim().length != 0){
+			tabletArray.push(tabletArrayTrash[index].trim());
+		}
+	}
+
+	for(var index = 0;index < tabletArray.length;index++){
+		var localAddr = parseInt(tabletArray[index].split(":")[0],8);
+		var localGlyph = tabletArray[index].split(":")[1];	
+		if(localAddr >= 0700 && localAddr <= 0777){
+			globalActionTablet[localAddr - 0700] = localGlyph;
+		}
+		if(localAddr >= 01700 && localAddr <= 01777){
+			globalSymbolTablet[localAddr - 01700] = localGlyph;
+		} 
+		if(localAddr >= 0600 && localAddr <= 0677){
+			wordTablet[localAddr - 0600] = localGlyph;
+		}
+		if(localAddr >= 01600 && localAddr <= 01677){
+			wordNameTablet[localAddr - 01600] = localGlyph;
+		} 
+		if(localAddr >= 0500 && localAddr <= 0577){
+			imageURLTablet[localAddr - 0500] = localGlyph;
+		}
+		if(localAddr >= 01500 && localAddr <= 01577){
+			imageNameTablet[localAddr - 01500] = localGlyph;
+		} 
+		if(localAddr >= 0400 && localAddr <= 0477){
+			scrollTablet[localAddr - 0400] = localGlyph;
+		}
+		if(localAddr >= 01400 && localAddr <= 01477){
+			scrollNameTablet[localAddr - 01400] = localGlyph;
+		} 
+		if(localAddr >= 0300 && localAddr <= 0377){
+			commandActionTablet[localAddr - 0300] = localGlyph;
+		}
+		if(localAddr >= 01300 && localAddr <= 01377){
+			commandSymbolTablet[localAddr - 01300] = localGlyph;
+		} 
+		if(localAddr >= 0200 && localAddr <= 0277){
+			shapeActionTablet[localAddr - 0200] = localGlyph;
+		}
+		if(localAddr >= 01200 && localAddr <= 01277){
+			shapeSymbolTablet[localAddr - 01200] = localGlyph;
+		} 
+		if(localAddr >= 040 && localAddr <= 0176){
+			fontTablet[localAddr - 040] = localGlyph;
+		}
+		if(localAddr >= 01040 && localAddr <= 01176){
+			letterNameTablet[localAddr - 01040] = localGlyph;
+		} 
+		if(localAddr >= 00 && localAddr <= 0037){
+			rootTablet[localAddr] = localGlyph;
+		}
+		if(localAddr >= 01000 && localAddr <= 01037){
+			rootNameTablet[localAddr - 01000] = localGlyph;
+		} 
+
+	}
+
+
+}
+
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		localString += String.fromCharCode(parseInt(stringArray[index],8));
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		localByteCode += "0";
+		localByteCode += tempCharCode.toString(8);
+		localByteCode += ",";
+	}
+	return localByteCode;
+}
 
 </script>
 </body>
