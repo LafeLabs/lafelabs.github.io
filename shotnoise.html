@@ -22,23 +22,40 @@ Numbers:
 <p>
 <u><h4>Constants:</h4></u>
 <p id = "constant1name">
-constant1:</p>
+</p>constant1:
 <input id = "constant1value" type = "text" size = "6" value = "1" onchange = "doTheMath(0701)"></input>
 name:<input id = "constant1nameInput" type = "text" size = "6" value = "T" onchange = "doTheMath(0701)"></input>
 </p>
 <p id = "constant2name">
-constant2:</p>
+</p>constant2:
 <input id = "constant2value" type = "text" size = "6" value = "1" onchange = "doTheMath(0701)"></input>
 name:<input id = "constant2nameInput" type = "text" size = "6" value = "T_N" onchange = "doTheMath(0701)"></input>
 </p>
 <p id = "constant3name">
-constant3:</p>
+</p>constant3:
 <input id = "constant3value" type = "text" size = "6" value = "1" onchange = "doTheMath(0701)"></input>
 name:<input id = "constant3nameInput" type = "text" size = "6" value = "G" onchange = "doTheMath(0701)"></input>
 </p>
-
+<u><h4>Output Name:</h4></u>
+<p id = "outputName"></p>
+<input id = "outputNameInput" type = "text" size = "8" value = "P" onchange = "doTheMath(0701)"></input>
+<u><h4>Equation:</h4></u>
 <p id = "mathp">
 </p>
+byteCode:<p>
+<textarea id = "byteCode" rows = "2" cols = "40"></textarea>
+<p>
+<button onClick = "buttonResponse(0712);buttonResponse(01712)">pushX</button><button onClick = "buttonResponse(0713);buttonResponse(01713)">pushC1</button>
+<button onClick = "buttonResponse(0714);buttonResponse(01714)">pushC2</button>
+<button onClick = "buttonResponse(0715);buttonResponse(01715)">pushC3</button>
+<button onClick = "buttonResponse(0740);buttonResponse(01740)">+</button>
+<button onClick = "buttonResponse(0741);buttonResponse(01741)">-</button>
+<button onClick = "buttonResponse(0742);buttonResponse(01742)">&#215</button>
+<button onClick = "buttonResponse(0743);buttonResponse(01743)">&#247</button>
+<button onClick = "buttonResponse(01770)">()</button>
+<button onClick = "buttonResponse(0745);buttonResponse(01745)">xcothx</button>
+
+
 <p>
 <canvas id = "plot1" width = "500" height = "500" style="border:1px solid;"></canvas>
 <p>
@@ -49,12 +66,30 @@ name:<input id = "constant3nameInput" type = "text" size = "6" value = "G" oncha
 doTheMath(0700);//input x
 doTheMath(0701);//input constants
 
+document.getElementById("mathp").innerHTML = "$$" + outputName + "=$$" ;
+MathJax.Hub.Typeset();//tell Mathjax to update the math
 
 outputArray = [];
 for(var index = 0;index < inputArray.length;index++){
-	outputArray.push(constant1*(constant2 + constant3*xcothx(inputArray[index])));
+	dataPoint = inputArray[index];
+	// push x 0712
+	// xcothx 0745
+	// push constant 3     0715
+	// times	0742
+	// push constant 2	  0714
+	// plus		0740
+	// push constant 1   0713
+	// times	0742
+	// pop x  0716
+	computeGlyph = "0710,0712,0745,0715,0742,0714,0740,0713,0742,0716";
+	doMathArray(computeGlyph);
+	outputArray.push(dataPoint);
+	//outputArray.push(constant1*(constant2 + constant3*xcothx(inputArray[index])));
+	
 }
 
+symbolGlyph = "01711,01710,01712,01745,01713,01742,01714,01740,01770,01715,01742,01716";
+doMathArray(symbolGlyph);
 
 document.getElementById("csvdata").value = "";
 for(var index = 0;index < inputArray.length;index++){
@@ -69,11 +104,17 @@ for(var index = 0;index < inputArray.length;index++){
 ctx = document.getElementById("plot1").getContext("2d");
 doTheMath(0702);//plot
 
+function buttonResponse(localCode){
+		document.getElementById("byteCode").value += "0" + localCode.toString(8) + ",";
+		doMathArray(document.getElementById("byteCode").value);
+		doTheMath(01716);
+		
+}
+
 function doMathArray(localGlyph){
-	calculatorString = "";
-	commandGlyphString = "";
-	for(var index =0;index < localGlyph.length;index++){
-		doTheMath(localGlyph[index]);
+	var tempArray = localGlyph.split(',');
+	for(var index = 0;index < tempArray.length;index++){
+		doTheMath(parseInt(tempArray[index],8));
 	}
 }
 
@@ -123,10 +164,13 @@ function doTheMath(localCommand){
 		constant1name = document.getElementById("constant1nameInput").value;
 		constant2name = document.getElementById("constant2nameInput").value;
 		constant3name = document.getElementById("constant3nameInput").value;
+		outputName = document.getElementById("outputNameInput").value;
 
 		document.getElementById("constant1name").innerHTML = "$$" + constant1name + "$$";
 		document.getElementById("constant2name").innerHTML = "$$" + constant2name + "$$";
 		document.getElementById("constant3name").innerHTML = "$$" + constant3name + "$$";
+		document.getElementById("outputName").innerHTML = "$$" + outputName + "$$";
+		
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 	}
 	if(localCommand == 0702){ //
@@ -136,7 +180,7 @@ function doTheMath(localCommand){
 	if(localCommand == 0710){
 		mathStack = [0,0,0,0];
 	}
-	if(localCommand == 0711){
+	if(localCommand == 01711){
 		latexStack = ["","","",""];		
 	}
 	if(localCommand == 0712){//push x
@@ -145,43 +189,52 @@ function doTheMath(localCommand){
 		mathStack[1] = mathStack[0];
 		mathStack[0] = dataPoint;
 	}
-	if(localCommand == 0712){//push constant1
+	if(localCommand == 0713){//push constant1
 		mathStack[3] = mathStack[2];
 		mathStack[2] = mathStack[1];
 		mathStack[1] = mathStack[0];
 		mathStack[0] = constant1;
 	}
-	if(localCommand == 0712){//push constant2
+	if(localCommand == 0714){//push constant2
 		mathStack[3] = mathStack[2];
 		mathStack[2] = mathStack[1];
 		mathStack[1] = mathStack[0];
 		mathStack[0] = constant2;
 	}
-	if(localCommand == 0712){//push constant3
+	if(localCommand == 0715){//push constant3
 		mathStack[3] = mathStack[2];
 		mathStack[2] = mathStack[1];
 		mathStack[1] = mathStack[0];
 		mathStack[0] = constant3;
 	}
-	if(localCommand == 0712){//push x latex
+	if(localCommand == 0716){//pop x, sort of
+		dataPoint = mathStack[0];
+	}
+	if(localCommand == 01716){//get equation output(right hand side)
+		equationRHS = latexStack[0];
+		document.getElementById("mathp").innerHTML = "$$" + outputName + "=" +equationRHS + "$$" ;
+MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+	}
+	if(localCommand == 01712){//push x latex
 		latexStack[3] = latexStack[2];
 		latexStack[2] = latexStack[1];
 		latexStack[1] = latexStack[0];
 		latexStack[0] = xName;
 	}
-	if(localCommand == 0712){//push constant1 latex
+	if(localCommand == 01713){//push constant1 latex
 		latexStack[3] = latexStack[2];
 		latexStack[2] = latexStack[1];
 		latexStack[1] = latexStack[0];
 		latexStack[0] = constant1name;
 	}
-	if(localCommand == 0712){//push constant2 latex
+	if(localCommand == 01714){//push constant2 latex
 		latexStack[3] = latexStack[2];
 		latexStack[2] = latexStack[1];
 		latexStack[1] = latexStack[0];
 		latexStack[0] = constant2name;
 	}
-	if(localCommand == 0712){//push constant3 latex
+	if(localCommand == 01715){//push constant3 latex
 		latexStack[3] = latexStack[2];
 		latexStack[2] = latexStack[1];
 		latexStack[1] = latexStack[0];
@@ -216,33 +269,39 @@ function doTheMath(localCommand){
 	if(localCommand == 0744){ //x = -x
 		mathStack[0] = -mathStack[0];
 	}	
+	if(localCommand == 0745){ //xcothx
+		mathStack[0] = xcothx(mathStack[0]);
+	}	
+	if(localCommand == 01745){ //xcothx
+		latexStack[0] = latexStack[0] + "\\coth{" + latexStack[0] + "}";
+	}	
 
-	if(localCommand == 0750){//plus latex
+	if(localCommand == 01740){//plus latex
 		latexStack[0] = latexStack[1] + " + " + latexStack[0];
 		latexStack[1] = latexStack[2];
 		latexStack[2] = latexStack[3];
 		latexStack[3] = "";		
 	}
-	if(localCommand == 0751){ //minus latex
+	if(localCommand == 01741){ //minus latex
 		latexStack[0] = latexStack[1] + " - " + latexStack[0];
 		latexStack[1] = latexStack[2];
 		latexStack[2] = latexStack[3];
 		latexStack[3] = "";		
 	}
-	if(localCommand == 0752){//times latex, no symbol used
+	if(localCommand == 01742){//times latex, no symbol used
 		latexStack[0] = latexStack[1] + " " + latexStack[0];
 		latexStack[1] = latexStack[2];
 		latexStack[2] = latexStack[3];
 		latexStack[3] = "";		
 	}
-	if(localCommand == 0753){//divide in latex, with a fraction
+	if(localCommand == 01743){//divide in latex, with a fraction
 		latexStack[0] = "\\frac{" + latexStack[1] + " }{" + latexStack[0] + "}";
 		latexStack[1] = latexStack[2];
 		latexStack[2] = latexStack[3];
 		latexStack[3] = "";		
 	}
 	
-	if(localCommand == 0770){// big round perenthesis around curent expression
+	if(localCommand == 01770){// big round perenthesis around curent expression
 		latexStack[0] = "\\left(" + latexStack[0] + "\\right)";		
 	}
 }
