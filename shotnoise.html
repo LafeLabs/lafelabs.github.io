@@ -23,7 +23,7 @@ Numbers:
 <u><h4>Constants:</h4></u>
 <p id = "constant1name">
 </p>constant1:
-<input id = "constant1value" type = "text" size = "6" value = "1" onchange = "doTheMath(0701)"></input>
+<input id = "constant1value" type = "text" size = "6" value = "1" onchange = "doTheMath(0701);"></input>
 name:<input id = "constant1nameInput" type = "text" size = "6" value = "T" onchange = "doTheMath(0701)"></input>
 </p>
 <p id = "constant2name">
@@ -38,7 +38,7 @@ name:<input id = "constant3nameInput" type = "text" size = "6" value = "G" oncha
 </p>
 <u><h4>Output Name:</h4></u>
 <p id = "outputName"></p>
-<input id = "outputNameInput" type = "text" size = "8" value = "P" onchange = "doTheMath(0701)"></input>
+<input id = "outputNameInput" type = "text" size = "8" value = "P" onchange = "doTheMath(0701);"></input>
 <u><h4>Equation:</h4></u>
 <p id = "mathp">
 </p>
@@ -54,14 +54,15 @@ byteCode:<p>
 <button onClick = "buttonResponse(0743);buttonResponse(01743)">&#247</button>
 <button onClick = "buttonResponse(01770)">()</button>
 <button onClick = "buttonResponse(0745);buttonResponse(01745)">xcothx</button>
-
-
+<p>
+<button onClick = "doThePlot();">PLOT</button>
 <p>
 <canvas id = "plot1" width = "500" height = "500" style="border:1px solid;"></canvas>
 <p>
 <textarea id = "csvdata" rows = "10" cols = "40">	
 </textarea>
 <script>
+		ctx = document.getElementById("plot1").getContext("2d");
 
 doTheMath(0700);//input x
 doTheMath(0701);//input constants
@@ -155,6 +156,8 @@ function doTheMath(localCommand){
 			dataString += "\n";
 			document.getElementById("inputArrayText").value += dataString;
 		}
+		
+		
 	}
 	if(localCommand == 0701){ //
 		constant1 = parseFloat(document.getElementById("constant1value").value);
@@ -172,6 +175,9 @@ function doTheMath(localCommand){
 		document.getElementById("outputName").innerHTML = "$$" + outputName + "$$";
 		
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
+//		doThePlot();
+
+
 	}
 	if(localCommand == 0702){ //
 		doThePlot();
@@ -316,6 +322,10 @@ function xcothx(inputX){
 }
 
 function doThePlot(){
+	
+doTheMath(0700);
+doTheMath(0701);	
+	
 	ctx.lineWidth = 2;
 	ctx.clearRect(0, 0, 500, 500);
 	ctx.beginPath();
@@ -388,7 +398,14 @@ function doThePlot(){
 	ctx.lineTo(350,455);
 	ctx.stroke();
 
+    ctx.font="16px Arial";
+//	ctx.fillText(domainMinimum.toString(),50,485);
+//	ctx.fillText(domainMaximum.toString(),425,485);
+	ctx.fillText(imageMinimum.toFixed(1),5,450);
+	ctx.fillText(imageMaximum.toFixed(1),5,65);
 
+	var tempStringShits=	imageMaximum.toFixed(3);
+	console.log(tempStringShits );
 
 }
 

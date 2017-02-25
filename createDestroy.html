@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Creation and Destruction in the html DOM</title>
+<script src="libraries/geometron2library.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<p>
+<button onClick = "create()">CREATE </button>
+<button onClick = "destroy()">DESTROY</button>
+<p>
+<input id = "bytecode" value = "0300,0336,0203,0341"></input>
+<p id = "canvases">
+</p>
+
+
+<script>
+initGeometron();
+canvasIndex = 0;
+
+function create(){
+	var kansas = document.createElement("CANVAS");
+		kansas.setAttribute("width", "400");
+		kansas.setAttribute("height", "400");
+		kansas.setAttribute("style", "border:1px solid;");
+		var derp = "canvas" + canvasIndex.toString();
+		kansas.setAttribute("id",derp);
+		
+		x0 = 200;
+		y0= 200;
+		unit = 40;
+		side = unit;
+		currentGlyph = ("0300,0336,0203,0341,0342,0330,0334,0341,0342,0330,0334,0341,0342,0330,0334");
+		
+		currentGlyph = document.getElementById("bytecode").value;
+		ctx = kansas.getContext("2d");
+		drawGlyph(currentGlyph);		
+		document.body.appendChild(kansas);      		
+		canvasIndex++;
+	}
+	function destroy(){
+		if(canvasIndex != 0){
+			var derp = "canvas" + (canvasIndex-1).toString();
+			zorp = document.getElementById(derp);
+			document.body.removeChild(zorp);
+			canvasIndex--;
+		}
+}
+
+</script>
+</body>
+</html>

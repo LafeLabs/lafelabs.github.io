@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MathJax Dynamic Math Test Page</title>
-<script src="libraries/geometron2library.js">
-</script>
+<title>RPN Symbolic/Numeric Calculator</title>
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
+<h2>RPN Symbolic/Numeric Calculator</h2>
 
-
-number:<input type = "text" size = "6" id = "numberInput" value = "0"></input><p>
-symbol:<input type = "text" size = "6" id = "symbolInput" value = "x"></input>
+Number:<input type = "text" size = "6" id = "numberInput" value = "1"></input><p>
+Symbol(Latex format):<input type = "text" size = "6" id = "symbolInput" value = "x"></input>
 
 <p>
 <button onClick = "enter()">ENTER</button>
@@ -19,6 +18,7 @@ symbol:<input type = "text" size = "6" id = "symbolInput" value = "x"></input>
 <button onClick = "times()">TIMES</button>
 <button onClick = "divide()">DIVIDE</button>
 <button onClick = "peren()">(PEREN)</button>
+<p>
 
 <p>
 <h4>Symbolic Equation:</h4>
