@@ -19,7 +19,11 @@ Symbol(Latex format):<input type = "text" size = "6" id = "symbolInput" value = 
 <button onClick = "divide()">DIVIDE</button>
 <button onClick = "peren()">(PEREN)</button>
 <p>
-
+<button onClick = "getPow()">POW</button>
+<button onClick = "getSin()">SIN</button>
+<button onClick = "getCos()">COS</button>
+<button onClick = "getTan()">TAN</button>
+<button onClick = "getAtan()">ATAN</button>
 <p>
 <h4>Symbolic Equation:</h4>
 <p id = "symbolEquation">
@@ -39,7 +43,7 @@ function enter(){
 	var na = parseFloat(document.getElementById("numberInput").value);
 	var sa = document.getElementById("symbolInput").value;
 
-document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";
+document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";
 	
 	
 	MathJax.Hub.Typeset();//tell Mathjax to update the math
@@ -57,7 +61,7 @@ function plus(){
 		numberStack.pop();
 		numberStack.pop();
 		numberStack.push(na);
-		document.getElementById("numberInput").value = na.toFixed(3);
+		document.getElementById("numberInput").value = na.toExponential(6);
 		
 		var sa = symbolStack[symbolStack.length - 2] + " + " + symbolStack[symbolStack.length - 1];
 		symbolStack.pop();
@@ -65,7 +69,7 @@ function plus(){
 		symbolStack.push(sa);
 		document.getElementById("symbolInput").value = sa;
 
-		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";		
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";		
 	
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
@@ -82,7 +86,7 @@ function minus(){
 		numberStack.pop();
 		numberStack.pop();
 		numberStack.push(na);
-		document.getElementById("numberInput").value = na.toFixed(3);
+		document.getElementById("numberInput").value = na.toExponential(6);
 		
 		var sa = symbolStack[symbolStack.length - 2] + " - " + symbolStack[symbolStack.length - 1];
 		symbolStack.pop();
@@ -90,7 +94,7 @@ function minus(){
 		symbolStack.push(sa);
 		document.getElementById("symbolInput").value = sa;
 
-		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";		
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";		
 	
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
@@ -108,14 +112,14 @@ function times(){
 		numberStack.pop();
 		numberStack.pop();
 		numberStack.push(na);
-		document.getElementById("numberInput").value = na.toFixed(3);
+		document.getElementById("numberInput").value = na.toExponential(6);
 		var sa = symbolStack[symbolStack.length - 2] + symbolStack[symbolStack.length - 1];
 		symbolStack.pop();
 		symbolStack.pop();
 		symbolStack.push(sa);
 		document.getElementById("symbolInput").value = sa;
 
-		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";		
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";		
 	
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
@@ -133,14 +137,14 @@ function divide(){
 		numberStack.pop();
 		numberStack.pop();
 		numberStack.push(na);
-		document.getElementById("numberInput").value = na.toFixed(3);
+		document.getElementById("numberInput").value = na.toExponential(6);
 		var sa = "\\frac{" + symbolStack[symbolStack.length - 2] + "}{" + symbolStack[symbolStack.length - 1] + "}";
 		symbolStack.pop();
 		symbolStack.pop();
 		symbolStack.push(sa);
 		document.getElementById("symbolInput").value = sa;
 
-		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";		
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";		
 	
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
@@ -157,11 +161,120 @@ function peren(){
 	sa = "\\left(" + sa + "\\right)";
 	symbolStack[symbolStack.length - 1]   = sa;
 	document.getElementById("symbolInput").value = sa;	
-	document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";	
+	document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";	
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
 }
 
+function getPow(){
+		if(numberStack.length != 0){//do nothing if stack is empty
+		enter();
+		var na = Math.pow(numberStack[numberStack.length - 2],numberStack[numberStack.length - 1]);
+		numberStack.pop();
+		numberStack.pop();
+		numberStack.push(na);
+		document.getElementById("numberInput").value = na.toExponential(6);
+		
+		var sa = symbolStack[symbolStack.length - 2] + "^{" + symbolStack[symbolStack.length - 1] + "}";
+		symbolStack.pop();
+		symbolStack.pop();
+		symbolStack.push(sa);
+		document.getElementById("symbolInput").value = sa;
+
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";		
+	
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+
+
+		console.log(numberStack);
+		console.log(symbolStack);
+	}
+
+}
+function getSin(){
+	enter();
+	if(numberStack.length != 0){//do nothing if stack is empty
+
+	
+		var sa = symbolStack[symbolStack.length - 1];
+		var na = numberStack[numberStack.length - 1];
+		na = Math.sin(na);
+		numberStack[numberStack.length - 1] = na;
+		document.getElementById("numberInput").value = na.toExponential(6);
+
+		sa = "\\sin{" + sa + "}";
+		symbolStack[symbolStack.length - 1]   = sa;
+		document.getElementById("symbolInput").value = sa;	
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";	
+			MathJax.Hub.Typeset();//tell Mathjax to update the math
+	}
+
+}
+function getCos(){
+	enter();
+	if(numberStack.length != 0){//do nothing if stack is empty
+
+	
+		var sa = symbolStack[symbolStack.length - 1];
+		var na = numberStack[numberStack.length - 1];
+		na = Math.cos(na);
+		numberStack[numberStack.length - 1] = na;
+		document.getElementById("numberInput").value = na.toExponential(6);
+
+		sa = "\\cos{" + sa + "}";
+		symbolStack[symbolStack.length - 1]   = sa;
+		document.getElementById("symbolInput").value = sa;	
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";	
+			MathJax.Hub.Typeset();//tell Mathjax to update the math
+	}
+
+}
+function getTan(){
+	enter();
+	if(numberStack.length != 0){//do nothing if stack is empty
+
+	
+		var sa = symbolStack[symbolStack.length - 1];
+		var na = numberStack[numberStack.length - 1];
+		na = Math.tan(na);
+		numberStack[numberStack.length - 1] = na;
+		document.getElementById("numberInput").value = na.toExponential(6);
+
+		sa = "\\tan{" + sa + "}";
+		symbolStack[symbolStack.length - 1]   = sa;
+		document.getElementById("symbolInput").value = sa;	
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";	
+			MathJax.Hub.Typeset();//tell Mathjax to update the math
+	}
+
+}
+function getAtan(){
+	enter();
+	if(numberStack.length != 0){//do nothing if stack is empty
+
+	
+		var sa = symbolStack[symbolStack.length - 1];
+		var na = numberStack[numberStack.length - 1];
+		na = Math.atan(na);
+		numberStack[numberStack.length - 1] = na;
+		document.getElementById("numberInput").value = na.toExponential(6);
+
+		sa = "\\arctan{" + sa + "}";
+		symbolStack[symbolStack.length - 1]   = sa;
+		document.getElementById("symbolInput").value = sa;	
+		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";	
+			MathJax.Hub.Typeset();//tell Mathjax to update the math
+	}
+
+}
+
+
+function expTex(floatString){
+	var localArray = floatString.split("e");
+	var textOutput = localArray[0] + "\\times 10^{" + localArray[1] + "}";
+	return(textOutput);
+}
 </script>
 
 </body>
