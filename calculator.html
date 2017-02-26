@@ -24,6 +24,18 @@ Symbol(Latex format):<input type = "text" size = "6" id = "symbolInput" value = 
 <button onClick = "getCos()">COS</button>
 <button onClick = "getTan()">TAN</button>
 <button onClick = "getAtan()">ATAN</button>
+<button onClick = "popAll()">POP</button>
+<p>
+<!--
+<button onClick = "electronCharge()">\(q_e\)</button>
+<button onClick = "kBoltzmann()">\(k_b\)</button>
+<button onClick = "two()">2</button>
+<button onClick = "xCothx()">xCothx</button>
+<button onClick = "T">xCothx</button>
+<button onClick = "xCothx()">xCothx</button>
+<button onClick = "xCothx()">xCothx</button>
+-->
+
 <p>
 <h4>Symbolic Equation:</h4>
 <p id = "symbolEquation">
@@ -31,7 +43,16 @@ Symbol(Latex format):<input type = "text" size = "6" id = "symbolInput" value = 
 <p id = "definitions">
 </p>
 
+
+<!--
+<h4>Octal Byte Code</h4>
+<button onClick = "exportCode()">EXPORT</button>
+<p>
+<textarea cols = "40" rows = "1" id = "byteCodeText"></textarea>
+-->
 <script>
+
+byteCode = "";
 
 //na = 0//numeric accumulator
 //sa = "";//symbolic accumulator
@@ -44,14 +65,17 @@ function enter(){
 	var sa = document.getElementById("symbolInput").value;
 
 document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";
-	
-	
+		
 	MathJax.Hub.Typeset();//tell Mathjax to update the math
 	numberStack.push(na);
 	symbolStack.push(sa);
 	
-	console.log(numberStack);
-	console.log(symbolStack);
+	console.log(numberStack);console.log(symbolStack);
+
+	byteCode += "0700,";	
+//	byteCode += string2byteCode(document.getElementById("numberInput").value + ",");
+//	byteCode += string2byteCode(document.getElementById("symbolInput").value);
+	
 }
 
 function plus(){
@@ -74,6 +98,7 @@ function plus(){
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
 
+	byteCode += "0701,";
 
 		console.log(numberStack);
 		console.log(symbolStack);
@@ -99,6 +124,7 @@ function minus(){
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
 
+	byteCode += "0702,";
 
 		console.log(numberStack);
 		console.log(symbolStack);
@@ -123,6 +149,7 @@ function times(){
 	
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
+	byteCode += "0703,";
 
 
 		console.log(numberStack);
@@ -149,6 +176,7 @@ function divide(){
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
 
+	byteCode += "0704,";
 
 		console.log(numberStack);
 		console.log(symbolStack);
@@ -163,6 +191,8 @@ function peren(){
 	document.getElementById("symbolInput").value = sa;	
 	document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";	
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+	byteCode += "0705,";
 
 }
 
@@ -185,6 +215,7 @@ function getPow(){
 	
 		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
+	byteCode += "0706,";
 
 
 		console.log(numberStack);
@@ -210,6 +241,8 @@ function getSin(){
 			MathJax.Hub.Typeset();//tell Mathjax to update the math
 	}
 
+	byteCode += "0707,";
+
 }
 function getCos(){
 	enter();
@@ -229,6 +262,8 @@ function getCos(){
 			MathJax.Hub.Typeset();//tell Mathjax to update the math
 	}
 
+	byteCode += "0710,";
+
 }
 function getTan(){
 	enter();
@@ -247,6 +282,7 @@ function getTan(){
 		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";	
 			MathJax.Hub.Typeset();//tell Mathjax to update the math
 	}
+	byteCode += "0711,";
 
 }
 function getAtan(){
@@ -266,15 +302,103 @@ function getAtan(){
 		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";	
 			MathJax.Hub.Typeset();//tell Mathjax to update the math
 	}
+	byteCode += "0712,";
 
 }
-
 
 function expTex(floatString){
 	var localArray = floatString.split("e");
 	var textOutput = localArray[0] + "\\times 10^{" + localArray[1] + "}";
 	return(textOutput);
 }
+
+function exportCode(){
+	document.getElementById("byteCodeText").value = byteCode;
+
+}
+
+function doMathArray(localGlyph){
+	calculatorString = "";
+	commandGlyphString = "";
+	for(var index =0;index < localGlyph.length;index++){
+		doTheMath(localGlyph[index]);
+	}
+}
+
+function doTheMath(localCommand){
+	if(localCommand == 0700){
+		enter();
+	}
+	if(localCommand == 0701){
+		plus();
+	}	
+	if(localCommand == 0702){
+		minus();
+	}	
+	if(localCommand == 0703){
+		times();
+	}	
+	if(localCommand == 0704){
+		divide();
+	}	
+	if(localCommand == 0705){
+		peren();
+	}
+	if(localCommand == 0706){
+		getPow();
+	}
+	if(localCommand == 0707){
+		getSin();
+	}
+	if(localCommand == 0710){
+		getCos();
+	}
+	if(localCommand == 0711){
+		getTan();
+	}	
+	if(localCommand == 0712){
+		getAtan();
+	}	
+}
+
+function popAll(){
+	
+	numberStack.pop();
+	symbolStack.pop();
+	console.log(numberStack);
+	console.log(symbolStack);
+	
+	var na = numberStack[numberStack.length - 1];	
+	var sa = symbolStack[symbolStack.length - 1];	
+
+	document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + expTex(na.toExponential(1)) + "$$";
+		
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+}
+
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		localString += String.fromCharCode(parseInt(stringArray[index],8));
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		if(tempCharCode != 0){
+			localByteCode += "0";
+			localByteCode += tempCharCode.toString(8);
+			localByteCode += ",";
+		}
+	}
+	return localByteCode;
+}
+
 </script>
 
 </body>

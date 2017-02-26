@@ -8,17 +8,31 @@
 </head>
 <body>
 <p>
+<input id = "bytecode" value = "0300,0336,0203,0341" size = "40"></input>
+<p>
 <button onClick = "create()">CREATE </button>
 <button onClick = "destroy()">DESTROY</button>
 <p>
-<input id = "bytecode" value = "0300,0336,0203,0341"></input>
-<p id = "canvases">
-</p>
+<div id = "canvases">
+</div>
 
+
+<script id = "modScript">
+</script>
 
 <script>
+
+
+
+var endScript = document.createElement("SCRIPT");
+endScript.setAttribute("id","myScript");
+endScript.innerHTML = "x = 1;y = 2; console.log(\"x + y = \" + (x+y).toString());";
+document.body.appendChild(endScript);
+
+
 initGeometron();
 canvasIndex = 0;
+
 
 function create(){
 	var kansas = document.createElement("CANVAS");
@@ -37,7 +51,16 @@ function create(){
 		currentGlyph = document.getElementById("bytecode").value;
 		ctx = kansas.getContext("2d");
 		drawGlyph(currentGlyph);		
-		document.body.appendChild(kansas);      		
+		
+		var zorp = "div" + canvasIndex.toString();
+		var nebraska  = document.createElement("DIV");
+		nebraska.setAttribute("id",zorp);
+		
+		nebraska.appendChild(kansas);      						
+		var alaska = document.getElementById("canvases");
+	    alaska.insertBefore(nebraska, alaska.childNodes[0]);   
+
+
 		canvasIndex++;
 	}
 	function destroy(){
@@ -50,5 +73,7 @@ function create(){
 }
 
 </script>
+
+
 </body>
 </html>

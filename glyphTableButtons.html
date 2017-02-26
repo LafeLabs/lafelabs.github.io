@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Glyph Tables</title>
+<!--
+NO PROPERTY
+NO MONEY
+NO MINING
+EVERYTHING IS RECURSIVE
+EVERYTHING IS FRACTAL
+EVERYTHING IS PHYSICAL
+
+SMASH THE TECHNOCRATIC PRIESTHOOD
+
+-->
+<script src="libraries/geometron2library.js"></script>
+
+</head>
+
+<body>
+
+<script>
+	initGeometron();
+	x0 = 300;
+	y0 = 200;
+	
+</script>
+
+
+<canvas id="editCanvas" width="600" height="400"style="border:1px solid;">
+</canvas>
+
+
+<table>
+<tr>
+<td WIDTH=585 HEIGHT=73>
+	<IMG SRC="geometronfiles/images/glyphs033x.png" WIDTH=585 HEIGHT=73 BORDER=1 USEMAP="#keymap033x">
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td WIDTH=367 HEIGHT=76>
+	<IMG SRC="geometronfiles/images/glyphs031x.png" WIDTH=367 HEIGHT=76 BORDER=1 USEMAP="#keymap031x">
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td WIDTH=294 HEIGHT=76>
+	<IMG SRC="geometronfiles/images/glyphs034x.png" WIDTH=294 HEIGHT=76 BORDER=1 USEMAP="#keymap034x">
+</td>
+</tr>
+</table>
+
+
+<script>
+
+editGlyph = "";
+redraw();
+function softButton(foo){
+	editGlyph += "0" + foo.toString(8) + ",";
+	console.log(editGlyph);
+	redraw();
+}
+
+function redraw(){
+	canvas = document.getElementById("editCanvas");
+	ctx = canvas.getContext("2d");
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	doTheThing(0300);
+	drawGlyph(editGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+
+}
+
+</script>
+
+<MAP NAME="keymap033x">
+	<AREA SHAPE=RECT COORDS="0,0,73,73" HREF="javascript:softButton(0330)" alt="0330">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="73,0,146,73" HREF="javascript:softButton(0331)" alt="0331">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="146,0,219,73" HREF="javascript:softButton(0332)" alt="0332">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="219,0,292,73" HREF="javascript:softButton(0333)" alt="0333">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="292,0,365,73" HREF="javascript:softButton(0334)" alt="0334">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="365,0,438,73" HREF="javascript:softButton(0335)" alt="0335">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="438,0,511,73" HREF="javascript:softButton(0336)" alt="0336">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="511,0,584,73" HREF="javascript:softButton(0337)" alt="0337">
+	</AREA>
+</MAP>
+
+<MAP NAME="keymap031x">
+	<AREA SHAPE=RECT COORDS="0,0,73,73" HREF="javascript:softButton(0310)" alt="0310">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="73,0,146,73" HREF="javascript:softButton(0311)" alt="0311">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="146,0,219,73" HREF="javascript:softButton(0312)" alt="0312">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="219,0,292,73" HREF="javascript:softButton(0313)" alt="0313">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="292,0,365,73" HREF="javascript:softButton(0314)" alt="0314">
+	</AREA>
+</MAP>
+
+<MAP NAME="keymap034x">
+	<AREA SHAPE=RECT COORDS="0,0,73,73" HREF="javascript:softButton(0340)" alt="0340">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="73,0,146,73" HREF="javascript:softButton(0341)" alt="0341">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="146,0,219,73" HREF="javascript:softButton(0342)" alt="0342">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="219,0,292,73" HREF="javascript:softButton(0343)" alt="0343">
+	</AREA>
+</MAP>
+
+
+</BODY>
+</HTML>
+

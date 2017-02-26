@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Root Magic Document Generation</title>
+<script src="libraries/geometron2library.js">
+</script>
+<script>
+initGeometron();
+x0 = 100;
+y0 = 100;
+unit = 25;
+side = unit;
+canvasIndex = 0;
+
+wordStack = [];
+wordStack.push("Alice");	
+wordStack.push("Bob");
+wordStack.push("Powerpoint");
+wordStack.push("\"Quantum Information\"");
+
+</script>
+</head>
+<body>
+
+<textarea id = "byteCode" rows = "2" cols = "50">0300,0340,0341,0332,0340,0341</textarea>
+<p>
+<button onClick = "createCanvas()">CREATE</button>
+<div id = "canvases">
+
+
+</div>
+
+<script>
+
+function createCanvas(){
+	var newCanvas = document.createElement("CANVAS");
+	newCanvas.setAttribute("width", "200");
+	newCanvas.setAttribute("height", "200");
+	newCanvas.setAttribute("style", "border:1px solid;");
+	var canvasName = "canvas" + canvasIndex.toString();
+	newCanvas.setAttribute("id",canvasName);
+
+	var divName = "div" + canvasIndex.toString();
+	var newDiv  = document.createElement("DIV");
+	newDiv.setAttribute("id",divName);
+	newDiv.appendChild(newCanvas);      						
+	var canvasesDiv = document.getElementById("canvases");
+	canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
+
+	var newScript = document.createElement("SCRIPT");
+	var scriptName = "script" + canvasIndex.toString();
+	newScript.setAttribute("id",scriptName);
+	var byteCode = document.getElementById("byteCode").value;
+	var codeString = "";
+	codeString += "\n    ";
+	codeString += "currentGlyph = (\"" + byteCode + "\"); \n    ";
+	codeString += "ctx = document.getElementById(\"canvas" +canvasIndex.toString()+"\").getContext(\"2d\"); \n    ";
+	codeString += "drawGlyph(currentGlyph);\n";
+	newScript.innerHTML = codeString;
+	newDiv.appendChild(newScript);	
+	canvasIndex++;
+
+}
+
+</script>
+</body>
+</html>
