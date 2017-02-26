@@ -30,6 +30,14 @@ SMASH THE TECHNOCRATIC PRIESTHOOD
 <canvas id="editCanvas" width="600" height="400"style="border:1px solid;">
 </canvas>
 
+<table>
+<tr>
+<td WIDTH=585 HEIGHT=73>
+	<IMG SRC="geometronfiles/images/quantumRow1.png" WIDTH=585 HEIGHT=73 BORDER=1 USEMAP="#keymapQ1">
+</td>
+</tr>
+</table>
+
 
 <table>
 <tr>
@@ -83,6 +91,13 @@ SMASH THE TECHNOCRATIC PRIESTHOOD
 <script>
 //spelling: 0300,0332,0332,0310,0336,0332,0313,01310,01311,01312,01313,01314,01304,01305,01306
 
+//useful quantum schematic symbols:
+//0300,0332,0332,0336,0332,01210,01211,01214,01212,01215,01216,01217,01220,01222,01223,01224,01225
+//top row:
+//0300,0332,0332,0336,0336,0332,0337,0332,0310,0337,0313,01210,01211,01214,01212,01215,01217,01223,01224
+//actions:
+
+//0210,0211,0214,0212,0215,0217,0223,0224
 
 function exportCode(){
 	document.getElementById("textPort").value = editGlyph;
@@ -184,8 +199,27 @@ function deleteGlyph(){
 	</AREA>
 	<AREA SHAPE=RECT COORDS="511,0,584,73" HREF="javascript:softButton(0353)" alt="0353">
 	</AREA>
-
 </MAP>
+
+<MAP NAME="keymapQ1">
+	<AREA SHAPE=RECT COORDS="0,0,73,73" HREF="javascript:softButton(0210)" alt="0210">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="73,0,146,73" HREF="javascript:softButton(0211)" alt="0211">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="146,0,219,73" HREF="javascript:softButton(0214)" alt="0214">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="219,0,292,73" HREF="javascript:softButton(0212)" alt="0212">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="292,0,365,73" HREF="javascript:softButton(0215)" alt="0215">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="365,0,438,73" HREF="javascript:softButton(0217)" alt="0217">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="438,0,511,73" HREF="javascript:softButton(0223)" alt="0223">
+	</AREA>
+	<AREA SHAPE=RECT COORDS="511,0,584,73" HREF="javascript:softButton(0224)" alt="0224">
+	</AREA>
+</MAP>
+
 
 <MAP NAME="keymap0300">
 	<AREA SHAPE=RECT COORDS="0,0,76,66" HREF="javascript:softButton(0300)" alt="0300">
