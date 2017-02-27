@@ -164,8 +164,10 @@ function initGeometron(){
   thetaStep = Math.PI/2;
   theta0 = -Math.PI/2; 
   theta = theta0;
-  x0 = 400;
-  y0 = 250;
+  slideWidth = 6*unit;
+  slideHeight = 4*unit;
+  x0 = 3*unit;
+  y0 = 2*unit;
   x = x0;
   y = y0;
   triangleX = x0;
@@ -217,8 +219,7 @@ function updateGlyphs(){
 
 }
 
-
-	 
+/* commented out feb 26,2017, working on new version from scratch that refences DOM
 function rootMagic(localCommand){
 	if(localCommand == 0010){
 		backgroundImageOn = !backgroundImageOn;
@@ -282,7 +283,7 @@ function rootMagic(localCommand){
 	}
 	
 }
-
+*/
 
 function drawGlyph(localString){
 	var tempArray = localString.split(',');

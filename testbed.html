@@ -8,162 +8,24 @@
 </head>
 <body>
 
+<h3>DERP!!! </h3>
+<button onClick = "importText()">BUTT</button>
 
-number:<input type = "text" size = "6" id = "numberInput" value = "0"></input><p>
-symbol:<input type = "text" size = "6" id = "symbolInput" value = "x"></input>
 
-<p>
-<button onClick = "enter()">ENTER</button>
-<button onClick = "plus()">PLUS</button>
-<button onClick = "minus()">MINUS</button>
-<button onClick = "times()">TIMES</button>
-<button onClick = "divide()">DIVIDE</button>
-<button onClick = "peren()">(PEREN)</button>
+<script src="geometronfiles/imageByteCode.txt" id = "theSource">
+</script>
 
-<p>
-<h4>Symbolic Equation:</h4>
-<p id = "symbolEquation">
-</p>
-<p id = "definitions">
-</p>
+<textarea id = "textOutput" cols = "40" rows = "2">
+</textarea>
 
 <script>
 
-//na = 0//numeric accumulator
-//sa = "";//symbolic accumulator
-numberStack =  [];//array of numbers
-symbolStack = [];//array of strings, formatted in latex
-
-function enter(){
-
-	var na = parseFloat(document.getElementById("numberInput").value);
-	var sa = document.getElementById("symbolInput").value;
-
-document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";
+function importText(){
+ console.log(document.getElementById("theSource").childNodes);
 	
-	
-	MathJax.Hub.Typeset();//tell Mathjax to update the math
-	numberStack.push(na);
-	symbolStack.push(sa);
-	
-	console.log(numberStack);
-	console.log(symbolStack);
-}
-
-function plus(){
-	if(numberStack.length != 0){//do nothing if stack is empty
-		enter();
-		var na = numberStack[numberStack.length - 2]  + numberStack[numberStack.length - 1];
-		numberStack.pop();
-		numberStack.pop();
-		numberStack.push(na);
-		document.getElementById("numberInput").value = na.toFixed(3);
-		
-		var sa = symbolStack[symbolStack.length - 2] + " + " + symbolStack[symbolStack.length - 1];
-		symbolStack.pop();
-		symbolStack.pop();
-		symbolStack.push(sa);
-		document.getElementById("symbolInput").value = sa;
-
-		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";		
-	
-		MathJax.Hub.Typeset();//tell Mathjax to update the math
-
-
-
-		console.log(numberStack);
-		console.log(symbolStack);
-	}
-}
-function minus(){
-	if(numberStack.length != 0){//do nothing if stack is empty
-		enter();
-		var na = numberStack[numberStack.length - 2]  - numberStack[numberStack.length - 1];
-		numberStack.pop();
-		numberStack.pop();
-		numberStack.push(na);
-		document.getElementById("numberInput").value = na.toFixed(3);
-		
-		var sa = symbolStack[symbolStack.length - 2] + " - " + symbolStack[symbolStack.length - 1];
-		symbolStack.pop();
-		symbolStack.pop();
-		symbolStack.push(sa);
-		document.getElementById("symbolInput").value = sa;
-
-		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";		
-	
-		MathJax.Hub.Typeset();//tell Mathjax to update the math
-
-
-
-		console.log(numberStack);
-		console.log(symbolStack);
-	}
-}
-
-function times(){
-	if(numberStack.length != 0){//do nothing if stack is empty
-		enter();
-		var na = numberStack[numberStack.length - 2]  * numberStack[numberStack.length - 1];
-		numberStack.pop();
-		numberStack.pop();
-		numberStack.push(na);
-		document.getElementById("numberInput").value = na.toFixed(3);
-		var sa = symbolStack[symbolStack.length - 2] + symbolStack[symbolStack.length - 1];
-		symbolStack.pop();
-		symbolStack.pop();
-		symbolStack.push(sa);
-		document.getElementById("symbolInput").value = sa;
-
-		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";		
-	
-		MathJax.Hub.Typeset();//tell Mathjax to update the math
-
-
-
-		console.log(numberStack);
-		console.log(symbolStack);
-	}
-}
-
-function divide(){
-	if(numberStack.length != 0){//do nothing if stack is empty
-		enter();
-		var na = numberStack[numberStack.length - 2]  / numberStack[numberStack.length - 1];
-		numberStack.pop();
-		numberStack.pop();
-		numberStack.push(na);
-		document.getElementById("numberInput").value = na.toFixed(3);
-		var sa = "\\frac{" + symbolStack[symbolStack.length - 2] + "}{" + symbolStack[symbolStack.length - 1] + "}";
-		symbolStack.pop();
-		symbolStack.pop();
-		symbolStack.push(sa);
-		document.getElementById("symbolInput").value = sa;
-
-		document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";		
-	
-		MathJax.Hub.Typeset();//tell Mathjax to update the math
-
-
-
-		console.log(numberStack);
-		console.log(symbolStack);
-	}
-}
-
-function peren(){
-	var sa = symbolStack[symbolStack.length - 1];
-	var na = numberStack[numberStack.length - 1];
-	sa = "\\left(" + sa + "\\right)";
-	symbolStack[symbolStack.length - 1]   = sa;
-	document.getElementById("symbolInput").value = sa;	
-	document.getElementById("symbolEquation").innerHTML  += "$$" + sa + " = " + na.toFixed(3) + "$$";	
-		MathJax.Hub.Typeset();//tell Mathjax to update the math
-
 }
 
 </script>
-
 </body>
 </html>
 

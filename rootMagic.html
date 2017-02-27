@@ -4,63 +4,120 @@
 	<title>Root Magic Document Generation</title>
 <script src="libraries/geometron2library.js">
 </script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
 initGeometron();
-x0 = 100;
-y0 = 100;
-unit = 25;
-side = unit;
-canvasIndex = 0;
-
-wordStack = [];
-wordStack.push("Alice");	
-wordStack.push("Bob");
-wordStack.push("Powerpoint");
-wordStack.push("\"Quantum Information\"");
-
 </script>
 </head>
 <body>
 
-<textarea id = "byteCode" rows = "2" cols = "50">0300,0340,0341,0332,0340,0341</textarea>
+<h2>Root Magic</h2>
+
+<button onClick = "noimageCanvas()">canvas</button>
+<button onClick = "imageCanvas()">image</button>
+<button onClick = "htmlSection()">html</button>
+
+
 <p>
-<button onClick = "createCanvas()">CREATE</button>
+URL:<input type = "text" id = "urlInput" size = "6" value  = "https://i.imgur.com/pMpK8bN.png">
+</input>
+Byte Code:<input type = "text" id = "bytecodeInput" size = "6" value = "0300,0330,0332,0332,0332,0336,0330,0364">
+</input>
+Text:<input type = "text" id = "textInput" size = "6" value = "Geometron">
+</input>
+
 <div id = "canvases">
-
-
 </div>
 
 <script>
+canvasIndex = 0;
 
-function createCanvas(){
-	var newCanvas = document.createElement("CANVAS");
-	newCanvas.setAttribute("width", "200");
-	newCanvas.setAttribute("height", "200");
-	newCanvas.setAttribute("style", "border:1px solid;");
-	var canvasName = "canvas" + canvasIndex.toString();
-	newCanvas.setAttribute("id",canvasName);
-
-	var divName = "div" + canvasIndex.toString();
-	var newDiv  = document.createElement("DIV");
-	newDiv.setAttribute("id",divName);
-	newDiv.appendChild(newCanvas);      						
-	var canvasesDiv = document.getElementById("canvases");
-	canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
-
-	var newScript = document.createElement("SCRIPT");
-	var scriptName = "script" + canvasIndex.toString();
-	newScript.setAttribute("id",scriptName);
-	var byteCode = document.getElementById("byteCode").value;
-	var codeString = "";
-	codeString += "\n    ";
-	codeString += "currentGlyph = (\"" + byteCode + "\"); \n    ";
-	codeString += "ctx = document.getElementById(\"canvas" +canvasIndex.toString()+"\").getContext(\"2d\"); \n    ";
-	codeString += "drawGlyph(currentGlyph);\n";
-	newScript.innerHTML = codeString;
-	newDiv.appendChild(newScript);	
-	canvasIndex++;
-
+function noimageCanvas(){
+	currentGlyph = document.getElementById("bytecodeInput").value;
+	var importedText = document.getElementById("textInput").value;
+	wordStack = [];
+	wordStack.push(importedText);
+	rootMagic(01);
 }
+
+function imageCanvas(){
+	currentImageURL = document.getElementById("urlInput").value;
+	currentGlyph = document.getElementById("bytecodeInput").value;
+	var importedText = document.getElementById("textInput").value;
+	wordStack = [];
+	wordStack.push(importedText);
+	rootMagic(02);
+}
+
+function htmlSection(){
+	currentText = document.getElementById("textInput").value;
+	rootMagic(03);
+}
+
+
+function rootMagic(localCommand){//plain geoemetron
+	if(localCommand == 0001){
+		slideWidth = 6*unit;
+
+		var newCanvas = document.createElement("CANVAS");
+		newCanvas.setAttribute("width", slideWidth.toString());
+		newCanvas.setAttribute("height", slideHeight.toString());
+		newCanvas.setAttribute("style", "border:1px solid;");
+		var canvasName = "canvas" + canvasIndex.toString();
+		newCanvas.setAttribute("id",canvasName);
+		var divName = "div" + canvasIndex.toString();
+		var newDiv  = document.createElement("DIV");
+		newDiv.setAttribute("id",divName);
+		newDiv.appendChild(newCanvas);      						
+		var canvasesDiv = document.getElementById("canvases");
+		canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
+		//assumes currentGlyph set somewhere
+		ctx = document.getElementById("canvas" + canvasIndex.toString()).getContext("2d");
+		drawGlyph(currentGlyph);
+		canvasIndex++;
+	}
+	
+	if(localCommand == 0002){ //geoemetron on top of an image 
+		var img = new Image();		
+		
+		img.onload = function() {
+			slideWidth = 6*unit*(2*img.width/(3*img.height));//height fixed, img determines aspect ratio
+			var newCanvas = document.createElement("CANVAS");
+			newCanvas.setAttribute("width", slideWidth.toString());
+			newCanvas.setAttribute("height", slideHeight.toString());
+			newCanvas.setAttribute("style", "border:1px solid;");
+			var canvasName = "canvas" + canvasIndex.toString();
+			newCanvas.setAttribute("id",canvasName);
+			var divName = "div" + canvasIndex.toString();
+			var newDiv  = document.createElement("DIV");
+			newDiv.setAttribute("id",divName);
+			newDiv.appendChild(newCanvas);      						
+			var canvasesDiv = document.getElementById("canvases");
+			canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
+			//assumes currentGlyph set somewhere
+			ctx = document.getElementById("canvas" + canvasIndex.toString()).getContext("2d");
+			ctx.drawImage(img,0,0,img.width,img.height,0,0,slideWidth,slideHeight);	
+			x0 = slideWidth/2;
+			drawGlyph(currentGlyph);
+			x0 = 3*unit;
+		};	
+	img.src = currentImageURL;	
+	canvasIndex++;	
+	}
+	
+	if(localCommand == 003){//text, including mathjax
+		var divName = "div" + canvasIndex.toString();
+		var newDiv  = document.createElement("DIV");
+		newDiv.setAttribute("id",divName);
+		newDiv.innerHTML = currentText;//set currentText elsewhere      						
+		var canvasesDiv = document.getElementById("canvases");
+		canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
+		canvasIndex++;
+	}
+		
+}
+
 
 </script>
 </body>
