@@ -219,6 +219,74 @@ function updateGlyphs(){
 
 }
 
+function rootMagic(localCommand){//plain geoemetron
+	if(localCommand == 0001){
+		slideWidth = 6*unit;
+
+		var newCanvas = document.createElement("CANVAS");
+		newCanvas.setAttribute("width", slideWidth.toString());
+		newCanvas.setAttribute("height", slideHeight.toString());
+		newCanvas.setAttribute("style", "border:1px solid;");
+		var canvasName = "canvas" + canvasIndex.toString();
+		newCanvas.setAttribute("id",canvasName);
+		var divName = "div" + canvasIndex.toString();
+		var newDiv  = document.createElement("DIV");
+		newDiv.setAttribute("id",divName);
+		newDiv.appendChild(newCanvas);      						
+		var canvasesDiv = document.getElementById("canvases");
+		canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
+		//assumes currentGlyph set somewhere
+		ctx = document.getElementById("canvas" + canvasIndex.toString()).getContext("2d");
+		drawGlyph(currentGlyph);
+		canvasIndex++;
+	}
+	
+	if(localCommand == 0002){ //geoemetron on top of an image 
+		var img = new Image();		
+		
+		img.onload = function() {
+			slideWidth = 6*unit*(2*img.width/(3*img.height));//height fixed, img determines aspect ratio
+			var newCanvas = document.createElement("CANVAS");
+			newCanvas.setAttribute("width", slideWidth.toString());
+			newCanvas.setAttribute("height", slideHeight.toString());
+			newCanvas.setAttribute("style", "border:1px solid;");
+			var canvasName = "canvas" + canvasIndex.toString();
+			newCanvas.setAttribute("id",canvasName);
+			var divName = "div" + canvasIndex.toString();
+			var newDiv  = document.createElement("DIV");
+			newDiv.setAttribute("id",divName);
+			newDiv.appendChild(newCanvas);      						
+			var canvasesDiv = document.getElementById("canvases");
+			canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
+			//assumes currentGlyph set somewhere
+			ctx = document.getElementById("canvas" + canvasIndex.toString()).getContext("2d");
+			ctx.drawImage(img,0,0,img.width,img.height,0,0,slideWidth,slideHeight);	
+			x0 = slideWidth/2;
+			drawGlyph(currentGlyph);
+			x0 = 3*unit;
+		};	
+	img.src = currentImageURL;	
+	canvasIndex++;	
+	}
+	
+	if(localCommand == 003){//text, including mathjax
+		var divName = "div" + canvasIndex.toString();
+		var newDiv  = document.createElement("DIV");
+		newDiv.setAttribute("id",divName);
+		newDiv.innerHTML = currentText;//set currentText elsewhere      						
+		var canvasesDiv = document.getElementById("canvases");
+		canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
+		canvasIndex++;
+	}
+	
+	if(localCommand == 004){
+		
+			
+	}
+		
+}
+
 /* commented out feb 26,2017, working on new version from scratch that refences DOM
 function rootMagic(localCommand){
 	if(localCommand == 0010){
