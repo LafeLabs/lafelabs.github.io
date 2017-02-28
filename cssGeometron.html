@@ -10,16 +10,14 @@ initGeometron();
 loadTable();
 canvasIndex = 0;
 
-currentShapeTable = [0210,0211,0214,0212,0215,0217,0223,0224];
+currentShapeTable = [0350,0351,0352,0353,0310,0311,0313,0314];
 
 </script>
 </head>
 <body>
 
 
-
 <canvas width="600" height="400" id = "mainCanvas"></canvas>
-
 <div id = "mainControlPanel">
 	<span id = "drawPad">
 		<div class="keys">
@@ -57,6 +55,12 @@ currentShapeTable = [0210,0211,0214,0212,0215,0217,0223,0224];
 				</canvas>
 			</span>
 
+			<span onClick = "buttonAction(0304);">
+				<canvas width="60" height="60" id = "button0304">
+				</canvas>
+			</span>
+
+
 			<span onClick = "buttonAction(0332);">
 				<canvas width="60" height="60" id = "button0332">
 				</canvas>
@@ -67,6 +71,11 @@ currentShapeTable = [0210,0211,0214,0212,0215,0217,0223,0224];
 			</span>
 			<span onClick = "buttonAction(0333);">
 				<canvas width="60" height="60" id = "button0333">
+				</canvas>
+			</span>
+
+			<span onClick = "buttonAction(0305);">
+				<canvas width="60" height="60" id = "button0305">
 				</canvas>
 			</span>
 
@@ -82,6 +91,11 @@ currentShapeTable = [0210,0211,0214,0212,0215,0217,0223,0224];
 				<canvas width="60" height="60" id = "button0337">
 				</canvas>
 			</span>
+			<span onClick = "buttonAction(0306);">
+				<canvas width="60" height="60" id = "button0306">
+				</canvas>
+			</span>
+
 		</div>
 	</span>
 
@@ -124,6 +138,10 @@ currentShapeTable = [0210,0211,0214,0212,0215,0217,0223,0224];
 
 	
 </div>
+<p>
+<input></input>
+<p>
+
 <script>
 
 currentGlyph = "";
@@ -236,6 +254,28 @@ y=60;
 side = 60;
 drawGlyph("01343");
 
+ctx = document.getElementById("button0304").getContext("2d");	
+drawGlyph("0300");
+x=0;
+y=60;
+side = 60;
+drawGlyph("01304");
+
+ctx = document.getElementById("button0305").getContext("2d");	
+drawGlyph("0300");
+x=0;
+y=60;
+side = 60;
+drawGlyph("01305");
+
+ctx = document.getElementById("button0306").getContext("2d");	
+drawGlyph("0300");
+x=0;
+y=60;
+side = 60;
+drawGlyph("01306");
+
+
 ctx = document.getElementById("shape0").getContext("2d");	
 drawGlyph("0300");
 x=0;
@@ -292,6 +332,8 @@ y=60;
 side = 60;
 drawGlyph("0" + (currentShapeTable[7] + 01000).toString(8));
 
+
+
 </script>
 
 
@@ -305,7 +347,7 @@ html {
 
 #movmentPad {
 	float:left;
-	width: 210px;
+	width: 290px;
 	height: 210px;	
 	padding: 5px 5px 5px 5px;
 	background: #308446;
@@ -314,7 +356,7 @@ html {
 #drawPad {
 	float:right;
 	float:top;
-	width: 280px;
+	width: 290px;
 	height: 70px;	
 	padding: 2px 5px 2px 5px;
 	background: #cc0605;
@@ -323,7 +365,7 @@ html {
 #shapePad {
 	float:right;
 	float:bottom;
-	width: 280px;
+	width: 290px;
 	height: 140px;	
 	padding: 2px 5px 4px 5px;
 	background: #004C91;
@@ -331,8 +373,8 @@ html {
 
 
 #mainControlPanel{
-	width: 510px;
-	height: 220px;
+	width: 600px;
+	height: 320px;
     border-style: solid;
     border-width: 2px;
 	margin: 5px 5px;
