@@ -1,3 +1,25 @@
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		localString += String.fromCharCode(parseInt(stringArray[index],8));
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		if(tempCharCode != 0){
+			localByteCode += "0";
+			localByteCode += tempCharCode.toString(8);
+			localByteCode += ",";
+		}
+	}
+	return localByteCode;
+}
+
 function keystring2command(localKeyString){//from a key sequence to a command address seq.
   var localASCIIboolean = false;
   var localCommandString = "";
@@ -109,6 +131,7 @@ function initGeometron(){
   var imp = new Image();
   imageIndex = 07;
   spellLine = 800;
+  canvasIndex = 0;
   keyStringFull = "`1234567890";
   addressStringFull = "0364,0200,0201,0203,0304,0305,0306,0366,0204,0205,0300,";
   keyStringFull += "qwertyuiop";
@@ -144,6 +167,9 @@ function initGeometron(){
 	myWord = wordStack[wordIndex];
 	myFont = "Futura";
 
+	currentWord = "Word";
+	currentImageURL = "https://upload.wikimedia.org/wikipedia/commons/7/7b/OlympicMarmot1_%28mirrored%29.jpg";
+  
   editGlyph = "0300";
   cursorPosition = 1;
   loadTable();	
@@ -219,7 +245,7 @@ function updateGlyphs(){
 
 }
 
-function rootMagic(localCommand){//plain geoemetron
+function rootMagic(localCommand){//plain geoemetron canvas
 	if(localCommand == 0001){
 		slideWidth = 6*unit;
 
@@ -280,78 +306,15 @@ function rootMagic(localCommand){//plain geoemetron
 		canvasIndex++;
 	}
 	
-	if(localCommand == 004){
+	if(localCommand == 004){//editable canvas
+		rootMagic(01);
 		
 			
 	}
 		
 }
 
-/* commented out feb 26,2017, working on new version from scratch that refences DOM
-function rootMagic(localCommand){
-	if(localCommand == 0010){
-		backgroundImageOn = !backgroundImageOn;
-		redraw();	
-	}
-	if(localCommand == 0011){//move to next image
-		imageIndex++;
-		if(imageIndex >= imageTable.length){
-			imageIndex = 0;
-		}
-		doTheThing(0500 + imageIndex);
-		redraw();
-	}
-	if(localCommand == 0012){//move to prev image
-		imageIndex--;
-		if(imageIndex < 0){
-			imageIndex = imageTable.length - 1;
-		}
-		doTheThing(0500 + imageIndex);
-		redraw();
-	}
-	if(localCommand == 0013){
-	    
-	    for(var index = 0;index < currentTable.length;index++){
-			var localArray = currentTable[index].split(':');
-			if(parseInt(localArray[0],8) == editAddress){
-				currentTable[index] = "0" + editAddress.toString(8) + ":" + editGlyph;
-			}
-   		}
-		editAddress++;
-		if(editAddress > tableTop){
-			editAddress = tableBottom;
-		}
-		for(var index = 0;index < currentTable.length;index++){
-			var localArray = currentTable[index].split(':');
-			if(parseInt(localArray[0],8) == editAddress){
-				editGlyph = localArray[1];
-			}
-   		}
-		redraw();
-	}
-	if(localCommand == 0014){
-		for(var index = 0;index < currentTable.length;index++){
-			var localArray = currentTable[index].split(':');
-			if(parseInt(localArray[0],8) == editAddress){
-				currentTable[index] = "0" + editAddress.toString(8) + ":" + editGlyph;
-			}
-   		}
 
-		editAddress--;
-		if(editAddress < tableBottom){
-			editAddress = tableTop;
-		}
-		for(var index = 0;index < currentTable.length;index++){
-			var localArray = currentTable[index].split(':');
-			if(parseInt(localArray[0],8) == editAddress){
-				editGlyph = localArray[1];
-			}
-   		}
-		redraw();
-	}
-	
-}
-*/
 
 function drawGlyph(localString){
 	var tempArray = localString.split(',');
@@ -387,7 +350,17 @@ function doTheThing(localCommand){
 
 
     if(localCommand >= 0500 && localCommand <= 0600){
-    	getImage(localCommand);    
+		if(currentTable[localCommand] != undefined){
+    	 	currentImageURL = byteCode2string(currentTable[localCommand]);
+    	}
+    }
+    
+    
+    if(localCommand >= 0600 && localCommand <= 0700){
+    	//get the glyph, turn it into ascii, make it the Word:
+    	if(currentTable[localCommand] != undefined){
+    	 	currentWord = byteCode2string(currentTable[localCommand]);
+    	}
     }
     
     
@@ -729,6 +702,11 @@ function doTheThing(localCommand){
 			wordIndex = 0;
 		}
     }
+    if(localCommand == 0365){
+        ctx.font=side.toString(8) + "px " + myFont;;
+		ctx.fillText(currentWord,x,y);
+    }
+
     
 	if(localCommand == 0366){//closed square
 		ctx.fillRect(x,y,side,side);
@@ -869,7 +847,7 @@ imageTable.push("0516:817:198:hebrew4.png");
     currentTable.push("0120:0333,0332,0336,0336,0333,0337,0337,0342,0336,0330,0336,0330,0333,0341,0333,0333,0330,0337,0337,0331");
     currentTable.push("0121:0333,0336,0330,0332,0341,0335,0335,0336,0330,0332,0350,0334,0337,0342,0334,0351,0334,0333,0331,0336,0330,0337,0337");
     currentTable.push("0122:0304,0313,0336,0336,0336,0333,0337,0337,0337,0342,0330,0335,0336,0336,0342,0333,0333,0342,0332,0330,0343,0333,0335,0337,0306,0350,0334,0337,0312,0336,0342,0337,0313,0336,0335,0330,0304,0334,0334,0333,0336,0336,0336,0332,0337,0337,0337,0337");
-    //currentTable.push("0123:0333,0336,0330,0332,0336,0330,0350,0335,0335,0334,0350,0343,0334,0334,0343,0334,0334,0343,0334,0334,0343,0334,0334,0343,0334,0334,0330,0330,0343,0335,0335,0343,0335,0335,0334,0334,0334,0334,0334,0334,0343,0334,0334,0343,0334,0334,0343,0334,0334,0343,0335,0335,0335,0335,0335,0335,0335,0335,0351,0351,0330,0335,0335,0333,0333,0337,0337");
+
   currentTable.push("0123:0313,0304,0336,0336,0332,0337,0337,0336,0330,0333,0336,0330,0343,0334,0350,0334,0343,0332,0332,0334,0334,0334,0334,0343,0335,0335,0335,0351,0343,0335,0335,0333,0331,0333,0337,0337");
     currentTable.push("0124:0333,0336,0332,0337,0342,0330,0336,0335,0342,0331,0342,0330,0330,0334,0337,0331");
     currentTable.push("0125:0333,0336,0336,0330,0332,0337,0342,0330,0336,0342,0331,0331,0332,0332,0342,0330,0342,0330,0342,0331,0331,0333,0335,0335,0343,0330,0335,0335,0337,0333,0337");
@@ -1073,6 +1051,16 @@ currentTable.push("0434:0300");
 currentTable.push("0435:0300");
 currentTable.push("0436:0300");
 currentTable.push("0437:0300,0330,0332,0332,0332,0332,0332,0330,0330,0123,0114,0111,0104,0105,040,0124,0111,0124,0114,0105,0330,0330,0330,0330,0330,0330,0332,0332,0332,0332,0300,0330,0332,0332,0332,0330,0336,0336,0336,0341,0337,0331,0333,0337,0142,0165,0154,0154,0145,0164,040,0160,0157,0151,0156,0164,0337,0337,0337,0336,0336,0336,0330,0331,0331,0331,0331,0331,0331,0331,0332,0332,0332,0332,0337,0214,0330,0331,0331,0331,0330,0333,0211,0334,0342,0330,0340,0330,0334,0334,0342,0342,0335,0210,0334,0342,0330,0340,0342,0335,0336,0336,0342,0330,0337,0337,0336,0337,0212,0330,0336,0336,0330,0337,0342,0330,0337,0217,0333,0333,0333,0333,0331,0332,0332,0336,0336,0332,0332,0331,0337,,0103,0332,0332,0332,0332,0332,0332,0332,0332,0336,0333,0337,0122,0333,0333,0333,0333,0333,0333,0333,0333,0332,0332,0332,0332,0332,0114");
-
-
 }
+
+function loadTable2(){
+	currentTable = [];
+	for(var index = 0;index < 01777;index ++){
+		var localString = "0";
+		localString += index.toString(8);
+		localString += ":";
+		currentTable.push(localString);
+	}
+}
+
+

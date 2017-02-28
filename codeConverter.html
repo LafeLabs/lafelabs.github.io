@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MathJax Dynamic Math Test Page</title>
+<script src="libraries/geometron2library.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+initGeometron();
+canvasIndex = 0;
+</script>
+</head>
+<body>
+<div id = "canvases">
+</div>
+<button onClick = "bytecode2js()">BYTECODE -> JAVASCRIPT</button>
+<button onClick = "urls2bytecode()">URL LIST -> BYTECODE</button>
+<button onClick = "words2bytecode()">WORD LIST -> BYTECODE</button>
+<button onClick = "jspush2bytecode()">JS PUSH --> BYTECODE</button>
+
+
+<p>
+<textarea id  = "textIO" cols = "80" rows = "10">
+</textarea>
+
+<script>
+function jspush2bytecode(){
+	var inputText = document.getElementById("textIO").value;
+	var inputArray = inputText.split("\"");
+	var outputText = "";
+    
+	for(var index = 0;index < inputArray.length;index++){
+		if(index%2==1){
+			outputText +=  inputArray[index];
+			outputText += "\n";
+		}
+	}
+	document.getElementById("textIO").value  = outputText;			
+
+}
+
+function words2bytecode(){
+	var inputText = document.getElementById("textIO").value;
+	var inputArray = inputText.split("\n");
+	
+	var outputText = "";
+	for(var index = 0;index < inputArray.length;index++){
+		outputText +=  "0"+(0600 + index).toString(8);
+		outputText += ":";		
+		outputText += string2byteCode(inputArray[index]);
+		outputText += "\n";
+	}
+	document.getElementById("textIO").value  = outputText;			
+}
+
+function urls2bytecode(){
+	var inputText = document.getElementById("textIO").value;
+	var inputArray = inputText.split("\n");
+	
+	var outputText = "";
+	for(var index = 0;index < inputArray.length;index++){
+		outputText +=  "0"+(0500 + index).toString(8);
+		outputText += ":";		
+		outputText += string2byteCode(inputArray[index]);
+		outputText += "\n";
+	}
+	document.getElementById("textIO").value  = outputText;			
+}
+
+function bytecode2js(){
+	var inputText = document.getElementById("textIO").value;
+	var inputArray = inputText.split("\n");
+
+	var outputText = "";
+	
+	for(var index = 0;index < inputArray.length;index++){
+			var colonSplit = inputArray[index].split(":");
+			if(colonSplit.length > 1){
+				var localAddress = colonSplit[0];
+				var localGlyph = colonSplit[1];
+				currentTable[localAddress] = localGlyph;	
+				outputText += "currentTable["+localAddress.trim()+"] = \""+localGlyph.trim()+"\";\n";
+			}
+	}
+	
+	document.getElementById("textIO").value  = outputText;		
+}
+
+
+</script>
+</body>
+</html>
+
