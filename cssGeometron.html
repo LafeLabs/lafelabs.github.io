@@ -17,7 +17,7 @@ buttonArray2 = [0340,0341,0342,0343,0364,0200,0220,0212,0210,0215,0225,0223,0214
 
 buttonArray3 = [0304,0305,0306,0310,0311,0312,0313,0314,0350,0351,0352,0353];
 
-buttonArray4 = [0020,0021,0022,0024,0025,0023];
+buttonArray4 = [0020,0021,0022,0024,0025,0023,0010];
 
 </script>
 </head>
@@ -134,6 +134,8 @@ buttonArray4 = [0020,0021,0022,0024,0025,0023];
 				</canvas>
 				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[5]);" width = "60" height = "60">
 				</canvas>						
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[6]);" width = "60" height = "60">
+				</canvas>						
 				
 		</div>
 	</div>
@@ -230,7 +232,7 @@ html {
 
 .rootPanel{
 	width: 230px;
-	height: 150px;
+	height: 310px;
     border-color: purple;
     border-style: solid;
     border-width: 2px;
@@ -266,25 +268,104 @@ html {
 
 <script>
 
+	currentAddress = 0200;
+	currentGlyph = currentTable[currentAddress];
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
+	redraw();
+		
+
+function buttonAction(buttonCommand){
+
+	firstHalf += "0" + buttonCommand.toString(8) + ",";
+	currentGlyph = firstHalf + secondHalf;
+	cursorPosition++;	
+	redraw();
+
+}
+
+	
+function redraw(){
+
+	currentGlyphArray = currentGlyph.split(",");
+	firstHalf = "";
+	secondHalf = "";	
+	for(var index = 0;index < cursorPosition;index++){
+		firstHalf += "0" + currentGlyphArray[index] + ",";
+	}
+	for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+		secondHalf += "0" + currentGlyphArray[index] + ",";
+	}
+
+
 	ctx = document.getElementById("drawCanvas").getContext("2d");	
 	ctx.clearRect(0, 0, slideWidth, slideHeight);
-	doTheThing(0300);	drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
-	currentGlyph = "";
+	doTheThing(0300);	
+	drawGlyph(firstHalf);	drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+	drawGlyph(secondHalf);	
 
-	currentAddress = 0210;
+	var tempSide = side;
+	ctx = document.getElementById("spellPanel").getContext("2d");		
+	ctx.clearRect(0, 0, 600, 200);
+	doTheThing(0300);			
+	x = 10;
+	y = 40;
+	side = 30;
 
-	currentGlyph = currentTable[currentAddress];
-	cursorPosition = currentGlyphArray.length;
-	spellGlyph();
+	firstHalfArray = firstHalf.split(",");
+	for(var index = 0;index < firstHalfArray.length;index++){
+		doTheThing(01000 + parseInt(firstHalfArray[index],8));
+		if(x > 560){
+			x = 10;
+			y += 35;
+		}	
+		if(y > 190){
+			break;
+		}
+	}
+drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0340,0335,0335,0335,0334,0331,0331,0333,0333,0337,0337");
+
+	secondHalfArray = secondHalf.split(",");
+	for(var index = 0;index < secondHalfArray.length;index++){
+		doTheThing(01000 + parseInt(secondHalfArray[index],8));
+		if(x > 560){
+			x = 10;
+			y += 35;
+		}	
+		if(y > 190){
+			break;
+		}
+
+	}
+
+	side = tempSide;
+}
+	
+	
 	
 function localRoot(localCommand){
-	
-	
+
+	if(localCommand == 0010){
+			currentGlyphArray = currentGlyph.split(",");
+			firstHalf = "";
+			secondHalf = "";	
+			for(var index = 0;index < cursorPosition - 1;index++){
+				firstHalf += "0" + currentGlyphArray[index] + ",";
+			}
+			for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+				secondHalf += "0" + currentGlyphArray[index] + ",";
+			}		
+			
+			currentGlyph = firstHalf + secondHalf;
+		cursorPosition--;
+	}
+		
 	if(localCommand == 0020){
 		cursorPosition--;
 		if(cursorPosition < 0){
 			cursorPosition = currentGlyphArray.length;
 		}
+		console.log(cursorPosition);
 	}
 	if(localCommand == 0021){
 		cursorPosition++;
@@ -295,10 +376,16 @@ function localRoot(localCommand){
 	if(localCommand == 0022){
 		currentAddress--;
 		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+
 	}
 	if(localCommand == 0023){
 		currentAddress++;
 		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+
 	}	
 	if(localCommand == 0024){
 		if(currentAddress < 01000 && currentAddress > 0){
@@ -306,83 +393,24 @@ function localRoot(localCommand){
 			currentGlyph = currentTable[currentAddress];
 
 		}
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+
 	}	
 
 	if(localCommand == 0025){
 		if(currentAddress > 01000 && currentAddress < 02000){
 			currentAddress -= 01000;
 			currentGlyph = currentTable[currentAddress];
-
 		}
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
 	}
 
-	currentGlyphArray = currentGlyph.split(",");
+	redraw();
 
-	firstHalf = "";
-	secondHalf = "";
-	
-	for(var index = 0;index < cursorPosition;index++){
-		firstHalf += "0" + currentGlyphArray[index] + ",";
-	}
-
-	for(var index = cursorPosition;index < currentGlyphArray.length;index++){
-		secondHalf += "0" + currentGlyphArray[index] + ",";
-	}
-
-	spellGlyph();
-
-	ctx = document.getElementById("drawCanvas").getContext("2d");	
-	ctx.clearRect(0, 0, slideWidth, slideHeight);
-	doTheThing(0300);	
-	drawGlyph(firstHalf);	drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
-	drawGlyph(secondHalf);		
 }
-
-function spellGlyph(){
-	ctx = document.getElementById("spellPanel").getContext("2d");		
-	ctx.clearRect(0, 0, 600, 200);
-	doTheThing(0300);		
-	var tempSide = side;
-	x = 10;
-	y = 40;
-	side = 30;
-	var glyphArray = currentGlyph.split(",");
-	for(var index = 0;index < cursorPosition;index++){
-		doTheThing(01000 + parseInt(glyphArray[index],8));
-		if(x > 560){
-			x = 10;
-			y += 35;
-		}	
-		if(y > 190){
-			break;
-		}
-
-	}
-	drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0335,0342,0335,0335,0342,0334,0331,0331,0333,0333,0337,0337");
 	
-	for(var index = cursorPosition;index < glyphArray.length;index++){
-		doTheThing(01000 + parseInt(glyphArray[index],8));	
-		if(x > 560){
-			x = 10;
-			y += 35;
-		}
-		if(y > 190){
-			break;
-		}
-	}
-		
-	side = tempSide;
-}	
-	
-function buttonAction(buttonCommand){
-	currentGlyph += "0" + buttonCommand.toString(8) + ",";
-	console.log(currentGlyph);
-	ctx = document.getElementById("drawCanvas").getContext("2d");	
-	ctx.clearRect(0, 0, slideWidth, slideHeight);
-	doTheThing(0300);
-	drawGlyph(currentGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
-}
-
 
 panelArray1 = document.getElementById("movementPanel").children;
 
@@ -433,7 +461,8 @@ for(var index = 0;index < panelArray4.length;index++){
 		x=-2;
 		y=62;
 		side = 64;
-		drawGlyph("010"+buttonArray4[index].toString(8));
+		doTheThing(01000 + buttonArray4[index]);
+		//drawGlyph("010"+buttonArray4[index].toString(8));
 	}
 }
 
