@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Geometron Panel</title>
+<title>Geometron Panels</title>
 <script src="libraries/geometronLibrary3.js">
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -78,6 +78,7 @@ buttonArray4 = [0020,0021,0022,0024,0025,0023,0010];
 				
 		</div>
 	</div>
+	
 	<canvas width = "600" height = "400" class = "drawPanel" id = "drawCanvas">
 	</canvas>
 
@@ -140,9 +141,10 @@ buttonArray4 = [0020,0021,0022,0024,0025,0023,0010];
 		</div>
 	</div>
 		
-	<canvas width = "600" height = "200" class = "spellPanel" id = "spellPanel">
+	<canvas width = "600" height = "105" class = "spellPanel" id = "spellPanel">
 	</canvas>
-
+	<textarea rows = "3" cols = "80" id = "textPanel"> 
+	</textarea>
 </div>
 
 <style>
@@ -263,6 +265,16 @@ html {
     background-color: yellow;
 }
 
+#textPanel{
+		width: 600px;
+		height: 50px;
+		margin: 10px 10px 10px 15px;
+		border-radius: 10px;
+
+
+
+}
+
 </style>
 
 
@@ -287,6 +299,7 @@ function buttonAction(buttonCommand){
 	
 function redraw(){
 
+	document.getElementById("textPanel").value = "0" + currentAddress.toString(8) +":"+ currentGlyph;
 	currentGlyphArray = currentGlyph.split(",");
 	firstHalf = "";
 	secondHalf = "";	
@@ -309,7 +322,7 @@ function redraw(){
 	ctx.clearRect(0, 0, 600, 200);
 	doTheThing(0300);			
 	x = 10;
-	y = 40;
+	y = 35;
 	side = 30;
 
 	firstHalfArray = firstHalf.split(",");
@@ -317,9 +330,9 @@ function redraw(){
 		doTheThing(01000 + parseInt(firstHalfArray[index],8));
 		if(x > 560){
 			x = 10;
-			y += 35;
+			y += 32;
 		}	
-		if(y > 190){
+		if(y > 110){
 			break;
 		}
 	}
@@ -330,9 +343,9 @@ drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0340,0335
 		doTheThing(01000 + parseInt(secondHalfArray[index],8));
 		if(x > 560){
 			x = 10;
-			y += 35;
+			y += 32;
 		}	
-		if(y > 190){
+		if(y > 110){
 			break;
 		}
 
@@ -365,7 +378,6 @@ function localRoot(localCommand){
 		if(cursorPosition < 0){
 			cursorPosition = currentGlyphArray.length;
 		}
-		console.log(cursorPosition);
 	}
 	if(localCommand == 0021){
 		cursorPosition++;
@@ -397,7 +409,6 @@ function localRoot(localCommand){
 		cursorPosition = currentGlyphArray.length;
 
 	}	
-
 	if(localCommand == 0025){
 		if(currentAddress > 01000 && currentAddress < 02000){
 			currentAddress -= 01000;
@@ -406,9 +417,7 @@ function localRoot(localCommand){
 		currentGlyphArray = currentGlyph.split(",");
 		cursorPosition = currentGlyphArray.length;
 	}
-
 	redraw();
-
 }
 	
 
@@ -425,8 +434,6 @@ for(var index = 0;index < panelArray1.length;index++){
 	
 	
 }
-
-
 
 panelArray2 = document.getElementById("shapePanelInner").children;
 for(var index = 0;index < panelArray2.length;index++){
