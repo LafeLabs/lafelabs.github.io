@@ -10,435 +10,341 @@ initGeometron();
 loadTable();
 canvasIndex = 0;
 
-currentShapeTable = [0350,0351,0352,0353,0310,0311,0313,0314];
+
+buttonArray1 = [0334,0330,0335,0332,0300,0333,0336,0331,0337];
+
+buttonArray2 = [0340,0341,0342,0343,0364,0200,0220,0212,0210,0215,0225,0223,0214,0211,0222,0224,0217];
+
+buttonArray3 = [0304,0305,0306,0310,0311,0312,0313,0314,0350,0351,0352,0353];
 
 </script>
 </head>
 <body>
 
-
-<canvas width="600" height="400" id = "mainCanvas"></canvas>
-<div id = "mainControlPanel">
-	<span id = "drawPad">
-		<div class="keys">
-			<span onClick = "buttonAction(0340);">
-				<canvas width="60" height="60" id = "button0340">
+<div id = "mainPanel">
+	
+	<div class = "scalePanel">
+		<div id = "scalePanel">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[0]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(0341);">
-				<canvas width="60" height="60" id = "button0341">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[1]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(0342);">
-				<canvas width="60" height="60" id = "button0342">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[2]);" width = "60" height = "60">
 				</canvas>
-			</span>
-
-			<span onClick = "buttonAction(0343);">
-				<canvas width="60" height="60" id = "button0343">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[3]);" width = "60" height = "60">
 				</canvas>
-			</span>						
-		</div>	
-	</span>
-	<span id="movmentPad">	
-		<div class="keys">
-			<span onClick = "buttonAction(0334);">
-				<canvas width="60" height="60" id = "button0334">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[4]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(0330);">
-				<canvas width="60" height="60" id = "button0330">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[5]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(0335);">
-				<canvas width="60" height="60" id = "button0335">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[6]);" width = "60" height = "60">
 				</canvas>
-			</span>
-
-			<span onClick = "buttonAction(0304);">
-				<canvas width="60" height="60" id = "button0304">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[7]);" width = "60" height = "60">
 				</canvas>
-			</span>
-
-
-			<span onClick = "buttonAction(0332);">
-				<canvas width="60" height="60" id = "button0332">
-				</canvas>
-			</span>
-			<span onClick = "buttonAction(0300);">
-				<canvas width="60" height="60" id = "button0300">
-				</canvas>
-			</span>
-			<span onClick = "buttonAction(0333);">
-				<canvas width="60" height="60" id = "button0333">
-				</canvas>
-			</span>
-
-			<span onClick = "buttonAction(0305);">
-				<canvas width="60" height="60" id = "button0305">
-				</canvas>
-			</span>
-
-			<span onClick = "buttonAction(0336);">
-				<canvas width="60" height="60" id = "button0336">
-				</canvas>
-			</span>
-			<span onClick = "buttonAction(0331);">
-				<canvas width="60" height="60" id = "button0331">
-				</canvas>
-			</span>
-			<span onClick = "buttonAction(0337);">
-				<canvas width="60" height="60" id = "button0337">
-				</canvas>
-			</span>
-			<span onClick = "buttonAction(0306);">
-				<canvas width="60" height="60" id = "button0306">
-				</canvas>
-			</span>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[8]);" width = "60" height = "60">
+				</canvas>		
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[9]);" width = "60" height = "60">
+				</canvas>		
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[10]);" width = "60" height = "60">
+				</canvas>		
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[11]);" width = "60" height = "60">
+				</canvas>		
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[12]);" width = "60" height = "60">
+				</canvas>	
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[11]);" width = "60" height = "60">
+				</canvas>		
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray3[12]);" width = "60" height = "60">
+				</canvas>	
 
 		</div>
-	</span>
-
-	<span id="shapePad">	
-		<div class="keys">
-			<span onClick = "buttonAction(currentShapeTable[0]);">
-				<canvas width="60" height="60" id = "shape0">
+	</div>
+	<div class = "subPanels">
+		<div id = "movementPanel">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[0]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(currentShapeTable[1]);">
-				<canvas width="60" height="60" id = "shape1">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[1]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(currentShapeTable[2]);">
-				<canvas width="60" height="60" id = "shape2">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[2]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(currentShapeTable[3]);">
-				<canvas width="60" height="60" id = "shape3">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[3]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(currentShapeTable[4]);">
-				<canvas width="60" height="60" id = "shape4">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[4]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(currentShapeTable[5]);">
-				<canvas width="60" height="60" id = "shape5">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[5]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(currentShapeTable[6]);">
-				<canvas width="60" height="60" id = "shape6">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[6]);" width = "60" height = "60">
 				</canvas>
-			</span>
-			<span onClick = "buttonAction(currentShapeTable[7]);">
-				<canvas width="60" height="60" id = "shape7">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[7]);" width = "60" height = "60">
 				</canvas>
-			</span>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[8]);" width = "60" height = "60">
+				</canvas>		
+				
 		</div>
-	</span>
+	</div>
+	<canvas width = "600" height = "400" class = "drawPanel" id = "drawCanvas">
+	</canvas>
 
 	
+	<div class = "shapePanel">
+		<div id = "shapePanelInner">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[0]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[1]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[2]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[3]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[4]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[5]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[6]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[7]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[8]);" width = "60" height = "60">
+				</canvas>		
+
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[0]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[1]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[2]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[3]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[4]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[5]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[6]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[7]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[8]);" width = "60" height = "60">
+				</canvas>		
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[0]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[1]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[2]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[3]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[4]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[5]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[6]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[7]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[8]);" width = "60" height = "60">
+				</canvas>		
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[8]);" width = "60" height = "60">
+				</canvas>		
+
+
+		</div>
+	</div>
+		
+	<div class = "rootPanel">
+		<div id = "rootPanel">
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[0]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[1]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[2]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[3]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[4]);" width = "60" height = "60">
+				</canvas>
+				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[5]);" width = "60" height = "60">
+				</canvas>						
+				
+		</div>
+	</div>
+		
+	<canvas width = "450" height = "200" class = "spellPanel">
+	</canvas>
+
 </div>
-<p>
-<input></input>
-<p>
-
-<script>
-
-currentGlyph = "";
-ctx = document.getElementById("mainCanvas").getContext("2d");	
-ctx.clearRect(0, 0, slideWidth, slideHeight);
-doTheThing(0300);
-drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
-
-function buttonAction(buttonCommand){
-	currentGlyph += "0" + buttonCommand.toString(8) + ",";
-	console.log(currentGlyph);
-	ctx = document.getElementById("mainCanvas").getContext("2d");	
-	ctx.clearRect(0, 0, slideWidth, slideHeight);
-	doTheThing(0300);
-	drawGlyph(currentGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
-
-	
-}
-
-
-ctx = document.getElementById("button0334").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01334");
-
-ctx = document.getElementById("button0330").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01330");
-
-ctx = document.getElementById("button0335").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01335");
-
-
-ctx = document.getElementById("button0332").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01332");
-
-ctx = document.getElementById("button0300").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01300");
-
-ctx = document.getElementById("button0333").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01333");
-
-ctx = document.getElementById("button0336").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01336");
-
-ctx = document.getElementById("button0331").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01331");
-
-ctx = document.getElementById("button0337").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01337");
-
-ctx = document.getElementById("button0340").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01340");
-
-ctx = document.getElementById("button0341").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01341");
-
-ctx = document.getElementById("button0342").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01342");
-
-ctx = document.getElementById("button0343").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01343");
-
-ctx = document.getElementById("button0304").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01304");
-
-ctx = document.getElementById("button0305").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01305");
-
-ctx = document.getElementById("button0306").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("01306");
-
-
-ctx = document.getElementById("shape0").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("0" + (currentShapeTable[0] + 01000).toString(8));
-
-ctx = document.getElementById("shape1").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("0" + (currentShapeTable[1] + 01000).toString(8));
-
-ctx = document.getElementById("shape2").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("0" + (currentShapeTable[2] + 01000).toString(8));
-
-ctx = document.getElementById("shape3").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("0" + (currentShapeTable[3] + 01000).toString(8));
-
-ctx = document.getElementById("shape4").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("0" + (currentShapeTable[4] + 01000).toString(8));
-
-ctx = document.getElementById("shape5").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("0" + (currentShapeTable[5] + 01000).toString(8));
-
-ctx = document.getElementById("shape6").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("0" + (currentShapeTable[6] + 01000).toString(8));
-
-ctx = document.getElementById("shape7").getContext("2d");	
-drawGlyph("0300");
-x=0;
-y=60;
-side = 60;
-drawGlyph("0" + (currentShapeTable[7] + 01000).toString(8));
-
-
-
-</script>
-
 
 <style>
-
 html {
 	height: 100%;
-	background: white;
+	background: black;
 	background-size: cover;
 }
 
-#movmentPad {
-	float:left;
-	width: 290px;
-	height: 210px;	
-	padding: 5px 5px 5px 5px;
-	background: #308446;
+#mainPanel{
+	width: 1350px;
+	height: 640px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
+	margin: 5px 5px;
+	padding: 10px 10px 10px 10px;	 
+    border-radius: 20px;
+	background: black;
+	
 }
 
-#drawPad {
-	float:right;
-	float:top;
-	width: 290px;
-	height: 70px;	
-	padding: 2px 5px 2px 5px;
-	background: #cc0605;
-}
-
-#shapePad {
-	float:right;
-	float:bottom;
-	width: 290px;
-	height: 140px;	
-	padding: 2px 5px 4px 5px;
-	background: #004C91;
-}
-
-
-#mainControlPanel{
-	width: 600px;
-	height: 320px;
+.subPanels div{
+    border-color: green;
+	width: 230px;
+	height: 230px;
     border-style: solid;
     border-width: 2px;
-	margin: 5px 5px;
-	padding: 0px 0px 0px 0px;
-}
-
-#mainCanvas{
-    border-style: solid;
-    border-width: 2px;
-	margin: 5px 5px;
-	padding: auto;
-}
-
-
-/* Applying same to the keys */
-.keys span{
+	background: green;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
 	float: left;
-	position: relative;
-	top: 0;
-	
-	cursor: pointer;
-	
-	width: 60px;
-	height: 60px;
-	
+	float: top;
+	border-radius: 10px;
+}
+
+.shapePanel div{
+    border-color: blue;
+	width: 545px;
+	height: 310px;
+    border-style: solid;
+    border-width: 2px;
+	background: blue;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
+	float: left;
+	float: bottom;
+	border-radius: 10px;
+}
+
+.scalePanel div{
+    border-color: red;
+	width: 405px;
+	height: 230px;
+    border-style: solid;
+    border-width: 2px;
+	background: red;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
+	float: left;
+	float: top;
+	border-radius: 10px;
+}
+
+.drawPanel{
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
 	background: white;
-	
+	margin: 10px 10px 10px 10px;
+
+	float: top;
+	float: right;
+	border-radius: 10px;
+}
+
+.spellPanel{
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+	background: white;
+	margin: 10px 10px 10px 10px;
+	float: bottom;
+	float: right;
+	border-radius: 10px;
+}
+
+.rootPanel{
+	width: 230px;
+	height: 150px;
+    border-color: purple;
+    border-style: solid;
+    border-width: 2px;
+	background: purple;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
+
+	float: bottom;
+	float: left;
+	border-radius: 10px;
+}
+
+.glyphButtons{	
 	margin: 5px 5px 5px 5px;
-	
-	color: blue;
-	line-height: 36px;
-	text-align: center;
-	
-	/* prevent selection of text inside keys */
-	user-select: none;
-	
-	/* Smoothing out hover and active states using css3 transitions */
-	transition: all 0.2s ease;
+	border-style: solid;
+	border-width: 2px;
+	border-color: green;
+	background: white;
 }
 
-
-
-/* Some hover effects */
-.keys span:hover {
+.glyphButtons:hover{
 	background: grey;
-	color: white;
+	color: grey;
 }
 
-/* Simulating "pressed" effect on active state of the keys by removing the box-shadow and moving the keys down a bit */
-.keys span:active {
-	top: 4px;
+.glyphButtons:active{
+    background-color: yellow;
 }
-
-
-
 
 </style>
 
+
 <script>
 
-function foo(){
-
-	console.log("foo");
+	ctx = document.getElementById("drawCanvas").getContext("2d");	
+	ctx.clearRect(0, 0, slideWidth, slideHeight);
+	doTheThing(0300);	drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+	currentGlyph = "";
+function buttonAction(buttonCommand){
+	currentGlyph += "0" + buttonCommand.toString(8) + ",";
+	console.log(currentGlyph);
+	ctx = document.getElementById("drawCanvas").getContext("2d");	
+	ctx.clearRect(0, 0, slideWidth, slideHeight);
+	doTheThing(0300);
+	drawGlyph(currentGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
 }
+
+panelArray1 = document.getElementById("movementPanel").children;
+
+for(var index = 0;index < panelArray1.length;index++){
+	ctx = panelArray1[index].getContext("2d");
+	drawGlyph("0300");
+	x=-2;
+	y=62;
+	side = 64;
+
+	drawGlyph("01"+buttonArray1[index].toString(8));
+}
+
+
+
+panelArray2 = document.getElementById("shapePanelInner").children;
+for(var index = 0;index < panelArray2.length;index++){
+	if(buttonArray2[index] != undefined){
+		ctx = panelArray2[index].getContext("2d");
+		drawGlyph("0300");
+		x=-2;
+		y=62;
+		side = 64;
+		drawGlyph("01"+buttonArray2[index].toString(8));
+	}
+}
+
+panelArray3 = document.getElementById("scalePanel").children;
+for(var index = 0;index < panelArray3.length;index++){
+	if(buttonArray3[index] != undefined){
+		ctx = panelArray3[index].getContext("2d");
+		drawGlyph("0300");
+		x=-2;
+		y=62;
+		side = 64;
+		drawGlyph("01"+buttonArray3[index].toString(8));
+	}
+}
+
 </script>
 </body>
 </html>
