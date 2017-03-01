@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Testbed of Random</title>
+<title>Geometron Panel</title>
 <script src="libraries/geometronLibrary3.js">
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -16,6 +16,8 @@ buttonArray1 = [0334,0330,0335,0332,0300,0333,0336,0331,0337];
 buttonArray2 = [0340,0341,0342,0343,0364,0200,0220,0212,0210,0215,0225,0223,0214,0211,0222,0224,0217];
 
 buttonArray3 = [0304,0305,0306,0310,0311,0312,0313,0314,0350,0351,0352,0353];
+
+buttonArray4 = [0020,0021,0022,0024,0025,0023];
 
 </script>
 </head>
@@ -115,29 +117,28 @@ buttonArray3 = [0304,0305,0306,0310,0311,0312,0313,0314,0350,0351,0352,0353];
 				</canvas>
 				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[15]);" width = "60" height = "60">
 				</canvas>
-
 		</div>
 	</div>
 		
 	<div class = "rootPanel">
 		<div id = "rootPanel">
-				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[0]);" width = "60" height = "60">
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[0]);" width = "60" height = "60">
 				</canvas>
-				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[1]);" width = "60" height = "60">
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[1]);" width = "60" height = "60">
 				</canvas>
-				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[2]);" width = "60" height = "60">
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[2]);" width = "60" height = "60">
 				</canvas>
-				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[3]);" width = "60" height = "60">
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[3]);" width = "60" height = "60">
 				</canvas>
-				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[4]);" width = "60" height = "60">
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[4]);" width = "60" height = "60">
 				</canvas>
-				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray1[5]);" width = "60" height = "60">
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[5]);" width = "60" height = "60">
 				</canvas>						
 				
 		</div>
 	</div>
 		
-	<canvas width = "600" height = "200" class = "spellPanel">
+	<canvas width = "600" height = "200" class = "spellPanel" id = "spellPanel">
 	</canvas>
 
 </div>
@@ -237,8 +238,9 @@ html {
 	margin: 10px 10px 10px 10px;
 	padding: 10px 10px 10px 10px;
 
-	float: bottom;
 	float: left;
+	float: bottom;
+
 	border-radius: 10px;
 }
 
@@ -268,6 +270,110 @@ html {
 	ctx.clearRect(0, 0, slideWidth, slideHeight);
 	doTheThing(0300);	drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
 	currentGlyph = "";
+
+	currentAddress = 0210;
+
+	currentGlyph = currentTable[currentAddress];
+	cursorPosition = currentGlyphArray.length;
+	spellGlyph();
+	
+function localRoot(localCommand){
+	
+	
+	if(localCommand == 0020){
+		cursorPosition--;
+		if(cursorPosition < 0){
+			cursorPosition = currentGlyphArray.length;
+		}
+	}
+	if(localCommand == 0021){
+		cursorPosition++;
+		if(cursorPosition > currentGlyphArray.length - 1){
+			cursorPosition = 0;
+		}
+	}	
+	if(localCommand == 0022){
+		currentAddress--;
+		currentGlyph = currentTable[currentAddress];
+	}
+	if(localCommand == 0023){
+		currentAddress++;
+		currentGlyph = currentTable[currentAddress];
+	}	
+	if(localCommand == 0024){
+		if(currentAddress < 01000 && currentAddress > 0){
+			currentAddress += 01000;
+			currentGlyph = currentTable[currentAddress];
+
+		}
+	}	
+
+	if(localCommand == 0025){
+		if(currentAddress > 01000 && currentAddress < 02000){
+			currentAddress -= 01000;
+			currentGlyph = currentTable[currentAddress];
+
+		}
+	}
+
+	currentGlyphArray = currentGlyph.split(",");
+
+	firstHalf = "";
+	secondHalf = "";
+	
+	for(var index = 0;index < cursorPosition;index++){
+		firstHalf += "0" + currentGlyphArray[index] + ",";
+	}
+
+	for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+		secondHalf += "0" + currentGlyphArray[index] + ",";
+	}
+
+	spellGlyph();
+
+	ctx = document.getElementById("drawCanvas").getContext("2d");	
+	ctx.clearRect(0, 0, slideWidth, slideHeight);
+	doTheThing(0300);	
+	drawGlyph(firstHalf);	drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
+	drawGlyph(secondHalf);		
+}
+
+function spellGlyph(){
+	ctx = document.getElementById("spellPanel").getContext("2d");		
+	ctx.clearRect(0, 0, 600, 200);
+	doTheThing(0300);		
+	var tempSide = side;
+	x = 10;
+	y = 40;
+	side = 30;
+	var glyphArray = currentGlyph.split(",");
+	for(var index = 0;index < cursorPosition;index++){
+		doTheThing(01000 + parseInt(glyphArray[index],8));
+		if(x > 560){
+			x = 10;
+			y += 35;
+		}	
+		if(y > 190){
+			break;
+		}
+
+	}
+	drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0335,0342,0335,0335,0342,0334,0331,0331,0333,0333,0337,0337");
+	
+	for(var index = cursorPosition;index < glyphArray.length;index++){
+		doTheThing(01000 + parseInt(glyphArray[index],8));	
+		if(x > 560){
+			x = 10;
+			y += 35;
+		}
+		if(y > 190){
+			break;
+		}
+	}
+		
+	side = tempSide;
+}	
+	
 function buttonAction(buttonCommand){
 	currentGlyph += "0" + buttonCommand.toString(8) + ",";
 	console.log(currentGlyph);
@@ -276,6 +382,7 @@ function buttonAction(buttonCommand){
 	doTheThing(0300);
 	drawGlyph(currentGlyph);		drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");//cursor
 }
+
 
 panelArray1 = document.getElementById("movementPanel").children;
 
@@ -287,6 +394,8 @@ for(var index = 0;index < panelArray1.length;index++){
 	side = 64;
 
 	drawGlyph("01"+buttonArray1[index].toString(8));
+	
+	
 }
 
 
@@ -312,6 +421,19 @@ for(var index = 0;index < panelArray3.length;index++){
 		y=62;
 		side = 64;
 		drawGlyph("01"+buttonArray3[index].toString(8));
+	}
+}
+
+
+panelArray4 = document.getElementById("rootPanel").children;
+for(var index = 0;index < panelArray4.length;index++){
+	if(buttonArray4[index] != undefined){
+		ctx = panelArray4[index].getContext("2d");
+		drawGlyph("0300");
+		x=-2;
+		y=62;
+		side = 64;
+		drawGlyph("010"+buttonArray4[index].toString(8));
 	}
 }
 

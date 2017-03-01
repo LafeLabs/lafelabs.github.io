@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Root Magic Document Generation</title>
-<script src="libraries/geometron2library.js">
+<script src="libraries/geometronLibrary3.js">
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
@@ -14,9 +14,9 @@ initGeometron();
 <h2>Root Magic</h2>
 
 <button onClick = "noimageCanvas()">canvas</button>
-<button onClick = "noimageCanvasControl()">canvas</button>
 <button onClick = "imageCanvas()">image</button>
 <button onClick = "htmlSection()">html</button>
+<button onClick = "spellCanvas()">spell</button>
 
 <p>
 URL:<textarea id = "urlInput" rows = "1" cols = "20">
@@ -58,6 +58,28 @@ function noimageCanvas(){
 	document.getElementById("pageJS").value += "wordStack = [];\n";
 	document.getElementById("pageJS").value += "wordStack.push(\""+importedText+"\");\n";
 	document.getElementById("pageJS").value += "rootMagic(01);\n";
+	
+}
+
+function spellCanvas(){
+		
+		var newCanvas = document.createElement("CANVAS");
+		newCanvas.setAttribute("width", slideWidth.toString());
+		newCanvas.setAttribute("height", slideHeight.toString());
+		newCanvas.setAttribute("style", "border:1px solid;");
+		var canvasName = "canvas" + canvasIndex.toString();
+		newCanvas.setAttribute("id",canvasName);
+		var divName = "div" + canvasIndex.toString();
+		var newDiv  = document.createElement("DIV");
+		newDiv.setAttribute("id",divName);
+		newDiv.appendChild(newCanvas);      						
+		var canvasesDiv = document.getElementById("canvases");
+		canvasesDiv.insertBefore(newDiv, canvasesDiv.childNodes[0]);   
+		//assumes currentGlyph set somewhere
+		ctx = document.getElementById("canvas" + canvasIndex.toString()).getContext("2d");
+		drawGlyph(currentGlyph);
+		canvasIndex++;
+
 	
 }
 
