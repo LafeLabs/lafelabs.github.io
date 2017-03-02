@@ -83,8 +83,17 @@ buttonArray4 = [0020,0021,0022,0024,0025,0023,0010,0026,0027,0030,0016];
 	
 	<canvas width = "600" height = "400" class = "drawPanel" id = "drawCanvas">
 	</canvas>
-
-	
+	<div id = "htmlPanel">
+		<h3>Heading</h3>
+		<p>
+		Some text.
+		<p>
+		Some more
+		<p>
+		$$E = mc^2$$
+		
+		
+	</div>
 	<div class = "shapePanel">
 		<div id = "shapePanelInner">
 				<canvas class = "glyphButtons" onClick = "buttonAction(buttonArray2[0]);" width = "60" height = "60">
@@ -225,10 +234,30 @@ html {
     border-width: 2px;
 	background: white;
 	margin: 10px 10px 10px 10px;
+	float: top;
+	float: right;
+	border-radius: 10px;
+	
+}
+
+#drawCanvas{
+
+}
+#htmlPanel{
+	width:580px;
+	height:380px;
+	border-color: white;
+    border-style: solid;
+    border-width: 2px;
+	background: white;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
 
 	float: top;
 	float: right;
 	border-radius: 10px;
+	display:none;
+
 }
 
 .spellPanel{
@@ -289,6 +318,8 @@ html {
 
 
 <script>
+
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
 
 	currentAddress = 0200;
 	currentGlyph = currentTable[currentAddress];
@@ -456,6 +487,11 @@ function localRoot(localCommand){
 			var localGlyph = stackLine[1];
 			currentTable[localAddress] = localGlyph;
 		}
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
 	}
 	if(localCommand == 0027){//export full geometron hypercube
 		var localString = "";
