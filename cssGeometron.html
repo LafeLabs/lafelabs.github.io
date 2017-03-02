@@ -6,6 +6,7 @@
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
+
 initGeometron();
 loadTable();
 canvasIndex = 0;
@@ -13,11 +14,12 @@ canvasIndex = 0;
 
 buttonArray1 = [0334,0330,0335,0332,0300,0333,0336,0331,0337];
 
-buttonArray2 = [0340,0341,0342,0343,0364,0200,0220,0212,0210,0215,0225,0223,0214,0211,0222,0224,0217];
+//16 element shape table:
+buttonArray2 = [0340,0341,0342,0343,0364,0200,0220,0212,0210,0215,0225,0223,0214,0211,0222,0201];
 
 buttonArray3 = [0304,0305,0306,0310,0311,0312,0313,0314,0350,0351,0352,0353];
 
-buttonArray4 = [0020,0021,0022,0024,0025,0023,0010];
+buttonArray4 = [0020,0021,0022,0024,0025,0023,0010,0026,0027,0030,0016];
 
 </script>
 </head>
@@ -136,6 +138,14 @@ buttonArray4 = [0020,0021,0022,0024,0025,0023,0010];
 				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[5]);" width = "60" height = "60">
 				</canvas>						
 				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[6]);" width = "60" height = "60">
+				</canvas>						
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[7]);" width = "60" height = "60">
+				</canvas>						
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[8]);" width = "60" height = "60">
+				</canvas>						
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[9]);" width = "60" height = "60">
+				</canvas>						
+				<canvas class = "glyphButtons" onClick = "localRoot(buttonArray4[10]);" width = "60" height = "60">
 				</canvas>						
 				
 		</div>
@@ -285,8 +295,7 @@ html {
 	currentGlyphArray = currentGlyph.split(",");
 	cursorPosition = currentGlyphArray.length;
 	redraw();
-		
-
+			
 function buttonAction(buttonCommand){
 
 	firstHalf += "0" + buttonCommand.toString(8) + ",";
@@ -300,14 +309,15 @@ function buttonAction(buttonCommand){
 function redraw(){
 
 	document.getElementById("textPanel").value = "0" + currentAddress.toString(8) +":"+ currentGlyph;
+
 	currentGlyphArray = currentGlyph.split(",");
 	firstHalf = "";
 	secondHalf = "";	
 	for(var index = 0;index < cursorPosition;index++){
-		firstHalf += "0" + currentGlyphArray[index] + ",";
+		firstHalf += currentGlyphArray[index] + ",";
 	}
 	for(var index = cursorPosition;index < currentGlyphArray.length;index++){
-		secondHalf += "0" + currentGlyphArray[index] + ",";
+		secondHalf += currentGlyphArray[index] + ",";
 	}
 
 
@@ -351,7 +361,8 @@ drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0340,0335
 
 	}
 
-	side = tempSide;
+	side = tempSide;	
+	currentTable[currentAddress] = currentGlyph;
 }
 	
 	
@@ -363,40 +374,57 @@ function localRoot(localCommand){
 			firstHalf = "";
 			secondHalf = "";	
 			for(var index = 0;index < cursorPosition - 1;index++){
-				firstHalf += "0" + currentGlyphArray[index] + ",";
+				firstHalf += currentGlyphArray[index] + ",";
 			}
 			for(var index = cursorPosition;index < currentGlyphArray.length;index++){
-				secondHalf += "0" + currentGlyphArray[index] + ",";
+				secondHalf += currentGlyphArray[index] + ",";
 			}		
 			
 			currentGlyph = firstHalf + secondHalf;
 		cursorPosition--;
+		redraw();
 	}
-		
+	
+	if(localCommand == 0012){
+		//reserve this for "\n" newline
+		drawGlyph("0331,0332,0332,0332,0332,0332,0332,0332,0332,");
+	}
+	
+	if(localCommand == 016){//import words
+		var localString = document.getElementById("textPanel").value;
+		currentWord = localString;
+		currentGlyph = "0332,0332,0336,0336,0336," + string2byteCode(localString);
+		currentTable[currentAddress] = currentGlyph;
+		redraw();		
+	}	
 	if(localCommand == 0020){
 		cursorPosition--;
 		if(cursorPosition < 0){
 			cursorPosition = currentGlyphArray.length;
+			
 		}
+		redraw();
 	}
 	if(localCommand == 0021){
 		cursorPosition++;
 		if(cursorPosition > currentGlyphArray.length - 1){
 			cursorPosition = 0;
 		}
+		redraw();
 	}	
 	if(localCommand == 0022){
 		currentAddress--;
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
 		cursorPosition = currentGlyphArray.length;
-
+		redraw();
 	}
 	if(localCommand == 0023){
 		currentAddress++;
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
 		cursorPosition = currentGlyphArray.length;
+		redraw();
 
 	}	
 	if(localCommand == 0024){
@@ -407,6 +435,7 @@ function localRoot(localCommand){
 		}
 		currentGlyphArray = currentGlyph.split(",");
 		cursorPosition = currentGlyphArray.length;
+		redraw();
 
 	}	
 	if(localCommand == 0025){
@@ -416,8 +445,52 @@ function localRoot(localCommand){
 		}
 		currentGlyphArray = currentGlyph.split(",");
 		cursorPosition = currentGlyphArray.length;
+		redraw();
 	}
-	redraw();
+	if(localCommand == 0026){//import full geometron hypercube
+		var localString = document.getElementById("textPanel").value;
+		var inputStack = localString.split("\n");
+		for(var index = 0;index < inputStack.length;index++){
+			var stackLine = inputStack[index].split(":");
+			var localAddress = parseInt(stackLine[0],8);
+			var localGlyph = stackLine[1];
+			currentTable[localAddress] = localGlyph;
+		}
+	}
+	if(localCommand == 0027){//export full geometron hypercube
+		var localString = "";
+		for(var index = 0;index < currentTable.length;index++){
+			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+		}
+		document.getElementById("textPanel").value = localString;
+	}
+	if(localCommand == 0030){//shape table assignment
+		var localString = document.getElementById("textPanel").value;
+		var stringArray = localString.split(",");
+		for(var index = 0;index < stringArray.length;index++){
+			buttonArray2.pop();
+		}
+		for(var index = 0;index < stringArray.length;index++){
+			buttonArray2.push(parseInt(stringArray[index],8));
+		}
+		console.log(buttonArray2);
+		panelArray2 = document.getElementById("shapePanelInner").children;
+		for(var index = 0;index < panelArray2.length;index++){
+			if(buttonArray2[index] != undefined){
+				ctx = panelArray2[index].getContext("2d");
+				ctx.clearRect(0, 0, 60, 60);		
+				drawGlyph("0300");
+				x=-2;
+				y=62;
+				side = 64;
+				drawGlyph("01"+buttonArray2[index].toString(8));
+			}
+		}
+
+	
+		
+	}
+
 }
 	
 
