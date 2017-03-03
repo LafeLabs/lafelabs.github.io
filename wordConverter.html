@@ -76,6 +76,25 @@ function bytecode2js(){
 	document.getElementById("jsPanel").value = outputText;
 }
 
+function js2bytecode(){
+	var inputText = document.getElementById("jsPanel").value;
+	var outputText = "";
+	var textArray = inputText.split("\n");
+	for(var index = 0;index < textArray.length;index++){
+		if(textArray[index].length > 3){
+			var foo = textArray[index].split("\"");
+			var zeep = foo[0].split("[");
+			var zorp = zeep[1].split("]");
+			outputText += zorp[0];
+			outputText += ":";
+			outputText += foo[1];	
+			outputText += "\n";
+		}
+	}
+	console.log(outputText);
+	document.getElementById("byteCode").value = outputText;
+	
+}
 
 </script>
 <style>
