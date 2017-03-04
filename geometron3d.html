@@ -56,7 +56,8 @@
 
 
 </textarea>
-<button style = "float:left; width:100px;" onClick = "importCode();">import</button>
+<button style = "float:left; width:70px;" onClick = "importCode();">Import</button>
+<button style = "float:left; width:70px;" onClick = "export3d();">Export</button>
 
 </center>
 </div>
@@ -174,9 +175,14 @@ function init3dGeometron(){
 
 }
 
+function export3d(){
+	document.getElementById("textIO").value = document.getElementById("canvas3d").innerHTML;
+
+}
+
 function importCode(){
 
-	currentGlyph = document.getElementById("textIO").value.trim();
+	currentGlyph = document.getElementById("textIO").value;
 	drawGlyph(currentGlyph);
 }
 
@@ -191,6 +197,23 @@ function doTheThing3d(localCommand){
 
 	currentGlyph +=  "0" + localCommand.toString(8) + ","
     document.getElementById("textIO").value = currentGlyph;
+    
+    if(localCommand == 0300){
+       	x = x0;
+		y = y0;
+		z = z0;
+		r = 1;
+		g = 0;
+		b = 0;
+		unit = 1;
+		side = unit;	
+		r = 1;
+		g = 0;
+		b = 0;
+		scaleFactor	= 2;
+
+    }
+    
     if(localCommand == 0320){
        r = 0.5;
        g = 0.5;
