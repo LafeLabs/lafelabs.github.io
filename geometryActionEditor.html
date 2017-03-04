@@ -20,32 +20,31 @@ currentAddress = 0300;
 		
 	</textarea>
 
-	<div id = "panel2">
-		<pre>
-		<code id = "innerjsCode">
-	     	
-		</code>
-		</pre>
-	</div>
+	<p>
 	
-	<button class = "centerRow" onClick = "js2byte()">
-		js2byte
-	</button>
-	<button class = "centerRow" onClick = "back()">
+	<button class = "arrowButtons" onClick = "back()">
 		&#x21E6;
 	</button>
 	<input value = "0300" id = "addressInput" onchange = "newAddress()">
 	</input>
-	<button class = "centerRow" onClick = "fwd()">
+	<button class = "arrowButtons" onClick = "fwd()">
 		&#x21E8;
 	</button>
-	<button class = "centerRow" onClick = "byte2js()">
-		byte2js
-	</button>
-	
+
+	<p>
+
 	<textarea id = "jsCode">
 			
 	</textarea>
+<p>
+	<button class = "centerRow" onClick = "byte2js()">
+		&#x21E7
+	</button>
+	<button class = "centerRow" onClick = "js2byte()">
+		&#x21E9
+	</button>
+
+	<p>
 	<textarea id = "byteCode">
 	
 	</textarea>
@@ -53,38 +52,66 @@ currentAddress = 0300;
 </div>
 
 <script>
-
-document.getElementById("innerjsCode").innerHTML = byteCode2string(currentTable[currentAddress]);
+document.getElementById("byteCode").value = currentTable[currentAddress];
 
 	document.getElementById("panel1").value = byteCode2string(currentTable[currentAddress]);
 
 
 function newAddress(){
+
+currentTable[currentAddress] = string2byteCode(document.getElementById("panel1").value);
 	currentAddress = parseInt(document.getElementById("addressInput").value,8);
-document.getElementById("innerjsCode").innerHTML = byteCode2string(currentTable[currentAddress]);
 	document.getElementById("panel1").value = byteCode2string(currentTable[currentAddress]);
+document.getElementById("byteCode").value = currentTable[currentAddress];
+
 }
 function fwd(){
+
+	currentTable[currentAddress] = string2byteCode(document.getElementById("panel1").value);
 	currentAddress++;
 	if(currentAddress > 0377){
 		currentAddress = 0300;
 	}
 	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
 		
-	document.getElementById("innerjsCode").innerHTML = byteCode2string(currentTable[currentAddress]);
 	document.getElementById("panel1").value = byteCode2string(currentTable[currentAddress]);
+document.getElementById("byteCode").value = currentTable[currentAddress];
 
 }	
 function back(){
+currentTable[currentAddress] = string2byteCode(document.getElementById("panel1").value);
 	currentAddress--;
 	if(currentAddress < 0300){
 		currentAddress = 0377;
 	}
 	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
-	document.getElementById("innerjsCode").innerHTML = byteCode2string(currentTable[currentAddress]);
 	console.log(currentTable[currentAddress]);
 	document.getElementById("panel1").value = byteCode2string(currentTable[currentAddress]);
+document.getElementById("byteCode").value = currentTable[currentAddress];
+
 }	
+
+function byte2js(){//import the bytecode, build js code for doTheThing()
+	var inputCode = document.getElementById("byteCode").value;
+	var array1 = inputCode.split("\n");
+	for(var index = 0;index < array1.length;index++){
+		if(array1[index] != undefined){
+			foo = array1[index].split(":");
+			var localAddress = foo[0];
+			var localGlyph = foo[1];	
+			currentTable[parseInt(localAddress,8)] = localGlyph;
+		}
+	}
+	
+	var outputString = "";
+	for(var index = 0300;index < 0400;index ++){
+		outputString += "    if(localCommand == 0";
+		outputString += index.toString(8) + "){\n";
+		outputString += byteCode2string(currentTable[index]);
+		outputString += "\n}\n";
+	}
+	document.getElementById("jsCode").value = outputString;
+}
 
 function js2byte(){
 
@@ -133,7 +160,6 @@ function js2byte(){
 	currentAddress = parseInt(addressArray[0],8);//make the string an int
 	
 	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
-	document.getElementById("innerjsCode").innerHTML = byteCode2string(array1[0]);
 	document.getElementById("panel1").value = byteCode2string(array1[0]);
 
 }
@@ -148,9 +174,9 @@ html {
 	background-size: cover;
 }
 #mainPanel{
-	width: 900px;
+	width: 360px;
 	height: 620px;
-	padding: 10px 10px 10px 10px;
+	padding: 10px 20px 10px 20px;
     border-style: solid;
     border-width: 5px;
     border-color: white;
@@ -168,19 +194,8 @@ html {
 	margin: 10px 10px 10px 10px;
 	border-radius: 10px;
 }
-#panel2{
-	width: 500px;
-	height: 250px;
-	background: white;
-	text-align: justify;
-	word-wrap: break-word;
-	padding: 10px 10px 10px 10px;
-	margin: 10px 10px 10px 10px;
-    border-radius: 10px;
-    float:right;
-}
 #byteCode{
-	width: 850px;
+	width: 300px;
 	height: 30px;
 	background: white;
 	text-align: justify;
@@ -190,7 +205,7 @@ html {
 }
 
 #jsCode{
-	width: 850px;
+	width: 300px;
 	height: 30px;
 	background: white;
 	text-align: justify;
@@ -201,26 +216,38 @@ html {
 }
 
 #addressInput{
-	font-size: 30px;
+	font-size: 24px;
 	font-style: bold;	
 	width: 100px;
-	height: 60px;
+	height: 40px;
 	background: white;
 	padding: 0px 10px 0px 10px;
-	margin: 10px 10px 10px 10px;
+	margin: 5px 10px 5px 10px;
     border-radius: 10px;
 	text-align: center;
 
 
 }
-.centerRow{
-	width: 150px;
-	height: 60px;
+
+.arrowButtons{
+	width: 65px;
+	height: 40px;
 	background: white;
-	font-size: 30px;
+	font-size: 24px;
 	font-style: bold;	
-	padding: 10px 10px 10px 10px;
-	margin: 10px 20px 10px 15px;
+	padding: 5px 10px 10px 10px;
+	margin: 5px 20px 5px 15px;
+    border-radius: 10px;
+
+}
+.centerRow{
+	width: 140px;
+	height: 40px;
+	background: white;
+	font-size: 24px;
+	font-style: bold;	
+	padding: 5px 10px 10px 10px;
+	margin: 5px 20px 5px 15px;
     border-radius: 10px;
 
 
