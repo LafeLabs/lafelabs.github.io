@@ -13,60 +13,90 @@
 
 </head>
 <body>
-<div>
-<x3d width='300px' height='300px'>
+
+<div id = "mainPanel">
+
+<div id = "big3d">
+<x3d width='400px' height='400px'>
     <scene id = "canvas3d">
-
-    <!--	<transform translation='0 0 0'> 
-			<shape>
-				<appearance>
-					<material diffuseColor='1 0 0'></material>
-				</appearance>
-				<box size = '1 1 1'></box>
-			</shape>
- 		</transform>
-
-    	<transform translation='0 0 2'> 
-			<shape>
-				<appearance>
-					<material diffuseColor='1 0 0'></material>
-				</appearance>
-				<box size = '1 1 1'></box>
-			</shape>
- 		</transform> -->
 
     </scene>    
 </x3d>
 </div>
-<p>
-<p>
-<div>
-<button onClick = "doTheThing3d(0330)"> &#x2190 </button>
-<button onClick = "doTheThing3d(0331)"> &#x2192 </button>
-<p>
+
+
+<div id = "buttonPanel">
+<button onClick = "doTheThing3d(0331)"> &#x2190 </button>
+<button onClick = "doTheThing3d(0330)"> &#x2192 </button>
 
 <button onClick = "doTheThing3d(0332)"> &#x2191 </button>
 <button onClick = "doTheThing3d(0333)"> &#x2193 </button>
-<p>
 
-<button onClick = "doTheThing3d(0334)"> &#x2197 </button>
-<button onClick = "doTheThing3d(0335)"> &#x2199 </button>
-<p>
+<button onClick = "doTheThing3d(0335)"> &#x2197 </button>
+<button onClick = "doTheThing3d(0334)"> &#x2199 </button>
 
 <button onClick = "doTheThing3d(0336)"> - </button>
 <button onClick = "doTheThing3d(0337)"> + </button>
-<p>
+<button onClick = "doTheThing3d(0340)" id = "cubeButt"> cube </button>
 
-<button onClick = "doTheThing3d(0340)"> cube </button>
+</div>
+</div>
+<style>
+
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+button{
+    border-color: white;
+	width: 40px;
+	height: 40px;
+	background: white;
+	margin: 10px 10px 10px 10px;
+	padding: 5px 5px 5px 5px;
+	float: left;
+	border-radius: 10px;
+	font-size: 20px;
+}
+#cubeButt{
+	width: 80px;
+	height: 40px;
+
+}
+#big3d{
+	width: 450px;
+	height: 450px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
+	margin: 10px 10px;
+	padding: 10px 10px 10px 10px;	 
+    border-radius: 20px;
+	background: black;
+}
+#mainPanel{
+	width: 500px;
+	height: 700px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
+	margin: 5px 5px;
+	padding: 10px 10px 10px 10px;	 
+    border-radius: 20px;
+	background: black;
+	
+}
 
 
 
 
+</style>
 <script>
 
 
 init3dGeometron();
-
 
 
 //https://www.x3dom.org/examples/
@@ -184,9 +214,8 @@ function doTheThing3d(localCommand){
 
 
 }
-
-
 </script>
+
 </body>
 </html>
 
