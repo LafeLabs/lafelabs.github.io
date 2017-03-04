@@ -16,14 +16,13 @@
 
 <div id = "mainPanel">
 
+<center>
 <div id = "big3d">
-<x3d width='400px' height='400px'>
+<x3d width='700px' height='450px'>
     <scene id = "canvas3d">
-
     </scene>    
 </x3d>
 </div>
-
 
 <div id = "buttonPanel">
 <button onClick = "doTheThing3d(0331)"> &#x2190 </button>
@@ -39,8 +38,30 @@
 <button onClick = "doTheThing3d(0337)"> + </button>
 <button onClick = "doTheThing3d(0340)" id = "cubeButt"> cube </button>
 
+<button onClick = "doTheThing3d(0324)" id = "redButt">    </button>
+<button onClick = "doTheThing3d(0322)" id = "greenButt">    </button>
+<button onClick = "doTheThing3d(0321)" id = "blueButt">    </button>
+
+<button onClick = "doTheThing3d(0320)" id = "zeroButt">    </button>
+<button onClick = "doTheThing3d(0323)" id = "sixButt">    </button>
+<button onClick = "doTheThing3d(0325)" id = "fiveButt">    </button>
+
+<button onClick = "doTheThing3d(0326)" id = "threeButt">    </button>
+<button onClick = "doTheThing3d(0327)" id = "sevenButt">    </button>
+
 </div>
+
+
+<textarea id = "textIO">
+
+
+</textarea>
+<button style = "float:left; width:100px;" onClick = "importCode();">import</button>
+
+</center>
 </div>
+
+
 <style>
 
 html {
@@ -56,9 +77,33 @@ button{
 	background: white;
 	margin: 10px 10px 10px 10px;
 	padding: 5px 5px 5px 5px;
-	float: left;
 	border-radius: 10px;
 	font-size: 20px;
+}
+#redButt{
+	background:red;
+}
+#greenButt{
+	background:green;
+}
+#blueButt{
+	background:blue;
+}
+
+#zeroButt{
+	background:#808080;
+}
+#threeButt{
+	background:#ffff00;
+}
+#sevenButt{
+	background:#ffffff;
+}
+#fiveButt{
+	background:#ff00ff;
+}
+#sixButt{
+	background:#00ffff;
 }
 #cubeButt{
 	width: 80px;
@@ -66,7 +111,7 @@ button{
 
 }
 #big3d{
-	width: 450px;
+	width: 700px;
 	height: 450px;
     border-style: solid;
     border-width: 3px;
@@ -77,7 +122,7 @@ button{
 	background: black;
 }
 #mainPanel{
-	width: 500px;
+	width: 800px;
 	height: 700px;
     border-style: solid;
     border-width: 3px;
@@ -86,9 +131,19 @@ button{
 	padding: 10px 10px 10px 10px;	 
     border-radius: 20px;
 	background: black;
-	
 }
 
+#textIO {
+	width: 500px;
+	height: 50px;
+	border-color: white;
+    border-style: solid;
+    border-width: 2px;
+	background: white;
+	margin: 10px 10px 10px 10px;
+
+	border-radius: 10px;
+}
 
 
 
@@ -98,6 +153,9 @@ button{
 
 init3dGeometron();
 
+currentGlyph = "";
+
+//drawGlyph("0340,0330,0336,0321,0340,0330,0336,0322,0340,0330,0336,0340,0323,0330,0336,0340,0330,,0325,0336,0340,");
 
 //https://www.x3dom.org/examples/
 function init3dGeometron(){
@@ -116,13 +174,27 @@ function init3dGeometron(){
 
 }
 
+function importCode(){
+
+	currentGlyph = document.getElementById("textIO").value.trim();
+	drawGlyph(currentGlyph);
+}
+
+function drawGlyph(localString){
+	var tempArray = localString.split(',');
+	for(var index = 0;index < tempArray.length;index++){
+		doTheThing3d(parseInt(tempArray[index],8));
+	}
+}
+
 function doTheThing3d(localCommand){
 
-
+	currentGlyph +=  "0" + localCommand.toString(8) + ","
+    document.getElementById("textIO").value = currentGlyph;
     if(localCommand == 0320){
-       r = 0;
-       g = 0;
-       b = 0;  
+       r = 0.5;
+       g = 0.5;
+       b = 0.5;  
     }
     if(localCommand == 0321){
        r = 0;
