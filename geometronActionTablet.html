@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>testing testing</title>
+<title>Geometron Action Tablet</title>
 <script src="libraries/geometronLibrary3.js">
 </script>
 
@@ -13,7 +13,12 @@
 
 <div id = "mainPanel">
 
+<center><div id = "addrDiv"></div></center>
+
 <textarea id = "codePanel">
+</textarea>
+
+<textarea id = "byteCode">
 </textarea>
 
 </div>
@@ -24,6 +29,18 @@ html {
 	height: 100%;
 	background: black;
 	background-size: cover;
+}
+
+#addrDiv{
+	background:white; 
+	width:100px;
+	height:30px; 
+	float:right;
+    border-radius: 10px;
+	font-size: 24px;
+	font-style: bold;	
+	text-align: center;
+
 }
 
 #mainPanel{
@@ -37,18 +54,27 @@ html {
     border-radius: 20px;
 	background: black;
 }
-
 #codePanel{
-
 	width: 400px;
 	height: 400px;
 	padding: none;
-    border-radius: 20px;
+	margin: 10px 0px 10px 0px;
+    border-radius: 10px;
+	background: #FFFFF0;
+	float: right;
+}
+#byteCode{
+
+	width: 400px;
+	height: 100px;
+	padding: none;
+	margin: 10px 0px 10px 0px;
+    border-radius: 10px;
 	background: #FFFFF0;
 	float: right;
 
-
 }
+
 
 .tablet{
 	width: 540px;
@@ -123,16 +149,23 @@ html {
 	
 	initGeometron();
     buildGlyphTable();
+ 	currentAddress = 0300;
  
- document.getElementById("codePanel").value = byteCode2string(currentTable[0340]);
+ 	document.getElementById("codePanel").value = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("byteCode").value = currentTable[currentAddress];
 
-
+	document.getElementById("addrDiv").innerHTML = "0" + currentAddress.toString(8);
 
 function buttonGlyph(zeep){
 	
-	document.getElementById("codePanel").value = byteCode2string(currentTable[zeep]);
-	
+	currentTable[currentAddress] = string2byteCode(document.getElementById("codePanel").value);
+	currentAddress = zeep;
+	document.getElementById("addrDiv").innerHTML = "0" + currentAddress.toString(8);
 
+	document.getElementById("codePanel").value = byteCode2string(currentTable[zeep]);
+	document.getElementById("byteCode").value = currentTable[currentAddress];
+
+	console.log(currentTable[currentAddress]);
 }
 
 function buildGlyphTable(){
@@ -178,7 +211,7 @@ function buildGlyphTable(){
 		bar += (Math.floor(index/8)).toString();
 	}
 	bar += tempArray[tempArray.length-1];
-	console.log( bar );
+
 	fullTablet = bar;
 
 	

@@ -68,7 +68,9 @@ function initGeometron(){
   	domain.push(domainStart + domainIndex*delta);
   }
   loadTable();
-
+	for(var addr = 040;addr < 0176;addr++){
+		currentTable[addr + 01000] = currentTable[addr];
+	}
 	currentGlyph = currentTable[currentAddress];  
 	currentGlyphArray = currentGlyph.split(",");
 }
