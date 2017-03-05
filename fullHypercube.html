@@ -11,7 +11,8 @@ loadTable();
 
 currentAddress = 0300;
 </script>
-
+</head>
+<body>
 <div id = "mainPanel">
 
 
@@ -27,9 +28,12 @@ currentAddress = 0300;
 				Word Actions: 06xx
 			</div>
 		</a>
-		<div class = "tabletLayer" id = "imageActions">
-			Image Actions: 05xx
-		</div>
+		
+		<a href = "imageEditor0500.html">
+			<div class = "tabletLayer" id = "imageActions">
+				Image Actions: 05xx
+			</div>
+		</a>
 		<div class = "tabletLayer" id = "scrollActions">
 			Scroll Actions: 04xx
 		</div>
@@ -45,9 +49,9 @@ currentAddress = 0300;
 			Font Actions: 0040-0176
 		</div>
 		<a href = "rootMagic.html">
-		<div class = "tabletLayer" id = "rootActions">
-			Root Actions: 0000-0037
-		</div>
+			<div class = "tabletLayer" id = "rootActions">
+				Root Actions: 0000-0037
+			</div>
 		</a>		
 	</div>
 	<div class = "actionSymbols">
@@ -62,9 +66,11 @@ currentAddress = 0300;
 		<div class = "tabletLayer" id = "wordSymbols">
 			Word Symbols: 016xx
 		</div>
+		<a href = "imageEditor0500.html">
 		<div class = "tabletLayer" id = "imageSymbols">
 			Image Symbols: 015xx
 		</div>
+		</a>
 		<div class = "tabletLayer" id = "scrollSymbols">
 			Scroll Symbols: 014xx
 		</div>

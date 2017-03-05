@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geometron Hypercube Full Tablet Stack Panel</title>
+<script src="libraries/geometronLibrary3.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script id = "that">
+initGeometron();
+loadTable();
+
+currentAddress = 0300;
+</script>
+</head>
+<body>
+
+<div id = "mainPanel">
+
+		<div class = "tabletLayer" id = "algebra">
+			Algebra
+		</div>
+		<a href = "wordConverter.html">
+			<div class = "tabletLayer" id = "word">
+			Word
+			</div>
+		</a>
+		<div class = "tabletLayer" id = "image">
+			Image
+		</div>
+		<div class = "tabletLayer" id = "scroll">
+			Scroll
+		</div>
+		<a href = "geometronActionTablet.html">
+			<div class = "tabletLayer" id = "geometry">
+			Geometry
+			</div>
+		</a>
+		<div class = "tabletLayer" id = "shape">
+			Shape
+		</div>
+		<div class = "tabletLayer" id = "font">
+			Font
+		</div>
+		<a href = "rootMagic.html">
+		<div class = "tabletLayer" id = "root">
+			Root
+		</div>
+		</a>		
+
+</div>
+
+
+
+<script>
+
+
+
+</script>
+
+
+<style id = "mainStyle">
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+
+
+.tabletLayer:hover { 
+    background: gray;
+}
+.tabletLayer:active { 
+    background-color: white;
+}
+
+
+.tabletLayer{
+	font-size: 24px;
+	font-style: bold;	
+	width: 200px;
+	height: 50px;
+	margin: 10px 10px 10px 10px;
+	padding: 5px;
+    border-radius: 10px;
+	text-align: center;
+	float: left;
+		font-size: 24px;
+font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
+
+#algebra{
+	background: orange;
+}
+#word{
+	color: white;
+	background: navy;
+}
+#image{
+	background: yellow;
+}
+#scroll{
+	background: blue;
+	color: yellow;
+}
+#geometry{
+	background: red;
+}
+#shape{
+	background: aqua;
+}
+#font{
+	background: green;
+	color: #ff80ff;
+}
+#root{
+	background: purple;
+	color: white;
+
+}
+
+
+
+#mainPanel{
+	width: 230px;
+	height: 650px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: white;
+    border-radius: 20px;
+    margin: 10px 10px 10px 10px;
+	background: black;	
+}
+
+</style>
+</body>
+</html>
+
