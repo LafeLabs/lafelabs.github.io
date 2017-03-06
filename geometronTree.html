@@ -25,7 +25,7 @@ currentAddress = 0500;
 		<div id = "word" class = "treeLayer" onClick = "layerSelect(6)"><center> 	 
 			WORDS:06xx
 		</center></div></td></tr> 
-
+		
 		<tr><td>
 		<div id = "image" class = "treeLayer" onClick = "layerSelect(5)"><center> 	 
 			IMAGES:05xx
@@ -81,24 +81,59 @@ document.getElementById("main").removeChild(document.getElementById("main").chil
 		node.id = "editMath";
 		document.getElementById("main").appendChild(node);
 	}
+	
+	
 	if(layer == 6){
+	currentAddress = 0600;
 document.getElementById("main").removeChild(document.getElementById("main").childNodes[5]);
 		var node = document.createElement("DIV");                 // Create a <div> node
 		node.id = "editWord";
 		document.getElementById("main").appendChild(node);
+	 
+	 		var node3 = document.createElement("INPUT");
+		node3.id = "addressInput";
+		node3.style = "margin: auto;";		
+		node.appendChild(node3);	
+		node3.value = "0" + currentAddress.toString(8);
+
+
+		var node4 = document.createElement("INPUT");
+		node4.id = "nameInput";
+		node4.style = "margin: auto;";		
+		node.appendChild(node4);	
+
+		node4.value = byteCode2string(currentTable[01000 + currentAddress]);
+
+		var node5 = document.createElement("INPUT");
+		node5.id = "urlInput";
+		node5.value = byteCode2string(currentTable[currentAddress]);
+		node.appendChild(node5);			
+		
+		node3.onchange = function(){
+			currentAddress = parseInt(node3.value,8);	
+			node5.value = byteCode2string(currentTable[currentAddress]);
+			node4.value = byteCode2string(currentTable[01000 + currentAddress]);		
+		};
+		node5.onchange = function(){
+			currentTable[currentAddress] = 	string2byteCode(node5.value);				
+		}
+		node4.onchange = function(){
+			currentTable[currentAddress + 01000] = 	string2byteCode(node4.value);				
+		}
+
+	    
 	
 	}
 	
 	if(layer == 5){
 
-		currentAddress = 0507;
+		currentAddress = 0500;
 
 document.getElementById("main").removeChild(document.getElementById("main").childNodes[5]);
 		var node = document.createElement("center");  
 		node.id = "editImage";
 		document.getElementById("main").appendChild(node);		
-		var node2 = document.createElement("IMG");
-		
+		var node2 = document.createElement("IMG");		
 		node2.id = "image0500s";
 		node.appendChild(node2);
 		var fooPar = document.createElement("P");
@@ -157,10 +192,66 @@ document.getElementById("main").removeChild(document.getElementById("main").chil
 		document.getElementById("main").appendChild(node);
 	}
 if(layer == 1){
+
+		currentAddress = 0101;
+		
 document.getElementById("main").removeChild(document.getElementById("main").childNodes[5]);
-		var node = document.createElement("DIV");                 // Create a <div> node
+		var node = document.createElement("center");                 
 		node.id = "editFont";
 		document.getElementById("main").appendChild(node);
+
+		var node2 = document.createElement("CANVAS");		
+		node2.id = "mainCanvas";
+		node.appendChild(node2);
+
+		var fooPar = document.createElement("P");
+		node.appendChild(fooPar);
+		fooPar.name = "derpAss";
+
+		var node2b = document.createElement("input");		
+		node2b.id = "addressInput";
+		node.appendChild(node2b);
+
+		var node2c = document.createElement("input");		
+		node2c.id = "letterInput";
+		node.appendChild(node2c);
+
+		var node3 = document.createElement("CANVAS");		
+		node3.id = "spellCanvas";
+		node.appendChild(node3);
+
+		var node4 = document.createElement("CANVAS");		
+		node4.id = "controlCanvas";
+		node.appendChild(node4);
+
+		node2b.onchange = function(){
+			currentAddress = parseInt(node2b.value,8);
+			ctx.fillStyle="white";
+			ctx.fillRect(0, 0, 200, 200);
+			ctx.fillStyle="black";
+			doTheThing(0300);			
+			x = 100;
+			y = 100;
+			side = 80;
+			doTheThing(currentAddress);
+				
+		}
+
+
+		node2b.value = "0" + currentAddress.toString(8);
+		node2c.value = " " + String.fromCharCode(currentAddress);
+		ctx = node2.getContext("2d");		
+		ctx.width = 200;
+		ctx.height = 200;		
+		ctx.fillStyle="white";
+		ctx.fillRect(0, 0, 200, 200);
+		ctx.fillStyle="black";
+		doTheThing(0300);			
+		x = 100;
+		y = 100;
+		side = 80;
+		doTheThing(currentAddress);
+		
 	}
 if(layer == 0){
 document.getElementById("main").removeChild(document.getElementById("main").childNodes[5]);
@@ -178,6 +269,11 @@ html {
 	height: 100%;
 	background: black;
 	background-size: cover;
+}
+
+#derpAss{
+	margin: -10px 0px -10px 0px;
+
 }
 
 #addressInput{
@@ -211,12 +307,22 @@ html {
 	background:white;
     border-radius: 5px;
     border-style: solid;
-    margin: 10px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
         font-size: 20px;
 	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 	font-style: bold;
+}
 
-
+#letterInput{
+	width: 30px;
+	height: 30px;
+	background:white;
+    border-radius: 5px;
+    border-style: solid;
+    margin: 0px 10px 0px 10px;
+    font-size: 20px;
+	font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+	font-style: bold;
 }
 
 
@@ -228,6 +334,30 @@ html {
     border-radius: 10px;
 }
 
+#mainCanvas{
+
+	background:white;
+	margin: 3px 10px -10px 10px;
+    border-radius: 10px;
+    padding: 20px 20px 20px 20px;
+
+}
+
+#spellCanvas{
+	background:white;
+	height: 80px;
+	width: 700px;
+	margin: 0px 10px 10px 10px;
+    border-radius: 10px;
+}
+
+#controlCanvas{
+	background:white;
+	height: 160px;
+	width: 700px;
+	margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+}
 #main{
 	width: 1100px;
 	height: 600px;
