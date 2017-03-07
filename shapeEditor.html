@@ -86,8 +86,7 @@ appendDrawPanel(commandArray1);
 appendDrawPanel(commandArray2);
 
 currentNode = rootPanel;
-appendDrawPanel(commandArray3);
-
+appendRootPanel(commandArray3);
 
 currentAddress = 0210;
 currentGlyph = currentTable[currentAddress];
@@ -182,6 +181,20 @@ function appendDrawPanel(commandArray){
 	
 	var newDiv = document.createElement("DIV");	
 	newDiv.className = "drawPad";
+//	var commandArray = [0340,0341,0342,0343,0344,0345,0346,0347,0200,0365,0366,0201];
+	var tempNode = currentNode;
+	currentNode = newDiv;
+	for(var index = 0;index < commandArray.length;index++){
+		appendGlyphButton(commandArray[index]);	
+	}	
+	currentNode = tempNode;
+	currentNode.appendChild(newDiv);
+}
+
+function appendRootPanel(commandArray){
+	
+	var newDiv = document.createElement("DIV");	
+	newDiv.className = "rootPad";
 //	var commandArray = [0340,0341,0342,0343,0344,0345,0346,0347,0200,0365,0366,0201];
 	var tempNode = currentNode;
 	currentNode = newDiv;
@@ -375,7 +388,7 @@ html {
 	background: white;
     border-radius: 5px;
     margin: 10px 5px 5px 55px;
-        float: left;
+    float: left;
 
 
 }
@@ -416,8 +429,6 @@ html {
 	float:right;
 }
 
-
-
 .movePad{
     border-style: solid;
 	width: 120px;
@@ -444,6 +455,16 @@ html {
 	margin: 5px 5px 5px 5px;
 	float:left;
 }
+.rootPad{
+    border-style: solid;
+	width: 240px;
+	height: 130px;
+	background: white;	
+	margin: 3px 6px 6px 3px;
+	float:left;
+
+}
+
 
 .glyphButtons{
     border-style: solid;
