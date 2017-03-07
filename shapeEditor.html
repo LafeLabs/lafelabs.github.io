@@ -17,10 +17,10 @@ currentAddress = 0210;
 </div>
 <script>
 
+canvasOrText = true;
+
 glyphButtonSize = 40;
 currentNode = document.getElementById("main");
-
-
 
 controlPanel = document.createElement("span");
 controlPanel.className = "controlPanel";
@@ -39,29 +39,48 @@ ctx.fillRect(0, 0, 600,400);
 ctx.fillStyle="black";
 
 spellCanvas = document.createElement("canvas");
-spellCanvas.width = 260;
-spellCanvas.height = 400;
+spellCanvas.width = 300;
+spellCanvas.height = 260;
 spellCanvas.id = "spellCanvas";
+
 ctx = spellCanvas.getContext("2d");
 ctx.fillStyle="white";
-ctx.fillRect(0, 0, 260,400);
+ctx.fillRect(0, 0, 300,400);
 ctx.fillStyle="black";
 
+mainTextArea = document.createElement("textarea");
+mainTextArea.id = "mainTextArea";
+mainTextArea.value = byteCode2string(currentTable[0330]);
 
-currentNode.appendChild(drawCanvas);
+
+currentNode.appendChild(drawCanvas);//main
+
+//currentNode.replaceChild(mainTextArea,drawCanvas);//mozilla docs are flat out bullshit here
+//currentNode.replaceChild(drawCanvas,mainTextArea);
+
+addressInput = document.createElement("input");
+addressInput.id = "addressInput";
+nameInput = document.createElement("input");
+nameInput.id = "nameInput";
+
+bytecode = document.createElement("input");
+bytecode.id = "bytecode";
+bytecode.size = 42;
+
+currentNode.appendChild(mainTextArea);
 currentNode.appendChild(spellCanvas);
-
+currentNode.appendChild(addressInput);
+currentNode.appendChild(nameInput);
+currentNode.appendChild(bytecode);
 currentNode.appendChild(rootPanel);
-
 currentNode.appendChild(controlPanel);
-
 
 currentNode = controlPanel;
 appendScalePanel();
 appendMovementPanel();
 commandArray1 = [0340,0341,0342,0343,0344,0345,0346,0347,0200,0365,0366,0201];
 commandArray2 = [0210,0211,0212,0224,0214,0215,0216,0217,0220,0221,0222,0223];
-commandArray3 = [020,021,022,023,010,024,025];
+commandArray3 = [020,021,022,023,010,024,025,026,027];
 
 appendDrawPanel(commandArray1);
 appendDrawPanel(commandArray2);
@@ -75,6 +94,9 @@ currentGlyph = currentTable[currentAddress];
 currentGlyphArray = currentGlyph.split(",");
 cursorPosition = currentGlyphArray.length;
 
+addressInput.value = "0" + currentAddress.toString(8);
+
+bytecode.value = currentGlyph;
 
 redraw();
 
@@ -100,7 +122,7 @@ function redraw(){
 
 	var tempSide = side;
 	ctx = document.getElementById("spellCanvas").getContext("2d");		
-	ctx.clearRect(0, 0, 260, 400);
+	ctx.clearRect(0, 0, 300, 260);
 	doTheThing(0300);			
 	x = 10;
 	y = 25;
@@ -109,7 +131,7 @@ function redraw(){
 	firstHalfArray = firstHalf.split(",");
 	for(var index = 0;index < firstHalfArray.length;index++){
 		doTheThing(01000 + parseInt(firstHalfArray[index],8));
-		if(x > 240){
+		if(x > 274){
 			x = 10;
 			y += 22;
 		}	
@@ -122,7 +144,7 @@ drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0340,0335
 	secondHalfArray = secondHalf.split(",");
 	for(var index = 0;index < secondHalfArray.length;index++){
 		doTheThing(01000 + parseInt(secondHalfArray[index],8));
-		if(x > 240){
+		if(x > 270){
 			x = 10;
 			y += 32;
 		}	
@@ -134,6 +156,9 @@ drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0340,0335
 
 	side = tempSide;	
 	currentTable[currentAddress] = currentGlyph;
+	addressInput.value = "0" + currentAddress.toString(8);
+	bytecode.value = currentGlyph;
+
 }
 
 
@@ -294,6 +319,16 @@ function localRoot(localCommand){
 		cursorPosition = currentGlyphArray.length;
 		redraw();
 	}
+	
+	if(localCommand == 0026){//switch to text
+		currentNode = document.getElementById("main");
+  	    currentNode.replaceChild(mainTextArea,drawCanvas);// 	
+	}
+	if(localCommand == 0027){//switch to canvas
+		currentNode = document.getElementById("main"); 	    
+  	    currentNode.replaceChild(drawCanvas,mainTextArea);
+	}
+
 
 }
 
@@ -319,6 +354,19 @@ html {
 	background: black;	
 }
 
+#mainTextArea{
+	
+	width: 300px;
+	height: 80px;
+	border-color: white;
+    border-width: 0px;
+    border-style: solid;
+	background: white;
+    border-radius: 5px;
+    margin: 10px 10px 10px 10px;
+    float: left;
+
+}
 
 #drawCanvas{
 	border-color: white;
@@ -339,7 +387,7 @@ html {
 	background: white;
     border-radius: 5px;
     float: left;
-    margin: 10px 10px 10px 60px;
+    margin: 10px 10px 10px 10px;
 
 }
 
