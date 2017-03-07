@@ -38,6 +38,10 @@ ctx.fillStyle="white";
 ctx.fillRect(0, 0, 600,400);
 ctx.fillStyle="black";
 
+mainDisplay = document.createElement("center");
+mainDisplay.appendChild(drawCanvas);
+mainDisplay.id = "mainDisplay";
+
 spellCanvas = document.createElement("canvas");
 spellCanvas.width = 300;
 spellCanvas.height = 260;
@@ -53,10 +57,8 @@ mainTextArea.id = "mainTextArea";
 mainTextArea.value = byteCode2string(currentTable[0330]);
 
 
-currentNode.appendChild(drawCanvas);//main
+currentNode.appendChild(mainDisplay);
 
-//currentNode.replaceChild(mainTextArea,drawCanvas);//mozilla docs are flat out bullshit here
-//currentNode.replaceChild(drawCanvas,mainTextArea);
 
 addressInput = document.createElement("input");
 addressInput.id = "addressInput";
@@ -67,11 +69,19 @@ bytecode = document.createElement("input");
 bytecode.id = "bytecode";
 bytecode.size = 42;
 
-currentNode.appendChild(mainTextArea);
-currentNode.appendChild(spellCanvas);
-currentNode.appendChild(addressInput);
-currentNode.appendChild(nameInput);
-currentNode.appendChild(bytecode);
+
+IOpanel = document.createElement("center");
+IOpanel.id = "IOpanel";
+
+
+IOpanel.appendChild(mainTextArea);
+IOpanel.appendChild(spellCanvas);
+IOpanel.appendChild(addressInput);
+IOpanel.appendChild(nameInput);
+IOpanel.appendChild(bytecode);
+
+currentNode.appendChild(IOpanel);
+
 currentNode.appendChild(rootPanel);
 currentNode.appendChild(controlPanel);
 
@@ -333,11 +343,11 @@ function localRoot(localCommand){
 		redraw();
 	}
 	
-	if(localCommand == 0026){//switch to text
+	if(localCommand == 0030){//switch to text
 		currentNode = document.getElementById("main");
   	    currentNode.replaceChild(mainTextArea,drawCanvas);// 	
 	}
-	if(localCommand == 0027){//switch to canvas
+	if(localCommand == 0031){//switch to canvas
 		currentNode = document.getElementById("main"); 	    
   	    currentNode.replaceChild(drawCanvas,mainTextArea);
 	}
@@ -367,6 +377,21 @@ html {
 	background: black;	
 }
 
+#mainDisplay{
+
+	width:640px;
+	height: 420px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: red;
+    border-radius: 10px;
+    margin: 1px 1px 1px 1px;
+	background: black;	
+	float: left;
+
+	
+}
+
 #mainTextArea{
 	
 	width: 300px;
@@ -376,8 +401,7 @@ html {
     border-style: solid;
 	background: white;
     border-radius: 5px;
-    margin: 10px 10px 10px 10px;
-    float: left;
+    margin: 4px 4px 4px 4px;
 
 }
 
@@ -387,10 +411,19 @@ html {
     border-style: solid;
 	background: white;
     border-radius: 5px;
-    margin: 10px 5px 5px 55px;
-    float: left;
+    margin: 5px 5px 5px 5px;
+}
 
-
+#IOpanel{
+	width:340px;
+	height: 420px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: yellow;
+    border-radius: 10px;
+    margin: 1px 1px 1px 1px;
+	background: black;	
+	float: right;
 }
 
 #spellCanvas{
@@ -399,8 +432,7 @@ html {
     border-style: solid;
 	background: white;
     border-radius: 5px;
-    float: left;
-    margin: 10px 10px 10px 10px;
+    margin: 4px 4px 4px 4px;
 
 }
 
