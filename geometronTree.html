@@ -67,6 +67,7 @@ currentAddress = 0500;
 <script>
 
 
+
 var node = document.createElement("DIV");                 // Create a <div> node
 		node.id = "editMath";
 		document.getElementById("main").appendChild(node);
@@ -191,9 +192,14 @@ document.getElementById("main").removeChild(document.getElementById("main").chil
 		node.id = "editShape";
 		document.getElementById("main").appendChild(node);
 	}
-if(layer == 1){
+if(layer == 1){//font
 
 		currentAddress = 0101;
+		
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+
 		
 document.getElementById("main").removeChild(document.getElementById("main").childNodes[5]);
 		var node = document.createElement("center");                 
@@ -203,6 +209,8 @@ document.getElementById("main").removeChild(document.getElementById("main").chil
 		var node2 = document.createElement("CANVAS");		
 		node2.id = "mainCanvas";
 		node.appendChild(node2);
+		node2.width = 120;
+		node2.height = 120;
 
 		var fooPar = document.createElement("P");
 		node.appendChild(fooPar);
@@ -224,35 +232,61 @@ document.getElementById("main").removeChild(document.getElementById("main").chil
 		node4.id = "controlCanvas";
 		node.appendChild(node4);
 
+
+
 		node2b.onchange = function(){
+			ctx = node2.getContext("2d");		
 			currentAddress = parseInt(node2b.value,8);
 			ctx.fillStyle="white";
 			ctx.fillRect(0, 0, 200, 200);
 			ctx.fillStyle="black";
 			doTheThing(0300);			
-			x = 100;
+			x = 10;
 			y = 100;
 			side = 80;
 			doTheThing(currentAddress);
-				
+			node2c.value = " " + String.fromCharCode(currentAddress);
+						
+			
+		}
+
+		node2c.onchange = function(){
+			ctx = node2.getContext("2d");		
+			currentAddress = node2c.value.charCodeAt(1);
+			ctx.fillStyle="white";
+			ctx.fillRect(0, 0, 200, 200);
+			ctx.fillStyle="black";
+			doTheThing(0300);			
+			x = 10;
+			y = 100;
+			side = 80;
+			doTheThing(currentAddress);
+			node2b.value = "0" + currentAddress.toString(8);
 		}
 
 
 		node2b.value = "0" + currentAddress.toString(8);
 		node2c.value = " " + String.fromCharCode(currentAddress);
-		ctx = node2.getContext("2d");		
-		ctx.width = 200;
-		ctx.height = 200;		
+		ctx = node2.getContext("2d");					
 		ctx.fillStyle="white";
 		ctx.fillRect(0, 0, 200, 200);
 		ctx.fillStyle="black";
 		doTheThing(0300);			
-		x = 100;
+		x = 10;
 		y = 100;
 		side = 80;
 		doTheThing(currentAddress);
+
+		ctx = node3.getContext("2d");		
+		node3.width = 700;
+		node3.height = 80;
+		ctx.fillStyle="white";
+		ctx.fillRect(0, 0, 700, 80);
+
+
 		
 	}
+	
 if(layer == 0){
 document.getElementById("main").removeChild(document.getElementById("main").childNodes[5]);
 		var node = document.createElement("DIV");                 // Create a <div> node
@@ -345,9 +379,6 @@ html {
 
 #spellCanvas{
 	background:white;
-	height: 80px;
-	width: 700px;
-	margin: 0px 10px 10px 10px;
     border-radius: 10px;
 }
 
