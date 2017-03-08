@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Geometron Tree</title>
+<title>Geometron Document Generator</title>
 <script src="libraries/geometronLibrary3.js">
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -20,64 +20,7 @@ currentAddress = 0210;
 glyphButtonSize = 40;
 currentNode = document.getElementById("main");
 
-
-
-controlPanel = document.createElement("span");
-controlPanel.className = "controlPanel";
-
-rootPanel = document.createElement("span");
-rootPanel.className = "rootPanel";
-
-
-drawCanvas = document.createElement("canvas");
-drawCanvas.width = 600;
-drawCanvas.height = 400;
-drawCanvas.id = "drawCanvas";
-ctx = drawCanvas.getContext("2d");
-ctx.fillStyle="white";
-ctx.fillRect(0, 0, 600,400);
-ctx.fillStyle="black";
-
-spellCanvas = document.createElement("canvas");
-spellCanvas.width = 260;
-spellCanvas.height = 400;
-spellCanvas.id = "spellCanvas";
-ctx = spellCanvas.getContext("2d");
-ctx.fillStyle="white";
-ctx.fillRect(0, 0, 260,400);
-ctx.fillStyle="black";
-
-
-currentNode.appendChild(drawCanvas);
-currentNode.appendChild(spellCanvas);
-
-currentNode.appendChild(rootPanel);
-
-currentNode.appendChild(controlPanel);
-
-
-currentNode = controlPanel;
-appendScalePanel();
-appendMovementPanel();
-commandArray1 = [0340,0341,0342,0343,0344,0345,0346,0347,0200,0365,0366,0201];
-commandArray2 = [0210,0211,0212,0224,0214,0215,0216,0217,0220,0221,0222,0223];
-commandArray3 = [020,021,022,023,010,024,025];
-
-appendDrawPanel(commandArray1);
-appendDrawPanel(commandArray2);
-
-currentNode = rootPanel;
-appendDrawPanel(commandArray3);
-
-
-currentAddress = 0210;
-currentGlyph = currentTable[currentAddress];
-currentGlyphArray = currentGlyph.split(",");
-cursorPosition = currentGlyphArray.length;
-
-
 redraw();
-
 
 function redraw(){
 

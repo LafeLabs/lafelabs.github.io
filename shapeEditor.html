@@ -41,13 +41,21 @@ ctx.fillStyle="black";
 mainImage = document.createElement("img");
 mainImage.id = "mainImage";
 
+mainHTML = document.createElement("center");
+mainHTML.id = "mainHTML";
+
 
 mainDisplay = document.createElement("center");
 mainDisplay.appendChild(drawCanvas);
 mainDisplay.appendChild(mainImage);
+mainDisplay.appendChild(mainHTML);
+
 
 mainImage.style.display = "none";
+mainHTML.style.display = "none";
 drawCanvas.style.display = "block";
+//drawCanvas.style.display = "none";
+
 
 mainDisplay.id = "mainDisplay";
 
@@ -130,10 +138,18 @@ cursorPosition = currentGlyphArray.length;
 
 addressInput.value = "0" + currentAddress.toString(8);
 addressInput.onchange = function(){
+	if(currentAddress >= 0300 && currentAddress <= 0400){
+		currentTable[currentAddress] = string2byteCode(mainTextArea.value);
+	}
+
 	currentAddress = parseInt(addressInput.value,8);
 	currentGlyph = currentTable[currentAddress];
 	currentGlyphArray = currentGlyph.split(",");
 	cursorPosition = currentGlyphArray.length;
+	
+	mainHTML.innerHTML = "$$ E = mc^2$$";
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+
 	redraw();
 }
 
@@ -153,9 +169,15 @@ function redraw(){
 	if(currentAddress < 0500 ){
 		mainImage.style.display = "none";
 		drawCanvas.style.display = "block";
+		mainHTML.style.display = "none";
+	}
+	if(currentAddress < 01000 && currentAddress >= 0700){
+		mainImage.style.display = "none";
+		drawCanvas.style.display = "none";
+		mainHTML.style.display = "block";
+		
 	}
 	
-
 	currentGlyphArray = currentGlyph.split(",");
 	firstHalf = "";
 	secondHalf = "";	
@@ -490,6 +512,15 @@ html {
 	background: white;
     border-radius: 5px;
     margin: 5px 5px 5px 5px;
+}
+
+#mainHTML{
+	background:white;
+	width: auto;
+	height: 350px;
+	margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+
 }
 
 #mainImage{
