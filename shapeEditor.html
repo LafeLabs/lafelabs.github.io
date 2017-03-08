@@ -38,18 +38,27 @@ ctx.fillStyle="white";
 ctx.fillRect(0, 0, 600,400);
 ctx.fillStyle="black";
 
+mainImage = document.createElement("img");
+mainImage.id = "mainImage";
+
+
 mainDisplay = document.createElement("center");
 mainDisplay.appendChild(drawCanvas);
+mainDisplay.appendChild(mainImage);
+
+mainImage.style.display = "none";
+drawCanvas.style.display = "block";
+
 mainDisplay.id = "mainDisplay";
 
 spellCanvas = document.createElement("canvas");
 spellCanvas.width = 300;
-spellCanvas.height = 260;
+spellCanvas.height = 230;
 spellCanvas.id = "spellCanvas";
 
 ctx = spellCanvas.getContext("2d");
 ctx.fillStyle="white";
-ctx.fillRect(0, 0, 300,400);
+ctx.fillRect(0, 0, 300,300);
 ctx.fillStyle="black";
 
 mainTextArea = document.createElement("textarea");
@@ -64,6 +73,9 @@ addressInput = document.createElement("input");
 addressInput.id = "addressInput";
 nameInput = document.createElement("input");
 nameInput.id = "nameInput";
+nameInput.onchange = function(){
+	currentTable[currentAddress + 01000] = string2byteCode(nameInput.value);
+}
 
 bytecode = document.createElement("input");
 bytecode.id = "bytecode";
@@ -73,11 +85,24 @@ bytecode.size = 42;
 IOpanel = document.createElement("center");
 IOpanel.id = "IOpanel";
 
+wordInput = document.createElement("input");
+wordInput.size = 40;
+
+wordInput.onchange = function(){
+	 currentAddress = parseInt(addressInput.value,8);
+	
+	// console.log(currentAddress.toString(8));
+	 currentGlyph = string2byteCode(wordInput.value);
+	 currentTable[currentAddress] = currentGlyph;
+	 mainImage.src = byteCode2string(currentTable[currentAddress]);
+
+}
 
 IOpanel.appendChild(mainTextArea);
 IOpanel.appendChild(spellCanvas);
 IOpanel.appendChild(addressInput);
 IOpanel.appendChild(nameInput);
+IOpanel.appendChild(wordInput);
 IOpanel.appendChild(bytecode);
 
 currentNode.appendChild(IOpanel);
@@ -104,13 +129,32 @@ currentGlyphArray = currentGlyph.split(",");
 cursorPosition = currentGlyphArray.length;
 
 addressInput.value = "0" + currentAddress.toString(8);
+addressInput.onchange = function(){
+	currentAddress = parseInt(addressInput.value,8);
+	currentGlyph = currentTable[currentAddress];
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
+	redraw();
+}
 
 bytecode.value = currentGlyph;
+bytecode.onchange = function(){
+	currentGlyph = bytecode.value;
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
+	redraw();
+}
 
 redraw();
 
 
 function redraw(){
+
+	if(currentAddress < 0500 ){
+		mainImage.style.display = "none";
+		drawCanvas.style.display = "block";
+	}
+	
 
 	currentGlyphArray = currentGlyph.split(",");
 	firstHalf = "";
@@ -168,12 +212,22 @@ drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0340,0335
 	addressInput.value = "0" + currentAddress.toString(8);
 	bytecode.value = currentGlyph;
 
+	if(currentAddress >= 0500 && currentAddress <0600){
+		mainImage.style.display = "block";
+		drawCanvas.style.display = "none";
+		mainImage.src = byteCode2string(currentTable[currentAddress]);
+		wordInput.value = byteCode2string(currentTable[currentAddress]);
+		
+		nameInput.value = byteCode2string(currentTable[currentAddress + 01000])
+	}
+
+	mainTextArea.value = byteCode2string(currentTable[currentAddress]);
+
 }
 
 
 function glyphButtonAction(localCommand){
 		
-	console.log(localCommand);
 
 	if(localCommand < 040){
 		localRoot(localCommand);
@@ -272,7 +326,6 @@ function appendGlyphButton(localCommand){
 
 
 function localRoot(localCommand){
-	console.log( parseInt(localCommand,8).toString(8) );
 	localCommand = parseInt(localCommand,8);
 	if(localCommand == 010){
 		console.log("foo");
@@ -343,6 +396,31 @@ function localRoot(localCommand){
 		redraw();
 	}
 	
+	if(localCommand == 0026){//import full geometron hypercube
+		var localString = document.getElementById("mainTextArea").value;
+		var inputStack = localString.split("\n");
+		for(var index = 0;index < inputStack.length;index++){
+			var stackLine = inputStack[index].split(":");
+			var localAddress = parseInt(stackLine[0],8);
+			var localGlyph = stackLine[1];
+			currentTable[localAddress] = localGlyph;
+		}
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
+	}
+	if(localCommand == 0027){//export full geometron hypercube
+		var localString = "";
+		for(var index = 0;index < currentTable.length;index++){
+			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+		}
+		document.getElementById("mainTextArea").value = localString;
+	}
+
+	
+	
 	if(localCommand == 0030){//switch to text
 		currentNode = document.getElementById("main");
   	    currentNode.replaceChild(mainTextArea,drawCanvas);// 	
@@ -412,6 +490,14 @@ html {
 	background: white;
     border-radius: 5px;
     margin: 5px 5px 5px 5px;
+}
+
+#mainImage{
+	background:white;
+	width: auto;
+	height: 350px;
+	margin: 10px 10px 10px 10px;
+    border-radius: 10px;
 }
 
 #IOpanel{
