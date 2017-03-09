@@ -141,6 +141,10 @@ addressInput.onchange = function(){
 	if(currentAddress >= 0300 && currentAddress <= 0400){
 		currentTable[currentAddress] = string2byteCode(mainTextArea.value);
 	}
+	if(currentAddress <= 0037){
+		currentTable[currentAddress] = string2byteCode(mainTextArea.value);
+	}
+
 
 	currentAddress = parseInt(addressInput.value,8);
 	currentGlyph = currentTable[currentAddress];
@@ -347,24 +351,21 @@ function appendGlyphButton(localCommand){
 }
 
 
-function localRoot(localCommand){
+function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
 	localCommand = parseInt(localCommand,8);
 	if(localCommand == 010){
-		console.log("foo");
-			currentGlyphArray = currentGlyph.split(",");
-			firstHalf = "";
-			secondHalf = "";	
-			for(var index = 0;index < cursorPosition - 1;index++){
-				firstHalf += currentGlyphArray[index] + ",";
-			}
-			for(var index = cursorPosition;index < currentGlyphArray.length+1;index++){
-				secondHalf += currentGlyphArray[index] + ",";
-			}		
-			
-			currentGlyph = firstHalf + secondHalf;
+		currentGlyphArray = currentGlyph.split(",");
+		firstHalf = "";
+		secondHalf = "";	
+		for(var index = 0;index < cursorPosition - 1;index++){
+			firstHalf += currentGlyphArray[index] + ",";
+		}
+		for(var index = cursorPosition;index < currentGlyphArray.length+1;index++){
+			secondHalf += currentGlyphArray[index] + ",";
+		}				
+		currentGlyph = firstHalf + secondHalf;
 		cursorPosition--;
 		redraw();
-		console.log(cursorPosition);
 	}
 	
 

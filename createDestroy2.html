@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geometron Document Generator</title>
+<script src="libraries/geometronLibrary3.js">
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+initGeometron();
+loadTable();
+currentAddress = 0210;
+</script>
+</head>
+<body>
+
+<div id = "main">
+	
+		<div id = "htmlFeed">
+	
+	
+		</div>
+
+	<div id = "controlPanel">
+		<center>
+			<textarea id = "htmlInput">
+			</textarea>
+			<p>
+			<button onclick = "createButton()">CREATE</button>
+			<button onclick = "destroyButton()">DESTROY</button>
+			<p>
+			<button onclick = "exportButton()">EXPORT</button>
+			<p>
+			<textarea id = "htmlOutput">
+			</textarea>
+		<center>
+	</div>
+</div>
+
+<script id = "mainScript">
+
+divNumber = 0;
+
+function exportButton(){
+	document.getElementById("htmlOutput").value = document.getElementById("htmlFeed").innerHTML;
+}
+
+function createButton(){
+	divNumber++;
+	newDiv = document.createElement("div");
+	newDiv.id = "div" + divNumber.toString();
+	newDiv.innerHTML = 	document.getElementById("htmlInput").value;
+	newDiv.className = "htmlElement";
+	document.getElementById("htmlFeed").appendChild(newDiv);	
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+	
+}
+function destroyButton(){
+	var zeep = "div" + divNumber.toString();
+	var foo = document.getElementById(zeep);
+	document.getElementById("htmlFeed").removeChild(foo);
+    divNumber--;
+}
+
+</script>
+
+<style>
+
+html{
+	
+	background: black;
+	
+}
+
+#main{
+	width: 1000px;
+	height: 600px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: white;
+    border-radius: 20px;
+    margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	background: black;	
+}
+
+#htmlFeed{
+	width: 560px;
+	height: 560px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: green;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	background: black;	
+	float:left;
+}
+
+.htmlElement{
+	width: 500px;
+	height: auto;
+    border-style: none;
+    border-width: 0px;
+    border-color: black;
+    border-radius: 5px;
+    margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	background: white;	
+
+}
+
+#htmlInput{
+	width: 300px;
+	height: 200px;
+    border-style: none;
+    border-width: 0px;
+    border-color: black;
+    border-radius: 5px;
+    margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	background: white;	
+	
+}
+#htmlOutput{
+	width: 300px;
+	height: 200px;
+    border-style: none;
+    border-width: 0px;
+    border-color: black;
+    border-radius: 5px;
+    margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	background: white;	
+	
+}
+
+#controlPanel{
+	width: 380px;
+	height: 560px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: red;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+	background: black;	
+	float:left;
+
+}
+
+
+
+</style>
+</body>
+</html>
+
