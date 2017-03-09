@@ -8,7 +8,7 @@
 <script>
 initGeometron();
 loadTable();
-currentAddress = 0210;
+currentAddress = 0205;
 </script>
 </head>
 <body>
@@ -97,9 +97,7 @@ wordInput = document.createElement("input");
 wordInput.size = 40;
 
 wordInput.onchange = function(){
-	 currentAddress = parseInt(addressInput.value,8);
-	
-	// console.log(currentAddress.toString(8));
+	 currentAddress = parseInt(addressInput.value,8);	 	 
 	 currentGlyph = string2byteCode(wordInput.value);
 	 currentTable[currentAddress] = currentGlyph;
 	 mainImage.src = byteCode2string(currentTable[currentAddress]);
@@ -123,7 +121,7 @@ appendScalePanel();
 appendMovementPanel();
 commandArray1 = [0340,0341,0342,0343,0344,0345,0346,0347,0200,0365,0366,0201];
 commandArray2 = [0210,0211,0212,0224,0214,0215,0216,0217,0220,0221,0222,0223];
-commandArray3 = [020,021,022,023,010,024,025,026,027];
+commandArray3 = [020,021,022,023,010,024,025,026,027,016];
 
 appendDrawPanel(commandArray1);
 appendDrawPanel(commandArray2);
@@ -131,7 +129,7 @@ appendDrawPanel(commandArray2);
 currentNode = rootPanel;
 appendRootPanel(commandArray3);
 
-currentAddress = 0210;
+currentAddress = 0202;
 currentGlyph = currentTable[currentAddress];
 currentGlyphArray = currentGlyph.split(",");
 cursorPosition = currentGlyphArray.length;
@@ -179,8 +177,18 @@ function redraw(){
 		mainImage.style.display = "none";
 		drawCanvas.style.display = "none";
 		mainHTML.style.display = "block";
+		mainHTML.innerHTML = "<pre><code>" + byteCode2string(currentTable[currentAddress]) + "</pre></code>";
 		
+	
 	}
+	if(currentAddress < 02000 && currentAddress >= 01700){
+		mainImage.style.display = "none";
+		drawCanvas.style.display = "none";
+		mainHTML.style.display = "block";
+		mainHTML.innerHTML = byteCode2string(currentTable[currentAddress])
+		MathJax.Hub.Typeset();//tell Mathjax to update the math		
+	}
+
 	
 	currentGlyphArray = currentGlyph.split(",");
 	firstHalf = "";
@@ -367,7 +375,12 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		cursorPosition--;
 		redraw();
 	}
+	if(localCommand == 0016){
+		currentGlyph = string2byteCode(mainTextArea.value);
+		currentTable[currentAddress] = currentGlyph;
+		redraw();
 	
+	}	
 
 	if(localCommand == 0020){
 		cursorPosition--;
@@ -520,8 +533,9 @@ html {
 	width: auto;
 	height: 350px;
 	margin: 10px 10px 10px 10px;
+	padding: 5px 5px 5px 5px;
     border-radius: 10px;
-
+	text-align:left;
 }
 
 #mainImage{

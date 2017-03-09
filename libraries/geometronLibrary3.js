@@ -135,7 +135,7 @@ function byteCode2string(localByteCode){
 	var stringArray = localByteCode.split(",");
 	for(var index = 0;index < stringArray.length;index++){
 		var myCharCode = String.fromCharCode(parseInt(stringArray[index],8));
-		if(parseInt(stringArray[index],8) > 040 && parseInt(stringArray[index],8) < 0177 ){
+		if(parseInt(stringArray[index],8) >= 040 && parseInt(stringArray[index],8) < 0177 ){
 			localString += myCharCode;
 		}
 		if(parseInt(stringArray[index],8) == 012){
