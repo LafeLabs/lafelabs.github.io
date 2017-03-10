@@ -142,7 +142,9 @@ addressInput.onchange = function(){
 	if(currentAddress <= 0037){
 		currentTable[currentAddress] = string2byteCode(mainTextArea.value);
 	}
-
+	if(currentAddress >= 0600 && currentAddress < 0700){
+		currentTable[currentAddress] = string2byteCode(mainTextArea.value);
+	}
 
 	currentAddress = parseInt(addressInput.value,8);
 	currentGlyph = currentTable[currentAddress];
@@ -179,6 +181,13 @@ function redraw(){
 		mainHTML.style.display = "block";
 		mainHTML.innerHTML = "<pre><code>" + byteCode2string(currentTable[currentAddress]) + "</pre></code>";			
 	}
+	if(currentAddress >= 0600 && currentAddress < 0700){
+		mainImage.style.display = "none";
+		drawCanvas.style.display = "none";
+		mainHTML.style.display = "block";
+		mainHTML.innerHTML = byteCode2string(currentTable[currentAddress]);			
+	}
+
 	if(currentAddress < 040 && currentAddress >= 000){
 		mainImage.style.display = "none";
 		drawCanvas.style.display = "none";
@@ -536,11 +545,12 @@ html {
 #mainHTML{
 	background:white;
 	width: auto;
-	height: 350px;
+	height: 375px;
 	margin: 10px 10px 10px 10px;
 	padding: 5px 5px 5px 5px;
     border-radius: 10px;
 	text-align:left;
+	overflow:scroll;
 }
 
 #mainImage{
