@@ -365,6 +365,10 @@ function doTheThing(localCommand){
     	
     }
     
+    if(localCommand < 010){
+    	localRoot(localCommand);
+    }
+    
     if(localCommand == 0012){
 		//reserve this for "\n" newline
 		drawGlyph("0331,0331,0332,0332,0332,0332,0332,0332,0332,0332,");
