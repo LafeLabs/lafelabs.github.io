@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Geometron Document Generator</title>
-<script src="libraries/geometronLibrary3.js">
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-initGeometron();
-loadTable();
-currentAddress = 0210;
-</script>
+<title>Nothing</title>
+
 </head>
 <body>
 
-
-
 <script>
 
+var x = document.getElementsByTagName("BODY")[0];
+var newScript = document.createElement("SCRIPT");
+x.appendChild(newScript);
 
+newScript.text = "function printFoo(){console.log(\"foo bar\");}"
+
+printFoo();
 
 </script>
 

@@ -177,10 +177,15 @@ function redraw(){
 		mainImage.style.display = "none";
 		drawCanvas.style.display = "none";
 		mainHTML.style.display = "block";
-		mainHTML.innerHTML = "<pre><code>" + byteCode2string(currentTable[currentAddress]) + "</pre></code>";
-		
-	
+		mainHTML.innerHTML = "<pre><code>" + byteCode2string(currentTable[currentAddress]) + "</pre></code>";			
 	}
+	if(currentAddress < 040 && currentAddress >= 000){
+		mainImage.style.display = "none";
+		drawCanvas.style.display = "none";
+		mainHTML.style.display = "block";
+		mainHTML.innerHTML = "<pre><code>" + byteCode2string(currentTable[currentAddress]) + "</pre></code>";			
+	}
+
 	if(currentAddress < 02000 && currentAddress >= 01700){
 		mainImage.style.display = "none";
 		drawCanvas.style.display = "none";
