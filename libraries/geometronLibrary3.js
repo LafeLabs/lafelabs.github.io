@@ -19,6 +19,7 @@ function initGeometron(){
 	myFont = "Futura";
 
 	currentWord = "Word";
+	currentText = "text";
 	currentImageURL = "https://upload.wikimedia.org/wikipedia/commons/7/7b/OlympicMarmot1_%28mirrored%29.jpg";
   
   /*
@@ -357,12 +358,17 @@ function doTheThing(localCommand){
     }
     
     
-    if(localCommand >= 0600 && localCommand <= 0700){
+    if(localCommand >= 0600 && localCommand < 0700){
     	//get the glyph, turn it into ascii, make it the Word:
     	if(currentTable[localCommand] != undefined){
     	 	currentWord = byteCode2string(currentTable[localCommand]);
-    	}
-    	
+    	}	
+    }
+    if(localCommand >= 01600 && localCommand < 01700){
+    	//get the glyph, turn it into ascii, make it the Word:
+    	if(currentTable[localCommand] != undefined){
+    	 	currentWord = byteCode2string(currentTable[localCommand]);
+    	}	
     }
     
     if(localCommand < 010){

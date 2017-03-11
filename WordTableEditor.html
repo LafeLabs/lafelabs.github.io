@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>01600s Table</title>
+<title>Word Table Editor</title>
 <script src="libraries/geometronLibrary3.js">
 </script>
 <script>
@@ -12,25 +12,17 @@
 </head>
 <body>
 <center id = "main">
-
-<h3>Word HTML</h3>
-<b>HTML Word:</b><input id = "htmlInput" onchange = "htmlUpdate()"></input>
-<p><b>Element:</b><input id = "htmlInput" onchange = "htmlUpdate()" value = "div"></input>
-
+<h2>Word Table Editor</h2>
+<b>0600-0677, 01600-01677</b><p>
+<b><span id = "addressSpan">Address: </span></b>
 <p>
-<div id = "htmlPanel">
+<b><span>Word:<input id = "wordInput"></input></span></b>
 
-</div>
-<h4>Style:</h4>
-<textarea id = "styleInput">
-	width: 60px;
-	height: 60px;
-	border-style:solid;
-	background: white;
-	border-width: 5px;
-    border-color: red;
-    border-radius: 20px;
-	margin: 10px 10px 10px 10px;</textarea>
+<h3>Word Bytecode Table:</h3>
+<textarea id = "textIO"></textarea>
+<p>
+<button onclick = "importTableByteCode()">IMPORT BYTECODE</button>
+<button onclick = "importTableText()">IMPORT TEXT</button>
 </center>
 <script>
 
@@ -64,6 +56,12 @@ newSelect.onchange = function(){
 		textOutput += currentTable[index];
 		textOutput += "\n";
 	}
+	for(var index = 01600;index < 01700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
 	document.getElementById("textIO").value = textOutput;
 
 }
@@ -78,6 +76,12 @@ document.getElementById("wordInput").onchange = function(){
 		textOutput += currentTable[index];
 		textOutput += "\n";
 	}
+	for(var index = 01600;index < 01700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
 	document.getElementById("textIO").value = textOutput;
 }
 
@@ -85,6 +89,12 @@ mainCenter.appendChild(newSelect);
 
 	var textOutput = "";
 	for(var index = 0600;index < 0700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	for(var index = 01600;index < 01700;index++){
 		textOutput += "0" + index.toString(8);
 		textOutput += ":";
 		textOutput += currentTable[index];
@@ -115,50 +125,23 @@ function importTableText(){
 	currentAddress = 0600;
 	currentWord = byteCode2string(currentTable[currentAddress]);
 	document.getElementById("wordInput").value = currentWord;
-}
 
-function htmlUpdate(){
-	var inputText = document.getElementById("htmlInput").value;
-	
-	document.getElementById("htmlPanel").innerHTML = inputText;
-
-	
-	
 }
 
 </script>
 <style>
 
+
 #main{
-	width: 450px;
-	height:580px;
+	width: 220px;
+	height:340px;
 	border-style:solid;
 	background: white;
 	border-width: 5px;
     border-color: blue;
     border-radius: 20px;
+	margin: 50px 50px 50px 50px;	
 }
-
-#htmlPanel{
-	width: 360px;
-	height:180px;
-	border-style:solid;
-	background: white;
-	border-width: 5px;
-    border-color: blue;
-    border-radius: 20px;
-}
-#styleInput{
-	width: 260px;
-	height:140px;
-	border-style:solid;
-	background: white;
-	border-width: 3px;
-    border-color: purple;
-    border-radius: 10px;
-	margin: 10px 10px 10px 10px;
-}
-
 </style>
 </body>
 </html>

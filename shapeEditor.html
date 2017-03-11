@@ -187,6 +187,14 @@ function redraw(){
 		mainHTML.style.display = "block";
 		mainHTML.innerHTML = byteCode2string(currentTable[currentAddress]);			
 	}
+	if(currentAddress >= 01400 && currentAddress < 01500){
+		mainImage.style.display = "none";
+		drawCanvas.style.display = "none";
+		spellCanvas.style.display = "none";
+		mainHTML.style.display = "block";
+		mainHTML.innerHTML = byteCode2string(currentTable[currentAddress]);			
+	}
+
 
 	if(currentAddress < 040 && currentAddress >= 000){
 		mainImage.style.display = "none";
@@ -375,6 +383,7 @@ function appendGlyphButton(localCommand){
 
 function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
 	localCommand = parseInt(localCommand,8);
+
 	if(localCommand == 010){
 		currentGlyphArray = currentGlyph.split(",");
 		firstHalf = "";
