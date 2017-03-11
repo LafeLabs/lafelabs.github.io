@@ -8,7 +8,7 @@
 <script>
 initGeometron();
 loadTable();
-currentAddress = 0205;
+currentAddress = 0400;
 </script>
 </head>
 <body>
@@ -121,15 +121,18 @@ appendScalePanel();
 appendMovementPanel();
 commandArray1 = [0340,0341,0342,0343,0344,0345,0346,0347,0200,0365,0366,0201];
 commandArray2 = [0210,0211,0212,0224,0214,0215,0216,0217,0220,0221,0222,0223];
-commandArray3 = [020,021,022,023,010,024,025,026,027,016];
+commandArray3 = [020,021,022,023,010,024,025,026,027,016,032,033];
 
-appendDrawPanel(commandArray1);
-appendDrawPanel(commandArray2);
+commandArray4 = [0340,0341,0342,0343,0344,0345,0346,0347,0200,0365,0366,0201,0210,0211,0212,0224,0214,0215,0216,0217,0220,0221,0222,0223];
+
+appendDrawPanel(commandArray4);
+
+//appendDrawPanel(commandArray2);
 
 currentNode = rootPanel;
 appendRootPanel(commandArray3);
 
-currentAddress = 0202;
+currentAddress = 0400;
 currentGlyph = currentTable[currentAddress];
 currentGlyphArray = currentGlyph.split(",");
 cursorPosition = currentGlyphArray.length;
@@ -283,8 +286,7 @@ drawGlyph("0333,0336,0330,0332,0336,0336,0341,0337,0342,0335,0335,0342,0340,0335
 
 
 function glyphButtonAction(localCommand){
-		
-
+	localCommand = parseInt(localCommand,8);
 	if(localCommand < 040){
 		localRoot(localCommand);
 	}
@@ -301,6 +303,7 @@ function appendDrawPanel(commandArray){
 	
 	var newDiv = document.createElement("DIV");	
 	newDiv.className = "drawPad";
+	newDiv.id = "drawPad1";
 //	var commandArray = [0340,0341,0342,0343,0344,0345,0346,0347,0200,0365,0366,0201];
 	var tempNode = currentNode;
 	currentNode = newDiv;
@@ -373,7 +376,7 @@ function appendGlyphButton(localCommand){
 	side = glyphButtonSize-10;
 	doTheThing(localCommand + 01000);
 	newCanvas.onclick = function(){
-		glyphButtonAction("0" + localCommand.toString(8));							
+		glyphButtonAction("0" + localCommand.toString(8));		
 	}
 	
 	currentNode.appendChild(newCanvas);
@@ -382,7 +385,7 @@ function appendGlyphButton(localCommand){
 
 
 function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
-	localCommand = parseInt(localCommand,8);
+//	localCommand = parseInt(localCommand,8);
 
 	if(localCommand == 010){
 		currentGlyphArray = currentGlyph.split(",");
@@ -476,10 +479,8 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
 		}
 		document.getElementById("mainTextArea").value = localString;
-	}
 
-	
-	
+	}
 	if(localCommand == 0030){//switch to text
 		currentNode = document.getElementById("main");
   	    currentNode.replaceChild(mainTextArea,drawCanvas);// 	
@@ -488,7 +489,26 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		currentNode = document.getElementById("main"); 	    
   	    currentNode.replaceChild(drawCanvas,mainTextArea);
 	}
-
+	if(localCommand == 0032){//import command table
+		tempByte = bytecode.value;
+		var byteArray = tempByte.split(",");
+		commandArray4 = [];
+		for(var index = 0;index < byteArray.length;index++){
+			commandArray4.push(parseInt(byteArray[index],8));
+		}
+		currentNode = controlPanel;
+		currentNode.removeChild(document.getElementById("drawPad1"));
+		appendDrawPanel(commandArray4);
+		
+	}	
+	if(localCommand == 0033){//export command table
+		var tempString = "";
+		for(var index = 0;index < commandArray4.length;index++){		
+			tempString += "0" + commandArray4[index].toString(8) + ",";
+		}
+		bytecode.value = tempString;
+		
+	}	
 
 }
 
@@ -593,7 +613,7 @@ html {
 }
 
 .controlPanel{
-	width: 670px;
+	width: 650px;
 	height: 140px;
 	background: black;
 	border-color: green;
@@ -637,7 +657,7 @@ html {
 
 .drawPad{
     border-style: solid;
-	width: 160px;
+	width: 320px;
 	height: 120px;
 	background: white;	
 	margin: 5px 5px 5px 5px;
