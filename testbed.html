@@ -1,179 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>1400s feed</title>
+<title>Root Magic</title>
 <script src="libraries/geometronLibrary3.js">
 </script>
 <script>
 	initGeometron();
-	
 </script>
 </head>
 <body>
-<center id = "main">
-	<h3>Raw Text Input:</h3>
-	<button onclick = "prev()">PREV</button>
-	<b>Address:</b><input id = "addressInput" size  = "6" onchange = "jumpAddress()"></input>
-	<button onclick = "next()">NEXT</button>
-	<p>
-	<textarea id = "textInput"></textarea>
-	<h3>Scroll (01400-01477):</h3>
-	<button onclick = "inputHTML()">INPUT</button>
-	<div id = "myFeed"></div>
-	<h3>Bytecode IO:</h3>	
-	<button onclick = "exportBytecode()">EXPORT</button>
-	<button onclick = "importBytecode()">IMPORT</button>
-	<textarea id = "byteCodeIO"></textarea>
+
+<center id = "directionPad">
+
+
 </center>
+
+
 <script>
-	currentAddress = 01400;
-	currentText = currentTable[currentAddress];
-	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
-	currentNode = document.getElementById("myFeed");
 
-	for(var index = 01400;index < 01500;index++){
-		var newDiv = document.createElement("div");
-		newDiv.className = "htmlAtom";
-		newDiv.id = "div0" + index.toString(8);
-		newDiv.innerHTML = "<center><b>0" + index.toString(8)+ ":</b></center>"
-		newDiv.innerHTML += currentTable[index];
-		currentNode.appendChild(newDiv);		
-	}
-	
-function importBytecode(){
-	var localString = document.getElementById("byteCodeIO").value;
-	var inputStack = localString.split("\n");
-	for(var index = 0;index < inputStack.length;index++){
-		var stackLine = inputStack[index].split(":");
-		var localAddress = parseInt(stackLine[0],8);
-		var localGlyph = stackLine[1];
-		currentTable[localAddress] = localGlyph;
-	}
-	currentGlyph = currentTable[currentAddress];
-	document.getElementById("textInput").value = byteCode2string(currentGlyph);
-	var tempText = "";		
-	tempText = "<center><b>0" +currentAddress.toString(8)+ "</b></center>"
-	tempText += byteCode2string(currentTable[currentAddress]);
-	var localID = "div0" + currentAddress.toString(8);
-	document.getElementById(localID).innerHTML = tempText;
-	
-}
-function exportBytecode(){
+currentNode = document.getElementById("directionPad");
+unit = 40;
+side = unit;
+currentSymbolAddress = 0340;
+glyphCanvasSequence = "0334,0330,0335,0332,0300,0333,0336,0331,0337";
 
-		var localString = "";
-		for(var index = 01400;index < 01500;index++){
-			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
-		}
-		document.getElementById("byteCodeIO").value = localString;
-}
+glyphCanvasSequenceArray = glyphCanvasSequence.split(",");
+for(var index = 0;index < glyphCanvasSequenceArray.length;index++){
+	currentSymbolAddress = parseInt(glyphCanvasSequenceArray[index],8);
+	var newCanvas = document.createElement("CANVAS");		
+	newCanvas.width = side + 1;
+	newCanvas.height = side + 1;
+	newCanvas.className = "glyphButtons";
+	newCanvas.id = glyphCanvasSequenceArray[index];
+	ctx = newCanvas.getContext("2d");
+	ctx.fillStyle="white";
+	x0 = 1;
+	y0 = side+1;
+	doTheThing(0300);			
+	doTheThing(01000 + currentSymbolAddress);
+	currentNode.appendChild(newCanvas);	
+} 
 
-function jumpAddress(){
-    inputHTML();
-
-	currentTable[currentAddress] = string2byteCode(document.getElementById("textInput").value);
-
-	currentAddress = parseInt(document.getElementById("addressInput").value,8);
-	currentText = currentTable[currentAddress];
-	document.getElementById("textInput").value = byteCode2string(currentText); 
-	
-
-}
-function prev(){
-    inputHTML();
-	currentTable[currentAddress] = string2byteCode(document.getElementById("textInput").value);
-	currentAddress--;
-	if(currentAddress < 01400){
-		currentAddress = 01477;
-	}
-	currentText = currentTable[currentAddress];
-	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
-	document.getElementById("textInput").value = byteCode2string(currentText); 
-}
-function next(){
-    inputHTML();
-
-	currentTable[currentAddress] = string2byteCode(document.getElementById("textInput").value);
-	currentAddress++;
-	if(currentAddress >= 01500){
-		currentAddress = 01400;
-	}
-	currentText = currentTable[currentAddress];
-	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
-	document.getElementById("textInput").value = byteCode2string(currentText); 
-}
-
-
-function inputHTML(){
-	var tempText = "";		
-	tempText = "<center><b>0" +currentAddress.toString(8)+ "</b></center>"
-	tempText += document.getElementById("textInput").value; 
-	var localID = "div0" + currentAddress.toString(8);
-	document.getElementById(localID).innerHTML = tempText;
-    currentTable[currentAddress] = string2byteCode(document.getElementById("textInput").value);
-}
 </script>
 <style>
 
-#main{
-	width: 800px;
-	height:auto;
+#directionPad{
+	width: 140px;
+	height:140px;
 	border-style:solid;
 	background: white;
 	border-width: 5px;
-    border-color: blue;
-    border-radius: 20px;
-}
-
-textarea{
-	width: 640px;
-	height:100px;
-	border-style:solid;
-	background: white;
-	border-width: 3px;
-    border-color: purple;
+    border-color: red;
     border-radius: 10px;
-    margin: 10px 10px 10px 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    float:left;
 }
-
-#myFeed{
-	width: 640px;
-	height:300px;
+#scalePad{
+	width: 140px;
+	height:140px;
 	border-style:solid;
 	background: white;
-	border-width: 3px;
-    border-color: blue;
+	border-width: 5px;
+    border-color: red;
     border-radius: 10px;
-    text-align:left;
-	overflow:scroll;
-    margin: 10px 10px 10px 10px;
-
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    float:left;
 }
 
-.htmlAtom{
-	width: 600px;
-	height:auto;
-	border-style:solid;
-	background: white;
-	border-width: 3px;
-    border-color: green;
-    border-radius: 5px;
-    text-align:left;
-    margin: 10px 10px 10px 10px;
-}
 
-#byteCodeIO{
-	width: 640px;
-	height:100px;
-	border-style:solid;
-	background: white;
-	border-width: 3px;
-    border-color: yellow;
-    border-radius: 10px;
-    text-align:left;
-	overflow:scroll;
-    margin: 10px 10px 10px 10px;
+.glyphButtons{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    background: white;	
+}
+.glyphButtons:hover{
+    background: gray;	
 
 }
+.glyphButtons:active{
+    background: yellow;	
+}
+
 
 </style>
 </body>
