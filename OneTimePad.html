@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OTP</title>
+<script src="libraries/geometronLibrary3.js">
+</script>
+<script>
+	//initGeometron();
+</script>
+</head>
+<body>
+<center id = "main">
+
+<center class = "panel">
+	<h4>Plaintext Bytecode:</h4>
+	<textarea id = "plaintext"></textarea>
+</center>
+<button onclick = "encrypt()">ENCRYPT</button><button onclick = "decrypt()">DECRYPT</button>
+<center class = "panel">
+	<h4>Pad Bytecode:</h4>
+	<textarea id = "pad"></textarea>
+</center>
+<center class = "panel">
+	<h4>Ciphertext Bytecode:</h4>
+	<textarea id = "ciphertext"></textarea>
+</center>
+
+</center>
+<script>
+
+function encrypt(){
+	var plaintext = document.getElementById("plaintext").value;
+	var plaintextArray = plaintext.split(",");
+	var pad = document.getElementById("pad").value;
+	var padArray = pad.split(",");
+	var ciphertext = "";
+	for(var index = 0;index < padArray.length;index++){
+		var plainByte = parseInt(plaintextArray[index],8);
+		var padByte = parseInt(padArray[index],8);
+		var cipherByte = padByte ^ plainByte;
+		ciphertext += "0" + cipherByte.toString(8) + ",";
+	}
+	document.getElementById("ciphertext").value = ciphertext;	
+}
+
+function decrypt(){
+	var ciphertext = document.getElementById("ciphertext").value;
+	var ciphertextArray = ciphertext.split(",");
+	var pad = document.getElementById("pad").value;
+	var padArray = pad.split(",");
+	var plaintext = "";
+	
+	for(var index = 0;index < padArray.length;index++){
+		var cipherByte = parseInt(ciphertextArray[index],8);
+		var padByte = parseInt(padArray[index],8);
+		var plainByte = padByte ^ cipherByte;
+		plaintext += "0" + plainByte.toString(8) + ",";
+	}
+	document.getElementById("plaintext").value = plaintext;	
+}
+
+
+
+</script>
+<style>
+
+#main{
+	width: 450px;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: blue;
+    border-radius: 20px;
+}
+
+.panel{
+	width: 360px;
+	height:180px;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: blue;
+    border-radius: 20px;
+	margin: 10px 10px 10px 10px;
+}
+
+textarea{
+	width: 300px;
+	height:100px;
+	border-style:solid;
+	background: white;
+	border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+
+
+}
+</style>
+</body>
+</html>
+

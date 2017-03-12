@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>1400s feed</title>
+<title>1400s Editor</title>
 <script src="libraries/geometronLibrary3.js">
 </script>
 <script>
 	initGeometron();
-	
 </script>
 </head>
 <body>
 <center id = "main">
+<u>	<h1 style = "font-family: Century Gothic;">1400's Scroll Tablet Editor</h1></u>
 	<h3>Raw Text Input:</h3>
 	<button onclick = "prev()">PREV</button>
 	<b>Address:</b><input id = "addressInput" size  = "6" onchange = "jumpAddress()"></input>
@@ -122,6 +122,9 @@ function inputHTML(){
 	border-width: 5px;
     border-color: blue;
     border-radius: 20px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";
+
 }
 
 textarea{
@@ -159,6 +162,13 @@ textarea{
     border-radius: 5px;
     text-align:left;
     margin: 10px 10px 10px 10px;
+}
+
+.htmlAtom:hover{
+	background: gray;
+}
+.htmlAtom:active{
+	background: yellow;
 }
 
 #byteCodeIO{
