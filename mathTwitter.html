@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Math Twitter</title>
+<script src="libraries/geometronLibrary3.js">
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+	initGeometron();
+	feedIndex = 0;
+</script>
+</head>
+<body>
+<center id = "equationIO" class = "calculatorPad">
+<button onclick = "pushToFeed()">PUSH TO FEED</button><p>
+</center>
+<p>
+
+<center  id = "mainFeed">
+</center>
+
+<script>
+
+equationIO = document.getElementById("equationIO");
+input1 = document.createElement("INPUT");
+input1.className = "equationInput";
+input1.id = "input1";
+
+input1.onchange = function(){
+	output1.innerHTML = "$$" + input1.value + "$$";
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+}
+
+equationIO.appendChild(input1);
+output1 = document.createElement("CENTER");
+output1.className = "equationOutput";
+output1.id = "output1";
+equationIO.appendChild(output1);
+
+function pushToFeed(){
+	var newCenter = document.createElement("CENTER");
+	newCenter.id = "div" + feedIndex.toString();
+	newCenter.className = "equationOutput";
+	newCenter.innerHTML = output1.innerHTML;
+	document.getElementById("mainFeed").appendChild(newCenter);
+	feedIndex++;
+}
+
+</script>
+
+<style>
+
+#equationIO{
+	width: 400px;
+	height:300px;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: blue;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    float:left;
+}
+#jspanel{
+	width: 400px;
+	height:300px;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: blue;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    float:left;
+}
+
+
+.equationInput{
+	width: 200px;
+	height:40px;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: red;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 1px 1px 1px 1px;
+}
+#Xinput{
+	width: 200px;
+	height:40px;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: green;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 1px 1px 1px 1px;
+}
+#XYequation{
+
+}
+#mainTextArea{
+	
+	width: 300px;
+	height: 80px;
+	border-color: purple;
+    border-width: 3px;
+    border-style: solid;
+	background: white;
+    border-radius: 5px;
+    margin: 4px 4px 4px 4px;
+
+}
+#Youtput{
+	width: 200px;
+	height: 40px;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: #00FF00;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 1px 1px 1px 1px;
+}
+
+.equationOutput{
+	width: auto;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: yellow;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 1px 1px 1px 1px;
+}
+#mainFeed{
+	width: 400px;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: blue;
+    border-radius: 10px;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    float:left;
+}
+
+
+</style>
+</body>
+</html>
+
