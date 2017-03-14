@@ -17,9 +17,9 @@ MathJax.Hub.Config({
 </script>
 </head>
 <body>
+<center id = "main">
 
-
-<h3>SQUID Amp Calculation Document</h3>
+<h3><u>SQUID Amp Calculation Document</u></h3>
 Side of square [&#x3BCm]:<input id = "sideIn" onchange = "compute1()" value = 5 size = "7"></input>
 Diameter of circle [&#x3BCm]:<input id = "diameterIn" onchange = "compute1()" value = 5 size = "7"></input>
 <p>
@@ -218,28 +218,28 @@ ctx = document.getElementById("page2").getContext("2d");
 drawGlyph(currentGlyph);
 
 </script>
-<p>
-start frequency [GHz]:<input id = "f0Input" value = "0.01"></input>
-<p>
-stop frequency [GHz]:<input id = "f1Input" value = "10"></input>
-<p>
-Number of Points:<input id = "nfInput" value = "100"></input>
-<p>
-C_in [pF]:<input id = "CinInput" value = "1"></input>
-<p>
-C_1[pF]:<input id = "C1Input" value = "10"></input>
-<p>
-L_G[pH]:<input id = "LGInput" value = "1000"></input>
-<p>
-L_J total[pH]:<input id = "LJInput" value = "1000"></input>
-<p>
 
+<table>
+<tr>
+	<td>start frequency [GHz]:<input id = "f0Input" value = "0.01" size = "5"></input></td>
+	<td>stop frequency [GHz]:<input id = "f1Input" value = "10" size = "5"></input></td>
+	<td>Number of Points:<input id = "nfInput" value = "100" size = "5"></input></td>
+</tr>
+<tr>
+	<td>C_in [pF]:<input id = "CinInput" value = "1" size = "5"></input></td>
+	<td>C_1[pF]:<input id = "C1Input" value = "10" size = "5"></input></td>
+</tr>
+<tr>
+	<td>L_G[pH]:<input id = "LGInput" value = "1000" size = "5"></input></td>
+	<td>L_J total[pH]:<input id = "LJInput" value = "1000" size = "5"></input></td>
+</tr>
+</table>
 <button onclick = "plotZ1()">PLOT</button>
 <p>
 <canvas id = "page3" width = "500" height = "500" style="border:1px solid;">
 </canvas>
 <script>
-
+plotZ1();
 function plotZ1(){
 	f0 = document.getElementById("f0Input").value;
 	f1 = document.getElementById("f1Input").value;
@@ -295,19 +295,69 @@ function plotZ1(){
 	ctx.lineWidth = 2;
 	ctx.beginPath();
 	ctx.strokeRect(50,50,400,400);
-	ctx.strokeStyle="blue";
-	
+
+    ctx.lineWidth = 1;    	
+	ctx.strokeStyle="black";
+	ctx.moveTo(50, 250 - Math.PI*Ygain);		
+	ctx.lineTo(450, 250 - Math.PI*Ygain);
+	ctx.stroke();
+	ctx.moveTo(50, 250 + Math.PI*Ygain);		
+	ctx.lineTo(450, 250 + Math.PI*Ygain);
+	ctx.stroke();
+	ctx.moveTo(50, 250 + 2*Math.PI*Ygain);		
+	ctx.lineTo(450, 250 + 2*Math.PI*Ygain);
+	ctx.stroke();
+	ctx.moveTo(50, 250 - 2*Math.PI*Ygain);		
+	ctx.lineTo(450, 250 - 2*Math.PI*Ygain);
+	ctx.stroke();
+	ctx.moveTo(50, 250);		
+	ctx.lineTo(450, 250);
+	ctx.stroke();
+
+    ctx.font= "20px " + myFont;
+	ctx.fillText("0",30,255);
+    ctx.font= "20px " + myFont;
+	ctx.fillText("-\u03c0",30,350);
+    ctx.font= "20px " + myFont;
+	ctx.fillText("\u03c0",30,150);
+    ctx.font= "20px " + myFont;
+	ctx.fillText("-2\u03c0",15,445);
+    ctx.font= "20px " + myFont;
+	ctx.fillText("2\u03c0",15,60);
+
+
+
 	for(var index = 0;index < numPoints-1;index++){
+
 		ctx.moveTo(XArray[index], 250 - YArray[index]);		
 		ctx.lineTo(XArray[index + 1], 250 - YArray[index + 1]);
 		ctx.stroke();
 	}	
+
+	
 }
 
 
 </script>
+</center>
 
+<style>
+#main{
+	width:700px;
+	height:600px;
+	margin: 10px 10px 10px 10px;
+	padding: 5px 5px 5px 5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: blue;
+	overflow:scroll;
+  	font-size: 16px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";
 
+}
+</style>
 
 </body>
 </html>
