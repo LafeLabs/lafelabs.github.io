@@ -13,7 +13,7 @@ MathJax.Hub.Config({
   }
 });
 </script>
-<script src="libraries/geometron2library.js">
+<script src="libraries/geometronLibrary3.js">
 </script>
 </head>
 <body>
@@ -333,12 +333,42 @@ function plotZ1(){
 		ctx.lineTo(XArray[index + 1], 250 - YArray[index + 1]);
 		ctx.stroke();
 	}	
-
-	
 }
-
-
 </script>
+<p>
+I now choose to jump to the working amplifier and note that to the extent that I care about the shape of the gain response it can be considered to be a Lorenzian in all cases.  
+While there is more going on, for physics type engineering we want is gain and bandwidth, which can always be reduced to an equivalent RLC circuit.  So I ask is it possible to use equivalent circuits with negative resistors?  I believe this is what was more common in the MASER era of this work, then leading to the negative temperatures used by early LASER workers.  
+<p>
+$$R^{-}  =  - \frac{\partial L}{\partial t}$$
+<p>
+I write this equation with no proof and will now evaluate if it is useful. I believe it is. It certainly has the right units since Henries over seconds is Ohms.  But does it get the right answer?  The first thing to show is that it works with the simplest amplifier, the amp pumped at twice its resonant frequency made from a tank circuit with a variable L.  Note that for a varactor based amplifiers, the equation will be:
+
+$$R^{-} = -\left(\frac{\partial C}{\partial t}\right)^{-1}$$
+<p>
+
+<canvas width = "400" height = "400" id = "page4"></canvas>
+<script>
+initGeometron();
+x0 = 200;
+y0 = 200;
+ctx = document.getElementById("page4").getContext("2d");
+currentGlyph = "0300,0331,0333,0332,0336,0333,0330,0337,0337,0336,0336,0236,,0214,0334,0201,0334,0336,0201,0337,0211,0336,0201,0201,0334,0201,0201,0334,0342,0332,0340,0335,0335,0336,0336,0201,0337,0337,0212,0336,0336,0330,0337,0337,0332,0330,0330,0330,0330,0330,0333,0337,0340,0211,0221,";
+drawGlyph(currentGlyph);
+</script>
+<p>
+If the natural frequency is \(\omega_0\) and the pump is at \(2\omega_0\), with the phase to maximize gain and an amplitude of L modulation of \(\delta L\), the value of this negative resistance is(assuming this is correct):
+
+$$R^- = -2\omega_0\delta L$$
+
+So the whole circuit impedance is:
+
+$$  Z = \frac{1}{i\omega C_{in}} + \frac{i\omega L -2\omega_0\delta L}{1 - i\omega C(i\omega L - 2\omega_0\delta L)}$$
+
+$$ = \frac{1}{i\omega C_{in}} + \frac{i\omega L -2\omega_0\delta L}{1 - \omega^2 LC + 2i\omega\omega_0\delta L)}  $$
+
+
+
+
 </center>
 
 <style>

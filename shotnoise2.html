@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shot Noise II</title>
+<script src="libraries/geometronLibrary3.js">
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+	initGeometron();
+	feedIndex = 0;
+</script>
+</head>
+<body>
+<center id = "main">
+QUANTUM SHOT NOISE
+<span style = "font-size:16px;color:yellow;">$$P = T_N + \frac{1}{2}T\left[   \left(\frac{V+F}{2T}\right) \coth{\left(\frac{V+F}{2T}\right)} + \left(\frac{V-F}{2T}\right) \coth{\left(\frac{V-F}{2T}\right)}    \right]$$
+</span>
+<table>
+<tr>
+<td>
+	<center class = "sidePanel">
+		<table>
+		<tr><td><center>T</center></td></tr>
+		<tr><td class = "udButton" onclick = "Tup()">&#x25B2</td></tr>
+		<tr><td><center id = "Tvalue" style = "font-size:30px;">20</center></td></tr>
+		<tr><td class = "udButton" onclick = "Tdown()">&#x25BC</td></tr>
+		</table>
+	</center>
+</td>
+<td>
+<canvas width = "400" height = "400" id = "canvas1">
+</canvas>
+</td>
+<td>
+	<center class = "sidePanel">
+		<table>
+		<tr><td><center>T<sub>N</sub></center></td></tr>
+		<tr><td class = "udButton" onclick = "TNup()">&#x25B2</td></tr>
+		<tr><td><center id = "TNvalue" style = "font-size:30px;">50</center></td></tr>
+		<tr><td class = "udButton" onclick = "TNdown()">&#x25BC</td></tr>
+		</table>
+	</center>
+</td>
+</tr>
+</table>
+	<center id = "bottomPanel">
+		<table>
+			<tr>
+				<td>F</td>
+				<td class = "udButton" onclick = "Fup()">&#x25B2</td>
+				<td  style = "font-size:30px;" id = "Fout">10</td>
+				<td class = "udButton" onclick = "Fdown()">&#x25BC</td>
+			</tr>
+		</table>
+	</center>
+All units in pixels.
+</center>
+<script>
+X = 0;
+Y = 0;
+XArray = [];
+YArray = [];
+
+F = 60;
+T = 5;
+TN = 15;
+X0 = 200;
+Y0 = 400;
+
+document.getElementById("Fout").innerHTML = F;
+
+document.getElementById("Tvalue").innerHTML = T;
+
+document.getElementById("TNvalue").innerHTML = Math.round(TN);
+
+numPoints = 400;
+
+for(var index = 0;index < numPoints;index++){
+	X = index;
+	YofX();
+	XArray.push(X);
+	YArray.push(Y);
+}
+
+ctx = document.getElementById("canvas1").getContext("2d");
+ctx.strokeStyle="black";
+ctx.fillStyle="white";
+ctx.clearRect(0, 0, 400, 400);
+ctx.lineWidth = 2;
+ctx.beginPath();
+for(var index = 0;index < numPoints-1;index++){
+	ctx.moveTo(XArray[index],YArray[index]);		
+	ctx.lineTo(XArray[index+1],YArray[index+1]);
+	ctx.stroke();
+}
+ctx.closePath();
+
+function Fup(){
+	F = F*1.4;
+	X = 0;
+	Y = 0;
+	XArray = [];
+	YArray = [];
+
+	for(var index = 0;index < numPoints;index++){
+		X = index;
+		YofX();
+		XArray.push(X);
+		YArray.push(Y);
+	}
+	
+	ctx = document.getElementById("canvas1").getContext("2d");
+    ctx.fillStyle="white";
+ 	ctx.clearRect(0, 0, 400,400);
+	ctx.fillStyle="black";
+	ctx.lineWidth = 2;	
+	ctx.beginPath();
+	for(var index = 0;index < numPoints-1;index++){
+		ctx.moveTo(XArray[index],YArray[index]);		
+		ctx.lineTo(XArray[index+1],YArray[index+1]);
+		ctx.stroke();
+	}
+	ctx.closePath();
+
+	document.getElementById("Fout").innerHTML = Math.round(F);
+
+}
+
+function Fdown(){
+	F = F/1.4;
+	X = 0;
+	Y = 0;
+	XArray = [];
+	YArray = [];
+
+	for(var index = 0;index < numPoints;index++){
+		X = index;
+		YofX();
+		XArray.push(X);
+		YArray.push(Y);
+	}
+
+	ctx = document.getElementById("canvas1").getContext("2d");
+	ctx.strokeStyle="black";
+	ctx.fillStyle="white";
+	ctx.clearRect(0, 0, 400, 400);
+
+	ctx.lineWidth = 2;
+	ctx.beginPath();	
+	for(var index = 0;index < numPoints-1;index++){
+		ctx.moveTo(XArray[index],YArray[index]);		
+		ctx.lineTo(XArray[index+1],YArray[index+1]);
+		ctx.stroke();
+	}
+	ctx.closePath();
+	document.getElementById("Fout").innerHTML = Math.round(F);
+
+}
+function Tup(){
+	T = T*1.4;
+	X = 0;
+	Y = 0;
+	XArray = [];
+	YArray = [];
+
+	for(var index = 0;index < numPoints;index++){
+		X = index;
+		YofX();
+		XArray.push(X);
+		YArray.push(Y);
+	}
+
+	ctx = document.getElementById("canvas1").getContext("2d");
+	ctx.strokeStyle="black";
+	ctx.fillStyle="white";
+	ctx.clearRect(0, 0, 400, 400);
+
+	ctx.lineWidth = 2;
+	ctx.beginPath();	
+	for(var index = 0;index < numPoints-1;index++){
+		ctx.moveTo(XArray[index],YArray[index]);		
+		ctx.lineTo(XArray[index+1],YArray[index+1]);
+		ctx.stroke();
+	}
+	ctx.closePath();
+	document.getElementById("Tvalue").innerHTML = Math.round(T);
+
+}
+function Tdown(){
+	T = T/1.4;
+	X = 0;
+	Y = 0;
+	XArray = [];
+	YArray = [];
+
+	for(var index = 0;index < numPoints;index++){
+		X = index;
+		YofX();
+		XArray.push(X);
+		YArray.push(Y);
+	}
+
+	ctx = document.getElementById("canvas1").getContext("2d");
+	ctx.strokeStyle="black";
+	ctx.fillStyle="white";
+	ctx.clearRect(0, 0, 400, 400);
+
+	ctx.lineWidth = 2;
+	ctx.beginPath();	
+	for(var index = 0;index < numPoints-1;index++){
+		ctx.moveTo(XArray[index],YArray[index]);		
+		ctx.lineTo(XArray[index+1],YArray[index+1]);
+		ctx.stroke();
+	}
+	ctx.closePath();
+
+	document.getElementById("Tvalue").innerHTML = Math.round(T);
+
+}
+function TNup(){
+	TN = TN*1.4;
+	X = 0;
+	Y = 0;
+	XArray = [];
+	YArray = [];
+
+	for(var index = 0;index < numPoints;index++){
+		X = index;
+		YofX();
+		XArray.push(X);
+		YArray.push(Y);
+	}
+
+	ctx = document.getElementById("canvas1").getContext("2d");
+	ctx.strokeStyle="black";
+	ctx.fillStyle="white";
+	ctx.clearRect(0, 0, 400, 400);
+
+	ctx.lineWidth = 2;
+	ctx.beginPath();	
+	for(var index = 0;index < numPoints-1;index++){
+		ctx.moveTo(XArray[index],YArray[index]);		
+		ctx.lineTo(XArray[index+1],YArray[index+1]);
+		ctx.stroke();
+	}
+	ctx.closePath();
+	document.getElementById("TNvalue").innerHTML = Math.round(TN);
+
+
+
+}
+function TNdown(){
+
+	TN = TN/1.4;
+	X = 0;
+	Y = 0;
+	XArray = [];
+	YArray = [];
+
+	for(var index = 0;index < numPoints;index++){
+		X = index;
+		YofX();
+		XArray.push(X);
+		YArray.push(Y);
+	}
+
+	ctx = document.getElementById("canvas1").getContext("2d");
+	ctx.strokeStyle="black";
+	ctx.fillStyle="white";
+	ctx.clearRect(0, 0, 400, 400);
+
+	ctx.lineWidth = 2;
+	ctx.beginPath();	
+
+	for(var index = 0;index < numPoints-1;index++){
+		ctx.moveTo(XArray[index],YArray[index]);		
+		ctx.lineTo(XArray[index+1],YArray[index+1]);
+		ctx.stroke();
+	}
+	ctx.closePath();
+
+	document.getElementById("TNvalue").innerHTML = Math.round(TN);
+
+
+}
+
+
+function YofX(){
+	Y = Y0 - 2*TN - 2*0.5*T*(xcothx((X - X0 + F)/(2*T)) + xcothx((X - X0 - F)/(2*T)));
+}
+
+function noise(){
+	var a = 0.25*(v + f)/t;
+	return t*xcothx(a);
+}
+
+function xcothx(xin){
+	if(xin!=0){
+		return (xin/Math.tanh(xin));	
+	}
+	else{
+		return 1;		
+	}
+}
+
+</script>
+<style>
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+#main{
+	width: 750px;
+	height: auto;
+    border-style: solid;
+    border-width: 10px;
+    border-color: yellow;
+    border-radius: 20px;
+    margin: 15px 15px 15px 15px;
+	padding: 10px 10px 10px 10px;
+	background: black;	
+	font-size: 50px;
+	font-style: bold;	
+	color: yellow;	
+	font-family: "Century Gothic";
+}
+#canvas1{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 20px;
+    background:white;
+}
+.sidePanel{
+	width: 80px;
+	height: 280px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: yellow;
+    border-radius: 20px;
+	background: black;	
+	color: yellow;	
+    margin: 15px 15px 15px 15px;
+
+}
+.udButton:hover{
+	color:red;
+}
+.udButton:active{
+	color:white;
+}
+
+#bottomPanel{
+	width: 280px;
+	height: 60px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: yellow;
+    border-radius: 20px;
+	background: black;	
+    margin: 15px 15px 15px 15px;
+	padding: 0px 5px 15px 5px;
+}
+
+</style>
+</body>
+</html>
+
