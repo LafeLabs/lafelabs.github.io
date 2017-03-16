@@ -11,28 +11,45 @@ currentTextAddress = 01400;
 </head>
 <body>
 <center id = "main">
-	<textarea id = "textInput"></textarea>
-	<button onclick = "localRoot(1);">PUSH</button>
-	<pre id = "textFeed">
+	<button onclick = "localRoot(1);">EDIT TEXT</button>
+	<button onclick = "localRoot(2);">PUSH TEXT</button>
+	<div id = "editPanel"></div>
+	<pre id = "feed">
 	</pre>
 	<textarea id = "byteCodeIO"></textarea>
 </center>
 <script>
 
-currentNode = document.getElementById("textFeed");
-
+currentNode = document.getElementById("feed");
 
 
 function localRoot(localCommand){
-	if(localCommand == 01){
-		currentText = document.getElementById("textInput").value;
-		var newDiv = document.createElement("DIV");
-		newDiv.innerHTML = currentText;
-		currentNode.appendChild(newDiv);
-		currentTable[currentTextAddress] = string2byteCode(currentText);
-		document.getElementById("byteCodeIO").innerHTML += "0" + currentTextAddress.toString(8) + ":" + string2byteCode(currentText) + "\n";		
-		currentTextAddress++;
+	if(localCommand == 01){		
+		var newTextArea = document.createElement("textarea");
+		newTextArea.id = "textInput";
+		document.getElementById("editPanel").appendChild(newTextArea);
+		document.getElementById("byteCodeIO").innerHTML+= "01\n";
 	}
+	if(localCommand == 02){	
+		var list = document.getElementById("editPanel"); 
+		var newTextArea = list.childNodes[0];
+		currentText = newTextArea.value;
+		var newDiv = document.createElement("feed");
+		var newP = document.createElement("P");
+		newDiv.innerHTML = currentText;
+		document.getElementById("feed").appendChild(newDiv);
+		document.getElementById("feed").appendChild(newP);
+		currentTable[currentTextAddress] = currentText;
+		document.getElementById("byteCodeIO").innerHTML += "0" + currentTextAddress.toString(8) + ":" + string2byteCode(currentText) + "\n";
+		list.removeChild(newTextArea); 
+		currentTextAddress++;
+		document.getElementById("byteCodeIO").innerHTML+= "02\n";
+	}
+	if(localCommand == 03){
+	
+	
+	}
+	
 	
 }
 
@@ -41,7 +58,7 @@ function localRoot(localCommand){
 <style>
 #main{
 	width:560px;
-	height:620px;
+	height:auto;
     border-style: solid;
     border-width: 5px;
     border-color: black;
@@ -61,7 +78,7 @@ function localRoot(localCommand){
     margin: 10px 10px 10px 10px;
 	background: none;			
 }
-#textFeed{
+#feed{
 	width: 500px;
 	height: 250px;
     border-style: solid;
