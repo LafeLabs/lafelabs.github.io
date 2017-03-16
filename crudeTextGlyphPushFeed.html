@@ -26,36 +26,11 @@ currentURLAddress = 0500;
 	<div id = "editPanel"></div>
 	<div id = "feed">
 	</div>
-	<button onclick = "importBytecode()">IMPORT BYTECODE</button>
 	<textarea id = "byteCodeIO"></textarea>
 </center>
 <script>
 
 currentNode = document.getElementById("feed");
-
-
-function importBytecode(){
-	var inputCode = document.getElementById("byteCodeIO").value;
-	var inputCodeArray = inputCode.split("\n");
-	for(var index = 0;index < inputCodeArray.length;index++){
-		var lineArray = inputCodeArray[index].split(":");
-		if(lineArray.length == 1){
-			localRoot(lineArray[0]);
-		}
-		if(lineArray.length == 2){
-			currentAddress = lineArray[0].toString(8);
-			if((currentAddress >= 01400)&&(currentAddress < 01500){
-				currentText = byteCode2string(lineArray[1]);
-				currentTextAddress = currentAddress;
-				currentTable[currentAddress] = lineArray[1];
-				localRoot(1);
-				
-				
-			} 
-		}
-	}
-}
-
 
 function localRoot(localCommand){
 	if(localCommand == 01){		
