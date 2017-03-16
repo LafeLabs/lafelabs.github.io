@@ -1,121 +1,102 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>Meta-calculator</title>
-<script src="libraries/geometronLibrary3.js">
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<title>General Test File</title>
+<script src = "libraries/geometronLibrary3.js"></script>
 <script>
-	initGeometron();
-	feedIndex = 0;
+initGeometron();
+currentTextAddress = 01400;
+
 </script>
 </head>
 <body>
-<div id = "main">
-r = <input id = "input1"></input><p>
-<button id = "equationButton">$$C = 2\pi R$$</button>
-<p>
-C = <span id = "output1"></span>
-</div>
+<center id = "main">
+	<textarea id = "textInput"></textarea>
+	<button onclick = "localRoot(1);">PUSH</button>
+	<pre id = "textFeed">
+	</pre>
+	<textarea id = "byteCodeIO"></textarea>
+</center>
 <script>
 
-currentGlyph = "0740,0744,0702,0702";
-
-input1 = document.getElementById("input1");
-output1 = document.getElementById("output1");
-
-input1.onchange = function(){
-	X = input1.value;
-	mathStack.push(X);
-	doMathArray(currentGlyph);
-	Y = mathStack.pop();
-	console.log(Y);
-	output1.innerHTML = Y.toString();
-}
-
-mathStack = [0,0,0,0,0,0,0,0];
+currentNode = document.getElementById("textFeed");
 
 
-mathStack.push(10);  //100 (enter)
-mathStack.push(2);//  50 enter
-doTheMath(0703);// minus
 
-console.log(xcothx(3));
-
-
-function doMathArray(localGlyph){
-	localArray = localGlyph.split(",");
-
-	for(var index =0;index < localArray.length;index++){
-		doTheMath(parseInt(localArray[index],8));
-	}
-}
-
-function doTheMath(localCommand){// +
-	if(localCommand == 0700){
-		X = mathStack.pop();
-		Y = mathStack.pop();
-		X = Y+X;
-		mathStack.push(X);
-	}
-	if(localCommand == 0701){//  -
-		X = mathStack.pop();
-		Y = mathStack.pop();
-		X = Y-X;
-		mathStack.push(X);
-	}
-	if(localCommand == 0702){ // *
-		X = mathStack.pop();
-		Y = mathStack.pop();
-		X = Y*X;
-		mathStack.push(X);
-	}
-	if(localCommand == 0703){ // /
-		X = mathStack.pop();
-		Y = mathStack.pop();
-		X = Y/X;
-		mathStack.push(X);
-	}
-
-	if(localCommand == 0710){ // /
-		X = mathStack.pop();
-		Y = xcothx(X);		
-		mathStack.push(Y);
+function localRoot(localCommand){
+	if(localCommand == 01){
+		currentText = document.getElementById("textInput").value;
+		var newDiv = document.createElement("DIV");
+		newDiv.innerHTML = currentText;
+		currentNode.appendChild(newDiv);
+		currentTable[currentTextAddress] = string2byteCode(currentText);
+		document.getElementById("byteCodeIO").innerHTML += "0" + currentTextAddress.toString(8) + ":" + string2byteCode(currentText) + "\n";		
+		currentTextAddress++;
 	}
 	
-	if(localCommand == 0740){ // pi
-		mathStack.push(3.14159);
-	}
-	if(localCommand == 0741){ // e
-		mathStack.push(2.71828);
-	}
-	if(localCommand == 0742){ // q_e
-		mathStack.push(1.66e-19);
-	}
-	if(localCommand == 0743){ // k
-		mathStack.push(1.38e-23);
-	}
-	if(localCommand == 0744){ // 2
-		mathStack.push(2);
-	}
-	if(localCommand == 0745){ // h
-		mathStack.push(6.63e-34);
-	}
-	if(localCommand == 0746){ // 1 GHz 
-		mathStack.push(1e9);
-	}
 }
 
-function xcothx(xin){
-	if(xin!=0){
-		return (xin/Math.tanh(xin));	
-	}
-	else{
-		return 1;		
-	}
-}
 
 </script>
+<style>
+#main{
+	width:560px;
+	height:620px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background: none;		
+}
+#textInput{
+	width: 500px;
+	height: 150px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: purple;
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+	background: none;			
+}
+#textFeed{
+	width: 500px;
+	height: 250px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: red;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background: none;	
+	font-size: 16px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";
+	text-align: left;
+	overflow-wrap: break-word;
+	overflow:scroll;	
+
+}
+#byteCodeIO{
+	width: 500px;
+	height: 50px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: orange;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background: none;	
+	font-size: 16px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";
+	text-align: left;
+	overflow-wrap: break-word;
+	overflow:scroll;	
+
+}
+</style>
 </body>
 </html>
-

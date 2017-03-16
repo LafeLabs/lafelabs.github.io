@@ -367,6 +367,77 @@ $$  Z = \frac{1}{i\omega C_{in}} + \frac{i\omega L -2\omega_0\delta L}{1 - i\ome
 $$ = \frac{1}{i\omega C_{in}} + \frac{i\omega L -2\omega_0\delta L}{1 - \omega^2 LC + 2i\omega\omega_0\delta L)}  $$
 
 
+<canvas id = "page5" width = "500" height = "500" style="border:1px solid;">
+</canvas>
+<script>
+plotZ1();
+function plotZ1(){
+	f0 = document.getElementById("f0Input").value;
+	f1 = document.getElementById("f1Input").value;
+	f0 *= 1e9;//convert to Hz
+	f1 *= 1e9;
+	omega0 = 2*Math.PI*f0;
+	omega1 = 2*Math.PI*f1;
+	numPoints = document.getElementById("nfInput").value;
+
+	Cin = document.getElementById("CinInput").value*1e-12;
+	C1 = document.getElementById("C1Input").value*1e-12;
+	LG = document.getElementById("LGInput").value*1e-12;
+	LJ = document.getElementById("LJInput").value*1e-12;
+
+	omegaArray = [];
+	ZtotalArray = [];
+	fGHzArray = [];
+	imZinArray  = [];
+	imZresArray = [];
+	imZtotalArray = [];
+	XArray = [];
+	YArray = [];
+	S11Array = [];
+	
+	Xstart = 50;
+	Xstop = 450;
+	Y0 = 250;
+	Ygain = 0.1;
+	Ygain = 30;
+	for(var index = 0;index < numPoints;index++){
+		var omega = omega0 + index*(omega1-omega0)/(numPoints-1);
+		var fGHz = omega*1e-9/(2*Math.PI);
+		omegaArray.push(omega);
+		fGHzArray.push(fGHz);
+		var imZin = 1/(omega*Cin);
+		imZinArray.push(imZin);		
+		var imZres = omega*(LJ + LG)/(1 - omega*omega*C1*(LJ + LG));
+		imZresArray.push(imZres);
+		var imZtotal = imZin + imZres;
+		imZtotalArray.push(imZtotal);
+		var Ztotal = math.complex(-51,imZtotal);
+		var Z0 = math.complex(50,0);
+		var S11 = math.divide(math.subtract(Ztotal,Z0),math.add(Ztotal,Z0));
+		XArray.push(Xstart + index*(Xstop - Xstart)/numPoints);
+		YArray.push(Ygain*S11.abs());	
+		S11Array.push(S11);
+	}
+
+
+	ctx = document.getElementById("page5").getContext("2d");
+	ctx.strokeStyle="black";
+	ctx.clearRect(0, 0, 500, 500);
+	ctx.lineWidth = 2;
+	ctx.beginPath();
+	ctx.strokeRect(50,50,400,400);
+
+
+
+	for(var index = 0;index < numPoints-1;index++){
+
+		ctx.moveTo(XArray[index], 250 - YArray[index]);		
+		ctx.lineTo(XArray[index + 1], 250 - YArray[index + 1]);
+		ctx.stroke();
+	}	
+}
+
+</script>
 
 
 </center>
