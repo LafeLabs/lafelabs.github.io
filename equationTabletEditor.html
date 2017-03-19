@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>1700s Editor</title>
+<script src="libraries/geometronLibrary3.js">
+</script>
+<script>
+	initGeometron();
+</script>
+</head>
+<body>
+<center id = "main">
+<u>	<h1 style = "font-family: Century Gothic;">1700's Equation Tablet Editor</h1></u>
+	<h3>Raw Text Input:</h3>
+	<button onclick = "prev()">PREV</button>
+	<b>Address:</b><input id = "addressInput" size  = "6" onchange = "jumpAddress()"></input>
+	<button onclick = "next()">NEXT</button>
+	<p>
+	<textarea id = "textInput"></textarea>
+	<h3>Equations (01700-01777):</h3>
+	<button onclick = "inputHTML()">INPUT</button>
+	<div id = "myFeed"></div>
+	<h3>Bytecode IO:</h3>	
+	<button onclick = "exportBytecode()">EXPORT</button>
+	<button onclick = "importBytecode()">IMPORT</button>
+	<textarea id = "byteCodeIO"></textarea>
+</center>
+<script>
+	currentAddress = 01700;
+	currentText = currentTable[currentAddress];
+	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
+	currentNode = document.getElementById("myFeed");
+
+	for(var index = 01700;index < 01800;index++){
+		var newDiv = document.createElement("div");
+		newDiv.className = "htmlAtom";
+		newDiv.id = "div0" + index.toString(8);
+		newDiv.innerHTML = "<center><b>0" + index.toString(8)+ ":</b></center>"
+		newDiv.innerHTML += currentTable[index];
+		currentNode.appendChild(newDiv);		
+	}
+	
+function importBytecode(){
+	var localString = document.getElementById("byteCodeIO").value;
+	var inputStack = localString.split("\n");
+	for(var index = 0;index < inputStack.length;index++){
+		var stackLine = inputStack[index].split(":");
+		var localAddress = parseInt(stackLine[0],8);
+		var localGlyph = stackLine[1];
+		currentTable[localAddress] = localGlyph;
+	}
+	currentGlyph = currentTable[currentAddress];
+	document.getElementById("textInput").value = byteCode2string(currentGlyph);
+	var tempText = "";		
+	tempText = "<center><b>0" +currentAddress.toString(8)+ "</b></center>"
+	tempText += byteCode2string(currentTable[currentAddress]);
+	var localID = "div0" + currentAddress.toString(8);
+	document.getElementById(localID).innerHTML = tempText;
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+	
+}
+function exportBytecode(){
+
+		var localString = "";
+		for(var index = 01700;index < 01800;index++){
+			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+		}
+		document.getElementById("byteCodeIO").value = localString;
+}
+
+function jumpAddress(){
+    inputHTML();
+
+	currentTable[currentAddress] = string2byteCode(document.getElementById("textInput").value);
+
+	currentAddress = parseInt(document.getElementById("addressInput").value,8);
+	currentText = currentTable[currentAddress];
+	document.getElementById("textInput").value = byteCode2string(currentText); 
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+
+}
+function prev(){
+    inputHTML();
+	currentTable[currentAddress] = string2byteCode(document.getElementById("textInput").value);
+	currentAddress--;
+	if(currentAddress < 01700){
+		currentAddress = 01777;
+	}
+	currentText = currentTable[currentAddress];
+	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
+	document.getElementById("textInput").value = byteCode2string(currentText);
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
+ 
+}
+function next(){
+    inputHTML();
+
+	currentTable[currentAddress] = string2byteCode(document.getElementById("textInput").value);
+	currentAddress++;
+	if(currentAddress >= 01800){
+		currentAddress = 01700;
+	}
+	currentText = currentTable[currentAddress];
+	document.getElementById("addressInput").value = "0" + currentAddress.toString(8);
+	document.getElementById("textInput").value = byteCode2string(currentText); 
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+}
+
+
+function inputHTML(){
+	var tempText = "";		
+	tempText = "<center><b>0" +currentAddress.toString(8)+ "</b></center>"
+	tempText += document.getElementById("textInput").value; 
+	var localID = "div0" + currentAddress.toString(8);
+	document.getElementById(localID).innerHTML = tempText;
+    currentTable[currentAddress] = string2byteCode(document.getElementById("textInput").value);
+    	MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+}
+</script>
+<style>
+
+#main{
+	width: 800px;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: blue;
+    border-radius: 20px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";
+
+}
+
+textarea{
+	width: 640px;
+	height:100px;
+	border-style:solid;
+	background: white;
+	border-width: 3px;
+    border-color: purple;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+}
+
+#myFeed{
+	width: 640px;
+	height:300px;
+	border-style:solid;
+	background: white;
+	border-width: 3px;
+    border-color: blue;
+    border-radius: 10px;
+    text-align:left;
+	overflow:scroll;
+    margin: 10px 10px 10px 10px;
+
+}
+
+.htmlAtom{
+	width: 600px;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 3px;
+    border-color: green;
+    border-radius: 5px;
+    text-align:left;
+    margin: 10px 10px 10px 10px;
+}
+
+.htmlAtom:hover{
+	background: gray;
+}
+.htmlAtom:active{
+	background: yellow;
+}
+
+#byteCodeIO{
+	width: 640px;
+	height:100px;
+	border-style:solid;
+	background: white;
+	border-width: 3px;
+    border-color: yellow;
+    border-radius: 10px;
+    text-align:left;
+	overflow:scroll;
+    margin: 10px 10px 10px 10px;
+
+}
+
+</style>
+</body>
+</html>
+

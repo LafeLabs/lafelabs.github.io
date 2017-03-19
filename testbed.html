@@ -10,115 +10,119 @@ initGeometron();
 currentTextAddress = 01400;
 currentGlyphAddress = 0400;
 currentURLAddress = 0500;
+currentEquation = "Y = X";
+
+currentTable[01700] = "040,0134,0157,0151,0156,0164,040,0137,0173,0103,0175,0134,0155,0141,0164,0150,0142,0146,040,0173,0102,0175,040,0134,0143,0144,0157,0164,040,0144,0173,0134,0142,0157,0154,0144,0163,0171,0155,0142,0157,0154,040,0173,0154,0175,0175,040,040,075,040,0134,0155,0165,0137,060,040,0111,";
+
+currentTable[01701] = "062,0134,0160,0151,040,0162,040,0102,040,075,040,0134,0155,0165,0137,060,040,0111,";
+//	MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+
+currentTable[01702] = "0102,040,075,0134,0146,0162,0141,0143,0173,040,0134,0155,0165,0137,060,040,0111,0175,0173,062,0134,0160,0151,040,0162,040,0175,";
+
+currentTable[1703] = "0134,0155,0165,0137,060,040,075,040,064,0134,0160,0151,040,0134,0164,0151,0155,0145,0163,040,061,060,0136,0173,055,067,0175,040,0110,057,0155,";
+
 
 </script>
 </head>
 <body>
 <center>
 <center id = "main">
-	<textarea id = "byteCodeIO"></textarea>
-	<div>
-	<button onclick = "importBytecode()">IMPORT BYTECODE</button>
-	</div>
-	<div id = "editPanel"></div>
-	<div id = "feed">
-	</div>
+
+
 </center>
 <script>
 
-currentNode = document.getElementById("feed");
+currentNode = document.getElementById("main");
+
+doTheMath(0700);
+doTheMath(0701);
+doTheMath(0702);
 
 
-function importBytecode(){
-	var inputCode = document.getElementById("byteCodeIO").value;
-	var inputCodeArray = inputCode.split("\n");
-	for(var index = 0;index < inputCodeArray.length;index++){
-		var lineArray = inputCodeArray[index].split(":");
-		if(lineArray.length == 1){
-			localRoot(lineArray[0]);
-		}
-		if(lineArray.length == 2){
-			currentAddress = parseInt(lineArray[0],8);
-			if((currentAddress >= 01400)&&(currentAddress < 01500)){
-				currentText = byteCode2string(lineArray[1]);
-				currentTextAddress = currentAddress;
-				currentTable[currentAddress] = lineArray[1];	
-			} 
-			if((currentAddress >= 0500)&&(currentAddress < 0600)){
-				currentURLbytecode = lineArray[1];
-				currentURLAddress = currentAddress;
-				currentTable[currentAddress] = lineArray[1];	
-			}
-			if((currentAddress >= 0400)&&(currentAddress < 0500)){
-				currentGlyph = lineArray[1];
-				currentGlyphAddress = currentAddress;
-				currentTable[currentAddress] = lineArray[1];	
-			}
-			
-		}
-	}
-}
+
+var foo = document.createElement("DIV");
+foo.innerHTML = "$$" + byteCode2string(currentTable[01700]) + "$$";
+currentNode.appendChild(foo);
+
+var foo = document.createElement("DIV");
+foo.innerHTML = "$$" + byteCode2string(currentTable[01701]) + "$$";
+currentNode.appendChild(foo);
+
+var foo = document.createElement("DIV");
+foo.innerHTML = "$$" + byteCode2string(currentTable[01702]) + "$$";
+currentNode.appendChild(foo);
+
+var foo = document.createElement("DIV");
+foo.innerHTML = "$$ \\mu_0 = 4\\pi \\times 10^{-7} H /m $$";
+currentNode.appendChild(foo);
+
+var foo = document.createElement("DIV");
+foo.innerHTML = "$$ B = \\frac{2I}{r} \\times 10^{-7} H /m$$";
+currentNode.appendChild(foo);
+
+var foo = document.createElement("DIV");
+foo.innerHTML = "$$ B = \\frac{I}{r} \\times   \\frac{20 \\mathrm{\\mu T}\\cdot cm}{A}$$";
+currentNode.appendChild(foo);
 
 
-function localRoot(localCommand){
-	if(localCommand == 01){		
-		var newTextArea = document.createElement("textarea");
-		newTextArea.id = "textInput";
-		document.getElementById("editPanel").appendChild(newTextArea);
-		//document.getElementById("byteCodeIO").innerHTML+= "01\n";
-	}
-	if(localCommand == 02){	
-		var newDiv = document.createElement("div");
-		newDiv.className = "textAtom";
-		var newP = document.createElement("P");
-		newDiv.innerHTML = currentText;
-		document.getElementById("feed").appendChild(newDiv);
-		document.getElementById("feed").appendChild(newP);
-	}
-	if(localCommand == 03){
-		var newTextArea = document.createElement("textarea");
-		newTextArea.id = "glyphInput";
-		document.getElementById("editPanel").appendChild(newTextArea);
-		//document.getElementById("byteCodeIO").innerHTML+= "03\n";
-	}
-	if(localCommand == 04){	
-		var newCanvas = document.createElement("CANVAS");
-		var newP = document.createElement("P");
-		newCanvas.width = 600;
-		newCanvas.height = 400;
-		ctx = newCanvas.getContext("2d");
-		ctx.clearRect(0, 0, 600, 400);
-		x0 = 300;
-		y0 = 200;
-		doTheThing(0300);
-		drawGlyph(currentGlyph);
-		document.getElementById("feed").appendChild(newCanvas);
-		document.getElementById("feed").appendChild(newP);
-	}
-	if(localCommand == 05){
-		var newTextArea = document.createElement("textarea");
-		newTextArea.id = "urlInput";
-		document.getElementById("editPanel").appendChild(newTextArea);
-	}
-	if(localCommand == 06){	
-		var newIMG = document.createElement("IMG");
-		var newP = document.createElement("P");
-		newIMG.style.width = "auto";
-		newIMG.style.height = "400px";
-		newIMG.style.display = "block";		
-		newIMG.style.margin = "auto";
-		newIMG.src = byteCode2string(currentURLbytecode);
-		document.getElementById("feed").appendChild(newIMG);
-		document.getElementById("feed").appendChild(newP);
-	}
 
+MathJax.Hub.Typeset();//tell Mathjax to update the math
 
-//	MathJax.Hub.Typeset();//tell Mathjax to update the math		
+function spawnMath(localMath){
+	
 
 }
 
+
+function doTheMath(localCommand){
+		var derp = document.createElement("input");
+		var herp = document.createElement("input");
+		var zeep = document.createElement("CENTER");
+		var newSpan1 = document.createElement("span");
+		var newSpan2 = document.createElement("span");
+		var newMathAtom = document.createElement("center");
+		newMathAtom.className = "mathAtom";
+		newSpan1.innerHTML = "X = ";
+		derp.id = "Xinput0" + localCommand.toString(8);			
+		derp.size = "8";
+		newSpan2.innerHTML = "Y = ";
+		herp.id = "Yinput0" + localCommand.toString(8);
+		herp.size = "8";
+		newMathAtom.appendChild(newSpan1);
+		newMathAtom.appendChild(derp);
+		newMathAtom.appendChild(newSpan2);
+		newMathAtom.appendChild(herp);
+		newMathAtom.appendChild(zeep);
+		currentNode.appendChild(newMathAtom);
+
+	if(localCommand == 0700){
+		derp.onchange = function(){
+			X = this.value;
+			Y = 2*X;
+			document.getElementById("Yinput0" + localCommand.toString(8)).value = Y;
+		}
+	}
+	if(localCommand == 0701){
+		derp.onchange = function(){
+			X = this.value;
+			Y = 3*X;
+			document.getElementById("Yinput0" + localCommand.toString(8)).value = Y;
+		}
+	}
+	if(localCommand == 0702){
+		derp.onchange = function(){
+			X = this.value;
+			Y = 4*X;
+			document.getElementById("Yinput0" + localCommand.toString(8)).value = Y;
+		}
+	}
+
+
+}
 
 </script>
+
 <style>
 #main{
 	width:760px;
@@ -130,7 +134,22 @@ function localRoot(localCommand){
     margin: 10px 10px 10px 10px;
     padding: 10px 10px 10px 10px;
 	background: none;		
+	overflow:scroll;	
+
 }
+.mathAtom{
+	width: auto;
+	height: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10px 10px 10px;
+	background: none;			
+
+}
+
 #textInput{
 	width: 500px;
 	height: 150px;
