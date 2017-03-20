@@ -7,20 +7,19 @@
 
 <script>
 initGeometron();
-currentTextAddress = 01400;
-currentGlyphAddress = 0400;
-currentURLAddress = 0500;
-currentEquation = "Y = X";
 
-currentTable[01700] = "040,0134,0157,0151,0156,0164,040,0137,0173,0103,0175,0134,0155,0141,0164,0150,0142,0146,040,0173,0102,0175,040,0134,0143,0144,0157,0164,040,0144,0173,0134,0142,0157,0154,0144,0163,0171,0155,0142,0157,0154,040,0173,0154,0175,0175,040,040,075,040,0134,0155,0165,0137,060,040,0111,";
+X = 0;
+Y = 0;
 
-currentTable[01701] = "062,0134,0160,0151,040,0162,040,0102,040,075,040,0134,0155,0165,0137,060,040,0111,";
-//	MathJax.Hub.Typeset();//tell Mathjax to update the math
+currentTable[01732] = "044,044,0131,040,075,040,0130,0134,0143,0157,0164,0150,0173,050,0130,051,0175,044,044";
 
+currentTable[01701] = "044,044,0153,0124,040,075,040,0153,0134,0164,0151,0155,0145,0163,040,0124,044,044,";
+currentTable[01702] = "044,044,0124,040,075,040,0134,0146,0162,0141,0143,0173,0153,0124,0175,0173,0153,0175,044,044,";
+currentTable[01703] = "044,044,062,0134,0164,0151,0155,0145,0163,040,0124,044,044,";
 
-currentTable[01702] = "0102,040,075,0134,0146,0162,0141,0143,0173,040,0134,0155,0165,0137,060,040,0111,0175,0173,062,0134,0160,0151,040,0162,040,0175,";
-
-currentTable[1703] = "0134,0155,0165,0137,060,040,075,040,064,0134,0160,0151,040,0134,0164,0151,0155,0145,0163,040,061,060,0136,0173,055,067,0175,040,0110,057,0155,";
+k_boltzmann = 1.38065e-23;//J/K
+q_electron = 1.6e-19;//C
+h = 6.63e-34;//J-s
 
 
 </script>
@@ -29,100 +28,155 @@ currentTable[1703] = "0134,0155,0165,0137,060,040,075,040,064,0134,0160,0151,040
 <center>
 <center id = "main">
 
-
 </center>
+<div id = "buttContainer">
+<div class = "symbolButton" id = "div1"></div>
+<div class = "symbolButton" id = "div2"></div>
+
+</div>
 <script>
 
+document.getElementById("div1").innerHTML = byteCode2string(currentTable[01702]);
+document.getElementById("div2").innerHTML = byteCode2string(currentTable[01703]);
+
 currentNode = document.getElementById("main");
+var newMathAtom = document.createElement("DIV");
 
-doTheMath(0700);
-doTheMath(0701);
-doTheMath(0702);
+var newInput0 = document.createElement("INPUT");
+var newInputSpan0 = document.createElement("SPAN");
+newInputSpan0.innerHTML = "X = ";
+newInputSpan0.appendChild(newInput0);
 
-
-
-var foo = document.createElement("DIV");
-foo.innerHTML = "$$" + byteCode2string(currentTable[01700]) + "$$";
-currentNode.appendChild(foo);
-
-var foo = document.createElement("DIV");
-foo.innerHTML = "$$" + byteCode2string(currentTable[01701]) + "$$";
-currentNode.appendChild(foo);
-
-var foo = document.createElement("DIV");
-foo.innerHTML = "$$" + byteCode2string(currentTable[01702]) + "$$";
-currentNode.appendChild(foo);
-
-var foo = document.createElement("DIV");
-foo.innerHTML = "$$ \\mu_0 = 4\\pi \\times 10^{-7} H /m $$";
-currentNode.appendChild(foo);
-
-var foo = document.createElement("DIV");
-foo.innerHTML = "$$ B = \\frac{2I}{r} \\times 10^{-7} H /m$$";
-currentNode.appendChild(foo);
-
-var foo = document.createElement("DIV");
-foo.innerHTML = "$$ B = \\frac{I}{r} \\times   \\frac{20 \\mathrm{\\mu T}\\cdot cm}{A}$$";
-currentNode.appendChild(foo);
+var newOutput0 = document.createElement("DIV");
 
 
+var newEquation0 = document.createElement("DIV");
+
+newEquation0.innerHTML = byteCode2string(currentTable[01732]);
+newMathAtom.appendChild(newEquation0);
+newMathAtom.appendChild(newInputSpan0);
+newMathAtom.appendChild(newOutput0);
+
+currentNode.appendChild(newMathAtom);
+
+
+newInput0.onchange = function(){
+	X = this.value;
+	doTheMath(0732);
+	var newOutput = document.createElement("DIV");
+	this.parentNode.nextSibling.innerHTML = "Y = " + Y.toString();
+}
 
 MathJax.Hub.Typeset();//tell Mathjax to update the math
 
-function spawnMath(localMath){
-	
 
+
+
+function xcothx(Xin){
+	var Yout = 0;
+	if(Xin == 0){
+		Yout = 1;
+	}
+	if(Xin != 0){
+		Yout = Xin/Math.tanh(Xin);
+	}
+	return Yout;
 }
-
-
+</script>
+<script id = "doTheMathScript">
 function doTheMath(localCommand){
-		var derp = document.createElement("input");
-		var herp = document.createElement("input");
-		var zeep = document.createElement("CENTER");
-		var newSpan1 = document.createElement("span");
-		var newSpan2 = document.createElement("span");
-		var newMathAtom = document.createElement("center");
-		newMathAtom.className = "mathAtom";
-		newSpan1.innerHTML = "X = ";
-		derp.id = "Xinput0" + localCommand.toString(8);			
-		derp.size = "8";
-		newSpan2.innerHTML = "Y = ";
-		herp.id = "Yinput0" + localCommand.toString(8);
-		herp.size = "8";
-		newMathAtom.appendChild(newSpan1);
-		newMathAtom.appendChild(derp);
-		newMathAtom.appendChild(newSpan2);
-		newMathAtom.appendChild(herp);
-		newMathAtom.appendChild(zeep);
-		currentNode.appendChild(newMathAtom);
 
 	if(localCommand == 0700){
-		derp.onchange = function(){
-			X = this.value;
-			Y = 2*X;
-			document.getElementById("Yinput0" + localCommand.toString(8)).value = Y;
-		}
+		T = 300;//K
+		V = 1; //V
+		microV = V*1e6;
+		milliV = V*1e3;
+		f = 0.1e9;//Hz
+		fGHz = f/1e9;//GHz	
+		h = 6.63e-34;
+		q_electron = 1.6e-19;
+		k_boltzmann = 1.38e-23;		
+		omega = f*2*Math.PI;	
 	}
 	if(localCommand == 0701){
-		derp.onchange = function(){
-			X = this.value;
-			Y = 3*X;
-			document.getElementById("Yinput0" + localCommand.toString(8)).value = Y;
-		}
+		kT = k_boltzmann*T;
 	}
 	if(localCommand == 0702){
-		derp.onchange = function(){
-			X = this.value;
-			Y = 4*X;
-			document.getElementById("Yinput0" + localCommand.toString(8)).value = Y;
-		}
+		T = kT/k_boltzmann;
+	}
+	if(localCommand == 0703){
+		T = 2*T;
+	}
+	if(localCommand == 0704){
+		T = T/2;
+	}
+	if(localCommand == 0705){
+		T = T + 0.01*T;
+	}
+	if(localCommand == 0706){
+		T = T - 0.01*T;
+	}
+	if(localCommand == 0707){
+		T = T*10;
+	}
+	if(localCommand == 0710){
+		T = T/10;
+	}	
+	if(localCommand == 0711){
+		T = 4.2;
+	}
+	if(localCommand == 0712){
+		hf = h*f;
+	}
+	if(localCommand == 0713){
+		f = hf/h;
+	}
+	if(localCommand == 0714){
+		f = 0;
+	}
+	if(localCommand == 0715){
+		f = 1e9;
+	}
+	if(localCommand == 0716){
+		f = 1e10;
+	}
+	if(localCommand == 0717){
+		f = fGHz*1e9;
+	}
+	if(localCommand == 0725){
+		fGHz = f/1e9;
 	}
 
-
+	if(localCommand == 0720){
+		eV = V*q_electron;
+	}
+	if(localCommand == 0721){
+		V = eV/q_electron;
+	}
+	if(localCommand == 0722){
+		microV = V*1e6;
+		milliV = V*1e3;
+	}
+	if(localCommand == 0723){
+		V = microV/1e6;
+		milliV = V*1e3;
+	}
+	if(localCommand == 0724){
+		V = milliV/1e3;
+		microV = V*1e6;
+	}
+	if(localCommand == 0730){
+		X = eV/(2*kT);
+	}
+	if(localCommand == 0731){
+		X = hf/(2*kT);
+	}
+	if(localCommand == 0732){
+		Y = xcothx(X);
+	}
 }
 
 </script>
-
 <style>
 #main{
 	width:760px;
@@ -135,8 +189,56 @@ function doTheMath(localCommand){
     padding: 10px 10px 10px 10px;
 	background: none;		
 	overflow:scroll;	
-
 }
+#buttContainer{
+	width:760px;
+	height:auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background: none;		
+	overflow:scroll;	
+}
+.symbolButton{
+	width:auto;
+	height:auto;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 4px;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+	background: white;		
+	overflow:scroll;	
+}
+.symbolButton:hover{
+	width:auto;
+	height:auto;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 4px;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+	background: gray;		
+	overflow:scroll;	
+}
+.symbolButton:active{
+	width:auto;
+	height:auto;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 4px;
+    margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+	background: yellow;		
+	overflow:scroll;	
+}
+
 .mathAtom{
 	width: auto;
 	height: auto;
@@ -217,8 +319,9 @@ function doTheMath(localCommand){
 	text-align: left;
 	overflow-wrap: break-word;
 	overflow:scroll;	
-
 }
+
+
 </style>
 </center>
 </body>

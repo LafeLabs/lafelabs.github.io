@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Math Symbol Editor</title>
+<script src="libraries/geometronLibrary3.js">
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script>
+	initGeometron();
+	loadTable();
+	currentAddress = 01700;
+	currentSymbolAddress = 01700;
+	currentActionAddress = 0700;
+</script>
+</head>
+<body>
+<div id = "super">
+<center id = "main">
+	<h2>Math Symbol Table Editor</h2>
+	<b>01700-01777</b><p>
+	<b><span id = "addressSpan">Address: </span></b>
+	<p>
+	<b><span>Symbol:<input id = "wordInput"></input></span></b>
+	<div id = "symbolDisplay"></div>
+	<h3>Symbol Bytecode Table:</h3>
+	<textarea id = "textIO">derp</textarea>
+	<p>
+	<button onclick = "importTableByteCode()">IMPORT BYTECODE</button>
+</center>
+<center id = "aux">
+	<h2>Math Action Table Editor</h2>
+	<b>0700-0777</b><p>
+	<b><span id = "actionAddressSpan">Address: </span></b>
+	<p>
+	<b>JavaScript Code:</b>
+	<p>
+	<textarea id = "actionInputArea" cols = "26" rows = "12"></textarea>
+	<button onclick = "updateCode()">SAVE JS CODE</button>
+	<h3>Action Bytecode Table:</h3>
+	<textarea id = "textIOAction"></textarea>
+</center>
+</div>
+<script>
+
+currentSymbol = byteCode2string(currentTable[currentAddress]);
+currentAction = byteCode2string(currentTable[currentActionAddress]);
+
+document.getElementById("wordInput").value = currentSymbol;
+
+var mainCenter = document.getElementById("addressSpan");
+var auxCenter = document.getElementById("actionAddressSpan");
+var newSelect = document.createElement("SELECT");
+var newSelectAction = document.createElement("SELECT");
+
+for(var index = 01700;index < 02000;index++){
+	var newOption = document.createElement("OPTION");
+	newOption.text = "0" + index.toString(8);
+	newSelect.appendChild(newOption);
+}
+
+for(var index = 0700;index < 01000;index++){
+	var newOption = document.createElement("OPTION");
+	newOption.text = "0" + index.toString(8);
+	newSelectAction.appendChild(newOption);
+}
+
+
+
+newSelect.onchange = function(){
+	currentAddress = parseInt(newSelect.value,8);
+	currentSymbol = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("wordInput").value = currentSymbol;
+	var textOutput = "";
+	for(var index = 01700;index < 02000;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	document.getElementById("textIO").value = textOutput;
+	document.getElementById("symbolDisplay").innerHTML = currentSymbol;
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+}
+
+newSelectAction.onchange = function(){
+	currentActionAddress = parseInt(newSelectAction.value,8);
+	currentAction = byteCode2string(currentTable[currentActionAddress]);
+	document.getElementById("actionInputArea").value = currentAction;
+	var textOutput = "";
+	for(var index = 0700;index < 01000;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	document.getElementById("textIOAction").value = textOutput;
+}
+
+
+document.getElementById("wordInput").onchange = function(){
+	currentSymbol = "$$" + document.getElementById("wordInput").value + "$$";
+	currentTable[currentAddress] = string2byteCode(currentSymbol);
+	var textOutput = "";
+	for(var index = 01700;index < 02000;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	document.getElementById("textIO").value = textOutput;
+	
+	document.getElementById("symbolDisplay").innerHTML = currentSymbol;
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+
+}
+
+mainCenter.appendChild(newSelect);
+auxCenter.appendChild(newSelectAction);
+
+var textOutput = "";
+for(var index = 01700;index < 02000;index++){
+	textOutput += "0" + index.toString(8);
+	textOutput += ":";
+	textOutput += currentTable[index];
+	textOutput += "\n";
+}
+document.getElementById("textIO").value = textOutput;
+
+var textOutput = "";
+for(var index = 0700;index < 01000;index++){
+	textOutput += "0" + index.toString(8);
+	textOutput += ":";
+	textOutput += currentTable[index];
+	textOutput += "\n";
+}
+document.getElementById("textIOAction").value = textOutput;
+
+
+function importTableByteCode(){
+	var localString = document.getElementById("textIO").value;
+	var inputStack = localString.split("\n");
+	for(var index = 0;index < inputStack.length;index++){
+		var stackLine = inputStack[index].split(":");
+		var localAddress = parseInt(stackLine[0],8);
+		var localGlyph = stackLine[1];
+		currentTable[localAddress] = localGlyph;
+	}
+	currentAddress = 01700;
+	currentSymbol = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("wordInput").value = currentSymbol;
+}
+
+function updateCode(){
+	var localCode = document.getElementById("actionInputArea").value;
+	currentTable[currentActionAddress] = string2byteCode(localCode);
+	var textOutput = "";
+	for(var index = 0700;index < 01000;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	document.getElementById("textIOAction").value = textOutput;
+	
+}
+
+</script>
+<style>
+
+
+#main{
+	width: 220px;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: orange;
+    border-radius: 20px;
+    float:left;
+	margin: 10px 10px 10px 10px;	
+}
+#aux{
+	width: 220px;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: orange;
+    border-radius: 20px;
+    float:left;
+	margin: 10px 10px 10px 10px;	
+}
+#super{
+	width: 520px;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: orange;
+    border-radius: 20px;
+    float:left;
+	margin: 10px 10px 10px 10px;	
+
+
+}
+</style>
+
+<script>
+/*
+0700:011,011,0124,040,075,040,063,060,060,073,057,057,0113,012,011,011,0126,040,075,040,061,073,040,057,057,0126,012,011,011,0155,0151,0143,0162,0157,0126,040,075,040,0126,052,061,0145,066,073,012,011,011,0155,0151,0154,0154,0151,0126,040,075,040,0126,052,061,0145,063,073,012,011,011,0146,040,075,040,060,056,061,0145,071,073,057,057,0110,0172,012,011,011,0146,0107,0110,0172,040,075,040,0146,057,061,0145,071,073,057,057,0107,0110,0172,011,012,011,011,0150,040,075,040,066,056,066,063,0145,055,063,064,073,012,011,011,0161,0137,0145,0154,0145,0143,0164,0162,0157,0156,040,075,040,061,056,066,0145,055,061,071,073,012,011,011,0153,0137,0142,0157,0154,0164,0172,0155,0141,0156,0156,040,075,040,061,056,063,070,0145,055,062,063,073,011,011,012,011,011,0157,0155,0145,0147,0141,040,075,040,0146,052,062,052,0115,0141,0164,0150,056,0120,0111,073,011,
+0701:011,011,0153,0124,040,075,040,0153,0137,0142,0157,0154,0164,0172,0155,0141,0156,0156,052,0124,073,012,
+0702:011,011,0124,040,075,040,0153,0124,057,0153,0137,0142,0157,0154,0164,0172,0155,0141,0156,0156,073,012,
+0703:011,011,0124,040,075,040,062,052,0124,073,012,
+0704:011,011,0124,040,075,040,0124,057,062,073,012,
+0705:011,011,0124,040,075,040,0124,040,053,040,060,056,060,061,052,0124,073,012,
+0706:011,011,0124,040,075,040,0124,040,055,040,060,056,060,061,052,0124,073,012,
+0707:011,011,0124,040,075,040,0124,052,061,060,073,012,
+0710:011,011,0124,040,075,040,0124,057,061,060,073,012,
+0711:011,011,0124,040,075,040,064,056,062,073,012,
+
+01701:044,044,0153,0124,040,075,040,0153,0134,0164,0151,0155,0145,0163,040,0124,044,044,
+01702:044,044,0124,040,075,040,0134,0146,0162,0141,0143,0173,0153,0124,0175,0173,0153,0175,044,044,
+01703:044,044,062,0134,0164,0151,0155,0145,0163,040,0124,044,044,
+
+
+currentTable[0700] = "011,011,0124,040,075,040,063,060,060,073,057,057,0113,012,011,011,0126,040,075,040,061,073,040,057,057,0126,012,011,011,0155,0151,0143,0162,0157,0126,040,075,040,0126,052,061,0145,066,073,012,011,011,0155,0151,0154,0154,0151,0126,040,075,040,0126,052,061,0145,063,073,012,011,011,0146,040,075,040,060,056,061,0145,071,073,057,057,0110,0172,012,011,011,0146,0107,0110,0172,040,075,040,0146,057,061,0145,071,073,057,057,0107,0110,0172,011,012,011,011,0150,040,075,040,066,056,066,063,0145,055,063,064,073,012,011,011,0161,0137,0145,0154,0145,0143,0164,0162,0157,0156,040,075,040,061,056,066,0145,055,061,071,073,012,011,011,0153,0137,0142,0157,0154,0164,0172,0155,0141,0156,0156,040,075,040,061,056,063,070,0145,055,062,063,073,011,011,012,011,011,0157,0155,0145,0147,0141,040,075,040,0146,052,062,052,0115,0141,0164,0150,056,0120,0111,073,011,";
+currentTable[0701] = "011,011,0153,0124,040,075,040,0153,0137,0142,0157,0154,0164,0172,0155,0141,0156,0156,052,0124,073,012,";
+currentTable[0702] = "011,011,0124,040,075,040,0153,0124,057,0153,0137,0142,0157,0154,0164,0172,0155,0141,0156,0156,073,012,";
+currentTable[0703] = "011,011,0124,040,075,040,062,052,0124,073,012,";
+currentTable[0704] = "011,011,0124,040,075,040,0124,057,062,073,012,";
+currentTable[0705] = "011,011,0124,040,075,040,0124,040,053,040,060,056,060,061,052,0124,073,012,";
+currentTable[0706] = "011,011,0124,040,075,040,0124,040,055,040,060,056,060,061,052,0124,073,012,";
+currentTable[0707] = "011,011,0124,040,075,040,0124,052,061,060,073,012,";
+currentTable[0710] = "011,011,0124,040,075,040,0124,057,061,060,073,012,";
+currentTable[0711] = "011,011,0124,040,075,040,064,056,062,073,012,";
+currentTable[0712] = "";
+*/
+
+
+</script>
+</body>
+</html>
+
