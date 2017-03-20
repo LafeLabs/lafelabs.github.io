@@ -30,9 +30,8 @@ h = 6.63e-34;//J-s
 
 </center>
 <div id = "buttContainer">
-<div class = "symbolButton" id = "div1"></div>
-<div class = "symbolButton" id = "div2"></div>
-
+	<div class = "symbolButton" id = "div1"></div>
+	<div class = "symbolButton" id = "div2"></div>
 </div>
 <script>
 
@@ -203,40 +202,22 @@ function doTheMath(localCommand){
 	overflow:scroll;	
 }
 .symbolButton{
-	width:auto;
-	height:auto;
+	width:100px;
+	height:50px;
     border-style: solid;
     border-width: 3px;
     border-color: black;
     border-radius: 4px;
     margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
+    padding: 1px 5px 10px 5px;
 	background: white;		
-	overflow:scroll;	
+	float:left;
 }
 .symbolButton:hover{
-	width:auto;
-	height:auto;
-    border-style: solid;
-    border-width: 3px;
-    border-color: black;
-    border-radius: 4px;
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
 	background: gray;		
-	overflow:scroll;	
 }
 .symbolButton:active{
-	width:auto;
-	height:auto;
-    border-style: solid;
-    border-width: 3px;
-    border-color: black;
-    border-radius: 4px;
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
 	background: yellow;		
-	overflow:scroll;	
 }
 
 .mathAtom{
