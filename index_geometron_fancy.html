@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geometron Tree</title>
+<script src="libraries/geometronLibrary3.js">
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+initGeometron();
+</script>
+</head>
+<body>
+<center id = "titleGeometron">
+<h1>Geometron:</h1>
+<i>The language of artistic freedom</i>
+</center>
+
+<center>
+<div>	
+	<table>
+	<tr style = "font-family:">
+		<td>What is Geometron?</td>
+		<td>Why Geometron?</td>
+		<td>Geometron Hypercube Editor</td>
+		<td>Geometron Instances</td>
+		<td>About the Author</td>
+	</tr>
+	</table>
+</div>
+</center>
+<center>
+	<canvas width = "300" height = "200" style = "border:solid; border-radius:20px; border-width:10px;" id = "join"></canvas>
+</center>
+
+<script>
+
+function 
+
+currentGlyph = "0300,0310,0337,0313,0330,0332,0332,0310,0330,0332,0304,0112,0117,0111,0116,0310,0336,0333,0350,0335,0304,0313,,0112,0117,0111,0116,0310,0336,0333,0350,0335,0304,0112,0117,0111,0116,,0310,0336,0333,0350,0335,0304,,0112,0117,0111,0116,0333,0350,0335,0336,0304,,0112,0117,0111,0116,0333,0350,0335,0336,0304,,0112,0117,0111,0116,0333,0350,0335,0336,0304,,0112,0117,0111,0116,0333,0350,0335,0336,0304,,0112,0117,0111,0116,0300,0332,0332,0332,0332,0332,0332,0331,0107,0105,0117,0115,0105,0124,0122,0117,0116,0310,0336,0331,0336,0330,0337,0337,0337,0201,0334,0201,0201,0201,0201,0201,0336,0201,0334,0337,0201,0334,0201,0201,0201,0201,0201,0336,0201,0334,0337,0330,0312,0306,0334,0337,0337,0300,0332,0332,0332,0332,";
+
+
+ctx = document.getElementById("join").getContext("2d");
+
+unit = 20;
+x0 = 150;
+y0 = 100;
+
+drawGlyph(currentGlyph);
+
+</script>
+<style>
+#titleGeometron{
+	width: auto;
+	height: auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: blue;
+    border-radius: 20px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background: none;	
+	font-size: 26px;
+	font-style: bold;	
+	font-family: "Century Gothic";
+}
+#joinCenter{
+	width: auto;
+	height: auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: red;
+    border-radius: 20px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background: none;	
+	font-size: 36px;
+	font-style: purple;	
+	font-family: "Century Gothic";
+	
+}
+
+#join:hover{
+	border-color: gray;
+
+}
+
+div{
+	width: auto;
+	height: auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: blue;
+    border-radius: 20px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background: none;	
+	font-size: 16px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";
+}
+
+tr{
+	font-size: 16px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";	
+}
+
+td{
+
+    border-style: solid;
+    border-width: 1px;
+    border-color:  black;
+    border-radius: 5px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+
+
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background:white;
+}
+td:hover{
+	background:gray;
+}
+
+canvas:hover{
+    border-color: blue;
+
+}
+
+.buttonDiv:hover{
+ background:gray;
+}
+
+.buttonDiv:active{
+ background:yellow;
+}
+
+
+</style>
+</body>
+</html>
+

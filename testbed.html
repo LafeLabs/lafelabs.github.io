@@ -20,21 +20,136 @@ currentTable[01703] = "044,044,062,0134,0164,0151,0155,0145,0163,040,0124,044,04
 k_boltzmann = 1.38065e-23;//J/K
 q_electron = 1.6e-19;//C
 h = 6.63e-34;//J-s
-
-
 </script>
 </head>
 <body>
-<center>
 <center id = "main">
+	
 
+	<div id = "mathAtom0700">
+		T [kelvin] = <input id = "input0700" size = "6" onchange = "doMath0700()"></input>
+		$$E = \frac{k_{boltzmann}T}{q_{electron}}$$
+		E [electron volts]= <input size = "8" id = "output0700a"></input>
+		 = E [meV]= <input size = "8" id = "output0700b"></input>
+		 = E [\(\mu\)eV]= <input size = "8" id = "output0700c"></input>
+		<script>
+			MathJax.Hub.Typeset();//tell Mathjax to update the math
+			function doMath0700(){
+				k_boltzmann = 1.38065e-23;//J/K
+				q_electron = 1.6e-19;//C
+				T = document.getElementById("input0700").value;
+				E = k_boltzmann*T/q_electron;
+				document.getElementById("output0700a").value = E;
+				document.getElementById("output0700b").value = E*1000;
+				document.getElementById("output0700c").value = E*1e6;
+			}
+		</script>
+		<style>
+			#mathAtom0700{
+				width: auto;
+				height: auto;
+				border-style: solid;
+				border-width: 3px;
+				border-color: black;
+				border-radius: 5px;
+				padding: 10px 10px 10px 10px;
+				margin: 10px 10px 10px 10px;
+				background: none;	
+				font-size: 16px;
+				font-family: "Century Schoolbook";
+				text-align: center;
+			}
+		</style>
+	</div>
+
+	<div id = "mathAtom0701">
+		f [GHz] = <input id = "input0701" size = "6" onchange = "doMath0701()"></input>
+		$$E = \frac{hf}{q_{electron}}$$
+		E [electron volts]= <input size = "8" id = "output0701a"></input>
+		 = E [meV]= <input size = "8" id = "output0701b"></input>
+		 = E [\(\mu\)eV]= <input size = "8" id = "output0701c"></input>
+		
+		<script>
+			MathJax.Hub.Typeset();//tell Mathjax to update the math
+			function doMath0701(){
+				q_electron = 1.6e-19;//C
+				h = 6.63e-34;//J-s
+				fGHz = document.getElementById("input0701").value;
+				f = fGHz*1e9;
+				E = h*f/q_electron;
+				document.getElementById("output0701a").value = E;
+				document.getElementById("output0701b").value = E*1000;
+				document.getElementById("output0701c").value = E*1e6;
+			}
+		</script>
+		<style>
+			#mathAtom0701{
+				width: auto;
+				height: auto;
+				border-style: solid;
+				border-width: 3px;
+				border-color: black;
+				border-radius: 5px;
+				padding: 10px 10px 10px 10px;
+				margin: 10px 10px 10px 10px;
+				background: none;	
+				font-size: 16px;
+				font-family: "Century Schoolbook";
+				text-align: center;
+			}
+		</style>
+	</div>
+
+
+	<div id  = "metaCalculator">
+		
+		HTML:<p><textarea id = "html1" cols = "80" rows = "20">
+				T [kelvin] = <input id = "input0700" size = "6" onchange = "doMath0700()"></input>
+		$$E = \frac{k_{boltzmann}T}{q_{electron}}$$
+		E [electron volts]= <input size = "8" id = "output0700a"></input>
+		 = E [meV]= <input size = "8" id = "output0700b"></input>
+		 = E [\(\mu\)eV]= <input size = "8" id = "output0700c"></input>		
+		</textarea>	
+		<p>JS:<p><textarea id = "js1" cols = "80" rows = "20">
+		  			MathJax.Hub.Typeset();//tell Mathjax to update the math
+			function doMath0700(){
+				k_boltzmann = 1.38065e-23;//J/K
+				q_electron = 1.6e-19;//C
+				T = document.getElementById("input0700").value;
+				E = k_boltzmann*T/q_electron;
+				document.getElementById("output0700a").value = E;
+				document.getElementById("output0700b").value = E*1000;
+				document.getElementById("output0700c").value = E*1e6;
+			}
+
+		
+		</textarea>	
+		<p>CSS:<p><textarea id = "css1" cols = "80" rows = "20">
+			#mathAtom0700{
+				width: auto;
+				height: auto;
+				border-style: solid;
+				border-width: 3px;
+				border-color: black;
+				border-radius: 5px;
+				padding: 10px 10px 10px 10px;
+				margin: 10px 10px 10px 10px;
+				background: none;	
+				font-size: 16px;
+				font-family: "Century Schoolbook";
+				text-align: center;
+			}		
+		</textarea>	
+		<p>
+		<button>GO</button>
+	</div>
+	
+
+	
 </center>
-<div id = "buttContainer">
-	<div class = "symbolButton" id = "div1"></div>
-	<div class = "symbolButton" id = "div2"></div>
-</div>
 <script>
 
+/*
 document.getElementById("div1").innerHTML = byteCode2string(currentTable[01702]);
 document.getElementById("div2").innerHTML = byteCode2string(currentTable[01703]);
 
@@ -81,6 +196,8 @@ function xcothx(Xin){
 	}
 	return Yout;
 }
+*/
+
 </script>
 <script id = "doTheMathScript">
 function doTheMath(localCommand){
@@ -181,8 +298,8 @@ function doTheMath(localCommand){
 	width:760px;
 	height:auto;
     border-style: solid;
-    border-width: 5px;
-    border-color: black;
+    border-width: 10px;
+    border-color: orange;
     border-radius: 10px;
     margin: 10px 10px 10px 10px;
     padding: 10px 10px 10px 10px;
@@ -200,6 +317,19 @@ function doTheMath(localCommand){
     padding: 10px 10px 10px 10px;
 	background: none;		
 	overflow:scroll;	
+}
+#metaCalculator{
+	width:auto;
+	height:auto;
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+	background: none;		
+	overflow:scroll;	
+
 }
 .symbolButton{
 	width:100px;

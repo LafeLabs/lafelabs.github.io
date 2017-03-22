@@ -395,10 +395,11 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		for(var index = 0;index < cursorPosition - 1;index++){
 			firstHalf += currentGlyphArray[index] + ",";
 		}
-		for(var index = cursorPosition;index < currentGlyphArray.length+1;index++){
+		for(var index = cursorPosition;index < currentGlyphArray.length;index++){
 			secondHalf += currentGlyphArray[index] + ",";
 		}				
 		currentGlyph = firstHalf + secondHalf;
+		console.log(currentGlyph);
 		cursorPosition--;
 		redraw();
 	}
