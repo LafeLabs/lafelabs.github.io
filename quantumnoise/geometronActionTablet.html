@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geometron Action Tablet</title>
+<script src="geometronLibraryQuantumNoise.js">
+</script>
+
+<script>
+</script>
+
+</head>
+<body>
+
+<div id = "mainPanel">
+<center><a href = "quantumnoiseMain.html" style = "color:white">RETURN TO MAIN HYPERCUBE</a></center>
+<center><div id = "addrDiv"></div></center>
+
+<textarea id = "codePanel">
+</textarea>
+
+<textarea id = "byteCode">
+</textarea>
+
+</div>
+
+<style>
+
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+#addrDiv{
+	background:white; 
+	width:100px;
+	height:30px; 
+	float:right;
+    border-radius: 10px;
+	font-size: 24px;
+	font-style: bold;	
+	text-align: center;
+
+}
+
+#mainPanel{
+	width: 960px;
+	height: 720px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;	 
+    border-radius: 20px;
+	background: black;
+}
+#codePanel{
+	width: 400px;
+	height: 400px;
+	padding: none;
+	margin: 10px 0px 10px 0px;
+    border-radius: 10px;
+	background: #FFFFF0;
+	float: right;
+}
+#byteCode{
+
+	width: 400px;
+	height: 100px;
+	padding: none;
+	margin: 10px 0px 10px 0px;
+    border-radius: 10px;
+	background: #FFFFF0;
+	float: right;
+
+}
+
+
+.tablet{
+	width: 540px;
+	height: 540px;
+	padding: none;
+    border-radius: 20px;
+    border: 3px solid red;
+	float: left;
+ }
+
+.glyphContainer{
+		margin: 1px 1px 1px 1px;
+		padding: none;
+	    border-radius: 10px;
+	    border-style: solid;
+	    border-color: purple;
+    	border-width: 2px;
+
+}
+.glyphContainer:hover{
+	background: gray;
+}
+.glyphContainer:active{
+	background: yellow;
+}
+
+.glyphTablet{
+
+	padding: 10px 10px 10px 10px;
+    border-style: none;
+    border-width: 0px;
+    border-color: black;
+    border-radius: 20px;
+	background: red;
+	margin: 10px 10px 10px 10px;
+	padding:none;
+}
+
+.label{
+	width: 40px;
+	height: 20px;
+    border-style: none;
+    border-width: 0px;
+    border-color: black;
+	margin: 2px 2px 2px 2px;	 
+    border-radius: 10px;
+    float:left;
+	background: white;
+	font-size: 12px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";
+}
+.glyph{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+	margin: 2px 2px 2px 2px;	 
+    border-radius: 10px;
+    float:left;
+	background: #a0a0a0;
+}
+
+.glyph:hover{
+    border-color: gray;
+}
+.glyph:active{
+    border-color: yellow;
+}
+
+</style>
+<script>
+	
+	initGeometron();
+    buildGlyphTable();
+ 	currentAddress = 0300;
+ 
+ 	document.getElementById("codePanel").value = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("byteCode").value = currentTable[currentAddress];
+
+	document.getElementById("addrDiv").innerHTML = "0" + currentAddress.toString(8);
+
+function buttonGlyph(zeep){
+	
+	currentTable[currentAddress] = string2byteCode(document.getElementById("codePanel").value);
+	currentAddress = zeep;
+	document.getElementById("addrDiv").innerHTML = "0" + currentAddress.toString(8);
+
+	document.getElementById("codePanel").value = byteCode2string(currentTable[zeep]);
+	document.getElementById("byteCode").value = currentTable[currentAddress];
+
+	console.log(currentTable[currentAddress]);
+}
+
+function buildGlyphTable(){
+	
+	glyphTableElement = "   \n";
+	glyphTableElement += "   			<td>\n";
+	glyphTableElement +="				<table class = \"glyphContainer\" onclick = \"buttonGlyph(3*64 + CURRENTROW*8 + CURRENTCOLUMN)\">\n";
+	glyphTableElement +="					<tr>\n";
+	glyphTableElement +="					<td><canvas class = \"glyph\"  ></canvas></td>\n";
+	glyphTableElement +="					</tr>\n";
+	glyphTableElement +="					<tr>	\n";
+	glyphTableElement +=" 						<td><center class = \"label\"></center></td>\n";
+	glyphTableElement +="					</tr>\n";
+	glyphTableElement +="				</table>\n";
+	glyphTableElement +="			</td>\n";
+
+	glyphTableRow = "";
+	glyphTableRow += "<tr>";
+	for(var index = 0;index < 8;index++){//8 elements make a row
+		glyphTableRow += glyphTableElement;	
+	}
+	glyphTableRow += "</tr>";
+	fullTablet = "";
+	fullTablet += 	"<table class= \"tablet\">";
+	for(var index = 0;index < 8;index++){//8 rows make a tablet
+		fullTablet += glyphTableRow;
+	}
+	fullTablet += 	"</table>";
+	
+		var tempArray = fullTablet.split("CURRENTCOLUMN");
+	var foo = "";
+	for(var index = 0;index < tempArray.length-1;index++){
+		foo += tempArray[index];
+		foo += (index%8).toString();
+	}
+	foo += tempArray[tempArray.length-1];
+
+	var tempArray = foo.split("CURRENTROW");
+
+	var bar = "";
+	for(var index = 0;index < tempArray.length-1;index++){
+		bar += tempArray[index];
+		bar += (Math.floor(index/8)).toString();
+	}
+	bar += tempArray[tempArray.length-1];
+
+	fullTablet = bar;
+
+	
+	document.getElementById("mainPanel").innerHTML = fullTablet+document.getElementById("mainPanel").innerHTML;
+	
+	glyphElements = document.getElementsByClassName("glyph");
+	labelElements = document.getElementsByClassName("label");
+	for(var index = 0;index < labelElements.length;index++){
+		labelElements[index].innerHTML = "0" + (0300+index).toString(8);
+	}
+	glyphWidth = 40;
+	for(var index = 0;index < glyphElements.length;index++){
+		glyphElements[index].width = glyphWidth;
+		glyphElements[index].height = glyphWidth;				
+		ctx = glyphElements[index].getContext("2d");
+		ctx.fillStyle="white";
+		ctx.fillRect(0, 0, glyphWidth, glyphWidth);
+		ctx.fillStyle="black";
+		doTheThing(0300);			
+		x = 0;
+		y = glyphWidth;
+		side = glyphWidth;
+		doTheThing(01300 + index);
+	}
+	
+}
+
+
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Word Editor</title>
+<script src="geometronLibraryQuantumNoise.js">
+</script>
+<script>
+	initGeometron();
+	loadTable();
+	currentAddress = 0600;
+</script>
+</head>
+<body>
+<center id = "main">
+
+	<a href = "quantumnoiseMain.html">RETURN TO MAIN HYPERCUBE</a>
+
+<h2>Word Editor</h2>
+<b>0600-0677, 01600-01677</b><p>
+<b><span id = "addressSpan">Address: </span></b>
+<p>
+<b><span>Word:<input id = "wordInput"></input></span></b>
+
+<h3>Word Bytecode Table:</h3>
+<textarea id = "textIO"></textarea>
+<p>
+<button onclick = "importTableByteCode()">IMPORT BYTECODE</button>
+<button onclick = "importTableText()">IMPORT TEXT</button>
+</center>
+<script>
+
+currentWord = byteCode2string(currentTable[currentAddress]);
+document.getElementById("wordInput").value = currentWord;
+
+var mainCenter = document.getElementById("addressSpan");
+
+var newSelect = document.createElement("SELECT");
+
+for(var index = 0600;index < 0700;index++){
+	var newOption = document.createElement("OPTION");
+	newOption.text = "0" + index.toString(8);
+	newSelect.appendChild(newOption);
+}
+for(var index = 01600;index < 01700;index++){
+	var newOption = document.createElement("OPTION");
+	newOption.text = "0" + index.toString(8);
+	newSelect.appendChild(newOption);
+}
+
+
+newSelect.onchange = function(){
+	currentAddress = parseInt(newSelect.value,8);
+	currentWord = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("wordInput").value = currentWord;
+	var textOutput = "";
+	for(var index = 0600;index < 0700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	for(var index = 01600;index < 01700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	document.getElementById("textIO").value = textOutput;
+
+}
+
+document.getElementById("wordInput").onchange = function(){
+	currentWord = document.getElementById("wordInput").value;
+	currentTable[currentAddress] = string2byteCode(currentWord);
+	var textOutput = "";
+	for(var index = 0600;index < 0700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	for(var index = 01600;index < 01700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	document.getElementById("textIO").value = textOutput;
+}
+
+mainCenter.appendChild(newSelect);
+
+	var textOutput = "";
+	for(var index = 0600;index < 0700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	for(var index = 01600;index < 01700;index++){
+		textOutput += "0" + index.toString(8);
+		textOutput += ":";
+		textOutput += currentTable[index];
+		textOutput += "\n";
+	}
+	document.getElementById("textIO").value = textOutput;
+
+function importTableByteCode(){
+	var localString = document.getElementById("textIO").value;
+	var inputStack = localString.split("\n");
+	for(var index = 0;index < inputStack.length;index++){
+		var stackLine = inputStack[index].split(":");
+		var localAddress = parseInt(stackLine[0],8);
+		var localGlyph = stackLine[1];
+		currentTable[localAddress] = localGlyph;
+	}
+	currentAddress = 0600;
+	currentWord = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("wordInput").value = currentWord;
+
+}
+function importTableText(){
+	var localString = document.getElementById("textIO").value;
+	var inputStack = localString.split("\n");
+	for(var index = 0;index < inputStack.length;index++){
+		currentTable[0600 + index] = string2byteCode(inputStack[index]);
+	}
+	currentAddress = 0600;
+	currentWord = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("wordInput").value = currentWord;
+
+}
+
+</script>
+<style>
+
+
+#main{
+	width: 220px;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: blue;
+    border-radius: 20px;
+	margin: 50px 50px 50px 50px;	
+}
+</style>
+</body>
+</html>
+

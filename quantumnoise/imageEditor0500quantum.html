@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Editor</title>
+<script src="geometronLibraryQuantumNoise.js">
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script id = "that">
+initGeometron();
+loadTable();
+currentAddress = 0500;
+
+</script>
+</head>
+<body>
+
+<center id = "mainPanel">
+<center><a href = "quantumnoiseMain.html" style = "color:white">RETURN TO MAIN HYPERCUBE</a></center>
+
+	<img id = "image0500s">
+	</img>
+
+	<center>
+		<button onclick = "prev()">PREV</button>
+		<input id = "address"></input>
+		<button onclick = "next()">NEXT</button>
+	</center>
+	<center>
+		<input type  = "text" id = "urlname" onchange = "update();"></input>
+	</center>
+	<center>
+		<input type  = "text" id = "url" size = "60"  onchange = "update();"></input>
+	</center>
+	
+	<textarea id = "codeOut">
+
+	</textarea>
+
+</center>
+<script>
+
+document.getElementById("image0500s").src = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("address").value = "0" + currentAddress.toString(8);
+document.getElementById("url").value  = byteCode2string(currentTable[currentAddress]);
+document.getElementById("urlname").value  = byteCode2string(currentTable[currentAddress + 01000]);
+
+document.getElementById("codeOut").value = "currentTable[0" + currentAddress.toString(8) + "] = \"" + currentTable[currentAddress] + "\";\n";
+document.getElementById("codeOut").value += "currentTable[01" + currentAddress.toString(8) + "] = \"" + currentTable[currentAddress + 01000] + "\";\n";
+
+function update(){
+	currentTable[currentAddress] = string2byteCode(document.getElementById("url").value);
+	currentTable[currentAddress + 01000] = string2byteCode(document.getElementById("urlname").value);
+document.getElementById("image0500s").src = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("address").value = "0" + currentAddress.toString(8);
+document.getElementById("url").value  = byteCode2string(currentTable[currentAddress]);
+document.getElementById("urlname").value  = byteCode2string(currentTable[currentAddress + 01000]);
+
+document.getElementById("codeOut").value = "currentTable[0" + currentAddress.toString(8) + "] = \"" + currentTable[currentAddress] + "\";\n";
+document.getElementById("codeOut").value += "currentTable[01" + currentAddress.toString(8) + "] = \"" + currentTable[currentAddress + 01000] + "\";\n";
+	
+
+}
+
+function prev(){
+
+
+	currentAddress--;
+	if(currentAddress < 0500){
+		currentAddress = 0577;
+	}
+	
+	document.getElementById("image0500s").src = byteCode2string(currentTable[currentAddress]);
+	
+	document.getElementById("urlname").value = byteCode2string(currentTable[currentAddress + 01000]);
+	
+	document.getElementById("address").value = "0" + currentAddress.toString(8);
+document.getElementById("url").value  = byteCode2string(currentTable[currentAddress]);
+
+document.getElementById("codeOut").value = "currentTable[0" + currentAddress.toString(8) + "] = \"" + currentTable[currentAddress] + "\";\n";
+document.getElementById("codeOut").value += "currentTable[01" + currentAddress.toString(8) + "] = \"" + currentTable[currentAddress + 01000] + "\";\n";
+
+	
+	
+	
+}
+
+function next(){
+
+
+	currentAddress++;
+	if(currentAddress > 0577){
+		currentAddress = 0500;
+	}
+
+	document.getElementById("image0500s").src = byteCode2string(currentTable[currentAddress]);
+	document.getElementById("urlname").value = byteCode2string(currentTable[currentAddress + 01000]);
+
+	document.getElementById("address").value = "0" + currentAddress.toString(8);
+document.getElementById("url").value  = byteCode2string(currentTable[currentAddress]);
+
+document.getElementById("codeOut").value = "currentTable[0" + currentAddress.toString(8) + "] = \"" + currentTable[currentAddress] + "\";\n";
+document.getElementById("codeOut").value += "currentTable[01" + currentAddress.toString(8) + "] = \"" + currentTable[currentAddress + 01000] + "\";\n";
+
+}
+
+</script>
+
+
+<style id = "mainStyle">
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+input{
+    border-radius: 5px;
+    border-style: solid;
+}
+button{
+  	font-size: 12px;
+	font-style: bold;	
+	font-family: "Century Schoolbook";
+
+
+}
+#codeOut{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+	background:white;
+	width: 450px;
+	height: 80px;
+	margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+
+}
+
+#image0500s{
+
+	background:white;
+	width: auto;
+	height: 450px;
+	margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+
+
+
+}
+
+#mainPanel{
+
+	width: auto;
+	height: auto;
+    border-style: solid;
+    border-width: 10px;
+    border-color: yellow;
+    border-radius: 20px;
+    margin: 10px 10px 10px 10px;
+	background: black;	
+}
+
+</style>
+</body>
+</html>
+
