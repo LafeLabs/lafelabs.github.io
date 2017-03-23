@@ -39,7 +39,7 @@ var mainCenter = document.getElementById("addressSpan");
 
 newSelect = document.createElement("SELECT");
 
-for(var index = 01700;index < 01800;index++){
+for(var index = 01700;index < 02000;index++){
 	var newOption = document.createElement("OPTION");
 	newOption.text = "0" + index.toString(8);
 	newSelect.appendChild(newOption);
@@ -71,6 +71,8 @@ document.getElementById("wordInput").onchange = function(){
 mainCenter.appendChild(newSelect);
 
 	updateCode();
+		document.getElementById("outputEquation").innerHTML = "$$" + currentWord + "$$";
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
 
 
 function importTableByteCode(){
@@ -122,7 +124,7 @@ function NEXT(){
 
 function updateCode(){
 	var textOutput = "";
-	for(var index = 01700;index < 01800;index++){
+	for(var index = 01700;index < 02000;index++){
 		textOutput += "currentTable[";
 		textOutput += "0" + index.toString(8);
 		textOutput += "] = \"";
@@ -138,7 +140,7 @@ function updateCode(){
 
 
 #main{
-	width: 300px;
+	width: auto;
 	height:auto;
 	border-style:solid;
 	background: white;
