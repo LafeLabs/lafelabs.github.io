@@ -12,12 +12,6 @@ initGeometron();
 X = 0;
 Y = 0;
 
-currentTable[01732] = "044,044,0131,040,075,040,0130,0134,0143,0157,0164,0150,0173,050,0130,051,0175,044,044";
-
-currentTable[01701] = "044,044,0153,0124,040,075,040,0153,0134,0164,0151,0155,0145,0163,040,0124,044,044,";
-currentTable[01702] = "044,044,0124,040,075,040,0134,0146,0162,0141,0143,0173,0153,0124,0175,0173,0153,0175,044,044,";
-currentTable[01703] = "044,044,062,0134,0164,0151,0155,0145,0163,040,0124,044,044,";
-
 k_boltzmann = 1.38065e-23;//J/K
 q_electron = 1.6e-19;//C
 h = 6.63e-34;//J-s
@@ -26,8 +20,79 @@ h = 6.63e-34;//J-s
 <body>
 <center id = "main">
 	<a href = "quantumnoiseMain.html">RETURN TO MAIN HYPERCUBE</a>
+<div class = "mathAtom">
 
-	<div id = "mathAtom0700">
+
+<span id = "pirateBoat"></span>
+
+<script>
+
+document.getElementById("pirateBoat").innerHTML = "wolfram's stoopid balls:" + pirateNumber(1920,"V");
+
+function pirateNumber(treasure,pirateUnit){
+
+
+	var sword = "";
+	sword += "$$";
+
+	if(Math.abs(tempExponent) >= 15 || Math.abs(tempExponent) <= -12){
+		var tempNum = treasure.toExponential(1);  
+		console.log(tempNum);
+		var tempArray = tempNum.split("e");
+		var tempExponent = parseInt(tempArray[1]);
+		var tempBase = parseFloat(tempArray[0]);
+		var booty = Math.floor(tempExponent/3);		
+		var jollyRoger = Math.pow(10,3 - Math.abs(tempExponent)%3);
+
+
+		sword += tempBase.toString();	
+		sword += "\\times 10^{";
+		sword += tempExponent;
+		sword += "}";
+		sword += " \\textrm{ ";	
+		sword += pirateUnit;	
+		sword += "}$$";
+	}else{
+		var tempNum = treasure.toExponential(1);  
+		console.log(tempNum);
+		var tempArray = tempNum.split("e");
+		var tempExponent = parseInt(tempArray[1]);
+		var tempBase = parseFloat(tempArray[0]);
+		var booty = Math.floor(tempExponent/3);		
+		var jollyRoger = Math.pow(10,3 - Math.abs(tempExponent)%3);
+
+
+		if(Math.abs(tempExponent)%3 != 0){
+			tempBase = parseFloat(tempArray[0]*jollyRoger);				
+		}else{
+			tempBase = parseFloat(tempArray[0]);				
+		}
+		console.log(jollyRoger);
+		var bigPrefix = ["k","M","G","T"];
+		var smallPrefix = ["m","\\(\\mu\\)","n","p"];
+		prefix = "";
+		if(booty > 0){
+			prefix = bigPrefix[booty - 1];
+		}
+		if(booty < 0){
+			prefix = smallPrefix[Math.abs(booty) - 1];
+		}
+		console.log(prefix);
+		pirateUnit = prefix + pirateUnit;//string addition is non-commutative
+		sword += tempBase.toFixed();	
+		sword += " \\textrm{ ";		
+		sword += pirateUnit;	
+		sword += "}$$";
+
+	}
+	return sword;
+}
+</script>
+
+
+</div>
+
+<div class = "mathAtom">
 		T [kelvin] = <input id = "input0700" size = "6" onchange = "doMath0700()" value = 300></input>
 		$$E = \frac{k_{boltzmann}T}{q_{electron}}$$
 		E [electron volts]= <input size = "8" id = "output0700a"></input>
@@ -46,25 +111,10 @@ h = 6.63e-34;//J-s
 			}
 			doMath0700();
 		</script>
-		<style>
-			#mathAtom0700{
-				width: auto;
-				height: auto;
-				border-style: solid;
-				border-width: 3px;
-				border-color: black;
-				border-radius: 5px;
-				padding: 10px 10px 10px 10px;
-				margin: 10px 10px 10px 10px;
-				background: none;	
-				font-size: 16px;
-				font-family: "Century Schoolbook";
-				text-align: center;
-			}
-		</style>
 	</div>
 
-	<div id = "mathAtom0701">
+
+	<div class = "mathAtom">
 		f [GHz] = <input id = "input0701" size = "6" onchange = "doMath0701()" value = 6></input>
 		$$E = \frac{hf}{q_{electron}}$$
 		E [electron volts]= <input size = "8" id = "output0701a"></input>
@@ -85,25 +135,9 @@ h = 6.63e-34;//J-s
 			}
 			doMath0701();
 		</script>
-		<style>
-			#mathAtom0701{
-				width: auto;
-				height: auto;
-				border-style: solid;
-				border-width: 3px;
-				border-color: black;
-				border-radius: 5px;
-				padding: 10px 10px 10px 10px;
-				margin: 10px 10px 10px 10px;
-				background: none;	
-				font-size: 16px;
-				font-family: "Century Schoolbook";
-				text-align: center;
-			}
-		</style>
 	</div>
 
-	<div id = "mathAtom0702">
+	<div class = "mathAtom">
 		R [\(\Omega\)] = <input id = "input0702a" size = "6" onchange = "doMath0702()" value = 50></input>
 		T [K] = <input id = "input0702b" size = "6" onchange = "doMath0702()" value = 300></input>
 		
@@ -121,29 +155,55 @@ h = 6.63e-34;//J-s
 			}
 			doMath0702();
 		</script>
-		<style>
-			#mathAtom0702{
-				width: auto;
-				height: auto;
-				border-style: solid;
-				border-width: 3px;
-				border-color: black;
-				border-radius: 5px;
-				padding: 10px 10px 10px 10px;
-				margin: 10px 10px 10px 10px;
-				background: none;	
-				font-size: 16px;
-				font-family: "Century Schoolbook";
-				text-align: center;
-			}
-		</style>
+		
+	</div>
+
+	<div class = "mathAtom" id = "mathAtom0703">
+	<script>
+	
+		mathAddress = 0703;
+		currentNode = document.getElementById("mathAtom0" + mathAddress.toString(8));
+		var newDiv = document.createElement("DIV");
+		newDiv.innerHTML = "$$" + byteCode2string(currentTable[mathAddress + 01000]) + "$$";
+		currentNode.appendChild(newDiv);
+		var newDiv = document.createElement("DIV");
+		newInput = document.createElement("INPUT");	
+		newInput.size = "8";
+		newDiv.appendChild(newInput);
+		currentNode.appendChild(newDiv);
+		newDiv.innerHTML = "f = " + newDiv.innerHTML;		
+
+		var newDiv = document.createElement("DIV");
+		newInput = document.createElement("INPUT");	
+		newInput.size = "8";
+		
+		newDiv.appendChild(newInput);
+		currentNode.appendChild(newDiv);
+		newDiv.innerHTML = "T = " + newDiv.innerHTML;		
+
+		var varNameArray = ["f","T","n"];
+				
+	//	currentNode.innerHTML = varNameArray[0] + " = ";
+		//currentNode.appendChild(newInput);
+		MathJax.Hub.Typeset();//tell Mathjax to update the math
+		
+		function doMath0703(){
+											
+		}
+			
+		doMath0703();
+		</script>
 	</div>
 	
-		
+
 </center>
+<script>
 
 
+
+</script>
 <style>
+
 #main{
 	width:760px;
 	height:auto;
@@ -157,19 +217,21 @@ h = 6.63e-34;//J-s
 	overflow:scroll;	
 }
 
-#metaCalculator{
-	width:auto;
-	height:auto;
-    border-style: solid;
-    border-width: 5px;
-    border-color: black;
-    border-radius: 10px;
-    margin: 10px 10px 10px 10px;
-    padding: 10px 10px 10px 10px;
-	background: none;		
-	overflow:scroll;	
-
+.mathAtom{
+	width: auto;
+	height: auto;
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	border-radius: 5px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	background: none;	
+	font-size: 16px;
+	font-family: "Century Schoolbook";
+	text-align: center;
 }
+
 
 </style>
 </center>

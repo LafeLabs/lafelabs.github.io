@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src = "libraries/geometronLibrary3.js"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+initGeometron();
+currentTable[01700] = "040,0146,050,0170,051,040,075,040,061,053,062,0170,053,0170,0136,062,053,062,0170,0136,063,053,0170,0136,064,053,";
+currentTable[01701] = "075,050,061,040,053,040,0170,0136,062,040,053,040,0170,0136,064,040,053,040,0134,0144,0157,0164,0163,051,040,053,040,062,0170,050,061,040,053,040,0170,0136,062,040,053,040,0170,0136,064,040,053,040,0134,0144,0157,0164,0163,051,";
+currentTable[01702] = "075,050,062,0170,040,053,040,061,051,050,061,040,053,040,0170,0136,062,040,053,040,0170,0136,064,040,053,040,0134,0144,0157,0164,0163,051,";
+currentTable[01703] = "0171,040,0134,0145,0161,0165,0151,0166,040,061,040,053,040,0170,0136,062,040,053,040,0170,0136,064,040,053,040,0134,0144,0157,0164,0163,";
+currentTable[01704] = "0170,0136,062,0171,040,075,040,040,0170,0136,062,040,053,040,0170,0136,064,040,053,040,0170,0136,066,040,053,040,0134,0144,0157,0164,0163,";
+currentTable[01705] = "0170,0136,062,0171,040,075,040,0171,055,061,";
+currentTable[01706] = "0171,050,0170,0136,062,040,055,040,061,051,040,075,040,055,061,";
+currentTable[01707] = "0171,040,075,040,0134,0146,0162,0141,0143,0173,061,0175,0173,061,040,055,040,0170,0136,062,0175,";
+currentTable[01710] = "0146,050,0170,051,040,075,050,062,0170,053,061,051,0171,040,075,040,0134,0146,0162,0141,0143,0173,062,0170,053,061,0175,0173,061,055,0170,0136,062,0175,054,040,055,061,040,074,040,0170,040,074,040,061,";
+</script>
+</head>
+<body>
+<center id = "mainMath">
+<h1>MATH:</h1>
+
+</center>
+
+<canvas width = "400" height = "400" style = "border:solid;" id = "plotCanvas"></canvas>
+<script>
+	
+
+	currentNode = document.getElementById("mainMath")
+	for(var index = 0;index < 011;index++){
+		currentNode.innerHTML += "$$";
+		currentNode.innerHTML += byteCode2string(currentTable[01700 + index]);
+		currentNode.innerHTML += "$$\n";
+	}
+	
+	ctx = document.getElementById("plotCanvas").getContext("2d");
+	ctx.clearRect(0,0,400,400);
+	
+	doTheThing(0300);
+	doThething(0101);
+	
+	
+	function derp(xin){
+		return (2*xin + 1)/(1 - xin*xin);
+	}
+</script>
+
+<style>
+td{
+	border-style: solid;
+	border-width: 3px;
+	border-color: black;
+	border-radius: 10px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	font-size: 20px;
+	font-family: "Century Schoolbook";
+	text-align: center;
+}
+h1{
+	font-size: 30px;
+	font-family: "Century Gothic";
+	text-align: center;
+}
+h2{
+	font-size: 25px;
+	font-family: "Century Gothic";
+	text-align: center;
+}
+h3{
+	font-size: 20px;
+	font-family: "Century Gothic";
+	text-align: center;
+}
+
+</style>
+</body>
+</html>
+

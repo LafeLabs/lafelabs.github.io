@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Editor</title>
+<script src="geometronLibraryQuantumNoise.js">
+</script>
+<script>
+	initGeometron();
+	currentAddress = 0101;
+</script>
+</head>
+<body>
+<center id = "main">
+
+	<a href = "quantumnoiseMain.html">RETURN TO MAIN HYPERCUBE</a>
+<p>
+	
+	<center>
+		<canvas width = 200 height = 250 style = "border:solid;float:left;" id = "fontCanvas">
+		</canvas>
+		<canvas width = 200 height = 250 style = "border:solid;float:left;" id = "spellCanvas">
+		</canvas>
+		
+		<canvas width = 600 height = 150 style = "border:solid;" id = "displayCanvas">
+		</canvas>
+	</center>
+	
+	<center>
+		<button onclick = "prev()">PREV</button>
+		<input id = "address"></input>
+		<button onclick = "next()">NEXT</button>		
+	</center>
+</center>
+	
+<script>
+
+redraw();
+
+function redraw(){
+	ctx = document.getElementById("fontCanvas").getContext("2d");
+	x0=50;
+	y0=150;
+	side = 50;
+	doTheThing(0300);
+	drawGlyph(currentTable[currentAddress]);
+	doTheThing(0200);
+
+
+	ctx = document.getElementById("displayCanvas").getContext("2d");
+	x0=10;
+	y0=30;
+	unit = 20;
+	doTheThing(0300);
+	for(var index = 040;index < 0100;index++){
+		doTheThing(index);
+	}
+	y0=60;
+	doTheThing(0300);
+	for(var index = 0101;index < 0140;index++){
+		doTheThing(index);
+	}
+	y0=90;
+	doTheThing(0300);
+	for(var index = 0141;index < 0177;index++){
+		doTheThing(index);
+	}
+
+}
+
+
+</script>
+<style>
+
+
+#main{
+	width: auto;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: black;
+    border-radius: 20px;
+	padding: 10px 10px 10px 10px;	
+
+}
+center{
+	width: auto;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: black;
+    border-radius: 20px;
+	margin: 50px 50px 50px 50px;	
+	padding: 50px 50px 50px 50px;	
+}
+canvas{
+	margin: 10px 10px 10px 10px;	
+}
+</style>
+</body>
+</html>
+
