@@ -2,12 +2,8 @@
 <html>
 <head>
 <title>Math Formats QGT</title>
-<script src = "libraries/geometronLibrary3.js"></script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-<script>
-initGeometron();
-</script>
+
 </head>
 
 <body>
@@ -16,189 +12,63 @@ initGeometron();
 
 <div class = "mathAtom">
 
-Input:<input id = "ukNavy" onchange = "update()"></input>Formatted Number:<span id = "pirateBoat" style = "border:solid;padding:5px 5px 5px 5px;"></span>
-
+Input:<input id = "ukNavy" onchange = "update()" value = "1.6e-19"></input>Formatted Number:<span id = "pirateBoat" style = "border:solid;padding:5px 5px 5px 5px;"></span>
 
 <script>
 
-foo = -.0000000026000012342;
-
-document.getElementById("pirateBoat").innerHTML = onepercentNumber1(foo);
-
+update();
 function update(){
+
 	foo = document.getElementById("ukNavy").value;
-	document.getElementById("pirateBoat").innerHTML = onepercentNumber1(foo);
+	var bar = new gNumber(foo);
+	document.getElementById("pirateBoat").innerHTML = sci1(bar);
+		
 }
 
 
-function onepercentNumber1(xin){
-	var outstring = "";
-	var xout = xin;
-	numDigits = 3;
+function sci1(gnumin){ //simplest scientific notation, to 1%
+	if(gnumin.digitArray[2] > 5){//round here using next decimal place
+		gnumin.digitArray[1]++;
+		gnumin.digitArray[1] = gnumin.digitArray[1]%10;
+	}
+	return gnumin.baseSign + (gnumin.digitArray[0]).toString() + "." + (gnumin.digitArray[1]).toString() + " &#x2715 10<sup>" + gnumin.expSign + (gnumin.expMag).toString() + "</sup>";
+}
+
+
+function gNumber(xin) {
 	var xinExpAbs = (Math.abs(xin)).toExponential();
 	var xinExpArray = xinExpAbs.split("e");
-	baseSignString = "";	
+	var baseSignString = "";	
 	if(Math.sign(xin) == -1){
 		baseSignString = "-";
 	}
-	expSignString = "";
+	var expSignString = "";
 	if(Math.abs(xin) < 1){
 		expSignString = "-";
 	}
-	expMag = Math.abs(parseInt(xinExpArray[1]));
+	var expMag = Math.abs(parseInt(xinExpArray[1]));
 	
 	
-	digitArray = [];
+	var digitArray = [];
 	for(var index = 0;index < xinExpArray[0].length;index++){
 		if((xinExpArray[0].charCodeAt(index) >= 060)&&(xinExpArray[0].charCodeAt(index) < 072)){
-			digitArray.push(xinExpArray[0].charAt(index));
+			digitArray.push(parseInt(xinExpArray[0].charAt(index)));
 		} 
 	
 	}
+	digitArray.push(0);//throw some zeros on the stack to avoid errors
+	digitArray.push(0);
+	digitArray.push(0);
 	
-	
-	console.log(digitArray[0] + "." + digitArray[1] + " X 10");
-	outstring = baseSignString + digitArray[0] + "." + digitArray[1] + " &#x2715 10<sup>";
-	outstring += expSignString + expMag.toString();
-	outstring += "</sup>"
-
-/*
-	if(Math.abs(xin) >= 1 && Math.abs(xin) < 10){
-		xin = Math.round(xin*10)/10;
-		return xin.toString();
-	}
-	if(Math.abs(xin) >= 10 && Math.abs(xin) < 100){
-		xin = Math.round(xin);
-		return xin.toString();
-	}
-	if(Math.abs(xin) >= 100 && Math.abs(xin) < 1000){
-		xin = Math.round(xin/10)*10;
-		return xin.toString();
-	}
-	if(Math.abs(xin) >= 100 && Math.abs(xin) < 1000){
-		xin = Math.round(xin/10)*10;
-		return xin.toString();
-	}
-	if(Math.abs(xin) >= 1000 && Math.abs(xin) < 10000){
-		xin = Math.round(xin/100)*100;
-		outstring = xin.toString();
-		outstring = outstring.charAt(0) + "," + outstring.charAt(1) + "00";
-		return outstring;
-	}
-	if(Math.abs(xin) >= 10000 && Math.abs(xin) < 100000){
-		xin = Math.round(xin/1000)*1000;
-		outstring = xin.toString();
-		outstring = outstring.charAt(0)  + outstring.charAt(1) + ",000";
-		return outstring;
-	}
-	if(Math.abs(xin) >= 100000 && Math.abs(xin) < 1000000){
-		xin = Math.round(xin/10000)*10000;
-		outstring = xin.toString();
-		outstring = outstring.charAt(0)  + outstring.charAt(1) + "0,000";
-		return outstring;
-	}
-	if(Math.abs(xin) >= 1000000 && Math.abs(xin) < 10000000){
-		xin = Math.round(xin/100000)*100000;
-		outstring = xin.toString();
-		outstring = outstring.charAt(0) +"," + outstring.charAt(1) + "00,000";
-		return outstring;
-	}
-	if(Math.abs(xin) >= 1000000 && Math.abs(xin) < 10000000){
-		xin = Math.round(xin/100000)*100000;
-		outstring = xin.toString();
-		outstring = outstring.charAt(0) +"," + outstring.charAt(1) + "00,000";
-		return outstring;
-	}
-	if(Math.abs(xin) >= 1000000 && Math.abs(xin) < 10000000){//1 MILLION TO 10 MILLION
-		xin = Math.round(xin/100000)*100000;
-		outstring = xin.toString();
-		outstring = outstring.charAt(0) +"," + outstring.charAt(1) + "00,000";
-		return outstring;
-	}
-	if(Math.abs(xin) >= 10000000 && Math.abs(xin) < 100000000){//10 MILLION TO 100 MILLION
-		xin = Math.round(xin/1000000)*1000000;
-		outstring = xin.toString();
-		outstring = outstring.charAt(0) + outstring.charAt(1) + ",000,000";
-		return outstring;
-	}
-
-
-	*/
-	
-	
-	return outstring;
+    this.baseSign = baseSignString; //string
+    this.expSign = expSignString; //string
+    this.digitArray = digitArray; //int array
+	this.expMag = expMag; //int
 }
 
-
-
-
-
-function pirateNumber(treasure,pirateUnit){
-
-
-	var sword = "";
-	sword += "$$";
-
-	if(Math.abs(tempExponent) >= 15 || Math.abs(tempExponent) <= -12){
-		var tempNum = treasure.toExponential(1);  
-		console.log(tempNum);
-		var tempArray = tempNum.split("e");
-		var tempExponent = parseInt(tempArray[1]);
-		var tempBase = parseFloat(tempArray[0]);
-		var booty = Math.floor(tempExponent/3);		
-		var jollyRoger = Math.pow(10,3 - Math.abs(tempExponent)%3);
-
-
-		sword += tempBase.toString();	
-		sword += "\\times 10^{";
-		sword += tempExponent;
-		sword += "}";
-		sword += " \\textrm{ ";	
-		sword += pirateUnit;	
-		sword += "}$$";
-	}else{
-		var tempNum = treasure.toExponential(1);  
-		console.log(tempNum);
-		var tempArray = tempNum.split("e");
-		var tempExponent = parseInt(tempArray[1]);
-		var tempBase = parseFloat(tempArray[0]);
-		var booty = Math.floor(tempExponent/3);		
-		var jollyRoger = Math.pow(10,3 - Math.abs(tempExponent)%3);
-
-
-		if(Math.abs(tempExponent)%3 != 0){
-			tempBase = parseFloat(tempArray[0]*jollyRoger);				
-		}else{
-			tempBase = parseFloat(tempArray[0]);				
-		}
-		console.log(jollyRoger);
-		var bigPrefix = ["k","M","G","T"];
-		var smallPrefix = ["m","\\(\\mu\\)","n","p"];
-		prefix = "";
-		if(booty > 0){
-			prefix = bigPrefix[booty - 1];
-		}
-		if(booty < 0){
-			prefix = smallPrefix[Math.abs(booty) - 1];
-		}
-		console.log(prefix);
-		pirateUnit = prefix + pirateUnit;//string addition is non-commutative
-		sword += tempBase.toFixed();	
-		sword += " \\textrm{ ";		
-		sword += pirateUnit;	
-		sword += "}$$";
-
-	}
-	return sword;
-}
 </script>
 
-
 </div>
-
-
-
-	
 
 </center>
 <script>
