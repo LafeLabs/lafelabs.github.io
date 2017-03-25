@@ -2,29 +2,21 @@
 <html>
 <head>
 <title>Math Formats QGT</title>
-
-
 </head>
-
 <body>
 <center id = "main">
 <h1>Math Format Functions</h1>
 
 <div class = "mathAtom">
-
 Input:<input id = "ukNavy" onchange = "update()" value = "1.6e-19"></input>Formatted Number:<span id = "pirateBoat" style = "border:solid;padding:5px 5px 5px 5px;"></span>
-
 <script>
 
 update();
 function update(){
-
 	foo = document.getElementById("ukNavy").value;
 	var bar = new gNumber(foo);
-	document.getElementById("pirateBoat").innerHTML = sci1(bar);
-		
+	document.getElementById("pirateBoat").innerHTML = sci1(bar);		
 }
-
 
 function sci1(gnumin){ //simplest scientific notation, to 1%
 	if(gnumin.digitArray[2] > 5){//round here using next decimal place
@@ -35,7 +27,7 @@ function sci1(gnumin){ //simplest scientific notation, to 1%
 }
 
 
-function gNumber(xin) {
+function gNumber(xin) {//constructor for non-awful number format
 	var xinExpAbs = (Math.abs(xin)).toExponential();
 	var xinExpArray = xinExpAbs.split("e");
 	var baseSignString = "";	
@@ -47,8 +39,7 @@ function gNumber(xin) {
 		expSignString = "-";
 	}
 	var expMag = Math.abs(parseInt(xinExpArray[1]));
-	
-	
+		
 	var digitArray = [];
 	for(var index = 0;index < xinExpArray[0].length;index++){
 		if((xinExpArray[0].charCodeAt(index) >= 060)&&(xinExpArray[0].charCodeAt(index) < 072)){
@@ -67,15 +58,9 @@ function gNumber(xin) {
 }
 
 </script>
-
 </div>
-
 </center>
-<script>
 
-
-
-</script>
 <style>
 
 #main{

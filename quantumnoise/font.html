@@ -7,51 +7,169 @@
 <script>
 	initGeometron();
 	currentAddress = 0101;
+	currentGlyph = currentTable[currentAddress];
+	firsthalf = currentGlyph;
+	secondhalf = "";
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
 </script>
 </head>
 <body>
-<center id = "main">
+<div id = "main">
 
 	<a href = "quantumnoiseMain.html">RETURN TO MAIN HYPERCUBE</a>
 <p>
 	
-	<center>
+
+	<div>
 		<canvas width = 200 height = 250 style = "border:solid;float:left;" id = "fontCanvas">
 		</canvas>
-		<canvas width = 200 height = 250 style = "border:solid;float:left;" id = "spellCanvas">
+	</div>
+	<div id = "movePanel" style = "width:120px;height:170px">
+	</div>
+	<div id = "controlPanel" style = "width:250px;height:130px">	
+	</div>
+	<div id = "spellDiv">
+		<canvas width = 600 height = 150 style = "border:solid;" id = "spellCanvas">
 		</canvas>
-		
+	</div>
+		<div>
 		<canvas width = 600 height = 150 style = "border:solid;" id = "displayCanvas">
 		</canvas>
-	</center>
-	
-	<center>
+		</div>
+<center>
 		<button onclick = "prev()">PREV</button>
-		<input id = "address"></input>
+		<input id = "address" size = "5"></input>
 		<button onclick = "next()">NEXT</button>		
-	</center>
 </center>
-	
+</div>
+
 <script>
 
 redraw();
 
+currentNode = document.getElementById("controlPanel");
+
+appendGlyphButton(0340);
+appendGlyphButton(0341);
+appendGlyphButton(0342);
+appendGlyphButton(0343);
+appendGlyphButton(0200);
+appendGlyphButton(0201);
+appendGlyphButton(0310);
+appendGlyphButton(0311);
+appendGlyphButton(0312);
+appendGlyphButton(0313);
+appendGlyphButton(0314);
+appendGlyphButton(0304);
+appendGlyphButton(0305);
+appendGlyphButton(0306);
+appendGlyphButton(0350);
+appendGlyphButton(0351);
+appendGlyphButton(0352);
+appendGlyphButton(0353);
+
+currentNode = document.getElementById("movePanel");
+appendGlyphButton(0334);
+appendGlyphButton(0330);
+appendGlyphButton(0335);
+appendGlyphButton(0332);
+appendGlyphButton(0300);
+appendGlyphButton(0333);
+appendGlyphButton(0336);
+appendGlyphButton(0331);
+appendGlyphButton(0337);
+appendGlyphButton(020);
+appendGlyphButton(010);
+appendGlyphButton(021);
+
+
+
+function glyphButtonAction(localCommand){
+	
+	if(parseInt(localCommand,8) < 040){
+		localCommand = parseInt(localCommand,8);
+		localRoot(localCommand);
+		currentGlyphArray = currentGlyph.split(",");
+		firsthalf = "";
+		for(var index = 0;index < cursorPosition;index++){
+			firsthalf += currentGlyphArray[index];
+			firsthalf += ",";
+		}
+		secondhalf = "";	
+		for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+			secondhalf += currentGlyphArray[index];
+			secondhalf += ",";
+		}
+		currentGlyph = firsthalf + secondhalf;
+	}else{
+		currentGlyphArray = currentGlyph.split(",");
+		firsthalf = "";
+		for(var index = 0;index < cursorPosition;index++){
+			firsthalf += currentGlyphArray[index];
+			firsthalf += ",";
+		}
+		firsthalf += localCommand + ",";
+		secondhalf = "";	
+		cursorPosition++;
+		for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+			secondhalf += currentGlyphArray[index];
+			secondhalf += ",";
+		}
+		currentGlyph = firsthalf + secondhalf;
+	}
+	console.log(currentGlyph);
+	currentTable[currentAddress] = currentGlyph;
+	redraw();	
+		
+}
+
+
+function appendGlyphButton(localCommand){
+	glyphButtonSize = 40;	
+	var newCanvas = document.createElement("CANVAS");		
+	newCanvas.width = glyphButtonSize;
+	newCanvas.height = glyphButtonSize;
+	newCanvas.className = "glyphButtons";
+	ctx = newCanvas.getContext("2d");
+	ctx.fillStyle="white";
+	ctx.fillRect(5, 5, glyphButtonSize-10, glyphButtonSize-10);
+	ctx.fillStyle="black";
+	doTheThing(0300);			
+	x = 5;
+	y = glyphButtonSize-5;
+	side = glyphButtonSize-10;
+	doTheThing(localCommand + 01000);
+	newCanvas.onclick = function(){
+		glyphButtonAction("0" + localCommand.toString(8));		
+	}
+	
+	currentNode.appendChild(newCanvas);
+
+}
+
+
 function redraw(){
 	ctx = document.getElementById("fontCanvas").getContext("2d");
+	ctx.clearRect(0,0,200,250);
 	x0=50;
 	y0=150;
-	side = 50;
+	//side = 50;
+	unit = 100;
+
 	doTheThing(0300);
-	drawGlyph(currentTable[currentAddress]);
-	doTheThing(0200);
+	drawGlyph(firsthalf);
+drawGlyph("0342,0334,0342,0335,0335,0342,0334,0337,0330,0340,0331,0336,0336,0330,0340,0331,0337");
+	drawGlyph(secondhalf);
 
 
 	ctx = document.getElementById("displayCanvas").getContext("2d");
+	ctx.clearRect(0,0,600,150);
 	x0=10;
 	y0=30;
 	unit = 20;
 	doTheThing(0300);
-	for(var index = 040;index < 0100;index++){
+	for(var index = 040;index < 0101;index++){
 		doTheThing(index);
 	}
 	y0=60;
@@ -64,6 +182,134 @@ function redraw(){
 	for(var index = 0141;index < 0177;index++){
 		doTheThing(index);
 	}
+}
+
+function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
+//	localCommand = parseInt(localCommand,8);
+
+	if(localCommand == 010){
+		currentGlyphArray = currentGlyph.split(",");
+		firstHalf = "";
+		secondHalf = "";	
+		for(var index = 0;index < cursorPosition - 1;index++){
+			firstHalf += currentGlyphArray[index] + ",";
+		}
+		for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+			secondHalf += currentGlyphArray[index] + ",";
+		}				
+		currentGlyph = firstHalf + secondHalf;
+		console.log(currentGlyph);
+		cursorPosition--;
+		redraw();
+	}
+	if(localCommand == 0016){
+		currentGlyph = string2byteCode(mainTextArea.value);
+		currentTable[currentAddress] = currentGlyph;
+		redraw();
+	
+	}	
+
+	if(localCommand == 0020){
+		cursorPosition--;
+		if(cursorPosition < 0){
+			cursorPosition = currentGlyphArray.length;			
+		}
+		redraw();
+	}
+	if(localCommand == 0021){
+		cursorPosition++;
+		if(cursorPosition > currentGlyphArray.length ){
+			cursorPosition = 0;
+		}
+		redraw();
+	}	
+	if(localCommand == 0022){
+		currentAddress--;
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+	}
+	if(localCommand == 0023){
+		currentAddress++;
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
+	}	
+	if(localCommand == 0024){
+		if(currentAddress < 01000 && currentAddress > 0){
+			currentAddress += 01000;
+			currentGlyph = currentTable[currentAddress];
+
+		}
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
+	}	
+	if(localCommand == 0025){
+		if(currentAddress > 01000 && currentAddress < 02000){
+			currentAddress -= 01000;
+			currentGlyph = currentTable[currentAddress];
+		}
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+	}
+	
+	if(localCommand == 0026){//import full geometron hypercube
+		var localString = document.getElementById("mainTextArea").value;
+		var inputStack = localString.split("\n");
+		for(var index = 0;index < inputStack.length;index++){
+			var stackLine = inputStack[index].split(":");
+			var localAddress = parseInt(stackLine[0],8);
+			var localGlyph = stackLine[1];
+			currentTable[localAddress] = localGlyph;
+		}
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
+	}
+	if(localCommand == 0027){//export full geometron hypercube
+		var localString = "";
+		for(var index = 0;index < currentTable.length;index++){
+			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+		}
+		document.getElementById("mainTextArea").value = localString;
+
+	}
+	if(localCommand == 0030){//switch to text
+		currentNode = document.getElementById("main");
+  	    currentNode.replaceChild(mainTextArea,drawCanvas);// 	
+	}
+	if(localCommand == 0031){//switch to canvas
+		currentNode = document.getElementById("main"); 	    
+  	    currentNode.replaceChild(drawCanvas,mainTextArea);
+	}
+	if(localCommand == 0032){//import command table
+		tempByte = bytecode.value;
+		var byteArray = tempByte.split(",");
+		commandArray4 = [];
+		for(var index = 0;index < byteArray.length;index++){
+			commandArray4.push(parseInt(byteArray[index],8));
+		}
+		currentNode = controlPanel;
+		currentNode.removeChild(document.getElementById("drawPad1"));
+		appendDrawPanel(commandArray4);
+		
+	}	
+	if(localCommand == 0033){//export command table
+		var tempString = "";
+		for(var index = 0;index < commandArray4.length;index++){		
+			tempString += "0" + commandArray4[index].toString(8) + ",";
+		}
+		bytecode.value = tempString;
+		
+	}	
 
 }
 
@@ -91,12 +337,39 @@ center{
 	border-width: 5px;
     border-color: black;
     border-radius: 20px;
-	margin: 50px 50px 50px 50px;	
-	padding: 50px 50px 50px 50px;	
-}
-canvas{
 	margin: 10px 10px 10px 10px;	
+	padding: 10px 10px 10px 10px;
+	float:left;	
 }
+
+div{
+	width: auto;
+	height:auto;
+	border-style:solid;
+	background: white;
+	border-width: 5px;
+    border-color: black;
+    border-radius: 20px;
+    float:left;
+	margin: 5px 5px 5px 5px;	
+	padding: 10px 10px 10px 10px;	
+}
+
+
+.glyphButtons{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    background: white;	
+}
+.glyphButtons:hover{
+    background: gray;	
+
+}
+.glyphButtons:active{
+    background: yellow;	
+}
+
 </style>
 </body>
 </html>
