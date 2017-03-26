@@ -18,6 +18,7 @@ function update(){
 	document.getElementById("pirateBoat").innerHTML = sci1(bar);		
 }
 
+
 function sci1(gnumin){ //simplest scientific notation, to 1%
 	if(gnumin.digitArray[2] > 5){//round here using next decimal place
 		gnumin.digitArray[1]++;
@@ -25,6 +26,26 @@ function sci1(gnumin){ //simplest scientific notation, to 1%
 	}
 	return gnumin.baseSign + (gnumin.digitArray[0]).toString() + "." + (gnumin.digitArray[1]).toString() + " &#x2715 10<sup>" + gnumin.expSign + (gnumin.expMag).toString() + "</sup>";
 }
+
+function units1(gnumin){ //add units for some unit scales 1%
+	if(gnumin.digitArray[2] > 5){//round here using next decimal place
+			gnumin.digitArray[1]++;
+			gnumin.digitArray[1] = gnumin.digitArray[1]%10;
+		}
+	if(gnumin.expMag > 15){
+		return gnumin.baseSign + (gnumin.digitArray[0]).toString() + "." + (gnumin.digitArray[1]).toString() + " &#x2715 10<sup>" + gnumin.expSign + (gnumin.expMag).toString() + "</sup>";
+	}else{
+		if(gnumin.expMag == 2 && gnumin.expSign == ""){
+		
+		}
+	
+	
+	
+		return "derp";
+	}
+}
+
+
 
 
 function gNumber(xin) {//constructor for non-awful number format

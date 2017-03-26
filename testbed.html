@@ -4,434 +4,61 @@
 <title>General Test File</title>
 <script src = "libraries/geometronLibrary3.js"></script>
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
 <script>
 initGeometron();
 
-X = 0;
-Y = 0;
-
-currentTable[01732] = "044,044,0131,040,075,040,0130,0134,0143,0157,0164,0150,0173,050,0130,051,0175,044,044";
-
-currentTable[01701] = "044,044,0153,0124,040,075,040,0153,0134,0164,0151,0155,0145,0163,040,0124,044,044,";
-currentTable[01702] = "044,044,0124,040,075,040,0134,0146,0162,0141,0143,0173,0153,0124,0175,0173,0153,0175,044,044,";
-currentTable[01703] = "044,044,062,0134,0164,0151,0155,0145,0163,040,0124,044,044,";
-
-k_boltzmann = 1.38065e-23;//J/K
-q_electron = 1.6e-19;//C
-h = 6.63e-34;//J-s
 </script>
 </head>
 <body>
-<center id = "main">
-	
-
-	<div id = "mathAtom0700">
-		T [kelvin] = <input id = "input0700" size = "6" onchange = "doMath0700()"></input>
-		$$E = \frac{k_{boltzmann}T}{q_{electron}}$$
-		E [electron volts]= <input size = "8" id = "output0700a"></input>
-		 = E [meV]= <input size = "8" id = "output0700b"></input>
-		 = E [\(\mu\)eV]= <input size = "8" id = "output0700c"></input>
-		<script>
-			MathJax.Hub.Typeset();//tell Mathjax to update the math
-			function doMath0700(){
-				k_boltzmann = 1.38065e-23;//J/K
-				q_electron = 1.6e-19;//C
-				T = document.getElementById("input0700").value;
-				E = k_boltzmann*T/q_electron;
-				document.getElementById("output0700a").value = E;
-				document.getElementById("output0700b").value = E*1000;
-				document.getElementById("output0700c").value = E*1e6;
-			}
-		</script>
-		<style>
-			#mathAtom0700{
-				width: auto;
-				height: auto;
-				border-style: solid;
-				border-width: 3px;
-				border-color: black;
-				border-radius: 5px;
-				padding: 10px 10px 10px 10px;
-				margin: 10px 10px 10px 10px;
-				background: none;	
-				font-size: 16px;
-				font-family: "Century Schoolbook";
-				text-align: center;
-			}
-		</style>
-	</div>
-
-	<div id = "mathAtom0701">
-		f [GHz] = <input id = "input0701" size = "6" onchange = "doMath0701()"></input>
-		$$E = \frac{hf}{q_{electron}}$$
-		E [electron volts]= <input size = "8" id = "output0701a"></input>
-		 = E [meV]= <input size = "8" id = "output0701b"></input>
-		 = E [\(\mu\)eV]= <input size = "8" id = "output0701c"></input>
-		
-		<script>
-			MathJax.Hub.Typeset();//tell Mathjax to update the math
-			function doMath0701(){
-				q_electron = 1.6e-19;//C
-				h = 6.63e-34;//J-s
-				fGHz = document.getElementById("input0701").value;
-				f = fGHz*1e9;
-				E = h*f/q_electron;
-				document.getElementById("output0701a").value = E;
-				document.getElementById("output0701b").value = E*1000;
-				document.getElementById("output0701c").value = E*1e6;
-			}
-		</script>
-		<style>
-			#mathAtom0701{
-				width: auto;
-				height: auto;
-				border-style: solid;
-				border-width: 3px;
-				border-color: black;
-				border-radius: 5px;
-				padding: 10px 10px 10px 10px;
-				margin: 10px 10px 10px 10px;
-				background: none;	
-				font-size: 16px;
-				font-family: "Century Schoolbook";
-				text-align: center;
-			}
-		</style>
-	</div>
+<div class = "atom">
+	<canvas width = "600" height = "600" id = "plotCanvas"></canvas>
 
 
-	<div id  = "metaCalculator">
-		
-		HTML:<p><textarea id = "html1" cols = "80" rows = "20">
-				T [kelvin] = <input id = "input0700" size = "6" onchange = "doMath0700()"></input>
-		$$E = \frac{k_{boltzmann}T}{q_{electron}}$$
-		E [electron volts]= <input size = "8" id = "output0700a"></input>
-		 = E [meV]= <input size = "8" id = "output0700b"></input>
-		 = E [\(\mu\)eV]= <input size = "8" id = "output0700c"></input>		
-		</textarea>	
-		<p>JS:<p><textarea id = "js1" cols = "80" rows = "20">
-		  			MathJax.Hub.Typeset();//tell Mathjax to update the math
-			function doMath0700(){
-				k_boltzmann = 1.38065e-23;//J/K
-				q_electron = 1.6e-19;//C
-				T = document.getElementById("input0700").value;
-				E = k_boltzmann*T/q_electron;
-				document.getElementById("output0700a").value = E;
-				document.getElementById("output0700b").value = E*1000;
-				document.getElementById("output0700c").value = E*1e6;
-			}
+</div>
 
-		
-		</textarea>	
-		<p>CSS:<p><textarea id = "css1" cols = "80" rows = "20">
-			#mathAtom0700{
-				width: auto;
-				height: auto;
-				border-style: solid;
-				border-width: 3px;
-				border-color: black;
-				border-radius: 5px;
-				padding: 10px 10px 10px 10px;
-				margin: 10px 10px 10px 10px;
-				background: none;	
-				font-size: 16px;
-				font-family: "Century Schoolbook";
-				text-align: center;
-			}		
-		</textarea>	
-		<p>
-		<button>GO</button>
-	</div>
-	
 
-	
-</center>
+
 <script>
 
-/*
-document.getElementById("div1").innerHTML = byteCode2string(currentTable[01702]);
-document.getElementById("div2").innerHTML = byteCode2string(currentTable[01703]);
-
-currentNode = document.getElementById("main");
-var newMathAtom = document.createElement("DIV");
-
-var newInput0 = document.createElement("INPUT");
-var newInputSpan0 = document.createElement("SPAN");
-newInputSpan0.innerHTML = "X = ";
-newInputSpan0.appendChild(newInput0);
-
-var newOutput0 = document.createElement("DIV");
-
-
-var newEquation0 = document.createElement("DIV");
-
-newEquation0.innerHTML = byteCode2string(currentTable[01732]);
-newMathAtom.appendChild(newEquation0);
-newMathAtom.appendChild(newInputSpan0);
-newMathAtom.appendChild(newOutput0);
-
-currentNode.appendChild(newMathAtom);
-
-
-newInput0.onchange = function(){
-	X = this.value;
-	doTheMath(0732);
-	var newOutput = document.createElement("DIV");
-	this.parentNode.nextSibling.innerHTML = "Y = " + Y.toString();
-}
-
-MathJax.Hub.Typeset();//tell Mathjax to update the math
+ctx = document.getElementById("plotCanvas").getContext("2d");
+ctx.clearRect(0,0,600,600);
 
 
 
 
-function xcothx(Xin){
-	var Yout = 0;
-	if(Xin == 0){
-		Yout = 1;
-	}
-	if(Xin != 0){
-		Yout = Xin/Math.tanh(Xin);
-	}
-	return Yout;
-}
-*/
-
-</script>
-<script id = "doTheMathScript">
-function doTheMath(localCommand){
-
-	if(localCommand == 0700){
-		T = 300;//K
-		V = 1; //V
-		microV = V*1e6;
-		milliV = V*1e3;
-		f = 0.1e9;//Hz
-		fGHz = f/1e9;//GHz	
-		h = 6.63e-34;
-		q_electron = 1.6e-19;
-		k_boltzmann = 1.38e-23;		
-		omega = f*2*Math.PI;	
-	}
-	if(localCommand == 0701){
-		kT = k_boltzmann*T;
-	}
-	if(localCommand == 0702){
-		T = kT/k_boltzmann;
-	}
-	if(localCommand == 0703){
-		T = 2*T;
-	}
-	if(localCommand == 0704){
-		T = T/2;
-	}
-	if(localCommand == 0705){
-		T = T + 0.01*T;
-	}
-	if(localCommand == 0706){
-		T = T - 0.01*T;
-	}
-	if(localCommand == 0707){
-		T = T*10;
-	}
-	if(localCommand == 0710){
-		T = T/10;
-	}	
-	if(localCommand == 0711){
-		T = 4.2;
-	}
-	if(localCommand == 0712){
-		hf = h*f;
-	}
-	if(localCommand == 0713){
-		f = hf/h;
-	}
-	if(localCommand == 0714){
-		f = 0;
-	}
-	if(localCommand == 0715){
-		f = 1e9;
-	}
-	if(localCommand == 0716){
-		f = 1e10;
-	}
-	if(localCommand == 0717){
-		f = fGHz*1e9;
-	}
-	if(localCommand == 0725){
-		fGHz = f/1e9;
-	}
-
-	if(localCommand == 0720){
-		eV = V*q_electron;
-	}
-	if(localCommand == 0721){
-		V = eV/q_electron;
-	}
-	if(localCommand == 0722){
-		microV = V*1e6;
-		milliV = V*1e3;
-	}
-	if(localCommand == 0723){
-		V = microV/1e6;
-		milliV = V*1e3;
-	}
-	if(localCommand == 0724){
-		V = milliV/1e3;
-		microV = V*1e6;
-	}
-	if(localCommand == 0730){
-		X = eV/(2*kT);
-	}
-	if(localCommand == 0731){
-		X = hf/(2*kT);
-	}
-	if(localCommand == 0732){
-		Y = xcothx(X);
-	}
-}
 
 </script>
 <style>
-#main{
-	width:760px;
-	height:auto;
-    border-style: solid;
-    border-width: 10px;
-    border-color: orange;
-    border-radius: 10px;
-    margin: 10px 10px 10px 10px;
-    padding: 10px 10px 10px 10px;
-	background: none;		
-	overflow:scroll;	
-}
-#buttContainer{
-	width:760px;
-	height:auto;
-    border-style: solid;
-    border-width: 5px;
-    border-color: black;
-    border-radius: 10px;
-    margin: 10px 10px 10px 10px;
-    padding: 10px 10px 10px 10px;
-	background: none;		
-	overflow:scroll;	
-}
-#metaCalculator{
-	width:auto;
-	height:auto;
-    border-style: solid;
-    border-width: 5px;
-    border-color: black;
-    border-radius: 10px;
-    margin: 10px 10px 10px 10px;
-    padding: 10px 10px 10px 10px;
-	background: none;		
-	overflow:scroll;	
 
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
 }
-.symbolButton{
-	width:100px;
-	height:50px;
-    border-style: solid;
-    border-width: 3px;
-    border-color: black;
-    border-radius: 4px;
-    margin: 5px 5px 5px 5px;
-    padding: 1px 5px 10px 5px;
-	background: white;		
+
+.atom{
+	width: auto;
+	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 20px;
+	font-family: "Century Gothic";
+	text-align: center;
 	float:left;
 }
-.symbolButton:hover{
-	background: gray;		
-}
-.symbolButton:active{
-	background: yellow;		
-}
 
-.mathAtom{
-	width: auto;
-	height: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 5px;
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
-	background: none;			
+#plotCanvas{
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-radius: 5px;
 
 }
-
-#textInput{
-	width: 500px;
-	height: 150px;
-    border-style: solid;
-    border-width: 5px;
-    border-color: purple;
-    border-radius: 10px;
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
-	background: none;			
-}
-.textAtom{
-	width: auto;
-	height: auto;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 5px;
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
-	background: none;			
-}
-#glyphInput{
-	width: 500px;
-	height: 50px;
-    border-style: solid;
-    border-width: 5px;
-    border-color: blue;
-    border-radius: 10px;
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
-	background: none;			
-}
-#feed{
-	width: 700px;
-	height: 550px;
-    border-style: solid;
-    border-width: 5px;
-    border-color: blue;
-    border-radius: 10px;
-    margin: 10px 10px 10px 10px;
-    padding: 10px 10px 10px 10px;
-	background: none;	
-	font-size: 16px;
-	font-style: bold;	
-	font-family: "Century Schoolbook";
-	text-align: left;
-	overflow-wrap: break-word;
-	overflow:scroll;	
-
-}
-#byteCodeIO{
-	width: 500px;
-	height: 50px;
-    border-style: solid;
-    border-width: 5px;
-    border-color: orange;
-    border-radius: 10px;
-    margin: 10px 10px 10px 10px;
-    padding: 10px 10px 10px 10px;
-	background: none;	
-	font-size: 16px;
-	font-style: bold;	
-	font-family: "Century Schoolbook";
-	text-align: left;
-	overflow-wrap: break-word;
-	overflow:scroll;	
-}
-
 
 </style>
 </center>
