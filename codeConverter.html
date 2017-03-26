@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>MathJax Dynamic Math Test Page</title>
+<title>Geometron Code Format Converter</title>
 <script src="libraries/geometron2library.js">
 </script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -11,35 +11,41 @@ canvasIndex = 0;
 </script>
 </head>
 <body>
-<div id = "canvases">
-</div>
+
+<center class = "atom">
+
+<h1>Geometron Code Format Converter</h1>
+
 <button onClick = "bytecode2js()">BYTECODE -> JAVASCRIPT</button>
 <button onClick = "urls2bytecode()">URL LIST -> BYTECODE</button>
 <button onClick = "words2bytecode()">WORD LIST -> BYTECODE</button>
 <button onClick = "jspush2bytecode()">JS PUSH --> BYTECODE</button>
-
 <button onClick = "jstable2bytecode()">JS TABLE --> BYTECODE</button>
 
 <p>
 <textarea id  = "textIO" cols = "80" rows = "10">
 </textarea>
-
+</center>
 <script>
 function jstable2bytecode(){
+
 	var inputText = document.getElementById("textIO").value;
 	var inputArray = inputText.split("\"");
 	var outputText = "";
-    
-	for(var index = 0;index < inputArray.length;index++){
+    	for(var index = 0;index < inputArray.length;index++){
 		if(index%2==1){
 			outputText +=  inputArray[index];
 			outputText += "\n";
 		}
 		if(index%2==0){
-			//some other thing here
-					outputText +=  inputArray[index];
-			outputText += "\n";
-	
+			var foo = inputArray[index];
+			var bar = "";
+			for(var zeep = 0;zeep < foo.length;zeep++){
+				if(foo.charCodeAt(zeep) >= 060 && foo.charCodeAt(zeep) < 070){
+					bar += foo.charAt(zeep);
+				}
+			}
+			outputText += bar + ":"; 	
 		}
 		
 	}
@@ -109,9 +115,30 @@ function bytecode2js(){
 	
 	document.getElementById("textIO").value  = outputText;		
 }
-
-
 </script>
+<style>
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+.atom{
+	width: auto;
+	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 20px;
+	font-family: "Century Gothic";
+	text-align: center;
+	float:left;
+}
+</style>
 </body>
 </html>
 
