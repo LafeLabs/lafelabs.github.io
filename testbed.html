@@ -11,17 +11,33 @@ initGeometron();
 </head>
 <body>
 <div class = "atom">
-	<canvas width = "600" height = "600" id = "plotCanvas"></canvas>
+	<div>
+		Here I explore a <i>methodology</i> of graph use and creation to do investigations into useful things in html.  I want to study how closely the conic section can approximate the catenary curve for typical hanging chains or cables on the meter scale.  
+		<p>
+	I begin by looking at the equation for hyperbolic cos:
+	$$\cosh{x} = \frac{e^{x} + e^{-x}}{2}$$
+	now I also write
+	$$e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \dots$$
+	and
+	$$e^{-x} = 1 - x + \frac{x^2}{2!} - \frac{x^3}{3!} + \frac{x^4}{4!} - \dots$$
+	to get 
+	$$\cosh{x} = 1 + \frac{x^2}{2!} + \frac{x^4}{4!} + \frac{x^6}{6!} + \dots$$
+	which I probably should have remembered anyway from grade skool or whatever but there it is.  So the parabolic approximation is 
+	
+	$$\cosh{x} \approx 1 + \frac{x^2}{2}$$
 
-
+	</div>
+	<canvas width = "300" height = "300" id = "plotCanvas"></canvas>
+	
 </div>
 
 
 
 <script>
 
+
 ctx = document.getElementById("plotCanvas").getContext("2d");
-ctx.clearRect(0,0,600,600);
+ctx.clearRect(0,0,ctx.width,ctx.height);
 
 
 
@@ -47,8 +63,8 @@ html {
 	margin: 10px 10px 10px 10px;
 	background: white;	
 	font-size: 20px;
-	font-family: "Century Gothic";
-	text-align: center;
+	font-family: "Century Schoolbook";
+	text-align: left;
 	float:left;
 }
 

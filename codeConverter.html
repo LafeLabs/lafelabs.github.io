@@ -18,12 +18,36 @@ canvasIndex = 0;
 <button onClick = "words2bytecode()">WORD LIST -> BYTECODE</button>
 <button onClick = "jspush2bytecode()">JS PUSH --> BYTECODE</button>
 
+<button onClick = "jstable2bytecode()">JS TABLE --> BYTECODE</button>
 
 <p>
 <textarea id  = "textIO" cols = "80" rows = "10">
 </textarea>
 
 <script>
+function jstable2bytecode(){
+	var inputText = document.getElementById("textIO").value;
+	var inputArray = inputText.split("\"");
+	var outputText = "";
+    
+	for(var index = 0;index < inputArray.length;index++){
+		if(index%2==1){
+			outputText +=  inputArray[index];
+			outputText += "\n";
+		}
+		if(index%2==0){
+			//some other thing here
+					outputText +=  inputArray[index];
+			outputText += "\n";
+	
+		}
+		
+	}
+	document.getElementById("textIO").value  = outputText;			
+	
+
+}
+
 function jspush2bytecode(){
 	var inputText = document.getElementById("textIO").value;
 	var inputArray = inputText.split("\"");
