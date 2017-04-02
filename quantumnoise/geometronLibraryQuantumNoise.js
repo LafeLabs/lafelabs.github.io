@@ -85,6 +85,16 @@ function initGeometron(){
 
 
 }
+function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
+	var dirtyArray = dirtyGlyph.split(",");
+	var cleanGlyph = "";
+	for(var index = 0;index < dirtyArray.length;index++){
+		if(dirtyArray[index] != ""){
+			cleanGlyph += dirtyArray[index] + ",";
+		}
+	}
+	return cleanGlyph;
+}
 
 function byteCode2function(localByteCode){
 	var array1 = localByteCode.split("\n");	

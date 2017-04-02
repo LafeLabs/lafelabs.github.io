@@ -90,6 +90,7 @@ function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 	return cleanGlyph;
 }
 
+
 function byteCode2function(localByteCode){
 	var array1 = localByteCode.split("\n");	
 	var tempText = "";
@@ -457,14 +458,18 @@ function doTheThing(localCommand){
     if(localCommand == 0320){
 		ctx.strokeStyle="black";
     	ctx.lineWidth = 2;    	
+    	ctx.fillStyle = "black";
+
     }
     if(localCommand == 0321){
-		ctx.strokeStyle="yellow";
-    	ctx.lineWidth = 35;    	
+		ctx.strokeStyle = "yellow";
+    	ctx.lineWidth = 2;    	
+    	ctx.fillStyle = "yellow";
     }
     if(localCommand == 0322){
-		ctx.strokeStyle="black";
-    	ctx.lineWidth = 35;    	
+		ctx.strokeStyle="red";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "red";    
     }
     
     if(localCommand == 0330){
@@ -518,14 +523,14 @@ function doTheThing(localCommand){
     if(localCommand == 0341){  //circle
 		ctx.beginPath();
 		ctx.arc(x, y, side, 0, 2 * Math.PI);
+		ctx.closePath();
 		ctx.stroke();
-		
-		
+			
     }
     if(localCommand == 0342){   //line
-		ctx.beginPath();
+//		ctx.beginPath();
 //		ctx.lineWidth = 2;
-		ctx.moveTo(x,y);
+	//	ctx.moveTo(x,y);
 		ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
 		ctx.stroke();
 		
@@ -547,7 +552,7 @@ function doTheThing(localCommand){
 		svgFile.push(localString);
     }
     if(localCommand == 0343){
-		ctx.beginPath();
+//	ctx.beginPath();
 		ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
 		ctx.stroke();
 		
@@ -707,10 +712,13 @@ function doTheThing(localCommand){
        ctx.putImageData(currentImage,x,y);
     }
     if(localCommand == 0362){
-	   	backgroundImageOn = false;	
+	   ctx.beginPath();
+	   ctx.moveTo(x,y);
+
     }
     if(localCommand == 0363){
-	   	backgroundImageOn = true;	 
+	   ctx.closePath();
+	   ctx.fill();		
     }
     if(localCommand == 0364){
         ctx.font=side.toString(8) + "px " + myFont;
@@ -753,6 +761,8 @@ function doTheThing(localCommand){
 //  <rect width="400" height="100" style="fill:rgb(0,0,255);stroke-width:10;stroke:rgb(0,0,0)" />
 
 	}
+
+	
     if(localCommand == 0370){ //drop triangle marker
         triangleX = x;
         triangleY =y;
