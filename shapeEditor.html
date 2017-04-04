@@ -73,9 +73,7 @@ mainTextArea = document.createElement("textarea");
 mainTextArea.id = "mainTextArea";
 mainTextArea.value = byteCode2string(currentTable[0330]);
 
-
 currentNode.appendChild(mainDisplay);
-
 
 addressInput = document.createElement("input");
 addressInput.id = "addressInput";
@@ -385,9 +383,7 @@ function appendGlyphButton(localCommand){
 	newCanvas.onclick = function(){
 		glyphButtonAction("0" + localCommand.toString(8));		
 	}
-	
 	currentNode.appendChild(newCanvas);
-
 }
 
 
