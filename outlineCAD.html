@@ -114,8 +114,8 @@
 </script>
 </head>
 <body>
-
-<div >
+<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
+<div>
 <div class = "atom">
 	<canvas width = "600" height = "300" id = "plotCanvas"></canvas>
 </div>
@@ -196,7 +196,9 @@ function redraw(){
 
 	drawGlyph(currentGlyph);
 	//draw the cursor:
+	ctx = document.getElementById("invisibleCanvas").getContext("2d");
 	getCursor();
+	ctx = document.getElementById("plotCanvas").getContext("2d");
 	drawGlyph(cursor.glyph);
 
 	//spell:
@@ -212,8 +214,6 @@ function redraw(){
 	document.getElementById("glyphBytecode").value = currentGlyph;
 	
 }
-
-
 
 
 function appendGlyphButton(localCommand){
@@ -247,7 +247,6 @@ function appendGlyphButton(localCommand){
 
 
 function cursorAction(localCommand){
-
 	currentGlyphArray = currentGlyph.split(",");
 	if(cursorPosition > currentGlyphArray.length){
 		cursorPosition = currentGlyphArray.length;
@@ -267,7 +266,6 @@ function cursorAction(localCommand){
 			doTheThing(localCommand);
 		}
 	}
-
 	cursor.x = x;
 	cursor.y = y;
 	cursor.theta = theta;
@@ -284,14 +282,14 @@ function cursorAction(localCommand){
 }
 
 function getCursor(){
+
 	currentGlyphArray = currentGlyph.split(",");
 	var foo = "";
+	doTheThing(0300);
 	for(var index = 0;index < cursorPosition;index++){
 		foo += currentGlyphArray[index] + ",";	
 		var localAction = parseInt(currentGlyphArray[index],8);
-		if( !((localAction >= 0340) && (localAction < 0344)) ){
-			doTheThing(localAction);
-		}
+		doTheThing(localAction);
 	}
 	cursor.x = x;
 	cursor.y = y;
@@ -598,23 +596,12 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 
 	if(localCommand == 0032){//import command table
 
-		tempByte = bytecode.value;
-		var byteArray = tempByte.split(",");
-		commandArray4 = [];
-		for(var index = 0;index < byteArray.length;index++){
-			commandArray4.push(parseInt(byteArray[index],8));
-		}
-		currentNode = controlPanel;
-		currentNode.removeChild(document.getElementById("drawPad1"));
-		appendDrawPanel(commandArray4);
+		
 		
 	}	
 	if(localCommand == 0033){//export command table
-		var tempString = "";
-		for(var index = 0;index < commandArray4.length;index++){		
-			tempString += "0" + commandArray4[index].toString(8) + ",";
-		}
-		bytecode.value = tempString;
+		
+		
 		
 	}	
 
