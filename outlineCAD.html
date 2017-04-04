@@ -2,7 +2,8 @@
 <html>
 <head>
 <title>General Test File</title>
-<script id = "bytecodeScript">
+<script id = "bytecodeScript" src = "bytecode1.js"></script>
+<script>
 /*
 0200:0304,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334
 0201:0344,0330
@@ -74,6 +75,8 @@
 		currentTable.push("");
 	}  
 	var inputbytecode = document.getElementById("bytecodeScript").text;
+	console.log(inputbytecode);
+	
 	var bytecodearray = inputbytecode.split("\n");
 
 	for(var index = 0;index < bytecodearray.length;index++){
