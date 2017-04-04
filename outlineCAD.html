@@ -121,15 +121,16 @@
 </div>
 <div id = "spellDiv">
 	<canvas width = "3000" height = "30" id = "spellCanvas" style = "border:solid;float:left;"></canvas>
-	<input size = "4" id = "addr" style = "float:left;" onchange = "updateAddr();"></input>
+	<input size = "6" id = "addr" style = "float:left;" onchange = "updateAddr();"></input>
 	<input style = "float:left;" size = "428" id = "glyphBytecode" onchange = "updateGlyph()"></input>
 </div>
-<div class = "atom" style = "width:610px;height:105px" id = "controlPad">
+<div class = "atom" style = "width:610px;height:auto" id = "controlPad">
 	<div style = "width:95px;height:100px;float:left" id = "directionPad"></div>
 	<div style = "width:210px;height:30px;float:left" id = "anglePad"></div>
 	<div style = "width:180px;height:30px;float:left" id = "scalePad"></div>
 	<div style = "width:125px;height:100px;float:right;" id = "rootPad"></div>
 	<div style = "width:300px;height:100px;float:left;" id = "drawPad"></div>
+	<input style = "float:left;margin:0px" size = "80" id = "drawGlyphGlyph" onchange = "updateDrawGlyphs();"></input>
 </div>
 <p>
 <div class = "atom">
@@ -141,27 +142,35 @@
 <script>
 
 currentNode = document.getElementById("directionPad");
-buildPanel([0334,0330,0335,0332,0300,0333,0336,0331,0337]);
+//buildPanel([0334,0330,0335,0332,0300,0333,0336,0331,0337]);
+buildPanel("0334,0330,0335,0332,0300,0333,0336,0331,0337");
 
 currentNode = document.getElementById("anglePad");
-buildPanel([0304,0305,0306,0350,0351,0352,0353]);
+buildPanel("0304,0305,0306,0350,0351,0352,0353");
 
 currentNode = document.getElementById("scalePad");
-buildPanel([0310,0311,0312,0313,0314,0316]);
+buildPanel("0310,0311,0312,0313,0314,0316");
 
 currentNode = document.getElementById("rootPad");
-buildPanel([020,010,021,022,023,024,025,026,027,032,033]);
+buildPanel("020,010,021,022,023,024,025,026,027");
 
 
 currentNode = document.getElementById("drawPad");
-buildPanel([0340,0341,0342,0344,0345,0362,0363,0200,0201]);
+drawGlyphsGlyph = "0340,0341,0342,0344,0345,0362,0363,0200,0201";
+document.getElementById("drawGlyphGlyph").value = drawGlyphsGlyph;
+buildPanel(drawGlyphsGlyph);
 
 
 ctx = document.getElementById("plotCanvas").getContext("2d");
 currentGlyph = currentTable[currentAddress];
 redraw();
 
-function buildPanel(buttonArray){
+function buildPanel(glyphsGlyph){
+	var glyphsGlyphArray = glyphsGlyph.split(",");
+	var buttonArray = [];
+	for(var index = 0;index < glyphsGlyphArray.length;index++){
+		buttonArray.push(parseInt(glyphsGlyphArray[index],8));
+	}
 	for(var index = 0;index < buttonArray.length;index++){
 		appendGlyphButton(buttonArray[index]);
 	}
@@ -183,6 +192,16 @@ function updateGlyph(){
 	cursorPosition = currentGlyphArray.length;
 	redraw();	
 }
+
+function updateDrawGlyphs(){
+	currentNode = document.getElementById("drawPad");
+	while (currentNode.hasChildNodes()) {
+		currentNode.removeChild(currentNode.childNodes[0]);
+	}
+	drawGlyphsGlyph = document.getElementById("drawGlyphGlyph").value;
+	buildPanel(drawGlyphsGlyph);
+}
+
 
 function redraw(){
 	x0 = 300;
@@ -535,6 +554,9 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		redraw();
 	}	
 	if(localCommand == 0022){//move to previous glyph in table
+		currentGlyph = document.getElementById("glyphBytecode").value;
+		currentGlyph = commaCleaner(currentGlyph);
+		currentTable[currentAddress] = currentGlyph;
 		currentAddress--;
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
@@ -542,6 +564,9 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		redraw();
 	}
 	if(localCommand == 0023){//move to next glyph in table
+		currentGlyph = document.getElementById("glyphBytecode").value;
+		currentGlyph = commaCleaner(currentGlyph);
+		currentTable[currentAddress] = currentGlyph;
 		currentAddress++;
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
@@ -593,17 +618,6 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		document.getElementById("mainTextArea").value = localString;
 
 	}
-
-	if(localCommand == 0032){//import command table
-
-		
-		
-	}	
-	if(localCommand == 0033){//export command table
-		
-		
-		
-	}	
 
 }
 
