@@ -63,8 +63,8 @@
 01026:0333,0200,0336,0330,0332,0336,0336,0333,0331,0337,0200,0306,0335,0342,0332,0342,0330,0335,0335,0342,0335,0335,0335,0335,0331,0334,0304,0332,0306,0335,0342,0330,0350,0335,0342,0334,0331,0335,0304,0334,0331,0332,0335,0336,0332,0337,0342,0330,0350,0335,0335,0335,0336,0342,0335,0335,0342,0335,0304,0331,0331,0331,0331,0333,0333,0333,0333,0333,0337,0337,0337
 01027:0333,0200,0336,0330,0332,0336,0336,0333,0331,0337,0332,0200,0306,0335,0342,0332,0342,0330,0335,0335,0342,0335,0335,0335,0335,0331,0334,0304,0332,0306,0335,0342,0330,0350,0335,0342,0334,0331,0335,0304,0334,0331,0333,0333,0330,0335,0342,0330,0350,0335,0335,0335,0336,0342,0335,0335,0342,0335,0304,0331,0331,0331,0331,0331,0333,0337,0337,0337
 01010:0333,0200,0350,0334,0310,0337,0342,0336,0332,0335,0335,0337,0342,0336,0333,0334,0351,0313
-01030:0333,0200,0336,0336,0330,0332,0332,0332,0336,0331,0333,0337,0200,0333,0200,0333,0200,0330,0200,0330,0200,0332,0332,0200,0333,0200,0331,0332,0200,0331,0331,0333,0333,0333,0336,0330,0332,0337,0337,0337,
-01016:0333,0200,0336,0330,0336,0332,0332,0332,0101,0102,0103,0331,0331,0336,0333,0337,0337,0337
+01032:0333,00200,00313,00336,00336,00332,00330,00336,00333,00331,00337,00200,00332,00332,00200,00330,00330,00200,00333,00333,00200,00331,00331,00336,00331,00333,00337,00337,00332,00332,00330,00333,00332,00335,00342,00330,00350,00334,00334,00334,00336,00336,00342,00334,00334,00342,00335,00335,00335,00351,00337,00337,00333,00331,00337
+01033:0333,00200,00313,00336,00336,00332,00330,00336,00333,00331,00337,00200,00332,00332,00200,00330,00330,00200,00333,00333,00200,00331,00331,00336,00331,00333,00337,00337,00332,00332,00330,00333,00332,00335,00330,00342,00330,00350,00334,00334,00334,00336,00336,00342,00334,00334,00342,00335,00335,00335,00351,00337,00337,00331,00337
 */
 </script>
 <script>
@@ -126,8 +126,10 @@
 </div>
 <div class = "atom" style = "width:610px;height:105px" id = "controlPad">
 	<div style = "width:95px;height:100px;float:left" id = "directionPad"></div>
-	<div style = "width:255px;height:100px;float:left;" id = "drawPad"></div>
-	<div style = "width:100px;height:100px;float:right;" id = "rootPad"></div>
+	<div style = "width:210px;height:30px;float:left" id = "anglePad"></div>
+	<div style = "width:180px;height:30px;float:left" id = "scalePad"></div>
+	<div style = "width:125px;height:100px;float:right;" id = "rootPad"></div>
+	<div style = "width:300px;height:100px;float:left;" id = "drawPad"></div>
 </div>
 <p>
 <div class = "atom">
@@ -139,62 +141,31 @@
 <script>
 
 currentNode = document.getElementById("directionPad");
+buildPanel([0334,0330,0335,0332,0300,0333,0336,0331,0337]);
 
-appendGlyphButton(0334);
-appendGlyphButton(0330);
-appendGlyphButton(0335);
-appendGlyphButton(0332);
-appendGlyphButton(0300);
-appendGlyphButton(0333);
-appendGlyphButton(0336);
-appendGlyphButton(0331);
-appendGlyphButton(0337);
+currentNode = document.getElementById("anglePad");
+buildPanel([0304,0305,0306,0350,0351,0352,0353]);
 
-currentNode = document.getElementById("drawPad");
-
-appendGlyphButton(0350);
-appendGlyphButton(0351);
-appendGlyphButton(0352);
-appendGlyphButton(0353);
-appendGlyphButton(0304);
-appendGlyphButton(0305);
-appendGlyphButton(0306);
-appendGlyphButton(0310);
-appendGlyphButton(0311);
-appendGlyphButton(0312);
-appendGlyphButton(0313);
-appendGlyphButton(0314);
-appendGlyphButton(0316);
-appendGlyphButton(0340);
-appendGlyphButton(0341);
-appendGlyphButton(0342);
-appendGlyphButton(0343);
-appendGlyphButton(0344);
-appendGlyphButton(0345);
-appendGlyphButton(0362);
-appendGlyphButton(0363);
-
+currentNode = document.getElementById("scalePad");
+buildPanel([0310,0311,0312,0313,0314,0316]);
 
 currentNode = document.getElementById("rootPad");
+buildPanel([020,010,021,022,023,024,025,026,027,032,033]);
 
-appendGlyphButton(020);
-appendGlyphButton(010);
-appendGlyphButton(021);
-appendGlyphButton(022);
-appendGlyphButton(023);
-appendGlyphButton(024);
-appendGlyphButton(025);
-appendGlyphButton(026);
-appendGlyphButton(027);
+
+currentNode = document.getElementById("drawPad");
+buildPanel([0340,0341,0342,0344,0345,0362,0363,0200,0201]);
 
 
 ctx = document.getElementById("plotCanvas").getContext("2d");
-
-
 currentGlyph = currentTable[currentAddress];
-
 redraw();
 
+function buildPanel(buttonArray){
+	for(var index = 0;index < buttonArray.length;index++){
+		appendGlyphButton(buttonArray[index]);
+	}
+}
 
 function updateAddr(){
 	currentAddress = parseInt(document.getElementById("addr").value,8);
@@ -207,11 +178,9 @@ function updateAddr(){
 function updateGlyph(){
 	currentGlyph = document.getElementById("glyphBytecode").value;
 	currentGlyph = commaCleaner(currentGlyph);
-
 	currentTable[currentAddress] = currentGlyph;
 	currentGlyphArray = currentGlyph.split(",");
 	cursorPosition = currentGlyphArray.length;
-
 	redraw();	
 }
 
@@ -409,7 +378,7 @@ function doTheThing(localCommand){
     if(localCommand == 0315){
       scaleFactor = 3.14159;  //pi*
     }    
-    if(localCommand == 0315){
+    if(localCommand == 0316){
       scaleFactor = 5;  //5*
     }        
     if(localCommand == 0317){
@@ -551,14 +520,8 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 
 		redraw();
 	}
-	if(localCommand == 0016){
-		currentGlyph = string2byteCode(mainTextArea.value);
-		currentTable[currentAddress] = currentGlyph;
-		redraw();
-	
-	}	
 
-	if(localCommand == 0020){
+	if(localCommand == 0020){//cursor forward
 		cursorPosition--;
 		if(cursorPosition < 0){
 			cursorPosition = currentGlyphArray.length;			
@@ -566,21 +529,21 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 
 		redraw();
 	}
-	if(localCommand == 0021){
+	if(localCommand == 0021){//cursor back
 		cursorPosition++;
 		if(cursorPosition > currentGlyphArray.length ){
 			cursorPosition = 0;
 		}
 		redraw();
 	}	
-	if(localCommand == 0022){
+	if(localCommand == 0022){//move to previous glyph in table
 		currentAddress--;
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
 		cursorPosition = currentGlyphArray.length;
 		redraw();
 	}
-	if(localCommand == 0023){
+	if(localCommand == 0023){//move to next glyph in table
 		currentAddress++;
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
@@ -588,7 +551,7 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		redraw();
 
 	}	
-	if(localCommand == 0024){
+	if(localCommand == 0024){//from action to symbol
 		if(currentAddress < 01000 && currentAddress > 0){
 			currentAddress += 01000;
 			currentGlyph = currentTable[currentAddress];
@@ -599,7 +562,7 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		redraw();
 
 	}	
-	if(localCommand == 0025){
+	if(localCommand == 0025){//from symbol to action
 		if(currentAddress > 01000 && currentAddress < 02000){
 			currentAddress -= 01000;
 			currentGlyph = currentTable[currentAddress];
@@ -632,15 +595,9 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		document.getElementById("mainTextArea").value = localString;
 
 	}
-	if(localCommand == 0030){//switch to text
-		currentNode = document.getElementById("main");
-  	    currentNode.replaceChild(mainTextArea,drawCanvas);// 	
-	}
-	if(localCommand == 0031){//switch to canvas
-		currentNode = document.getElementById("main"); 	    
-  	    currentNode.replaceChild(drawCanvas,mainTextArea);
-	}
+
 	if(localCommand == 0032){//import command table
+
 		tempByte = bytecode.value;
 		var byteArray = tempByte.split(",");
 		commandArray4 = [];
