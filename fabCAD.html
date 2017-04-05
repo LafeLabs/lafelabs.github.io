@@ -801,8 +801,56 @@ function doTheThing(localCommand){
 ...
 }
 </pre>
-  The distinction is important, since if you close the path when you don't want to it breaks the filled polygon that we need for fabrication layout, but if you fail to close the path when you mean to just make a discrete line segment you get a huge mess, which must be avoided.  We need both even though this 
-  
+  The distinction is important, since if you close the path when you don't want to it breaks the filled polygon that we need for fabrication layout, but if you fail to close the path when you mean to just make a discrete line segment you get a huge mess, which must be avoided.  We need both even though this is all about filled polygons because the symbol glyphs and some font glyphs need the discrete line segments.  
+</div>
+
+<div class = "atom">
+Now I want to look at some shapes in order.
+<p>
+<canvas width = "600" height = "150" id = "glyph5"></canvas>
+<script>
+ctx = document.getElementById("glyph5").getContext("2d");
+x0 = 40;
+y0 = 50;
+unit = 50;
+doTheThing(0300);
+drawGlyph("0300,01202,072,0331,0332,0332,0336");
+spellGlyph(currentTable[0202]);
+</script>
+<p>
+<canvas width = "600" height = "150" id = "glyph6"></canvas>
+<script>
+ctx = document.getElementById("glyph6").getContext("2d");
+x0 = 40;
+y0 = 50;
+unit = 50;
+doTheThing(0300);
+drawGlyph("0300,01203,072,0331,0332,0332,0336");
+spellGlyph(currentTable[0203]);
+</script>
+<p>
+<canvas width = "600" height = "150" id = "glyph7"></canvas>
+<script>
+ctx = document.getElementById("glyph7").getContext("2d");
+x0 = 40;
+y0 = 50;
+unit = 50;
+doTheThing(0300);
+drawGlyph("0300,01204,072,0331,0332,0332,0336");
+spellGlyph(currentTable[0204]);
+</script>
+<p>
+<canvas width = "600" height = "150" id = "glyph8"></canvas>
+<script>
+ctx = document.getElementById("glyph8").getContext("2d");
+x0 = 40;
+y0 = 50;
+unit = 50;
+doTheThing(0300);
+drawGlyph("0300,01205,072,0331,0332,0332,0336");
+spellGlyph(currentTable[0205]);
+</script>
+
 </div>
 
 <style>
