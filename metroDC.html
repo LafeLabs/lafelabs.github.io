@@ -2,6 +2,103 @@
 <html>
 <head>
 <title>DC Metro Meta Map</title>
+<script id = "stationLatlons">
+/*Metro Center:38.898303,-77.028099
+Farragut North:38.903192,-77.039766
+Dupont Circle:38.909499,-77.04362
+Woodley Park-Zoo/Adams Morgan:38.924999,-77.052648
+Cleveland Park:38.934703,-77.058226
+Van Ness-UDC:38.94362,-77.063511
+Tenleytown-AU:38.947808,-77.079615
+Friendship Heights:38.960744,-77.085969
+Bethesda:38.984282,-77.094431
+Medical Center:38.999947,-77.097253
+Grosvenor-Strathmore:39.029158,-77.10415
+White Flint:39.048043,-77.113131
+Twinbrook:39.062359,-77.121113
+Rockville:39.084215,-77.146424
+Shady Grove:39.119819,-77.164921
+Gallery Pl-Chinatown:38.89834,-77.021851
+Judiciary Square:38.896084,-77.016643
+Union Station:38.897723,-77.006745
+Rhode Island Ave-Brentwood:38.920741,-76.995984
+Brookland-CUA:38.933234,-76.994544
+Fort Totten:38.951777,-77.002174
+Takoma:38.975532,-77.017834
+Silver Spring:38.993841,-77.031321
+Forest Glen:39.015413,-77.042953
+Wheaton:39.038558,-77.051098
+Glenmont:39.061713,-77.05341
+NoMa-Gallaudet U:38.907407,-77.002961
+Metro Center:38.898303,-77.028099
+McPherson Square:38.901316,-77.033652
+Farragut West:38.901311,-77.03981
+Foggy Bottom-GWU:38.900599,-77.050273
+Rosslyn:38.896595,-77.07146
+Arlington Cemetery:38.884574,-77.063108
+Pentagon:38.869349,-77.054013
+Pentagon City:38.863045,-77.059507
+Crystal City:38.85779,-77.050589
+Ronald Reagan Washington National Airport:38.852985,-77.043805
+Braddock Road:38.814009,-77.053763
+King St-Old Town:38.806474,-77.061115
+Eisenhower Avenue:38.800313,-77.071173
+Huntington:38.793841,-77.075301
+Federal Triangle:38.893757,-77.028218
+Smithsonian:38.888022,-77.028232
+L'Enfant Plaza:38.884775,-77.021964
+Federal Center SW:38.884958,-77.01586
+Capitol South:38.884968,-77.005137
+Eastern Market:38.884124,-76.995334
+Potomac Ave:38.880841,-76.985721
+Stadium-Armory:38.88594,-76.977485
+Minnesota Ave:38.898284,-76.948042
+Deanwood:38.907734,-76.936177
+Cheverly:38.91652,-76.915427
+Landover:38.934411,-76.890988
+New Carrollton:38.947674,-76.872144
+Mt Vernon Sq 7th St-Convention Center:38.905604,-77.022256
+Shaw-Howard U:38.912919,-77.022194
+U Street/African-Amer Civil War Memorial/Cardozo:38.916489,-77.028938
+Columbia Heights:38.928672,-77.032775
+Georgia Ave-Petworth:38.936077,-77.024728
+Fort Totten:38.951777,-77.002174
+West Hyattsville:38.954931,-76.969881
+Prince George's Plaza:38.965276,-76.956182
+College Park-U of Md:38.978523,-76.928432
+Greenbelt:39.011036,-76.911362
+Gallery Pl-Chinatown:38.89834,-77.021851
+Archives-Navy Memorial-Penn Quarter:38.893893,-77.021902
+L'Enfant Plaza:38.884775,-77.021964
+Waterfront:38.876221,-77.017491
+Navy Yard-Ballpark:38.876588,-77.005086
+Anacostia:38.862072,-76.995648
+Congress Heights:38.845334,-76.98817
+Southern Avenue:38.840974,-76.97536
+Naylor Road:38.851187,-76.956565
+Suitland:38.843891,-76.932022
+Branch Ave:38.826995,-76.912134
+Benning Road:38.890488,-76.938291
+Capitol Heights:38.889757,-76.913382
+Addison Road-Seat Pleasant:38.886713,-76.893592
+Morgan Boulevard:38.8913,-76.8682
+Largo Town Center:38.9008,-76.8449
+Van Dorn Street:38.799193,-77.129407
+Franconia-Springfield:38.766129,-77.168797
+Court House:38.891499,-77.08391
+Clarendon:38.886373,-77.096963
+Virginia Square-GMU:38.88331,-77.104267
+Ballston-MU:38.882071,-77.111845
+East Falls Church:38.885841,-77.157177
+West Falls Church-VT/UVA:38.90067,-77.189394
+Dunn Loring-Merrifield:38.883015,-77.228939
+Vienna/Fairfax-GMU:38.877693,-77.271562
+McLean:38.924478,-77.210167
+Tysons Corner:38.920056,-77.223314
+Greensboro:38.919749,-77.235192
+Spring Hill:38.92902,-77.24178
+Wiehle-Reston East:38.947753,-77.340179*/
+</script>
 <script id = "bytecodeScript">
 /*
 01300:0333,0200,0336,0330,0332,0340,0350,0335,0336,0330,0342,0331,0331,0331,0342,0330,0330,0335,0335,0331,0331,0342,0330,0330,0330,0342,0331,0334,0334,0334,0351,0331,0331,0333,0333,0337,0337
@@ -19,6 +116,7 @@
 01320:0333,0200,0336,0336,0330,0332,0332,0337,0320,0342,0320,0332,0320,0336,0331,0337,0337,0333,
 01321:0333,0200,0336,0336,0330,0332,0332,0337,0321,0342,0321,0332,0320,0336,0331,0337,0337,0333
 01322:0333,0200,0336,0336,0330,0332,0332,0337,0322,0342,0321,0332,0320,0336,0331,0337,0337,0333
+01327:0333,0200,0336,0336,0330,0332,0332,0337,0327,0342,0321,0332,0320,0336,0331,0337,0337,0333,
 01330:0333,0200,0313,0336,0336,0330,0332,0336,0332,0337,0342,0334,0342,0330,0335,0342,0330,0334,0336,0342,0330,0335,0350,0335,0337,0310,0337,0342,0330,0335,0335,0342,0330,0335,0335,0335,0336,0313,0336,0342,0330,0351,0335,0331,0331,0331,0331,0333,0333,0333,0337,0337,0337
 01331:0333,0200,0335,0335,0333,0331,0313,0336,0336,0330,0332,0336,0332,0337,0342,0334,0342,0330,0335,0342,0330,0334,0336,0342,0330,0335,0350,0335,0337,0310,0337,0342,0330,0335,0335,0342,0330,0335,0335,0335,0336,0313,0336,0342,0330,0351,0335,0331,0331,0331,0331,0333,0333,0333,0337,0337,0337,0332,0335,0335,0331
 01332:0333,0200,0334,0333,0313,0336,0336,0330,0332,0336,0332,0337,0342,0334,0342,0330,0335,0342,0330,0334,0336,0342,0330,0335,0350,0335,0337,0310,0337,0342,0330,0335,0335,0342,0330,0335,0335,0335,0336,0313,0336,0342,0330,0351,0335,0331,0331,0331,0331,0333,0333,0333,0337,0337,0337,0335,0331
@@ -41,6 +139,7 @@
 01353:0333,0200,0336,0330,0332,0335,0350,0352,0334,0342,0335,0335,0342,0335,0335,0336,0336,0342,0330,0330,0342,0331,0331,0334,0334,0334,0334,0334,0334,0342,0330,0330,0342,0331,0331,0335,0335,0335,0351,0353,0337,0337,0333,0330,0334,0337
 01362:0333,0200,0336,0336,0330,0332,0332,0332,0340,0342,0330,0342,0330,0335,0342,0330,0342,0330,0350,0334,0334,0334,0342,0334,0334,0335,0334,0342,0334,0304,0330,0330,0330,0334,0334,0333,0337,0337,
 01363:0304,0313,0333,0200,0336,0332,0330,0336,0330,0332,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0334,0350,0334,0342,0334,0334,0342,0340,0335,0304,0331,0333,0337,0337
+01365:0313,0304,0333,0200,0336,0330,0332,0336,0331,0332,0337,0350,0350,0334,0342,0335,0335,0342,0334,0304,0333,0350,0350,0334,0342,0335,0335,0342,0334,0304,0336,0333,0331,0337,0337
 01200:0333,0200,0336,0336,0330,0332,0337,0200,0336,0331,0333,0337,0337
 01201:0304,0313,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337
 01020:0304,0333,0200,0336,0330,0332,0336,0336,0332,0337,0200,0333,0333,0200,0332,0332,0336,0330,0335,0337,0342,0330,0350,0335,0335,0351,0333,0350,0336,0334,0342,0334,0334,0342,0337,0335,0351,0333,0336,0333,0331,0337,0337,0331,0337,0304,0336,0330,0330,0336,0330,0334,0331,0337,0337
@@ -63,16 +162,22 @@
 01203:0333,0200,0332,0336,0350,0335,0343,0334,0304,0337,0333,
 01344:0333,0200,0336,0330,0332,0336,0332,0340,0335,0337,0342,0330,0340,0334,0332,0336,0331,0332,0331,0337,0337,0350,0336,0335,0342,0333,0342,0333,0334,0304,0337
 0400:0300,0321,0362,0201,0203,0201,0363,
+0205:0336,0336,0336,0327,0363,0347,0337,0337,0337,
+01205:0333,0200,0336,0332,0330,0205,0331,0333,0337,
+0400:0300,0321,0331,0331,0362,0201,0201,0201,0203,0201,0202,0201,0363,0331,0333,0333,0332,0332,0205,0331,0333,0336,0333,0337,0205,0331,0205,0333,0333,0332,
 */
 </script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
 <script>
+
+
 
 	currentTable = []; 
 	for(var index = 0;index < 01777;index ++){
 		currentTable.push("");
 	}  
 	var inputbytecode = document.getElementById("bytecodeScript").text;
-	console.log(inputbytecode);
 	
 	var bytecodearray = inputbytecode.split("\n");
 
@@ -83,6 +188,10 @@
 			currentTable[localAddress] = localBytecode[1];
 		}
 	}
+
+
+	myFont = "Futura";
+	currentWord = "Word";
 
 	currentAddress = 0400;
 	currentGlyph = currentTable[currentAddress];
@@ -115,10 +224,15 @@
 </head>
 <body>
 <div class = "atom" id = "masterRoot"></div>
-<div id = "glyphTableEditor" class = "atom" style = "display:block">
+<div id = "glyphTableEditor" class = "atom" style = "display:block">	
 	<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
 	<div class = "atom"  style = "width:600px;height:300px;overflow:scroll">
 		<canvas width = "1200" height = "1200" id = "plotCanvas" style = "border:solid"></canvas>
+	</div>
+	<div id = "wordPanel" class = "atom" onchange = "updateWordOption();">
+		<input id = "wordInput" onchange = "updateWordInput();"></input>
+		<select id = "wordSelect">
+		</select>
 	</div>
 	<div id = "spellDiv">
 		<canvas width = "3000" height = "30" id = "spellCanvas" style = "border:solid;float:left;"></canvas>
@@ -143,6 +257,13 @@
 
 <script>
 
+var newSelect = document.getElementById("wordSelect");
+for(var index = 0600;index < 0700;index++){
+	var newOption = document.createElement("OPTION");
+	newOption.text = "0" + index.toString(8);
+	newSelect.appendChild(newOption);
+}
+
 currentNode = document.getElementById("directionPad");
 //buildPanel([0334,0330,0335,0332,0300,0333,0336,0331,0337]);
 buildPanel("0334,0330,0335,0332,0300,0333,0336,0331,0337");
@@ -158,7 +279,7 @@ buildPanel("020,010,021,022,023,024,025,026,027");
 
 
 currentNode = document.getElementById("drawPad");
-drawGlyphsGlyph = "0340,0341,0342,0200,0320,0321,0322,0343,0202,0203,0344,0362,0201,0363";
+drawGlyphsGlyph = "0340,0341,0342,0200,0320,0321,0322,0343,0202,0203,0344,0362,0201,0363,0347,0205,0365";
 document.getElementById("drawGlyphGlyph").value = drawGlyphsGlyph;
 buildPanel(drawGlyphsGlyph);
 
@@ -173,6 +294,7 @@ appendGlyphButton(030);
 
 
 
+
 function buildPanel(glyphsGlyph){
 	var glyphsGlyphArray = glyphsGlyph.split(",");
 	var buttonArray = [];
@@ -182,6 +304,16 @@ function buildPanel(glyphsGlyph){
 	for(var index = 0;index < buttonArray.length;index++){
 		appendGlyphButton(buttonArray[index]);
 	}
+}
+
+function updateWordOption(){
+	wordAddress = parseInt(document.getElementById("wordSelect").value,8);
+	document.getElementById("wordInput").value = byteCode2string(currentTable[wordAddress]);
+}
+
+function updateWordInput(){
+	wordAddress = parseInt(document.getElementById("wordSelect").value,8);
+	currentTable[wordAddress] = string2byteCode(document.getElementById("wordInput").value);
 }
 
 function updateAddr(){
@@ -217,8 +349,10 @@ function redraw(){
 	unit = 100;
 	//draw the glyph:
 	ctx = document.getElementById("plotCanvas").getContext("2d");
-	ctx.clearRect(0,0,1200,1200);
 	//draw current glyph:
+	doTheThing(0300);
+	ctx.fillStyle = "#808080"
+	ctx.fillRect(0,0,1200,1200);
 	doTheThing(0300);
 
 	drawGlyph(currentGlyph);
@@ -346,6 +480,9 @@ function drawGlyph(localString){
 function spellGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
+		    ctx.lineWidth = 2;
+	      ctx.strokeStyle="black";
+
 		doTheThing(parseInt(tempArray[index],8) + 01000);
 		if(index == cursorPosition-1){
 			drawGlyph("0336,0333,0336,0330,0341,0331,0337,0333,0337");
@@ -386,6 +523,13 @@ function string2byteCode(localString){
 }
 function doTheThing(localCommand){
  
+     if(localCommand >= 0600 && localCommand < 0700){
+    	//get the glyph, turn it into ascii, make it the Word:
+    	if(currentTable[localCommand] != undefined){
+    	 	currentWord = byteCode2string(currentTable[localCommand]);
+    	}	
+    }
+
     if(localCommand >= 0040 && localCommand <= 0277){//shapes and fonts
 		 drawGlyph(currentTable[localCommand]);    	    
     }
@@ -472,8 +616,8 @@ function doTheThing(localCommand){
     	ctx.fillStyle = "orange";    
     }
     if(localCommand == 0327){
-		ctx.strokeStyle="white";
-    	ctx.lineWidth = 10;
+		ctx.strokeStyle="black";
+    	ctx.lineWidth = 7;
     	ctx.fillStyle = "white";    
     }
 
@@ -546,7 +690,13 @@ function doTheThing(localCommand){
 		ctx.arc(x, y, side, theta + thetaStep,theta - thetaStep,true);
 		ctx.stroke();
     }
-
+    if(localCommand == 0347){  //filled circle
+		ctx.beginPath();
+		ctx.arc(x, y, side, 0, 2 * Math.PI);
+		ctx.closePath();
+		ctx.stroke();
+		ctx.fill();
+	}
 
 
     if(localCommand == 0350){
@@ -571,6 +721,11 @@ function doTheThing(localCommand){
 	  // ctx.fill();		
     }
 
+    if(localCommand == 0365){
+        ctx.font=side.toString(8) + "px " + myFont;
+		ctx.fillText(currentWord,x,y);
+    }
+
 }
 
 function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
@@ -588,7 +743,6 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 			secondHalf += currentGlyphArray[index] + ",";
 		}				
 		currentGlyph = firstHalf + secondHalf;
-		console.log(currentGlyph);
 		if(cursorPosition > 0){
 			cursorPosition--;
 		}
@@ -684,8 +838,307 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		}
 	}
 }
-</script>
 
+function convertDeg2WM(latlonString){
+	WMlat = 38.8894427;
+	WMlon = -77.035224;
+
+	var latlonArray = latlonString.split(",");
+	lat = parseFloat(latlonArray[0]);
+	lon = parseFloat(latlonArray[1]);
+	deltaLat = lat - WMlat;
+	deltaLon = lon - WMlon;
+	deltaLonCorrected = deltaLon*Math.cos(WMlat*Math.PI/180);
+	deg2WM = 60*1.15*5280/555;
+	
+	X = deg2WM*deltaLonCorrected;
+	Y = deg2WM*deltaLat;	
+	X = Math.round(10*X)/10;
+	Y = Math.round(10*Y)/10;
+	return(X.toString() + "," + Y.toString());
+}
+function convertDeg2WMwhole(latlonString){
+	WMlat = 38.8894427;
+	WMlon = -77.035224;
+
+	var latlonArray = latlonString.split(",");
+	lat = parseFloat(latlonArray[0]);
+	lon = parseFloat(latlonArray[1]);
+	deltaLat = lat - WMlat;
+	deltaLon = lon - WMlon;
+	deltaLonCorrected = deltaLon*Math.cos(WMlat*Math.PI/180);
+	deg2WM = 60*1.15*5280/555;
+	
+	X = deg2WM*deltaLonCorrected;
+	Y = deg2WM*deltaLat;	
+	X = Math.round(X);
+	Y = Math.round(Y);
+	return(X.toString() + "," + Y.toString());
+}
+
+
+var foo = document.getElementById("stationLatlons").text;
+var bar = foo.split("*");
+var stationLatlons = bar[1];
+//console.log(stationLatlons);
+var stationLatlonsArray = stationLatlons.split("\n");
+var tempString = "";
+for(var index = 0;index < stationLatlonsArray.length;index++){
+	var tempArray  = stationLatlonsArray[index].split(":");
+	console.log(tempArray[0] + ":" + convertDeg2WMwhole(tempArray[1]));
+	tempString += tempArray[0] + ":" + convertDeg2WMwhole(tempArray[1]) + "\n";
+}
+console.log(tempString);
+
+
+</script>
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>Urban Map Coordinates</h2>
+A map intended for pedestrians in an urban area should have 2 significant digits in the coordinates, not more not less.  The origin of the map should be at the most recognizable landmark.  The unit of measurement should thus be roughly 1/100 the size of the map.  For a 10 mile map that's about 1/10th of a mile, or about 500 feet.  Ideally that unit should be also based on a landmark chosen for maximum recognizability.  
+<p>
+To contrast this goal with the standard coordinates used by software people, decimal latitude and longitude coordinates typically have 10 significant digits or more. The first three of these essentially just tell you what city you're in, which you already know if you're using an urban map, and all the digits after you get to a few meters simply carry no information due to lack of precision in gps and practical mapping.  
+<p>
+For Washington, DC, the obvious logical choice for a center is the location of the Washington Monument, and for a unit is the height of the same monument.  According to google maps the location is (38.8894427,-77.035224).  The height is 555 feet.  Thus the first goal in building a better map is to build a web calculator that converts decimal degrees into local units as I've defined them.  For other cities you would repeat this process.  E.g. for Paris one would definitely center on the Eiffel Tower, and setting the unit to be the height gives you about twice the radius as you get for the Washington Monument.  For London you might center on Big Ben, which is too short to get a good unit, but then use the Westminster Bridge as the unit, making it obvious for someone on the ground how to measure in their mind.  
+<p>
+We start by taking a difference between the zero and arbitrary coordinates in decimal degrees.
+</div>
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>Decimal Degree Difference Calculator</h2>
+<h4>Monument Coordinates(Washington Monument is Default):</h4>
+Latitude:<input value  = "38.8894427"></input>
+Longitude:<input value  = "-77.035224"></input>
+<h4>Location Coordinates(default set to Jefferson Memorial):</h4>
+Latitude:<input id = "latInput" value  = "38.8813729" onchange = "updateInput1();"></input>
+Longitude:<input id = "lonInput" value  = "-77.0365928" onchange = "updateInput1()";></input>
+
+<h4>Decimal Degree Differences:</h4>
+Latitude Difference:<input id = "deltaLat"></input>
+Longitude Difference:<input id = "deltaLon"></input>
+<p>
+To account for how longitude changes as we move up from the equator the difference in angle in longitude must be multiplied by the cosine of the latitude to get distance units that are consistent with latitude.   
+<p>
+Longitude Difference corrected for non-equatorial latitude:<input id = "deltaLonCorrected"></input>
+<p>
+With this correction we can convert differences to nautical miles by dividing by 60 since 1 nautical mile is 1 arc minute of latitude or 1 60th of a degree.  1 nautical mile is 1.15 statutory miles.  1 statutory mile is 5280 feet.  1 WM(Washington Monument) unit is 555 feet.  So the total conversion is 
+
+$$\Delta\theta[^{\circ}]\left(\frac{60 \textrm{ NM}}{1 ^{\circ}}\right)\left(\frac{1.15 \textrm{ miles}}{1 \textrm{ NM}}\right)\left(\frac{5280 \textrm{ feet}}{1 \textrm{ mile}}\right)\left(\frac{1 \textrm{ WM}}{555 \textrm{ feet}}\right)$$
+
+from which the factor to multiply by is 
+
+$$\frac{60 \times 1.15 \times 5280}{555} = 656$$
+
+This gives the coordinates in WM from the WM as 
+<p>
+
+X = <input id = "xInput1"></input>
+Y = <input id = "yInput1"></input>
+
+<script>
+
+	WMlat = 38.8894427;
+	WMlon = -77.035224;
+
+updateInput1();
+		lat = parseFloat(document.getElementById("latInput").value);
+		lon = parseFloat(document.getElementById("lonInput").value);
+		deltaLat = lat - WMlat;
+		deltaLon = lon - WMlon;
+		document.getElementById("deltaLat").value = deltaLat;
+		document.getElementById("deltaLon").value = deltaLon;
+		deltaLonCorrected = deltaLon*Math.cos(WMlat*Math.PI/180);
+		document.getElementById("deltaLonCorrected").value = deltaLonCorrected;
+		deg2WM = 60*1.15*5280/555;
+
+		X = deg2WM*deltaLonCorrected;
+		Y = deg2WM*deltaLat;
+	
+		document.getElementById("xInput1").value = Math.round(X);
+		document.getElementById("yInput1").value = Math.round(Y);
+function updateInput1(){
+		lat = parseFloat(document.getElementById("latInput").value);
+		lon = parseFloat(document.getElementById("lonInput").value);
+		deltaLat = lat - WMlat;
+		deltaLon = lon - WMlon;
+		document.getElementById("deltaLat").value = deltaLat;
+		document.getElementById("deltaLon").value = deltaLon;
+		deltaLonCorrected = deltaLon*Math.cos(WMlat*Math.PI/180);
+		document.getElementById("deltaLonCorrected").value = deltaLonCorrected;
+		deg2WM = 60*1.15*5280/555;
+
+		X = deg2WM*deltaLonCorrected;
+		Y = deg2WM*deltaLat;
+	
+		X = Math.round(10*X)/10;
+		Y = Math.round(10*Y)/10;
+
+		document.getElementById("xInput1").value = X;
+		document.getElementById("yInput1").value = Y;
+
+}
+
+</script>
+</div>
+
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>Condensed Coordinate Converter</h2>
+Here we use the output of google maps coordinates in the form "38.8808165,-77.102156", i.e. with latitude first, even though we're going to have that be the "y" coordinate which is second in the WM units.  In this version you must have just the two numbers separated by a comma, and remove the rest of the url including the z coordinate and the "@".
+<p>
+Lat/Lon Coordinates:<input id = "latLonInput2" value = "38.8886298,-77.004643" onchange = "updateInput2();"></input>
+<p>
+WM Coordinates(x,y):<input id = "xyInput2"></input>
+<p>
+Here I'm rounding to the nearest 1/10th of a Washington Monument, or about 50 feet.  The default grid will be either 1 WM or 0.1 WM depending on the context, so it's good to have the option by having one number after the decimal place.  Any more than one is pointless given the uncertainties of foot travel and gps, so this should be the highest precision used anywhere on this map unless it's a fractally connected map at a smaller scale, such as one for just the Mall or just DuPont circle.  
+<script>
+updateInput2();
+function updateInput2(){
+	WMlat = 38.8894427;
+	WMlon = -77.035224;
+	var latlon = document.getElementById("latLonInput2").value;
+	var latlonArray = latlon.split(",");
+	lat = parseFloat(latlonArray[0]);
+	lon = parseFloat(latlonArray[1]);
+	deltaLat = lat - WMlat;
+	deltaLon = lon - WMlon;
+	deltaLonCorrected = deltaLon*Math.cos(WMlat*Math.PI/180);
+	deg2WM = 60*1.15*5280/555;
+
+	X = deg2WM*deltaLonCorrected;
+	Y = deg2WM*deltaLat;
+	
+	X = Math.round(10*X)/10;
+	Y = Math.round(10*Y)/10;
+	document.getElementById("xyInput2").value = X.toString() + "," + Y.toString();
+}
+
+</script>
+</div>
+<div class = "atom" style = "width:600px;overflow:scroll">
+<pre>
+Metro Center:4,6
+Farragut North:-2,9
+Dupont Circle:-4,13
+Woodley Park-Zoo/Adams Morgan:-9,23
+Cleveland Park:-12,30
+Van Ness-UDC:-14,36
+Tenleytown-AU:-23,38
+Friendship Heights:-26,47
+Bethesda:-30,62
+Medical Center:-32,73
+Grosvenor-Strathmore:-35,92
+White Flint:-40,104
+Twinbrook:-44,114
+Rockville:-57,128
+Shady Grove:-66,151
+Gallery Pl-Chinatown:7,6
+Judiciary Square:9,4
+Union Station:15,5
+Rhode Island Ave-Brentwood:20,21
+Brookland-CUA:21,29
+Fort Totten:17,41
+Takoma:9,57
+Silver Spring:2,69
+Forest Glen:-4,83
+Wheaton:-8,98
+Glenmont:-9,113
+NoMa-Gallaudet U:16,12
+Metro Center:4,6
+McPherson Square:1,8
+Farragut West:-2,8
+Foggy Bottom-GWU:-8,7
+Rosslyn:-19,5
+Arlington Cemetery:-14,-3
+Pentagon:-10,-13
+Pentagon City:-12,-17
+Crystal City:-8,-21
+Ronald Reagan Washington National Airport:-4,-24
+Braddock Road:-9,-50
+King St-Old Town:-13,-54
+Eisenhower Avenue:-18,-59
+Huntington:-20,-63
+Federal Triangle:4,3
+Smithsonian:4,-1
+L'Enfant Plaza:7,-3
+Federal Center SW:10,-3
+Capitol South:15,-3
+Eastern Market:20,-3
+Potomac Ave:25,-6
+Stadium-Armory:30,-2
+Minnesota Ave:45,6
+Deanwood:51,12
+Cheverly:61,18
+Landover:74,30
+New Carrollton:83,38
+Mt Vernon Sq 7th St-Convention Center:7,11
+Shaw-Howard U:7,15
+U Street/African-Amer Civil War Memorial/Cardozo:3,18
+Columbia Heights:1,26
+Georgia Ave-Petworth:5,31
+Fort Totten:17,41
+West Hyattsville:33,43
+Prince George's Plaza:40,50
+College Park-U of Md:55,58
+Greenbelt:63,80
+Gallery Pl-Chinatown:7,6
+Archives-Navy Memorial-Penn Quarter:7,3
+L'Enfant Plaza:7,-3
+Waterfront:9,-9
+Navy Yard-Ballpark:15,-8
+Anacostia:20,-18
+Congress Heights:24,-29
+Southern Avenue:31,-32
+Naylor Road:40,-25
+Suitland:53,-30
+Branch Ave:63,-41
+Benning Road:50,1
+Capitol Heights:62,0
+Addison Road-Seat Pleasant:72,-2
+Morgan Boulevard:85,1
+Largo Town Center:97,7
+Van Dorn Street:-48,-59
+Franconia-Springfield:-68,-81
+Court House:-25,1
+Clarendon:-32,-2
+Virginia Square-GMU:-35,-4
+Ballston-MU:-39,-5
+East Falls Church:-62,-2
+West Falls Church-VT/UVA:-79,7
+Dunn Loring-Merrifield:-99,-4
+Vienna/Fairfax-GMU:-121,-8
+McLean:-89,23
+Tysons Corner:-96,20
+Greensboro:-102,20
+Spring Hill:-106,26
+Wiehle-Reston East:-156,38
+</pre>
+</div>
+
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>First Map Instance: Central/lower Yellow Line</h2>
+<pre>
+Gallery Pl-Chinatown:7,6
+Archives-Navy Memorial-Penn Quarter:7,3
+L'Enfant Plaza:7,-3
+Pentagon:-10,-13
+Pentagon City:-12,-17
+Crystal City:-8,-21
+Ronald Reagan Washington National Airport:-4,-24
+</pre>
+It looks like the vertical range should be at least 30 WM's so I'll make it 40.  20 is more than enough in the x direction so I'll make it 30.  So the canvas will be 30 WM's wide and 40 WM's high.  If we want it to be 400 pixels high that's 10 pixels per WM unit.  And the zero point should be centered on the x and closer to the top than the middle on the y, say 100 from the top.  Or, in javascript/Geometron:
+<pre>
+unit = 100;
+x0 = 150;
+y0 = 100;
+doTheThing(0300);
+</pre>
+With a canvas that is 300X400 in size.  
+</div>
+
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>First Full Map</h2>
+
+
+
+</div>
 
 <style>
 
