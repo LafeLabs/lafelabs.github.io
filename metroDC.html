@@ -1358,11 +1358,75 @@ That is the byte code which can be loaded manually into any Geometron instance, 
 	ctx.fillRect(0,0,1600,800);
 	currentGlyph = currentTable[0404];
 	drawGlyph(currentGlyph);
+</script>
+</div>
 
+
+<div class = "atom" style = "width:600px;overflow:scroll">
+	<h2>Locator</h2>
+	Locate machine using geolocation API.
+
+	<p>
+Lat/Lon Coordinates:<input id = "latLonInput2" value = "38.8886298,-77.004643" onchange = "updateInput2();"></input>
+
+<p>
+WM Coordinates(x,y):<input id = "xyInput3"></input>
+<p>
+<button onclick="getLocation()">GET FOUND</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
+ 	WMlat = 38.8894427;
+	WMlon = -77.035224;
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    deltaLat = lat - WMlat;
+	deltaLon = lon - WMlon;
+	deltaLonCorrected = deltaLon*Math.cos(WMlat*Math.PI/180);
+	deg2WM = 60*1.15*5280/555;
+
+	X = deg2WM*deltaLonCorrected;
+	Y = deg2WM*deltaLat;
+	
+	X = Math.round(10*X)/10;
+	Y = Math.round(10*Y)/10;
+	document.getElementById("xyInput3").value = X.toString() + "," + Y.toString();
+
+}
 
 </script>
-
 </div>
+
 <style>
 
 html {

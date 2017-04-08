@@ -1045,8 +1045,6 @@ function buildCanvas(localWidth,localHeight,localX0,localY0,localUnit,localGlyph
 	currentNode.appendChild(newCanvas);
 }
 </pre>
-
-
 <script>
 	currentNode = document.getElementById("canvasGen3");
 	currentGlyph = "0210,0210,0210,0210,0210,0210,0210,0210,0210,0210,0210";
@@ -1071,6 +1069,67 @@ I can't stop adding stripes
 	buildCanvas(600,30,-30,30,30,currentGlyph);
 </script>
 Can't. Stop.
+
+<script>
+	currentNode = document.getElementById("canvasGen3");
+	currentGlyph = "0212,0212,0212,0212,0212,0212,0212,0212,0212,0212,0212,0212,0212,0212,0212";
+	buildCanvas(600,30,-30,30,30,currentGlyph);
+</script>
+</div>
+
+<div class = "atom" style = "width:600px;overflow:scroll" id = "alien1">
+<h2>Alien Blobs 1</h2>
+At long last it is time to start adding Alien Blobs as inspired by Invader Zim.
+<script>
+currentNode = document.getElementById("alien1");
+currentGlyph = "0300,0320,0337,0337,0205,0336,0336,0333,0333,0330,0362,0320,0326,0306,0334,0350,0335,0351,0351,0201,0335,0201,0335,0201,0363,0306,0333,0331,0335,0335,0335,0336,0336,0330,0337,0337,0335,0304,0336,0336,0336,0331,0337,0337,0337,0305,0334,0311,0337,0305,0362,0201,0335,0335,0201,0335,0350,0335,0336,0201,0363,0335,0335,0335,0350,0334,0304,"
+	buildCanvas(200,200,70,140,30,currentGlyph);
+</script>
+This is another part of the look I'm going for with all my html documents.  Another milestone has been reached here, time to go for a very long walk.  The code that built this figure is simply:
+<pre>
+currentNode = document.getElementById("alien1");
+currentGlyph = "0300,0320,0337,0337,0205,0336,0336,0333,0333,0330,0362,0320,0326,0306,0334,0350,0335,0351,0351,0201,0335,0201,0335,0201,0363,0306,0333,0331,0335,0335,0335,0336,0336,0330,0337,0337,0335,0304,0336,0336,0336,0331,0337,0337,0337,0305,0334,0311,0337,0305,0362,0201,0335,0335,0201,0335,0350,0335,0336,0201,0363,0335,0335,0335,0350,0334,0304,"
+buildCanvas(200,200,70,140,30,currentGlyph);
+</pre>
+</div>
+
+
+
+<div class = "atom" style = "width:600px;overflow:scroll" id = "bitmap1">
+
+
+<script>
+//<img id="derp" src="https://i.imgur.com/MhIQU1r.png" style = "display:none">
+//<canvas width = "600" height = "400" id = "imageCanvas1" style = "border:solid"></canvas>
+
+currentNode = document.getElementById("bitmap1");
+currentGlyph = "0210,0210,0210,0210,0210,0210,0210,0210,0210,0210,";
+canvasImageLoad(-50,40,50,currentGlyph);
+
+function canvasImageLoad(localX0,localY0,localUnit,localGlyph){
+	var newImg = document.createElement("IMG");
+	newImg.src = "https://i.imgur.com/MhIQU1r.png";
+	newImg.style.display = "none";
+	currentNode.appendChild(newImg);
+	var newCanvas = document.createElement("CANVAS");
+	currentNode.appendChild(newCanvas);
+	x0 = localX0;
+	y0= localY0;
+	unit = localUnit;
+	ctx = newCanvas.getContext("2d");
+	doTheThing(0300);
+
+	newImg.onload = function(){
+		newCanvas.height = newImg.height;
+		newCanvas.width = newImg.width;
+		ctx.clearRect(0,0,newImg.width,newImg.height);
+		ctx.drawImage(newImg, 10, 10, newImg.width, newImg.height);
+		drawGlyph(localGlyph);
+	}
+}
+
+</script>
+
 </div>
 <style>
 
@@ -1135,4 +1194,4 @@ html {
 </style>
 </center>
 </body>
-</html>
+</html>	newCanvas.height = img.height;
