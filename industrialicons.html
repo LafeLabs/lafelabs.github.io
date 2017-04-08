@@ -526,9 +526,9 @@ function doTheThing(localCommand){
     	ctx.fillStyle = "green";    
     }
     if(localCommand == 0326){
-		ctx.strokeStyle="violet";
+		ctx.strokeStyle="purple";
     	ctx.lineWidth = 2;
-    	ctx.fillStyle = "violet";    
+    	ctx.fillStyle = "purple";    
     }
     if(localCommand == 0327){
 		ctx.strokeStyle="blue";
@@ -801,7 +801,7 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 0323:"white"
 0324:"red"
 0325:"green"
-0326:"violet"
+0326:"purple"
 0327:"blue"</pre>
 </div>
 
@@ -1011,11 +1011,66 @@ We note that this looks like crap.  Clearly the responsible way to use this is t
 
 
 <div class = "atom" style = "width:600px;overflow:scroll" id = "canvasGen3">
+<h2>Generator Functions</h2>
+<script>
+	currentNode = document.getElementById("canvasGen3");
+	currentGlyph = "0210,0210,0210,0210,0210,0210,0210,0210,0210,0210,0210";
+	buildCanvas(600,30,-30,30,30,currentGlyph);
+function buildCanvas(localWidth,localHeight,localX0,localY0,localUnit,localGlyph){
+	var newCanvas = document.createElement("canvas");
+	newCanvas.width = localWidth;
+	newCanvas.height = localHeight;	
+	unit = localUnit;
+	x0 = localX0;
+	y0 = localY0; 
+	ctx = newCanvas.getContext("2d");
+	doTheThing(0300);
+	drawGlyph(localGlyph);
+	currentNode.appendChild(newCanvas);
+}
+</script>
+Now I build a function to generate these canvases in a intuitive way to save time.  
+
+<pre>
+function buildCanvas(localWidth,localHeight,localX0,localY0,localUnit,localGlyph){
+	var newCanvas = document.createElement("canvas");
+	newCanvas.width = localWidth;
+	newCanvas.height = localHeight;	
+	unit = localUnit;
+	x0 = localX0;
+	y0 = localY0; 
+	ctx = newCanvas.getContext("2d");
+	doTheThing(0300);
+	drawGlyph(localGlyph);
+	currentNode.appendChild(newCanvas);
+}
+</pre>
+
 
 <script>
-
-
+	currentNode = document.getElementById("canvasGen3");
+	currentGlyph = "0210,0210,0210,0210,0210,0210,0210,0210,0210,0210,0210";
+	buildCanvas(600,30,-30,30,30,currentGlyph);
 </script>
+With that function built, the preceding two stripes are made with two instances of the following code:
+<pre>
+	currentNode = document.getElementById("canvasGen3");
+	currentGlyph = "0210,0210,0210,0210,0210,0210,0210,0210,0210,0210,0210";
+	buildCanvas(600,30,-30,30,30,currentGlyph);
+</pre>
+<script>
+	currentNode = document.getElementById("canvasGen3");
+	currentGlyph = "0210,0210,0210,0210,0210,0210,0210,0210,0210,0210,0210";
+	buildCanvas(600,30,-30,30,30,currentGlyph);
+</script>
+I can't stop adding stripes
+
+<script>
+	currentNode = document.getElementById("canvasGen3");
+	currentGlyph = "0210,0210,0210,0210,0210,0210,0210,0210,0210,0210,0210";
+	buildCanvas(600,30,-30,30,30,currentGlyph);
+</script>
+Can't. Stop.
 </div>
 <style>
 
