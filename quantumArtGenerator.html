@@ -164,7 +164,7 @@
 0233:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0132,0333,0336,0330,0333,0337,0337,0337
 0234:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0133,0333,0336,0330,0333,0337,0337,0337
 0235:0313,0304,0336,0330,0341,,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0330,0337,
-0240:0304,0313,0335,0342,0330,0336,0331,0336,0336,0347,0337,0337,0340,0335,0342,0334,0334,0333,0337,
+0240:0304,0313,0335,0342,0330,0336,0331,0336,0336,0347,0337,0337,0335,0342,0334,0334,0333,0337,
 0241:0304,0313,0335,0342,0336,0330,0334,0342,0335,0335,0336,0336,0342,0337,0337,0335,0335,0336,0336,0341,0337,0337,0333,0337,
 01230:,0333,0200,0336,0332,0336,0330,0332,0337,,0110,0336,0331,0333,0336,0333,0337,0337,0337,
 01235:,0333,0200,0336,0332,0336,0330,0337,0331,0330,0235,0331,0333,0336,0331,0337,0337,
@@ -678,23 +678,23 @@ function doTheThing(localCommand){
 		ctx.fill();	
 		ctx.closePath();
 		currentSVG += "<circle cx=\"";
-		currentSVG += x.toString();
+		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
-		currentSVG += y.toString();
+		currentSVG += Math.round(y).toString();
 		currentSVG += "\"r = \"3\" stroke = \"black\" stroke-width = \"2\"";
-		currentSVG += "fill = \"black\" />";		
+		currentSVG += "fill = \"black\" />\n";		
     }
     if(localCommand == 0341){  //circle
 		ctx.beginPath();
 		ctx.arc(x, y, side, 0, 2 * Math.PI);
 		ctx.closePath();
 		ctx.stroke();
-		currentSVG += "<circle cx=\"";
-		currentSVG += x.toString();
+		currentSVG += "    <circle cx=\"";
+		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
-		currentSVG += y.toString();
+		currentSVG += Math.round(y).toString();
 		currentSVG += "\"r = \"" + side.toString() + "\"stroke = \"black\" stroke-width = \"2\"";
-		currentSVG += "fill = \"none\" />";		
+		currentSVG += "fill = \"none\" />\n";		
 
     }
     if(localCommand == 0342){   //line
@@ -704,9 +704,9 @@ function doTheThing(localCommand){
 		ctx.stroke();		
    		ctx.closePath();
    		
-   		var x2 = x + side*Math.cos(theta);
-   		var y2 = y + side*Math.sin(theta);
-   		currentSVG += "    <line x1=\""+x.toString()+"\" y1=\""+y.toString()+"\" x2=\""+x2.toString()+"\" y2=\""+y2.toString()+"\" style=\"stroke:black;stroke-width:2\" />"
+   		var x2 = Math.round(x + side*Math.cos(theta));
+   		var y2 = Math.round(y + side*Math.sin(theta));
+   		currentSVG += "    <line x1=\""+Math.round(x).toString()+"\" y1=\""+Math.round(y).toString()+"\" x2=\""+x2.toString()+"\" y2=\""+y2.toString()+"\" style=\"stroke:black;stroke-width:2\" />\n"
 
     }
     if(localCommand == 0343){
@@ -714,6 +714,21 @@ function doTheThing(localCommand){
 		ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
 		ctx.stroke();
 		ctx.closePath();
+		localString = "";
+		localString += "  <path d=\"";	
+		localString += "M";
+		var localInt = x + side*Math.cos(theta - thetaStep);
+		localString += localInt.toString();
+		localString += " ";
+		localInt = y + side*Math.sin(theta - thetaStep);
+		localString += localInt.toString();
+		currentSVG += localString;
+		localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+		localInt = x + side*Math.cos(theta + thetaStep);
+		localString += localInt.toString() + " ";
+		localInt = y + side*Math.sin(theta + thetaStep);
+		localString += localInt.toString() + "\" fill = \"none\" stroke = \"black\" stroke-width = \"2\" />\n";
+		currentSVG += localString;
 
     }
     if(localCommand == 0344){   //part of a poly line or path 
@@ -736,12 +751,12 @@ function doTheThing(localCommand){
 		ctx.closePath();
 		ctx.stroke();
 		ctx.fill();
-		currentSVG += "<circle cx=\"";
-		currentSVG += x.toString();
+		currentSVG += "    <circle cx=\"";
+		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
-		currentSVG += y.toString();
+		currentSVG += Math.round(y).toString();
 		currentSVG += "\"r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\"";
-		currentSVG += "fill = \"black\" />";		
+		currentSVG += "fill = \"black\" />\n";		
 
 	}
 
@@ -891,35 +906,21 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 
 </script>
 
-<div class = "atom" style = "width:600px;overflow:scroll">
+<div class = "atom" style = "width:800px;overflow:scroll">
 	<h2>Origins and Goals</h2>
 
-The purpose of this document is to show how the Geometron meta-language can be used to construct the artistic tools required to communicate ideas about quantum computing from one human to another. 
+The purpose of this document is to show how the Geometron meta-language can be used to construct the artistic tools required to communicate ideas about quantum computing from one human to another.
+<p>
+Shown below are screenshots from a electronic copy of "Quantum Computation and Quantum Information", by Nielson and Chaung, which is the closest thing quantum computing has to a definitive reference book.  This is the list of symbols given in the introduction, and it's used fairly universally as a guide for graphical descriptions of quantum computation operations.   
 <p>
 <img src = "quantumScreenshot1.png"></img>
 <img src = "quantumScreenshot2.png"></img>
 <img src = "quantumScreenshot3.png"></img>
-<img src = "quantumScreenshot4.png"></img>
-<img src = "quantumScreenshot5.png"></img>
 </div>
-
-<div class = "atom">
-<svg width="100" height="100" id = "svg1">
- 
-</svg>
-
-<script>
-
-currentSVG = "";
-drawGlyph("0335,0342,0334,0341,0340,0333,0341,0340,0331,0331,0347");
-document.getElementById("svg1").innerHTML = currentSVG
-console.log(currentSVG);
-</script>
-
-</div>
-
 
 <div class = "atom" style = "width:600px;overflow:scroll">
+
+
 
 <ul>
 	<li>Illustrator doesn't know what LaTeX is and Tex doesn't know what a line is</li>
@@ -930,9 +931,10 @@ console.log(currentSVG);
 </div>
 
 <div class = "atom" style = "width:600px;overflow:scroll">
+The following is a reproduction of the table from Nielson and Chuang, but with everything built in html.  It is an html table, where each mathematical expression is represented with LaTeX, typeset using the Mathjax javascript library, and all the symbols are created using the Geometron geometrical language which I am advertising here.  
 <center>
+<h2>Quantum Computing Symbols</h2>
 <table>
-
   <tr>
   	<td>Hadamard</td>
     <td><canvas width = "60" height = "60" id = "H1"></canvas></td>
@@ -1171,6 +1173,35 @@ console.log(currentSVG);
 	
 </script>
 </center>
+</div>
+
+
+<div class = "atom" style = "width:600px;overflow:scroll">
+
+All that was in the canvas elements in html.  I now want to investigate what can be done in svg elements. 
+<p>
+<center id = "svgContainer1">
+<svg width="100" height="100" id = "svg1"></svg>
+</center>
+<p>
+.svg code ready for copy/paste:
+<textarea id = "svgCode1" cols = "120" rows = "30"></textarea>
+
+<script>
+	ctx = document.getElementById("invisibleCanvas").getContext("2d");	
+	x0 = 50;
+	y0 = 50;
+	unit = 20;
+	doTheThing(0300);
+currentSVG = "\n";
+drawGlyph("0337,,0214,0332,0330,0240,0336,0332,0331,0335,0335,0336,0342,");
+document.getElementById("svg1").innerHTML = currentSVG;
+console.log(currentSVG);
+
+document.getElementById("svgCode1").innerHTML = document.getElementById("svgContainer1").innerHTML;
+
+</script>
+
 </div>
 
 <style>
