@@ -193,11 +193,22 @@
 01215:0333,0200,0336,0605,0332,0332,0337,0365,0333,
 0243:0304,0313,0335,0342,0336,0330,0334,0342,0335,0335,0336,0336,0342,0337,0337,0335,0335,0336,0336,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0337,0337,0333,0337,
 01243:0333,0200,0336,0330,0334,0201,0201,0331,0335,0342,0336,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0336,0333,0333,0333,0333,0337,0337,0331,0337,
+01344:0333,0200,0336,0330,0332,0336,0332,0340,0335,0337,0342,0330,0340,0334,0332,0336,0331,0332,0331,0337,0337,0202,
+0202:0304,0313,0350,0335,0336,0336,0342,0333,0342,0333,0342,0333,0342,0333,0334,0304,0337,0337,
+01345:0202,0200,0350,0334,0343,0335,0304,
+01346:0202,0200,0350,0334,0332,0335,0335,0343,0333,0335,0304,0334,
+01202:0202,0200,
+01203:0304,0313,0202,0332,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337,
+0203:0344,0330
+0204:0362,0203,0334,0203,0334,0203,0334,0203,0334,0363
+01204:0202,0200,0336,0336,0330,0332,0337,0200,0336,0331,0333,0337,0337,
 */
 </script>
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <script>
+
+  	inPath = false;//move to true after path started, back to false after path ended
 
 	currentTable = []; 
 	for(var index = 0;index < 01777;index ++){
@@ -303,7 +314,7 @@ buildPanel("020,010,021,022,023,024,025,026,027");
 
 
 currentNode = document.getElementById("drawPad");
-drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0240,0241,0242,0210,0211,0212,0213,0214,0215,0243";
+drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0240,0241,0242,0210,0211,0212,0213,0214,0215,0243,0362,0203,0363,0202,0204";
 document.getElementById("drawGlyphGlyph").value = drawGlyphsGlyph;
 buildPanel(drawGlyphsGlyph);
 
@@ -735,6 +746,9 @@ function doTheThing(localCommand){
 		ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
 		ctx.stroke();		
 
+   		var x2 = Math.round(x + side*Math.cos(theta));
+   		var y2 = Math.round(y + side*Math.sin(theta));
+   		currentSVG += "L" + x2 + " " + y2 + " ";
 
     }
     if(localCommand == 0345){  //arc
@@ -777,13 +791,20 @@ function doTheThing(localCommand){
     if(localCommand == 0362){
 	   ctx.beginPath();
 	   ctx.moveTo(x,y);
-	   currentSVG += "  <polyline points=\"";		
+	   currentSVG += "	<path d = \"M";
+	   currentSVG += Math.round(x).toString() + " ";
+	   currentSVG += Math.round(y).toString() + " ";
+
+//	   currentSVG += "  <polyline points=\"";		
 
     }
     if(localCommand == 0363){
 	   ctx.closePath();
-	   ctx.fill();		
-	   currentSVG += "  \"style=\"fill:none;stroke:black;stroke-width:2\" />";		
+	   ctx.stroke();		
+	   //ctx.fill();		
+	   currentSVG += "Z\""+ " stroke = \"black\" stroke-width = \"2\" fill = \"none\" "+"/>";
+	   
+	   
     }
 
     if(localCommand == 0365){
@@ -1213,17 +1234,12 @@ document.getElementById("svgCode1").innerHTML = document.getElementById("svgCont
 
 </script>
 
-</div>
-
-
-<div class = "atom" style = "width:600px;overflow:scroll">
-
-Now for further exploration of svg 
-<p>
-<center id = "svgContainer1">
-<svg width="300" height="200" id = "svg2"></svg>
+And another example:
+<center id = "svgContainer2">
+<svg width="300" height="200" id = "svg2"  xmlns="http://www.w3.org/2000/svg"></svg>
 </center>
 <p>
+<textarea id = "svgCode2" cols = "120" rows = "30"></textarea>
 
 <script>
 	ctx = document.getElementById("invisibleCanvas").getContext("2d");	
@@ -1236,9 +1252,19 @@ currentSVG = "\n";
 drawGlyph("0240,0331,0332,0243,0331,0332,0243,0336,0332,0330,0342,0330,0333,0337,0212,0242,0330,0332,0242,0331,0331,0242");
 document.getElementById("svg2").innerHTML = currentSVG;
 console.log(currentSVG);
+document.getElementById("svgCode2").innerHTML = document.getElementById("svgContainer2").innerHTML;
+
 </script>
 <p>
-This looks fine on the screen in a web browser but to really enter into the work flow of researchers it needs to do several specific things in a transparrent way.  These include:
+
+</div>
+
+
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>Issues to Address</h2>
+<p>
+
+
 <ul>
 	<li>smoothly integrate into latex documents for papers</li>
 	<li>smoothly integrate into Powerpoint and Keynote for presentations</li>
@@ -1258,9 +1284,215 @@ Being easy to modify and building a remix culture where QI researchers are const
 <ol>
 	<li>Write an academic-ish paper documenting the idea and the implementation</li>
 	<li>Create standard documentation online with a coherent github repository so that it's smooth to get new people to start it</li>
-	
+	<li>Make fully live examples where users can create their own gate diagrams online and extract the .svg without even downloading or editing anything--just edit in the browser and copy-paste into a text file and save as .svg</li>
+	<li>Academic paper must address the <i>concept</i> of the "art stack" in computer science, the importance of human-to-human graphical communication in the actual functioning of the physical processor</li>
+	<li>Create some type of online forum where users can communicate and share/build this thing, preferably on Github so that I don't have to build a whole system</li>
 </ol>
+
+Things I want to get done that are not needed to demonstrate the basic system but which are useful/important:
+
+<ul>
+	<li>classical gates, all of them</li>
+	<li>flowchart constructor</li>
+	<li>digraph constructor</li>
+	<li>online electronic lab notebook</li>
+</ul>
+
+Upon further consideration, some of these are not optional for later.  I need the words-in-boxes code to work now in order to write the publication and documentation for the basic quantum geometron instance.  How would I describe the "art stack" without those kinds of figures?  It must be done now.  Also, solving the problems of getting things into gds is the same as solving the problems of getting it into clean enough svg that it can be exported easily to publication quality work.  And finally building the basic lab notebook functionality is needed to make the paper-creation process smooth enough that people will use it.  Also, it seems wrong to write this paper in anything but that, so that must be written(code to build technical communication in real time using geometron) to do this(write the paper).  
 </div>
+
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>A Study of Closed Boxes</h2>
+Now it is time to carefully construct nice looking closed, but not filled, boxes which might or might not have circular arcs as part of them.  I start by working with the square and comparing the basic square I use for all the symbol glyphs with the closed square required for publication quality vector graphics.  
+
+Here is the not closed square in a canvas element, blown up so that the flaws are visible.
+
+<canvas width = "300" height = "300" id = "bigSquareCanvas"></canvas>
+<script>
+	ctx = document.getElementById("bigSquareCanvas").getContext("2d");	
+	x0 = 250;
+	y0 = 250;
+	unit = 150;
+	doTheThing(0300);
+    ctx.lineWidth = 20;
+	drawGlyph("0200");
+	ctx.lineWidth = 2;
+</script>
+<p>
+Look at those ugly corners!! When blown up like this and set alone in a canvas it might look like an intentional effect to generate some kind of retro pixel game graphics, but in a technical diagram for publication, presenting this as a "square" should be unacceptable at any scale.  To understand the problem I must show the code that made this.  It is the shape I put at 0200 in the shape table, which is used for all symbol glyph containers. It's bytecode is, in Geometron format:
+<pre>
+0200:0304,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334
+</pre>
+Or, in symbol glyphs,
+<canvas width = "600" height = "60" id = "squareSpelling1"></canvas>
+<script>
+	ctx = document.getElementById("squareSpelling1").getContext("2d");	
+	x0 = 10;
+	y0 = 50;
+	unit = 30;
+	doTheThing(0300);
+	drawGlyph("01200");
+	drawGlyph(string2byteCode(":"));
+	//drawGlyph("0331,0332,0331,0332");
+	cursorPosition = 100;
+	spellGlyph(currentTable[0200]);
+	ctx.lineWidth = 2;
+</script>
+<p>
+The square as used in the standard symbol glyphs is made up of discrete segments, each of which is terminated at each end. In canvas these segments are built with the following code:
+<pre>
+	ctx.beginPath();
+	ctx.moveTo(x,y);
+	ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
+	ctx.stroke();		
+	ctx.closePath();
+   	var x2 = Math.round(x + side*Math.cos(theta));
+   	var y2 = Math.round(y + side*Math.sin(theta));
+</pre>
+The line in the svg for one of these might look like this:
+<pre>
+    &lt line x1="212" y1="168" x2="194" y2="168" style="stroke:black;stroke-width:2"> &lt /line>
+</pre>
+
+To make this square into a single entity we need to extend the path element in canvas into multiple operations of the main Geometron function, and in the svg we need to switch from "line" to "path".  The path element in svg uses very efficient but also opaque nomenclature which must be deciphered to make this a transparrent function. Also, in both the svg and the canvas we need to use another two fundamental Geometron operations, the begin and end path operators.  Finally to make it faster to build useful closed loops we need to add elements to the shape table which both draw and move at the same time, which will be symbolized by arrows in the command shape table.  Here are the symbols for those:
+
+<canvas width = "600" height = "60" id = "squareSpelling2"></canvas>
+
+<script>
+	ctx = document.getElementById("squareSpelling2").getContext("2d");	
+	x0 = 10;
+	y0 = 50;
+	unit = 30;
+	doTheThing(0300);
+//	drawGlyph("01200");
+//	drawGlyph(string2byteCode(":"));
+	//drawGlyph("0331,0332,0331,0332");
+	cursorPosition = 100;
+	spellGlyph("0362,0201,0363");
+</script>
+<p>
+
+So to make a square, combining the above spellings, would be:
+<canvas width = "600" height = "60" id = "squareSpelling3"></canvas>
+<script>
+	ctx = document.getElementById("squareSpelling3").getContext("2d");	
+	x0 = 10;
+	y0 = 50;
+	unit = 30;
+	doTheThing(0300);
+	drawGlyph("01200");
+	drawGlyph(string2byteCode(":"));
+	cursorPosition = 100;
+	spellGlyph("0362,0201,0335,0201,0335,0201,0335,0201,0335,0363");
+</script>
+<p>
+where 
+<canvas width = "600" height = "60" id = "squareSpelling4"></canvas>
+<script>
+	ctx = document.getElementById("squareSpelling4").getContext("2d");	
+	x0 = 10;
+	y0 = 50;
+	unit = 30;
+	doTheThing(0300);
+	drawGlyph("01201");
+	drawGlyph(string2byteCode(":"));
+	cursorPosition = 100;
+	spellGlyph(currentTable[0201]);
+</script>
+
+
+<p>
+The issue which requires great care here is distinguishing when an action is in a path and when it isn't.  Circles and dots are always self-contained entities.  Therefore in terms of fundamental drawing actions, this means line segments and arcs(of less than \(2\pi\)).  There are two basic ways to do this.  One is to use a separate command for line segments in a path than line segments on their own.  In this case the symbol for line segment is modified for maximum clarity to give:
+
+<canvas width = "600" height = "60" id = "squareSpelling5"></canvas>
+<script>
+	ctx = document.getElementById("squareSpelling5").getContext("2d");	
+	x0 = 10;
+	y0 = 50;
+	unit = 30;
+	doTheThing(0300);
+	drawGlyph("0304,0313,0202,0332,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337,");
+	drawGlyph(string2byteCode(":"));
+	cursorPosition = 100;
+	spellGlyph("0344,0330");
+</script>
+<p>
+Or, in octal bytecode:
+<pre>
+0201:0344,0330
+</pre>
+<p>
+The other method of dealing with this is to add a global boolean variable called <samp>inPath</samp>, which is set to <samp>false</samp> in the initialization then again in the end path command <samp>0363</samp> and to <samp>true</samp> in the start path command <samp>0362</samp>.  While this is in some ways more complicated, as if statements must be added inside <samp>0342</samp> and <samp>0343</samp>, it has the advantage that bytecode can be more easily recycled from a version made of all self contained line segments when it's transformed into a cleaner path-based version.  In some sense this shows the strength of the Geometron approach.  By making the code easy to understand and expecting all users to edit all aspects of it from scratch in every instance, it is easy to make the code behave <i>exactly</i> correctly for each specific application.
+<p>  
+Similarly, the command to end a path given by <samp>0363</samp> can be modified inside the function <samp>doTheThing(localCommand)</samp> by the user every time to decide how and if closed paths should be filled.  In general fill properties are modified by the commands in the <samp>032x</samp> row but in many cases a whole Geometron instance will use a single type of fill(or lack thereof) and it makes sense to at least take a look at what is in <samp>0363</samp> each time to be sure it's right.  
+<p>
+With that excessive digression, I now ask what is the exact right implementation for quantum computing theory and design?  By default, nothing should be filled, and all line segments should be part of a path which is manually started and ended to make it export well.  There are also times where it clearly makes sense to have a self contained line segment be easily usable, as in the definition of the various swap gates.  Thus the default should be no fill, filled circle will be a special case from empty circle and will be at address <samp>0367</samp>, and there will be two types of line segment, with symbols as defined above.  To avoid any degeneracy in notation, <samp>0201</samp> will be the isolated segment and <samp>0203</samp> will be segment that is part of a path and <samp>0202</samp> is the cross hatch symbol used to modify the various symbol glyphs to put things in a path.  Likewise we need a filled arc, which will be stored at addresses <samp>0345</samp> and <samp>0346</samp> for the two directions of arc(this matters when in a path).
+</div>
+
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>Construction Of First Clean-Format Box</h2>
+
+The first thing we need is a closed square to replace the open square.  This alone will solve the largest problem here, making the gates publication quality in the svg format.  It is now time to make a connected square:
+<pre>
+0204:0362,0203,0334,0203,0334,0203,0334,0203,0334,0363,
+</pre>
+<p>
+or
+<canvas width = "600" height = "60" id = "fillSquareSpell"></canvas>
+<script>
+	ctx = document.getElementById("fillSquareSpell").getContext("2d");	
+	x0 = 10;
+	y0 = 50;
+	unit = 30;
+	doTheThing(0300);
+	drawGlyph("01204");
+	drawGlyph(string2byteCode(":"));
+	cursorPosition = 100;
+	spellGlyph("0362,0203,0334,0203,0334,0203,0334,0203,0334,0363");
+</script>
+<p>
+
+Now to actually try it, first in a canvas element:
+<p>
+<canvas width = "400" height = "300" id = "square5"></canvas>
+<script>
+	ctx = document.getElementById("square5").getContext("2d");	
+	x0 = 150;
+	y0 = 150;
+	unit = 50;
+	doTheThing(0300);
+	ctx.lineWidth = 15;
+
+	drawGlyph("0204,0333,0335,0362,0203,0203,0335,0203,0335,0203,0203,0335,0203,0363");
+</script>
+<p>
+That looks good, even with the very wide line width.  Now try an svg element. 
+
+<center id = "svgContainer3">
+<svg width="400" height="300" id = "svg3"  xmlns="http://www.w3.org/2000/svg"></svg>
+</center>
+<p>
+<textarea id = "svgCode3" cols = "60" rows = "4"></textarea>
+<script>
+	ctx = document.getElementById("invisibleCanvas").getContext("2d");	
+	x0 = 150;
+	y0 = 150;
+	unit = 50;
+	doTheThing(0300);
+currentSVG = "\n";
+//drawGlyph("0337,0337,0214,0332,0330,0240,0336,0332,0331,0335,0335,0336,0342,");
+drawGlyph("0204,0333,0335,0362,0203,0203,0335,0203,0335,0203,0203,0335,0203,0363");
+document.getElementById("svg3").innerHTML = currentSVG;
+console.log(currentSVG);
+document.getElementById("svgCode3").innerHTML = document.getElementById("svgContainer3").innerHTML;
+</script>
+<p>
+And here is the result of copy/pasting the above svg code into a .svg file with a text editor then opening it in a gds editor(<a href = "http://www.layouteditor.net">http://www.layouteditor.net</a>):
+<img src = "https://i.imgur.com/H5u0dxY.png"></img>
+<p>
+This closes the loop with fabrication!  It is now possible to directly create a thing in a browser and then move it to .gds format and turn it into metal-on-silicon, or to gerber file format and turn it into copper-on-pcb.  This can be used both for direct layout design and more importantly for encoding of information on layouts to track design information in the physical world.  
+</div>
+
 
 <style>
 html {
@@ -1278,7 +1510,7 @@ html {
 	padding: 10px 10px 10px 10px;
 	margin: 10px 10px 10px 10px;
 	background: white;	
-	font-size: 14px;
+	font-size: 16px;
 	font-family: "Century Schoolbook";
 	text-align: left;
 	float:left;
