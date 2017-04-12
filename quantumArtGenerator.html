@@ -202,6 +202,7 @@
 0203:0344,0330
 0204:0362,0203,0334,0203,0334,0203,0334,0203,0334,0363
 01204:0202,0200,0336,0336,0330,0332,0337,0200,0336,0331,0333,0337,0337,
+01365:0313,0304,0333,0200,0336,0330,0332,0336,0331,0332,0337,0350,0350,0334,0342,0335,0335,0342,0334,0304,0333,0350,0350,0334,0342,0335,0335,0342,0334,0304,0336,0333,0331,0337,0337
 */
 </script>
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -314,7 +315,7 @@ buildPanel("020,010,021,022,023,024,025,026,027");
 
 
 currentNode = document.getElementById("drawPad");
-drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0240,0241,0242,0210,0211,0212,0213,0214,0215,0243,0362,0203,0363,0202,0204";
+drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0240,0241,0242,0210,0211,0212,0213,0214,0215,0243,0362,0203,0363,0202,0204,0365";
 document.getElementById("drawGlyphGlyph").value = drawGlyphsGlyph;
 buildPanel(drawGlyphsGlyph);
 
@@ -1468,8 +1469,7 @@ Now to actually try it, first in a canvas element:
 <p>
 That looks good, even with the very wide line width.  Now try an svg element. 
 
-<center id = "svgContainer3">
-<svg width="400" height="300" id = "svg3"  xmlns="http://www.w3.org/2000/svg"></svg>
+<center id = "svgContainer3"><svg width="400" height="300" id = "svg3"  xmlns="http://www.w3.org/2000/svg"></svg>
 </center>
 <p>
 <textarea id = "svgCode3" cols = "60" rows = "4"></textarea>
@@ -1493,7 +1493,84 @@ And here is the result of copy/pasting the above svg code into a .svg file with 
 This closes the loop with fabrication!  It is now possible to directly create a thing in a browser and then move it to .gds format and turn it into metal-on-silicon, or to gerber file format and turn it into copper-on-pcb.  This can be used both for direct layout design and more importantly for encoding of information on layouts to track design information in the physical world.  
 </div>
 
+<div class = "atom" style = "width:600px;overflow:scroll">
+<h2>Word-in-Box</h2>
+Now I will formally introduce the word in a box.  Words are inserted into Geometron elements, be they svg or canvas, with the byte code command <samp>0365</samp>, denoted by the symbol glyph:
+<canvas width = "40" height = "40" id = "wordSymbol1"></canvas>.
+<script>
+	ctx = document.getElementById("wordSymbol1").getContext("2d");	
+	x0 = 4;
+	y0 = 37;
+	unit = 30;
+	doTheThing(0300);
+	ctx.lineWidth = 2;
+	drawGlyph("01365");
+</script>
+What this does is print the global string variable <samp>currentWord</samp> at location defined by the global variables x and y with font size <samp>side</samp>.  Setting of the value of <samp>currentWord</samp> is done by invoking a command in the address space from <samp>0600</samp> through <samp>0677</samp>, which are defined as the word tablet. 
+<p>
+Now for an example of building word-in-box structures using a pair of common icons from quantum information theory, Alice and Bob:<p>
+<canvas width = "400" height = "140" id = "aliceBob1"></canvas>
+<p>
+<script>
 
+	ctx = document.getElementById("aliceBob1").getContext("2d");	
+	x0 = 200;
+	y0 = 110;
+	unit = 50;
+	doTheThing(0300);
+	ctx.lineWidth = 2;
+currentTable[0420] = "0620,0337,0204,0336,0332,0336,0330,0336,0332,0332,0332,0330,0337,0337,0310,0336,0365,0337,0313,0333,0333,0331,0336,0336,0330,0332,0337,0337,0337,0333,0333,0204,0336,0330,0332,0332,0336,0336,0331,0337,0337,0310,0336,0621,0365,0337,0313,";
+currentTable[0620] = "0102,0157,0142,";
+currentTable[0621] = "0101,0154,0151,0143,0145,";
+
+	drawGlyph(currentTable[0420]);
+</script>
+<p>
+Since some tweaking was required to make this, let's take a closer look at what that tweaking was.  
+<p>
+Here is the naive application of the square drawing command and the word command:
+<p>
+<canvas width = "400" height = "300" id = "aliceBob2"></canvas>
+<p>
+<script>
+	ctx = document.getElementById("aliceBob2").getContext("2d");	
+	x0 = 200;
+	y0 = 210;
+	unit = 50;
+	doTheThing(0300);	
+	drawGlyph("0620,0204,0365,");
+	x0 = 200;
+	y0 = 80;
+	unit = 30;
+	doTheThing(0300);	
+	spellGlyph("0620,0204,0365,");
+	drawGlyph(string2byteCode(":"));
+</script>
+<p>
+Without any extra commands, the square and the text both have size set by the global "side", so they're the same. Also with the same coordinates, the text is outside the box.  This is an important application of a fundamental operation in geometron, the shrunken move.  Also, we'll use scaling outside the standard doubling.  I now jump to a demonstration: 
+<p>
+<canvas width = "400" height = "300" id = "aliceBob3"></canvas>
+<p>
+
+<script>
+	ctx = document.getElementById("aliceBob3").getContext("2d");	
+	x0 = 200;
+	y0 = 210;
+	unit = 50;
+	doTheThing(0300);
+	currentGlyph = "0204,0620,0336,0332,0332,0330,0336,0336,0331,0331,0330,0333,0337,0337,0310,0336,0365,";	
+	drawGlyph(currentGlyph);
+	x0 = 20;
+	y0 = 80;
+	unit = 20;
+	doTheThing(0300);	
+	spellGlyph(currentGlyph);
+	drawGlyph(string2byteCode(":"));
+
+
+
+</script>
+</div>
 <style>
 html {
 	height: 100%;
