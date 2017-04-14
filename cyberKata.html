@@ -1007,10 +1007,54 @@ function stepCode(){
 		y0 = -1000;
 	}
 }		
-
 </script>
 </div>
 
+<div class = "atom" style = "overflow:scroll;">
+<canvas width = "600" height = "600" id = "z3" style = "border:solid"></canvas>
+<script>
+	isFlipped = false;
+
+	ctx = document.getElementById("z3").getContext("2d");
+	x0 = 80;
+	Y0 = 80;
+	unit = 40;
+	doTheThing(0300);
+	//drawGlyph(string2byteCode("0"));
+	doTheThing(0325);	
+	y = 80;
+	for(var ypos = 0;ypos < 6;ypos++){	
+		y = 120 + 60*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 100 + xpos*60;
+			if(!(xpos==0 && ypos == 0)&&!(xpos==7 && ypos == 5)){
+				doTheThing(64 + xpos + 8*ypos)
+				doTheThing(0330);
+			}
+		}
+	}
+	doTheThing(0324);	
+	y = 60;
+	for(var xpos = 0;xpos < 8;xpos++){
+		x = 105 + xpos*60;
+			doTheThing(48 + xpos)
+			doTheThing(0330);
+	}
+	x = 60;
+	for(var ypos = 0;ypos < 8;ypos++){
+		x = 40;
+		y = 120 + ypos*60;
+		doTheThing(48 + ypos)
+	}
+	x = 10;
+	y = 50;
+	doTheThing(0336);
+	doTheThing(0327);
+	drawGlyph(string2byteCode("01yx"));
+
+
+</script>
+</div>
 
 
 <style>
