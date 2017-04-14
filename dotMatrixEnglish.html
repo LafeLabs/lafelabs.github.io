@@ -1020,31 +1020,173 @@ Y0 = 50;
 
 	drawGlyph(string2byteCode(sheep));
 
-//setInterval(stepCode,10);
-	
-	
-	/*
-function stepCode(){
+</script>
+</div>
 
-	unit = 30;
-	ctx = document.getElementById("M2").getContext("2d");
-	doTheThing(0300);
-	ctx.fillStyle = "black";
-	ctx.fillRect(0,0,1200,100);
-	doTheThing(0324);
-	
-	doTheThing(0300);
+<div class = "atom" style = "overflow:scroll;">
+<canvas width = "600" height = "600" id = "M4" style = "border:solid"></canvas>
+<canvas width = "600" height = "600" id = "M3" style = "border:solid"></canvas>
+<script>
 
-	drawGlyph(string2byteCode(sheep));
-	X0 -= 10;
-	if(X0 < -500){
-		X0 = 1200;
+	ctx = document.getElementById("M3").getContext("2d");
+	x0 = 80;
+	Y0 = 80;
+	unit = 40;
+	doTheThing(0300);
+	//drawGlyph(string2byteCode("0"));
+	doTheThing(0325);	
+	y = 80;
+	for(var ypos = 0;ypos < 8;ypos++){	
+		y = 120 + 60*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 100 + xpos*60;
+			doTheThing(64 + xpos + 8*ypos)
+		}
 	}
-}
-*/
+	doTheThing(0324);	
+	y = 50;
+	for(var xpos = 0;xpos < 8;xpos++){
+		x = 100 + xpos*60;
+		doTheThing(48 + xpos)
+	}
+	x = 60;
+	for(var ypos = 0;ypos < 8;ypos++){
+		x = 40;
+		y = 120 + ypos*60;
+		doTheThing(48 + ypos)
+	}
+	x = 10;
+	y = 50;
+	doTheThing(0336);
+	doTheThing(0327);
+	drawGlyph(string2byteCode("01yx"));
+
+
+	ctx = document.getElementById("M4").getContext("2d");
+	x0 = 80;
+	Y0 = 80;
+	unit = 40;
+	doTheThing(0300);
+	//drawGlyph(string2byteCode("0"));
+	doTheThing(0325);	
+	y = 80;
+
+	for(var ypos = 0;ypos < 4;ypos++){	
+		y = 120 + 60*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 100 + xpos*60;
+			doTheThing(512+ xpos + 8*ypos)
+		}
+	}
+
+	for(var ypos = 4;ypos < 8;ypos++){	
+		y = 120 + 60*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 100 + xpos*60;
+			doTheThing( xpos + 8*ypos)
+		}
+	}
+	doTheThing(0324);	
+	y = 50;
+	for(var xpos = 0;xpos < 8;xpos++){
+		x = 100 + xpos*60;
+		doTheThing(48 + xpos)
+	}
+	x = 60;
+	for(var ypos = 0;ypos < 8;ypos++){
+		x = 40;
+		y = 120 + ypos*60;
+		doTheThing(48 + ypos)
+	}
+	x = 10;
+	y = 50;
+	doTheThing(0336);
+	doTheThing(0327);
+	drawGlyph(string2byteCode("0yx"));
 
 </script>
 </div>
+
+
+<div class = "atom" style = "overflow:scroll;">
+<canvas width = "600" height = "600" id = "M5" style = "border:solid"></canvas>
+<canvas width = "600" height = "600" id = "M6" style = "border:solid"></canvas>
+<script>
+
+	ctx = document.getElementById("M5").getContext("2d");
+	x0 = 80;
+	Y0 = 80;
+	unit = 40;
+	doTheThing(0300);
+	//drawGlyph(string2byteCode("0"));
+	doTheThing(0325);	
+	y = 80;
+	for(var ypos = 0;ypos < 8;ypos++){	
+		y = 120 + 60*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 100 + xpos*60;
+			doTheThing(512 + 128 + xpos + 8*ypos);
+		}
+	}
+	doTheThing(0324);	
+	y = 50;
+	for(var xpos = 0;xpos < 8;xpos++){
+		x = 100 + xpos*60;
+		doTheThing(48 + xpos);
+	}
+	x = 60;
+	for(var ypos = 0;ypos < 8;ypos++){
+		x = 40;
+		y = 120 + ypos*60;
+		doTheThing(48 + ypos);
+	}
+	x = 10;
+	y = 50;
+	doTheThing(0336);
+	doTheThing(0327);
+	drawGlyph(string2byteCode("02yx"));
+
+
+	ctx = document.getElementById("M6").getContext("2d");
+	x0 = 80;
+	Y0 = 80;
+	unit = 40;
+	doTheThing(0300);
+	//drawGlyph(string2byteCode("0"));
+	doTheThing(0325);	
+	y = 80;
+
+	for(var ypos = 0;ypos < 8;ypos++){	
+		y = 120 + 60*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 100 + xpos*60;
+			doTheThing(512 + 128 + 64 + xpos + 8*ypos);
+			doTheThing(0325);	
+
+		}
+	}
+
+	doTheThing(0324);	
+	y = 50;
+	for(var xpos = 0;xpos < 8;xpos++){
+		x = 100 + xpos*60;
+		doTheThing(48 + xpos)
+	}
+	x = 60;
+	for(var ypos = 0;ypos < 8;ypos++){
+		x = 40;
+		y = 120 + ypos*60;
+		doTheThing(48 + ypos)
+	}
+	x = 10;
+	y = 50;
+	doTheThing(0336);
+	doTheThing(0327);
+	drawGlyph(string2byteCode("03yx"));
+
+</script>
+</div>
+
 
 <style>
 html {
