@@ -447,14 +447,14 @@ function redraw(){
 
 
   	img = document.getElementById("derp");
-  	
+  	console.log(img.width + "," + img.height);
 	x0 = 340;
 	y0 = 195;
 	unit = 19;
  	ctx = document.getElementById("plotCanvas").getContext("2d");
    	doTheThing(0300);
 	ctx.clearRect(0,0,783,646);
-	ctx.drawImage(img, 0, 0, 783, 646);
+	ctx.drawImage(img, 0, 0, (img.width).toString(), (img.height).toString());
    	doTheThing(0300);
 
 	drawGlyph(currentGlyph);
@@ -1128,7 +1128,7 @@ currentSVG = "\n";
 drawGlyph("0300,0366,0333,0333,0333,0335,0335,0331,0367,");
 drawGlyph("0300,0366,0332,0332,0332,0335,0335,0331,0367,");
 document.getElementById("svg1").innerHTML = currentSVG;
-console.log(currentSVG);
+//console.log(currentSVG);
 document.getElementById("svgCode1").innerHTML = document.getElementById("svgContainer1").innerHTML;
 </script>
 

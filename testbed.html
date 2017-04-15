@@ -10,8 +10,8 @@
 */
 </script>
 <script>
-x = 0;
-y = 0;
+x = 100;
+y = 100;
 
 </script>
 </head>
@@ -38,22 +38,27 @@ y = 0;
 
 function down(){
 	ctx.clearRect(0,0,500,500);
-	ctx.drawImage(img,x, y);
+	ctx.drawImage(img,0, 0,img.width.toString(),img.height.toString());
+	ctx.drawImage(img,x,y,50,50,0,0,100,100);
+
 	y += 10;
 }
 function up(){
 	ctx.clearRect(0,0,500,500);
-	ctx.drawImage(img, x, y);
+	ctx.drawImage(img,0, 0,img.width.toString(),img.height.toString());
+	ctx.drawImage(img,x,y,50,50,0,0,100,100);
 	y -= 10;
 }
 function left(){
 	ctx.clearRect(0,0,500,500);
-	ctx.drawImage(img, x, y);
+	ctx.drawImage(img,0, 0,img.width.toString(),img.height.toString());
+	ctx.drawImage(img,x,y,50,50,0,0,100,100);
 	x -= 10;
 }
 function right(){
 	ctx.clearRect(0,0,500,500);
-	ctx.drawImage(img, x, y);
+	ctx.drawImage(img,0, 0,img.width.toString(),img.height.toString());
+	ctx.drawImage(img,x,y,50,50,0,0,100,100);
 	x += 10;
 }
 
