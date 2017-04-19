@@ -815,10 +815,8 @@ doTheThing(01353);
 
 </script>
 These commands are in fact more than is needed to define any arbitrary angle.  Just as any decimal number can be represented by sums of powers of one half, any angle can be represented as sums of powers of one half and/or one third from <i>any</i> angle.  And yet we have three to choose from!  This is different from how we are used to dealing with numbers.  Normally if you're using a computer language that expresses and angle as 37.12 degrees, that's it: it's always 37.12 degrees.  However in Geometron, one might create a 30 degree symmetry by either taking the third of 90 degrees or half of 60 degrees, shown in symbol glyphs as follows:
-
-
 <center>
-	<canvas width = "600" height = "200" id = "canvas13"></canvas>
+	<canvas width = "600" height = "100" id = "canvas13"></canvas>
 </center>
 <script>
 cursorPosition = 100;
@@ -828,8 +826,224 @@ y = 70;
 side = 50;
 ctx.lineWidth = 3;
 drawGlyph("01304,01352,075,01306,01350");
-
 </script>
+
+So that's how we create the easy and obvious and useful angle 30 degrees. But what about arbitrary angles?  Any angle can be represented as a decimal in any base.  One could prove this formally, which I will not do here.  Instead I will give a meandering account of various angles which are easily constructed which might be useful.  With 30 degrees in hand, 10 degrees 
+
+<center>
+	<canvas width = "600" height = "100" id = "canvas14"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas14").getContext("2d");
+x = 10;
+y = 70;
+side = 50;
+ctx.lineWidth = 3;
+drawGlyph("01304,01352,01352,075,01306,01350,01352");
+</script>
+
+To get to five degrees, divide by 2 again:
+<center>
+	<canvas width = "600" height = "100" id = "canvas15"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas15").getContext("2d");
+x = 10;
+y = 70;
+side = 50;
+ctx.lineWidth = 3;
+drawGlyph("01304,01352,01352,01350");
+</script>
+The next obvious step is to try to get to one degree.  And now we see the limitations of any choice of numerical base: to get from one prime number or set of primes(2 and 3) to another (5) we need repeated decimals.  There are multiple ways to approach this.  The first is to ask a simple question: why do we need one degree?  In many cases we don't.  Using random integer values of degrees is very useful for homework, but homework is not useful.  School is not a place for smart people. For completeness, however, the binary decimal value of 1/5th is 0.0011001100110011...  In geometron, we can't make this a single rotation, but must compose the rotations and the angle changes.  To rotate 0.0011, we rotate by an eight then a sixteenth.  
+
+<center>
+	<canvas width = "600" height = "300" id = "canvas16"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas16").getContext("2d");
+x = 10;
+y = 20;
+side = 16;
+ctx.lineWidth = 3;
+currentWord = "2.5 degrees:";
+drawGlyph("0365,0331,0337,0331,01304,01352,01352,01350,01350");
+
+x = 250;
+y = 20;
+side = 16;
+ctx.lineWidth = 3;
+currentWord = "1.25 degrees:";
+drawGlyph("0365,0331,0337,0331,01304,01352,01352,01350,01350,01350");
+
+x = 10;
+y = 120;
+side = 16;
+ctx.lineWidth = 3;
+currentWord = "0.625 degrees:";
+drawGlyph("0365,0331,0337,0331,01304,01352,01352,01350,01350,01350,01350");
+
+x = 10;
+y = 220;
+side = 16;
+ctx.lineWidth = 3;
+currentWord = "0.3125 degrees:";
+drawGlyph("0365,0331,0337,0331,01304,01352,01352,01350,01350,01350,01350,01350");
+</script>
+Now we have to actually do a rotation:
+
+<center>
+	<canvas width = "600" height = "80" id = "canvas17"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas17").getContext("2d");
+x = 10;
+y = 20;
+side = 16;
+ctx.lineWidth = 3;
+currentWord = "0.9375 degrees:";
+drawGlyph("0365,0331,0337,0331,01304,01352,01352,01350,01350,01350,01350,01350,01335,01335,01335");
+</script>
+Now in a reasonable world, you might already say this is close enough to one degree because one degree is mostly useless.  But we shall soldier on.  
+
+<center>
+	<canvas width = "600" height = "250" id = "canvas18"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas18").getContext("2d");
+x = 10;
+y = 20;
+side = 14;
+ctx.lineWidth = 3;
+currentWord = "0.996 degrees:";
+drawGlyph("0365,0331,0337,0331,");
+spellGlyph("0304,0352,0352,0350,0350,0350,0350,0350,0335,0335,0335,0350,0350,0350,0350,0335,0335,0335");
+
+x = 10;
+y = 120;
+side = 14;
+ctx.lineWidth = 3;
+currentWord = "0.9998 degrees:";
+drawGlyph("0365,0331,0337,0331,");
+spellGlyph("0304,0352,0352,0350,0350,0350,0350,0350,0335,0335,0335,0350,0350,0350,0350,0335,0335,0335,0350,0350,0350,0350,0335,0335,0335");
+</script>
+And that is more precision than just about any of us will ever encounter in any unit other than time, but it's easy to see how to continue this by repeating the four divisions by two and three rotations.  
+<p>
+There are still two other ways to approach this increasingly tedious problem, however.  The easiest is the one I would recommend in most cases: just add another command to the Geometron command set, which we'll discuss later.  There are several choices for this.  The most obvious is to add divide-by-five.  While this gets the job done, divide-by-sixty or divide-by-12 are probably more generically useful since they get smaller faster.  I like adding divide-by-12 because a clock face is divided into 12 slices so it's simple to create a set of symbol glyphs for divide and multiply using the hands on an analog clock.  
+<p>
+The final approach here is to use combinations of 1/2 and 1/3 to get from 5 to 1.  This is also tedious, and since I feel that you should never do this, I'm going to leave it out.  The point of Geometron is to avoid tedium by changing the rules--the opposite choice you are forced to make in school. So I will now move on. 
+<p>  
+
+The final topic to address in this section is the name of the section, the "roots of unity".  This terminology will be familiar to those who've studied the math of so-called "complex variables" or "imaginary numbers", which is a small subset of my intended audience here, but it's possible to indicate what is meant with some more colorful imagery.  You can just think of everything here as ways of dividing up the unit circle, where "unit" is dependent on the context.  One of the claims of Geometron is that this is really what you care about.  Not degrees from some arbitrary angle, but number of divisions of a unit circle from whatever angle you happen to care about <i>right now</i>.  This is what is meant by "roots of unity" for the purpose of this as a art book: it's how we divide up a unit.  These can be thought of in an organic sense like roots of a tree.  More formally, there is a mathematical definition that connects these angles with various complex numbers which can be raised to different powers to get the number one.  I want to try to have as many double meanings like this as possible in Geometron: a purely artistic interpretation which makes sense and a formal mathematical definition which also makes sense.   
+</div>
+<div class = "atom">
+<h2>Scale</h2>
+
+The approach geometron takes to scale and units in distance measurement is just like that in angle measurements.  We always start with the most logical thing we can possibly choose, always being as much informed by the physicality of the system as possible, then define everything using simple relative geometric transformations of that unit.  In the computer version of the language, there is always a current unit value called "side" which is changed just as the position and angle are(more on this in the next section).  When a reset command is issued or at the beginning of a glyph this is set to "unit", which has some numerical value set based on the problem at hand.  This is always in real units! And does not always have to use numbers.  
+<p>
+This is so different from how computers usually do things that it's important to give an example of how this works and why it's useful.  When giving directions in a city it is common to describe distances in blocks.  But "block" is not a real unit in any normal mathematical sense.  Some blocks are much smaller than others.  And intersections do not have zero size, or even uniform size, so there are huge "uncertainties" built in if you view the world as a computer.  But we don't! The fact that computers don't work this way is closely related to how infuriating they are for almost all humans but those with insufferable personalities.  What is obvious to a human mind, that saying "7 blocks" means something which we can figure out how to interpret is very hard for a computer to parse and something obvious to a computer like the idea that 0.9999999999999999 is not equal to 1 is a very dangerous form of stupidity for a real human to have(which we force children to learn in school because school brainwashes children to behave like computers).  
+<p>
+Just as rotations in Geometron involve a changing of what happens when we apply a rotation and two rotation commands for clockwise and counterclockwise, scales involve a set of various choices for how "side" gets scaled and two commands, one for increasing and the other for decreasing "side" by that amount, called "scaleFactor" in the computer implementation.   
+<p>
+The increase and decrease size commands are simply a plus and minus in a square, similarly to the other glyphs:
+<center>
+	<canvas width = "400" height = "100" id = "canvas19"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas19").getContext("2d");
+x = 10;
+y = 80;
+side = 60;
+ctx.lineWidth = 3;
+drawGlyph("01336,01337");
+</script>
+The default scale factor is 2.  I'll give an example of using a factor of two before showing the other scales.
+
+<center>
+	<canvas width = "500" height = "400" id = "canvas20"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas20").getContext("2d");
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 3;
+spellGlyph("0341,0336,0333,0341,0336,0333,0341,0336,0333,0341,0336,0333,0341,");
+doTheThing(072);
+x = 250;
+y = 230;
+side = 150;
+drawGlyph("0341,0336,0333,0341,0336,0333,0341,0336,0333,0341,0336,0333,0341,");
+</script>
+It should be clear to anyone who's even seen fractals as just a purely artistic creation that this is a doorway to a whole world of fractal art.  I will postpone showing the details of how to make the most interesting fractals until geometric recursion is discussed in a later chapter.
+<p>
+I believe that doubling and halving of lengths are, as with angles, the most natural possible scale that can be done, which is why it's the default.  The symbols to set this mode is two squares next to each other:
+<center>
+	<canvas width = "80" height = "80" id = "canvas21"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas21").getContext("2d");
+x = 10;
+y = 70;
+side = 60;
+ctx.lineWidth = 3;
+spellGlyph("0313");
+</script>
+I will now mention without much further comment the multiples of 3 and 5 that are also part of the default Geometron language:
+<center>
+	<canvas width = "200" height = "80" id = "canvas22"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas22").getContext("2d");
+x = 10;
+y = 70;
+side = 60;
+ctx.lineWidth = 3;
+spellGlyph("0314,0316");
+</script>
+Of course putting these together like this makes 3X5= 15, but I'm just displaying them like this for convenience.  To divide or multiply by 10 the 2 and 5 are combined in a similar way.  Where things start to deviate from math you might be used to to reflect the geometric nature of this language is with the other scales.  I would argue that in geometry the next most natural scale after 2 is in fact the square root of two.  Why?  Because the square root of two is the only thing that gets us figures like this:
+<center>
+	<canvas width = "200" height = "200" id = "canvas23"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas23").getContext("2d");
+x = 25;
+y = 175;
+side = 150;
+ctx.lineWidth = 3;
+spellGlyph("0310");
+</script>
+This figure is special for several reasons.  First of all, it is a decorative pattern that is extremely useful in any type of design arts.  Any time you want to use a square, you're going to probably also want to cut diagonals of that square.  To do that you will very likely get figures like this.  Just about any kind of practical engineering design will also end up with figures like this so being able to create them easily is important for the functioning of a language intended to build machines.  
+<p>
+To understand better why this is not just special but how it relates to the square root of two let's look at the area of the inner square, the one that is rotated at a 45 degree angle.  To make it clearer, it makes sense to add two more line segments to the figure:
+<center>
+	<canvas width = "200" height = "200" id = "canvas24"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas24").getContext("2d");
+x = 25;
+y = 175;
+side = 150;
+ctx.lineWidth = 3;
+spellGlyph("0310");
+x = 25;
+y = 175;
+side = 150;
+ctx.lineWidth = 1;
+drawGlyph("0336,0333,0330,0342,0334,0342,0334,0342,0334,0342");
+</script>
+
+
 
 
 </div>
