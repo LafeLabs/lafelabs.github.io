@@ -230,10 +230,40 @@
 		theta:theta,
 		thetaStep:thetaStep,
 		side:side,
-		glyph:"0362,0344,0363,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,0334,0362,0344,0363,0335,0335,0362,0344,0363"
+		glyph:"0342,0334,0342,0335,0335,0342,0334,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,"
 	}
 </script>
 <script>
+function appendGlyphButton(localCommand){
+	glyphButtonSize = 45;
+	var newCanvas = document.createElement("CANVAS");		
+	newCanvas.width = glyphButtonSize;
+	newCanvas.height = glyphButtonSize;
+	newCanvas.className = "glyphButtons";
+	ctx = newCanvas.getContext("2d");
+	ctx.fillStyle="white";
+	ctx.fillRect(5, 5, glyphButtonSize-10, glyphButtonSize-10);
+	ctx.fillStyle="black";
+	doTheThing(0300);			
+	x = 5;
+	y = glyphButtonSize-5;
+	side = glyphButtonSize-10;
+	doTheThing(localCommand + 01000);
+	if(localCommand < 040){
+		newCanvas.onclick = function(){
+			localRoot(localCommand);
+		}	
+	}
+	if(localCommand >= 040){
+		newCanvas.onclick = function(){
+			//cursorAction(localCommand);	
+			currentGlyph += "0" + localCommand.toString(8) + ",";
+			redraw();	
+		}
+	}
+	currentNode.appendChild(newCanvas);
+}
+
 function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 	var dirtyArray = dirtyGlyph.split(",");
 	var cleanGlyph = "";
@@ -983,7 +1013,7 @@ drawGlyph("0341,0336,0333,0341,0336,0333,0341,0336,0333,0341,0336,0333,0341,");
 </script>
 It should be clear to anyone who's even seen fractals as just a purely artistic creation that this is a doorway to a whole world of fractal art.  I will postpone showing the details of how to make the most interesting fractals until geometric recursion is discussed in a later chapter.
 <p>
-I believe that doubling and halving of lengths are, as with angles, the most natural possible scale that can be done, which is why it's the default.  The symbols to set this mode is two squares next to each other:
+I believe that doubling and halving of lengths are, as with angles, the most natural possible scale that can be done, which is why it's the default.  The symbol to set this mode is two squares next to each other:
 <center>
 	<canvas width = "80" height = "80" id = "canvas21"></canvas>
 </center>
@@ -1040,11 +1070,508 @@ x = 25;
 y = 175;
 side = 150;
 ctx.lineWidth = 1;
-drawGlyph("0336,0333,0330,0342,0334,0342,0334,0342,0334,0342");
+drawGlyph("0336,0333,0330,0342,0334,0342,0334,0342,0334,0342,0334");
+</script>
+Now look at the four smaller squares made by these new lines.  Since we have cut the big square in half twice, each smaller square is a quarter of the whole.  And each diagonal line cuts one of those smaller squares in half, which we can see again just by looking them.  So now we can just count these little triangles and see that there are four in the 45 degree rotated square and four not in that square.  Therefore that square has half the area of the larger square.  So if the larger square has a side of one unit, what is the length of the side of the smaller square?  If the area is 1/2 that of the big square, it has to be the square root of that or 1 over the square root of two! 
+<p>
+This is such a natural proof that it was supposedly used in ancient Greece not just by geometers but by philosophers as an example to show that the human mind can access geometrical knowledge even without an education in geometry(as contrasted to say the quadratic formula which is not something you can access without education in the subject). Whether this is true or not, I've chosen it as the symbol for root two scaling.  Note that doing a scale operation in this mode twice is the same as one operation in double/half mode, or in symbols:
+<center>
+	<canvas width = "500" height = "180" id = "canvas25"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas25").getContext("2d");
+x = 25;
+y = 55;
+side = 50;
+ctx.lineWidth = 3;
+drawGlyph("01310,01336,01336,075,01313,01336");
+x = 25;
+y = 155;
+side = 50;
+ctx.lineWidth = 3;
+drawGlyph("01310,01337,01337,075,01313,01337");
+</script>
+To further illustrate how this command works I'll draw and spell an equilateral right triangle, one of the fundamental building blocks of all technology and art:
+<center>
+	<canvas width = "500" height = "180" id = "canvas26"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas26").getContext("2d");
+x = 15;
+y = 35;
+side = 30;
+ctx.lineWidth = 3;
+spellGlyph("0335,0342,0330,0334,0350,0334,0310,0337,0342,0330,0334,0334,0334,0336,0342");
+x = 200;
+y = 155;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("0335,0342,0330,0334,0350,0334,0310,0337,0342,0330,0334,0334,0334,0336,0342");
+</script>
+Note that while I've now referred several times to "the square root of two," at no time did I actually write out the numbers "1.414..." which are the decimal approximation to the square root of two.  This is deliberate.  It is the position of Geometron that the concept of drawing a line connection opposite corners of a square is a fundamental operation which should exist in a language independent of number.  This sounds like potentially just meaningless philosophy, so let me illustrate with an example.  One of the implementations of Geometron that I'll come back to many times in this work is one where shapes are constructed not witha computer or with compas and ruler as in classical geometry, but by combining artifacts which have built in geometry in such a way as to extend that geometry into whatever figure is being constructed.  For example, if you look around your environment you can almost certainly find a rectangular object.  If you fold it over carefully you can make the edges line up by feel and by eye to get a figure like this:
+
+<center>
+	<canvas width = "500" height = "180" id = "canvas27"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas27").getContext("2d");
+doTheThing(0300);
+x = 200;
+y = 120;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("0304,0313,0335,0342,0330,0334,0350,0334,0310,0337,0342,0330,0334,0334,0334,0336,0342,0304,0335,0336,0342,0330,0334,0337,0342,0330,0334,0342");
+</script>
+With this physical piece of paper in hand(preferably card stock to make it less flexible and easier to use as a ruler), you have a physical tool to construct both square root of two scales and 45 degree angle rotations.  No numbers were required, nor was a compass or trammel needed. Just some trash and a pen or pencil.  
+<p>
+<b>image here</b>
+<p>
+The next biggest standard scaling after square root of two is the so-called "golden ratio".  The reader may have heard many different claims about this number, depending on their background.  We must take all statements about this number with some skepticism, as many people both in and out of mathematical sciences have made ludicrous and easily disproven claims about it in a wide range of spheres.  What is <i>not</i> pseudoscience, however, is the fact that this ratio is as important for constructing figures with fivefold symmetry as the square root of two is for constructing square-based figures, and in a very similar way.  To see how this works I'll use Geometron to build a pentagram, a basic figure used in art for many centuries:
+<center>
+	<canvas width = "500" height = "180" id = "canvas28"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas28").getContext("2d");
+doTheThing(0300);
+x = 180;
+y = 160;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("0335,0305,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0334,0311,0337,0342,0330,0335,0335,0342,0330,0335,0335,0342,0330,0335,0335,0342,0330,0335,0335,0342");
+</script>
+Just as the square root of two gives us the ratio of the side length to the diagonal length of the square, the Golden Ratio gives us the ratio of the side length of a regular(all sides and angles the same) pentagon to the lines that connect non-adjacent corners.  This ratio is, in numbers, about 1.62.
+<p>
+Not surprisingly, the next setup up from the pentagon and pengagram is the hexagon and six pointed star or Star of David, as shown here:
+<center>
+	<canvas width = "300" height = "220" id = "canvas29"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas29").getContext("2d");
+doTheThing(0300);
+x = 230;
+y = 160;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("0306,0201,0334,0201,0334,0201,0334,0201,0334,0201,0334,0201,0334,0334,0313,0350,0335,0312,0337,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201,0334,0334,0334,0336,0330,0334,0334,0334,0334,0335,0337,0201,0334,0334,0334,0334,0201,0334,0334,0334,0334,0201");
+</script>
+The ratio of the side length to the length of a line segment in the star is the square root of three, which is the next scale factor up in Geometron.  The numerical value is about 1.73 and the symbol glyph is:
+<center>
+	<canvas width = "300" height = "200" id = "canvas30"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas30").getContext("2d");
+doTheThing(0300);
+x = 90;
+y = 160;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("01312");
+</script>
+</div>
+
+<div class = "atom">
+	<h2>The Global Cursor</h2>
+	If you've used a computer at all you're probably used to the concept of a cursor.  This word usually denotes one of two things on a computer: either a blinking line or rectangle in older systems which describe where words will be typed or an arrow of some kind which gets manipulated by a mouse which denote where some type of graphical action will be carried out.  
+	<p>
+	In both cases the cursor concept is doing the same thing and I want to discuss what that is.  The cursor is acting as a "tool" in a way that is familiar from physical tools.  Computers on their own represent a vast sea of numbers in memory with very little to naturally distinguish them.  However physical work of any kind done by a human involves tools that have an actual position and configuration in space.  For example a ruler used on paper might be described by the position of both ends(so that's an x and y position for both ends, making this four numbers) as well as the position of a pen along the edge being used, making a fifth number.  One might also choose to describe a ruler with one pair of numbers for one end and a single other number to describe the angle of the ruler compared to some base angle such as the "bottom" side of the paper.  Likewise, the computer cursor creates a metaphor for a physical tool by defining a unique set of numbers which are special in that they focus the attention of the human mind on on location and configuration above all the others which the computer could in theory work on.  
+<p>
+The cursor in Geometron is an extension of the cursor used normally in computers.  Rather than just describing a position and possibly one of a couple modes, however, the Geometron cursor describes quite a few things about the current state of the virtual(or non virtual) tool.  Properties where are defined by the cursor state include:
+<ul>
+	<li>position, denoted by x and y</li>	
+	<li>origin defined by x0 and y0</li>
+	<li>direction denoted by angle theta</li>	
+	<li>"zero" direction from which directions are defined, denoted by theta_0</li>	
+	<li>current unit value denoted by "side"</li>
+	<li>step angle size stepAngle</li>	
+	<li>scaleFactor, the factor by which "side" is scaled when "+" or "-" is applied</li>
+</ul>
+Now let's look at what the actual cursor looks like on a computer screen.  Here is the most common default value of the cursor:
+<center>
+	<canvas width = "300" height = "200" id = "canvas31"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas31").getContext("2d");
+doTheThing(0300);
+x = 90;
+y = 160;
+side = 50;
+ctx.lineWidth = 2;
+drawGlyph(cursor.glyph);
+</script>
+There are three line segments which represent the direction and length which the cursor will move if one of the arrows other than "back" are applied. The dots indicate what size the cursor will be after a scale up or down is applied.  I will now give some examples of transformations of the basic cursor to show what it will look like both before and after that transformation. 
+<center>
+	<canvas width = "300" height = "120" id = "canvas32"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas32").getContext("2d");
+doTheThing(0300);
+x = 50;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph(cursor.glyph);
+doTheThing(0300);
+x = 150;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph("01350");
+doTheThing(0300);
+x = 250;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+doTheThing(0350);
+drawGlyph(cursor.glyph);
+</script>
+From 90 to 45 degrees just changes where the wings of the cursor are.  Rotate to the right:
+<center>
+	<canvas width = "400" height = "120" id = "canvas33"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas33").getContext("2d");
+doTheThing(0300);
+x = 50;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph(cursor.glyph);
+doTheThing(0300);
+x = 150;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph("01335");
+doTheThing(0300);
+x = 250;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+doTheThing(0335);
+drawGlyph(cursor.glyph);
+</script>
+
+Shrink by a factor of two:
+<center>
+	<canvas width = "400" height = "120" id = "canvas34"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas34").getContext("2d");
+doTheThing(0300);
+x = 50;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph(cursor.glyph);
+doTheThing(0300);
+x = 150;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph("01336");
+doTheThing(0300);
+x = 250;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+doTheThing(0336);
+drawGlyph(cursor.glyph);
+</script>
+Set step angle to 120 degrees by setting to 60 and doubling:
+<center>
+	<canvas width = "400" height = "120" id = "canvas35"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas35").getContext("2d");
+doTheThing(0300);
+x = 50;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph(cursor.glyph);
+doTheThing(0300);
+x = 150;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph("01306,01351");
+doTheThing(0300);
+x = 250;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph("0306,0351");
+drawGlyph(cursor.glyph);
+</script>
+Switch from 2x to 5x for scaleFactor, then shrink once:
+<center>
+	<canvas width = "400" height = "220" id = "canvas36"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas36").getContext("2d");
+doTheThing(0300);
+x = 50;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph(cursor.glyph);
+doTheThing(0300);
+x = 150;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph("01316,01336");
+doTheThing(0300);
+x = 250;
+y = 100;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph("0316,0336");
+drawGlyph(cursor.glyph);
+</script>
+This is only one of the two cursors used in the standard editing format for Geometron, however.  The other one is a circle used to denote where in the action glyph is currently being edited.  This is identical conceptually to how the blinking line cursor in a text editor denotes where typed letters will be introduced.  The draw cursor and the edit cursor both follow along the action glyph and symbol glyphs at the same place in the sequence, defined by the integer cursorPosition. 
+</div>
+<div class = "atom">
+<h2>Movements</h2>
+It is now time to bring this all to life and start letting you, the reader, interact with Geometron a bit.  I'll try to show both the physical implementations and the computer examples here to give you a flavor for how this works not just in the way I've been using it but how it can be mutated and bent to various specific implementations.  
+<center>
+<canvas width = "400" height = "300" id = "actionCanvas1" style = "border:solid;background:white"></canvas>
+<div id = "controlPanel1"></div>
+<script>
+currentNode = document.getElementById("controlPanel1");
+appendGlyphButton(0300);
+appendGlyphButton(0330);
+appendGlyphButton(0331);
+appendGlyphButton(0332);
+appendGlyphButton(0333);
+appendGlyphButton(0334);
+appendGlyphButton(0335);
+appendGlyphButton(0336);
+appendGlyphButton(0337);
+currentGlyph = "";
+x0 = 200;
+y0 = 150;
+unit = 50;
+redraw();
+function redraw(){
+	ctx = document.getElementById("actionCanvas1").getContext("2d");
+	ctx.clearRect(0,0,400,300);
+	doTheThing(0300);
+	drawGlyph(currentGlyph);
+	drawGlyph(cursor.glyph);	
+	if(x > 400){
+		x0 -= 400 + 2*side;
+	}
+	if(x < -10){
+		x0 += 400 + 2*side;
+	}
+	if(y > 300){
+		y0 -= 300 + 2*side;
+	}
+	if(y < -10){
+		y0 += 300 + 2*side;
+	}
+
+}
+</script>
+</center>
+Now hit buttons at random!  Each of the symbol glyphs above this text are buttons, and should respond to mouse clicks on them.  
+
+<p>
+This is by far the best way to learn how these basic controls work.  The symbol glyph on the far left may look unfamiliar, that is the reset command, which sets the cursor back to the center and the side back to unit and step angle back to 90 degrees.  I've deliberately left off a lot of commands including all the drawing commands and the angle scales so that the reader may become comfortable with the backbone movements of Geometron without distractions which can easily send the cursor into a strange state.  Also this canvas is programmed to loop around like an old arcade game in that when you go off screen in any direction your cursor should appear again on the opposite side.  Be sure to try rotating and moving then rotating back to get a feel for how rotations and movements interact.  As we go through the various parts of Geometron and I show more applications, I'll put more of these live canvases into the document to play with.  
+<p> 
+Also note that this assumes you're reading this on some type of web browser on some electronic device.  If not, I will also show in the hard copy how to do all this with physical paper and pens, and there will be a robotic version where you can do this with a physical control panel with buttons that control a physical pen tool on a plotter. 
+</div>
+<div class = "atom">
+<h2>Lattices and Polygons</h2>
+Let's take a look at some standard lattices and polygons that will come up over and over. Part of the underlying philosophy of Geometron is to focus on the most useful test cases for whatever application you care about immediately, rather than assuming a general language and only dealing with specifics when we have to.  
+<p>
+This section will simply be a list of well-described polygons then lattices, with as much detail as possible, so that it can serve as a reference both for the Geometron language and for the basic geometry which it's assumed will be constantly used in our work with the language.  
+<p>
+
+<center>
+	<canvas width = "500" height = "200" id = "canvas37"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas37").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0313,0304,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,");
+x = 100;
+y = 180;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("0313,0304,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,");
+</script>
+
+<center>
+	<canvas width = "500" height = "200" id = "canvas38"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas38").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0304,0310,0342,0330,0335,0350,0335,0337,0342,0330,0335,0335,0335,0336,0342,0330,");
+x = 100;
+y = 180;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("0304,0310,0342,0330,0335,0350,0335,0337,0342,0330,0335,0335,0335,0336,0342,0330,");
+</script>
+
+<center>
+	<canvas width = "500" height = "200" id = "canvas39"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas39").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0306,0351,0342,0330,0335,0342,0330,0335,0342,0330");
+x = 100;
+y = 180;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("0306,0351,0342,0330,0335,0342,0330,0335,0342,0330,");
+</script>
+
+<center>
+	<canvas width = "500" height = "200" id = "canvas40"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas40").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0335,0306,0350,0334,0342,0330,0335,0335,0335,0335,0313,0336,0342,0330,0304,0335,0312,0337,0342,0330");
+x = 100;
+y = 180;
+side = 150;
+ctx.lineWidth = 3;
+drawGlyph("0335,0306,0350,0334,0342,0330,0335,0335,0335,0335,0313,0336,0342,0330,0304,0335,0312,0337,0342,0330");
 </script>
 
 
+<center>
+	<canvas width = "500" height = "210" id = "canvas41"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas41").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0311,0305,0342,0330,0335,0350,0335,0337,0342,0330,0335,0335,0335,0335,0342");
+x = 100;
+y = 200;
+side = 120;
+ctx.lineWidth = 3;
+drawGlyph("0311,0305,0342,0330,0335,0350,0335,0337,0342,0330,0335,0335,0335,0335,0342");
+</script>
 
+<center>
+	<canvas width = "500" height = "210" id = "canvas42"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas42").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0335,0311,0305,0337,0342,0330,0334,0334,0336,0342,0330,0334,0342,");
+x = 100;
+y = 200;
+side = 120;
+ctx.lineWidth = 3;
+drawGlyph("0335,0311,0305,0337,0342,0330,0334,0334,0336,0342,0330,0334,0342,");
+</script>
+
+<center>
+	<canvas width = "500" height = "210" id = "canvas43"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas43").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0340,0330,0340,0333,0340,0331,0340,0333,0340,0330,0340,0330,0340,0332,0340,0332,0340,0332,0340,0331,0340,0331,0340,");
+x = 200;
+y = 200;
+side = 40;
+ctx.lineWidth = 3;
+drawGlyph("0340,0330,0340,0333,0340,0331,0340,0333,0340,0330,0340,0330,0340,0332,0340,0332,0340,0332,0340,0331,0340,0331,0340,");
+</script>
+
+<center>
+	<canvas width = "500" height = "250" id = "canvas44"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas44").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0306,0340,0330,0340,0335,0330,0340,0335,0330,0340,0335,0340,0330,0340,0335,0335,0340,0330,0334,0334,0340,0330,0335,0340,0330,0335,0330,0340,0335,0340,0330,0340,0330,0340,0334,0334,0340,0330,0334,0340,0330,0340,");
+x = 200;
+y = 220;
+side = 40;
+ctx.lineWidth = 3;
+drawGlyph("0306,0340,0330,0340,0335,0330,0340,0335,0330,0340,0335,0340,0330,0340,0335,0335,0340,0330,0334,0334,0340,0330,0335,0340,0330,0335,0330,0340,0335,0340,0330,0340,0330,0340,0334,0334,0340,0330,0334,0340,0330,0340,");
+</script>
+
+<center>
+	<canvas width = "500" height = "350" id = "canvas45"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas45").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+spellGlyph("0305,0340,0330,0335,0340,0330,0340,0335,0335,0330,0340,0334,0330,0340,0335,0330,0340,0335,0330,0340,0333,0340,0333,0340,0333,0340,0332,0340,0332,0340,0332,0340,0333,0340,0335,0335,0335,0330,0340,0330,0340,0330,0340,0330,0340,0334,0330,0340,0334,0330,0340,0330,0340");
+x = 250;
+y = 220;
+side = 40;
+ctx.lineWidth = 3;
+drawGlyph("0305,0340,0330,0335,0340,0330,0340,0335,0335,0330,0340,0334,0330,0340,0335,0330,0340,0335,0330,0340,0333,0340,0333,0340,0333,0340,0332,0340,0332,0340,0332,0340,0333,0340,0335,0335,0335,0330,0340,0330,0340,0330,0340,0330,0340,0334,0330,0340,0334,0330,0340,0330,0340");
+</script>
 
 </div>
 <style>
@@ -1068,6 +1595,19 @@ html {
 	font-family: "Century Schoolbook";
 	text-align: justify;
 	float:left;
+}
+.glyphButtons{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    background: white;	
+}
+.glyphButtons:hover{
+    background: gray;	
+
+}
+.glyphButtons:active{
+    background: yellow;	
 }
 
 </style>
