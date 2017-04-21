@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>The Book of Geometron: Chapter 3</title>
+<title>The Book of Geometron: Chapter 4</title>
 <script id = "bytecodeScript">
 /*
 040:0333
@@ -690,252 +690,35 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 </head>
 <body>
 <div class = "atom">
-<h2>Basic Geometric Actions</h2>
-Action!  There are numerous basic actions.  You have already seen some of them for the computer version in the previous chapters, but in this section we'll re-examine these, add several more, and work through some of the physical implementations off of the computer.  For completeness I begin with the four most basic actions: point, circle, line segment, and arc:
+<h2>Why?</h2>
 
-<center>
-	<canvas width = "250" height = "100" id = "canvas1"></canvas>
-</center>
-<script>
-cursorPosition = 100;
-ctx = document.getElementById("canvas1").getContext("2d");
-doTheThing(0300);
-x = 10;
-y = 80;
-side = 50;
-ctx.lineWidth = 3;
-spellGlyph("0340,0341,0342,0343");
-</script>
-
-The first three of these have been used extensively in earlier chapters.  The dot is drawn at the location of the cursor, the circle is centered at the location and of radius "side", and the line segment is in the same direction and of the same magnitude as the "move forward" command.  The arc is of the same center and radius as the circle, but it goes from one of the cursor wings to the other.  This vastly increases the scope of what can be done with Geometron on the computer.  
+I chased the mad rabbit down this very deep hole because I had to.  I was working on creating a "book" of sorts about geometry, which I called "Action Geometry".  This book will still probably get written after Geometron is done.  But I immediately ran into a whole mess of problems with the available software. I wanted to mix math on a computer with compas and straightedge geometry, and I became very frustrated with how the various tools I was using were all disconnected.  At the same time I was and still am working on writing up various projects to create technology out of trash.  
 <p>
-Here is the letter "S" as well as the glyph spelling:
-<center>
-	<canvas width = "500" height = "200" id = "canvas2"></canvas>
-</center>
-<script>
-cursorPosition = 100;
-ctx = document.getElementById("canvas2").getContext("2d");
-doTheThing(0300);
-x = 10;
-y = 60;
-side = 50;
-ctx.lineWidth = 3;
-//spellGlyph("0340,0341,0342,0343");
-drawGlyph("0313,0304,0336,0336,0332,0337,0337,0336,0330,0333,0336,0330,0343,0334,0350,0334,0343,0332,0332,0334,0334,0334,0334,0343,0335,0335,0335,0351,0343,0335,0335,0333,0331,0333,0337,0337");
-
-x = 10;
-y = 120;
-side = 30;
-ctx.lineWidth = 2;
-//spellGlyph("0340,0341,0342,0343");
-spellGlyph("0313,0304,0336,0336,0332,0337,0337,0336,0330,0333,0336,0330,0343,0334,0350,0334,0343,0332,0332,0334,0334,0334,0334,0343,0335,0335,0335,0351,0343,0335,0335,0333,0331,0333,0337,0337");
-</script>
-
-And here are interlinked rings made with various lengths of arc.  
-
-<center>
-	<canvas width = "550" height = "240" id = "canvas3"></canvas>
-</center>
-<script>
-cursorPosition = 100;
-ctx = document.getElementById("canvas3").getContext("2d");
-doTheThing(0300);
-x = 100;
-y = 60;
-side = 50;
-ctx.lineWidth = 3;
-//spellGlyph("0340,0341,0342,0343");
-drawGlyph("0343,0333,0335,0335,0343,0335,0350,0343,0335,0335,0335,0343,0350,0334,0334,0350,0334,0343,0335,0304,0332,0334,0350,0334,0343,0350,0334,0350,0334,0334,0334,0343,0334,0334,0334,0334,0343,0334,0334,0343,");
-doTheThing(0300);
-
-x = 10;
-y = 170;
-side = 30;
-ctx.lineWidth = 2;
-//spellGlyph("0340,0341,0342,0343");
-spellGlyph("0343,0333,0335,0335,0343,0335,0350,0343,0335,0335,0335,0343,0350,0334,0334,0350,0334,0343,0335,0304,0332,0334,0350,0334,0343,0350,0334,0350,0334,0334,0334,0343,0334,0334,0334,0334,0343,0334,0334,0343,");
-</script>
-And here is the beginning of a binary spiral:
-<center>
-	<canvas width = "550" height = "240" id = "canvas4"></canvas>
-</center>
-<script>
-cursorPosition = 100;
-ctx = document.getElementById("canvas4").getContext("2d");
-doTheThing(0300);
-x = 100;
-y = 60;
-side = 50;
-ctx.lineWidth = 3;
-//spellGlyph("0340,0341,0342,0343");
-drawGlyph("0343,0336,0333,0335,0350,0335,0343,0335,0335,0336,0332,0343,0335,0335,0336,0332,0343");
-doTheThing(0300);
-
-x = 10;
-y = 170;
-side = 30;
-ctx.lineWidth = 2;
-//spellGlyph("0340,0341,0342,0343");
-spellGlyph("0343,0336,0333,0335,0350,0335,0343,0335,0335,0336,0332,0343,0335,0335,0336,0332,0343");
-</script>
-
-These are the only geometric actions which are part of the core permanent commands in the current computer version.  Others will be dealt with shortly.  
-</div>
-
-<div class = "atom">
-<h2>Symbols</h2>
-A core element of Geometron is the symbol/action dichotomy.  One can think of them as nouns and verbs.  Each action is represented by a symbol, and each symbol is made up of actions.  Those actions in turn can be described by a sequence of symbols.  This sounds complicated but that's what a real human language looks like when looked at accurately.  This paragraph is itself an example of such a conceptual quagmire.  
+I wanted a unified way to communicate about technology. The more I worked on the problem the more I felt that this is fundamental to all technological work: bad software is slowing down progress.  Some software is bad because it's too specialized, other software because it's hard to use, other software because it's been deliberately broken as is the case with Adobe's deliberate breaking of bitmap features in Illustrator and vector graphics in Photoshop.  Meanwhile pdf format is, again due to the nefarious behavior of Adobe, deliberately frustrating to work with and bloated.  
 <p>
-I've already been using symbol glyphs throughout this book but will now try to make some more formal definitions and clearer examples.  The word "glyph" is used to denote sequences of actions which might be either symbols or not.  Symbol glyphs are contained in a square of size equal to whatever "side" is at the time that that glyph's action sequence is invoked. Part of the sequence is to move the cursor one "side" unit to the right if we assume that forward is in the "up" direction.  This is all relative, making it very natural to print sequences of symbol glyphs in different orientations and sizes.  Here is an example of that:
-
-<center>
-	<canvas width = "500" height = "300" id = "canvas5"></canvas>
-</center>
-<script>
-cursorPosition = 100;
-ctx = document.getElementById("canvas5").getContext("2d");
-doTheThing(0300);
-x = 80;
-y = 60;
-side = 20;
-ctx.lineWidth = 2;
-drawGlyph("01340,01330,01335,01340,01330,01335,01340,01330,01335,01340,0335,01340,01330,01335,01340,01330,01335,01340,01330,01335,01340,0335,0350,0335,0304,0310,0337,0313,01340,01330,01335,01340,01330,01335,01340,01330,01335,01340,");
-
-</script>
-
-</div>
-
-<div class = "atom">
-<h2>Physical Geometron</h2>
-
-The simplest physical implementation of Geometron consists of tracing simple geometric shapes onto paper, coloring them in, cutting them out, and laminating them with packing tape.  The basic shapes are square, equilateral triangle, golden triangle(72 degrees), and isosceles right triangle.  With these, a huge range of figures can be constructed which are the same on paper as what we are building on the computer with the web browser based version.  
+I will look now at the broader picture: what were all the pieces of software I need to do work in applied physics and communicate about it?  Here is a list of some of that software:
+<ul>
+	<li>LaTeX</li>
+	<li>Adobe Illustrator</li>
+	<li>Processing</li>
+	<li>wordpress</li>
+	<li>markdown editors</li>
+	<li>blender</li>
+	<li>excel</li>
+	<li>iPython</li>
+	<li>Inkscape</li>
+	<li>Powerpoint</li>
+	<li>Compas and straightedge and pens on paper</li>
+	<li>Solidworks</li>
+	<li>Layout Editor</li>
+	<li>Xic</li>
+</ul>
+Frustration mounted.  The project I called Action Geometry started to look more and more like a language.  I built a working version in the Processing programming language, and a control panel out of wood and trash which used the Arduino to input commands over serial.  This started getting more and more elaborate, and was increasingly going in a direction of obscurity.  I wanted to build something other people could use and spent some months trying to convince more people to use Processing.  The problem is that non programmers find learning a C-like language from scratch an impediment while programmers want to keep using what they're already using.  Furthermore, as more and more work is done not on desktop or laptop computers but on mobile devices. All options were bad.  
 <p>
-Images for constructing all the basic shapes go here 
-<p>
-instructions for building various figures with basic shapes go here
-<p>
-Printers using trash, photos and examples here
-</div>
-<div class = "atom">
-<h2>Bezier Paths</h2>
-
-<center>
-<canvas width = "400" height = "300" id = "actionCanvas1" style = "border:solid;background:white"></canvas>
-</center>
-<center>
-<div id = "controlPanel2" style = "width:250px;height:50px;"></div>
-<div id = "controlPanel1" style = "width:150px;height:150px;"></div>
-</center>
-<script>
-currentNode = document.getElementById("controlPanel1");
-appendGlyphButton(0334);
-appendGlyphButton(0330);
-appendGlyphButton(0335);
-appendGlyphButton(0332);
-appendGlyphButton(0300);
-appendGlyphButton(0333);
-appendGlyphButton(0336);
-appendGlyphButton(0331);
-appendGlyphButton(0337);
-currentNode = document.getElementById("controlPanel2");
-
-appendGlyphButton(0366);
-appendGlyphButton(0367);
-appendGlyphButton(0340);
-appendGlyphButton(0342);
-appendGlyphButton(010);
-
-currentGlyph = "";
-x0 = 200;
-y0 = 150;
-unit = 50;
-redraw();
-function redraw(){
-	ctx = document.getElementById("actionCanvas1").getContext("2d");
-	ctx.clearRect(0,0,400,300);
-	doTheThing(0300);
-	drawGlyph(currentGlyph);
-	drawGlyph(cursor.glyph);	
-
-}
-</script>
-
 
 
 </div>
 
-<div class = "atom">
-<h2>Flag Markers</h2>
-
-	Flag markers are a concept familiar in many situations in the physical world, which Geometron attempts to unify into a single language across platforms.  The idea is that it makes sense to be able to drop a marker at a given location, then return to that marker later, and to have a single command to do so.  By default Geometron has four markers, each indicated by a flag with a polygon on it.  Those polygons are: triangle, square, pentagon and hexagon.  The symbol glyphs to drop a marker have an arrow pointing down and the symbols to return to a marker have an arrow pointing sideways at the flag itself.  Here are the symbol glyphs:
-<center>
-	<canvas width = "500" height = "100" id = "canvas6"></canvas>
-</center>
-<script>
-cursorPosition = 100;
-ctx = document.getElementById("canvas6").getContext("2d");
-doTheThing(0300);
-x = 10;
-y = 60;
-side = 50;
-ctx.lineWidth = 2;
-drawGlyph("01370,01371,01372,01373,01374,01375,01376,01377");
-</script>
-By default all these do is store a location(the x and y values) of a point.  One of the numerous ways Geometron can and should be modified by users is to add or subtract data from the save point as needed.  One might want to store the value of "side", "theta" and "thetaStep" for example.  However one reason that the default is just position is to make it as much like the various physical implementations as possible.  
-<p>
-The reason that a flag is used is that it represents one of the most intuitively obvious physical implementations, where the user literally plants a flag.  In this case, the triangle, square, pentagon or hexagon is drawn or painted on a piece of paper, which is taped onto a piece of cardboard which is taped to a stick attached to a tensegrity tetrahedron(discussed in a later chapter).
-		
-</div>
-
-<div class = "atom">
-<h2>Word Stack and Table</h2>
-
-The way Geometron handles words from human languages is different than most other languages, but similar to how Geometron processes other types of information.  A global variable is used in the code called "currentWord", which has the value of some word or phrase represented in ASCII code.  In a physical implementation this might be something like a physical stack of words cut out from a mass produced piece of junk mail deposited with a tool. 
-
-</div>
-<div class = "atom">
-<h2>Closed Paths</h2>
-
-One of the big picture goals of this work is to create a smooth path in workflow between the art side of design which goes on websites and in presentations with the engineering design side which gets sent to a factory for fabrication.  There are numerous complicated and proprietary pieces of software used to turn shapes on a computer screen into things made of metal and plastic.  One thing they tend to have in common is the need to create shapes that are "closed" in the sense that they're not just a series of paths which connect but there is some sort of specific command that connects the start point to the end point, telling the machine that the path is indeed closed.  When a path is closed, we add a series of diagonal line segments to the bottom of the symbol glyph.  
-<p>
-Here are some symbols with filling:
-<center>
-	<canvas width = "200" height = "80" id = "canvas7"></canvas>
-</center>
-<script>
-cursorPosition = 100;
-ctx = document.getElementById("canvas7").getContext("2d");
-doTheThing(0300);
-x = 10;
-y = 60;
-side = 50;
-ctx.lineWidth = 2;
-drawGlyph("01203,01204,01206,");
-</script>
-Also, in order to make closed paths it makes sense to have a command to start and another one to close a path.  These are:
-<center>
-	<canvas width = "200" height = "80" id = "canvas8"></canvas>
-</center>
-<script>
-cursorPosition = 100;
-ctx = document.getElementById("canvas8").getContext("2d");
-doTheThing(0300);
-x = 10;
-y = 60;
-side = 50;
-ctx.lineWidth = 2;
-drawGlyph("01362,040,01363");
-</script>
-The detailed aspects of these commands will need to be tweaked by the user for any given application, but for the most part as long as a closed path can be exported in .svg format it can be imported into just about any other software.  That is part of the default javascript implementation, which is documented in detail elsewhere(and avoided here to avoid confusion for those who don't want to work with code).  
-</div>
-
-<div class = "atom">
-<h2>Color, Layer, Material, Texture</h2>
-
-In many contexts, both virtual and physical, it makes sense to have some type of "layer". In software this could be stroke width, fill color, stroke color or some other type of style.  In physical fabrication it might be the "layer" in circuit design.  In maps of a building, layers are floors.  In some cases maps have layers indicating different types of item such as food, tourist destinations, banks, subways, etc. In generalized three dimensional fabrication of objects from trash(another primary goal of this work), the layer might refer to different materials from different feedstocks, such as various plastics and metals.
-
-</div>
 
 <style>
 html {
