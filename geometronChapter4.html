@@ -754,7 +754,10 @@ We're told by the very name that a "computer" is a machine that computes.  In ot
 
 <div class = "atom">
 <h2>What The Riddle of Steel?</h2>
-
+According to the Conan Wiki, the answer to the Riddle of Steel is this:<p>
+<i>"Flesh grows weak. Steel becomes brittle. But the will is indomitable."</i>
+<p>
+Computer "scientists" draw diagrams in a make believe space and draw little ones and zeros in them, but this is nothing.  It is fiction, part of a delusional religion.  
 </div>
 
 <div class = "atom">
@@ -786,7 +789,7 @@ A final note on "everything is fractal" must be made on the <i>limits</i> of thi
 <p>
 <b>NO PROPERTY.</b> Property is Evil.  I will not attempt to argue with the reader on this subject.  This is a belief I have come to through hard experience of what I consider to be Evil, with a capital "E".  Accept it or not.  But for the purpose of this project I reject any form of property, "intellectual" or otherwise.  By the power vested in me by the evil "laws" of the propertarians, I release all my work presented here into the public domain with no restrictions whatsoever.  I have reached a point in my life where I have decided to fight for what I believe in, to the death if needed, and I believe the claim to own an idea is evil.  
 <p>
-<b>NO MINING.</b> The current industrial system consists of the following process: dig things up, use them to make people miserable, set them on fire, and bury them in the ground.  It is time to break this cycle.  Writing a piece of art software in javascript is hardly a major blow to all this, but it is another law of this project to at least attempt to minimize mining in all cases.  
+<b>NO MINING.</b> The current industrial system consists of the following process: dig things up, use them to make people miserable, set them on fire, and bury them in the ground.  It is time to break this cycle.  Writing a piece of art software in javascript is hardly a major blow to all this, but it is another law of this project to at least attempt to minimize mining in all cases.  That is why the physical implementations of Geometron are all built from trash when possible.  
 </div>
 <div class = "atom">
 <h2>Long Term Goals of Geometron</h2>
@@ -805,6 +808,16 @@ Another very ambitious long term goal that connects with the "spime" concept and
 <h2>Full Structure and Geometron Hypercube</h2>
 
 This section is, in some sense, the true heart of Geometron.  As I said in the beginning, Geometron is two things: a set of geometric commands, and a way of organizing information, including those commands.  That organizing method is what I call the "Geometron Hypercube".
+<p>
+All Geometron commands or symbols belong in one of eight layers, each of which consists of two 8 &#xd7 8 tablets.  One is actions and one is symbols.  Actions described by three digit addresses, a leading zero followed by one number from 0 to 7 denoting which tablet the address is in, one number for the row and one for the column of the given element of the tablet.  Each address is a container for a sequence of Geometron addresses. The symbol addresses all begin with a "01", meaning another bit is added to the base 8 address number.  
+<p>
+One way to think of the whole Geometron Hypercube is as a function which maps each point in a four dimensional array of cells back into itself, putting a one dimensional array of addresses in each address.  The process by which this is done in computer code is with a colon separating an address from the address sequence contained at that address.  This format is called "bytecode" and is one of several ways Geometron might be expressed.  Geometron bytecode typically looks like this:
+<pre>
+01345:0202,0200,0350,0334,0343,0335,0304,
+01202:0202,0200,
+</pre>
+Each address after the colon is separated by a comma, and each line is separated by a "newline" character, generally denoted by "\n" when using javascript or a number of other similar languages.  All this may sound strange since so far I have presented all Geometron commands as part of a purely graphical language.  Those glyphs fit into the fourth layer up from zero as shown in the following table:
+<p>
 <center>
 <canvas width = "450" height = "450" id = "M6" style = "border:solid"></canvas>
 <script>
@@ -843,6 +856,8 @@ This section is, in some sense, the true heart of Geometron.  As I said in the b
 </script>
 </center>
 </div>
+I began with that table since it's the one the reader has already seen in earlier chapters.  But I will now go back to the beginning to define the whole stack.  I'll start with a illustration of the whole stack then go through the layers:
+
 
 <style>
 html {
