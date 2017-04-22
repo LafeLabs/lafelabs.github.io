@@ -283,6 +283,29 @@ function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 	return cleanGlyph;
 }
 
+function mirrorGlyph(inputGlyph){
+	var tempArray = inputGlyph.split(',');
+	var outputGlyph = "";
+	for(var index = 0;index < tempArray.length;index++){
+		if(tempArray[index] == 0334){
+			outputGlyph += "0335,";
+		}
+		if(tempArray[index] == 0335){
+			outputGlyph += "0334,";
+		}
+		if(tempArray[index] == 0332){
+			outputGlyph += "0333,";
+		}
+		if(tempArray[index] == 0333){
+			outputGlyph += "0332,";
+		}
+		if(tempArray[index] > 0335 || tempArray[index] < 0332){
+			outputGlyph += tempArray[index] + ",";
+		}
+	}
+	return outputGlyph;
+}
+
 function drawGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
@@ -712,13 +735,112 @@ I will look now at the broader picture: what were all the pieces of software I n
 	<li>Solidworks</li>
 	<li>Layout Editor</li>
 	<li>Xic</li>
+	<li>Eagle</li>
+	<li>Matlab</li>
+	<li>Fritzing</li>
+	<li>Mathematica</li>
+	<li>Igor</li>
+	<li>LabView</li>
 </ul>
 Frustration mounted.  The project I called Action Geometry started to look more and more like a language.  I built a working version in the Processing programming language, and a control panel out of wood and trash which used the Arduino to input commands over serial.  This started getting more and more elaborate, and was increasingly going in a direction of obscurity.  I wanted to build something other people could use and spent some months trying to convince more people to use Processing.  The problem is that non programmers find learning a C-like language from scratch an impediment while programmers want to keep using what they're already using.  Furthermore, as more and more work is done not on desktop or laptop computers but on mobile devices. All options were bad.  
 <p>
-
+Using the Processing language led to using the processing.js library which led to learning javascript, which led to learning how to make html work well with javascript, which led to learning CSS and to a whole worldview.  That worldview is that the web browser is the single most important computer in the world today.  
+</div>
+<div class = "atom">
+<h2>What is a Computer?</h2>
+We're told by the very name that a "computer" is a machine that computes.  In other words it does "math", or "computations", adding, subtracting, Boolean logic, and various repetitions of these operations.  While this is "true" in a purely reductionist sense, this worldview has deep problems.  Computer "science" draws diagrams of what is supposedly a computer based on the "Turing Machine".
 
 </div>
 
+<div class = "atom">
+<h2>What The Riddle of Steel?</h2>
+
+</div>
+
+<div class = "atom">
+<h2>Laws of Geometron</h2>
+	<ul>
+		<li>EVERYTHING IS FRACTAL</li>
+		<li>EVERYTHING IS RECURSIVE</li>
+		<li>EVERYTHING IS PHYSICAL</li>
+		<li>NO MONEY</li>
+		<li>NO MINING</li>
+		<li>NO PROPERTY</li>
+	</ul>
+	
+	These are the laws of Geometron.  As this is a project created by a non-believer in what some people call the "rule of law", I must clarify what it even means for there to be laws of Geometron.  They are laws in the same way that all physical theories have laws.  I believe that the reductionist worldview we are taught in school about what a physical law is is directly contradicted by experience.  Newton's "laws" of motion are a fantastic way to codify the information about how things move, but to say that they are an absolute description of the universe outside of our minds which was discovered and not created is not supported by observation of how humans use these laws.  We know that there are numerous exceptions and caveats to these "laws", including relativity, which make them not absolute Truths in the way fundamentalists in religion use that word.  I would argue that laws like Newton's law of motion, like laws like Moore's law of growth in semiconductor figures of merit, are created by the human mind, not discovered, because just about everything is.  Modern science has vastly overstated our ability to access the true universe outside of our language and minds.  And in that spirit I put these laws forth as a guide for working with this thing I have created in my mind: Geometron. 
+<p>	
+I will now go through each of these laws and discuss what they mean.  
+<p>
+<b>EVERYTHING IS FRACTAL.</b>  By this I mean that one idea to constantly keep in mind when designing a system with Geometron is that we should always focus on the <i>relevant</i> scale in a given situation.  One of the problems I have with modern industrial technology is that everything is set to the maximum possible precision by default.  For example, due to the economies of scale of microfabrication, we fabricate microchips in huge batches on wafers that are several 10's of cm across but have precision of all components on the 100 nm level.  A Geometron based approach to microfabrication would not have a single precision, because the goals are different on a human level.  If I'm fabricating one processor for my own use, I don't care about the same things as Intel or Motorola and view this more as a craft than an "industry" in the modern sense.  And as with all crafts, there will be some slop built in based on what scale I'm working at.  Thus, I might place the overall work area into position on a cm scale, fix the tool position on a mm scale, scan it with 10 micron precision, and then have a sub-tool affixed to it which can fill in details on a sub micron scale.  I might also have another sub-tool affixed to that which can work at the atomic scale, but in all cases the <i>relative</i> position uncertainty is not smaller than 1%.
+<p>
+In software situations, the number of pixels in a field determines a reasonable level of precision in most cases.  Thus for a 1000x1000 pixel area, 0.1% is the maximum that it ever makes sense to care about.  Realistically this is far more than we usually care about, though, since for example an icon on a desktop might be just a few pixels across, making it have a <i>relative</i> precision locally of a few percent.  Also, the exact position of the icon on the desktop relative to the overall screen shape is almost certainly not less than a few percent.  While these statements might seem obvious and trivial they are at odds with the behavior of engineers in almost all cases, especially when computers are involved. 
+<p>
+A final note on "everything is fractal" must be made on the <i>limits</i> of this law.  I find the work of Mandelbrot in his book on the fractal geometry of nature to be pathalogical because it assumes a totally non-physical range of fractals.  In reality the world around us is almost always described by fractal structure, but that fractal nature <i>always</i> has limitations.  A leaf has veins in it which repeat in their behavior on multiple scales, but only up to a point: below the scale of a few leaf cells vein-like behavior is lost, and while vein like nature may exist in the branches that carry the leaves, it stops at the forrest level, and there is a clear phase change between leaf-vein and branch.  Ideas like those of Mandelbrot, like those of Newton mentioned above, can be both powerful and beautiful, but to view them as absolute truths with an existence independent of the human mind, with infinite extent in some imaginary universe is just religious nonsense and is holding back our ability to build more robust technological systems.
+<p>
+<b>EVERYTHING IS RECURSIVE.</b>  Fractals and recursion go together like peas and carrots. Recursion is when something makes reference to itself.  Human language is by its very nature recursive.  We use language to build language, constantly using words that reference words, sentences about sentences, books about books, ideas about ideas and so forth.  By stating in black and white that everything is recursive we remind ourselves to always be thinking of this aspect of language and to use it constantly to make it as natural and easy to use as possible.  As with the fractal nature of things recursion should be considered to be both everpresent and finite.  That is, things can call themselves but they should not do so too many times, creating infinite loops.  Infinite loops are non-physical which brings us to the next law:
+<p>
+<b>EVERYTHING IS PHYSICAL.</b>A popular quotation in physics is from Rolf Landauer, which says "information is physical".  This is quoted repeatedly in both mesoscopic physics and quantum computation theory.  I'm not sure what this is supposed to mean, but I'm skeptical of its intent.  What does it mean for a thing to be physical?  What is a thing that exists and how do we distinguish it in language from that which does not exist?  I'm not sure there are easy answers to these questions.  My observation from an anthropological view is that this phrase "information is physical" is used by physicists to denote the type of pontification that they are about to engage in, just as "there be dragons here" is used to denote humorous intent in regards to the incomprehensible in physics theory.   In Geometron I use the "law" that everything is physical to simply state a philosophical view that the "non physical" is not a thing that is of use to us.  This is no more or no less a proper scientific statement than "information is physical", but it is a position statement for a body of work.  Either things are as you see them and feel them and interact with them or they are nothing.  Disembodied ones and zeros on an imaginary tape in an imaginary space don't exist.  Everything is either real or not.  And real things can be interacted with.  For the record, this is a position in which string theory is not a science, and is a poor excuse for a religion. 
+<p>
+<b>NO MONEY.</b>  Money is, like so many things we take for granted, just a model.  It has its place and has been very productive in some spheres.  However, in software it has had an extremely corrosive effect on everything.  Software and money, when combined, always create injustice and evil.  I state this without proof.  If it is not obvious to the reader our world views are totally incompatible.  However, just was we all use knowledge created by people from hundreds of years ago with totally different ideology from our own, it should be possible for those who believe software and money can coexist without doing Evil to use this work.  Just don't expect cooperation or collaboration of any kind from the author or anyone working directly with the author.  The work directly documented in this first version of this manuscript is released for free into the world, and will be further worked on as much for free as possible.  I'm not sure how to make a living and survive in capitalist America this way, but I would rather fail at that than participate willingly in what I see as pure Evil, so this is my choice.
+<b>NO PROPERTY.</b>
+	
+</div>
+<div class = "atom">
+<h2>Long Term Goals of Geometron</h2>
+Geometron, defined precisely, is a meta-language.  That is it is a language created to be used to create actual languages.  One does not create things in Geometron itself, one creates a Geometron instance, which is itself a language, then creates things with that language.  The long term goals are therefore defined by specific goals in creating instances which can be used for various applications.  I will now list some of those.
+<p>
+Creation of a class of map-making languages which smooth the process of non-experts quickly generating and using map data using computers.  Some basic examples of this will be given in this work in regards to transit maps and treasure maps with some explanations of how to extend it.  But a long term goal of this is to create a whole set of mapping dialects used by many different people in the field, which can grow and change and be maintained by those who need them.  
+<p>
+Creation of self-documenting objects, like the "spime" concept popularized by Bruce Sterling.  Ideally any given physical object will be described in a language which is also used by other similar machines.  The information encoded in the artifact should be both human and machine readable and require all that is needed to replicate itself.  This is the <i>main</i> long term goal of my work, as part of building what I call a "technological complete set", documented elsewhere.  
+<p>
+Electronic lab notebooks remain a frustrating problem, and they are one I want to address at least for my own use with Geometron.  In the short term I want to be able to create my own scientific and technical documents and records on the fly as I work, and the longer term goal for that project is to add a social element which blurs the line between peer reviewed archival research publications and the day to day data generation of what we now call a "lab notebook".  
+<p>
+Another very ambitious long term goal that connects with the "spime" concept and the technological complete set mentioned above is the eventual replacement of the ubiquitous "smart phone" and tablet devices with something truly free.  
+
+</div>
+<div class = "atom">
+<h2>Full Structure and Geometron Hypercube</h2>
+
+This section is, in some sense, the true heart of Geometron.  As I said in the beginning, Geometron is two things: a set of geometric commands, and a way of organizing information, including those commands.  That organizing method is what I call the "Geometron Hypercube".
+<center>
+<canvas width = "450" height = "450" id = "M6" style = "border:solid"></canvas>
+<script>
+	ctx = document.getElementById("M6").getContext("2d");
+	x0 = 80;
+	Y0 = 80;
+	unit = 30;
+	doTheThing(0300);
+	y = 80;
+
+	for(var ypos = 0;ypos < 8;ypos++){	
+		y = 3.5*unit + 1.5*unit*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 2.5*unit + xpos*1.5*unit;
+			doTheThing(512 + 128 + 64 + xpos + 8*ypos);
+
+		}
+	}
+/*
+	y = 50;
+	for(var xpos = 0;xpos < 8;xpos++){
+		x = 100 + xpos*60;
+		doTheThing(48 + xpos)
+	}
+	x = 60;
+	for(var ypos = 0;ypos < 8;ypos++){
+		x = 40;
+		y = 120 + ypos*60;
+		doTheThing(48 + ypos)
+	}
+	x = 10;
+	y = 50;
+	doTheThing(0336);
+	drawGlyph(string2byteCode("03yx"));*/
+
+</script>
+</center>
+</div>
 
 <style>
 html {

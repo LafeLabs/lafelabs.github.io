@@ -271,7 +271,28 @@ function appendGlyphButton(localCommand){
 	}
 	currentNode.appendChild(newCanvas);
 }
-
+function mirrorGlyph(inputGlyph){
+	var tempArray = inputGlyph.split(',');
+	var outputGlyph = "";
+	for(var index = 0;index < tempArray.length;index++){
+		if(tempArray[index] == "0334"){
+			outputGlyph += "0335,";
+		}
+		if(tempArray[index] == "0335"){
+			outputGlyph += "0334,";
+		}
+		if(tempArray[index] == "0332"){
+			outputGlyph += "0333,";
+		}
+		if(tempArray[index] == "0333"){
+			outputGlyph += "0332,";
+		}
+		if(tempArray[index] > 0335 || tempArray[index] < 0332){
+			outputGlyph += tempArray[index] + ",";
+		}
+	}
+	return outputGlyph;
+}
 function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 	var dirtyArray = dirtyGlyph.split(",");
 	var cleanGlyph = "";
