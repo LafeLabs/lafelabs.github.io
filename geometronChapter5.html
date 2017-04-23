@@ -722,10 +722,94 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 
 <div class = "atom">
 <h2>The Web</h2>
+For the purposes of this work "the web" describes the set of all documents encoded in such a way that they can be read with a web browser.  This is not the "Internet", which is the set of all computers connected to one another in a network.  The point for this work is that I don't really care how a device is connected to other devices, I care that a device can read and write a file in the format we're working on.  When Geometron is run on existing commercial hardware(as opposed to future custom built systems or physical implementations) it is intended to be used in a web browser that adheres to all the standards set forth for those(which seem to be pretty much convergent on a single standard as of 2017).  
+<p>
+The web, as defined above, then consists of three types of code, referred to as the "holy trinity" by some web developers, or just "html5", which is not in fact really html5 but a combination of the following:
+<ol>
+	<li>HTML5</li>
+	<li>CSS</li>
+	<li>JavaScript</li>
+</ol>
+HTML5 is the current version of html which stands for "hypertext markup language".  "Hypertext" refers to the way that web documents have links in them which connect them to other documents, an idea that goes back to the very beginning of the Web, long before these other parts were built.  A "markup language" is a way to convert the kind of things you can type with a keyboard like &lt i &gt italic &lt /i &gt to the actual thing you see on your screen like this <i>italic</i>.
+<p>
+In order to work with geometron you only need about a dozen commands to get started, all of which look like the italic form in the previous paragraph, with a tag in angle brackets and then an end tag also in angle brackets with a forward slash.  This way of organizing information with angle brackets, slashes and tags, is part of a broader class of documents called eXtensible Markup Language, or XML.  The way to start with HTML is to download and install a text editor with code capabilities such as textWrangler, which is the on I use, then copy and paste the code of a simple website into that, save it as something like "test.html", and open that file in your web browser(this file will be local on your harddrive and therefore not technically on the "Internet".  You can then edit the text file, save it, re-load the browser and see the change.
+<p>
+Start with copy and pasting this into your text editor:
+<center>
+<textarea rows = "10" cols = "40">
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>	
+	<h1>Here is a Heading</h1>
+	Here is some text.
+	<p>
+	Here is a second paragraph, with <b>bold</b> and <i>italic</i>.
+</body>
+</html>
+</textarea>
+</center>
+Do not forget to save the file with the ".html" ending, or it won't be recognized as html by the browser when you try to open it.  
+<p>
+The second of the three main elements of the web is CSS, which stands for "cascaded style sheets".  CSS is a whole language unto itself, which can exist in files that end with .css.  These files are used by professional web developers to give a consistent and polished look to their professional work.  That is not how it is used in Geometron, however.  CSS can be and often is embedded inside html documents in the "&ltstyle&gt" tag.  What it does is specify how all the html looks.  Fonts, colors, margins, positions on the screen, etc. are all handled through CSS. The system incorporated in CSS allows for specific elements of the html document to be controlled, as well as types of element such as "paragraph" or "table", and classes, which can be defined by a class name.  
+<p>
+CSS is a broad and deep subject, but for the purposes of Geometron we will just use some very basic pieces of it and define a class called a Geometron Atom.  Now copy and paste the following code into "test.html".  
+
+<center><textarea cols = "40" rows = "20">
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>	
+	<div class = "atom">
+		<h1>Here is a Heading</h1>
+		Here is some text.
+		<p>
+		Here is a second paragraph, with <b>bold</b> and <i>italic</i>.
+	</div>
+	<div class = "atom">
+	<h1>Copy pasted from Above</h1>
+		CSS is a broad and deep subject, but for the purposes of Geometron we will just use some very basic pieces of it and define a class called a Geometron Atom.  Now copy and paste the following code into "test.html":  
+	</div>
+<style>
+
+html {
+	height: 100%;
+	background: black;
+}
+
+
+.atom{
+	width: 5in;
+	height: auto;
+	border-style: solid;
+	border-width: 5px;
+	border-color: blue;
+	border-radius: 15px;
+	padding: .5in .5in .5in .5in;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 16px;
+	font-family: "Century Schoolbook";
+	text-align: justify;
+	float:left;
+}
+
+</style>
+
+</body>
+</html>
+</textarea></center>
+Now you should see a document set up roughly like the pages of this book.  Change the text, save, and reload the browser.  You can now edit a decent looking document in HTML!  With this, it's possible to put presentable publications on the Web with just a few simple html commands.  
+<p>
+For both html and CSS, the way to move forward is to go through the tutorials and references found on <a href = "https://www.w3schools.com">https://www.w3schools.com</a>. As much as I hate to recommend a for profit company for anything, this is by far the most useful free resource for the amateur like me and I will strongly recommend it over the alternatives.  
+<p>
+The third leg of the tripod is javaScript.  This language is not to be confused with Java, which is supposedly unrelated(even though to those of us who don't care about the pointless territory battles of "tech" they both look identical to C).  javaScript is a C-like language that can run <i>in</i> an html document. It runs on your browser!  This is why I introduced the idea of the "Riddle of Steel" in the previous chapter.  What matters in computer languages is only one thing: how many people does the thing talk to?  And the web browser is the most powerful by many orders of magnitude.    
+<p>
+Just as CSS code goes inside a "&ltstyle&gt" tag and can be in a .css file, JavaScript code can be inside a "&ltscript&gt" tag or in a .js file.  And just as we exclusively avoid external .css files in Geometron we mostly do the same with javascript.  It is commonplace to put something like Geometron in a "library" file, an external .js file with all the needed JavaScript functions, and it would in many ways be more convenient to do this. However, this would contradict the goal of having each instance of Geometron be totally customizable and independent.  External code libraries lead to central control which has political and philosophical implications. Therefore the core library functions of Geometron are <i>always</i> included in the html document which is referencing them.  This is part of the process by which the language evolves.
+<p>
+The one exception to the no-external-libraries rule is the mathjax.js library.  This allows for math to be typeset using commands from LaTeX.  
 
 </div>
-
-
 
 <style>
 
