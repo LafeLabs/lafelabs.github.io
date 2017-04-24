@@ -198,12 +198,14 @@
 0604:0111,0155,0141,0147,0145,0163,040,0133,060,065,060,060,055,060,065,067,067,0135,
 0605:0127,0157,0162,0144,0163,040,0133,060,066,060,060,055,060,066,067,067,0135,
 0606:0115,0141,0164,0150,040,0133,060,067,060,060,055,060,067,067,067,0135,
+01360:0313,0333,0200,0336,0332,0336,0330,0336,0331,0332,0332,0330,0337,0337,0342,0330,0335,0336,0336,0342,0330,0335,0337,0337,0342,0342,0330,0336,0335,0335,0336,0336,0332,0331,0331,0337,0337,0306,0350,0312,0336,0335,0342,0334,0334,0342,0335,0304,0337,0313,0336,0331,0332,0332,0332,0336,0333,0337,0337,0337,0337,0333,0336,0332,0336,0333,0330,0337,0342,0336,0336,0350,0334,0342,0335,0335,0342,0334,0304,0333,0333,0331,0331,0337,0337,0337,
+01361:0313,0333,0200,0336,0332,0336,0330,0336,0331,0332,0332,0330,0337,0337,0342,0330,0335,0336,0336,0342,0330,0335,0337,0337,0342,0342,0330,0336,0335,0335,0336,0336,0332,0331,0331,0337,0337,0306,0350,0312,0336,0335,0342,0334,0334,0342,0335,0304,0337,0313,0336,0331,0332,0332,0332,0336,0333,0337,0337,0337,0337,0333,0336,0332,0336,0333,0330,0337,0342,0330,0335,0335,0350,0336,0336,0335,0342,0334,0334,0342,0335,0304,0335,0335,0337,0333,0330,0337,0337,0331
 */
 </script>
 <script>
 
   	inPath = false;//move to true after path started, back to false after path ended
-
+	penDown = false;
 	currentTable = []; 
 	for(var index = 0;index < 01777;index ++){
 		currentTable.push("");
@@ -290,28 +292,6 @@ function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 	return cleanGlyph;
 }
 
-function mirrorGlyph(inputGlyph){
-	var tempArray = inputGlyph.split(',');
-	var outputGlyph = "";
-	for(var index = 0;index < tempArray.length;index++){
-		if(tempArray[index] == 0334){
-			outputGlyph += "0335,";
-		}
-		if(tempArray[index] == 0335){
-			outputGlyph += "0334,";
-		}
-		if(tempArray[index] == 0332){
-			outputGlyph += "0333,";
-		}
-		if(tempArray[index] == 0333){
-			outputGlyph += "0332,";
-		}
-		if(tempArray[index] > 0335 || tempArray[index] < 0332){
-			outputGlyph += tempArray[index] + ",";
-		}
-	}
-	return outputGlyph;
-}
 
 function drawGlyph(localString){
 	var tempArray = localString.split(',');
@@ -476,18 +456,46 @@ function doTheThing(localCommand){
     	ctx.fillStyle = "blue";    
     }
     if(localCommand == 0330){
+      if(penDown == true){
+        ctx.beginPath();
+    	ctx.moveTo(x,y);
+		ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
+		ctx.stroke();		
+   		ctx.closePath();
+      }
       x += side*Math.cos(theta);   
       y += side*Math.sin(theta); 
     }
     if(localCommand == 0331){
+      if(penDown == true){
+        ctx.beginPath();
+    	ctx.moveTo(x,y);
+		ctx.lineTo(x - side*Math.cos(theta),y - side*Math.sin(theta));
+		ctx.stroke();		
+   		ctx.closePath();
+      }
       x -= side*Math.cos(theta);   
       y -= side*Math.sin(theta); 
     }
     if(localCommand == 0332){
+      if(penDown == true){
+        ctx.beginPath();
+    	ctx.moveTo(x,y);
+		ctx.lineTo(x + side*Math.cos(theta - thetaStep),y + side*Math.sin(theta - thetaStep));
+		ctx.stroke();		
+   		ctx.closePath();
+      }
       x += side*Math.cos(theta - thetaStep);
       y += side*Math.sin(theta - thetaStep);
     }
     if(localCommand == 0333){
+      if(penDown == true){
+        ctx.beginPath();
+    	ctx.moveTo(x,y);
+		ctx.lineTo(x + side*Math.cos(theta + thetaStep),y + side*Math.sin(theta + thetaStep));
+		ctx.stroke();		
+   		ctx.closePath();
+      }
       x += side*Math.cos(theta + thetaStep);
       y += side*Math.sin(theta + thetaStep);
     }
@@ -607,7 +615,12 @@ function doTheThing(localCommand){
     if(localCommand == 0353){
       thetaStep *= 3; //3angle
     }
-
+    if(localCommand == 0360){
+		penDown = true;
+	}
+    if(localCommand == 0361){
+		penDown = false;
+	}
     if(localCommand == 0362){
 	   ctx.beginPath();
 	   ctx.moveTo(x,y);
@@ -717,247 +730,187 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 }
 
 </script>
+
 </head>
 <body>
 
 <div class = "atom">
-<h2>The Web: Getting Started</h2>
-For the purposes of this work "the web" describes the set of all documents encoded in such a way that they can be read with a web browser.  This is not the "Internet", which is the set of all computers connected to one another in a network.  The point for this work is that I don't really care how a device is connected to other devices, I care that a device can read and write a file in the format we're working on.  When Geometron is run on existing commercial hardware(as opposed to future custom built systems or physical implementations) it is intended to be used in a web browser that adheres to all the standards set forth for those(which seem to be pretty much convergent on a single standard as of 2017).  
-<p>
-The web, as defined above, then consists of three types of code, referred to as the "holy trinity" by some web developers, or just "html5", which is not in fact really html5 but a combination of the following:
-<ol>
-	<li>HTML5</li>
-	<li>CSS</li>
-	<li>JavaScript</li>
-</ol>
-HTML5 is the current version of html which stands for "hypertext markup language".  "Hypertext" refers to the way that web documents have links in them which connect them to other documents, an idea that goes back to decades before the beginning of the Web, long before these other parts were built.  A "markup language" is a way to convert the kind of things you can type with a keyboard like &lt i &gt italic &lt /i &gt to the actual thing you see on your screen like this <i>italic</i>.
-<p>
-In order to work with geometron you only need about a dozen commands to get started, all of which look like the italic form in the previous paragraph, with a tag in angle brackets and then an end tag also in angle brackets with a forward slash.  This way of organizing information with angle brackets, slashes and tags, is part of a broader class of documents called eXtensible Markup Language, or XML.  The way to start with HTML is to download and install a text editor with code capabilities such as textWrangler, which is the on I use, then copy and paste the code of a simple website into that, save it as something like "test.html", and open that file in your web browser(this file will be local on your harddrive and therefore not technically on the "Internet".  You can then edit the text file, save it, re-load the browser and see the change.
-<p>
-Start with copy and pasting this into your text editor:
+<h2>Physical Trash Printer</h2>
+
+	The basic Geometron core of this chapter is designed to be physical, and to work with the simplest possible trash printer, based on two motors with gear boxes salvaged from the tray opening mechanism of DVD or CD drives.  The version of the Geometron Hypercube used here must be modified to create as direct a link as possible between the art a user builds in a web browser and the art produced by the physical printer.  This means eliminating most of the basic geometry action commands and relying much more heavily on a well built shape table.  It also means the output of the code should be Arduino code which can be uploaded to the circuit board which is the brain of the printer.  
+</div>
+
+<div class = "atom">
+
 <center>
-<textarea rows = "10" cols = "40">
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>	
-	<h1>Here is a Heading</h1>
-	Here is some text.
-	<p>
-	Here is a second paragraph, with <b>bold</b> and <i>italic</i>.
-</body>
-</html>
-</textarea>
+<canvas width = "400" height = "300" id = "actionCanvas1" style = "border:solid;background:white"></canvas>
 </center>
-Do not forget to save the file with the ".html" ending, or it won't be recognized as html by the browser when you try to open it.  
-<p>
-The second of the three main elements of the web is CSS, which stands for "cascaded style sheets".  CSS is a whole language unto itself, which can exist in files that end with .css.  These files are used by professional web developers to give a consistent and polished look to their professional work.  That is not how it is used in Geometron, however.  CSS can be and often is embedded inside html documents in the "&ltstyle&gt" tag.  What it does is specify how all the html looks.  Fonts, colors, margins, positions on the screen, etc. are all handled through CSS. The system incorporated in CSS allows for specific elements of the html document to be controlled, as well as types of element such as "paragraph" or "table", and classes, which can be defined by a class name.  
-<p>
-CSS is a broad and deep subject, but for the purposes of Geometron we will just use some very basic pieces of it and define a class called a Geometron Atom.  Now copy and paste the following code into "test.html".  
+<center>
+<div id = "controlPanel1" style = "width:150px;height:150px;"></div>
+</center>
+<script id = "duinoCode1">/*
+int shapeTable[512];
+int mainGlyph[64];
+int index = 0;
+int readIndex = 0;
+float scaleFactor = 2.0;
+float side = 1000;
+float unit = 1000;
 
-<center><textarea cols = "40" rows = "20">
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>	
-	<div class = "atom">
-		<h1>Here is a Heading</h1>
-		Here is some text.
-		<p>
-		Here is a second paragraph, with <b>bold</b> and <i>italic</i>.
-	</div>
-	<div class = "atom">
-	<h1>Copy pasted from Above</h1>
-		CSS is a broad and deep subject, but for the purposes of Geometron we will just use some very basic pieces of it and define a class called a Geometron Atom.  Now copy and paste the following code into "test.html":  
-	</div>
-<style>
+int pin1A = 13;
+int pin1B = 12;
 
-html {
-	height: 100%;
-	background: black;
+int pin2A = 5;
+int pin2B = 6;
+
+void setup() {
+
+  pinMode(pin1A, OUTPUT);
+  digitalWrite(pin1A,LOW);
+  pinMode(pin1B, OUTPUT);
+  digitalWrite(pin1B,LOW);
+  pinMode(pin2A, OUTPUT);
+  digitalWrite(pin2A,LOW);
+  pinMode(pin2B, OUTPUT);
+  digitalWrite(pin2B,LOW);
+    
+    
+  for(int i= 0;i < 512;i++){
+    shapeTable[index] = -1;
+  }
+  for(int i= 0;i < 64;i++){
+    mainGlyph[index] = -1;
+  }
+*/</script>
+<!--insert shape table definition here, as well as one-time-draw loop can stay empty in most cases except for machining-->
+<script id = "duinoCode2">/*
 }
 
+void loop() {
 
-.atom{
-	width: 5in;
-	height: auto;
-	border-style: solid;
-	border-width: 5px;
-	border-color: blue;
-	border-radius: 15px;
-	padding: .5in .5in .5in .5in;
-	margin: 10px 10px 10px 10px;
-	background: white;	
-	font-size: 16px;
-	font-family: "Century Schoolbook";
-	text-align: justify;
-	float:left;
+  
 }
 
-</style>
+void drawGlyph(int currentGlyph[]){
+  for(int i=0;i < 64;i++){
+    doTheThing(currentGlyph[i]);
+  }
+}
 
-</body>
-</html>
-</textarea></center>
-Now you should see a document set up roughly like the pages of this book.  Change the text, save, and reload the browser.  You can now edit a decent looking document in HTML!  With this, it's possible to put presentable publications on the Web with just a few simple html commands.  
-<p>
-For both html and CSS, the way to move forward is to go through the tutorials and references found on <a href = "https://www.w3schools.com">https://www.w3schools.com</a>. As much as I hate to recommend a for profit company for anything, this is by far the most useful free resource for the amateur like me and I will strongly recommend it over the alternatives.  
-<p>
-The third leg of the tripod is javaScript.  This language is not to be confused with Java, which is supposedly unrelated(even though to those of us who don't care about the pointless territory battles of "tech" they both look identical to C).  javaScript is a C-like language that can run <i>in</i> an html document. It runs on your browser!  This is why I introduced the idea of the "Riddle of Steel" in the previous chapter.  What matters in computer languages is only one thing: how many people does the thing talk to?  And the web browser is the most powerful by many orders of magnitude.    
-<p>
-Just as CSS code goes inside a "&ltstyle&gt" tag and can be in a .css file, JavaScript code can be inside a "&ltscript&gt" tag or in a .js file.  And just as we exclusively avoid external .css files in Geometron we mostly do the same with javascript.  It is commonplace to put something like Geometron in a "library" file, an external .js file with all the needed JavaScript functions, and it would in many ways be more convenient to do this. However, this would contradict the goal of having each instance of Geometron be totally customizable and independent.  External code libraries lead to central control which has political and philosophical implications. Therefore the core library functions of Geometron are <i>always</i> included in the html document which is referencing them.  This is part of the process by which the language evolves.
-<p>
-The one exception to the no-external-libraries rule is the mathjax.js library.  This allows for math to be typeset using commands from LaTeX, another markup language, older than the Web, which is designed specifically for typesetting mathematical documents.  LaTeX is already very widely used in the physical sciences, so this is largely for those who are already comfortable with LaTeX and mathematics.  If you need to create documents with very intense theoretical math, you very likely already know LaTeX, and if you don't, you don't need it.  The Mathjax library appears to have a stable not-for-profit system of updating and maintaining their code which leads me to believe that trusting it for long term projects is safe.  At least for now. 
-<p>
-What you need to learn in JavaScript to do Geometron:
-<ol>
-	<li><a href = "https://www.w3schools.com/js/js_loop_for.asp">for loops</a></li>
-	<li><a href = "https://www.w3schools.com/js/js_functions.asp">functions</a></li>
-	<li><a href = "https://www.w3schools.com/js/js_arrays.asp">arrays</a></li>
-	<li><a href = "https://www.w3schools.com/js/js_string_methods.asp">parsing strings</a></li>
-	<li><a href = "https://www.w3schools.com/js/js_htmldom.asp">interacting with the DOM</a></li>
-	<li><a href = "https://www.w3schools.com/js/js_math.asp">basics of "math" object</a></li>
-	<li>basic syntax(using semicolons, comments etc.)</li>
-</ol>
-<p>
-Hopefully it should be possible for amateurs to quickly learn just these things, use them to learn Geometron, and then work mostly in Geometron in the future.  Some users will also inevitably delve much deeper into the language and use all of it to improve Geometron, but it is the goal to have the minimum needed JavaScript to edit the core library be something that can be learned in just a few days, and easily and quickly looked up again when forgotten.   There should also be a reference in the Geometronsphere that has a list of examples of key things used. 
+void drawShape(int startIndex){
+  for(int i=startIndex;i < startIndex + 16;i++){
+    doTheThing(shapeTable[i]);
+  }
+}
 
-</div>
-<div class = "atom">
-<h2>Other Resources</h2>
-Aside from the three legged stool describe above of HTML, CSS and JavaScript, there are several extremely useful pieces of modern computer software which we will use to build out some of the Geometron instances. These include:
-<ul> 
-	<li>the canvas element</li>
-	<li>the .svg file format and html element</li>
-	<li>the .x3d file format and html element</li>
-	<li>Arduino</li>
-	<li>pandoc</li>
-	<li>github</li>
-</ul>	
-</div>
+void doTheThing(int localCommand){
 
-<div class  = "atom">
-<h2>Initialization and Global Variables</h2>
-According to the Technocratic Priesthood, use of global variables is not part of "best practices". One of the ways I anticipate useless noise to be generated from the "tech" scammers after publication of this work is that they will whine about the fact that Geometron is driven entirely by the use of global variables.  I claim that as with most of the things engineers and their collaborators say, that this is not a fact of what can or should be done but is in fact 100% about social control and protection of "property" rights, which are essential to the continued political dominance of the techno priest class.  
-<p>
-Since I regard all techno priests as the class enemy of this work, I do not take this seriously.  They want you to follow "security protocols" to make things work with large numbers of random scripts all being run at the same time, which might overlap and break each other.  This has nothing to do with your functions or your freedom, it's about their(the technocratic enemy) ability to all control you without interfering with the other technocrats who are also trying to control you.  
-<p>
-"Best practices[to use the Enemy's language]" in Geometron involve always having all scripts embedded in the html, with no outside scripts other than mathjax, and that only for mathematical work.  Our goal is to not just have variables be global in the browser instance you happen to be running at this time, but to have names that follow the code into many future mutations and specific applications.  The property-worshipper needs local variables to protect their right to live in a overpriced highrise where your place used to be after the condo developers bulldozed it.  We will use global variables to attempt to fight their world and their values.  
-</div>
-
-<div class = "atom">
-	<h2>doTheThing()</h2>
-	The function that actually does all the operations of Geometron is called doTheThing().  It generally acts on an integer, which is generally passed in base 8, and returns nothing.  In processing or Arduino it is therefore defined with a "void" statement.  The one integer argument is always called "localCommand"(note the Camel case here as in most names we use).  It's important to keep that core nomenclature the same so that parts of the function can by copy and pasted easily from one Geometron instance to another.  A very basic doTheThing() function might look like this:
-<pre style = "word-wrap: break-word;">
-function doTheThing(localCommand){
-    if(localCommand == 0300){
-      x = x0;
-      y = y0;
-      theta = theta0;
-      side = unit;
-      thetaStep = Math.PI/2;
-      scaleFactor = 2;
-      ctx.lineWidth = 2;
-      ctx.strokeStyle="black";
-      ctx.fillStyle="black";
+    if(localCommand == 0){
+        delay(side);
+        digitalWrite(pin1A,HIGH);
+        delay(side);
+        digitalWrite(pin1A,LOW);
     }
-    if(localCommand == 0304){
-      thetaStep = Math.PI/2;
+    if(localCommand == 1){
+        delay(side);
+        digitalWrite(pin1B,HIGH);
+        delay(side);
+        digitalWrite(pin1B,LOW);
     }
-    if(localCommand == 0305){
-      thetaStep = 2*Math.PI/5;
+    if(localCommand == 2){
+        delay(side);
+        digitalWrite(pin2A,HIGH);
+        delay(side);
+        digitalWrite(pin2A,LOW);
     }
-    if(localCommand == 0306){
-      thetaStep = Math.PI/3;
-    }    
-    if(localCommand == 0310){
-       scaleFactor = Math.sqrt(2); 
+    if(localCommand == 3){
+        delay(side);
+        digitalWrite(pin2B,HIGH);
+        delay(side);
+        digitalWrite(pin2B,LOW);
     }
-    if(localCommand == 0311){
-       scaleFactor = phi; //"golden" ratio 
-    }
-    if(localCommand == 0312){
-       scaleFactor = Math.sqrt(3); 
-    }
-    if(localCommand == 0313){
-      scaleFactor = 2;  //2x
-    }
-    if(localCommand == 0314){
-      scaleFactor = 3;  //3x
-    }
-    if(localCommand == 0315){
-      scaleFactor = 3.14159;  //pi*
-    }    
-    if(localCommand == 0316){
-      scaleFactor = 5;  //5*
-    }        
-    if(localCommand == 0317){
-       side = unit; 
-    }
-    if(localCommand == 0330){
-      x += side*Math.cos(theta);   
-      y += side*Math.sin(theta); 
-    }
-    if(localCommand == 0331){
-      x -= side*Math.cos(theta);   
-      y -= side*Math.sin(theta); 
-    }
-    if(localCommand == 0332){
-      x += side*Math.cos(theta - thetaStep);
-      y += side*Math.sin(theta - thetaStep);
-    }
-    if(localCommand == 0333){
-      x += side*Math.cos(theta + thetaStep);
-      y += side*Math.sin(theta + thetaStep);
-    }
-    if(localCommand == 0334){
-      theta -= thetaStep; // CCW
-    }
-    if(localCommand == 0335){
-      theta += thetaStep; // CW
-    }
-    if(localCommand == 0336){
+    if(localCommand == 4){
       side /= scaleFactor; // -
     }
-    if(localCommand == 0337){
+    if(localCommand == 5){
       side *= scaleFactor; // +
     }
-    if(localCommand == 0340){  //point
-		ctx.beginPath();
-		ctx.arc(x, y, 3, 0, 2 * Math.PI);
-		ctx.fill();	
-		ctx.closePath();
+    if(localCommand == 6){
+     // pen down
     }
-    if(localCommand == 0341){  //circle
-		ctx.beginPath();
-		ctx.arc(x, y, side, 0, 2 * Math.PI);
-		ctx.closePath();
-		ctx.stroke();
+    if(localCommand == 7){
+      // pen up
     }
-    if(localCommand == 0342){   //line
-    	ctx.beginPath();
-    	ctx.moveTo(x,y);
-		ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
-		ctx.stroke();		
-   		ctx.closePath();   		
+    if(localCommand == 8){//reset scale
+      side = unit;
     }
-    if(localCommand == 0343){
-    	ctx.beginPath();
-		ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
-		ctx.stroke();
-		ctx.closePath();
+    
+    if(localCommand >= 10){
+      drawShape(localCommand);
     }
 }
-</pre>	  
+*/</script>
+copy and paste the following code into the Arduino IDE and upload to the control board:
+<textarea id = "duinoOut" cols = "60" rows = "40"></textarea>
+<script>
+currentNode = document.getElementById("controlPanel1");
+appendGlyphButton(0360);
+appendGlyphButton(0330);
+appendGlyphButton(0361);
+appendGlyphButton(0332);
+appendGlyphButton(0300);
+appendGlyphButton(0333);
+appendGlyphButton(0336);
+appendGlyphButton(0331);
+appendGlyphButton(0337);
 
-Now is a good time to use your browser to read the source of this document and the previous chapters and future chapters to see how doTheThing changes for various instances of Geometron.
+currentGlyph = "";
+x0 = 200;
+y0 = 150;
+unit = 50;
+redraw();
+function redraw(){
+	ctx = document.getElementById("actionCanvas1").getContext("2d");
+	ctx.clearRect(0,0,400,300);
+	doTheThing(0300);
+	drawGlyph(currentGlyph);
+	penDown = false;
+	drawGlyph(cursor.glyph);	
+	
+	var foo = document.getElementById("duinoCode1").text;
+	foo = foo.slice(2,foo.length - 2);
+	var bar = document.getElementById("duinoCode2").text;
+	bar = bar.slice(2,bar.length - 2);
+	var baz = "mainGlyph[0] = 0;\n";
+	baz += "mainGlyph[1] = 2;\n";
+	baz += "mainGlyph[2] = 1;\n";
+	baz += "mainGlyph[3] = 3;\n";
+	baz += "mainGlyph[4] = 4;\n";
+	baz += "mainGlyph[5] = 0;\n";
+	baz += "mainGlyph[6] = 2;\n";
+	baz += "mainGlyph[7] = 1;\n";
+	baz += "mainGlyph[8] = 3;\n";
+	baz += "mainGlyph[9] = 4;\n";
+	baz += "mainGlyph[10] = 0;\n";
+	baz += "mainGlyph[11] = 2;\n";
+	baz += "mainGlyph[12] = 1;\n";
+	baz += "mainGlyph[13] = 3;\n";
+	baz += "mainGlyph[14] = 4;\n";
+	baz += "mainGlyph[15] = 0;\n";
+	baz += "mainGlyph[16] = 2;\n";
+	baz += "mainGlyph[17] = 1;\n";
+	baz += "mainGlyph[18] = 3;\n";
+
+	baz += "drawGlyph(mainGlyph);\n";
+
+	document.getElementById("duinoOut").value = foo + baz + bar;
+	
+}
+</script>
+
+
 </div>
 
-<div class = "atom">
-<h2>Build a Full Geometron Document and Edit it</h2>
-This is it!  <i>You</i> will now build a full document yourself in Geometron using basic web tools.  You will use github to put it on the web, and will in the end of this section have a document that is readable by several <i>billion</i> internet enabled devices using any standard browser!  Geometron aims to seize the means of production for the web, and that should be accomplished in this section, and until it is, I will re-write this over and over and add things as needed based on trying this on people.  While I reference above to the w3schools website for learning basic web stuff, this section will attempt to be self-contained, and have the core pieces documented right here which you need to make and edit a working document.  
-
-</div>
 <style>
 
 table,td,th{
