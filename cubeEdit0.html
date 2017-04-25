@@ -203,11 +203,12 @@
 <!--
 <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 <script>
 
   	inPath = false;//move to true after path started, back to false after path ended
-
+	explodeIndex = 0;
+	explodeLimit = 10000;
 	currentTable = []; 
 	for(var index = 0;index < 01777;index ++){
 		currentTable.push("");
@@ -401,7 +402,7 @@ function redraw(){
 	
 	document.getElementById("addr").value = "0" + currentAddress.toString(8);
 	document.getElementById("glyphBytecode").value = currentGlyph;
-	
+	explodeIndex = 0;	
 }
 
 
@@ -502,7 +503,9 @@ function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 function drawGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
-		doTheThing(parseInt(tempArray[index],8));
+		if(explodeIndex < explodeLimit){
+			doTheThing(parseInt(tempArray[index],8));
+		}
 	}
 }
 
@@ -551,7 +554,10 @@ function string2byteCode(localString){
 	return localByteCode;
 }
 function doTheThing(localCommand){
- 
+ 	 explodeIndex++;
+ 	 if(explodeIndex > explodeLimit){
+		explodeIndex = 0;
+ 	 }
      if(localCommand >= 0600 && localCommand < 0700){
     	//get the glyph, turn it into ascii, make it the Word:
     	if(currentTable[localCommand] != undefined){

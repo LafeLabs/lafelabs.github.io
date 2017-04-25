@@ -202,6 +202,7 @@
   	inPath = false;//move to true after path started, back to false after path ended
 
 	explodeIndex = 0;
+	explodeLimit = 100000;
 	
 	currentTable = []; 
 	for(var index = 0;index < 01777;index ++){
@@ -315,7 +316,7 @@ function mirrorGlyph(inputGlyph){
 function drawGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
-		if(explodeIndex < 1000){
+		if(explodeIndex < explodeLimit){
 			doTheThing(parseInt(tempArray[index],8));
 		}
 	}
@@ -373,7 +374,7 @@ function string2byteCode(localString){
 
 function doTheThing(localCommand){
  	 explodeIndex++;
- 	 if(explodeIndex > 100001){
+ 	 if(explodeIndex > explodeLimit){
 		explodeIndex = 0;
  	 }
      if(localCommand >= 0500 && localCommand <= 0600){
@@ -735,26 +736,240 @@ We will build many fonts in many languages.  Everyone! You and your friends and 
 So the fonts will go in a grid, but not an 8x8 grid like all the other layers in the Geometron hypercube.  Instead it is one 8x4 grid and one 8x8 grid with a single cell empty.  Here is a font:
 
 <center>
-	<canvas width = "500" height = "320" id = "canvas1"></canvas>
+<canvas width = "450" height = "250" id = "M5" style = "border:solid"></canvas>
+<canvas width = "450" height = "450" id = "M6" style = "border:solid"></canvas>
+<script>
+	ctx = document.getElementById("M6").getContext("2d");
+	x0 = 80;
+	Y0 = 80;
+	unit = 30;
+	doTheThing(0300);
+	y = 80;
+
+	for(var ypos = 0;ypos < 8;ypos++){	
+		y = 3.5*unit + 1.5*unit*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 2.5*unit + xpos*1.5*unit;
+			doTheThing(64 + xpos + 8*ypos);
+			explodeIndex =0;
+		}
+	}
+
+	y = 50;
+	for(var xpos = 0;xpos < 8;xpos++){
+		x = 2.5*unit + xpos*1.5*unit;
+		doTheThing(48 + xpos)
+	}
+	x=0;
+	drawGlyph("0335,0336,0336,0333,0337,0331,0337,0331,0337,0331,0337,0337,0337,0337,0342,0334")
+	side = unit;
+	x = 60;
+	for(var ypos = 0;ypos < 8;ypos++){
+		x = 40;
+		y = 3.5*unit + ypos*1.5*unit;
+		doTheThing(48 + ypos)
+	}
+	drawGlyph("0336,0336,0333,0337,0331,0337,0331,0337,0337,0337,0337,0342")
+
+	x = 10;
+	y = 50;
+	side = unit;
+	doTheThing(0336);
+	drawGlyph(string2byteCode("01yx"));
+
+
+	ctx = document.getElementById("M5").getContext("2d");
+	x0 = 80;
+	Y0 = 80;
+	unit = 30;
+	doTheThing(0300);
+	y = 80;
+
+	for(var ypos = 0;ypos < 4;ypos++){	
+		y = 3.5*unit + 1.5*unit*ypos;
+		for(var xpos = 0;xpos < 8;xpos++){
+			x = 2.5*unit + xpos*1.5*unit;
+			doTheThing(xpos + 8*(ypos+4));
+			explodeIndex =0;
+		}
+	}
+
+	y = 50;
+	for(var xpos = 0;xpos < 8;xpos++){
+		x = 2.5*unit + xpos*1.5*unit;
+		doTheThing(48 + xpos)
+	}
+	x = 60;
+	drawGlyph("0335,0336,0336,0333,0337,0331,0337,0331,0337,0331,0337,0337,0337,0337,0342,0334")
+
+	side = unit;
+	for(var ypos = 0;ypos < 4;ypos++){
+		x = 40;
+		y = 3.5*unit + ypos*1.5*unit;
+		doTheThing(48 + (ypos+4))
+	}
+	drawGlyph("0336,0336,0333,0337,0331,0337,0337,0337,0337,0337,0342")
+	x = 10;
+	y = 50;
+	side = 30;
+	doTheThing(0336);
+	drawGlyph(string2byteCode("0yx"));
+
+</script>
+</center>
+This font took a few hours to make, and was my second Geometron font. It has no Bezier paths, and no shapes, just the core geometry actions of point, circle, segment, and arc.  Any address from 040 to 0176(inclusive) passed to doTheThing() will cause one of these letters to be drawn.  When this happens, human language is just another geometry action, and all of the other actions of Geometron can be applied.   This difference has its up side and its down side.  The down side of course is that all of the numerous beautiful and varied fonts that are normally part of a computer software system are not in general available.  By default we don't have support for hundreds of human languages, or all of the various obscure math symbols of Unicode.  
+<p>
+But the upside is incredible: any character can be subject to any kind of transformation we can think of.  For example suppose we want to use the mathematical symbol for "there exists", which is an upside-down capital E.  All we need to do is flip upside down, and move the cursor both before and after so that the overal action of the letter is to move to the right as in a normal English word.  Thus:
+
+<center>
+	<canvas width = "500" height = "210" id = "canvas1"></canvas>
 </center>
 <script>
+
+currentTable[0220] = "0334,0334,0331,0332,0105,0335,0335,0331,0333,";
+currentTable[01220] = "0333,0200,0332,0336,0336,0330,0333,0337,0220,0336,0336,0333,0331,0331,0337,0337,0337,";
+
+currentTable[01105] = "0333,0200,0332,0336,0336,0333,0330,0337,0105,0336,0336,0333,0333,0333,0331,0331,0337,0337,0337,";
 cursorPosition = 100;
 ctx = document.getElementById("canvas1").getContext("2d");
 doTheThing(0300);
-
 x = 10;
 y = 60;
 side = 30;
 ctx.lineWidth = 2;
+drawGlyph("01220,");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+drawGlyph("040,072");
+
+spellGlyph(currentTable[0220]);
+doTheThing(0300);
+
+x = 100;
+y = 200;
+side = 100;
+ctx.lineWidth = 3;
+drawGlyph("0220");
+</script>
+With this symbol in hand, we store it in the shape table, at address 0220 in this example, and can now use it like any other shape.  Or it could be put in the font table at the location of a symbol we know we won't use, connecting it with direct keyboard input. For example to write that "there exists x < y" we can write:
+ 
+ 
+<center>
+	<canvas width = "400" height = "100" id = "canvas2"></canvas>
+</center>
+<script>
+
+ctx = document.getElementById("canvas2").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+drawGlyph("0220,040,0170,074,040,0171");
+</script>
+Or, this could be done with the "word" command to get access to the system fonts built into the standard canvas element.  
+
+
+<center>
+	<canvas width = "400" height = "100" id = "canvas3"></canvas>
+</center>
+<script>
+
+ctx = document.getElementById("canvas3").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 60;
+side = 30;
+ctx.lineWidth = 2;
+currentWord = "x < y";
+drawGlyph("0220,0365");
+</script>
+This shows how it's possible to mix Geometron with standard font information: we started with a pure Geometron font, used that and some movements to turn it into a symbol, then used that symbol in a mathematical statement which was expressed in a standard system font.  
+<p>
+But this is just the beginning of the power of combining Geometron with the ability to build our own fonts.  Let's go back to the recursion example from the previous chapter and apply that to letters.
+
+<center>
+	<canvas width = "500" height = "420" id = "canvas4"></canvas>
+</center>
+<script>
+
+currentTable[01211] = "0333,0200,0336,0332,0336,0330,0332,0337,0122,0336,0333,0331,0336,0336,0336,0336,0333,0333,0333,0333,0333,0333,0333,0332,0337,0337,0337,0337,0337,0337,0342";
+currentTable[0211] = "0313,0336,0336,0122,0105,0103,0125,0122,0123,0111,0117,0116,0337,0337";
+
+//currentTable[0211] = "0122";
+
+currentTable[0210] = "0350,0350,0335,0304,0312,0336,0311,0337,0211,0210";
+currentTable[01210] = "0333,0200,0336,0336,0332,0332,0332,0330,0336,0332,0330,0210";
+cursorPosition = 100;
+ctx = document.getElementById("canvas4").getContext("2d");
+doTheThing(0300);
 
 
 x = 100;
-y = 300;
-side = 50;
-drawGlyph("0210");
-doTheThing(072);
-</script>
+y = 15;
+side = 55;
+explodeIndex = 0;
+drawGlyph("0350,0350,0334,0304,0210");
 
+</script>
+Or we can work the same magic with various simple shapes:
+<center>
+	<canvas width = "500" height = "420" id = "canvas5"></canvas>
+</center>
+<script>
+
+currentTable[01211] = "0333,0200,0336,0332,0336,0330,0332,0337,0122,0336,0333,0331,0336,0336,0336,0336,0333,0333,0333,0333,0333,0333,0333,0332,0337,0337,0337,0337,0337,0337,0342";
+
+currentTable[0211] = "0120,0105,0116,0124,0101,0107,0117,0116,";
+currentTable[0230] = "0110,0105,0130,0101,0107,0117,0116,";
+
+currentTable[0231] = "040,0123,0121,0125,0101,0122,0105,040";
+currentTable[0232] = "0124,0122,0111,0101,0116,0107,0114,0105,";
+
+
+currentTable[0212] = "0332,0332,0332,0330,0336,0333,0333,0211,0305,0335,0304,0211,0305,0335,0304,0211,0305,0335,0304,0211,0305,0335,0304,0211,";
+
+currentTable[0213] = "0332,0332,0332,0330,0336,0333,0333,0230,0306,0335,0304,0230,0306,0335,0304,0230,0306,0335,0304,0230,0306,0335,0304,0230,0306,0335,0304,0230,";
+
+
+currentTable[0214] = "0332,0332,0332,0330,0336,0333,0333,0231,0335,0304,0231,0335,0304,0231,0335,0304,0231";
+
+currentTable[0215] = "0332,0332,0332,0330,0336,0333,0333,0232,0306,0351,0335,0304,0232,0306,0351,0335,0304,0232";
+
+
+cursorPosition = 100;
+ctx = document.getElementById("canvas5").getContext("2d");
+doTheThing(0300);
+
+
+x = 250;
+y = 150;
+side = 45;
+explodeIndex = 0;
+drawGlyph("0212");
+doTheThing(0300);
+x = 270;
+y = 120;
+side = 65;
+explodeIndex = 0;
+drawGlyph("0213");
+
+x = 245;
+y = 200;
+side = 25;
+explodeIndex = 0;
+drawGlyph("0215");
+
+x = 235;
+y = 235;
+side = 35;
+explodeIndex = 0;
+drawGlyph("0214");
+
+
+</script>
 
 
 </div>
