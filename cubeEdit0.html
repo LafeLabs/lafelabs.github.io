@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<title>The Book of Geometron: Chapter 1</title>
+<title>Geometron Hypercube Editor</title>
 <script id = "bytecodeScript">
 /*
 040:0333
@@ -183,8 +183,27 @@
 0506:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0113,060,0112,0153,0103,0143,071,056,0152,0160,0147,
 0507:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0164,0124,0103,070,0132,0115,0141,056,0152,0160,0147,
 0510:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0153,0122,0141,0172,0157,0120,0111,056,0152,0160,0147,
+01370:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0333,0335,0306,0342,0336,0331,0337,0337,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0304,0334,0333,0333,0336,0336,0332,0337,0337,0337,0331,0337
+01371:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0336,0331,0331,0331,0333,0335,0337,0337,0306,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0304,0330,0330,0336,0336,0331,0334,0337,0337,0337,0331,0336,0336,0336,0330,0337,0337,0337,0337
+01372:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0336,0331,0333,0337,0337,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0333,0333,0336,0336,0332,0337,0337,0337,0331,0336,0336,0336,0330,0337,0337,0337,0337
+01373:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0331,0331,0336,0330,0333,0337,0337,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0333,0333,0331,0331,0336,0336,0330,0332,0337,0337,0337,0337
+01374:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0333,0335,0305,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0334,0333,0333,0333,0331,0331,0331,0331,0337,0337,0337
+01375:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0331,0331,0333,0330,0335,0305,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0330,0330,0330,0334,0331,0331,0331,0331,0337,0337,0337
+01376:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0335,0330,0306,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0330,0330,0330,0334,0337,0337,0331,0337
+01377:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0331,0333,0335,0306,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0333,0330,0330,0330,0334,0331,0331,0331,0337,0337,0337
+0600:0122,0157,0157,0164,040,0115,0141,0147,0151,0143,040,0133,060,060,055,060,063,067,0135,
+0601:0106,0157,0156,0164,040,0133,060,064,060,055,060,061,067,066,0135,
+0602:0123,0150,0141,0160,0145,0163,040,0133,060,062,060,060,055,060,062,067,067,0135,
+0603:0107,0145,0157,0155,0145,0164,0162,0171,040,0101,0143,0164,0151,0157,0156,0163,040,0133,060,063,060,060,055,060,063,067,067,0135,
+0604:0111,0155,0141,0147,0145,0163,040,0133,060,065,060,060,055,060,065,067,067,0135,
+0605:0127,0157,0162,0144,0163,040,0133,060,066,060,060,055,060,066,067,067,0135,
+0606:0115,0141,0164,0150,040,0133,060,067,060,060,055,060,067,067,067,0135,
 */
 </script>
+<!--
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
 
   	inPath = false;//move to true after path started, back to false after path ended
@@ -204,7 +223,7 @@
 			currentTable[localAddress] = localBytecode[1];
 		}
 	}
-	myFont = "Century Schoolbook";
+	myFont = "Futura";
 	currentWord = "Word";
 	currentSVG = "";
 	currentAddress = 0401;
@@ -232,8 +251,243 @@
 		side:side,
 		glyph:"0362,0344,0363,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,0334,0362,0344,0363,0335,0335,0362,0344,0363"
 	}
+
+
 </script>
+</head>
+<body>
+<div class = "atom" id = "masterRoot"></div>
+<div id = "glyphTableEditor" class = "atom" style = "display:block">	
+	<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
+	<div class = "atom"  style = "width:450px;height:450px;padding:40px 0px 0px 40px">
+		<canvas width = "400" height = "400" id = "plotCanvas" style = "border:solid"></canvas>
+	</div>
+	<div id = "wordPanel" class = "atom" onchange = "updateWordOption();">
+		<input id = "wordInput" onchange = "updateWordInput();"></input>
+		<select id = "wordSelect">
+		</select>
+	</div>
+	<div id = "spellDiv">
+		<canvas width = "3000" height = "30" id = "spellCanvas" style = "border:solid;float:left;"></canvas>
+		<input size = "6" id = "addr" style = "float:left;" onchange = "updateAddr();"></input>
+		<input style = "float:left;" size = "428" id = "glyphBytecode" onchange = "updateGlyph()"></input>
+	</div>
+	<div class = "atom" style = "width:610px;height:auto" id = "controlPad">
+		<div style = "width:95px;height:100px;float:left" id = "directionPad"></div>
+		<div style = "width:210px;height:30px;float:left" id = "anglePad"></div>
+		<div style = "width:180px;height:30px;float:left" id = "scalePad"></div>
+		<div style = "width:125px;height:100px;float:right;" id = "rootPad"></div>
+		<div style = "width:384px;height:100px;float:left" id = "drawPad"></div>
+		<input style = "float:left;margin:0px" size = "80" id = "drawGlyphGlyph" onchange = "updateDrawGlyphs();"></input>
+	</div>
+	<p>
+	<div class = "atom">
+		<textarea id = "mainTextArea"  cols = "84" rows = "12">
+		</textarea>
+	</div>
+</div>
+
+
 <script>
+
+var newSelect = document.getElementById("wordSelect");
+for(var index = 0600;index < 0700;index++){
+	var newOption = document.createElement("OPTION");
+	newOption.text = "0" + index.toString(8);
+	newSelect.appendChild(newOption);
+}
+
+currentNode = document.getElementById("directionPad");
+//buildPanel([0334,0330,0335,0332,0300,0333,0336,0331,0337]);
+buildPanel("0334,0330,0335,0332,0300,0333,0336,0331,0337");
+
+currentNode = document.getElementById("anglePad");
+buildPanel("0304,0305,0306,0350,0351,0352,0353");
+
+currentNode = document.getElementById("scalePad");
+buildPanel("0310,0311,0312,0313,0314,0316");
+
+currentNode = document.getElementById("rootPad");
+buildPanel("020,010,021,022,023,024,025,026,027");
+
+
+currentNode = document.getElementById("drawPad");
+drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0366,0367";
+document.getElementById("drawGlyphGlyph").value = drawGlyphsGlyph;
+buildPanel(drawGlyphsGlyph);
+
+ctx = document.getElementById("plotCanvas").getContext("2d");
+currentGlyph = currentTable[currentAddress];
+redraw();
+
+currentNode = document.getElementById("masterRoot");
+appendGlyphButton(030);
+
+function buildPanel(glyphsGlyph){
+	var glyphsGlyphArray = glyphsGlyph.split(",");
+	var buttonArray = [];
+	for(var index = 0;index < glyphsGlyphArray.length;index++){
+		buttonArray.push(parseInt(glyphsGlyphArray[index],8));
+	}
+	for(var index = 0;index < buttonArray.length;index++){
+		appendGlyphButton(buttonArray[index]);
+	}
+}
+
+function updateWordOption(){
+	wordAddress = parseInt(document.getElementById("wordSelect").value,8);
+	document.getElementById("wordInput").value = byteCode2string(currentTable[wordAddress]);
+}
+
+function updateWordInput(){
+	wordAddress = parseInt(document.getElementById("wordSelect").value,8);
+	currentTable[wordAddress] = string2byteCode(document.getElementById("wordInput").value);
+}
+
+function updateAddr(){
+	currentAddress = parseInt(document.getElementById("addr").value,8);
+	currentGlyph = currentTable[currentAddress];
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
+	redraw();
+}
+
+function updateGlyph(){
+	currentGlyph = document.getElementById("glyphBytecode").value;
+	currentGlyph = commaCleaner(currentGlyph);
+	currentTable[currentAddress] = currentGlyph;
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
+	redraw();	
+}
+
+function updateDrawGlyphs(){
+	currentNode = document.getElementById("drawPad");
+	while (currentNode.hasChildNodes()) {
+		currentNode.removeChild(currentNode.childNodes[0]);
+	}
+	drawGlyphsGlyph = document.getElementById("drawGlyphGlyph").value;
+	buildPanel(drawGlyphsGlyph);
+}
+
+
+function redraw(){
+	x0 = 200;
+	y0 = 200;
+	unit = 40;
+	//draw the glyph:
+	ctx = document.getElementById("plotCanvas").getContext("2d");
+	//draw current glyph:
+	doTheThing(0300);
+//	ctx.fillStyle = "#808080"
+	ctx.clearRect(0,0,400,400);
+	doTheThing(0300);
+
+	drawGlyph(currentGlyph);
+	//draw the cursor:
+	ctx = document.getElementById("invisibleCanvas").getContext("2d");
+	getCursor();
+	ctx = document.getElementById("plotCanvas").getContext("2d");
+	drawGlyph(cursor.glyph);
+
+	//spell:
+	ctx = document.getElementById("spellCanvas").getContext("2d");
+	ctx.clearRect(0,0,3000,40);
+	unit = 20;
+	x0 = 5;
+	y0 = 25;
+	doTheThing(0300);
+	spellGlyph(currentGlyph);
+	
+	document.getElementById("addr").value = "0" + currentAddress.toString(8);
+	document.getElementById("glyphBytecode").value = currentGlyph;
+	
+}
+
+
+function appendGlyphButton(localCommand){
+	glyphButtonSize = 30;
+	var newCanvas = document.createElement("CANVAS");		
+	newCanvas.width = glyphButtonSize;
+	newCanvas.height = glyphButtonSize;
+	newCanvas.className = "glyphButtons";
+	ctx = newCanvas.getContext("2d");
+	ctx.fillStyle="white";
+	ctx.fillRect(5, 5, glyphButtonSize-10, glyphButtonSize-10);
+	ctx.fillStyle="black";
+	doTheThing(0300);			
+	x = 5;
+	y = glyphButtonSize-5;
+	side = glyphButtonSize-10;
+	doTheThing(localCommand + 01000);
+	if(localCommand < 040){
+		newCanvas.onclick = function(){
+			localRoot(localCommand);
+		}	
+	}
+	if(localCommand >= 040){
+		newCanvas.onclick = function(){
+			cursorAction(localCommand);	
+			redraw();	
+		}
+	}
+	currentNode.appendChild(newCanvas);
+}
+
+
+function cursorAction(localCommand){
+	currentGlyphArray = currentGlyph.split(",");
+	if(cursorPosition > currentGlyphArray.length){
+		cursorPosition = currentGlyphArray.length;
+	}
+	currentGlyph = "";
+	doTheThing(0300);
+	
+	for(var index = 0;index < cursorPosition;index++){
+		currentGlyph += currentGlyphArray[index] + ",";	
+		var localAction = parseInt(currentGlyphArray[index],8);
+		if( !((localAction >= 0340) && (localAction < 0344)) ){
+			doTheThing(localAction);
+		}
+	}
+	if(localCommand != undefined){
+		if( !((localCommand >= 0340) && (localCommand < 0344)) ){
+			doTheThing(localCommand);
+		}
+	}
+	cursor.x = x;
+	cursor.y = y;
+	cursor.theta = theta;
+	cursor.thetaStep = thetaStep;
+	cursor.side = side;
+	if(localCommand != undefined){
+		currentGlyph += "0" + localCommand.toString(8) + ",";
+	}	
+	for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+		currentGlyph += currentGlyphArray[index] + ",";		
+	}
+	cursorPosition++;	
+	currentGlyph = commaCleaner(currentGlyph);
+}
+
+function getCursor(){
+
+	currentGlyphArray = currentGlyph.split(",");
+	var foo = "";
+	doTheThing(0300);
+	for(var index = 0;index < cursorPosition;index++){
+		foo += currentGlyphArray[index] + ",";	
+		var localAction = parseInt(currentGlyphArray[index],8);
+		doTheThing(localAction);
+	}
+	cursor.x = x;
+	cursor.y = y;
+	cursor.theta = theta;
+	cursor.thetaStep = thetaStep;
+	cursor.side = side;
+
+}
+
 function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 	var dirtyArray = dirtyGlyph.split(",");
 	var cleanGlyph = "";
@@ -298,11 +552,6 @@ function string2byteCode(localString){
 }
 function doTheThing(localCommand){
  
-     if(localCommand >= 0500 && localCommand <= 0600){
-		if(currentTable[localCommand] != undefined){
-    	 	currentImage = byteCode2string(currentTable[localCommand]);
-    	}
-    }
      if(localCommand >= 0600 && localCommand < 0700){
     	//get the glyph, turn it into ascii, make it the Word:
     	if(currentTable[localCommand] != undefined){
@@ -571,9 +820,8 @@ function doTheThing(localCommand){
 		currentSVG += currentWord;
 		currentSVG += "</text>\n";	
     }
-
 	if(localCommand == 0366){
-		//ctx.beginPath();
+		ctx.beginPath();
 		ctx.moveTo(Math.round(x),Math.round(y));
 		cpx1 = Math.round(x + side*Math.cos(theta));
 		cpy1 = Math.round(y + side*Math.sin(theta));
@@ -597,197 +845,118 @@ function doTheThing(localCommand){
 
 }
 
-</script>
-</head>
-<body>
-<div class = "atom">
-<h2>What is Geometron?</h2>
+function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
+//	localCommand = parseInt(localCommand,8);
 
-Geometron is two things: a language, and a way of organizing information.  This whole project is based on the simple idea that as a civilization we already know far more than we need to and that the next frontier in knowledge is in <i>organizing</i> the knowledge we already have.  Another key idea used to build this structure is that the so-called "open web" is the single most powerful information processing system ever devised and that any attempt to better organize information must be based on it.  Geometron is also based on the idea that communication based on geometric ideas like symmetry and shape can have enormous power and have been vastly under-used due to the emphasis our civilization has put on numbers. 
-<p>
-In some sense, geometron is a computer language.  The vast majority of what is found in this volume is based on building a language that exists on computers and was written in computer languages(mostly javascript, html, and css, the languages of the open web).  But to lump it together with such languages as C or java would be to miss the point.  It is more like a human language in the sense that while you can use a computer language to do things like search for words in a English document or compose a book in English, that does not make English a computer language. Or is it?  Without comments, computer code is impossible to maintain or build in teams and without a output in a human language it is usually not very useful.  And which is math?  Machines do math, but generally are programmed in something more tailored to the machine and the human doing the coding.  
-<p>
-This idea of math-as-language really gets to the heart of the matter.  Geometron seeks to build a language that is useful both for human-human communication(like English) and for human-machine communication(like javascript), but which is independent of both.  That is to say, it should be possible to express things in this system using only shapes and symbols in a self-contained way, then run those operations on a machine or send them to a human without ever writing a line of code in javascript or C or a line of language in English or Chinese.  That is, this is an attempt to organize existing geometric knowledge into a language which can be used to communicate.  
-<p>
-As I said in the first paragraph here, this language is only half of Geometron. The other half is the way that information is organized.  This means doing things like considering how to sort words from images from equations in a way that helps organize document creation.   
-</div>
-
-<div class = "atom">
-<h2>"Hello, World"</h2>
-
-There is a tradition in the world of computer languages of introducing a language by printing the words "hello, world" in the simplest possible way as an example.  I'm going to take the broader view of the "hello world" in this case however.  Part of the point of geometron is that it's not based on a human language.  
-<p>
-<canvas width = "400" height = "300" id = "canvas1"></canvas>
-<script>
-	cursorPosition = 100;
-	ctx = document.getElementById("canvas1").getContext("2d");	
-	x0 = 50;
-	y0 = 50;
-	unit = 40;
-	doTheThing(0300);
-	drawGlyph("01340,01341,01333,01341,01340,072,0300,0331,0337,0331,0333,0341,0341,0333,0341,0340");
-	currentImage = byteCode2string(currentTable[0500]);
-	console.log(currentImage);
-</script>
-<p>
-There are three commands here, shown in the graphical code above here.  The first and last are the command for "draw circle", and the arrow indicates moving one unit to the right.  There are several ways to express this in Geometron.  Each of these commands also have an address in a stack of 8X8 grids.  I'll get into this more later, but will show for completeness what this looks like:
-<pre>0341,0333,0341</pre>
-<p>
-
-<h3>physical implementation</h3>
-
-<div id = "imagesDiv">
-	<img src = "https://i.imgur.com/Z60sbcV.jpg" id = "hello1" style = "display:none;" onload = "redrawCanvas1();"></img>
-	<img src = "https://i.imgur.com/K0JkCc9.jpg" id = "hello2" style = "display:none;" onload = "redrawCanvas3();"></img>
-	<img src = "https://i.imgur.com/tTC8ZMa.jpg" id = "hello3" style = "display:none;" onload = "redrawCanvas4();"></img>
-	<img src = "https://i.imgur.com/rc0okgX.jpg" id = "hello4" style = "display:none;"  onload = "redrawCanvas5();"></img>
-	<img src = "https://i.imgur.com/kRazoPI.jpg" id = "hello5" style = "display:none;"   onload = "redrawCanvas6();"></img>
-</div>
-
-<canvas id = "canvas2" width = "500" height = "200" ></canvas>
-<canvas id = "canvas5" width = "500" height = "400" ></canvas>
-<canvas id = "canvas4" width = "500" height = "400" ></canvas>
-<canvas id = "canvas6" width = "500" height = "400" ></canvas>
-<canvas id = "canvas3" width = "500" height = "400" ></canvas>
-
-<script>
-
-function redrawCanvas1(){
-	img = document.getElementById("hello1");
-	caption = "Symbol glyphs describing vesica piscis"
-	ctx = document.getElementById("canvas2").getContext("2d");
-	ctx.drawImage(img,380,20,500,100,0,0,500,100);
-	currentWord = caption;
-	x = 50;
-	y = 130;
-	side = 14;
-	doTheThing(0365);
-}
-
-function redrawCanvas3(){
-	img = document.getElementById("hello2");
-	ctx = document.getElementById("canvas3").getContext("2d");
-	ctx.drawImage(img,0,290,1800,1600,8,0,450,400);
-}
-
-function redrawCanvas4(){
-	img = document.getElementById("hello3");
-	ctx = document.getElementById("canvas4").getContext("2d");
-	ctx.drawImage(img,0,290,1800,1600,8,0,450,400);
-	console.log(x.toString() + "," + y.toString());
-}
-function redrawCanvas5(){
-	img = document.getElementById("hello4");
-	ctx = document.getElementById("canvas5").getContext("2d");
-	ctx.drawImage(img,0,290,1800,1600,8,0,450,400);
-}
-function redrawCanvas6(){
-	img = document.getElementById("hello5");
-	ctx = document.getElementById("canvas6").getContext("2d");
-	ctx.drawImage(img,100,100,1200,1200,8,0,400,400);
-}
-
-</script>
-</div>
-
-<div class = "atom">
-<h2>Basic Shapes</h2>
-
-To illustrate the power of geometron, I will now construct the most basic shapes beyond the circle: the equilateral triangle, square, regular pentagon and regular hexagon.  I'll go into much more detail about how the commands used here work later, but for now I'll just jump in with examples.  
-<canvas id = "canvas7" width = "400" height = "250" style = "border:solid"></canvas>
-<script>
-ctx = document.getElementById("canvas7").getContext("2d");
-x0 = 30;
-y0 = 30;
-unit = 20;
-doTheThing(0300);
-currentWord = "Symbols:";
-drawGlyph("0365,0331,0331"); 
-spellGlyph("0306,0351,0342,0330,0335,0342,0330,0335,0342,0330,0335")
-currentWord = "Action:";
-drawGlyph("0300,0331,0331,0331,0331,0365,0331,0337,0337,0331,0306,0351,0342,0330,0335,0342,0330,0335,0342,0330,0335"); 
-</script>
-<canvas id = "canvas8" width = "400" height = "250" style = "border:solid"></canvas>
-<script>
-ctx = document.getElementById("canvas8").getContext("2d");
-x0 = 30;
-y0 = 30;
-unit = 20;
-doTheThing(0300);
-currentWord = "Symbols:";
-drawGlyph("0365,0331,0331"); 
-spellGlyph("0304,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335")
-currentWord = "Action:";
-drawGlyph("0300,0331,0331,0331,0331,0365,0331,0337,0337,0331,0304,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"); 
-</script>
-
-<canvas id = "canvas9" width = "400" height = "250" style = "border:solid"></canvas>
-<script>
-ctx = document.getElementById("canvas9").getContext("2d");
-x0 = 30;
-y0 = 20;
-unit = 20;
-doTheThing(0300);
-currentWord = "Symbols:";
-drawGlyph("0365,0331,0331"); 
-spellGlyph("0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335")
-currentWord = "Action:";
-drawGlyph("0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"); 
-</script>
-
-<canvas id = "canvas10" width = "400" height = "250" style = "border:solid"></canvas>
-<script>
-ctx = document.getElementById("canvas10").getContext("2d");
-x0 = 10;
-y0 = 20;
-unit = 20;
-doTheThing(0300);
-currentWord = "Symbols:";
-drawGlyph("0365,0331,0331"); 
-spellGlyph("0306,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335")
-currentWord = "Action:";
-drawGlyph("0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0306,0333,0333,0336,0336,0331,0331,0331,0337,0337,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"); 
-</script>
-
-</div>
-<div class = "atom">
-<h2>How to use this book</h2>
-
-Who is this book for?  Who is geometron for? It is difficult to answer this, since geometron is never intended to be a generalized language so much as a method of building specific languages.  The long term goal of this project is to have it mutate into numerous separate languages and projects, all totally independent from one another.  If that happens, it is my intention that this document also splinter, grow and change along with the language itself, which is part of why releasing it fully into the public domain is important.  
-<p>
-I would say that in this first incarnation the intended audiences are:
-<ol>
-	<li>Me</li>
-	<li>You</li>
-	<li>General language enthusiasts(both human and computer)</li>
-	<li>Artists</li>
-	<li>Quantum computation researchers</li>
-	<li>art Teachers</li>
-	<li>Geometers</li>
-	<li>Marketing professionals</li>
-	<li>linguists</li>
-	<li>inventors of language</li>
-	<li>circuit benders</li>
-	<li>game makers</li>
-	<li>chess players</li>
-	<li>science teachers</li>
-	<li>mathematicians</li>
-
-</ol>
-I will also state who this is work is <i>not</i> for.  It is not for software "engineers" , computer "scientists", or "tech" entrepreneurs.  Those groups constitute the enemy which this work is designed to help fight against.  Perhaps you have a background in such things, as to some extent I do as an applied physicist.  But when you work on Geometron, be prepared to leave your toxic Silicon Valley ideology and culture at the door or be asked to leave.  By all means join us if you're ready to fight Evil, but this is not going to become yet another cesspool of trolling jerks on Stack Overflow, this is intended to be more of an art-driven non-technical culture, and as the Founder of this project I aim to use whatever powers I have over the work to keep it that way.
-<p>
-Any emails from members of the technocratic priesthood whining about how this work does not adhere to the standards of their "professions" will either be ignored or be reposted in a public space for public mockery and derision.  You have been warned.  
-<p>
-	The nature fo this book will be very different for different people.  Since Geometron is intended to make very <i>specific</i> languages from a common base, there will naturally be a lot of material that is critically important for some readers but both useless and incomprehensible to others.  Therefore I plead with the reader to skip around as needed and take what you want from this work, ignoring whatever looks outside your sphere of interest.  Given the intended breadth it is inevitable that almost no matter what your background is you'll see quite a few things like this.  
-	
-</div>
-
-<div class = "atom">
-<h2>Structure of this book</h2>
-	
-	The Geometron language is not just a computer language like C or a human language like English.  It's more of a hybrid which includes building physical objects, navigating the physical world, creating physical documents with various media as well as communication with both humans and machines.  Therefore the structure will be unusual in that it will move freely between these spheres.  I will try to provide examples in multiple of these layers. 
+	if(localCommand == 010){
+		currentGlyphArray = currentGlyph.split(",");
 		
-</div>
+		firstHalf = "";
+		secondHalf = "";	
+		for(var index = 0;index < cursorPosition - 1;index++){
+			firstHalf += currentGlyphArray[index] + ",";
+		}
+		for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+			secondHalf += currentGlyphArray[index] + ",";
+		}				
+		currentGlyph = firstHalf + secondHalf;
+		if(cursorPosition > 0){
+			cursorPosition--;
+		}
+		currentGlyph = commaCleaner(currentGlyph);
+
+		redraw();
+	}
+
+	if(localCommand == 0020){//cursor forward
+		cursorPosition--;
+		if(cursorPosition < 0){
+			cursorPosition = currentGlyphArray.length;			
+		}
+
+		redraw();
+	}
+	if(localCommand == 0021){//cursor back
+		cursorPosition++;
+		if(cursorPosition > currentGlyphArray.length ){
+			cursorPosition = 0;
+		}
+		redraw();
+	}	
+	if(localCommand == 0022){//move to previous glyph in table
+		currentGlyph = document.getElementById("glyphBytecode").value;
+		currentGlyph = commaCleaner(currentGlyph);
+		currentTable[currentAddress] = currentGlyph;
+		currentAddress--;
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+	}
+	if(localCommand == 0023){//move to next glyph in table
+		currentGlyph = document.getElementById("glyphBytecode").value;
+		currentGlyph = commaCleaner(currentGlyph);
+		currentTable[currentAddress] = currentGlyph;
+		currentAddress++;
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
+	}	
+	if(localCommand == 0024){//from action to symbol
+		if(currentAddress < 01000 && currentAddress > 0){
+			currentAddress += 01000;
+			currentGlyph = currentTable[currentAddress];
+
+		}
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
+	}	
+	if(localCommand == 0025){//from symbol to action
+		if(currentAddress > 01000 && currentAddress < 02000){
+			currentAddress -= 01000;
+			currentGlyph = currentTable[currentAddress];
+		}
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+	}
+	
+	if(localCommand == 0026){//import full geometron hypercube
+		var localString = document.getElementById("mainTextArea").value;
+		var inputStack = localString.split("\n");
+		for(var index = 0;index < inputStack.length;index++){
+			var stackLine = inputStack[index].split(":");
+			var localAddress = parseInt(stackLine[0],8);
+			var localGlyph = stackLine[1];
+			currentTable[localAddress] = localGlyph;
+		}
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
+	}
+	if(localCommand == 0027){//export full geometron hypercube
+		var localString = "";
+		for(var index = 0;index < currentTable.length;index++){
+			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+		}
+		document.getElementById("mainTextArea").value = localString;
+	}
+	if(localCommand == 030){
+		if(document.getElementById("glyphTableEditor").style.display != "none"){
+			document.getElementById("glyphTableEditor").style.display = "none";
+		}else{
+			document.getElementById("glyphTableEditor").style.display = "block";
+		}
+	}
+}
+
+</script>
 
 <style>
 html {
@@ -795,24 +964,65 @@ html {
 	background: black;
 }
 
-
 .atom{
-	width: 5in;
+	width: auto;
 	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 16px;
+	font-family: "Century Schoolbook";
+	text-align: left;
+	float:left;
+}
+#spellDiv{
+	width: 600px;
+	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 15px 15px 15px 15px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	float:left;
+	overflow: scroll;
+}
+
+#plotCanvas{
 	border-style: solid;
 	border-width: 1px;
 	border-color: black;
 	border-radius: 5px;
-	padding: .5in .5in .5in .5in;
-	margin: 10px 10px 10px 10px;
-	background: #f1e7cd;	
-	font-size: 16px;
-	font-family: "Century Schoolbook";
-	text-align: justify;
-	float:left;
+
+}
+.glyphButtons{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    background: white;	
+}
+.glyphButtons:hover{
+    background: gray;	
+
+}
+.glyphButtons:active{
+    background: yellow;	
+}
+#glyphTableEditor{
+	background: gray;	
 }
 
-</style>
+td{
+	padding: 15px 15px 15px 15px;
+	margin: 10px 10px 10px 10px;
 
+}
+</style>
+</center>
 </body>
-</html>
+</html>	

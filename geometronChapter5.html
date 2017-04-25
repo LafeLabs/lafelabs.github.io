@@ -843,8 +843,45 @@ According to the Technocratic Priesthood, use of global variables is not part of
 Since I regard all techno priests as the class enemy of this work, I do not take this seriously.  They want you to follow "security protocols" to make things work with large numbers of random scripts all being run at the same time, which might overlap and break each other.  This has nothing to do with your functions or your freedom, it's about their(the technocratic enemy) ability to all control you without interfering with the other technocrats who are also trying to control you.  
 <p>
 "Best practices[to use the Enemy's language]" in Geometron involve always having all scripts embedded in the html, with no outside scripts other than mathjax, and that only for mathematical work.  Our goal is to not just have variables be global in the browser instance you happen to be running at this time, but to have names that follow the code into many future mutations and specific applications.  The property-worshipper needs local variables to protect their right to live in a overpriced highrise where your place used to be after the condo developers bulldozed it.  We will use global variables to attempt to fight their world and their values.  
+<p>
+Geometron can be thought of as a virtual processor, which carries out operations on the global variables, just as a physical processor does things to registers and the accumulator(at least on the 6502).
 </div>
 
+
+<div class = "atom">
+<h2>Functions</h2>
+There are several helper functions which would normally be put in a library but which we'll always include at the beginning of a Geometron html file in the "head" element of the document.  They mostly convert information from one type to another.  I will go through them and discuss what each one does here. 
+<p>
+<b>commaCleaner</b>
+<p>
+<pre>
+//remove extra commas from glyph:
+function commaCleaner(dirtyGlyph){ 
+	var dirtyArray = dirtyGlyph.split(",");
+	var cleanGlyph = "";
+	for(var index = 0;index < dirtyArray.length;index++){
+		if(dirtyArray[index] != ""){
+			cleanGlyph += dirtyArray[index] + ",";
+		}
+	}
+	return cleanGlyph;
+}
+</pre>
+<p>
+<b>drawGlyph</b>
+<p>
+<b>spellGlyph</b>
+<p>
+<b>byteCode2string</b>
+<p>
+<b>string2byteCode</b>
+<p>
+<b>localRoot</b>
+<p>
+<b>appendGlyphButton</b>
+
+
+</div>
 <div class = "atom">
 	<h2>doTheThing()</h2>
 	The function that actually does all the operations of Geometron is called doTheThing().  It generally acts on an integer, which is generally passed in base 8, and returns nothing.  In processing or Arduino it is therefore defined with a "void" statement.  The one integer argument is always called "localCommand"(note the Camel case here as in most names we use).  It's important to keep that core nomenclature the same so that parts of the function can by copy and pasted easily from one Geometron instance to another.  A very basic doTheThing() function might look like this:
@@ -957,6 +994,32 @@ Now is a good time to use your browser to read the source of this document and t
 <h2>Build a Full Geometron Document and Edit it</h2>
 This is it!  <i>You</i> will now build a full document yourself in Geometron using basic web tools.  You will use github to put it on the web, and will in the end of this section have a document that is readable by several <i>billion</i> internet enabled devices using any standard browser!  Geometron aims to seize the means of production for the web, and that should be accomplished in this section, and until it is, I will re-write this over and over and add things as needed based on trying this on people.  While I reference above to the w3schools website for learning basic web stuff, this section will attempt to be self-contained, and have the core pieces documented right here which you need to make and edit a working document.  
 
+<h3>things</h3>
+<ul>
+	<li>inline comments, multiline comments</li>
+	<li>for loops</li>
+	<li>variables</li>
+	<li>string.spilt()</li>
+	<li>arrays</li>
+	<li>atoms</li>
+	<li>images</li>
+	<li>paragraph</li>
+	<li>headings</li>
+	<li>pre/pre</li>
+	<li>geometron canvas</li>
+	<li>mathjax equation</li>
+	<li>js calculator</li>
+	<li>input, textarea</li>
+	<li>lists</li>
+	<li>tables</li>
+	<li>dom access</li>
+	<li>canvas buttons</li>
+	<li>initialize geometron, pre byte code</li>
+	<li>dothething</li>
+	<li>functions</li>
+	<li>unicode special characters</li>
+	<li>css items</li>
+</ul>
 </div>
 <style>
 
@@ -969,7 +1032,9 @@ html {
 	background: black;
 }
 
-
+pre{
+	word-wrap: break-word;
+}
 .atom{
 	width: 5in;
 	height: auto;

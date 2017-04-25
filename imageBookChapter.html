@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>General Test File</title>
+<script>
+
+imageArray  = [];
+var foo = new gimage("crayons","https://i.imgur.com/WKyYWAo.png",0,0,400,600,0,0,400,600,400,600);
+
+var foo = new gimage("crayons","https://i.imgur.com/WKyYWAo.png",155,435,120,120,0,0,150,150,150,150);
+imageArray.push(foo);
+
+var foo = new gimage("screw","https://i.imgur.com/WKyYWAo.png",230,230,30,30,0,0,50,50,300,150);
+imageArray.push(foo);
+
+function gimage(name,url,sx,sy,swidth,sheight,dx,dy,dwidth,dheight,cwidth,cheight) {
+    this.name = name;
+    this.url = url;
+    this.sx = sx;
+    this.sy = sy;
+    this.swidth = swidth;
+    this.sheight = sheight;
+    this.dx = dx;
+    this.dy = dy;
+    this.dwidth = dwidth;
+    this.dheight = dheight;
+    this.cwidth = cwidth;
+    this.cheight = cheight;
+}
+</script>
+</head>
+<body>
+
+<div class = "atom" id = "main">
+</div>
+<div class = "atom" id = "feedin">
+</div>
+<div class = "atom">
+name=<input id = "nameinput" onchange = "redraw1();"></input><p>
+url=<input id = "urlinput" onchange = "redraw1();"></input><p>
+canvaswidth=<input id = "cwinput" onchange = "redraw1();"></input><p>
+canvasheight=<input id = "chinput" onchange = "redraw1();"></input><p>
+sx=<input id = "sxInput" onchange = "redraw1()"></input><p>
+sy=<input id = "syInput" onchange = "redraw1()"></input><p>
+swidth=<input id = "swidthInput" onchange = "redraw1()"></input><p>
+sheight=<input id = "sheightInput" onchange = "redraw1()"></input><p>
+dx=<input id = "dxInput" onchange = "redraw1()"></input><p>
+dy=<input id = "dyInput" onchange = "redraw1()"></input><p>
+dwidth=<input id = "dwidthInput" onchange = "redraw1()"></input><p>
+dheight=<input id = "dheightInput" onchange = "redraw1()"></input><p>
+</div>
+<div class = "atom" id = "feedout">
+</div>
+<div class = "atom">
+<textarea id = "valueout" cols = "80"></textarea>
+</div>
+<script>
+	newCanvas = document.createElement("canvas");
+
+newImg = document.createElement("img");
+newImg.id = "img1";
+newImg.src = imageArray[0].url;
+newImg.onload = function(){
+	newCanvas = document.createElement("canvas");
+	newCanvas.width = imageArray[0].cwidth;
+	newCanvas.height = imageArray[0].cheight;
+	ctx = newCanvas.getContext("2d");
+	//ctx.rotate(20*Math.PI/180);
+
+
+ctx.drawImage(newImg,imageArray[0].sx,imageArray[0].sy,imageArray[0].swidth,imageArray[0].sheight,imageArray[0].dx,imageArray[0].dy,imageArray[0].dwidth,imageArray[0].dheight);
+
+var myImageData = ctx.getImageData(imageArray[0].dx,imageArray[0].dy,imageArray[0].dwidth,imageArray[0].dheight);
+
+for(var index = 0;index < myImageData.data.length;index += 4){
+	if((myImageData.data[index] == 255) && (myImageData.data[index+1] == 255)&& (myImageData.data[index+2] == 255)){
+		//myImageData.data[index+3] = 0;
+		console.log(myImageData.data[index+3]);
+	}
+	
+	//myImageData.data[index] = myImageData.data[index]^123;
+		
+//	console.log(index);
+}
+
+
+//var myImageData = ctx.getImageData(0, 0, 150, 150);
+//ctx.drawImage(newImg,imageArray[1].sx,imageArray[1].sy,imageArray[1].swidth,imageArray[1].sheight,imageArray[1].dx,imageArray[1].dy,imageArray[1].dwidth,imageArray[1].dheight);
+document.getElementById("feedin").appendChild(newCanvas);
+
+
+	
+}
+document.getElementById("main").appendChild(newImg);
+
+	document.getElementById("urlinput").value = imageArray[0].url;
+	document.getElementById("nameinput").value = imageArray[0].name;
+	document.getElementById("cwinput").value = newCanvas.width;
+	document.getElementById("chinput").value = newCanvas.height;
+	document.getElementById("sxInput").value = imageArray[0].sx;
+	document.getElementById("syInput").value = imageArray[0].sy;
+	document.getElementById("swidthInput").value = imageArray[0].swidth;
+	document.getElementById("sheightInput").value = imageArray[0].sheight;
+	document.getElementById("dxInput").value = imageArray[0].dx;
+	document.getElementById("dyInput").value = imageArray[0].dy;
+	document.getElementById("dwidthInput").value = imageArray[0].dwidth;
+	document.getElementById("dheightInput").value = imageArray[0].dheight;
+	document.getElementById("valueout").value = "\"" + imageArray[0].name + "\",";
+	document.getElementById("valueout").value += "\"" + imageArray[0].url + "\",";
+	document.getElementById("valueout").value += imageArray[0].sx.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].sy.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].swidth.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].sheight.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].dx.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].dy.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].dwidth.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].dheight.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].cwidth.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].cheight.toString();
+	
+
+function redraw1(){
+
+	imageArray[0].url = document.getElementById("urlinput").value;
+	imageArray[0].name = document.getElementById("nameinput").value;
+
+	newCanvas.width = document.getElementById("cwinput").value;
+	newCanvas.height = document.getElementById("chinput").value;
+	imageArray[0].cwidth = newCanvas.width;
+	imageArray[0].cheight = newCanvas.height;
+
+	imageArray[0].sx = document.getElementById("sxInput").value;
+	imageArray[0].sy = document.getElementById("syInput").value;
+	imageArray[0].swidth = document.getElementById("swidthInput").value;
+	imageArray[0].sheight = document.getElementById("sheightInput").value;
+	imageArray[0].dx = document.getElementById("dxInput").value;
+	imageArray[0].dy = document.getElementById("dyInput").value;
+	imageArray[0].dwidth = document.getElementById("dwidthInput").value;
+	imageArray[0].dheight = document.getElementById("dheightInput").value;
+
+ctx.drawImage(newImg,imageArray[0].sx,imageArray[0].sy,imageArray[0].swidth,imageArray[0].sheight,imageArray[0].dx,imageArray[0].dy,imageArray[0].dwidth,imageArray[0].dheight);
+
+	document.getElementById("valueout").value = "\"" + imageArray[0].name + "\",";
+	document.getElementById("valueout").value += "\"" + imageArray[0].url + "\",";
+	document.getElementById("valueout").value += imageArray[0].sx.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].sy.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].swidth.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].sheight.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].dx.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].dy.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].dwidth.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].dheight.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].cwidth.toString() + ",";
+	document.getElementById("valueout").value += imageArray[0].cheight.toString();
+	
+}
+
+
+
+
+</script>
+<style>
+
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+.atom{
+	width: auto;
+	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 20px;
+	font-family: "Century Schoolbook";
+	text-align: left;
+	float:left;
+}
+input{
+width:30px;
+
+}
+
+</style>
+</center>
+</body>
+</html>
