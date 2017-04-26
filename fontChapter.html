@@ -943,7 +943,6 @@ cursorPosition = 100;
 ctx = document.getElementById("canvas5").getContext("2d");
 doTheThing(0300);
 
-
 x = 250;
 y = 150;
 side = 45;
@@ -967,12 +966,53 @@ y = 235;
 side = 35;
 explodeIndex = 0;
 drawGlyph("0214");
-
-
 </script>
 
+</div>
+<div class = "atom">
+<h2>Building a Line Font</h2>
+How do you go about building your own font?  There are numerous ways, but to get started I will outline the rules that I follow when building a Geometron font.  Those are:
+<ol>
+	<li>Always start and end a letter in fourfold symmetry mode</li>
+	<li>Always start and end a letter with the same size, with no increase or decrease from previous character </li>
+	<li>Always check that level is exactly the same at the end as the beginning</li>
+	<li>Avoid excessive divisions in either distance or angle,to make it simple to come back to original scale/angle/size/position</li>
+</ol>
+
+With these rules in mind, building a line font is just a matter of using the shape table editor, but with shapes that follow these rules and live in the address space from 040 octal to 0176 octal. It's nice in most projects to start with a default font to fall back on for characters you rarely use, and then just replace the characters you care the most about.  Also, if I'm only using a few characters I usually start at 0101 which is capital A instead of lowercase a, simply because it's easy to remember and is a lower address(leaving more space after you start than "a" which is 0141.
 
 </div>
+<div class = "atom">
+<h2>Building a Pixel Font</h2>
+
+</div>
+<div class = "atom">
+<h2>Physical Fonts</h2>
+
+</div>
+<div class = "atom">
+<h2>Comparison with Existing Systems</h2>
+
+</div>
+<div class = "atom">
+<h2>Font Library</h2>
+</div>
+
+<div class = "atom">
+<h2>Non English Fonts</h2>
+
+Useful resources: cross stitch patterns, display boards from public transit in a place that uses the language, old pixelated phone displays.
+<ul>
+	<li>convert katakana in unicode to katakana in geometron</li>
+	<li>Matrix scroll with inverted katakana</li>
+	<li>same with hebrew</li>
+	<li>basic greek math font</li>
+</ul>
+
+<a href = "https://www.smashingmagazine.com/2010/06/the-beauty-of-typography-writing-systems-and-calligraphy-part-2/">random hebrew typography article</a>
+<a href = "https://www.pinterest.com/pin/268808671484094340/">hebrew cross stitch</a>
+</div>
+
 
 <style>
 
