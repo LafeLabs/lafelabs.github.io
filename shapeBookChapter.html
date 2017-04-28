@@ -331,7 +331,7 @@ function spellGlyph(localString){
 			x -= 16*side;
 			y += side;
 		}
-		if(explodeIndex < 1000){
+		if(explodeIndex < explodeLimit){
 			doTheThing(parseInt(tempArray[index],8) + 01000);
 		}
 		if(index == cursorPosition-1){
@@ -1119,6 +1119,7 @@ That being said, I'm starting with a study of the equilateral triangle.  I begin
 01234:0333,0200,0336,0332,0234,0334,0334,0350,0334,0330,0334,0334,0330,0335,0304,0332,0335,0335,0313,0337,
 0236:0234,0350,0350,0335,0306,0312,0336,0311,0337,
 0237:0331,0336,0337,0336,0331,0332,0331,0332,0332,0332,0332,0332,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,0236,
+01207:0333,0200,0336,0332,0330,0207,0304,0331,0333,0337,
 */
 </script>
 <center>
@@ -1250,7 +1251,7 @@ These are the same symbol glyphs, but notice that now the triangles are smaller 
 <p>
 Moving on to the next triangle project is the geometry of curved corners.  Square root of three must be very carefully used here.  
 <center>
-	<canvas width = "500" height = "205" id = "canvas17"></canvas>
+	<canvas width = "500" height = "245" id = "canvas17"></canvas>
 </center>
 <script>
 ctx = document.getElementById("canvas17").getContext("2d");
@@ -1259,16 +1260,57 @@ x = 40;
 y = 40;
 side = 30;
 ctx.lineWidth = 2;
+explodeIndex = 0;
 spellGlyph(currentTable[0207]);
 doTheThing(072);
 x = 200;
-y = 150;
+y = 190;
 side = 80;
 drawGlyph("0207");
 </script>
-
+This creates a triangle with circular arcs for corners, as a closed figure, centered on the start/end location of the cursor.  It took me quite a few tries to get this right, and it's easy to make a triangle that looks about like it's centered on the right place, but turns out to be off by a little bit by misusing the combinations of square root of 3 zoom and zooms by 2x.  It's important to have the shape really centered in this way so that we can build up from this in a simple way. 
+<p>
+To start with, we apply a minor scale zoom, then write that curved triangle, then un-apply it as follows:
 <center>
-	<canvas width = "500" height = "500" id = "canvas18"></canvas>
+	<canvas width = "500" height = "200" id = "canvas20"></canvas>
+</center>
+<script>
+ctx = document.getElementById("canvas20").getContext("2d");
+doTheThing(0300);
+x = 40;
+y = 40;
+side = 30;
+ctx.lineWidth = 2;
+explodeIndex = 0;
+spellGlyph(currentTable[0233]);
+doTheThing(072);
+x = 200;
+y = 130;
+side = 80;
+drawGlyph("0233");
+</script>
+With this whitespace border added, we can chain them together into a unit cell of two from which structures can be built:
+<center>
+	<canvas width = "500" height = "245" id = "canvas19"></canvas>
+</center>
+<script>
+ctx = document.getElementById("canvas19").getContext("2d");
+doTheThing(0300);
+x = 40;
+y = 40;
+side = 30;
+ctx.lineWidth = 2;
+explodeIndex = 0;
+spellGlyph(currentTable[0234]);
+doTheThing(072);
+x = 200;
+y = 190;
+side = 80;
+drawGlyph("0234");
+</script>
+Having built this foundation, it only takes a couple actions to build a recursive tentacle spiral out of this basis:
+<center>
+	<canvas width = "500" height = "340" id = "canvas18"></canvas>
 </center>
 <script>
 ctx = document.getElementById("canvas18").getContext("2d");
@@ -1279,7 +1321,7 @@ side = 30;
 ctx.lineWidth = 2;
 //spellGlyph(currentTable[0236]);
 //doTheThing(072);
-x = 200;
+x = 290;
 y = 150;
 side = 80;
 drawGlyph("0237");
@@ -1289,9 +1331,13 @@ drawGlyph("0237");
 <div class = "atom">
 	<h2>remaining elements of shape chapter:</h2>
 <ul>
-	<li></li>
-	
+	<li>golden triangle and gnomon simple constructions</li>
+	<li>further exploration of phi</li>
+	<li>single shape table editor(only active canvas)</li>
+	<li>discussion of workflow and possible tables to build</li>
 </ul>	
+</div>
+<div class = "atom">
 </div>
 <style>
 

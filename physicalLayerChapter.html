@@ -165,7 +165,7 @@
 01202:0202,0200,
 01203:0304,0313,0202,0332,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337,
 0203:0344,0330
-0204:0362,0203,0334,0203,0334,0203,0334,0203,0334,0363
+0204:0362,0203,0334,0203,0334,0203,0334,0203,0334,0363,
 01204:0202,0200,0336,0336,0330,0332,0337,0200,0336,0331,0333,0337,0337,
 01365:0313,0304,0333,0200,0336,0330,0332,0336,0331,0332,0337,0350,0350,0334,0342,0335,0335,0342,0334,0304,0333,0350,0350,0334,0342,0335,0335,0342,0334,0304,0336,0333,0331,0337,0337
 01205:0202,0200,0336,0336,0330,0332,0332,0332,0330,0205,0331,0331,0332,0337,0337,0333,
@@ -200,6 +200,8 @@
 0606:0115,0141,0164,0150,040,0133,060,067,060,060,055,060,067,067,067,0135,
 01360:0313,0333,0200,0336,0332,0336,0330,0336,0331,0332,0332,0330,0337,0337,0342,0330,0335,0336,0336,0342,0330,0335,0337,0337,0342,0342,0330,0336,0335,0335,0336,0336,0332,0331,0331,0337,0337,0306,0350,0312,0336,0335,0342,0334,0334,0342,0335,0304,0337,0313,0336,0331,0332,0332,0332,0336,0333,0337,0337,0337,0337,0333,0336,0332,0336,0333,0330,0337,0342,0336,0336,0350,0334,0342,0335,0335,0342,0334,0304,0333,0333,0331,0331,0337,0337,0337,
 01361:0313,0333,0200,0336,0332,0336,0330,0336,0331,0332,0332,0330,0337,0337,0342,0330,0335,0336,0336,0342,0330,0335,0337,0337,0342,0342,0330,0336,0335,0335,0336,0336,0332,0331,0331,0337,0337,0306,0350,0312,0336,0335,0342,0334,0334,0342,0335,0304,0337,0313,0336,0331,0332,0332,0332,0336,0333,0337,0337,0337,0337,0333,0336,0332,0336,0333,0330,0337,0342,0330,0335,0335,0350,0336,0336,0335,0342,0334,0334,0342,0335,0304,0335,0335,0337,0333,0330,0337,0337,0331
+0274:0333,0331,0362,0203,0334,0203,0334,0203,0334,0203,0334,0363,0330,0332,
+
 */
 </script>
 <script>
@@ -347,8 +349,34 @@ function string2byteCode(localString){
 	}
 	return localByteCode;
 }
+
+function roctalChar(localAddress){
+	drawGlyph("0313,0336,0336,0336,0274,0333,0331,0274,0333,0331,0337,");
+	for(var bitIndex = 8;bitIndex >= 0;bitIndex--){
+		if(((localAddress>>bitIndex)&1)==1){
+			doTheThing(0274);// data square
+		}
+		doTheThing(0333);
+		if((bitIndex == 6)||(bitIndex == 3)){
+			drawGlyph("0331,0332,0332,0332");
+		}
+	}
+	drawGlyph("0331,0337,0337,0200,0330");
+	
+	drawGlyph("0332,0336,0336,0331,0331,");
+	currentWord = ((localAddress >> 6)&7).toString();	
+	drawGlyph("0365,0331,");
+	currentWord = ((localAddress >> 3)&7).toString();	
+	drawGlyph("0365,0331,");
+	currentWord = ((localAddress)&7).toString();	
+	drawGlyph("0365,0331,");
+	drawGlyph("0330,0337,0337,0330,0333,");	
+}
+
 function doTheThing(localCommand){
- 
+     if((localCommand > 02000)&&(localCommand < 03000)){
+    	roctalChar(localCommand - 02000);
+    }
      if(localCommand >= 0500 && localCommand <= 0600){
 		if(currentTable[localCommand] != undefined){
     	 	currentImage = byteCode2string(currentTable[localCommand]);
@@ -634,7 +662,7 @@ function doTheThing(localCommand){
     if(localCommand == 0363){
 	   ctx.closePath();
 	   ctx.stroke();		
-	   //ctx.fill();		
+	   ctx.fill();		
 	   currentSVG += "Z\""+ " stroke = \"black\" stroke-width = \"2\" fill = \"none\" "+"/>";
 	   
 	   
@@ -733,7 +761,29 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 
 </head>
 <body>
+<div class = "atom">
+	<h2>Physical Data Encoding</h2>
+	As stated in the beginning of this work, one of the laws of Geometron is "EVERYTHING IS PHYSICAL".  This is intended to be taken very literally.  In addition to implementing all the geometric actions described here with various physical machines and classical geometric tools, Geometron includes a protocol for storing digital data physically.  
+	<p>
+	The system by which binary data are encoded in a physical artifact is called Roctal, for "octal that rocks".  "Rock" here is also meant to be taken literally, since it is possible and encouraged to encode data in a stone by use of various chipping or grinding tools as described elsewhere.  Roctal is, like everything in Geometron, a geometric description, which is best described by actually drawing it in pixels or ink on a page.  
+	<p>
+	Part of the structure of the Geometron hypercube is to have multiple cubes for various types of information, be they action, symbol, or as I'll introduce now Roctal bytes.  That type of information is encoded in the bits above the first 9.  For example, the action to move forward is 0330, but the symbol for that action is 01330.  In any given cube in the hypercube, we thus need exactly 9 bits to describe a 3 digit base 8 address.  Roctal arranges those 9 bits in a 3X3 grid, which is a subset of a 4X4 grid(16 cells).  In general these cells are square, but the more important thing is that they are arranged in a square lattice, which makes it easy to create general functions for reading and writing that can work in numerous hardware implementations.  
+<center>
+	<canvas width = "400" height = "250" id = "canvas1"></canvas>
+</center>
+<script>
+cursorPosition = 100;
+ctx = document.getElementById("canvas1").getContext("2d");
+doTheThing(0300);
+x = 10;
+y = 50;
+side = 100;
+ctx.lineWidth = 2;
+drawGlyph("02330");
+</script>
 
+
+</div>
 <div class = "atom">
 <h2>Physical Trash Printer</h2>
 
@@ -907,8 +957,22 @@ function redraw(){
 	
 }
 </script>
+</div>
 
-
+<div>
+	<h2>physical things</h2>
+<ul>
+	<li>Geometron art engine, total redesign of machine architecture from "computer"</li>
+	<li>surveying with rope</li>
+	<li>cutouts of shapes</li>
+	<li>robot design considerations(6fold symmetry, 4 fold, 3 fold, vibrating cutting and chipping tools)</li>
+	<li>E-beam/FIB/laser lithography</li>	
+	<li>roctal system</li>
+	<li>study of a leaf</li>
+	<li>list of possible tools</li>
+	<li>spime concept and example</li>
+	<li>cuneiform typewriter</li>
+</ul>
 </div>
 
 <style>
