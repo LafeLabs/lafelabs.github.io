@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+	rulesShow = false;
+	smShow = false;
+	gmShow = false;
+</script>
+</head>
+<body>
+<div class = "atom" onclick  = "popGm()">
+<h2>Geometron: The Art Engine</h2>
+	<div id = "gm" style = "display:none">
+		<ul>
+			<li>Geometron Gallery</li>
+			<li>Back project financially</li>
+			<li>Geometron Action Pages</li>
+			<li>Sign up for mailing lists</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class = "atom">
+<h2>About</h2>
+
+</div>
+<div class = "atom" onclick = "popSm()">
+<h2>Social Media</h2>
+	<div id = "sm" style = "display:none">
+		<ul>
+			<li>Instructables</li>
+			<li>Facebook</li>
+			<li>Instagram</li>
+			<li>LinkedIn</li>
+			<li>Pinterest</li>
+			<li>Github</li>
+			<li>Google+</li>
+			<li>Mailing Lists(MailChimp)</li>
+		</ul>
+	</div>
+</div>
+
+
+
+<div class = "atom" onclick = "popRules()">
+<h2>Lafe's Rules of Business</h2>
+	<div class = "content" id = "rules" style = "display:none">
+	<ul>
+		<li>Never hire anyone</li>
+		<li>Never take investor money</li>
+		<li>Never willingly participate in the intellectual property system in any way</li>
+		<li>Never work with an individual who wants a signed contract</li>
+		<li>Never have any partners</li>
+		<li>Never ship a physical product</li>
+		<li>Never sell a physical product</li>
+		<li>Never work on weapons</li>
+		<li>Create work of value to all humanity</li>
+		<li>Release all work into public domain</li>
+		<li>Put all work on a public cloud storage site so it will survive if my website does not</li>
+		<li>Money from backers is not for services or goods; it is to patronize creation of original work</li>
+		<li>All business activity must be on a path to a <a href = "https://lafelabs.github.io/Trash_Magic_Manifesto.pdf">Technological Complete Set</a></li>
+		<li>Only take money from those who can afford it</li>
+		<li>The three pillars of power in modern capitalism are marketing/media, finance, and military--those are the only elements that can create money from nothing</li>
+	</ul>
+	</div>
+</div>
+
+
+<script>
+function popRules(){
+	if(rulesShow == true){
+		document.getElementById("rules").style.display = "none";
+		rulesShow = false;
+	}
+	else{
+		document.getElementById("rules").style.display = "block";
+		rulesShow = true;
+	}	
+}
+
+function popSm(){
+	if(smShow == true){
+		document.getElementById("sm").style.display = "none";
+		smShow = false;
+	}
+	else{
+		document.getElementById("sm").style.display = "block";
+		smShow = true;
+	}
+}
+function popGm(){
+	if(gmShow == true){
+		document.getElementById("gm").style.display = "none";
+		gmShow = false;
+	}
+	else{
+		document.getElementById("gm").style.display = "block";
+		gmShow = true;
+	}
+}
+
+</script>
+
+<style>
+
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+.atom{
+	width: auto;
+	height: auto;
+	border-style: solid;
+	border-width: 20px;
+	border-color: white;
+	border-radius: 25px;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	background: white;	
+	font-size: 14px;
+	font-family: "Century Schoolbook";
+	text-align: left;
+	float:left;
+}
+.atom:hover{
+	border-color: red;
+	background: #ffffe0;
+}
+
+</style>
+</body>
+</html>
+
