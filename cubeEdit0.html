@@ -154,6 +154,7 @@
 01027:0333,0200,0336,0330,0332,0336,0336,0333,0331,0337,0332,0200,0306,0335,0342,0332,0342,0330,0335,0335,0342,0335,0335,0335,0335,0331,0334,0304,0332,0306,0335,0342,0330,0350,0335,0342,0334,0331,0335,0304,0334,0331,0333,0333,0330,0335,0342,0330,0350,0335,0335,0335,0336,0342,0335,0335,0342,0335,0304,0331,0331,0331,0331,0331,0333,0337,0337,0337
 01010:0333,0200,0350,0334,0310,0337,0342,0336,0332,0335,0335,0337,0342,0336,0333,0334,0351,0313
 01030:0333,0200,0336,0332,0337,0350,0350,0350,0342,0335,0342,0335,0342,0335,0342,0335,0342,0335,0342,0334,0334,0334,0334,0334,0334,0342,0334,0342,0334,0342,0334,0342,0334,0334,0342,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0342,0334,0334,0334,0334,0334,0334,0304,0343,0336,0333,0337
+01031:0333,0200,0336,0330,0332,0336,0332,0331,0123,0126,0107,0330,0330,0332,0332,0330,0335,0335,0336,0330,0332,0337,0201,0335,0350,0335,0336,0342,0335,0335,0342,0334,0304,0333,0333,0333,0333,0331,0331,0331,0331,0331,0332,0336,0333,0336,0332,0337,0337,0337,0337,0337,
 0400:0300
 0200:0304,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334
 0201:0342,0330,
@@ -287,9 +288,10 @@
 		<canvas width = "400" height = "400" id = "plotCanvas" style = "border:solid"></canvas>
 	</div>
 	<div id = "wordPanel" class = "atom" onchange = "updateWordOption();">
-		<input id = "wordInput" onchange = "updateWordInput();"></input>
+		string:<input id = "wordInput" onchange = "updateWordInput();"></input>
 		<select id = "wordSelect">
 		</select>
+		bytecode:<input id = "wordCode"></input>
 	</div>
 	<div id = "spellDiv">
 		<canvas width = "3000" height = "30" id = "spellCanvas" style = "border:solid;float:left;"></canvas>
@@ -332,7 +334,7 @@ currentNode = document.getElementById("scalePad");
 buildPanel("0310,0311,0312,0313,0314,0316");
 
 currentNode = document.getElementById("rootPad");
-buildPanel("020,010,021,022,023,024,025,026,027");
+buildPanel("020,010,021,022,023,024,025,026,027,031");
 
 
 currentNode = document.getElementById("drawPad");
@@ -366,6 +368,7 @@ function updateWordOption(){
 function updateWordInput(){
 	wordAddress = parseInt(document.getElementById("wordSelect").value,8);
 	currentTable[wordAddress] = string2byteCode(document.getElementById("wordInput").value);
+	document.getElementById("wordCode").value = string2byteCode(document.getElementById("wordInput").value);
 }
 
 function updateAddr(){
@@ -743,7 +746,7 @@ function doTheThing(localCommand){
 		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
 		currentSVG += Math.round(y).toString();
-		currentSVG += "\"r = \"3\" stroke = \"black\" stroke-width = \"2\"";
+		currentSVG += "\" r = \"3\" stroke = \"black\" stroke-width = \"2\" ";
 		currentSVG += "fill = \"black\" />\n";		
     }
     if(localCommand == 0341){  //circle
@@ -755,7 +758,7 @@ function doTheThing(localCommand){
 		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
 		currentSVG += Math.round(y).toString();
-		currentSVG += "\"r = \"" + side.toString() + "\"stroke = \"black\" stroke-width = \"2\"";
+		currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\" ";
 		currentSVG += "fill = \"none\" />\n";		
 
     }
@@ -820,7 +823,7 @@ function doTheThing(localCommand){
 		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
 		currentSVG += Math.round(y).toString();
-		currentSVG += "\"r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\"";
+		currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\" ";
 		currentSVG += "fill = \"black\" />\n";		
 
 	}
@@ -868,7 +871,7 @@ function doTheThing(localCommand){
 		currentSVG += "\" fill = \"black\""; 
 		currentSVG += " font-size = \"";
 		currentSVG += side + "px\"";
-		currentSVG += "font-family = \"futura\"";
+		currentSVG += " font-family = \"futura\"";
 		currentSVG += ">";
 		currentSVG += currentWord;
 		currentSVG += "</text>\n";	
@@ -893,9 +896,9 @@ function doTheThing(localCommand){
 		ctx.bezierCurveTo(cpx1,cpy1,cpx2,cpy2,x2,y2);
 		ctx.stroke();
 		currentSVG += cpx2.toString() + "," + cpy2.toString() + " ";
-		currentSVG += x2.toString() + "," + y2.toString() + "\" />";		
+		currentSVG += x2.toString() + "," + y2.toString() + "\" fill = \"none\" stroke-width = \"2\" stroke = \"black\" />";		
 	}
-
+// stroke = "black" stroke-width = "2"
 }
 
 function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
@@ -1007,6 +1010,21 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 			document.getElementById("glyphTableEditor").style.display = "block";
 		}
 	}
+	if(localCommand == 031){//export SVG
+		currentSVG = "";
+		x0 = 200;
+		y0 = 200;
+		unit = 100;
+		ctx = document.getElementById("invisibleCanvas").getContext("2d");
+		doTheThing(0300);		
+		drawGlyph(currentGlyph);
+
+		var localString= "<svg width=\"400\" height=\"400\" viewbox = \"0 0 400 400\"  xmlns=\"http://www.w3.org/2000/svg\" style = \"border:solid;\">\n";		
+		localString += currentSVG;
+		localString += "</svg>";
+		document.getElementById("mainTextArea").value = localString;
+	}
+
 }
 
 </script>
