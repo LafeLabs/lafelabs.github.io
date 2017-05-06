@@ -146,6 +146,7 @@
 01365:0313,0304,0333,0200,0336,0330,0332,0336,0331,0332,0337,0350,0350,0334,0342,0335,0335,0342,0334,0304,0333,0350,0350,0334,0342,0335,0335,0342,0334,0304,0336,0333,0331,0337,0337
 01200:0333,0200,0336,0336,0330,0332,0337,0200,0336,0331,0333,0337,0337
 01201:0304,0313,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337
+01005:0333,0200,0336,0336,0330,0332,0337,0200,0306,0350,0334,0336,0201,0334,0334,0334,0334,0201,0335,0335,0335,0335,0201,0334,0334,0334,0334,0201,0335,0335,0335,0335,0335,0304,0331,0332,0337,0337,0333,
 01020:0304,0333,0200,0336,0330,0332,0336,0336,0332,0337,0200,0333,0333,0200,0332,0332,0336,0330,0335,0337,0342,0330,0350,0335,0335,0351,0333,0350,0336,0334,0342,0334,0334,0342,0337,0335,0351,0333,0336,0333,0331,0337,0337,0331,0337,0304,0336,0330,0330,0336,0330,0334,0331,0337,0337
 01021:0304,0333,0200,0336,0330,0332,0336,0336,0332,0337,0200,0333,0333,0200,0332,0332,0336,0330,0335,0337,0342,0330,0350,0335,0335,0335,0336,0342,0335,0335,0342,0337,0335,0351,0333,0336,0333,0331,0337,0337,0331,0337,0304
 01022:0333,0200,0336,0336,0330,0330,0332,0332,0332,0336,0336,0333,0337,0337,0336,0330,0336,0333,0337,0337,0200,0333,0200,0333,0200,0331,0331,0332,0332,0200,0333,0200,0333,0200,0336,0333,0331,0337,0337,0332,0330,0336,0336,0331,0337,0342,0330,0335,0350,0335,0336,0342,0335,0335,0342,0337,0335,0335,0335,0351,0331,0331,0331,0333,0333,0336,0330,0337,0337,0337
@@ -225,6 +226,7 @@
 0176:0330,0336,0336,0336,0331,0331,0333,0333,0341,0331,0331,0331,0331,0331,0331,0333,0333,0333,0333,0337,0337,0337,
 045:0336,0333,0330,0336,0332,0330,0335,0335,0366,0335,0332,0332,0331,0367,0335,0335,0366,0335,0335,0334,0332,0331,0331,0334,0336,0331,0337,0367,0336,0335,0335,0366,0332,0332,0334,0333,0337,0336,0334,0334,0367,0337,0335,0335,0201,0336,0342,0335,0335,0331,0331,0333,0333,0333,0333,0337,0337,0337,
 01364:0304,0313,0333,0200,0336,0332,0330,0336,0330,0332,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0334,0350,0334,0342,0334,0334,0342,0340,0335,0304,0331,0333,0337,0337,0332,0202,
+0400:0300,0336,0332,0337,0336,0331,0337,0341,0340,0333,0340,0341,0306,0350,0334,0306,0330,0340,0341,
 */
 </script>
 <!--
@@ -237,6 +239,7 @@
 	explodeIndex = 0;
 	explodeLimit = 100000;
 	currentTable = []; 
+	scrollPage = 0400;
 	for(var index = 0;index < 01777;index ++){
 		currentTable.push("");
 	}  
@@ -290,6 +293,11 @@
 </head>
 <body>
 <div class = "atom" id = "masterRoot"></div>
+<div id = "manuscriptPanel" class = "atom" style = "display:none">
+	<canvas width = "50" height = "800" id = "backCanvas" onclick = "backRedraw();"></canvas>
+	<canvas width = "800" height = "800" id = "scrollCanvas"></canvas>
+	<canvas width = "50" height = "800" id = "fwdCanvas" onclick = "fwdRedraw();"></canvas>
+</div>
 <div id = "glyphTableEditor" class = "atom" style = "display:block">	
 	<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
 	<div id = "imageData">
@@ -326,7 +334,51 @@
 
 <script>
 
-initImages();
+ctx = document.getElementById("scrollCanvas").getContext("2d");
+x0 = 400;
+y0 = 400;
+unit = 200;
+drawGlyph(currentTable[0400]);
+ctx = document.getElementById("fwdCanvas").getContext("2d");
+x0 = 0;
+y0 = 400;
+unit = 50;
+drawGlyph("0300,0306,0362,0203,0335,0335,0203,0335,0335,0203,0364,0334,0334,0362,0203,0335,0335,0203,0335,0335,0203,0364,0304,0330,0336,0336,0330,0336,0333,0337,0310,0337,0313,0106,0127,0104,");
+ctx = document.getElementById("backCanvas").getContext("2d");
+x0 = 50;
+y0 = 400;
+unit = 50;
+drawGlyph("0300,0306,0334,0334,0362,0203,0334,0334,0203,0334,0334,0203,0364,0334,0362,0203,0335,0335,0203,0335,0335,0203,0364,0335,0335,0335,0330,0304,0332,0336,0336,0336,0333,0330,0332,0333,0310,0332,0333,0337,0337,0337,0313,0102,0103,0113,");
+
+function fwdRedraw(){
+	scrollPage++;
+	if(scrollPage > 0477){
+		scrollPage = 0400;
+	}
+	ctx = document.getElementById("scrollCanvas").getContext("2d");
+	x0 = 400;
+	y0 = 400;
+	unit = 200;
+	doTheThing(0300);
+	ctx.clearRect(0,0,800,800);
+	drawGlyph(currentTable[scrollPage]);
+}
+function backRedraw(){
+	scrollPage--;
+	if(scrollPage < 0400){
+		scrollPage = 0477;
+	}
+	ctx = document.getElementById("scrollCanvas").getContext("2d");
+	x0 = 400;
+	y0 = 400;
+	unit = 200;
+	doTheThing(0300);
+	ctx.clearRect(0,0,800,800);
+	drawGlyph(currentTable[scrollPage]);
+}
+
+//initImages();  // un-comment this to initialize images by default
+
 function initImages(){
 	imgctx = document.getElementById("imageCanvas0").getContext("2d");
 	for(var index = 0500;index < 0577;index++){
@@ -369,7 +421,7 @@ currentNode = document.getElementById("scalePad");
 buildPanel("0310,0311,0312,0313,0314,0316");
 
 currentNode = document.getElementById("rootPad");
-buildPanel("020,010,021,022,023,024,025,026,027,031");
+buildPanel("020,010,021,022,023,024,025,026,027,031,05");
 
 
 currentNode = document.getElementById("drawPad");
@@ -954,6 +1006,9 @@ function doTheThing(localCommand){
 function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
 //	localCommand = parseInt(localCommand,8);
 
+	if(localCommand == 005){
+		initImages();
+	}
 	if(localCommand == 010){
 		currentGlyphArray = currentGlyph.split(",");
 		
@@ -1056,8 +1111,10 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 	if(localCommand == 030){
 		if(document.getElementById("glyphTableEditor").style.display != "none"){
 			document.getElementById("glyphTableEditor").style.display = "none";
+			document.getElementById("manuscriptPanel").style.display = "block";
 		}else{
 			document.getElementById("glyphTableEditor").style.display = "block";
+			document.getElementById("manuscriptPanel").style.display = "none";
 		}
 	}
 	if(localCommand == 031){//export SVG
@@ -1143,6 +1200,32 @@ td{
 	margin: 10px 10px 10px 10px;
 
 }
+#scrollCanvas{
+	border:solid;
+	border-color: black;
+}
+#backCanvas{
+	border:solid;
+	border-color: black;
+}
+
+#fwdCanvas{
+	border:solid;
+	border-color: black;
+}
+#fwdCanvas:hover{
+	background:purple;
+}
+#backCanvas:hover{
+	background:purple;
+}
+#backCanvas:active{
+	border-color: yellow;
+}
+#fwdCanvas:active{
+	border-color: yellow;
+}
+
 </style>
 </center>
 </body>
