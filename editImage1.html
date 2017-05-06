@@ -225,6 +225,7 @@
 0176:0330,0336,0336,0336,0331,0331,0333,0333,0341,0331,0331,0331,0331,0331,0331,0333,0333,0333,0333,0337,0337,0337,
 045:0336,0333,0330,0336,0332,0330,0335,0335,0366,0335,0332,0332,0331,0367,0335,0335,0366,0335,0335,0334,0332,0331,0331,0334,0336,0331,0337,0367,0336,0335,0335,0366,0332,0332,0334,0333,0337,0336,0334,0334,0367,0337,0335,0335,0201,0336,0342,0335,0335,0331,0331,0333,0333,0333,0333,0337,0337,0337,
 01364:0304,0313,0333,0200,0336,0332,0330,0336,0330,0332,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0334,0350,0334,0342,0334,0334,0342,0340,0335,0304,0331,0333,0337,0337,0332,0202,
+0500:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0116,0156,0103,0113,0151,0106,0132,056,0152,0160,0147,
 */
 </script>
 <!--
@@ -324,6 +325,7 @@
 	</div>
 </div>
 
+
 <script>
 
 initImages();
@@ -351,6 +353,18 @@ function initImages(){
 		}
 	}
 }
+//0500,0336,0331,0330,0331,0331,0336,0336,0331,0330,0330,0330,0330,0332,0333,0333,0333,0333,0333,0330,0331,0331,0337,0337,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0333,0331,0331,0331,0331,0333,0333,0333,0333,0333,0333,0332,0332,0332,0332,0332,0332,0331,0331,0331,0330,0330,0330,0337,0337,0330,0332,0337,0360,0300,0330,0330,0332,0332,0332,0333,0361,0300,0330,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0331,0333,0333,0333,0333,0333,0333,0333,0333,0333,0330,0330,0330,0330,0330,0330,0333,0336,0331,0331,0333,0333,0333,0333,0333,0333,0333,0333,0330,0330,0330,0330,0337,0337,0330,0330,0331,0331,0331,0331,0332,0332,0336,0336,0330,0333,0333,0333,0333,0333,0332,0337,0330,0332,0310,0336,0331,0332,0333,0333,0313,0331,0330,0337,0360,0300,0332,0333,0336,0336,0330,0332,0332,0333,0332,0337,0337,0332,0332,0330,0336,0336,0333,0331,0331,0331,0337,0337,0361,
+
+//document.getElementById("imageData").appendChild(newImage);
+/*
+document.getElementById("image0").onload  = function(){
+	var img = document.getElementById("image0");
+	document.getElementById("imageCanvas0").width = img.width;
+	document.getElementById("imageCanvas0").height = img.height;
+	ctx = document.getElementById("imageCanvas0").getContext("2d");
+	ctx.drawImage(img,0,0);	
+}
+*/
 var newSelect = document.getElementById("wordSelect");
 for(var index = 0600;index < 0700;index++){
 	var newOption = document.createElement("OPTION");
@@ -373,7 +387,7 @@ buildPanel("020,010,021,022,023,024,025,026,027,031");
 
 
 currentNode = document.getElementById("drawPad");
-drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0362,0203,0363,0364";
+drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0362,0203,0363,0364,0360,0361";
 document.getElementById("drawGlyphGlyph").value = drawGlyphsGlyph;
 buildPanel(drawGlyphsGlyph);
 
@@ -641,12 +655,6 @@ function doTheThing(localCommand){
  	 if(explodeIndex > explodeLimit){
 		explodeIndex = 0;
  	 }
- 	 if(localCommand >= 0500 && localCommand <= 0577){
-		var imageIndex = (localCommand - 0500).toString();
-		var zeep = "image0" + localCommand.toString(8) + "Canvas";
-		imgctx = document.getElementById(zeep).getContext("2d");
-    }
-
      if(localCommand >= 0600 && localCommand < 0700){
     	//get the glyph, turn it into ascii, make it the Word:
     	if(currentTable[localCommand] != undefined){
@@ -661,6 +669,11 @@ function doTheThing(localCommand){
     }
     if(localCommand >= 0400 && localCommand <= 0477){//manuscript glyphs
 		 drawGlyph(currentTable[localCommand]);    	    
+    }
+    if(localCommand >= 0500 && localCommand <= 0577){
+		var imageIndex = (localCommand - 0500).toString();
+		var zeep = "image0" + localCommand.toString(8) + "Canvas";
+		imgctx = document.getElementById(zeep).getContext("2d");
     }
     if(localCommand >= 01000 && localCommand <= 01377){//symbol glyphs
 		 drawGlyph(currentTable[localCommand]);    	    
@@ -888,6 +901,7 @@ function doTheThing(localCommand){
 	if(localCommand == 0361){
 		ctx.putImageData(imgData,x,y);
 	}
+
     if(localCommand == 0362){
 	   ctx.beginPath();
 	   ctx.moveTo(x,y);
