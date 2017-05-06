@@ -294,9 +294,19 @@
 <body>
 <div class = "atom" id = "masterRoot"></div>
 <div id = "manuscriptPanel" class = "atom" style = "display:none">
-	<canvas width = "50" height = "800" id = "backCanvas" onclick = "backRedraw();"></canvas>
-	<canvas width = "800" height = "800" id = "scrollCanvas"></canvas>
-	<canvas width = "50" height = "800" id = "fwdCanvas" onclick = "fwdRedraw();"></canvas>
+	<div>
+	<canvas width = "50" height = "400" id = "backCanvas" onclick = "backRedraw();"></canvas>
+	<canvas width = "400" height = "400" id = "scrollCanvas"></canvas>
+	<canvas width = "50" height = "400" id = "fwdCanvas" onclick = "fwdRedraw();"></canvas>
+	</div>
+	<div id = "textDiv">
+	</div>
+	<div style = "display:none;" id = "paragraph01400">
+	First paragraph.
+	</div>
+	<div style = "display:none;" id = "paragraph01401">
+	Second paragraph.  
+	</div>
 </div>
 <div id = "glyphTableEditor" class = "atom" style = "display:block">	
 	<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
@@ -335,18 +345,27 @@
 <script>
 
 ctx = document.getElementById("scrollCanvas").getContext("2d");
-x0 = 400;
-y0 = 400;
-unit = 200;
+x0 = 200;
+y0 = 200;
+unit = 100;
 drawGlyph(currentTable[0400]);
+	var foo = "paragraph01" + scrollPage.toString(8);
+	if(document.getElementById(foo) != null){
+		bar = document.getElementById(foo).innerHTML;
+		document.getElementById("textDiv").innerHTML = bar;
+	}
+	else{
+		document.getElementById("textDiv").innerHTML = "";	
+	}
+
 ctx = document.getElementById("fwdCanvas").getContext("2d");
 x0 = 0;
-y0 = 400;
+y0 = 200;
 unit = 50;
 drawGlyph("0300,0306,0362,0203,0335,0335,0203,0335,0335,0203,0364,0334,0334,0362,0203,0335,0335,0203,0335,0335,0203,0364,0304,0330,0336,0336,0330,0336,0333,0337,0310,0337,0313,0106,0127,0104,");
 ctx = document.getElementById("backCanvas").getContext("2d");
 x0 = 50;
-y0 = 400;
+y0 = 200;
 unit = 50;
 drawGlyph("0300,0306,0334,0334,0362,0203,0334,0334,0203,0334,0334,0203,0364,0334,0362,0203,0335,0335,0203,0335,0335,0203,0364,0335,0335,0335,0330,0304,0332,0336,0336,0336,0333,0330,0332,0333,0310,0332,0333,0337,0337,0337,0313,0102,0103,0113,");
 
@@ -356,12 +375,20 @@ function fwdRedraw(){
 		scrollPage = 0400;
 	}
 	ctx = document.getElementById("scrollCanvas").getContext("2d");
-	x0 = 400;
-	y0 = 400;
-	unit = 200;
+	x0 = 200;
+	y0 = 200;
+	unit = 100;
 	doTheThing(0300);
-	ctx.clearRect(0,0,800,800);
+	ctx.clearRect(0,0,400,400);
 	drawGlyph(currentTable[scrollPage]);
+	var foo = "paragraph01" + scrollPage.toString(8);
+	if(document.getElementById(foo) != null){
+		bar = document.getElementById(foo).innerHTML;
+		document.getElementById("textDiv").innerHTML = bar;
+	}
+	else{
+		document.getElementById("textDiv").innerHTML = "";	
+	}
 }
 function backRedraw(){
 	scrollPage--;
@@ -369,12 +396,21 @@ function backRedraw(){
 		scrollPage = 0477;
 	}
 	ctx = document.getElementById("scrollCanvas").getContext("2d");
-	x0 = 400;
-	y0 = 400;
-	unit = 200;
+	x0 = 200;
+	y0 = 200;
+	unit = 100;
 	doTheThing(0300);
-	ctx.clearRect(0,0,800,800);
+	ctx.clearRect(0,0,400,400);
 	drawGlyph(currentTable[scrollPage]);
+	var foo = "paragraph01" + scrollPage.toString(8);
+	if(document.getElementById(foo) != null){
+		bar = document.getElementById(foo).innerHTML;
+		document.getElementById("textDiv").innerHTML = bar;
+	}
+	else{
+		document.getElementById("textDiv").innerHTML = "";	
+	}
+
 }
 
 //initImages();  // un-comment this to initialize images by default
@@ -1225,7 +1261,14 @@ td{
 #fwdCanvas:active{
 	border-color: yellow;
 }
-
+#textDiv{
+	padding: 5px 5px 5px 5px;
+	width: 500px;	
+	font-size: 16px;
+	font-family: "Century Schoolbook";
+	text-align: justify;
+	
+}
 </style>
 </center>
 </body>
