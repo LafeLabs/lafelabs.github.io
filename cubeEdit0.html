@@ -263,6 +263,7 @@
 	currentWord = "Word";
 	currentSVG = "";
 	currentAddress = 0401;
+	currentImageAddress = 0500;
 	currentGlyph = currentTable[currentAddress];
 	currentGlyphArray = currentGlyph.split(",");
 	cursorPosition = currentGlyphArray.length;
@@ -307,6 +308,9 @@
 	<div style = "display:none;" id = "paragraph01401">
 	Second paragraph.  
 	</div>
+	<div style = "display:none;" id = "paragraph01402">
+	Humanity has dug up enough material to last a thousand lifetimes!  We are surrounded by plastic, glass and metal waste on all sides everywhere on the planet, as well as "junk" that still works but is not used due to obsolescence.  The physical layer of Geometron is always designed to work on the oldest possible equipment, and with maximal repurposing of trash into workable hardware.  We have plenty of screens and batteries for a whole 10 billion person human race to have smart information devices, we just haven't organized the matter correctly yet.
+	</div>
 </div>
 <div id = "glyphTableEditor" class = "atom" style = "display:block">	
 	<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
@@ -340,6 +344,19 @@
 		<textarea id = "mainTextArea"  cols = "84" rows = "12">
 		</textarea>
 	</div>
+	<div id = "imagePanel" class = "atom">
+		<img id = "currentImage" style = "float:left"></img>
+		<center style = "float:bottom">
+			<center style = "float:top;">
+				<input size = "30" id = "imageURL" onchange = "updateURL();"></input>
+			</center>
+			<center style = "float:bottom;">
+				<button onclick = "prevImage();">PREV</button>		
+				<input size = "5" id = "imageAddressInput" onchange = "updateImageAddress();"></input>
+				<button onclick = "nextImage();">NEXT</button>		
+			</center>
+		</center>
+	</div>
 </div>
 
 <script>
@@ -368,6 +385,7 @@ x0 = 50;
 y0 = 200;
 unit = 50;
 drawGlyph("0300,0306,0334,0334,0362,0203,0334,0334,0203,0334,0334,0203,0364,0334,0362,0203,0335,0335,0203,0335,0335,0203,0364,0335,0335,0335,0330,0304,0332,0336,0336,0336,0333,0330,0332,0333,0310,0332,0333,0337,0337,0337,0313,0102,0103,0113,");
+
 
 function fwdRedraw(){
 	scrollPage++;
@@ -541,6 +559,42 @@ function roctalChar(localAddress){
 	currentWord = ((localAddress)&7).toString();	
 	drawGlyph("0365,0331,");
 	drawGlyph("0330,0337,0337,0330,0333,");	
+}
+
+
+function prevImage(){
+	currentImageAddress--;
+	if(currentImageAddress < 0500){
+		currentImageAddress = 0577;
+	}
+	imageRedraw();
+}
+function nextImage(){
+	currentImageAddress++;
+	if(currentImageAddress > 0577){
+		currentImageAddress = 0500;
+	}
+	imageRedraw();
+}
+function updateImageAddress(){
+	currentImageAddress = parseInt(document.getElementById("imageAddressInput").value,8);
+	imageRedraw();
+}
+
+function updateURL(){
+	console.log("Foo");
+	currentTable[currentImageAddress] = string2byteCode(document.getElementById("imageURL").value);
+	imageRedraw();
+
+}
+
+imageRedraw();
+function imageRedraw(){
+	document.getElementById("currentImage").src = byteCode2string(currentTable[currentImageAddress]);
+	document.getElementById("imageAddressInput").value = "0" + currentImageAddress.toString(8);
+
+	document.getElementById("imageURL").value = byteCode2string(currentTable[currentImageAddress]);
+
 }
 
 function redraw(){
@@ -1267,7 +1321,9 @@ td{
 	font-size: 16px;
 	font-family: "Century Schoolbook";
 	text-align: justify;
-	
+}
+#currentImage{
+	width:300px;
 }
 </style>
 </center>
