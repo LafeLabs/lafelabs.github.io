@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<!-- PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS, NO PROPERTY NO MONEY NO MINING-->
 <title>Geometron Hypercube Editor</title>
 <script id = "bytecodeScript">
 /*
@@ -187,6 +188,7 @@
 0506:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0113,060,0112,0153,0103,0143,071,056,0152,0160,0147,
 0507:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0164,0124,0103,070,0132,0115,0141,056,0152,0160,0147,
 0510:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0153,0122,0141,0172,0157,0120,0111,056,0152,0160,0147,
+0511:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,070,0165,0127,0126,0124,0116,0145,056,0152,0160,0147,
 01370:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0333,0335,0306,0342,0336,0331,0337,0337,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0304,0334,0333,0333,0336,0336,0332,0337,0337,0337,0331,0337
 01371:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0336,0331,0331,0331,0333,0335,0337,0337,0306,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0304,0330,0330,0336,0336,0331,0334,0337,0337,0337,0331,0336,0336,0336,0330,0337,0337,0337,0337
 01372:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0336,0331,0333,0337,0337,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0333,0333,0336,0336,0332,0337,0337,0337,0331,0336,0336,0336,0330,0337,0337,0337,0337
@@ -306,10 +308,10 @@
 	First paragraph.
 	</div>
 	<div style = "display:none;" id = "paragraph01401">
-	Second paragraph.  
+The derp.
 	</div>
 	<div style = "display:none;" id = "paragraph01402">
-	Humanity has dug up enough material to last a thousand lifetimes!  We are surrounded by plastic, glass and metal waste on all sides everywhere on the planet, as well as "junk" that still works but is not used due to obsolescence.  The physical layer of Geometron is always designed to work on the oldest possible equipment, and with maximal repurposing of trash into workable hardware.  We have plenty of screens and batteries for a whole 10 billion person human race to have smart information devices, we just haven't organized the matter correctly yet.
+The foo.
 	</div>
 </div>
 <div id = "glyphTableEditor" class = "atom" style = "display:block">	
@@ -317,8 +319,9 @@
 	<div id = "imageData">
 		<canvas style = "display:none;" id = "imageCanvas0"></canvas>	
 	</div>
-	<div class = "atom"  style = "width:450px;height:450px;padding:40px 0px 0px 40px">
-		<canvas width = "400" height = "400" id = "plotCanvas" style = "border:solid"></canvas>
+	<div class = "atom"  style = "padding:40px 40px 40px 40px">
+		<canvas width = "400" height = "400" id = "plotCanvas" style = "border:solid;display:block;"></canvas>
+	<textarea cols = "55" rows = "16" id = "paragraphTextarea" style = "display:none;" onkeyup = "updateParagraph();"></textarea>
 	</div>
 	<div id = "wordPanel" class = "atom" onchange = "updateWordOption();">
 		string:<input id = "wordInput" onchange = "updateWordInput();"></input>
@@ -366,14 +369,8 @@ x0 = 200;
 y0 = 200;
 unit = 100;
 drawGlyph(currentTable[0400]);
-	var foo = "paragraph01" + scrollPage.toString(8);
-	if(document.getElementById(foo) != null){
-		bar = document.getElementById(foo).innerHTML;
-		document.getElementById("textDiv").innerHTML = bar;
-	}
-	else{
-		document.getElementById("textDiv").innerHTML = "";	
-	}
+
+	document.getElementById("textDiv").innerHTML = byteCode2string(currentTable[scrollPage + 01000]);
 
 ctx = document.getElementById("fwdCanvas").getContext("2d");
 x0 = 0;
@@ -399,14 +396,9 @@ function fwdRedraw(){
 	doTheThing(0300);
 	ctx.clearRect(0,0,400,400);
 	drawGlyph(currentTable[scrollPage]);
-	var foo = "paragraph01" + scrollPage.toString(8);
-	if(document.getElementById(foo) != null){
-		bar = document.getElementById(foo).innerHTML;
-		document.getElementById("textDiv").innerHTML = bar;
-	}
-	else{
-		document.getElementById("textDiv").innerHTML = "";	
-	}
+	
+	document.getElementById("textDiv").innerHTML = byteCode2string(currentTable[scrollPage + 01000]);
+		
 }
 function backRedraw(){
 	scrollPage--;
@@ -420,18 +412,11 @@ function backRedraw(){
 	doTheThing(0300);
 	ctx.clearRect(0,0,400,400);
 	drawGlyph(currentTable[scrollPage]);
-	var foo = "paragraph01" + scrollPage.toString(8);
-	if(document.getElementById(foo) != null){
-		bar = document.getElementById(foo).innerHTML;
-		document.getElementById("textDiv").innerHTML = bar;
-	}
-	else{
-		document.getElementById("textDiv").innerHTML = "";	
-	}
+	document.getElementById("textDiv").innerHTML = byteCode2string(currentTable[scrollPage + 01000]);
 
 }
 
-//initImages();  // un-comment this to initialize images by default
+initImages();  // un-comment this to initialize images by default
 
 function initImages(){
 	imgctx = document.getElementById("imageCanvas0").getContext("2d");
@@ -582,10 +567,27 @@ function updateImageAddress(){
 }
 
 function updateURL(){
-	console.log("Foo");
 	currentTable[currentImageAddress] = string2byteCode(document.getElementById("imageURL").value);
+	
+	newCanvas = document.createElement("CANVAS");
+	newCanvas.id = "image0" + currentImageAddress.toString(8) + "Canvas";
+	newCanvas.style.display = "none";
+	newImage = document.createElement("IMG");
+	document.getElementById("imageData").appendChild(newImage);
+	document.getElementById("imageData").appendChild(newCanvas);
+	newImage.id = "image0" + currentImageAddress.toString(8);
+	newImage.src = byteCode2string(currentTable[currentImageAddress]);
+	newImage.style.display = "none";
+	newImage.onload = function(){
+		var zeep = this.id + "Canvas";
+		document.getElementById(zeep).width = this.width;
+		document.getElementById(zeep).height = this.height;
+		ctx = document.getElementById(zeep).getContext("2d");
+		ctx.drawImage(this,0,0);	
+		imgctx = document.getElementById(zeep).getContext("2d");
+	}
+		
 	imageRedraw();
-
 }
 
 imageRedraw();
@@ -597,7 +599,25 @@ function imageRedraw(){
 
 }
 
+function updateParagraph(){
+	currentTable[currentAddress] = string2byteCode(document.getElementById("paragraphTextarea").value);
+}
+
 function redraw(){
+
+	if(currentAddress >= 01400 && currentAddress <= 01477){
+		document.getElementById("paragraphTextarea").style.display = "block";
+		if(currentTable[currentAddress] != null){
+			document.getElementById("paragraphTextarea").value = byteCode2string(currentTable[currentAddress]);
+		}
+		else{
+		document.getElementById("paragraphTextarea").value = "";
+		}
+	}
+	else{
+		document.getElementById("paragraphTextarea").style.display = "none";	
+	}
+
 	x0 = 200;
 	y0 = 200;
 	unit = 100;
@@ -1135,9 +1155,20 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		redraw();
 	}	
 	if(localCommand == 0022){//move to previous glyph in table
-		currentGlyph = document.getElementById("glyphBytecode").value;
-		currentGlyph = commaCleaner(currentGlyph);
-		currentTable[currentAddress] = currentGlyph;
+		if(currentAddress >= 01400 && currentAddress <= 01477){		
+			if(currentTable[currentAddress] != null){
+				document.getElementById("paragraphTextarea").value = byteCode2string(currentTable[currentAddress]);
+		}
+			else{
+				document.getElementById("paragraphTextarea").value = "";
+		}
+
+		}
+		else{
+			currentGlyph = document.getElementById("glyphBytecode").value;
+			currentGlyph = commaCleaner(currentGlyph);
+			currentTable[currentAddress] = currentGlyph;
+		}
 		currentAddress--;
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
@@ -1145,9 +1176,21 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		redraw();
 	}
 	if(localCommand == 0023){//move to next glyph in table
-		currentGlyph = document.getElementById("glyphBytecode").value;
-		currentGlyph = commaCleaner(currentGlyph);
-		currentTable[currentAddress] = currentGlyph;
+		if(currentAddress >= 01400 && currentAddress <= 01477){		
+			if(currentTable[currentAddress] != null){
+				document.getElementById("paragraphTextarea").value = byteCode2string(currentTable[currentAddress]);
+		}
+			else{
+				document.getElementById("paragraphTextarea").value = "";
+		}
+
+		}
+		else{
+			currentGlyph = document.getElementById("glyphBytecode").value;
+			currentGlyph = commaCleaner(currentGlyph);
+			currentTable[currentAddress] = currentGlyph;
+		}
+
 		currentAddress++;
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
