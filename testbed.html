@@ -2,114 +2,34 @@
 <html>
 <head>
 <title>General Test File</title>
+
+
+<script>
+//	eval("function foo(){console.log(\"foo\");}");	
+</script>
+
 </head>
 <body>
 
-<div class = "atom">
-<img src = "https://i.imgur.com/XSBvLqG.jpg" style = "display:none" id = "img"></img>
-<canvas width = "500" height = "500" style = "border:solid" id = "canvas1"></canvas>
+<div class = "atom" id = "prevAtom">
 </div>
-<div class = "atom">
-<canvas width = "1000" height = "256" style = "border:solid" id = "outputCanvas"></canvas>
-<canvas width = "500" height = "500" style = "border:solid" id = "auto1"></canvas>
 
-</div>
+<div class = "atom" id = "mainAtom">
+
+<textarea id = "codeInput"></textarea>
+<button onclick = "updateFunction();">EVAL</button>
+
 <script>
 
-newImg = document.getElementById("img");
-newImg.onload = function(){
-
-	newCanvas = document.getElementById("canvas1");
-	ctx = newCanvas.getContext("2d");
-	sx = 100;
-	sy = 350;
-	swidth = 500;
-	sheight = 500;
-	dx = 0;
-	dy = 0;
-	dwidth = 500;
-	dheight = 500;
-	ctx.drawImage(newImg,sx,sy,swidth,sheight,dx,dy,dwidth,dheight);
-	var myImageData = ctx.getImageData(0,200,500,1);
-	redArray = [];
-	greenArray = [];
-	blueArray = [];
-	for(var index = 0;index < myImageData.data.length;index += 4){	
-		redArray.push(myImageData.data[index]);
-		greenArray.push(myImageData.data[index + 1]);
-		blueArray.push(myImageData.data[index + 2]);	
-	}
-
-	ctx = document.getElementById("outputCanvas").getContext("2d");
-	ctx.clearRect(0, 0, 500, 500);
-	ctx.lineWidth = 2;
-	ctx.strokeStyle="red";
-	ctx.beginPath();
-	for(var index = 0;index < redArray.length -1;index++){
-		ctx.moveTo(2*index,256-redArray[index]);		
-		ctx.lineTo(2*(index+1),256-redArray[index+1]);
-		ctx.stroke();
-	}
-	ctx.strokeStyle="green";
-	ctx.beginPath();
-	for(var index = 0;index < greenArray.length -1;index++){
-		ctx.moveTo(2*index,256 - greenArray[index]);		
-		ctx.lineTo(2*(index+1),256 - greenArray[index+1]);
-		ctx.stroke();
-	}
-	ctx.strokeStyle="blue";
-	ctx.beginPath();
-	for(var index = 0;index < blueArray.length -1;index++){
-		ctx.moveTo(2*index,256 - blueArray[index]);		
-		ctx.lineTo(2*(index+1),256 - blueArray[index+1]);
-		ctx.stroke();
-	}
-	
-
-	redAvg = 0;	
-	for(var index = 0;index < redArray.length -1;index++){
-		redAvg += redArray[index];
-	}
-	redAvg /= redArray.length;
-
-
-	for(var index = 0;index < redArray.length -1;index++){
-		redArray[index] /= redAvg;
-	}
-
-	NArray = [];
-	pArray = [];
-	for(var N = .2;N < 50;N += .5){
-		NArray.push(N);
-		Y = 0;
-		X = 0;
-		for(var index = 0;index < redArray.length;index++){
-			Y += redArray[index]*Math.sin(2*Math.PI*index/N); 
-			X += redArray[index]*Math.cos(2*Math.PI*index/N); 
-		}
-		X /= redArray.length;
-		Y /= redArray.length;		
-		R = X*X + Y*Y;
-		pArray.push(R);
-		console.log(R);
-	}
-
-
-	ctx = document.getElementById("auto1").getContext("2d");
-	ctx.clearRect(0, 0, 500, 500);
-	ctx.lineWidth = 2;
-	ctx.strokeStyle="black";
-	ctx.beginPath();
-	for(var index = 0;index < NArray.length;index++){
-		ctx.moveTo(5*index,600 - 1000*pArray[index]);		
-		ctx.lineTo(5*(index+1),600 - 1000*pArray[index+1]);
-		ctx.stroke();
-	}
-
+function updateFunction(){
+	var zeep = document.getElementById("codeInput").value;
+	eval(zeep);
 }
+
 </script>
 
-<style>
+</div>
+<style id = "style">
 html {
 	height: 100%;
 	background: black;
