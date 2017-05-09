@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class = "calculator">
+input variable:<input></input><p>
+output variable:<input></input><p>
+input unit:<input></input><p>
+output unit:<input></input><p>
+
+</div>
+
+<div class = "calculator">
+<h2>Meta Calculator N</h2>
+<div id = "equation">
+</div>
+<p>
+<span id = "inputSpan"></span><input id = "input" onchange = "computeFWD();"></input><span id = "inputUnitSpan"></span>
+<p>
+<span id = "outputSpan"></span><input id = "output" onchange = "computeBACK();"></input><span id = "outputUnitSpan"></span>
+<p>
+</div>
+
+<script>
+
+function computeE(){
+	m = document.getElementById("minput").value;
+	c = 3e8;
+	E = m*c*c;
+	document.getElementById("Einput").value = E.toExponential();
+	document.getElementById("megatons").innerHTML = Math.round(E/4.18e15);
+}
+function computem(){
+	E = document.getElementById("Einput").value;
+	document.getElementById("megatons").innerHTML = Math.round(E/4.18e15);
+	c = 3e8;
+	m = E/(c*c);
+	document.getElementById("minput").value = m;
+}
+</script>
+
+<style>
+
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+.calculator{
+	width: auto;
+	height: auto;
+	border-style: solid;
+	border-width: 5px;
+	border-color: blue;
+	border-radius: 15px;
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	background: white;	
+	font-size: 14px;
+	font-family: "Century Schoolbook";
+	text-align: left;
+	float:left;
+}
+
+</style>
+</body>
+</html>

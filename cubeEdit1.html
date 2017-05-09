@@ -301,6 +301,7 @@
 
 	myFont = "Futura";
 	currentWord = "Word";
+	currentText = "";//use the 01600's to add to this, and they're all in html
 	currentSVG = "";
 	currentAddress = 0401;
 	currentImageAddress = 0500;
@@ -864,6 +865,9 @@ function doTheThing(localCommand){
     	if(currentTable[localCommand] != undefined){
     	 	currentWord = byteCode2string(currentTable[localCommand]);
     	}	
+    }
+    if(localCommand >= 01600 && localCommand <= 01677){
+    	currentText += byteCode2string(currentTable[localCommand]);
     }
      if((localCommand > 02000)&&(localCommand < 03000)){
     	roctalChar(localCommand - 02000);
