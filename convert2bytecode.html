@@ -1,0 +1,66 @@
+<html>
+<head>
+</head>
+<body>
+in:
+<textarea id = "jsin"></textarea>
+<p>
+out:
+<textarea id = "codeout"></textarea>
+<button onclick = "convert();">push</button>
+<script>
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		var myCharCode = String.fromCharCode(parseInt(stringArray[index],8));
+		if(parseInt(stringArray[index],8) >= 040 && parseInt(stringArray[index],8) < 0177 ){
+			localString += myCharCode;
+		}
+		if(parseInt(stringArray[index],8) == 012){//newline
+			localString += myCharCode;
+		}
+		if(parseInt(stringArray[index],8) == 011){//vertical tab
+			localString += myCharCode;
+		}		
+		
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		if(tempCharCode != 0){
+			localByteCode += "0";
+			localByteCode += tempCharCode.toString(8);
+			localByteCode += ",";
+		}
+	}
+	return localByteCode;
+}
+
+function convert(){
+	inputString = document.getElementById("jsin").value;
+	inputArray = inputString.split("if(localCommand == ");
+
+	outputString = "";
+	for(var index = 0; index < inputArray.length;index++){
+	
+		outputString += inputArray[index].substring(0,4);
+		outputString += ":";	
+		outputString += string2byteCode(inputArray[index].substring(5,inputArray[index].length));				
+		
+		outputString += "\n";
+	
+	}
+	console.log(outputString);
+
+	document.getElementById("codeout").value = outputString;
+	
+}
+
+</script>
+</body>
+</html>
