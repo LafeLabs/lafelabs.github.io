@@ -1059,8 +1059,52 @@ All of these will be dealt with in their own chapters, as will the overall struc
 	Much of the hypercube is empty in most instances.  Each cube in the hypercube is a self contained stack of tablets, each tablet is 8x8 and context determines which cube is being called by a given machine.  
 	<p>
 	The JavaScript function doTheThing() is by default referencing the 03xxx cube, but context implies this so it's just 0xxx where 03xx are the geometry actions. 
-	Images are img tags in html in the html layer so they're actually at 045xx in the full hypercube.  	
-		
+	Images are img tags in html in the html layer so they're actually at 045xx in the full hypercube.  
+	
+	<p>
+	May 9 2017 rework again, focus on two layers(cubes), one is symbol and one is action.  That's it.  doTheThing() processes all, but differently for different parts.  Some are js operating on globals(03xx), some are js operating on DOM to build things.  0400s should be this.  01xx are *always* symbols. 
+	<p>	
+	<h3>Back to Basics Hypercube:</h3>
+		<center><h4>Actions:</h4></center>
+	<ol>
+		<li>0-037:root magick, js on DOM, does not change from one document to another. root magick needs to be extended to include building different shapes and sizes of canvas to pour "currentGlyph" into. Must have a two op code action to start dumping actions into currentGlyph, then write them to the canvas(or svg).</li>
+		<li>037-0176:font, changes as needed</li>		
+		<li>0200-0277:shape table, call itself and 03xx, contains only Geometron action code</li>
+		<li>0300-0377:javascript that gets eval()'d to operate on geometric global variables</li>
+		<li>0400-0477:Scroll, calls root magick to build canvases, calls words and paragraphs to insert them as html, calls latex equations to insert them as html </li>
+		<li>0500-0577:images, includes URL, description, source and destination shape and size for complete map relative to either the cursor's position and size or an img objects position from upper left and size.  set global variable for caption to current caption, set global variable for image URL to that, set globals for image mapping to that. this is javascript that gets eval'd which sets all these globals</li>
+		<li>0600-0677: words and text.  html and raw ASCII.  Raw ASCII can go in the top of the page by convention, but they're all treated the same</li>
+		<li>0700-0777: javascript functions to get eval()'d to create calculators. Use javascript actions on DOM to build the equations in mathjax, then run the mathjax typesetter to make it look good</li>
+	</ol>
+				<center><h4>Symbols:</h4></center>
+	<ol>
+		<li>01000-01037:symbol glyphs</li>
+		<li>01040-01176:standard font that matches physical keyboard's symbols as close as possible</li>
+		<li>01200-01277:symbol glyphs</li>
+		<li>01300-01377:symbol glyphs</li>
+		<li>01400-01477:Names of sections in scroll for linked table of contents(this is multiply fractal)</li>
+		<li>01500-01577: thumbnails that scale to size of spelling symbol glyphs</li>
+		<li>01600-01677:More words, doubling number of words available, this is all more html, with some conceptual link to its little sibling</li>	
+		<li>01700-01777:equation symbols, each is just an equation, which can get inserted anywhere.  This has no dollars signs or javascript, so it can get automatically used by scripts that make real latex from our geometron bytecode</li>
+	</ol>
+	
+	Now in order to implement this I must complete the following tasks:
+	<ul>
+		<li>build a calculator all in js manipulating the DOM in a reasonable way, using currentNode, 07xx for the js and 017xx for the latex.</li>
+		<li>build an editor that allows this to be edited</li>
+		<li>Integrate this into document system</li>
+		<li>Add root magick commands that build a canvas and pour a glyph into it</li>
+		<li>change document workflow to include these new Magick commmands</li>
+		<li>Convert science papers into this system</li>
+		<li>Build software to convert science papers into latex</li>
+		<li>rework all the code to make it simpler in its base form, make it generate almost everything from input bytecode from pastebin for now, get number of lines without a cube down to well under 1000 total with no libraries, simplify, condense and document basic functions that remain </li>
+		<li>build a basic introduction to Q-Geometron paper to distribute to QI community for funding</li>
+		<li>build tale and lore for cubes</li>
+		<li>finish this book, crowd fund hard copy</li>
+		<li>physical data printer and reader implemented</li>
+	</ul>
+	
+	To implement physical printer, what specs are needed?  Perhaps for minium functionality each print could just be a single cell.  Then if each cell is 40X40 bytes or 1600 total bytes maximum that's 40X4 = 160 units on a side.  If a unit is 1 mm that's 160 mm or 16 cm.  This seems like a good initial target for proof of concept.  Then A machine must be built to process these tablets.  
 </div>
 <style>
 
