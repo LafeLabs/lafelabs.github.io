@@ -4,8 +4,7 @@
 <title>General Test File</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
-	code01700 = "044,044,0131,040,075,040,062,0130,044,044,";
-	code01701 = "044,044,0103,040,075,040,062,0134,0160,0151,040,0162,044,044,";
+	
 	function byteCode2string(localByteCode){
 	var localString = "";
 	var stringArray = localByteCode.split(",");
@@ -40,16 +39,12 @@ function string2byteCode(localString){
 </script>
 </head>
 <body>
-<div class = "atom" id = "div1"></div>
+<div id = "page">
+
+This idea of math-as-language really gets to the heart of the matter.  Geometron seeks to build a language that is useful both for human-human communication(like English) and for human-machine communication(like javascript), but which is independent of both.  That is to say, it should be possible to express things in this system using only shapes and symbols in a self-contained way, then run those operations on a machine or send them to a human without ever writing a line of code in javascript or C or a line of language in English or Chinese.  That is, this is an attempt to organize existing geometric knowledge into a language which can be used to communicate.  
+</div>
 <script>
 
-currentNode = document.getElementById("div1");
-div01700 = document.createElement("div");
-div01700.innerHTML = byteCode2string(code01701);
-currentNode.appendChild(div01700);
-MathJax.Hub.Typeset();//tell Mathjax to update the math
-
-div0700 = createElement("div");
 
 
 </script>
@@ -59,6 +54,35 @@ html {
 	height: 100%;
 	background: black;
 	background-size: cover;
+}
+
+
+@media screen and (min-width: 800px) {
+    #page{
+		width: 700px;	
+    }
+}
+@media screen and (max-width: 800px) {
+    #page{
+		width: 100%;	
+    }
+}
+
+
+#page{
+	width: 700px;
+	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 20px;
+	font-family: "Century Schoolbook";
+	text-align: left;
+	float:left
 }
 
 .atom{
