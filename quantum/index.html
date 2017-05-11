@@ -1,15 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Free Math</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
+<title>Geometron Hypercube Editor</title>
 <script id = "bytecodeScript">
 /*
+
 040:0333
 041:0333,0336,0336,0332,0332,0332,0330,0336,0331,0336,0341,0330,0330,0330,0337,0337,0337,0342,0336,0336,0336,0331,0331,0331,0331,0331,0337,0337,0333,0337,0337
 042:0333,0330,0336,0332,0336,0332,0331,0342,0333,0342,0333,0330,0337,0337,0331
@@ -148,6 +143,8 @@ MathJax.Hub.Config({
 01362:0333,0200,0336,0336,0330,0332,0332,0332,0340,0342,0330,0342,0330,0335,0342,0330,0342,0330,0350,0334,0334,0334,0342,0334,0334,0335,0334,0342,0334,0304,0330,0330,0330,0334,0334,0333,0337,0337,
 01363:0304,0313,0333,0200,0336,0332,0330,0336,0330,0332,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0334,0350,0334,0342,0334,0334,0342,0340,0335,0304,0331,0333,0337,0337
 01365:0313,0304,0333,0200,0336,0330,0332,0336,0331,0332,0337,0350,0350,0334,0342,0335,0335,0342,0334,0304,0333,0350,0350,0334,0342,0335,0335,0342,0334,0304,0336,0333,0331,0337,0337
+01366:0333,0200,0336,0336,0332,0332,0332,0330,0335,0337,0366,0340,0342,0330,0332,0335,0335,0367,0335,0336,0333,0330,0337,0337,0331
+01367:0333,0200,0336,0336,0332,0332,0332,0330,0335,0337,0366,0330,0332,0335,0335,0367,0335,0336,0340,0334,0337,0342,0336,0333,0330,0337,0337,0331,0335,0331,0336,0332,0337,
 01200:0333,0200,0336,0336,0330,0332,0337,0200,0336,0331,0333,0337,0337
 01201:0304,0313,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337
 01020:0304,0333,0200,0336,0330,0332,0336,0336,0332,0337,0200,0333,0333,0200,0332,0332,0336,0330,0335,0337,0342,0330,0350,0335,0335,0351,0333,0350,0336,0334,0342,0334,0334,0342,0337,0335,0351,0333,0336,0333,0331,0337,0337,0331,0337,0304,0336,0330,0330,0336,0330,0334,0331,0337,0337
@@ -160,10 +157,46 @@ MathJax.Hub.Config({
 01027:0333,0200,0336,0330,0332,0336,0336,0333,0331,0337,0332,0200,0306,0335,0342,0332,0342,0330,0335,0335,0342,0335,0335,0335,0335,0331,0334,0304,0332,0306,0335,0342,0330,0350,0335,0342,0334,0331,0335,0304,0334,0331,0333,0333,0330,0335,0342,0330,0350,0335,0335,0335,0336,0342,0335,0335,0342,0335,0304,0331,0331,0331,0331,0331,0333,0337,0337,0337
 01010:0333,0200,0350,0334,0310,0337,0342,0336,0332,0335,0335,0337,0342,0336,0333,0334,0351,0313
 01030:0333,0200,0336,0332,0337,0350,0350,0350,0342,0335,0342,0335,0342,0335,0342,0335,0342,0335,0342,0334,0334,0334,0334,0334,0334,0342,0334,0342,0334,0342,0334,0342,0334,0334,0342,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0342,0334,0334,0334,0334,0334,0334,0304,0343,0336,0333,0337
+01031:0333,0200,0336,0330,0332,0336,0332,0331,0123,0126,0107,0330,0330,0332,0332,0330,0335,0335,0336,0330,0332,0337,0201,0335,0350,0335,0336,0342,0335,0335,0342,0334,0304,0333,0333,0333,0333,0331,0331,0331,0331,0331,0332,0336,0333,0336,0332,0337,0337,0337,0337,0337,
 0400:0300
 0200:0304,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334
 0201:0342,0330,
 01201:0304,0313,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337
+0230:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0110,0333,0336,0330,0333,0337,0337,0337
+0231:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0130,0333,0336,0330,0333,0337,0337,0337
+0232:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0131,0333,0336,0330,0333,0337,0337,0337
+0233:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0132,0333,0336,0330,0333,0337,0337,0337
+0234:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0133,0333,0336,0330,0333,0337,0337,0337
+0235:0313,0304,0336,0330,0341,,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0330,0337,
+0240:0304,0313,0335,0342,0330,0336,0331,0336,0336,0347,0337,0337,0335,0342,0334,0334,0333,0337,
+0241:0304,0313,0335,0342,0336,0330,0334,0342,0335,0335,0336,0336,0342,0337,0337,0335,0335,0336,0336,0341,0337,0337,0333,0337,
+01230:,0333,0200,0336,0332,0336,0330,0332,0337,,0110,0336,0331,0333,0336,0333,0337,0337,0337,
+01235:,0333,0200,0336,0332,0336,0330,0337,0331,0330,0235,0331,0333,0336,0331,0337,0337,
+01236:0333,0200,0336,0330,0335,0331,0331,0337,0236,0334,0336,0331,0337
+01240:,0333,0200,0336,0330,0332,0335,0342,0340,0335,0342,0335,0342,0335,0333,0331,0337,,
+01241:,0333,0200,0336,0330,0334,0201,0201,0331,0335,0342,0336,0336,0341,0333,0333,0333,0333,0337,0337,0331,0337,
+01242:0333,0200,0336,0330,0332,0331,0330,0332,0310,0337,0313,0242,0310,0336,0313,0333,0333,0331,0337
+0242:0304,0313,0335,0336,0336,0310,0336,0313,0342,0330,0334,0342,0337,0342,0330,0335,0342,0330,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0342,0330,0335,0342,0330,0333,0336,0333,0331,0337,0306,0343,0350,0335,0310,0337,0342,0330,0336,0336,0336,0336,0336,0335,0335,0335,0335,0335,0342,0335,0335,0342,0335,0335,0335,0335,0335,0337,0337,0337,0337,0337,0331,0336,0334,0313,0304,0336,0331,0332,0332,0332,0330,0330,0332,0337,0337,0310,0337,0313
+0600:0110,
+0601:0130,
+0602:0131,
+0603:0132,
+0604:0123,
+0605:0124,
+0210:0336,0336,0335,0201,0334,0201,0335,0201,0201,0335,0201,0201,0335,0201,0201,0335,0201,0335,0334,0336,0336,0331,0331,0333,0333,0337,0337,0600,0365,0333,0336,0333,0330,0335,0337,0201,0334,0337,0337
+0211:0336,0336,0335,0201,0334,0201,0335,0201,0201,0335,0201,0201,0335,0201,0201,0335,0201,0335,0334,0336,0336,0331,0331,0333,0333,0337,0337,0601,0365,0333,0336,0333,0330,0335,0337,0201,0334,0337,0337
+0212:0336,0336,0335,0201,0334,0201,0335,0201,0201,0335,0201,0201,0335,0201,0201,0335,0201,0335,0334,0336,0336,0331,0331,0333,0333,0337,0337,0602,0365,0333,0336,0333,0330,0335,0337,0201,0334,0337,0337
+0213:0336,0336,0335,0201,0334,0201,0335,0201,0201,0335,0201,0201,0335,0201,0201,0335,0201,0335,0334,0336,0336,0331,0331,0333,0333,0337,0337,0603,0365,0333,0336,0333,0330,0335,0337,0201,0334,0337,0337
+0214:0336,0336,0335,0201,0334,0201,0335,0201,0201,0335,0201,0201,0335,0201,0201,0335,0201,0335,0334,0336,0336,0331,0331,0333,0333,0337,0337,0604,0365,0333,0336,0333,0330,0335,0337,0201,0334,0337,0337
+0215:0336,0336,0335,0201,0334,0201,0335,0201,0201,0335,0201,0201,0335,0201,0201,0335,0201,0335,0334,0336,0336,0331,0331,0333,0333,0337,0337,0605,0365,0333,0336,0333,0330,0335,0337,0201,0334,0337,0337
+01210:0333,0200,0336,0600,0332,0332,0337,0365,0333,
+01211:0333,0200,0336,0601,0332,0332,0337,0365,0333,
+01212:0333,0200,0336,0602,0332,0332,0337,0365,0333,
+01213:0333,0200,0336,0603,0332,0332,0337,0365,0333,
+01214:0333,0200,0336,0604,0332,0332,0337,0365,0333,
+01215:0333,0200,0336,0605,0332,0332,0337,0365,0333,
+0243:0304,0313,0335,0342,0336,0330,0334,0342,0335,0335,0336,0336,0342,0337,0337,0335,0335,0336,0336,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0337,0337,0333,0337,
+01243:0333,0200,0336,0330,0334,0201,0201,0331,0335,0342,0336,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0336,0333,0333,0333,0333,0337,0337,0331,0337,
 01344:0333,0200,0336,0330,0332,0336,0332,0340,0335,0337,0342,0330,0340,0334,0332,0336,0331,0332,0331,0337,0337,0202,
 0202:0304,0313,0350,0335,0336,0336,0342,0333,0342,0333,0342,0333,0342,0333,0334,0304,0337,0337,
 01345:0202,0200,0350,0334,0343,0335,0304,
@@ -178,36 +211,34 @@ MathJax.Hub.Config({
 0205:0362,0203,0335,0203,0203,0335,0203,0335,0203,0203,0335,0363,0336,0330,0333,0336,0331,0332,0337,0365,0336,0332,0331,0337,0337,
 0206:0336,0332,0337,0362,0203,0334,0336,0203,0335,0350,0335,0337,0310,0337,0203,0335,0335,0203,0335,0304,0335,0336,0313,0336,0203,0334,0337,0203,0363,0335,0335,0336,0332,0337,
 01206:0202,0200,0336,0332,0206,0333,0337,
-01366:0333,0200,0336,0336,0332,0332,0332,0330,0335,0337,0366,0340,0342,0330,0332,0335,0335,0367,0335,0336,0333,0330,0337,0337,0331
-01367:0333,0200,0336,0336,0332,0332,0332,0330,0335,0337,0366,0330,0332,0335,0335,0367,0335,0336,0340,0334,0337,0342,0336,0333,0330,0337,0337,0331,0335,0331,0336,0332,0337,
-0500:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0162,0143,060,0157,0153,0147,0130,056,0152,0160,0147,
-0501:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0116,060,0130,0113,065,0117,0124,056,0152,0160,0147,
-0502:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0107,0150,0121,0131,066,067,0167,056,0152,0160,0147,
-0503:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0144,067,0144,0166,0115,0125,0130,056,0152,0160,0147,
-0504:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,071,0111,066,0152,0102,0156,0154,056,0152,0160,0147,
-0505:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0153,0122,0141,0172,0157,0120,0111,056,0152,0160,0147,
-0506:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0113,060,0112,0153,0103,0143,071,056,0152,0160,0147,
-0507:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0164,0124,0103,070,0132,0115,0141,056,0152,0160,0147,
-0510:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0153,0122,0141,0172,0157,0120,0111,056,0152,0160,0147,
-01370:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0333,0335,0306,0342,0336,0331,0337,0337,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0304,0334,0333,0333,0336,0336,0332,0337,0337,0337,0331,0337
-01371:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0336,0331,0331,0331,0333,0335,0337,0337,0306,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0304,0330,0330,0336,0336,0331,0334,0337,0337,0337,0331,0336,0336,0336,0330,0337,0337,0337,0337
-01372:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0336,0331,0333,0337,0337,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0333,0333,0336,0336,0332,0337,0337,0337,0331,0336,0336,0336,0330,0337,0337,0337,0337
-01373:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0331,0331,0336,0330,0333,0337,0337,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0333,0333,0331,0331,0336,0336,0330,0332,0337,0337,0337,0337
-01374:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0333,0335,0305,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0334,0333,0333,0333,0331,0331,0331,0331,0337,0337,0337
-01375:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0331,0331,0333,0330,0335,0305,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0330,0330,0330,0334,0331,0331,0331,0331,0337,0337,0337
-01376:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0335,0330,0306,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0330,0330,0330,0334,0337,0337,0331,0337
-01377:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0331,0333,0335,0306,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0333,0330,0330,0330,0334,0331,0331,0331,0337,0337,0337
-0600:0122,0157,0157,0164,040,0115,0141,0147,0151,0143,040,0133,060,060,055,060,063,067,0135,
-0601:0106,0157,0156,0164,040,0133,060,064,060,055,060,061,067,066,0135,
-0602:0123,0150,0141,0160,0145,0163,040,0133,060,062,060,060,055,060,062,067,067,0135,
-0603:0107,0145,0157,0155,0145,0164,0162,0171,040,0101,0143,0164,0151,0157,0156,0163,040,0133,060,063,060,060,055,060,063,067,067,0135,
-0604:0111,0155,0141,0147,0145,0163,040,0133,060,065,060,060,055,060,065,067,067,0135,
-0605:0127,0157,0162,0144,0163,040,0133,060,066,060,060,055,060,066,067,067,0135,
-0606:0115,0141,0164,0150,040,0133,060,067,060,060,055,060,067,067,067,0135,
+0250:0331,0334,0337,0362,0203,0334,0336,0203,0335,0350,0335,0337,0310,0337,0203,0335,0335,0203,0335,0335,0335,0336,0313,0336,0304,0203,0334,0337,0203,0203,0334,0336,0203,0335,0350,0335,0337,0310,0337,0203,0335,0335,0203,0335,0335,0335,0336,0313,0336,0203,0304,0334,0337,0203,0363,0335,0336,0330,
+01250:0202,0200,0336,0336,0336,0330,0330,0330,0330,0332,0332,0332,0332,0250,0337,0337,0333,0331,0337
+0260:0336,0335,0366,0330,0330,0332,0335,0334,0330,0331,0331,0331,0332,0332,0336,0336,0330,0337,0337,0367,0335,0335,0366,0332,0332,0332,0331,0367,0335,0337,
+0261:0260,0260,0260,0260,
+0262:0334,0336,0336,0261,0335,0337,0337,
+0263:0336,0336,0201,0334,0331,0331,0337,0337,0342,0336,0336,0333,0333,0337,0337,0342,0336,0330,0335,0336,0201,0337,0337,
+0264:0336,0336,0201,0337,0263,0336,0201,0337,0337,
+01260:0333,0200,0336,0332,0260,0336,0333,0336,0332,0336,0333,0337,0337,0337,0337,
+01261:0333,0200,0336,0332,0334,0336,0333,0331,0337,0261,0336,0335,0331,0331,0331,0336,0333,0333,0331,0331,0337,0337,0331,0337,
+01262:0333,0200,0336,0332,0336,0331,0333,0201,0337,0337,0337,0262,0336,0336,0336,0342,0331,0333,0337,0337,0331,
+01263:0333,0200,0336,0332,0337,0263,0336,0333,0337,0331,
+01264:0333,0200,0336,0332,0337,0264,0336,0333,0337,0331,
+0265:0306,0334,0201,0335,0335,0201,0201,0334,0334,0201,0335,
+0266:0336,0336,0336,0265,0265,0265,0337,0337,0337,0304,
+0267:0335,0335,0332,0264,0335,0201,0335,0266,0262,
+01265:0333,0200,0336,0332,0265,0304,0333,0337,0331,
+01266:0333,0200,0336,0332,0337,0336,0336,0336,0201,0337,0337,0337,0266,0336,0336,0336,0201,0337,0337,0333,0337,0331,
+01364:0304,0313,0333,0200,0336,0332,0330,0336,0330,0332,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0334,0350,0334,0342,0334,0334,0342,0340,0335,0304,0331,0333,0337,0337,0332,0202,
+0220:0336,0336,0201,0336,0201,0334,0337,0335,0330,0334,0350,0334,0310,0337,0362,0203,0334,0334,0334,0336,0203,0203,0334,0334,0334,0337,0203,0364,0334,0336,0342,0304,0335,0335,0342,0334,0201,0313,0336,0201,0337,0337,0337
+01220:0333,0200,0336,0332,0337,0220,0336,0333,0331,0331,0337
 */
 </script>
+<!--
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
 <script>
-
+ 
   	inPath = false;//move to true after path started, back to false after path ended
 
 	currentTable = []; 
@@ -225,7 +256,11 @@ MathJax.Hub.Config({
 			currentTable[localAddress] = localBytecode[1];
 		}
 	}
-	myFont = "Century Schoolbook";
+	
+	for(var index = 040;index < 0177;index++){
+		currentTable[index + 01000] = currentTable[index];
+	}
+	myFont = "Futura";
 	currentWord = "Word";
 	currentSVG = "";
 	currentAddress = 0401;
@@ -233,7 +268,7 @@ MathJax.Hub.Config({
 	currentGlyphArray = currentGlyph.split(",");
 	cursorPosition = currentGlyphArray.length;
 	phi = 0.5*(Math.sqrt(5) + 1);
-	unit = 100;
+	unit = 50;
 	scaleFactor = 2;
 	side = unit;
 	thetaStep = Math.PI/2;
@@ -251,12 +286,189 @@ MathJax.Hub.Config({
 		theta:theta,
 		thetaStep:thetaStep,
 		side:side,
-		glyph:"0342,0334,0342,0335,0335,0342,0334,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,"
+		glyph:"0362,0344,0363,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,0334,0362,0344,0363,0335,0335,0362,0344,0363"
 	}
+
+
+
 </script>
+</head>
+<body>
+<div class = "atom" id = "masterRoot"></div>
+<div id = "glyphTableEditor" class = "atom" style = "display:block">	
+	<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
+	<div class = "atom"  style = "width:450px;height:450px;padding:40px 0px 0px 40px">
+		<canvas width = "400" height = "400" id = "plotCanvas" style = "border:solid"></canvas>
+	</div>
+	<div id = "wordPanel" class = "atom" onchange = "updateWordOption();">
+		string:<input id = "wordInput" onchange = "updateWordInput();"></input>
+		<select id = "wordSelect">
+		</select>
+		bytecode:<input id = "wordCode"></input>
+	</div>
+	<div id = "spellDiv">
+		<canvas width = "3000" height = "30" id = "spellCanvas" style = "border:solid;float:left;"></canvas>
+		<input size = "6" id = "addr" style = "float:left;" onchange = "updateAddr();"></input>
+		<input style = "float:left;" size = "428" id = "glyphBytecode" onchange = "updateGlyph()"></input>
+	</div>
+	<div class = "atom" style = "width:610px;height:auto" id = "controlPad">
+		<div style = "width:95px;height:100px;float:left" id = "directionPad"></div>
+		<div style = "width:210px;height:30px;float:left" id = "anglePad"></div>
+		<div style = "width:180px;height:30px;float:left" id = "scalePad"></div>
+		<div style = "width:125px;height:100px;float:right;" id = "rootPad"></div>
+		<div style = "width:384px;height:100px;float:left" id = "drawPad"></div>
+		<input style = "float:left;margin:0px" size = "80" id = "drawGlyphGlyph" onchange = "updateDrawGlyphs();"></input>
+	</div>
+	<p>
+	<div class = "atom">
+		<textarea id = "mainTextArea"  cols = "84" rows = "12">
+		</textarea>
+	</div>
+</div>
+
+
 <script>
+
+var newSelect = document.getElementById("wordSelect");
+for(var index = 0600;index < 0700;index++){
+	var newOption = document.createElement("OPTION");
+	newOption.text = "0" + index.toString(8);
+	newSelect.appendChild(newOption);
+}
+
+currentNode = document.getElementById("directionPad");
+//buildPanel([0334,0330,0335,0332,0300,0333,0336,0331,0337]);
+buildPanel("0334,0330,0335,0332,0300,0333,0336,0331,0337");
+
+currentNode = document.getElementById("anglePad");
+buildPanel("0304,0305,0306,0350,0351,0352,0353");
+
+currentNode = document.getElementById("scalePad");
+buildPanel("0310,0311,0312,0313,0314,0316");
+
+currentNode = document.getElementById("rootPad");
+buildPanel("020,010,021,022,023,024,025,026,027,031");
+
+
+currentNode = document.getElementById("drawPad");
+drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0362,0203,0363,0364,0210,0211,0212,0213,0214,0215,0240,0241,0242,0243,0262,0264,0266,0220";
+document.getElementById("drawGlyphGlyph").value = drawGlyphsGlyph;
+buildPanel(drawGlyphsGlyph);
+
+ctx = document.getElementById("plotCanvas").getContext("2d");
+currentGlyph = currentTable[currentAddress];
+redraw();
+
+currentNode = document.getElementById("masterRoot");
+appendGlyphButton(030);
+
+function buildPanel(glyphsGlyph){
+	var glyphsGlyphArray = glyphsGlyph.split(",");
+	var buttonArray = [];
+	for(var index = 0;index < glyphsGlyphArray.length;index++){
+		buttonArray.push(parseInt(glyphsGlyphArray[index],8));
+	}
+	for(var index = 0;index < buttonArray.length;index++){
+		appendGlyphButton(buttonArray[index]);
+	}
+}
+
+function updateWordOption(){
+	wordAddress = parseInt(document.getElementById("wordSelect").value,8);
+	document.getElementById("wordInput").value = byteCode2string(currentTable[wordAddress]);
+}
+
+function updateWordInput(){
+	wordAddress = parseInt(document.getElementById("wordSelect").value,8);
+	currentTable[wordAddress] = string2byteCode(document.getElementById("wordInput").value);
+	
+	document.getElementById("wordCode").value = string2byteCode(document.getElementById("wordInput").value);
+}
+
+function updateAddr(){
+	currentAddress = parseInt(document.getElementById("addr").value,8);
+	currentGlyph = currentTable[currentAddress];
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
+	redraw();
+}
+
+function updateGlyph(){
+	currentGlyph = document.getElementById("glyphBytecode").value;
+	currentGlyph = commaCleaner(currentGlyph);
+	currentTable[currentAddress] = currentGlyph;
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
+	redraw();	
+}
+
+function updateDrawGlyphs(){
+	currentNode = document.getElementById("drawPad");
+	while (currentNode.hasChildNodes()) {
+		currentNode.removeChild(currentNode.childNodes[0]);
+	}
+	drawGlyphsGlyph = document.getElementById("drawGlyphGlyph").value;
+	buildPanel(drawGlyphsGlyph);
+}
+
+function roctalChar(localAddress){
+	drawGlyph("0313,0336,0336,0336,0274,0333,0331,0274,0333,0331,0337,");
+	for(var bitIndex = 8;bitIndex >= 0;bitIndex--){
+		if(((localAddress>>bitIndex)&1)==1){
+			doTheThing(0274);// data square
+		}
+		doTheThing(0333);
+		if((bitIndex == 6)||(bitIndex == 3)){
+			drawGlyph("0331,0332,0332,0332");
+		}
+	}
+	drawGlyph("0331,0337,0337,0200,0330");
+	
+	drawGlyph("0332,0336,0336,0331,0331,");
+	currentWord = ((localAddress >> 6)&7).toString();	
+	drawGlyph("0365,0331,");
+	currentWord = ((localAddress >> 3)&7).toString();	
+	drawGlyph("0365,0331,");
+	currentWord = ((localAddress)&7).toString();	
+	drawGlyph("0365,0331,");
+	drawGlyph("0330,0337,0337,0330,0333,");	
+}
+
+function redraw(){
+	x0 = 200;
+	y0 = 200;
+	unit = 50;
+	//draw the glyph:
+	ctx = document.getElementById("plotCanvas").getContext("2d");
+	//draw current glyph:
+	doTheThing(0300);
+//	ctx.fillStyle = "#808080"
+	ctx.clearRect(0,0,400,400);
+	doTheThing(0300);
+	currentSVG = "";
+	drawGlyph(currentGlyph);
+	//draw the cursor:
+	ctx = document.getElementById("invisibleCanvas").getContext("2d");
+	getCursor();
+	ctx = document.getElementById("plotCanvas").getContext("2d");
+	drawGlyph(cursor.glyph);
+
+	//spell:
+	ctx = document.getElementById("spellCanvas").getContext("2d");
+	ctx.clearRect(0,0,3000,40);
+	unit = 20;
+	x0 = 5;
+	y0 = 25;
+	doTheThing(0300);
+	spellGlyph(currentGlyph);
+	
+	document.getElementById("addr").value = "0" + currentAddress.toString(8);
+	document.getElementById("glyphBytecode").value = currentGlyph;
+}
+
+
 function appendGlyphButton(localCommand){
-	glyphButtonSize = 45;
+	glyphButtonSize = 30;
 	var newCanvas = document.createElement("CANVAS");		
 	newCanvas.width = glyphButtonSize;
 	newCanvas.height = glyphButtonSize;
@@ -277,12 +489,65 @@ function appendGlyphButton(localCommand){
 	}
 	if(localCommand >= 040){
 		newCanvas.onclick = function(){
-			//cursorAction(localCommand);	
-			currentGlyph += "0" + localCommand.toString(8) + ",";
+			cursorAction(localCommand);	
 			redraw();	
 		}
 	}
 	currentNode.appendChild(newCanvas);
+}
+
+
+function cursorAction(localCommand){
+	currentGlyphArray = currentGlyph.split(",");
+	if(cursorPosition > currentGlyphArray.length){
+		cursorPosition = currentGlyphArray.length;
+	}
+	currentGlyph = "";
+	doTheThing(0300);
+	
+	for(var index = 0;index < cursorPosition;index++){
+		currentGlyph += currentGlyphArray[index] + ",";	
+		var localAction = parseInt(currentGlyphArray[index],8);
+		if( !((localAction >= 0340) && (localAction < 0344)) ){
+			doTheThing(localAction);
+		}
+	}
+	if(localCommand != undefined){
+		if( !((localCommand >= 0340) && (localCommand < 0344)) ){
+			doTheThing(localCommand);
+		}
+	}
+	cursor.x = x;
+	cursor.y = y;
+	cursor.theta = theta;
+	cursor.thetaStep = thetaStep;
+	cursor.side = side;
+	if(localCommand != undefined){
+		currentGlyph += "0" + localCommand.toString(8) + ",";
+	}	
+	for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+		currentGlyph += currentGlyphArray[index] + ",";		
+	}
+	cursorPosition++;	
+	currentGlyph = commaCleaner(currentGlyph);
+}
+
+function getCursor(){
+
+	currentGlyphArray = currentGlyph.split(",");
+	var foo = "";
+	doTheThing(0300);
+	for(var index = 0;index < cursorPosition;index++){
+		foo += currentGlyphArray[index] + ",";	
+		var localAction = parseInt(currentGlyphArray[index],8);
+		doTheThing(localAction);
+	}
+	cursor.x = x;
+	cursor.y = y;
+	cursor.theta = theta;
+	cursor.thetaStep = thetaStep;
+	cursor.side = side;
+
 }
 
 function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
@@ -296,45 +561,19 @@ function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 	return cleanGlyph;
 }
 
-function mirrorGlyph(inputGlyph){
-	var tempArray = inputGlyph.split(',');
-	var outputGlyph = "";
-	for(var index = 0;index < tempArray.length;index++){
-		if(tempArray[index] == 0334){
-			outputGlyph += "0335,";
-		}
-		if(tempArray[index] == 0335){
-			outputGlyph += "0334,";
-		}
-		if(tempArray[index] == 0332){
-			outputGlyph += "0333,";
-		}
-		if(tempArray[index] == 0333){
-			outputGlyph += "0332,";
-		}
-		if(tempArray[index] > 0335 || tempArray[index] < 0332){
-			outputGlyph += tempArray[index] + ",";
-		}
-	}
-	return outputGlyph;
-}
-
 function drawGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
-		doTheThing(parseInt(tempArray[index],8));
+			doTheThing(parseInt(tempArray[index],8));
 	}
 }
 
 function spellGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
-		ctx.lineWidth = 3;
-	    ctx.strokeStyle="black";
-		if(x > 16*side){
-			x -= 16*side;
-			y += side;
-		}
+		    ctx.lineWidth = 2;
+	      ctx.strokeStyle="black";
+
 		doTheThing(parseInt(tempArray[index],8) + 01000);
 		if(index == cursorPosition-1){
 			drawGlyph("0336,0333,0336,0330,0341,0331,0337,0333,0337");
@@ -374,19 +613,16 @@ function string2byteCode(localString){
 	return localByteCode;
 }
 function doTheThing(localCommand){
- 
-     if(localCommand >= 0500 && localCommand <= 0600){
-		if(currentTable[localCommand] != undefined){
-    	 	currentImage = byteCode2string(currentTable[localCommand]);
-    	}
-    }
+
      if(localCommand >= 0600 && localCommand < 0700){
     	//get the glyph, turn it into ascii, make it the Word:
     	if(currentTable[localCommand] != undefined){
     	 	currentWord = byteCode2string(currentTable[localCommand]);
     	}	
     }
-
+     if((localCommand > 02000)&&(localCommand < 03000)){
+    	roctalChar(localCommand - 02000);
+    }
     if(localCommand >= 0040 && localCommand <= 0277){//shapes and fonts
 		 drawGlyph(currentTable[localCommand]);    	    
     }
@@ -518,7 +754,7 @@ function doTheThing(localCommand){
 		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
 		currentSVG += Math.round(y).toString();
-		currentSVG += "\"r = \"3\" stroke = \"black\" stroke-width = \"2\"";
+		currentSVG += "\" r = \"3\" stroke = \"black\" stroke-width = \"2\" ";
 		currentSVG += "fill = \"black\" />\n";		
     }
     if(localCommand == 0341){  //circle
@@ -530,7 +766,7 @@ function doTheThing(localCommand){
 		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
 		currentSVG += Math.round(y).toString();
-		currentSVG += "\"r = \"" + side.toString() + "\"stroke = \"black\" stroke-width = \"2\"";
+		currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\" ";
 		currentSVG += "fill = \"none\" />\n";		
 
     }
@@ -595,7 +831,7 @@ function doTheThing(localCommand){
 		currentSVG += Math.round(x).toString();
 		currentSVG += "\" cy = \"";
 		currentSVG += Math.round(y).toString();
-		currentSVG += "\"r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\"";
+		currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\" ";
 		currentSVG += "fill = \"black\" />\n";		
 
 	}
@@ -630,7 +866,13 @@ function doTheThing(localCommand){
 	   //ctx.fill();		
 	   currentSVG += "Z\""+ " stroke = \"black\" stroke-width = \"2\" fill = \"none\" "+"/>";
 	   
-	   
+    }
+
+    if(localCommand == 0364){
+	   ctx.closePath();
+	   ctx.stroke();		
+	   ctx.fill();		
+	   currentSVG += "Z\""+ " stroke = \"black\" stroke-width = \"2\" fill = \"black\" "+"/>";
     }
 
     if(localCommand == 0365){
@@ -642,14 +884,13 @@ function doTheThing(localCommand){
 		currentSVG += Math.round(y).toString();
 		currentSVG += "\" fill = \"black\""; 
 		currentSVG += " font-size = \"";
-		currentSVG += side + "px\"";
+		currentSVG += side + "px\" ";
 		currentSVG += "font-family = \"futura\"";
 		currentSVG += ">";
 		currentSVG += currentWord;
 		currentSVG += "</text>\n";	
     }
-
-	if(localCommand == 0366){//begin cubic bezier path
+	if(localCommand == 0366){
 		ctx.beginPath();
 		ctx.moveTo(Math.round(x),Math.round(y));
 		cpx1 = Math.round(x + side*Math.cos(theta));
@@ -661,7 +902,7 @@ function doTheThing(localCommand){
 		
 //<path  d="M100,200 C150,150 200,150 250,200" />
 	}
-	if(localCommand == 0367){//end cubic bezier path
+	if(localCommand == 0367){
 		x2 = Math.round(x);
 		y2 = Math.round(y);
 		cpx2 = Math.round(x + side*Math.cos(theta));
@@ -669,392 +910,203 @@ function doTheThing(localCommand){
 		ctx.bezierCurveTo(cpx1,cpy1,cpx2,cpy2,x2,y2);
 		ctx.stroke();
 		currentSVG += cpx2.toString() + "," + cpy2.toString() + " ";
-		currentSVG += x2.toString() + "," + y2.toString() + "\" />";		
+		currentSVG += x2.toString() + "," + y2.toString() + "\" stroke = \"black\" stroke-width = \"2\" fill = \"none\" "+ " />\n";		
 	}
-
-    if(localCommand == 0370){ //drop triangle marker
-        triangleX = x;
-        triangleY =y;
-    }
-    if(localCommand == 0371){//go to triangle marker
-        x = triangleX;
-        y = triangleY;
-    }
-    if(localCommand == 0372){//drop square marker
-        squareX = x;
-        squareY = y;
-    }
-    if(localCommand == 0373){//go to square marker
-        x = squareX;
-        y = squareY;
-    }
-    if(localCommand == 0374){//drop pentagon marker
-        pentagonX = x;
-        pentagonY = y;
-    }
-    if(localCommand == 0375){//go to pentagon marker
-        x = pentagonX;
-        y = pentagonY;
-    }
-    if(localCommand == 0376){//drop hexagon marker
-        hexagonX = x;
-        hexagonY = y;
-    }
-    if(localCommand == 0377){//go to hexagon marker
-        x = hexagonX;
-        y = hexagonY;
-    }
 
 
 }
 
-
 function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
+//	localCommand = parseInt(localCommand,8);
 
 	if(localCommand == 010){
 		currentGlyphArray = currentGlyph.split(",");
-		currentGlyph = "";
-		for(var index = 0;index < currentGlyphArray.length - 2;index++){
-			currentGlyph += currentGlyphArray[index] + ",";
+		
+		firstHalf = "";
+		secondHalf = "";	
+		for(var index = 0;index < cursorPosition - 1;index++){
+			firstHalf += currentGlyphArray[index] + ",";
+		}
+		for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+			secondHalf += currentGlyphArray[index] + ",";
 		}				
+		currentGlyph = firstHalf + secondHalf;
+		if(cursorPosition > 0){
+			cursorPosition--;
+		}
 		currentGlyph = commaCleaner(currentGlyph);
+
 		redraw();
 	}
-}
 
-</script>
+	if(localCommand == 0020){//cursor forward
+		cursorPosition--;
+		if(cursorPosition < 0){
+			cursorPosition = currentGlyphArray.length;			
+		}
 
-</head>
-<body>
-<div class = "atom">
-<center><h2>Meta-Calculator</h2></center>
-
-<div id = "main" ></div>
-<div id = "control" style = "border:solid;border-radius:5px;margin: 5px 5px 5px 5px">
-Equation:<input id = "equationInput" value = "C = 2\pi r" onchange = "updateCalculator();"></input><p>
-
-X name:<input id = "XnameInput" value = "r" onchange = "updateCalculator();"></input><p>
-Y name:<input id = "YnameInput" value = "C" onchange = "updateCalculator();"></input><p>
-
-X2Y:<input id = "X2YInput" value = "C = 2*Math.PI*r;" onchange = "updateCalculator();"></input><p>
-Y2X:<input id = "Y2XInput" value = "r = C/(2*Math.PI);" onchange = "updateCalculator();"></input><p>
-
-</div>
-
-<script>
-
-currentNode = document.getElementById("main");
-
-
-code01701 = "044,044,0103,040,075,040,062,0134,0160,0151,040,0162,044,044,";
-
-dollars = ",044,044,";
-equation = "C = 2\\pi r"; 
-
-
-Xunits = "[cm]";
-Yunits = "[cm]";
-X2Y = "C = 2*Math.PI*r;";
-Y2X = "r = C/(2*Math.PI);";
-
-createCalculator();
-updateCalculator();
-
-function createCalculator(){
-
-	div01700 = document.createElement("div");
-	div01700.innerHTML = byteCode2string(code01701);
-	currentNode.appendChild(div01700);
-	MathJax.Hub.Typeset();//tell Mathjax to update the math
-	div0700 = document.createElement("div");
-	span0700_Y = document.createElement("span");
-	input0700_Y = document.createElement("input");
-	input0700_Y.id = "id0700_Y";
-	span0700_X = document.createElement("span");
-	span0700_X.style.border = "solid";
-	span0700_X.style.borderRadius = "5px";
-	span0700_X.style.padding = "5px 5px 5px 5px";
-	span0700_X.style.margin = "5px 5px 5px 5px";
-	span0700_Y.style.border = "solid";
-	span0700_Y.style.borderRadius = "5px";
-	span0700_Y.style.padding = "5px 5px 5px 5px";
-	span0700_Y.style.margin = "5px 5px 5px 5px";
-	input0700_X = document.createElement("input");
-	input0700_X.id = "id0700_X";
-	span0700_Y_units = document.createElement("span");
-	span0700_X_units = document.createElement("span");
-	span0700_Y_prompt = document.createElement("span");
-	span0700_X_prompt = document.createElement("span");
-	span0700_X.appendChild(span0700_X_prompt); 
-	span0700_X.appendChild(input0700_X); 
-	span0700_X.appendChild(span0700_X_units); 
-	span0700_Y.appendChild(span0700_Y_prompt); 
-	span0700_Y.appendChild(input0700_Y); 
-	span0700_Y.appendChild(span0700_Y_units); 
-	div0700.appendChild(span0700_X);
-	div0700.appendChild(span0700_Y);
-	currentNode.appendChild(div0700);
-
-
-}
-function updateCalculator(){
-	Xname = document.getElementById("XnameInput").value;
-	Yname = document.getElementById("YnameInput").value;	
-
-	X2Y = document.getElementById("X2YInput").value;
-	Y2X = document.getElementById("Y2XInput").value;
-
-	input0700_X.onchange = function(){
-		var X = document.getElementById("id0700_X").value;
-		eval("var " + Yname + " = 0;");
-		eval("var " + Xname + " = X;");
-		eval(X2Y);
-		eval("var Y = " + Yname + ";");
-		document.getElementById("id0700_Y").value = Y;
+		redraw();
 	}
-	input0700_Y.onchange = function(){
-		var Y = document.getElementById("id0700_Y").value;
-		eval("var " + Yname + " = Y;");
-		eval("var " + Xname + " = 0;");
-		eval(Y2X);
-		eval("var X = " + Xname + ";");
-		document.getElementById("id0700_X").value = X;
+	if(localCommand == 0021){//cursor back
+		cursorPosition++;
+		if(cursorPosition > currentGlyphArray.length ){
+			cursorPosition = 0;
+		}
+		redraw();
+	}	
+	if(localCommand == 0022){//move to previous glyph in table
+		currentGlyph = document.getElementById("glyphBytecode").value;
+		currentGlyph = commaCleaner(currentGlyph);
+		currentTable[currentAddress] = currentGlyph;
+		currentAddress--;
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
 	}
-	span0700_Y_units.innerHTML = Yunits;
-	span0700_X_units.innerHTML = Xunits; 
-	span0700_Y_prompt.innerHTML = Yname + " = ";
-	span0700_X_prompt.innerHTML = Xname + " = ";
-	equation = document.getElementById("equationInput").value;
-	equationCode = dollars + string2byteCode(equation) + dollars;
-	div01700.innerHTML  = byteCode2string(equationCode);
-	console.log(byteCode2string(equationCode));
-	MathJax.Hub.Typeset();//tell Mathjax to update the math
-	
-}
+	if(localCommand == 0023){//move to next glyph in table
+		currentGlyph = document.getElementById("glyphBytecode").value;
+		currentGlyph = commaCleaner(currentGlyph);
+		currentTable[currentAddress] = currentGlyph;
+		currentAddress++;
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
 
-</script>
+	}	
+	if(localCommand == 0024){//from action to symbol
+		if(currentAddress < 01000 && currentAddress > 0){
+			currentAddress += 01000;
+			currentGlyph = currentTable[currentAddress];
 
+		}
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
 
-
-</div>
-
-<div class = "atom">
-	In Geometron, everything is physical, everything is fractal, and everything is recursive.  This means that  when plotting on a computer the units are those of the computer screen, either pixels, inches, cm, or fraction of the screen or of the canvas.  Mathematically if we are plotting a 2d curve, this formally is a function:
-	
-	$$f:\mathbb{R}\longmapsto [0,\mathrm{canvas width}] \times [0,\mathrm{canvas height}].$$
-	
-	Technically, this is true in any language that plots on a computer.  But in Geometron we must always do this explicitly, meaning that to plot a function we must find the maps that connect that function to a map of the above form always. 
-	<p>
-	Also, following the law of Geometron that "everything is fractal", what this means in the case of plotting is that building a "generalize plotter" is never the goal--specificity to our task is paramount, and we can tailor the code and hardware as needed to satisfy that <i>exact</i> task.
-	<p>
-	As an example we shall now study the Lorentzian as it is called in physics, also known as the <a href = "https://en.wikipedia.org/wiki/Witch_of_Agnesi">Witch of Agnesi</a>.   
-</div>
-<div class = "atom">
-	To begin with we will define the curve by its simplest and most generic form in terms of an abstract "x" and "y":
-	$$y =  \frac{1}{1 + x^2}$$.
-	To study the area under this curve we will evaluate the integral by substitution, with 
-	$$x \equiv \tan{\theta}$$
-	so that
-	$$dx = (1 + \tan^2{\theta})d\theta$$
-	and 
-	$$\int \frac{dx}{1 + x^2} = \int \frac{(1 + \tan^2{\theta})d\theta}{(1 + \tan^2{\theta})} = \int d\theta = \theta = \arctan{x}$$
-	So that over all real numbers we get 
-	$$\int_{-\infty}^{\infty}\frac{dx}{1 + x^2} = \arctan{\infty} - \arctan{-\infty} = \pi$$
-	We can see by inspection that the peak is at x=0 and y=1.  The full width half maximum of this, or the 3 dB point if we're working with waves is when 
-	$$\frac{1}{x^2 + 1} = \frac{1}{2}$$
-	or 
-	$$x^2 + 1 = 2$$
-	so the values are $\pm 1$.
-	The area preserving(with unit area) function with variable width and peak position is 
-	$$f(x) = \frac{1}{\pi\gamma}\frac{\gamma^2}{(x - x_0)^2 + \gamma^2}$$
-</div>
-<div class = "atom">
-	We will now consider how to put this on a canvas in html.  The parameters are now a peak position in pixels(call this x0), a asymptotic y value in pixels(call this y0), a peak height in pixels(A), and a peak width in pixels ($\Gamma$).  All this is complicated by the fact that in a canvas, vertical values are inverted relative to anything else in math.  Perhaps the simplest way to deal with this is to let peak heights be negative by default and keep track of it that way.  
-	
-	$$y(x) = y0 + A\frac{\Gamma^2}{(x-x_0)^2 + \Gamma^2}.$$
-	
-	Now an important point must be raised: that pixels are usually not what matters and that how we plot things should be an aesthetic, nota  mathematical decision.  The numbers don't change by how we plot them, only our picture changes.  So to start off, x0 should be canvas width/2.  y0 should be canvas height - (some small fraction of canvas height).  If we can guess what they are, A should then be about that same small fraction of canvas height, or maybe twice that.  Perhaps 10 percent for the bottom and 20% for the top.  And width of also 20%.  So that $\Gamma$ is 0.2 times canvas width by default(then changed as the numbers change but this is a base point in parameter space).     
-</div>
-<div class = "atom">
-	The curve on the canvas consists of line segments between points.  The number of points is the width + 1, and it's the same for x and y points. The number of segments is equal to the width(in pixels).  One pixel is one point, for simplicity.  So a for loop should run from zero to(not inclusive) width, making width number of segments between width+1 points.  X values will simply be the index value and index value plus 1.  Y values will be y(x) for those points.  
-	<pre>
-for(var index = 0;index < width;index++){
-	x1 = index;
-	y1 = f(x);
-	x2 = x1+1;
-	y2 = f(x1+1);
-	//draw a line from (x1,y1) to (x2,y2)
-}
-
-	</pre>
-</div>
-
-<div class = "atom" style = "background:black;color:green;">
-	<center><canvas style = "border:solid;border-color:green;" width = "400" height = "400" id = "plotCanvas"></canvas></center>
-	
-$\Gamma$ = <input id  = "gammaInput" size = 5 style = "color:green;background:black;border:solid;border-color:green" value = "25" onchange = "redrawWitch();"></input>
-	<script>
-
-plotCanvas = document.getElementById("plotCanvas");
-
-width = plotCanvas.width;
-height = plotCanvas.height;
-ctx = plotCanvas.getContext("2d");
-ctx.lineWidth = 2;
-ctx.strokeStyle="green";
-ctx.fillStyle = "black";
-ctx.fillRect(0,0,width,height);
-
-function witch(xin,Gamma,A,x0,y0){
-	return y0 + A*Gamma*Gamma/(Gamma*Gamma + (xin - x0)*(xin - x0));
-}
-
-Gamma = 25;
-A = -200;
-x0 = 200;
-y0 = 300;
-
-//peak top position: (x0,y0 + A)
-//half max positions: (x0 + Gamma,y0 + 0.5*A) and (x0 - Gamma,y0 + 0.5*A)
-
-
-redrawWitch();
-
-function redrawWitch(){
-ctx.fillStyle = "black";
-ctx.fillRect(0,0,width,height);
-
-	Gamma = document.getElementById("gammaInput").value;
-	for(var index = 0;index < width;index++){
-		x1 = index;
-		y1 = witch(x1,Gamma,A,x0,y0);
-		x2 = x1+1;
-		y2 = witch(x2,Gamma,A,x0,y0);	
-		ctx.beginPath();
-		ctx.moveTo(x1,y1);
-		ctx.lineTo(x2,y2);
-		ctx.stroke();		
+	}	
+	if(localCommand == 0025){//from symbol to action
+		if(currentAddress > 01000 && currentAddress < 02000){
+			currentAddress -= 01000;
+			currentGlyph = currentTable[currentAddress];
+		}
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
 	}
-
-		ctx.setLineDash([5]);
-		ctx.beginPath();
-		ctx.moveTo(0,y0 + A);
-		ctx.lineTo(width,y0 + A);
-		ctx.stroke();		
-
-		ctx.setLineDash([8,2,3,1]);
-		ctx.beginPath();
-		ctx.moveTo(0,y0);
-		ctx.lineTo(width,y0);
-		ctx.stroke();		
 	
-		ctx.setLineDash([5]);
-		ctx.beginPath();
-		ctx.moveTo(x0,y0 + A);
-		ctx.lineTo(x0,height);
-		ctx.stroke();		
+	if(localCommand == 0026){//import full geometron hypercube
+		var localString = document.getElementById("mainTextArea").value;
+		var inputStack = localString.split("\n");
+		for(var index = 0;index < inputStack.length;index++){
+			var stackLine = inputStack[index].split(":");
+			var localAddress = parseInt(stackLine[0],8);
+			var localGlyph = stackLine[1];
+			currentTable[localAddress] = localGlyph;
+		}
+		currentGlyph = currentTable[currentAddress];
+		currentGlyphArray = currentGlyph.split(",");
+		cursorPosition = currentGlyphArray.length;
+		redraw();
+
+	}
+	if(localCommand == 0027){//export full geometron hypercube
+		var localString = "";
+		for(var index = 0;index < currentTable.length;index++){
+			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+		}
+		document.getElementById("mainTextArea").value = localString;
+	}
+	if(localCommand == 030){
+		if(document.getElementById("glyphTableEditor").style.display != "none"){
+			document.getElementById("glyphTableEditor").style.display = "none";
+		}else{
+			document.getElementById("glyphTableEditor").style.display = "block";
+		}
+	}
+	if(localCommand == 031){//export SVG
+		currentSVG = "";
+		x0 = 200;
+		y0 = 200;
+		unit = 50;
 		doTheThing(0300);
-		ctx.strokeStyle="green";
+		drawGlyph(currentGlyph);
 
-		x = x0;
-		y = y0 + 0.5*A;
-		side = Gamma;
-		ctx.setLineDash([]);
-
-
-	drawGlyph("0333,0335,0337,0337,0342,0336,0336,0350,0334,0342,0335,0335,0342,0334,0334,0334,0304,0332,0332,0334,0337,0337,0342,0336,0336,0350,0335,0342,0334,0334,0342,");
-
-	doTheThing(0300);
-	ctx.strokeStyle="green";
-
-	x = 20;
-	y = 30;
-	side = 30;
-	drawGlyph("0127,0151,0164,0143,0150,040,0157,0146,040,0101,0147,0156,0145,0163,0151,");
-
-	doTheThing(0300);
-
-	x = x0 + 10;
-	y = height - 10;
-	side = 16;
-	ctx.strokeStyle="green";
-	currentWord = "x0";
-	ctx.fillStyle = "green";
-	doTheThing(0365);
-
-
-	x = 10;
-	y = y0 + A - 5;
-	side = 16;
-	ctx.strokeStyle="green";
-	currentWord = "y0 + A";
-	ctx.fillStyle = "green";
-	doTheThing(0365);
-
-	x = x0 + 5.3*Gamma;
-	y = y0 + 0.5*A+ 0.2*Gamma;
-	side = 16;
-	ctx.strokeStyle="green";
-	currentWord = "width";
-	ctx.fillStyle = "green";
-	doTheThing(0365);
-
-	x = 10;
-	y = y0 + 20;
-	side = 16;
-	ctx.strokeStyle="green";
-	currentWord = "y0";
-	ctx.fillStyle = "green";
-	doTheThing(0365);
-
+		var localString= "<svg width=\"500\" height=\"500\" viewbox = \"0 0 500 500\"  xmlns=\"http://www.w3.org/2000/svg\" style = \"border:solid;\">\n";		
+		localString += currentSVG;
+		localString += "</svg>";
+		document.getElementById("mainTextArea").value = localString;
+	}
 }
 
 </script>
-</div>
 
-<div class  = "atom">
-	Next we must annotate this in a rational and controllable way.  Namely the peak value, and full width half maximum must be marked in a way that looks good.  
-		
-</div>
-
-<div class = "atom">
-	Other tasks:
-	<ul>
-		<li>live update of arbitrary peak</li>
-		<li>axis labels</li>
-		<li>deeper philosophical exposition of underlying thought of plots, contrast to Mathematica and Matlab and the evil calculators</li>
-		<li>study of LRC circuit, map to curve</li>
-		<li>study of mass on spring, map to curve</li>
-		<li>study of parametric amplifier, map to curve</li>
-		<li>study of chi squared, nonlinear fit to noisy points</li>
-		<li>curve used as tool in art, impressionist creations of purely artistic nature of all kinds</li>	
-	</ul>
-</div>
-<style id = "style">
+<style>
 html {
 	height: 100%;
 	background: black;
-	background-size: cover;
 }
 
-
 .atom{
-	width: 5in;
+	width: auto;
 	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 16px;
+	font-family: "Century Schoolbook";
+	text-align: left;
+	float:left;
+}
+#spellDiv{
+	width: 600px;
+	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 15px 15px 15px 15px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	float:left;
+	overflow: scroll;
+}
+
+#plotCanvas{
 	border-style: solid;
 	border-width: 1px;
 	border-color: black;
 	border-radius: 5px;
-	padding: .5in .5in .5in .5in;
-	margin: 10px 10px 10px 10px;
-	background: #f1e7cd;	
-	font-size: 16px;
-	font-family: "Century Schoolbook";
-	text-align: justify;
-	float:left;
+
+}
+.glyphButtons{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    background: white;	
+}
+.glyphButtons:hover{
+    background: gray;	
+
+}
+.glyphButtons:active{
+    background: yellow;	
+}
+#glyphTableEditor{
+	background: gray;	
 }
 
+td{
+	padding: 15px 15px 15px 15px;
+	margin: 10px 10px 10px 10px;
+
+}
 </style>
 </center>
 </body>
-</html>
+</html>	
