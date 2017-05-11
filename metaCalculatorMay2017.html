@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>General Test File</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+	
+	function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		var myCharCode = String.fromCharCode(parseInt(stringArray[index],8));
+		if(parseInt(stringArray[index],8) >= 040 && parseInt(stringArray[index],8) < 0177 ){
+			localString += myCharCode;
+		}
+		if(parseInt(stringArray[index],8) == 012){//newline
+			localString += myCharCode;
+		}
+		if(parseInt(stringArray[index],8) == 011){//vertical tab
+			localString += myCharCode;
+		}		
+		
+	}
+	return localString;
+}
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		if(tempCharCode != 0){
+			localByteCode += "0";
+			localByteCode += tempCharCode.toString(8);
+			localByteCode += ",";
+		}
+	}
+	return localByteCode;
+}
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class = "atom" id = "main"></div>
+<div class = "atom" id = "control">
+Equation:<input id = "equationInput" value = "C = 2\pi r" onchange = "updateCalculator();"></input><p>
+
+X name:<input id = "XnameInput" value = "r" onchange = "updateCalculator();"></input><p>
+Y name:<input id = "YnameInput" value = "C" onchange = "updateCalculator();"></input><p>
+
+X2Y:<input id = "X2YInput" value = "C = 2*Math.PI*r;" onchange = "updateCalculator();"></input><p>
+Y2X:<input id = "Y2XInput" value = "r = C/(2*Math.PI);" onchange = "updateCalculator();"></input><p>
+
+</div>
+
+<script>
+
+currentNode = document.getElementById("main");
+
+
+code01701 = "044,044,0103,040,075,040,062,0134,0160,0151,040,0162,044,044,";
+
+dollars = ",044,044,";
+equation = "C = 2\\pi r"; 
+
+
+Xunits = "[cm]";
+Yunits = "[cm]";
+X2Y = "C = 2*Math.PI*r;";
+Y2X = "r = C/(2*Math.PI);";
+
+createCalculator();
+updateCalculator();
+
+function createCalculator(){
+
+	div01700 = document.createElement("div");
+	div01700.innerHTML = byteCode2string(code01701);
+	currentNode.appendChild(div01700);
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+	div0700 = document.createElement("div");
+	span0700_Y = document.createElement("span");
+	input0700_Y = document.createElement("input");
+	input0700_Y.id = "id0700_Y";
+	span0700_X = document.createElement("span");
+	span0700_X.style.border = "solid";
+	span0700_X.style.borderRadius = "5px";
+	span0700_X.style.padding = "5px 5px 5px 5px";
+	span0700_X.style.margin = "5px 5px 5px 5px";
+	span0700_Y.style.border = "solid";
+	span0700_Y.style.borderRadius = "5px";
+	span0700_Y.style.padding = "5px 5px 5px 5px";
+	span0700_Y.style.margin = "5px 5px 5px 5px";
+	input0700_X = document.createElement("input");
+	input0700_X.id = "id0700_X";
+	span0700_Y_units = document.createElement("span");
+	span0700_X_units = document.createElement("span");
+	span0700_Y_prompt = document.createElement("span");
+	span0700_X_prompt = document.createElement("span");
+	span0700_X.appendChild(span0700_X_prompt); 
+	span0700_X.appendChild(input0700_X); 
+	span0700_X.appendChild(span0700_X_units); 
+	span0700_Y.appendChild(span0700_Y_prompt); 
+	span0700_Y.appendChild(input0700_Y); 
+	span0700_Y.appendChild(span0700_Y_units); 
+	div0700.appendChild(span0700_X);
+	div0700.appendChild(span0700_Y);
+	currentNode.appendChild(div0700);
+
+
+}
+function updateCalculator(){
+	Xname = document.getElementById("XnameInput").value;
+	Yname = document.getElementById("YnameInput").value;	
+
+	X2Y = document.getElementById("X2YInput").value;
+	Y2X = document.getElementById("Y2XInput").value;
+
+	input0700_X.onchange = function(){
+		var X = document.getElementById("id0700_X").value;
+		eval("var " + Yname + " = 0;");
+		eval("var " + Xname + " = X;");
+		eval(X2Y);
+		eval("var Y = " + Yname + ";");
+		document.getElementById("id0700_Y").value = Y;
+	}
+	input0700_Y.onchange = function(){
+		var Y = document.getElementById("id0700_Y").value;
+		eval("var " + Yname + " = Y;");
+		eval("var " + Xname + " = 0;");
+		eval(Y2X);
+		eval("var X = " + Xname + ";");
+		document.getElementById("id0700_X").value = X;
+	}
+	span0700_Y_units.innerHTML = Yunits;
+	span0700_X_units.innerHTML = Xunits; 
+	span0700_Y_prompt.innerHTML = Yname + " = ";
+	span0700_X_prompt.innerHTML = Xname + " = ";
+	equation = document.getElementById("equationInput").value;
+	equationCode = dollars + string2byteCode(equation) + dollars;
+	div01700.innerHTML  = byteCode2string(equationCode);
+	console.log(byteCode2string(equationCode));
+	MathJax.Hub.Typeset();//tell Mathjax to update the math
+	
+}
+
+</script>
+
+<style id = "style">
+html {
+	height: 100%;
+	background: black;
+	background-size: cover;
+}
+
+
+.atom{
+	width: auto;
+	height: auto;
+	border-style: solid;
+	border-width: 6px;
+	border-color: purple;
+	border-radius: 25px;
+	padding: 10px 10px 10px 10px;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 20px;
+	font-family: "Century Schoolbook";
+	text-align: left;
+	float:left;
+}
+</style>
+</center>
+</body>
+</html>

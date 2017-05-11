@@ -5,48 +5,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
 	
-	function byteCode2string(localByteCode){
-	var localString = "";
-	var stringArray = localByteCode.split(",");
-	for(var index = 0;index < stringArray.length;index++){
-		var myCharCode = String.fromCharCode(parseInt(stringArray[index],8));
-		if(parseInt(stringArray[index],8) >= 040 && parseInt(stringArray[index],8) < 0177 ){
-			localString += myCharCode;
-		}
-		if(parseInt(stringArray[index],8) == 012){//newline
-			localString += myCharCode;
-		}
-		if(parseInt(stringArray[index],8) == 011){//vertical tab
-			localString += myCharCode;
-		}		
-		
-	}
-	return localString;
-}
-
-function string2byteCode(localString){
-	var localByteCode = "";
-	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
-		var tempCharCode = localString.charCodeAt(stringIndex);
-		if(tempCharCode != 0){
-			localByteCode += "0";
-			localByteCode += tempCharCode.toString(8);
-			localByteCode += ",";
-		}
-	}
-	return localByteCode;
-}
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div id = "page">
-
-This idea of math-as-language really gets to the heart of the matter.  Geometron seeks to build a language that is useful both for human-human communication(like English) and for human-machine communication(like javascript), but which is independent of both.  That is to say, it should be possible to express things in this system using only shapes and symbols in a self-contained way, then run those operations on a machine or send them to a human without ever writing a line of code in javascript or C or a line of language in English or Chinese.  That is, this is an attempt to organize existing geometric knowledge into a language which can be used to communicate.  
+<div class = "atom" id = "main">
+	<canvas style = "border:solid;" width = "600" height = "500" id = "plotCanvas"></canvas>
+</div>
+<div class = "atom">
+	In Geometron, everything is physical, everything is fractal, and everything is recursive.  This means that  when plotting on a computer the units are those of the computer screen, either pixels, inches, cm, or fraction of the screen or of the canvas.  Mathematically if we are plotting a 2d curve, this formally is a function:
+	
+	$$f:\mathbb{R}\longmapsto [0,\mathrm{canvas width}] \times [0,\mathrm{canvas height}].$$
+	
+	Technically, this is true in any language that plots on a computer.  But in Geometron we must always do this explicitly, meaning that we must find 
 </div>
 <script>
 
-
+	plotCanvas = document.getElementById("plotCanvas");
+	console.log(plotCanvas.width + "," + plotCanvas.height);
+	
+	
 
 </script>
 
@@ -57,34 +35,6 @@ html {
 	background-size: cover;
 }
 
-
-@media screen and (min-width: 1000px) {
-    #page{
-    	width:800px;
-		color:black;
-    }
-}
-@media screen and (max-width: 1000px) {
-    #page{
-    	width:90%;
-		color:blue;
-    }
-}
-
-#page{
-	height: auto;
-	border-style: solid;
-	border-width: 6px;
-	border-color: purple;
-	border-radius: 25px;
-	padding: 10px 10px 10px 10px;
-	margin: 10px 10px 10px 10px;
-	background: white;	
-	font-size: 20px;
-	font-family: "Century Schoolbook";
-	text-align: left;
-	float:left
-}
 
 .atom{
 	width: auto;
