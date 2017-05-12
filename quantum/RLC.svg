@@ -1,0 +1,40 @@
+<svg width="500" height="500" viewbox = "0 0 500 500"  xmlns="http://www.w3.org/2000/svg" style = "border:solid;">
+<path    d = "M200,200 C200,194 181,192 181,198" stroke = "black" stroke-width = "2" fill = "none"  />
+<path    d = "M181,198 C181,205 200,198 200,192" stroke = "black" stroke-width = "2" fill = "none"  />
+<path    d = "M200,192 C200,186 181,184 181,191" stroke = "black" stroke-width = "2" fill = "none"  />
+<path    d = "M181,191 C181,197 200,191 200,184" stroke = "black" stroke-width = "2" fill = "none"  />
+<path    d = "M200,184 C200,178 181,177 181,183" stroke = "black" stroke-width = "2" fill = "none"  />
+<path    d = "M181,183 C181,189 200,183 200,177" stroke = "black" stroke-width = "2" fill = "none"  />
+<path    d = "M200,177 C200,170 181,169 181,175" stroke = "black" stroke-width = "2" fill = "none"  />
+<path    d = "M181,175 C181,181 200,175 200,169" stroke = "black" stroke-width = "2" fill = "none"  />
+    <line x1="200" y1="169" x2="200" y2="144" style="stroke:black;stroke-width:2" />
+    <circle cx="200" cy = "131" r = "12.5" stroke = "black" stroke-width = "2" fill = "none" />
+<path    d = "M194,131 C194,125 200,125 200,131" stroke = "black" stroke-width = "2" fill = "none"  />
+<path    d = "M200,131 C200,138 206,138 206,131" stroke = "black" stroke-width = "2" fill = "none"  />
+    <line x1="200" y1="200" x2="200" y2="213" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="213" x2="200" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="225" x2="200" y2="231" style="stroke:black;stroke-width:2" />
+    <line x1="187" y1="231" x2="212" y2="231" style="stroke:black;stroke-width:2" />
+    <line x1="187" y1="244" x2="212" y2="244" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="244" x2="200" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="250" x2="200" y2="263" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="263" x2="205" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="205" y1="266" x2="200" y2="269" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="269" x2="195" y2="272" style="stroke:black;stroke-width:2" />
+    <line x1="195" y1="272" x2="200" y2="275" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="275" x2="205" y2="278" style="stroke:black;stroke-width:2" />
+    <line x1="205" y1="278" x2="200" y2="281" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="281" x2="195" y2="284" style="stroke:black;stroke-width:2" />
+    <line x1="195" y1="284" x2="200" y2="288" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="288" x2="205" y2="291" style="stroke:black;stroke-width:2" />
+    <line x1="205" y1="291" x2="200" y2="294" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="294" x2="195" y2="297" style="stroke:black;stroke-width:2" />
+    <line x1="195" y1="297" x2="200" y2="300" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="300" x2="200" y2="313" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="313" x2="212" y2="313" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="313" x2="187" y2="313" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="319" x2="194" y2="319" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="319" x2="206" y2="319" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="325" x2="203" y2="325" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="325" x2="197" y2="325" style="stroke:black;stroke-width:2" />
+</svg>

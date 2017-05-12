@@ -4,29 +4,75 @@
 <title>General Test File</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
-	
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 <div class = "atom" id = "main">
-	<canvas style = "border:solid;" width = "600" height = "500" id = "plotCanvas"></canvas>
-</div>
-<div class = "atom">
-	In Geometron, everything is physical, everything is fractal, and everything is recursive.  This means that  when plotting on a computer the units are those of the computer screen, either pixels, inches, cm, or fraction of the screen or of the canvas.  Mathematically if we are plotting a 2d curve, this formally is a function:
-	
-	$$f:\mathbb{R}\longmapsto [0,\mathrm{canvas width}] \times [0,\mathrm{canvas height}].$$
-	
-	Technically, this is true in any language that plots on a computer.  But in Geometron we must always do this explicitly, meaning that we must find 
-</div>
-<script>
 
+<div>
+	<canvas style = "border:solid;" width = "600" height = "500" id = "plotCanvas">
+	</canvas>
+	<div id = "equation">$$y = \frac{\Gamma^2}{(x-x_0)^2 + \Gamma^2}$$</div>
+</div>
+
+<script>
 	plotCanvas = document.getElementById("plotCanvas");
-	console.log(plotCanvas.width + "," + plotCanvas.height);
+	ctx = plotCanvas.getContext("2d");
+	height = plotCanvas.height;
+	width = plotCanvas.width;
+	
+	plotScale = 1;
+	
+	evalFunction = "y = Math.pow((x - x0),3) - 5*Math.pow((x - x0),2);";
+	evalFunction = "tau = 50;if(x < x0){y = 150}else{y = 150*Math.exp(-(x-x0)/tau)}";
+	evalFunction = "A = 150;Gamma = 14;y = A*Math.pow(Gamma,2)/(Math.pow(x-x0,2) + Math.pow(Gamma,2))";
 	
 	
+	Xstart = 0;
+	Xstop = width;
+	x0 = Math.round(width/2);
+	y0 = Math.round(0.5*height);
+	plotFunction();
+
+function plotFunction(){
+
+	ctx.fillStyle = "black";
+	ctx.lineWidth = 2;
+	ctx.strokeStyle="green";
+
+	ctx.fillRect(0,0,width,height);
+
+	for(var index = Xstart;index < Xstop;index++){
+		x = index;
+		eval(evalFunction);
+		y = plotScale*y;
+		y = y0 - y;
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		x = index+1;
+		eval(evalFunction);
+		y = plotScale*y;
+		y = y0 - y;
+		ctx.lineTo(x,y);
+		ctx.stroke();	
+		console.log(x + "," + y)
+	}
+}
+	
+	
+	document.getElementById("equation").style.color = "green";
+	document.getElementById("equation").style.left = "50px";
+	document.getElementById("equation").style.top = "50px";
+	document.getElementById("equation").style.position = "absolute";
+
 
 </script>
+
+
+
+</div>
+
 
 <style id = "style">
 html {

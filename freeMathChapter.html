@@ -1030,6 +1030,76 @@ ctx.fillRect(0,0,width,height);
 		<li>curve used as tool in art, impressionist creations of purely artistic nature of all kinds</li>	
 	</ul>
 </div>
+<div class = "atom">
+	Consider a series LRC resonator connected to a 50 Ohm line.
+	
+	$$Z = R + i\omega L + \frac{1}{i\omega C}$$
+	$$S_{11} = \frac{Z_0 - Z}{Z_0 + Z}$$
+</div>
+
+
+<div class = "atom">
+<div>
+	<canvas style = "border:solid;" width = "400" height = "400" id = "plotCanvas2">
+	</canvas><p>
+	<div id = "equation">$$y = \frac{\Gamma^2}{(x-x_0)^2 + \Gamma^2}$$</div>
+</div>
+
+<script>
+	plotCanvas = document.getElementById("plotCanvas2");
+	ctx = plotCanvas.getContext("2d");
+	height = plotCanvas.height;
+	width = plotCanvas.width;
+	
+	plotScale = 1;
+	
+	evalFunction = "y = Math.pow((x - x0),3) - 5*Math.pow((x - x0),2);";
+	evalFunction = "tau = 50;if(x < x0){y = 150}else{y = 150*Math.exp(-(x-x0)/tau)}";
+	evalFunction = "A = 150;Gamma = 14;y = A*Math.pow(Gamma,2)/(Math.pow(x-x0,2) + Math.pow(Gamma,2))";
+	
+	
+	Xstart = 0;
+	Xstop = width;
+	x0 = Math.round(width/2);
+	y0 = Math.round(0.5*height);
+	plotFunction();
+
+function plotFunction(){
+
+	ctx.fillStyle = "black";
+	ctx.lineWidth = 2;
+	ctx.strokeStyle="green";
+
+	ctx.fillRect(0,0,width,height);
+
+	for(var index = Xstart;index < Xstop;index++){
+		x = index;
+		eval(evalFunction);
+		y = plotScale*y;
+		y = y0 - y;
+		ctx.beginPath();
+		ctx.moveTo(x,y);
+		x = index+1;
+		eval(evalFunction);
+		y = plotScale*y;
+		y = y0 - y;
+		ctx.lineTo(x,y);
+		ctx.stroke();	
+		console.log(x + "," + y)
+	}
+}
+	
+	
+	document.getElementById("equation").style.color = "green";
+	document.getElementById("equation").style.left = "0px";
+	document.getElementById("equation").style.top = "-200px";
+	document.getElementById("equation").style.position = "relative";
+
+
+</script>
+
+
+</div>
 <style id = "style">
 html {
 	height: 100%;
