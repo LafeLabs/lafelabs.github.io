@@ -176,7 +176,13 @@ function init3dGeometron(){
 }
 
 function export3d(){
-	document.getElementById("textIO").value = document.getElementById("canvas3d").innerHTML;
+
+
+	document.getElementById("textIO").value = "<x3d width=\"200px\" height=\"200px\">\n    <scene id = \"canvas3d\">\n";
+	
+	document.getElementById("textIO").value += document.getElementById("canvas3d").innerHTML;
+
+	document.getElementById("textIO").value += "\n</scene>\n    </x3d>";
 
 }
 
@@ -287,13 +293,13 @@ function doTheThing3d(localCommand){
 		outputText += x.toString() + " ";
 		outputText += y.toString() + " ";
 		outputText += z.toString() + "\' >\n";
-		outputText += "<shape>";
-		outputText += "<appearance>";
+		outputText += "<shape>\n";
+		outputText += "		<appearance>\n";
 		outputText += " 	<material diffuseColor= \'";
 		outputText += r.toString() + " ";
 		outputText += g.toString() + " ";
 		outputText += b.toString() + "\' ></material>\n";
-		outputText += "</appearance>";
+		outputText += "		</appearance>";
 		
 		outputText += " 	<box size = \'";
 		outputText += side.toString() + " ";

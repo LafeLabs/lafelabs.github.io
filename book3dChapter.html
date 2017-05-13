@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Geometron in Three Dimensions Chapter</title>
+ <script src="https://www.x3dom.org/release/x3dom.js"></script>
+    <link rel="stylesheet" href="https://www.x3dom.org/release/x3dom.css">
+
+<script id = "bytecodeScript">
+/*
+
+*/
+</script>
+<div class = "atom">
+	<h2>Motivation</h2>
+	
+	Three dimensions!  Geometron is not a specific set of instructions and symbols , or even a specific way of organizing them.  It is a <i>methodology</i>, and can be applied in any situation where one wants to communicate ideas about shape and position.  There are many ways to use these ideas to describe three dimensional objects in real space and also on a computer, and I'm an expert in neither.  The goal of this chapter is not to build a new game engine or virtual reality tool, but rather as a proof of concept and simple art stack to show how the Geometron way of thinking can make creation and use of 3d language accessible to amateurs.
+<p>
+
+</div>  
+
+<div class = "atom">
+<h2>Cubic Lattice of Cubes</h2>
+
+Rather than endless pontification, I will jump into an example.  As in the two dimensional cases, there will be a set of parameters which define a cursor position, size, and orientation.  As before, this cursor will be able to carry out creation operations.  In this case, the cursor is always a cube.  Motion is in discrete amounts, by the distance "side", as before.  Rotation by default is 90 degrees as usual.  Deviation from this can quickly lead to structures that are hard for the human mind to deal with, but deal with them we shall.  Later.
+<p>
+
+Making 3d things in a browser involves the .x3d formats.  This supposedly simple standard is based on xml, home of many supposedly simple formats that are hard to use.  I start with a  cube.  Just a cube.  
+<p>
+The documentation for x3d is so bad that I will include my own full description of all the components I'm using here.  
+
+http://www.web3d.org/documents/specifications/19775-1/V3.2/
+<p>
+<center>
+<x3d width="500px" height="500px">
+    <scene id = "canvas3d">
+
+<transform translation = "0 0 0" id = "cursor"> 
+
+<transform translation="0 0 0" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="1,0,0,1.57" scale="1,1,1" scaleorientation="0,0,0,0" id = "trans1">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="1 0 0" ambientintensity="0.5" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cylinder height ="4" radius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cylinder>	
+	</shape>
+</transform>
+<transform translation="0 0 3" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="1,0,0,1.57" scale="1,1,1" scaleorientation="0,0,0,0">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="1 0 0" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cone height = "2" bottomRadius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cone>	
+	</shape>
+</transform>
+<transform translation="0 0 -3" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="1,0,0,1.57" scale="1,1,1" scaleorientation="0,0,0,0">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="1 0 0" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cone height = "2" bottomRadius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cone>	
+	</shape>
+</transform>
+
+<transform translation="0 0 0" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,1,1.57" scale="1,1,1" scaleorientation="0,0,0,0">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="0 1 0" ambientintensity="0.5" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cylinder height ="4" radius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cylinder>	
+	</shape>
+</transform>
+<transform translation="3 0 0" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,1,-1.57" scale="1,1,1" scaleorientation="0,0,0,0">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="0 1 0" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cone height = "2" bottomRadius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cone>	
+	</shape>
+</transform>
+<transform translation="-3 0 0" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,1,-1.57" scale="1,1,1" scaleorientation="0,0,0,0">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="0 1 0" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cone height = "2" bottomRadius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cone>	
+	</shape>
+</transform>
+
+
+<transform translation="0 0 0" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scale="1,1,1" scaleorientation="0,0,0,0">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="0 0 1" ambientintensity="0.5" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cylinder height ="4" radius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cylinder>	
+	</shape>
+</transform>
+<transform translation="0 3 0" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scale="1,1,1" scaleorientation="0,0,0,0" onclick = "upz();">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="0 0 1" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cone height = "2" bottomRadius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cone>	
+	</shape>
+</transform>
+<transform translation="0 -3 0" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="0,0,0,0" scale="1,1,1" scaleorientation="0,0,0,0" onclick = "downz()">	
+	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
+		<appearance sorttype="auto" alphaclipthreshold="0.1"> 	
+			<material diffusecolor="0 0 1" ambientintensity="0.2" emissivecolor="0,0,0" shininess="0.2" specularcolor="0,0,0">
+			</material>
+		</appearance> 		
+		<cone height = "2" bottomRadius = "1" solid="true" ccw="true" usegeocache="true" lit="true"></cone>	
+	</shape>
+</transform>
+
+</transform>
+
+    </scene>    
+</x3d>
+<button onclick = "upz();">upz</button>
+<button onclick = "downz();">downz</button>
+
+</center>
+
+
+    
+
+<script>
+x = 0;
+y = 0;
+z = 0;
+position = x.toString + " " + y.toString() + " "  + x.toString();
+
+function upz(){
+	z += 1;
+	position = y.toString() + " " + z.toString() + " "  + x.toString();	
+	document.getElementById("cursor").setAttribute("translation",position);
+	console.log(position);
+}
+function downz(){
+	z -= 1;
+	position = y.toString() + " " + z.toString() + " "  + x.toString();	
+	document.getElementById("cursor").setAttribute("translation",position);
+	console.log(position);
+}
+
+
+</script>
+
+</div>
+
+<div class = "atom">
+	The control panel in 3d is replaced by a control object, with onclick()methods.  Colors are based on the standard in Blender.  
+	<ul>
+		<li>move in positive z direction: blue cone on blue cylinder like top of rocket</li>
+		<li>move in negative z direction: blue cylinder on blue cone like bottom nozzle of rocket</li>
+		<li>move in positive x direction: red cone on red cylinder like top of rocket</li>
+		<li>move in negative x direction: red cylinder on red cone like bottom nozzle of rocket</li>
+		<li>move in positive y direction: green cone on green cylinder like top of rocket</li>
+		<li>move in negative y direction: green cylinder on green cone like bottom nozzle of rocket</li>
+		<li>grow by 2x: big yellow ball</li>
+		<li>shrink by 2x: small grey ball</li>
+		<li>create cube: white cube</li>
+		<li>colors: two spheres in vesica pisces generalization, one white and one the target color</li>
+	
+	</ul>
+</div>
+<style>
+
+table,td,th{
+    border-collapse: collapse;
+	border:solid;
+}
+html {
+	height: 100%;
+	background: black;
+}
+
+
+.atom{
+	width: 5in;
+	height: auto;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-radius: 5px;
+	padding: .5in .5in .5in .5in;
+	margin: 10px 10px 10px 10px;
+	background: #f1e7cd;	
+	font-size: 16px;
+	font-family: "Century Schoolbook";
+	text-align: justify;
+	float:left;
+}
+.glyphButtons{
+    border-style: solid;
+    border-width: 0px;
+    border-color: black;
+    background: white;	
+}
+.glyphButtons:hover{
+    background: gray;	
+
+}
+.glyphButtons:active{
+    background: yellow;	
+}
+
+</style>
+
+</body>
+</html>
