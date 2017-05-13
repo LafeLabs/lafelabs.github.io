@@ -13,7 +13,6 @@
 <div>
 	<canvas style = "border:solid;" width = "600" height = "500" id = "plotCanvas">
 	</canvas>
-	<div id = "equation">$$y = \frac{\Gamma^2}{(x-x_0)^2 + \Gamma^2}$$</div>
 </div>
 
 <script>
@@ -26,14 +25,27 @@
 	
 	evalFunction = "y = Math.pow((x - x0),3) - 5*Math.pow((x - x0),2);";
 	evalFunction = "tau = 50;if(x < x0){y = 150}else{y = 150*Math.exp(-(x-x0)/tau)}";
-	evalFunction = "A = 150;Gamma = 14;y = A*Math.pow(Gamma,2)/(Math.pow(x-x0,2) + Math.pow(Gamma,2))";
+	evalFunction = "A = 150;Gamma = 14;y = A*Math.pow(Gamma,2)/(Math.pow(x-x0,2) + Math.pow(Gamma,2)) + 20*Math.random()";
 	
+	evalFunction = "y = 10*gauss() + 20*Math.sin(0.1*x + .5*gauss())";
 	
+//http://www.ollysco.de/2012/04/gaussian-normal-functions-in-javascript.html	
 	Xstart = 0;
 	Xstop = width;
 	x0 = Math.round(width/2);
 	y0 = Math.round(0.5*height);
 	plotFunction();
+
+
+setInterval(plotFunction,15);
+
+function gauss(){
+	var u1 = Math.random();
+	var u2 = Math.random();
+	var z1 = Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
+	var z2 = Math.sqrt(-2*Math.log(u1))*Math.sin(2*Math.PI*u2);
+	return z1;
+}
 
 function plotFunction(){
 
@@ -61,11 +73,6 @@ function plotFunction(){
 }
 	
 	
-	document.getElementById("equation").style.color = "green";
-	document.getElementById("equation").style.left = "50px";
-	document.getElementById("equation").style.top = "50px";
-	document.getElementById("equation").style.position = "absolute";
-
 
 </script>
 
