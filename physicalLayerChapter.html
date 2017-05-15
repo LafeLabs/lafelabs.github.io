@@ -201,10 +201,19 @@
 01360:0313,0333,0200,0336,0332,0336,0330,0336,0331,0332,0332,0330,0337,0337,0342,0330,0335,0336,0336,0342,0330,0335,0337,0337,0342,0342,0330,0336,0335,0335,0336,0336,0332,0331,0331,0337,0337,0306,0350,0312,0336,0335,0342,0334,0334,0342,0335,0304,0337,0313,0336,0331,0332,0332,0332,0336,0333,0337,0337,0337,0337,0333,0336,0332,0336,0333,0330,0337,0342,0336,0336,0350,0334,0342,0335,0335,0342,0334,0304,0333,0333,0331,0331,0337,0337,0337,
 01361:0313,0333,0200,0336,0332,0336,0330,0336,0331,0332,0332,0330,0337,0337,0342,0330,0335,0336,0336,0342,0330,0335,0337,0337,0342,0342,0330,0336,0335,0335,0336,0336,0332,0331,0331,0337,0337,0306,0350,0312,0336,0335,0342,0334,0334,0342,0335,0304,0337,0313,0336,0331,0332,0332,0332,0336,0333,0337,0337,0337,0337,0333,0336,0332,0336,0333,0330,0337,0342,0330,0335,0335,0350,0336,0336,0335,0342,0334,0334,0342,0335,0304,0335,0335,0337,0333,0330,0337,0337,0331
 0274:0333,0331,0362,0203,0334,0203,0334,0203,0334,0203,0334,0363,0330,0332,
-
+0210:0360,0330,0336,0336,0336,0336,0333,0337,0337,0337,0337,0331,0336,0336,0336,0336,0333,0337,0337,0337,0337,
+0211:0210,0210,0210,0210,0210,0210,0210,0210,0332,
 */
 </script>
 <script>
+	baz = "";
+	
+	up = "\n digitalWrite(pin1A,HIGH);\n delay(side);\n digitalWrite(pin1A,LOW);\n";
+down = "\n digitalWrite(pin1B,HIGH);\n delay(side);\n digitalWrite(pin1B,LOW);\n";
+left = "\n digitalWrite(pin2A,HIGH);\n delay(side);\n digitalWrite(pin2A,LOW);\n";
+right = "\n digitalWrite(pin2B,HIGH);\n delay(side);\n digitalWrite(pin2B,LOW);\n";
+minus = "\n side /= 2;";
+plus = "\n side *= 2;";
 
   	inPath = false;//move to true after path started, back to false after path ended
 	penDown = false;
@@ -493,6 +502,7 @@ function doTheThing(localCommand){
       }
       x += side*Math.cos(theta);   
       y += side*Math.sin(theta); 
+    	baz += up;
     }
     if(localCommand == 0331){
       if(penDown == true){
@@ -504,6 +514,8 @@ function doTheThing(localCommand){
       }
       x -= side*Math.cos(theta);   
       y -= side*Math.sin(theta); 
+         		baz += down;
+
     }
     if(localCommand == 0332){
       if(penDown == true){
@@ -515,6 +527,7 @@ function doTheThing(localCommand){
       }
       x += side*Math.cos(theta - thetaStep);
       y += side*Math.sin(theta - thetaStep);
+      baz += left;
     }
     if(localCommand == 0333){
       if(penDown == true){
@@ -526,6 +539,7 @@ function doTheThing(localCommand){
       }
       x += side*Math.cos(theta + thetaStep);
       y += side*Math.sin(theta + thetaStep);
+      baz += right;
     }
     if(localCommand == 0334){
       theta -= thetaStep; // CCW
@@ -535,9 +549,11 @@ function doTheThing(localCommand){
     }
     if(localCommand == 0336){
       side /= scaleFactor; // -
+      baz += minus;
     }
     if(localCommand == 0337){
       side *= scaleFactor; // +
+      baz += plus;
     }
     if(localCommand == 0340){  //point
 		ctx.beginPath();
@@ -793,19 +809,19 @@ drawGlyph("02330");
 <div class = "atom">
 
 <center>
+<canvas id = "invisible" style = "display:none;"></canvas>
 <canvas width = "400" height = "300" id = "actionCanvas1" style = "border:solid;background:white"></canvas>
+<input size = "40" id = "glyph" onchange = "glyphTextUpdate()"></input>
 </center>
 <center>
-<div id = "controlPanel1" style = "width:150px;height:150px;"></div>
-</center>
+<div id = "controlPanel1" style = "width:150px;height:150px;float:left"></div>
+<div id = "rootPanel" style = "width:150px;height:150px;float:left"></div>
+</center><p>
 <script id = "duinoCode1">/*
-int shapeTable[512];
-int mainGlyph[64];
-int index = 0;
-int readIndex = 0;
+
 float scaleFactor = 2.0;
-float side = 1000;
-float unit = 1000;
+float side = 100;
+float unit = 100;
 
 int pin1A = 13;
 int pin1B = 12;
@@ -825,82 +841,19 @@ void setup() {
   digitalWrite(pin2B,LOW);
     
     
-  for(int i= 0;i < 512;i++){
-    shapeTable[index] = -1;
-  }
-  for(int i= 0;i < 64;i++){
-    mainGlyph[index] = -1;
-  }
 */</script>
-<!--insert shape table definition here, as well as one-time-draw loop can stay empty in most cases except for machining-->
+<!-- -->
 <script id = "duinoCode2">/*
 }
 
 void loop() {
-
   
 }
 
-void drawGlyph(int currentGlyph[]){
-  for(int i=0;i < 64;i++){
-    doTheThing(currentGlyph[i]);
-  }
-}
-
-void drawShape(int startIndex){
-  for(int i=startIndex;i < startIndex + 16;i++){
-    doTheThing(shapeTable[i]);
-  }
-}
-
-void doTheThing(int localCommand){
-
-    if(localCommand == 0){
-        delay(side);
-        digitalWrite(pin1A,HIGH);
-        delay(side);
-        digitalWrite(pin1A,LOW);
-    }
-    if(localCommand == 1){
-        delay(side);
-        digitalWrite(pin1B,HIGH);
-        delay(side);
-        digitalWrite(pin1B,LOW);
-    }
-    if(localCommand == 2){
-        delay(side);
-        digitalWrite(pin2A,HIGH);
-        delay(side);
-        digitalWrite(pin2A,LOW);
-    }
-    if(localCommand == 3){
-        delay(side);
-        digitalWrite(pin2B,HIGH);
-        delay(side);
-        digitalWrite(pin2B,LOW);
-    }
-    if(localCommand == 4){
-      side /= scaleFactor; // -
-    }
-    if(localCommand == 5){
-      side *= scaleFactor; // +
-    }
-    if(localCommand == 6){
-     // pen down
-    }
-    if(localCommand == 7){
-      // pen up
-    }
-    if(localCommand == 8){//reset scale
-      side = unit;
-    }
-    
-    if(localCommand >= 10){
-      drawShape(localCommand);
-    }
-}
 */</script>
+<p>
 copy and paste the following code into the Arduino IDE and upload to the control board:
+<p>
 <textarea id = "duinoOut" cols = "60" rows = "40"></textarea>
 <script>
 currentNode = document.getElementById("controlPanel1");
@@ -914,16 +867,26 @@ appendGlyphButton(0336);
 appendGlyphButton(0331);
 appendGlyphButton(0337);
 
+currentNode = document.getElementById("rootPanel");
+appendGlyphButton(010);
+
 currentGlyph = "";
 x0 = 200;
 y0 = 150;
 unit = 50;
 redraw();
+
+function glyphTextUpdate(){
+	currentGlyph = document.getElementById("glyph").value;
+	redraw();
+}
+
 function redraw(){
 	ctx = document.getElementById("actionCanvas1").getContext("2d");
 	ctx.clearRect(0,0,400,300);
 	doTheThing(0300);
 	drawGlyph(currentGlyph);
+	document.getElementById("glyph").value = currentGlyph;	
 	penDown = false;
 	drawGlyph(cursor.glyph);	
 	
@@ -932,28 +895,9 @@ function redraw(){
 	var bar = document.getElementById("duinoCode2").text;
 	bar = bar.slice(2,bar.length - 2);
 
-	var baz = "mainGlyph[0] = 0;\n";
-	baz += "mainGlyph[1] = 2;\n";
-	baz += "mainGlyph[2] = 1;\n";
-	baz += "mainGlyph[3] = 3;\n";
-	baz += "mainGlyph[4] = 4;\n";
-	baz += "mainGlyph[5] = 0;\n";
-	baz += "mainGlyph[6] = 2;\n";
-	baz += "mainGlyph[7] = 1;\n";
-	baz += "mainGlyph[8] = 3;\n";
-	baz += "mainGlyph[9] = 4;\n";
-	baz += "mainGlyph[10] = 0;\n";
-	baz += "mainGlyph[11] = 2;\n";
-	baz += "mainGlyph[12] = 1;\n";
-	baz += "mainGlyph[13] = 3;\n";
-	baz += "mainGlyph[14] = 4;\n";
-	baz += "mainGlyph[15] = 0;\n";
-	baz += "mainGlyph[16] = 2;\n";
-	baz += "mainGlyph[17] = 1;\n";
-	baz += "mainGlyph[18] = 3;\n";
-	baz += "drawGlyph(mainGlyph);\n";
-
-
+	ctx = ctx = document.getElementById("invisible").getContext("2d");
+	baz = "";
+	drawGlyph(currentGlyph);
 	document.getElementById("duinoOut").value = foo + baz + bar;
 	
 }
@@ -974,6 +918,21 @@ function redraw(){
 	<li>spime concept and example</li>
 	<li>cuneiform typewriter</li>
 </ul>
+</div>
+
+<div class = "atom">
+	The methodology for physical printing is:
+<ol>
+	<li>x control and y control established</li>
+	<li>x and y relative units established, "unit" established, added to cube code to generate control code in whatever is controlling the motors, generally either time or number of steps</li>
+	<li>build up shape table of relevant shapes in local physical language of printer, starting with test and calibration structures</li>
+	<li>establish basic ability to create squares that are filled and empty to transmit and store binary information</li>
+	<li>use, replicate</li>
+</ol>
+</div>
+
+<div class = "atom">
+<img src = "https://i.imgur.com/HR6fbUq.jpg" style = "width:500px"></img>
 </div>
 
 <style>

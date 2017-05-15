@@ -34,7 +34,7 @@ http://www.web3d.org/documents/specifications/19775-1/V3.2/
 <x3d width="500px" height="500px">
     <scene id = "canvas3d">
 
-<transform translation = "0 0 0" id = "cursor"> 
+<transform translation = "0 0 0" id = "cursor" scale="1,1,1"> 
 
 <transform translation="0 0 0" render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" center="0,0,0" rotation="1,0,0,1.57" scale="1,1,1" scaleorientation="0,0,0,0" id = "trans1">	
 	<shape render="true" bboxcenter="0,0,0" bboxsize="-1,-1,-1" ispickable="true">
@@ -129,10 +129,7 @@ http://www.web3d.org/documents/specifications/19775-1/V3.2/
 <button onclick = "downz();">downz</button>
 
 </center>
-
-
     
-
 <script>
 x = 0;
 y = 0;
@@ -173,6 +170,47 @@ function downz(){
 	
 	</ul>
 </div>
+<div class = "atom">
+<h2>Tensegrity Octahedron</h2>
+
+VR/AR/CAD/bas relief, totem pole, animation
+
+Actions:
+<ol>
+	<li>set angle symmetry to fourfold</li>
+	<li>stick instance along x of length side</li>
+	<li>move along x by side amount</li>
+	<li>rotate around z axis by deltatheta</li>
+	<li>stick instance along x direction</li>
+	<li>move along x by side amount</li> 
+	<li>rotate around z axis by deltatheta</li>
+	<li>stick instance along x direction</li>
+	<li>move along x by side amount</li> 
+	<li>rotate around z axis by deltatheta</li>
+	<li>stick instance along x direction</li>
+	<li>move along x by side amount</li> 
+	<li>rotate around z axis by deltatheta</li>
+	<li>halve step angle</li>
+	<li>rotate around z axis by deltatheta</li>
+	<li>rotate around y axis by deltatheta</li>
+	<li>double step angle</li>
+	<li>rotate around z axis by deltatheta</li>
+	<li>stick instance along x of length side</li>
+	<li>move along x by side amount</li>
+	<li>rotate around z axis by deltatheta</li>
+	<li>stick instance along x direction</li>
+	<li>move along x by side amount</li> 
+	<li>rotate around z axis by deltatheta</li>
+	<li>stick instance along x direction</li>
+	<li>move along x by side amount</li> 
+	<li>rotate around z axis by deltatheta</li>
+	<li>stick instance along x direction</li>
+	<li>move along x by side amount</li> 
+	<li>rotate around z axis by deltatheta</li>
+
+</ol>
+</div>
+
 <style>
 
 table,td,th{

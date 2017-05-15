@@ -1,86 +1,87 @@
 <!DOCTYPE HTML>
-<html>
+<html id = "all">
 <head>
 <title>General Test File</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
-</script>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});</script>
+<script>
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		var myCharCode = String.fromCharCode(parseInt(stringArray[index],8));
+		if(parseInt(stringArray[index],8) >= 040 && parseInt(stringArray[index],8) < 0177 ){
+			localString += myCharCode;
+		}
+		if(parseInt(stringArray[index],8) == 012){//newline
+			localString += myCharCode;
+		}
+		if(parseInt(stringArray[index],8) == 011){//vertical tab
+			localString += myCharCode;
+		}
+		
+	}
+	return localString;
+}
 
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		if(tempCharCode != 0){
+			localByteCode += "0";
+			localByteCode += tempCharCode.toString(8);
+			localByteCode += ",";
+		}
+	}
+	return localByteCode;
+}
+
+</script>
 </head>
 <body>
 <div class = "atom" id = "main">
-
-<div>
-	<canvas style = "border:solid;" width = "600" height = "500" id = "plotCanvas">
-	</canvas>
+	<textarea id = "inputArea" rows = "40" cols = "40"></textarea>
+</div>
+<div class = "atom" id = "control">
+<button onclick = "converts2b();">string2byteCode()</button>
+<button onclick = "removeSpaces();">removeSpaces()</button>
+</div>
+<div class = "atom" id = "main">
+	<textarea id = "outputArea" rows = "40" cols = "40"></textarea>
 </div>
 
 <script>
-	plotCanvas = document.getElementById("plotCanvas");
-	ctx = plotCanvas.getContext("2d");
-	height = plotCanvas.height;
-	width = plotCanvas.width;
-	
-	plotScale = 1;
-	
-	evalFunction = "y = Math.pow((x - x0),3) - 5*Math.pow((x - x0),2);";
-	evalFunction = "tau = 50;if(x < x0){y = 150}else{y = 150*Math.exp(-(x-x0)/tau)}";
-	evalFunction = "A = 150;Gamma = 14;y = A*Math.pow(Gamma,2)/(Math.pow(x-x0,2) + Math.pow(Gamma,2)) + 20*Math.random()";
-	
-	evalFunction = "y = 10*gauss() + 20*Math.sin(0.1*x + .5*gauss())";
-	
-//http://www.ollysco.de/2012/04/gaussian-normal-functions-in-javascript.html	
-	Xstart = 0;
-	Xstop = width;
-	x0 = Math.round(width/2);
-	y0 = Math.round(0.5*height);
-	plotFunction();
 
+document.getElementById("inputArea").value = document.getElementById("all").innerHTML;
 
-setInterval(plotFunction,15);
-
-function gauss(){
-	var u1 = Math.random();
-	var u2 = Math.random();
-	var z1 = Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);
-	var z2 = Math.sqrt(-2*Math.log(u1))*Math.sin(2*Math.PI*u2);
-	return z1;
+function converts2b(){
+	var inputString = document.getElementById("inputArea").value;
+	var outputString = string2byteCode(inputString);
+	document.getElementById("outputArea").value = outputString;
 }
 
-function plotFunction(){
-
-	ctx.fillStyle = "black";
-	ctx.lineWidth = 2;
-	ctx.strokeStyle="green";
-
-	ctx.fillRect(0,0,width,height);
-
-	for(var index = Xstart;index < Xstop;index++){
-		x = index;
-		eval(evalFunction);
-		y = plotScale*y;
-		y = y0 - y;
-		ctx.beginPath();
-		ctx.moveTo(x,y);
-		x = index+1;
-		eval(evalFunction);
-		y = plotScale*y;
-		y = y0 - y;
-		ctx.lineTo(x,y);
-		ctx.stroke();	
-		console.log(x + "," + y)
+function removeSpaces(){
+	var inputByteCode = document.getElementById("outputArea").value;
+	var byteCodeArray = inputByteCode.split(",");
+	var outputCode = "";
+	for(var index = 0;index < byteCodeArray.length;index++){
+		if(byteCodeArray[index] != "040"){
+			outputCode += byteCodeArray[index] + ",";
+		}
 	}
+	var outputString  = byteCode2string(outputCode);
+	document.getElementById("inputArea").value = outputString;
+
 }
-	
-	
 
 </script>
-
-
-
-</div>
-
-
 <style id = "style">
 html {
 	height: 100%;
