@@ -46,38 +46,64 @@ function string2byteCode(localString){
 </script>
 </head>
 <body>
-<div class = "atom" id = "main">
-	<textarea id = "inputArea" rows = "40" cols = "40"></textarea>
-</div>
-<div class = "atom" id = "control">
-<button onclick = "converts2b();">string2byteCode()</button>
-<button onclick = "removeSpaces();">removeSpaces()</button>
-</div>
-<div class = "atom" id = "main">
-	<textarea id = "outputArea" rows = "40" cols = "40"></textarea>
-</div>
 
+<div id = "container">
+
+</div>
 <script>
 
-document.getElementById("inputArea").value = document.getElementById("all").innerHTML;
+currentNode = document.getElementById("container");
 
-function converts2b(){
-	var inputString = document.getElementById("inputArea").value;
-	var outputString = string2byteCode(inputString);
-	document.getElementById("outputArea").value = outputString;
+currentString = "";
+doTheThing(0610);
+
+
+
+currentGlyph = "0600,0610,01,0611,01,0105,040,075,040,0155,0143,0136,062,0611,02,0610,02,03";
+
+drawGlyph(currentGlyph);
+
+currentGlyph = "0600,0610,01,0110,0145,0162,0145,040,0151,0163,040,0163,0157,0155,0145,040,0164,0145,0170,0164,056,040,0101,0103,01,0162,0145,040,0151,0163,040,0163,0157,0155,0145,02,0101,0102,056,0610,02,03,0610,01,0110,0145,0162,0145,040,0151,0163,040,0163,0101,0103,0101,0102,056,0610,02,03";
+drawGlyph(currentGlyph);
+
+
+doTheThing(0611);
+function drawGlyph(localString){
+	var tempArray = localString.split(',');
+	for(var index = 0;index < tempArray.length;index++){
+		doTheThing(parseInt(tempArray[index],8));
+	}
 }
 
-function removeSpaces(){
-	var inputByteCode = document.getElementById("outputArea").value;
-	var byteCodeArray = inputByteCode.split(",");
-	var outputCode = "";
-	for(var index = 0;index < byteCodeArray.length;index++){
-		if(byteCodeArray[index] != "040"){
-			outputCode += byteCodeArray[index] + ",";
-		}
+function doTheThing(localCommand){
+
+	if(localCommand == 01){ //open xml tag
+		currentString += openString;		
 	}
-	var outputString  = byteCode2string(outputCode);
-	document.getElementById("inputArea").value = outputString;
+	if(localCommand == 02){ //open xml tag
+		currentString += closeString;		
+	}
+	if(localCommand == 03){
+		currentNode.innerHTML += currentString;
+	}
+	if(localCommand >= 040 && localCommand <= 0176){
+		currentString += String.fromCharCode(localCommand);
+	}
+	if(localCommand == 0600){
+		currentString = "";
+	}
+	if(localCommand == 0601){//0600,0101,0102,0103,0601,0365 = draw "ABC"
+		currentWord = currentString;
+	}
+	if(localCommand == 0610){
+		openString = "<div class = \"atom\">";
+		closeString = "</div>";
+	}
+	if(localCommand == 0611){
+		openString = "\n\$\$";
+		closeString = "\$\$\n";
+	}
+
 
 }
 

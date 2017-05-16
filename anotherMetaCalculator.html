@@ -1362,9 +1362,27 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 	Ztotal = math.add(ZCin,Zres);	
 	y = y0 + 0.1*Math.round(Ztotal.im);
 </pre>
-<textarea id = "setupin" cols = "60" rows = "20"></textarea>
-<textarea id = "codein" cols = "60" rows = "20"></textarea>
+<textarea id = "setupin" cols = "60" rows = "8"></textarea>
+<textarea id = "codein" cols = "60" rows = "8"></textarea>
+<table>
+	<tr>
+		<th>name</th><th>units</th><th>input value</th><th>output value</th>
+	</tr>
+	<tr>
+		<td>$f_0$</td><td>MHz</td><td>2500</td><td></td>
+	</tr>
+	<tr>
+		<td>$f_0 - \frac{f_0}{Q}$</td><td>MHz</td><td></td><td></td>
+	</tr>
+	<tr>
+
+		<td>$f_0 + \frac{f_0}{Q}$</td><td>MHz</td><td></td><td></td>		
+	</tr>
+
+</table>
 </div>
+
+
 <div class = "atom">
 <canvas width = "500" height = "500" id = "calplot"></canvas>
 <script>
@@ -1437,6 +1455,12 @@ html {
 	background: black;
 }
 
+th,td,table{
+	border:solid;
+	border-collapse:collapse;
+	padding: 5px 5px 5px 5px;
+	
+}
 #calplot{
 
 	border:solid;
