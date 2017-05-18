@@ -272,11 +272,40 @@
 		glyph:"0362,0344,0363,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,0334,0362,0344,0363,0335,0335,0362,0344,0363"
 	}
 
+	
+	keys1 = ["4","5","6","0"];
+	commands1 = [0304,0305,0306,0300];
+	keys2 = ["q","w","e","r","t"];
+	commands2 = [0310,0311,0312,0313,0314];
+	keys3 = ["a","s","d","f","g","h","j","k","l",";"];
+	commands3 = [0330,0331,0332,0333,0334,0335,0336,0337,0350,0351];
+	keys4 = ["z","x","c","v",];
+	commands4 = [0340,0341,0342,0343];	
+	
+	keys = keys1.concat(keys2,keys3,keys4);
+	commands = commands1.concat(commands2,commands3,commands4);
+
 
 </script>
 </head>
 <body>
 <div class = "atom" id = "masterRoot"></div>
+<div class = "atom">
+	key:<input size  = "4" onkeyup = "keyin()" id = "keyInput"></input>
+	<script>
+		function keyin(){
+			var key = document.getElementById("keyInput").value;
+			document.getElementById("keyInput").value = "";
+			for(var index = 0;index < keys.length;index++){
+				if(keys[index] == key){
+					//console.log("0" + commands[index].toString(8));
+					cursorAction(commands[index]);	
+					redraw();
+				}
+			}			
+		}
+	</script>
+</div>
 <div id = "glyphTableEditor" class = "atom" style = "display:block">	
 	<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
 	<div id = "imageData">
@@ -402,12 +431,6 @@ function updateParagraph(){
 	currentGlyph = currentTable[currentAddress];
 	cursorPosition = currentTable[currentAddress].length;
 	redraw();
-}
-
-
-function updateXML(){
-
-
 }
 
 function redraw(){
@@ -591,12 +614,11 @@ function byteCode2string(localByteCode){
 		if(parseInt(stringArray[index],8) == 011){//vertical tab
 			localString += myCharCode;
 		}		
-		if(parseInt(stringArray[index],8) >= 0600 && parseInt(stringArray[index],8) <= 0677){
+		if(parseInt(stringArray[index],8) >= 0400 && parseInt(stringArray[index],8) <= 0777){
 			if(currentTable[parseInt(stringArray[index],8)].length > 0){
 				localString += byteCode2string(currentTable[parseInt(stringArray[index],8)]);
 				console.log(localString);
 			}
-			console.log("Foo");
 		}		
 		
 	}
