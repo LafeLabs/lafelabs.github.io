@@ -2,7 +2,7 @@
 <html>
 <head>
 <!-- PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS, NO PROPERTY NO MONEY NO MINING-->
-<title>Geometron Hypercube Editor</title>
+<title>Geometron Metamap</title>
 <script id = "bytecodeScript">
 /*
 01012:0333,0200,0336,0332,0330,0336,0333,0330,0335,0335,0201,0201,0335,0201,0201,0335,0335,0350,0334,0342,0335,0335,0342,0334,0334,0334,0304,0332,0331,0337,0337,0333,
@@ -330,118 +330,15 @@
 </script>
 </head>
 <body>
-<div class = "atom" id = "masterRoot"></div>
 
-<div class = "atom">
-	key:<input size  = "4" onkeyup = "keyin()" id = "keyInput"></input>
-	<script>
-		function keyin(){
-			var key = document.getElementById("keyInput").value;
-			document.getElementById("keyInput").value = "";
-			for(var index = 0;index < keys.length;index++){
-				if(keys[index] == key){
-					//console.log("0" + commands[index].toString(8));
-					cursorAction(commands[index]);	
-					redraw();
-				}
-			}			
-		}
-	</script>
-</div>
+
 <div id = "glyphTableEditor" class = "atom" style = "display:block">	
 	<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
-	<div id = "imageData">
-		<canvas style = "display:none;" id = "imageCanvas0"></canvas>	
-	</div>
 	<div class = "atom"  style = "padding:40px 40px 40px 40px">
 		<canvas width = "400" height = "1400" id = "plotCanvas" style = "border:solid;display:block;"></canvas>
-	<textarea cols = "55" rows = "16" id = "paragraphTextarea" style = "display:none;" onkeyup = "updateParagraph();"></textarea>
-	</div>
-		
-	<div id = "spellDiv">
-		<canvas width = "3000" height = "30" id = "spellCanvas" style = "border:solid;float:left;"></canvas>
-		<input size = "6" id = "addr" style = "float:left;" onchange = "updateAddr();"></input>
-		<input style = "float:left;" size = "428" id = "glyphBytecode" onchange = "updateGlyph()"></input>
-	</div>
-	<div class = "atom" style = "width:610px;height:auto" id = "controlPad">
-		<div style = "width:95px;height:100px;float:left" id = "directionPad"></div>
-		<div style = "width:210px;height:30px;float:left" id = "anglePad"></div>
-		<div style = "width:180px;height:30px;float:left" id = "scalePad"></div>
-		<div style = "width:125px;height:100px;float:right;" id = "rootPad"></div>
-		<div style = "width:384px;height:100px;float:left" id = "drawPad"></div>
-		<input style = "float:left;margin:0px" size = "80" id = "drawGlyphGlyph" onchange = "updateDrawGlyphs();"></input>
-	</div>
-	<p>
-	<div class = "atom">
-		<textarea id = "mainTextArea"  cols = "84" rows = "12"></textarea>
-	</div>
-	
-
 </div>
 
 <script>
-
-currentNode = document.getElementById("directionPad");
-//buildPanel([0334,0330,0335,0332,0300,0333,0336,0331,0337]);
-buildPanel("0334,0330,0335,0332,0300,0333,0336,0331,0337");
-
-currentNode = document.getElementById("anglePad");
-buildPanel("0304,0305,0306,0350,0351,0352,0353");
-
-currentNode = document.getElementById("scalePad");
-buildPanel("0310,0311,0312,0313,0314,0316");
-
-currentNode = document.getElementById("rootPad");
-buildPanel("020,010,021,022,023,024,025,026,027,031,07");
-
-currentNode = document.getElementById("drawPad");
-drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0362,0203,0363,0364,0366,0367";
-document.getElementById("drawGlyphGlyph").value = drawGlyphsGlyph;
-buildPanel(drawGlyphsGlyph);
-
-ctx = document.getElementById("plotCanvas").getContext("2d");
-currentGlyph = currentTable[currentAddress];
-redraw();
-
-currentNode = document.getElementById("masterRoot");
-appendGlyphButton(030);
-
-function buildPanel(glyphsGlyph){
-	var glyphsGlyphArray = glyphsGlyph.split(",");
-	var buttonArray = [];
-	for(var index = 0;index < glyphsGlyphArray.length;index++){
-		buttonArray.push(parseInt(glyphsGlyphArray[index],8));
-	}
-	for(var index = 0;index < buttonArray.length;index++){
-		appendGlyphButton(buttonArray[index]);
-	}
-}
-
-function updateAddr(){
-	currentAddress = parseInt(document.getElementById("addr").value,8);
-	currentGlyph = currentTable[currentAddress];
-	currentGlyphArray = currentGlyph.split(",");
-	cursorPosition = currentGlyphArray.length;
-	redraw();
-}
-
-function updateGlyph(){
-	currentGlyph = document.getElementById("glyphBytecode").value;
-	currentGlyph = commaCleaner(currentGlyph);
-	currentTable[currentAddress] = currentGlyph;
-	currentGlyphArray = currentGlyph.split(",");
-	cursorPosition = currentGlyphArray.length;
-	redraw();	
-}
-
-function updateDrawGlyphs(){
-	currentNode = document.getElementById("drawPad");
-	while (currentNode.hasChildNodes()) {
-		currentNode.removeChild(currentNode.childNodes[0]);
-	}
-	drawGlyphsGlyph = document.getElementById("drawGlyphGlyph").value;
-	buildPanel(drawGlyphsGlyph);
-}
 
 function roctalChar(localAddress){
 	drawGlyph("0313,0336,0336,0336,0274,0333,0331,0274,0333,0331,0337,");
@@ -468,149 +365,6 @@ function roctalChar(localAddress){
 
 
 
-function updateParagraph(){
-	currentTable[currentAddress] = string2byteCode(document.getElementById("paragraphTextarea").value);
-	currentGlyph = currentTable[currentAddress];
-	cursorPosition = currentTable[currentAddress].length;
-	redraw();
-}
-
-function redraw(){
-
-	if((currentAddress >= 0500 && currentAddress <= 0777)||(currentAddress >= 01700 && currentAddress <= 01777)||(currentAddress >= 01400 && currentAddress <= 01477)){
-		document.getElementById("paragraphTextarea").style.display = "block";
-		if(currentTable[currentAddress] != null){
-			document.getElementById("paragraphTextarea").value = byteCode2string(currentTable[currentAddress]);
-
-		}
-		else{
-		document.getElementById("paragraphTextarea").value = "";
-		}
-	}
-	else{
-		document.getElementById("paragraphTextarea").style.display = "none";	
-	}
-
-	x0 = 350;
-	y0 = 100;
-	unit = 50;
-	//draw the glyph:
-	ctx = document.getElementById("plotCanvas").getContext("2d");
-	//draw current glyph:
-	doTheThing(0300);
-//	ctx.fillStyle = "#808080"
-	ctx.clearRect(0,0,400,1400);
-	doTheThing(0300);
-
-	drawGlyph(currentGlyph);
-	
-	console.log(((x-x0)/50).toString() + "," + ((y0-y)/50).toString())
-	//draw the cursor:
-	ctx = document.getElementById("invisibleCanvas").getContext("2d");
-	getCursor();
-	ctx = document.getElementById("plotCanvas").getContext("2d");
-	drawGlyph(cursor.glyph);
-
-	//spell:
-	ctx = document.getElementById("spellCanvas").getContext("2d");
-	ctx.clearRect(0,0,3000,40);
-	unit = 20;
-	x0 = 5;
-	y0 = 25;
-	doTheThing(0300);
-	spellGlyph(currentGlyph);
-	
-	document.getElementById("addr").value = "0" + currentAddress.toString(8);
-	document.getElementById("glyphBytecode").value = currentGlyph;
-	explodeIndex = 0;	
-	
-}
-
-
-function appendGlyphButton(localCommand){
-	glyphButtonSize = 30;
-	var newCanvas = document.createElement("CANVAS");		
-	newCanvas.width = glyphButtonSize;
-	newCanvas.height = glyphButtonSize;
-	newCanvas.className = "glyphButtons";
-	ctx = newCanvas.getContext("2d");
-	ctx.fillStyle="white";
-	ctx.fillRect(5, 5, glyphButtonSize-10, glyphButtonSize-10);
-	ctx.fillStyle="black";
-	doTheThing(0300);			
-	x = 5;
-	y = glyphButtonSize-5;
-	side = glyphButtonSize-10;
-	doTheThing(localCommand + 01000);
-	if(localCommand < 040){
-		newCanvas.onclick = function(){
-			localRoot(localCommand);
-		}	
-	}
-	if(localCommand >= 040){
-		newCanvas.onclick = function(){
-			cursorAction(localCommand);	
-			redraw();	
-		}
-	}
-	currentNode.appendChild(newCanvas);
-}
-
-
-function cursorAction(localCommand){
-	currentGlyphArray = currentGlyph.split(",");
-	if(cursorPosition > currentGlyphArray.length){
-		cursorPosition = currentGlyphArray.length;
-	}
-	currentGlyph = "";
-	doTheThing(0300);
-	
-	for(var index = 0;index < cursorPosition;index++){
-		currentGlyph += currentGlyphArray[index] + ",";	
-		var localAction = parseInt(currentGlyphArray[index],8);
-		if( !((localAction >= 0340) && (localAction < 0344)) ){
-			doTheThing(localAction);
-		}
-	}
-	if(localCommand != undefined){
-		if( !((localCommand >= 0340) && (localCommand < 0344)) ){
-			doTheThing(localCommand);
-		}
-	}
-	cursor.x = x;
-	cursor.y = y;
-	cursor.theta = theta;
-	cursor.thetaStep = thetaStep;
-	cursor.side = side;
-	if(localCommand != undefined){
-		currentGlyph += "0" + localCommand.toString(8) + ",";
-	}	
-	for(var index = cursorPosition;index < currentGlyphArray.length;index++){
-		currentGlyph += currentGlyphArray[index] + ",";		
-	}
-	cursorPosition++;	
-	currentGlyph = commaCleaner(currentGlyph);
-		currentTable[currentAddress] = currentGlyph;
-
-}
-
-function getCursor(){
-
-	currentGlyphArray = currentGlyph.split(",");
-	var foo = "";
-	doTheThing(0300);
-	for(var index = 0;index < cursorPosition;index++){
-		foo += currentGlyphArray[index] + ",";	
-		var localAction = parseInt(currentGlyphArray[index],8);
-		doTheThing(localAction);
-	}
-	cursor.x = x;
-	cursor.y = y;
-	cursor.theta = theta;
-	cursor.thetaStep = thetaStep;
-	cursor.side = side;
-
-}
 
 function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
 	var dirtyArray = dirtyGlyph.split(",");
@@ -994,164 +748,6 @@ function doTheThing(localCommand){
 	}
 // stroke = "black" stroke-width = "2"
 }
-
-function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
-//	localCommand = parseInt(localCommand,8);
-
-
-	if(localCommand == 010){
-		currentGlyphArray = currentGlyph.split(",");
-		
-		firstHalf = "";
-		secondHalf = "";	
-		for(var index = 0;index < cursorPosition - 1;index++){
-			firstHalf += currentGlyphArray[index] + ",";
-		}
-		for(var index = cursorPosition;index < currentGlyphArray.length;index++){
-			secondHalf += currentGlyphArray[index] + ",";
-		}				
-		currentGlyph = firstHalf + secondHalf;
-		if(cursorPosition > 0){
-			cursorPosition--;
-		}
-		currentGlyph = commaCleaner(currentGlyph);
-
-		redraw();
-	}
-
-	if(localCommand == 0020){//cursor forward
-		cursorPosition--;
-		if(cursorPosition < 0){
-			cursorPosition = currentGlyphArray.length;			
-		}
-
-		redraw();
-	}
-	if(localCommand == 0021){//cursor back
-		cursorPosition++;
-		if(cursorPosition > currentGlyphArray.length ){
-			cursorPosition = 0;
-		}
-		redraw();
-	}	
-	if(localCommand == 0022){//move to previous glyph in table
-		if((currentAddress >= 0700 && currentAddress <= 0777)||(currentAddress >= 01700 && currentAddress <= 01777)||(currentAddress >= 01400 && currentAddress <= 01477)){		
-			if(currentTable[currentAddress] != null){
-				document.getElementById("paragraphTextarea").value = byteCode2string(currentTable[currentAddress]);
-		}
-			else{
-				document.getElementById("paragraphTextarea").value = "";
-		}
-
-		}
-		else{
-			currentGlyph = document.getElementById("glyphBytecode").value;
-			currentGlyph = commaCleaner(currentGlyph);
-			currentTable[currentAddress] = currentGlyph;
-		}
-		currentAddress--;
-		currentGlyph = currentTable[currentAddress];
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-	}
-	if(localCommand == 0023){//move to next glyph in table
-		if((currentAddress >= 0700 && currentAddress <= 0777)||(currentAddress >= 01700 && currentAddress <= 01777)||(currentAddress >= 01400 && currentAddress <= 01477)){		
-			if(currentTable[currentAddress] != null){
-				document.getElementById("paragraphTextarea").value = byteCode2string(currentTable[currentAddress]);
-		}
-			else{
-				document.getElementById("paragraphTextarea").value = "";
-		}
-
-		}
-		else{
-			currentGlyph = document.getElementById("glyphBytecode").value;
-			currentGlyph = commaCleaner(currentGlyph);
-			currentTable[currentAddress] = currentGlyph;
-		}
-
-		currentAddress++;
-		currentGlyph = currentTable[currentAddress];
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-
-	}	
-	if(localCommand == 0024){//from action to symbol
-		if(currentAddress < 01000 && currentAddress > 0){
-			currentAddress += 01000;
-			currentGlyph = currentTable[currentAddress];
-
-		}
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-
-	}	
-	if(localCommand == 0025){//from symbol to action
-		if(currentAddress > 01000 && currentAddress < 02000){
-			currentAddress -= 01000;
-			currentGlyph = currentTable[currentAddress];
-		}
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-	}
-	
-	if(localCommand == 0026){//import full geometron hypercube
-		var localString = document.getElementById("mainTextArea").value;
-		var inputStack = localString.split("\n");
-		for(var index = 0;index < inputStack.length;index++){
-			var stackLine = inputStack[index].split(":");
-			var localAddress = parseInt(stackLine[0],8);
-			var localGlyph = stackLine[1];
-			currentTable[localAddress] = localGlyph;
-		}
-		currentGlyph = currentTable[currentAddress];
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-
-	}
-	if(localCommand == 0027){//export full geometron hypercube
-		var localString = "";
-		for(var index = 0;index < currentTable.length;index++){
-			localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
-		}
-		document.getElementById("mainTextArea").value = localString;
-	}
-	if(localCommand == 030){
-		if(document.getElementById("glyphTableEditor").style.display != "none"){
-			document.getElementById("glyphTableEditor").style.display = "none";
-			document.getElementById("manuscriptPanel").style.display = "block";
-		}else{
-			document.getElementById("glyphTableEditor").style.display = "block";
-			document.getElementById("manuscriptPanel").style.display = "none";
-		}
-	}
-	if(localCommand == 031){//export SVG
-		currentSVG = "";
-		x0 = 200;
-		y0 = 200;
-		unit = 100;
-		ctx = document.getElementById("invisibleCanvas").getContext("2d");
-		doTheThing(0300);		
-		drawGlyph(currentGlyph);
-
-		var localString= "<svg width=\"400\" height=\"400\" viewbox = \"0 0 400 400\"  xmlns=\"http://www.w3.org/2000/svg\" style = \"border:solid;\">\n";		
-		localString += currentSVG;
-		localString += "</svg>";
-		document.getElementById("mainTextArea").value = localString;
-	}
-	if(localCommand == 007){
-		var localString = document.getElementById("mainTextArea").value;	
-		currentGlyph += string2byteCode(localString);
-		redraw();
-	}
-}
-
-
 </script>
 
 <style>
@@ -1175,19 +771,7 @@ html {
 	text-align: left;
 	float:left;
 }
-#spellDiv{
-	width: 600px;
-	height: auto;
-	border-style: solid;
-	border-width: 6px;
-	border-color: purple;
-	border-radius: 25px;
-	padding: 15px 15px 15px 15px;
-	margin: 10px 10px 10px 10px;
-	background: white;	
-	float:left;
-	overflow: scroll;
-}
+
 
 #plotCanvas{
 	border-style: solid;
@@ -1196,63 +780,8 @@ html {
 	border-radius: 5px;
 
 }
-.glyphButtons{
-    border-style: solid;
-    border-width: 0px;
-    border-color: black;
-    background: white;	
-}
-.glyphButtons:hover{
-    background: gray;	
 
-}
-.glyphButtons:active{
-    background: yellow;	
-}
-#glyphTableEditor{
-	background: gray;	
-}
 
-td{
-	padding: 15px 15px 15px 15px;
-	margin: 10px 10px 10px 10px;
-
-}
-#scrollCanvas{
-	border:solid;
-	border-color: black;
-}
-#backCanvas{
-	border:solid;
-	border-color: black;
-}
-
-#fwdCanvas{
-	border:solid;
-	border-color: black;
-}
-#fwdCanvas:hover{
-	background:purple;
-}
-#backCanvas:hover{
-	background:purple;
-}
-#backCanvas:active{
-	border-color: yellow;
-}
-#fwdCanvas:active{
-	border-color: yellow;
-}
-#textDiv{
-	padding: 5px 5px 5px 5px;
-	width: 500px;	
-	font-size: 16px;
-	font-family: "Century Schoolbook";
-	text-align: justify;
-}
-#currentImage{
-	width:300px;
-}
 </style>
 </center>
 </body>
