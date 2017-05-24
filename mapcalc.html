@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+
+
+</script>
+</head>
+<body>
+
+<div class = "atom">
+    <h2>From lat/lon to WM's</h2>
+    Lat/Lon:<input id = "latlon" onchange = "ll2wm();" value ="38.881284, -77.036581"></input>
+    <p>
+    WM:<input id = "WMs"></input>  
+    <p>
+    Binary:<input id = "WMb"></input> 
+    <p>
+    Geometron Bytecode:<input id = "bytecode"></input> 
+    <script>
+        ll2wm();
+        function ll2wm(){
+            var latlon = document.getElementById("latlon").value;
+            var lon0 = -77.035224;//Washington Monument coordinates
+            var lat0 = 38.8894427;
+            var lat = parseFloat(latlon.split(',')[0]);
+            var lon = parseFloat(latlon.split(',')[1]);
+            var deltaLat = lat - lat0;
+            var deltaLon = lon - lon0;
+            deltaLon *=  Math.cos(lat0*Math.PI/180);
+            var deg2WM = 60*1.15*5280/555;// (60 nautical miles/1 degree)*(1.15 statury miles/nm)*(5280 feet/1mi)*(1 WM/555 feet)
+		    var WMx = deg2WM*deltaLon;
+		    var WMy = deg2WM*deltaLat;
+            
+            WMx = Math.round(10*WMx)/10;
+            WMy = Math.round(10*WMy)/10;
+            var WMxy = WMx.toString() + "," + WMy.toString();
+            WMx = Math.round(16*WMx)/16;
+            WMy = Math.round(16*WMy)/16;
+            var WMxyb = WMx.toString(2) + "," + WMy.toString(2);
+            document.getElementById("WMs").value = WMxy;
+            document.getElementById("WMb").value = WMxyb;
+            document.getElementById("bytecode").value = latlon2geometron(latlon);
+        }
+
+        function latlon2geometron(latlon){
+            var lon0 = -77.035224;//Washington Monument coordinates
+            var lat0 = 38.8894427;
+            var lat = parseFloat(latlon.split(',')[0]);
+            var lon = parseFloat(latlon.split(',')[1]);
+            var deltaLat = lat - lat0;
+            var deltaLon = lon - lon0;
+            deltaLon *=  Math.cos(lat0*Math.PI/180);
+            var deg2WM = 60*1.15*5280/555;// (60 nautical miles/1 degree)*(1.15 statury miles/nm)*(5280 feet/1mi)*(1 WM/555 feet)
+		    var WMx = deg2WM*deltaLon;
+		    var WMy = deg2WM*deltaLat;            
+		    var WMxSign = Math.sign(deg2WM*deltaLon);
+		    var WMySign = Math.sign(deg2WM*deltaLat);            
+            WMx = Math.abs(WMx);
+            WMy = Math.abs(WMy);
+            xWholeBits = WMx.toString(2).split(".")[0]; 
+            yWholeBits = WMy.toString(2).split(".")[0]; 
+            xFracBits = WMx.toString(2).split(".")[1].slice(0,4);
+            yFracBits = WMy.toString(2).split(".")[1].slice(0,4);
+            var xMove = "0333";
+            var yMove = "0330";
+            if(WMxSign == -1){
+                xMove = "0332";
+            }
+            if(WMySign == -1){
+                yMove = "0331";
+            }
+            var byteCode = "0300,";
+
+            for(var index = xWholeBits.length;index < 9;index++){
+                xWholeBits = "0" + xWholeBits;
+            }
+            for(var index = yWholeBits.length;index < 9;index++){
+                yWholeBits = "0" + yWholeBits;
+            }
+
+
+            for(var index = 8;index >= 0;index--){
+                if(xWholeBits.charAt(index)  === "1"){
+                    byteCode += xMove + ",";
+                }
+               if(yWholeBits.charAt(index)  === "1"){
+                    byteCode += yMove + ",";
+                }
+                byteCode += "0337,";
+            }
+            byteCode += "0317,";
+
+            for(var index = 0;index < 4;index++){
+                byteCode += "0336,";
+                if(xFracBits.charAt(index)  === "1"){
+                    byteCode += xMove + ",";
+                }
+               if(yFracBits.charAt(index)  === "1"){
+                    byteCode += yMove + ",";
+                }
+            }
+            byteCode += "0337,0337,";
+
+
+            //for loop with 4 elements to get last four digits
+            //0337 twice to get from 1/16th to 1/4, or about 130 feet or 40 paces
+             
+            console.log(byteCode);
+//            console.log(yFracBits);
+            return byteCode;
+        }
+
+    </script>
+</div>
+
+<style>
+html {
+	height: 100%;
+	background: black;
+}
+
+
+.atom{
+	width: 5in;
+	height: auto;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	border-radius: 5px;
+	padding: .5in .5in .5in .5in;
+	margin: 10px 10px 10px 10px;
+	background: white;	
+	font-size: 16px;
+	font-family: "Century Schoolbook";
+	text-align: justify;
+	float:left;
+}
+
+
+</style>
+
+</body>
+</html>

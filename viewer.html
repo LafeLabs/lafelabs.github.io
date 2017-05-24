@@ -1,7 +1,18 @@
-<!DOCTYPE html>
 <html>
 <head>
-<title>The Book of Geometron: Chapter 1</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.12.1/math.js">
+</script>
+<script>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+//    MathJax.Hub.Typeset(); //update mathjax
+</script>
+
 <script id = "bytecodeScript">
 /*
 040:0333
@@ -183,8 +194,9 @@
 0506:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0113,060,0112,0153,0103,0143,071,056,0152,0160,0147,
 0507:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0164,0124,0103,070,0132,0115,0141,056,0152,0160,0147,
 0510:0150,0164,0164,0160,0163,072,057,057,0151,056,0151,0155,0147,0165,0162,056,0143,0157,0155,057,0153,0122,0141,0172,0157,0120,0111,056,0152,0160,0147,
+0400:0341,0337,0337,0341,0331,0341,0337,0331,0341,0332,0332,0336,0200,0333,0331,0331,0333,0333,0200,
 */
-</script>地电子话
+</script>
 <script>
 
   	inPath = false;//move to true after path started, back to false after path ended
@@ -207,7 +219,7 @@
 	myFont = "Century Schoolbook";
 	currentWord = "Word";
 	currentSVG = "";
-	currentAddress = 0401;
+	currentAddress = 0400;
 	currentGlyph = currentTable[currentAddress];
 	currentGlyphArray = currentGlyph.split(",");
 	cursorPosition = currentGlyphArray.length;
@@ -230,7 +242,7 @@
 		theta:theta,
 		thetaStep:thetaStep,
 		side:side,
-		glyph:"0362,0344,0363,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,0334,0362,0344,0363,0335,0335,0362,0344,0363"
+		glyph:"0300,0362,0344,0363,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,0334,0362,0344,0363,0335,0335,0362,0344,0363"
 	}
 </script>
 <script>
@@ -598,214 +610,166 @@ function doTheThing(localCommand){
 }
 
 </script>
-</head>
+
+</head> 
 <body>
-<div class = "atom">
-<h2>What is Geometron?</h2>
+<!-- end html start 0600-->
 
-Geometron is two things: a language, and a way of organizing information.  This whole project is based on the simple idea that as a civilization we already know far more than we need to and that the next frontier in knowledge is in <i>organizing</i> the knowledge we already have.  Another key idea used to build this structure is that the so-called "open web" is the single most powerful information processing system ever devised and that any attempt to better organize information must be based on it.  Geometron is also based on the idea that communication based on geometric ideas like symmetry and shape can have enormous power and have been vastly under-used due to the emphasis our civilization has put on numbers. 
-<p>
-In some sense, geometron is a computer language.  The vast majority of what is found in this volume is based on building a language that exists on computers and was written in computer languages(mostly javascript, html, and css, the languages of the open web).  But to lump it together with such languages as C or java would be to miss the point.  It is more like a human language in the sense that while you can use a computer language to do things like search for words in a English document or compose a book in English, that does not make English a computer language. Or is it?  Without comments, computer code is impossible to maintain or build in teams and without a output in a human language it is usually not very useful.  And which is math?  Machines do math, but generally are programmed in something more tailored to the machine and the human doing the coding.  
-<p>
-This idea of math-as-language really gets to the heart of the matter.  Geometron seeks to build a language that is useful both for human-human communication(like English) and for human-machine communication(like javascript), but which is independent of both.  That is to say, it should be possible to express things in this system using only shapes and symbols in a self-contained way, then run those operations on a machine or send them to a human without ever writing a line of code in javascript or C or a line of language in English or Chinese.  That is, this is an attempt to organize existing geometric knowledge into a language which can be used to communicate.  
-<p>
-As I said in the first paragraph here, this language is only half of Geometron. The other half is the way that information is organized.  This means doing things like considering how to sort words from images from equations in a way that helps organize document creation.   
-</div>
-
-<div class = "atom">
-<h2>"Hello, World"</h2>
-
-There is a tradition in the world of computer languages of introducing a language by printing the words "hello, world" in the simplest possible way as an example.  I'm going to take the broader view of the "hello world" in this case however.  Part of the point of geometron is that it's not based on a human language.  
-<p>
-<canvas width = "400" height = "300" id = "canvas1"></canvas>
-<script>
-	cursorPosition = 100;
-	ctx = document.getElementById("canvas1").getContext("2d");	
-	x0 = 50;
-	y0 = 50;
-	unit = 40;
-	doTheThing(0300);
-	drawGlyph("01340,01341,01333,01341,01340,072,0300,0331,0337,0331,0333,0341,0341,0333,0341,0340");
-	currentImage = byteCode2string(currentTable[0500]);
-	console.log(currentImage);
-</script>
-<p>
-There are three commands here, shown in the graphical code above here.  The first and last are the command for "draw circle", and the arrow indicates moving one unit to the right.  There are several ways to express this in Geometron.  Each of these commands also have an address in a stack of 8X8 grids.  I'll get into this more later, but will show for completeness what this looks like:
-<pre>0341,0333,0341</pre>
-<p>
-
-<h3>physical implementation</h3>
-
-<div id = "imagesDiv">
-	<img src = "https://i.imgur.com/Z60sbcV.jpg" id = "hello1" style = "display:none;" onload = "redrawCanvas1();"></img>
-	<img src = "https://i.imgur.com/K0JkCc9.jpg" id = "hello2" style = "display:none;" onload = "redrawCanvas3();"></img>
-	<img src = "https://i.imgur.com/tTC8ZMa.jpg" id = "hello3" style = "display:none;" onload = "redrawCanvas4();"></img>
-	<img src = "https://i.imgur.com/rc0okgX.jpg" id = "hello4" style = "display:none;"  onload = "redrawCanvas5();"></img>
-	<img src = "https://i.imgur.com/kRazoPI.jpg" id = "hello5" style = "display:none;"   onload = "redrawCanvas6();"></img>
-</div>
-
-<canvas id = "canvas2" width = "500" height = "200" ></canvas>
-<canvas id = "canvas5" width = "500" height = "400" ></canvas>
-<canvas id = "canvas4" width = "500" height = "400" ></canvas>
-<canvas id = "canvas6" width = "500" height = "400" ></canvas>
-<canvas id = "canvas3" width = "500" height = "400" ></canvas>
+<canvas id = "mainCanvas"></canvas>
+<canvas class = "butt" id = "butt0" width = "50" height = "50" onclick = "buttAction0();"></canvas>
+<canvas class = "butt" id = "butt1" width = "50" height = "50" onclick = "buttAction1();"></canvas>
+<canvas class = "butt" id = "butt2" width = "50" height = "50" onclick = "buttAction2();"></canvas>
+<canvas class = "butt" id = "butt3" width = "50" height = "50" onclick = "buttAction3();"></canvas>
+<canvas class = "butt" id = "butt4" width = "50" height = "50" onclick = "buttAction4();"></canvas>
+<canvas class = "butt" id = "butt5" width = "50" height = "50" onclick = "buttAction5();"></canvas>
+<canvas class = "butt" id = "butt6" width = "50" height = "50" onclick = "buttAction6();"></canvas>
+<canvas class = "butt" id = "butt7" width = "50" height = "50" onclick = "buttAction7();"></canvas>
 
 <script>
+    mainCanvas  = document.getElementById("mainCanvas");
+    mainCanvas.width = window.innerWidth;
+    mainCanvas.height = window.innerHeight;
 
-function redrawCanvas1(){
-	img = document.getElementById("hello1");
-	caption = "Symbol glyphs describing vesica piscis"
-	ctx = document.getElementById("canvas2").getContext("2d");
-	ctx.drawImage(img,380,20,500,100,0,0,500,100);
-	currentWord = caption;
-	x = 50;
-	y = 130;
-	side = 14;
-	doTheThing(0365);
-}
+    function buttAction0(){
+        y0 += unit;
+        redraw();
+    }
+    function buttAction1(){
+        y0 -= unit;
+        redraw();
+    }
+    function buttAction2(){
+        x0 += unit;
+        redraw();
+    }
+    function buttAction3(){
+        x0 -= unit;
+        redraw();
+    }
+    function buttAction4(){
+        theta0 -= thetaStep; // CCW
+        redraw();
+    }
+    function buttAction5(){
+        theta0 += thetaStep; // CW
+        redraw();
+    }
+    function buttAction6(){//-
+        unit /= 2;
+        redraw();
+    }
+    function buttAction7(){//+
+        unit *= 2;
+        redraw();
+    }
 
-function redrawCanvas3(){
-	img = document.getElementById("hello2");
-	ctx = document.getElementById("canvas3").getContext("2d");
-	ctx.drawImage(img,0,290,1800,1600,8,0,450,400);
-}
+    ctx = document.getElementById("butt0").getContext("2d");
+    x0 = 2;
+    y0 = 48;
+    unit = 46;
+    doTheThing(0300);
+    doTheThing(01330);
+    ctx = document.getElementById("butt1").getContext("2d");
+    doTheThing(0300);
+    doTheThing(01331);
+    ctx = document.getElementById("butt2").getContext("2d");
+    doTheThing(0300);
+    doTheThing(01332);
+    ctx = document.getElementById("butt3").getContext("2d");
+    doTheThing(0300);
+    doTheThing(01333);
+    ctx = document.getElementById("butt4").getContext("2d");
+    doTheThing(0300);
+    doTheThing(01334);
+    ctx = document.getElementById("butt5").getContext("2d");
+    doTheThing(0300);
+    doTheThing(01335);
+    ctx = document.getElementById("butt6").getContext("2d");
+    doTheThing(0300);
+    doTheThing(01336);
+    ctx = document.getElementById("butt7").getContext("2d");
+    doTheThing(0300);
+    doTheThing(01337);
 
-function redrawCanvas4(){
-	img = document.getElementById("hello3");
-	ctx = document.getElementById("canvas4").getContext("2d");
-	ctx.drawImage(img,0,290,1800,1600,8,0,450,400);
-	console.log(x.toString() + "," + y.toString());
-}
-function redrawCanvas5(){
-	img = document.getElementById("hello4");
-	ctx = document.getElementById("canvas5").getContext("2d");
-	ctx.drawImage(img,0,290,1800,1600,8,0,450,400);
-}
-function redrawCanvas6(){
-	img = document.getElementById("hello5");
-	ctx = document.getElementById("canvas6").getContext("2d");
-	ctx.drawImage(img,100,100,1200,1200,8,0,400,400);
-}
+    x0 = window.innerWidth/2;
+    y0 = window.innerHeight/2;
+    unit = window.innerHeight/8;
+
+    ctx = document.getElementById("mainCanvas").getContext("2d");
+
+    redraw();
+    function redraw(){
+        ctx.fillStyle="white";
+        ctx.fillRect(0,0, window.innerWidth,window.innerHeight);
+        ctx.fillStyle="black";
+        doTheThing(0300);
+        drawGlyph(currentGlyph);
+    }
 
 </script>
-</div>
-
-<div class = "atom">
-<h2>Basic Shapes</h2>
-
-To illustrate the power of geometron, I will now construct the most basic shapes beyond the circle: the equilateral triangle, square, regular pentagon and regular hexagon.  I'll go into much more detail about how the commands used here work later, but for now I'll just jump in with examples.  
-<canvas id = "canvas7" width = "400" height = "250" style = "border:solid"></canvas>
-<script>
-ctx = document.getElementById("canvas7").getContext("2d");
-x0 = 30;
-y0 = 30;
-unit = 20;
-doTheThing(0300);
-currentWord = "Symbols:";
-drawGlyph("0365,0331,0331"); 
-spellGlyph("0306,0351,0342,0330,0335,0342,0330,0335,0342,0330,0335")
-currentWord = "Action:";
-drawGlyph("0300,0331,0331,0331,0331,0365,0331,0337,0337,0331,0306,0351,0342,0330,0335,0342,0330,0335,0342,0330,0335"); 
-</script>
-<canvas id = "canvas8" width = "400" height = "250" style = "border:solid"></canvas>
-<script>
-ctx = document.getElementById("canvas8").getContext("2d");
-x0 = 30;
-y0 = 30;
-unit = 20;
-doTheThing(0300);
-currentWord = "Symbols:";
-drawGlyph("0365,0331,0331"); 
-spellGlyph("0304,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335")
-currentWord = "Action:";
-drawGlyph("0300,0331,0331,0331,0331,0365,0331,0337,0337,0331,0304,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"); 
-</script>
-
-<canvas id = "canvas9" width = "400" height = "250" style = "border:solid"></canvas>
-<script>
-ctx = document.getElementById("canvas9").getContext("2d");
-x0 = 30;
-y0 = 20;
-unit = 20;
-doTheThing(0300);
-currentWord = "Symbols:";
-drawGlyph("0365,0331,0331"); 
-spellGlyph("0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335")
-currentWord = "Action:";
-drawGlyph("0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"); 
-</script>
-
-<canvas id = "canvas10" width = "400" height = "250" style = "border:solid"></canvas>
-<script>
-ctx = document.getElementById("canvas10").getContext("2d");
-x0 = 10;
-y0 = 20;
-unit = 20;
-doTheThing(0300);
-currentWord = "Symbols:";
-drawGlyph("0365,0331,0331"); 
-spellGlyph("0306,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335")
-currentWord = "Action:";
-drawGlyph("0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0306,0333,0333,0336,0336,0331,0331,0331,0337,0337,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"); 
-</script>
-
-</div>
-<div class = "atom">
-<h2>How to use this book</h2>
-
-Who is this book for?  Who is geometron for? It is difficult to answer this, since geometron is never intended to be a generalized language so much as a method of building specific languages.  The long term goal of this project is to have it mutate into numerous separate languages and projects, all totally independent from one another.  If that happens, it is my intention that this document also splinter, grow and change along with the language itself, which is part of why releasing it fully into the public domain is important.  
-<p>
-I would say that in this first incarnation the intended audiences are:
-<ol>
-	<li>Me</li>
-	<li>You</li>
-	<li>General language enthusiasts(both human and computer)</li>
-	<li>Artists</li>
-	<li>Quantum computation researchers</li>
-	<li>art Teachers</li>
-	<li>Geometers</li>
-	<li>Marketing professionals</li>
-	<li>linguists</li>
-	<li>inventors of language</li>
-	<li>circuit benders</li>
-	<li>game makers</li>
-	<li>chess players</li>
-	<li>science teachers</li>
-	<li>mathematicians</li>
-
-</ol>
-I will also state who this is work is <i>not</i> for.  It is not for software "engineers" , computer "scientists", or "tech" entrepreneurs.  Those groups constitute the enemy which this work is designed to help fight against.  Perhaps you have a background in such things, as to some extent I do as an applied physicist.  But when you work on Geometron, be prepared to leave your toxic Silicon Valley ideology and culture at the door or be asked to leave.  By all means join us if you're ready to fight Evil, but this is not going to become yet another cesspool of trolling jerks on Stack Overflow, this is intended to be more of an art-driven non-technical culture, and as the Founder of this project I aim to use whatever powers I have over the work to keep it that way.
-<p>
-Any emails from members of the technocratic priesthood whining about how this work does not adhere to the standards of their "professions" will either be ignored or be reposted in a public space for public mockery and derision.  You have been warned.  
-<p>
-	The nature fo this book will be very different for different people.  Since Geometron is intended to make very <i>specific</i> languages from a common base, there will naturally be a lot of material that is critically important for some readers but both useless and incomprehensible to others.  Therefore I plead with the reader to skip around as needed and take what you want from this work, ignoring whatever looks outside your sphere of interest.  Given the intended breadth it is inevitable that almost no matter what your background is you'll see quite a few things like this.  
-	
-</div>
-
-<div class = "atom">
-<h2>Structure of this book</h2>
-	
-	The Geometron language is not just a computer language like C or a human language like English.  It's more of a hybrid which includes building physical objects, navigating the physical world, creating physical documents with various media as well as communication with both humans and machines.  Therefore the structure will be unusual in that it will move freely between these spheres.  I will try to provide examples in multiple of these layers. 
-		
-</div>
-
 <style>
-html {
-	height: 100%;
-	background: black;
+#mainCanvas{
+    border:solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background:white;
 }
+#butt0{
+    left: 10%;
+}
+#butt1{
+    left: 20%;
+}
+#butt2{
+    left: 30%;
+}
+#butt3{
+    left: 40%;
+}
+#butt4{
+    left: 50%;
+}
+#butt5{
+    left: 60%;
+}
+#butt6{
+    left: 70%;
+}
+#butt7{
+    left: 80%;
+}
+
+.butt{
+    border:solid;
+    position: fixed;
+    bottom: 10%;
+    border: 3px solid black;
+    background:white;
+}
+.butt:hover{
+    border: 3px solid red;
+    background:grey;
+}
+.butt:active{
+    border: 3px solid yellow;
+}
+
+</style>
+<!-- start_html end 0601-->
+<style>
 
 
 .atom{
-	width: 5in;
+	width: auto;
 	height: auto;
 	border-style: solid;
 	border-width: 1px;
-	border-color: black;
+	border-color: purple;
 	border-radius: 5px;
-	padding: .5in .5in .5in .5in;
-	margin: 10px 10px 10px 10px;
-	background: #f1e7cd;	
+	padding: 5px 5px 5px 5px;
+	margin: 5px 5px 5px 5px;
+	background: white;	
 	font-size: 16px;
 	font-family: "Century Schoolbook";
 	text-align: justify;
