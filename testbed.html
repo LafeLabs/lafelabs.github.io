@@ -1388,7 +1388,7 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 	div2.innerHTML = "\$\\Delta_{A}\$";
 	container.appendChild(div2);
 
-	drawGlyph("0300,0337,0337,0333,0336,");
+/*	drawGlyph("0300,0337,0337,0333,0336,");
 
 	img1 = document.createElement("img");
 	img1.src = "https://upload.wikimedia.org/wikipedia/commons/a/a7/Operation_Castle_-_Romeo_001.jpg";
@@ -1410,9 +1410,49 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		img1.style.left = x.toString() + "px";
 
 	}
-
-
 	container.appendChild(img1);
+*/
+
+
+
+
+	drawGlyph("0300,0333,0333,0333,0333");
+	can1 = document.createElement("canvas");
+	can1.width =  side;
+	can1.height = side;
+
+	can1.style.top = y.toString() + "px";
+	can1.style.left = x.toString() + "px";
+	can1.style.border = "solid";
+	can1.style.borderColor = "purple";
+	can1.style.position = "absolute";
+	can1.onmouseover = function(){
+		can1.style.borderColor = "yellow";
+	}
+	can1.onmouseout = function(){
+		can1.style.borderColor = "purple";
+	}
+	can1.onclick = function(){
+		//
+	}
+	ctx = can1.getContext("2d");
+	x0 = 0;
+	y0 = side;
+	drawGlyph("0300,01330");
+	container.appendChild(can1);
+
+	ctx = mainCanvas.getContext("2d");
+
+	x = 900;
+	y = 400;
+	ctx.fillStyle = "red";	
+	ctx.fillRect(700,300,500,500);
+		x0 = window.innerWidth/2;
+	y0 = window.innerHeight/2;
+	unit = 50;
+	doTheThing(0300);
+	drawGlyph("0336,0341,0335,0306,0350,0334,0330,0337,0366,0336,0331,0335,0335,0330,0337,0367,0336,0336,0335,0342,0334,0334,0342,0335,0337,0331,0334,0304,0334,");
+
 
 
 </script>
