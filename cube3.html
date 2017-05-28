@@ -284,11 +284,11 @@
 01565:0333,0200,0336,0330,0332,0332,074,0104,0111,0126,076,0310,0336,0365,0337,0313,0331,0337,0333,
 01500:0333,0200,0336,0330,0332,0332,042,040,042,0310,0336,0365,0337,0313,0331,0337,0333,
 01033:0333,0200,0336,0330,0332,0334,0342,0335,0335,0306,0336,0334,0201,0335,0342,0335,0335,0330,0334,0201,0334,0342,0335,0331,0334,0304,0334,0337,0331,0333,0337,
+01523:0333,0200,0336,0336,0330,0330,0332,0332,0332,0336,0336,0333,0337,0337,0336,0330,0336,0333,0337,0337,0200,0333,0200,0333,0200,0331,0331,0332,0332,0200,0333,0200,0333,0200,0336,0333,0331,0337,0337,0332,0330,0336,0336,0331,0337,0335,0335,0331,0342,0330,0335,0350,0335,0336,0342,0335,0335,0342,0337,0335,0335,0335,0351,0331,0331,0331,0333,0333,0336,0330,0337,0337,0337,0335,0335,0331,0333
+01522:0333,0200,0336,0336,0330,0330,0332,0332,0332,0336,0336,0333,0337,0337,0336,0330,0336,0333,0337,0337,0200,0333,0200,0333,0200,0331,0331,0332,0332,0200,0333,0200,0333,0200,0336,0333,0331,0337,0337,0332,0330,0336,0336,0331,0337,0342,0330,0335,0350,0335,0336,0342,0335,0335,0342,0337,0335,0335,0335,0351,0331,0331,0331,0333,0333,0336,0330,0337,0337,0337
 */
 </script>
 <script>
-
-
 
 	fullCube = false;
   	inPath = false;//move to true after path started, back to false after path ended
@@ -733,13 +733,11 @@ function redraw(){
 	x0 = width/2;
 	y0 = height/2;
 	unit = width/8;
+    unit0 = unit;
 	theta0 = -Math.PI/2; 
     doTheThing(0300);
     drawGlyph(viewGlyph);
-    x0 = x;
-    y0 = y;
-    unit = side;
-    theta0 = theta;
+    doTheThing(0300);
 	//draw the glyph:
 	ctx = document.getElementById("plotCanvas").getContext("2d");
 	//draw current glyph:
@@ -954,6 +952,12 @@ function doTheThing(localCommand){
     if(localCommand == 0500){
         currentString = "";
     }
+    if(localCommand == 0550){
+        doTheThing(023);
+    }
+    if(localCommand == 0560){
+        currentString = "";
+    }
     if(localCommand == 0565){
         var newDiv = document.createElement("div");
         newDiv.id  = "element" + elementIndex.toString();
@@ -967,12 +971,44 @@ function doTheThing(localCommand){
         newDiv.style.fontSize = side.toString() + "px";
         newDiv.innerHTML = currentString;
         document.getElementById("bigContainer").appendChild(newDiv);
-        console.log(elementNameArray.length);
+        console.log("element" + elementIndex.toString());
     }
-    if(localCommand == 0540){
-        
+    if(localCommand == 0522){
+        localRoot(022);
     }
-
+    if(localCommand == 0523){
+        localRoot(023);
+    }
+    if(localCommand == 0530){
+        y0 -= unit0;
+    }
+    if(localCommand == 0531){
+        y0 += unit0;
+    }
+    if(localCommand == 0532){
+        x0 -= unit0;
+    }
+    if(localCommand == 0533){
+        x0 += unit0;
+    }
+    if(localCommand == 0534){
+        theta0 += Math.PI;
+    }
+    if(localCommand == 0535){
+        theta0 -= Math.PI;    
+    }
+    if(localCommand == 0536){
+        unit /= 2;
+    }
+    if(localCommand == 0537){
+        unit *= 2;
+    }
+    if(localCommand == 0550){
+        unit0 /= 2;
+    }
+    if(localCommand == 0551){
+        unit0 *= 2;
+    }
  
     if(localCommand == 0300){
       x = x0;
@@ -1426,40 +1462,50 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
         }
     }
 	if(localCommand == 007){
-		var localString = document.getElementById("mainTextArea").value;	
-		currentGlyph += string2byteCode(localString);
+		var textGlyph = string2byteCode(document.getElementById("mainTextArea").value);	        
+        var numLetters = textGlyph.split(",").length;
+        var currentGlyphArray = currentGlyph.split(",");
+        currentGlyph= "";
+        for(var index = 0;index < cursorPosition;index++){
+             currentGlyph += currentGlyphArray[index] + ",";
+        }
+        currentGlyph += textGlyph;
+        for(var index = cursorPosition;index < currentGlyphArray.length;index++){
+             currentGlyph += currentGlyphArray[index] + ",";
+        }
+        cursorPosition += numLetters-1;
 		redraw();
 	}
     if(localCommand == 0000){
-        viewGlyph += "0330,";
+        viewGlyph += "0530,";
         redraw();
     }
     if(localCommand == 0001){
-        viewGlyph += "0331,";
+        viewGlyph += "0531,";
         redraw();
     }
     if(localCommand == 0002){
-        viewGlyph += "0332,";
+        viewGlyph += "0532,";
         redraw();
     }
     if(localCommand == 0003){
-        viewGlyph += "0333,";
+        viewGlyph += "0533,";
         redraw();
     }
     if(localCommand == 0004){
-        viewGlyph += "0334,";
+        viewGlyph += "0534,";
         redraw();
     }
     if(localCommand == 0005){
-        viewGlyph += "0335,";
+        viewGlyph += "0535,";
         redraw();
     }
     if(localCommand == 0006){
-        viewGlyph += "0336,";
+        viewGlyph += "0536,";
         redraw();
     }
     if(localCommand == 0011){
-        viewGlyph += "0337,";
+        viewGlyph += "0537,";
         redraw();
     }
 
