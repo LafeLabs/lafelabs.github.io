@@ -303,7 +303,8 @@
   	inPath = false;//move to true after path started, back to false after path ended
 	explodeIndex = 0;
 	explodeLimit = 100000;
-    divIndex = 0;
+    wrenchMode = false;
+	divIndex = 0;
     elementIndex = 0;
     elementNameArray = [];
     currentString = "";
@@ -544,6 +545,28 @@
 }
 </style>
 <script>
+backButton = document.createElement("DIV");
+backButton.innerHTML = "BACK";
+backButton.style.fontFamily = "Futura";
+backButton.style.fontSize = "30px";
+backButton.style.position = "absolute";
+backButton.style.left = "30px";
+backButton.style.top = (height/2).toString() + "px";
+backButton.onclick = function(){
+	wrenchMode = false;
+	currentAddress--;
+	if(currentAddress < 0400){
+		currentAddress = 0477;
+	}
+	currentGlyph = currentTable[currentAddress];
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = 1000;
+	redraw();
+	for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
+		document.getElementsByClassName("drawToolPanel")[index].style.display = "none";
+	}
+}
+
 document.getElementById("plotCanvas").width = width;
 document.getElementById("plotCanvas").height = height;
 document.getElementById("drawPad").style.left = (.3*width).toString() + "px";
@@ -585,8 +608,8 @@ buildPanel("026,027,031,07");
 currentNode.className = "drawToolPanel";
 
 currentNode = document.getElementById("addrPad");
-buildPanel("0,01,02,03,04,05,06,011");
-currentNode.className = "drawToolPanel";
+buildPanel("0,01,02,03,06,011");
+//currentNode.className = "drawToolPanel";
 
 currentNode = document.getElementById("glyphControl");
 buildPanel("020,010,021,022,023,024,025");
@@ -599,6 +622,7 @@ currentNode.className = "drawToolPanel";
 currentNode = document.getElementById("wrench");
 buildPanel("033");
 
+document.getElementById("bigContainer").appendChild(backButton);
 
 
 shapeTableGlyph = "";
@@ -759,8 +783,10 @@ function redraw(){
 	//draw the cursor:
 	ctx = document.getElementById("invisibleCanvas").getContext("2d");
 	getCursor();
-	ctx = document.getElementById("plotCanvas").getContext("2d");
-	drawGlyph(cursor.glyph);
+	if(wrenchMode == true){
+		ctx = document.getElementById("plotCanvas").getContext("2d");
+		drawGlyph(cursor.glyph);
+	}
 
 	//spell:
 	ctx = document.getElementById("spellCanvas").getContext("2d");
@@ -776,6 +802,19 @@ function redraw(){
 	document.getElementById("addr").value = "0" + currentAddress.toString(8);
 	document.getElementById("glyphBytecode").value = currentGlyph;
 	explodeIndex = 0;	
+
+	if(wrenchMode == false){
+		for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
+			document.getElementsByClassName("drawToolPanel")[index].style.display = "none";
+		}
+	}
+	if(wrenchMode == true){
+		for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
+			document.getElementsByClassName("drawToolPanel")[index].style.display = "block";
+		}
+	}
+
+
 }
 
 
@@ -1473,6 +1512,7 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
                 document.getElementsByClassName("drawToolPanel")[index].style.display = "block";
             }
         }
+		wrenchMode = !wrenchMode;
     }
 	if(localCommand == 007){
 		var textGlyph = string2byteCode(document.getElementById("mainTextArea").value);	        
