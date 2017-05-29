@@ -560,7 +560,7 @@ backButton.onclick = function(){
 	}
 	currentGlyph = currentTable[currentAddress];
 	currentGlyphArray = currentGlyph.split(",");
-	cursorPosition = 1000;
+	cursorPosition = currentGlyphArray.length;
 	redraw();
 	for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
 		document.getElementsByClassName("drawToolPanel")[index].style.display = "none";
