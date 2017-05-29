@@ -310,9 +310,11 @@
     currentString = "";
 
 	currentTable = []; 
+	currentViewGlyphTable = [];
 	scrollPage = 0400;
 	for(var index = 0;index < 01777;index ++){
 		currentTable.push("");
+		currentViewGlyphTable.push("");
 	}  
 	var inputbytecode = document.getElementById("bytecodeScript").text;
 	
@@ -334,7 +336,7 @@
 	myFont = "Futura";
 	currentWord = "";
 	currentSVG = "";
-	currentAddress = 0401;
+	currentAddress = 0400;
 	currentGlyph = currentTable[currentAddress];
 	currentGlyphArray = currentGlyph.split(",");
 	cursorPosition = currentGlyphArray.length;
@@ -545,13 +547,39 @@
 }
 </style>
 <script>
+fwdButton = document.createElement("DIV");
+fwdButton.innerHTML = "FWD";
+fwdButton.style.fontFamily = "Futura";
+fwdButton.style.fontSize = "30px";
+fwdButton.style.position = "absolute";
+fwdButton.style.left = (width - 110).toString() + "px";
+fwdButton.style.top = (height/2).toString() + "px";
+fwdButton.className += " moveButtonDiv";
+fwdButton.onclick = function(){
+	wrenchMode = false;
+	currentAddress++;
+	if(currentAddress > 0477){
+		currentAddress = 0400;
+	}
+	currentGlyph = currentTable[currentAddress];
+	currentGlyphArray = currentGlyph.split(",");
+	cursorPosition = currentGlyphArray.length;
+	redraw();
+	for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
+		document.getElementsByClassName("drawToolPanel")[index].style.display = "none";
+	}
+}
+document.getElementById("bigContainer").appendChild(fwdButton);
+
 backButton = document.createElement("DIV");
 backButton.innerHTML = "BACK";
+backButton.id = "backButton";
 backButton.style.fontFamily = "Futura";
 backButton.style.fontSize = "30px";
 backButton.style.position = "absolute";
 backButton.style.left = "30px";
 backButton.style.top = (height/2).toString() + "px";
+backButton.className = "moveButtonDiv";
 backButton.onclick = function(){
 	wrenchMode = false;
 	currentAddress--;
@@ -566,6 +594,8 @@ backButton.onclick = function(){
 		document.getElementsByClassName("drawToolPanel")[index].style.display = "none";
 	}
 }
+
+document.getElementById("bigContainer").appendChild(backButton);
 
 document.getElementById("plotCanvas").width = width;
 document.getElementById("plotCanvas").height = height;
@@ -622,7 +652,6 @@ currentNode.className = "drawToolPanel";
 currentNode = document.getElementById("wrench");
 buildPanel("033");
 
-document.getElementById("bigContainer").appendChild(backButton);
 
 
 shapeTableGlyph = "";
@@ -1654,6 +1683,11 @@ td{
 }
 #currentImage{
 	width:300px;
+}
+#backButton:hover{
+	border:solid;
+	border-color:black;
+	background-color:gray;
 }
 </style>
 </center>
