@@ -116,11 +116,13 @@ lat = Math.round(lat*10)/10;
 lon = Math.round(lon*10)/10;
 var latlonwm = lon.toString() + "," + lat.toString();
 
-
-
+//0713
 var inputList = this.parentNode.getElementsByTagName("INPUT");
 var latlonwm = inputList[1].value;
+eval(byteCode2string(currentTable[0714]));
+inputList[0].value = latlon;
 
+//0714
 var latlonArray = latlonwm.split(",");
 var lon = parseFloat(latlonArray[0]);
 var lat = parseFloat(latlonArray[1]);
@@ -132,15 +134,6 @@ var lon0 = -77.035224;
 lat =  lat0 + lat;
 lon = lon0 + lon;
 var latlon = lat.toString() + "," + lon.toString();
-
-inputList[0].value = latlon;
-
-
-var spanList = this.parentNode.getElementsByTagName("SPAN");
-spanList[0].innerHTML = "var1 = ";
-spanList[1].innerHTML = "[unit1]]";
-spanList[2].innerHTML = "var2 = ";
-spanList[3].innerHTML = "[unit2]]";
 
 
 */
