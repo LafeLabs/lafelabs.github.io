@@ -338,9 +338,9 @@ MathJax.Hub.Config({
 01540:0333,0200,0336,0336,0330,0337,0334,0306,0335,0201,0334,0334,0201,0335,0335,0201,0334,0334,0201,0335,0335,0335,0335,0330,0334,0334,0336,0330,0335,0335,0334,0201,0335,0335,0201,0330,0334,0330,0335,0334,0304,0335,0335,0335,0331,0337,0337,
 */
 </script>
-<script src = "https://lafelabs.github.io/libraries/foo.js"></script>
+<!--<script src = "https://lafelabs.github.io/libraries/foo.js"></script>-->
+
 <script>
-//	console.log(twiddleBrackets[0210]);
 
 	fullCube = false;
   	inPath = false;//move to true after path started, back to false after path ended
@@ -1113,8 +1113,9 @@ function doTheThing(localCommand){
         elementIndex++;
         newDiv.style.position = "absolute";
         newDiv.style.top = y.toString() + "px";
-        newDiv.style.width = 20*side.toString() + "px";
-        newDiv.style.height = "auto";
+//        newDiv.style.width = 10*side.toString() + "px";
+        newDiv.style.width = "auto";
+		newDiv.style.height = "auto";
         newDiv.style.left = x.toString() + "px";
         newDiv.style.fontSize = side.toString() + "px";
         newDiv.style.fontFamily = "Futura";
