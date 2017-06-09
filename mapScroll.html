@@ -715,8 +715,8 @@ function doTheThing(localCommand){
       thetaStep = Math.PI/2;
       scaleFactor = 2;
       ctx.lineWidth = 2;
-      ctx.strokeStyle="black";
-      ctx.fillStyle="black";
+      ctx.strokeStyle="green";
+      ctx.fillStyle="green";
       currentWord = "";
     }
     if(localCommand == 0304){
@@ -1304,13 +1304,49 @@ commands = commands1.concat(commands2,commands3,commands4);
     </div>
 
     <div class = "page">
+        <canvas id = "bigMap"></canvas>
+        <script>
+            bigMap = document.getElementById("bigMap");
+            bigMap.width = innerWidth;
+            bigMap.height = innerHeight;
+            ctx = bigMap.getContext("2d");
+            ctx.clearRect(0,0,innerWidth,innerHeight);
+            x0 = innerWidth/2;
+            y0 = innerHeight/2;
+            if(innerWidth <= innerHeight){
+                unit = innerWidth/150;
+            }
+            else{
+                unit = innerHeight/150;
+            }
+            drawGlyph("0300,0337,0337,0337,0337,0337,0337,0330,0334,0350,0334,0310,0337,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0342,0335,0335,0304,0313,0336,0336,0366,0332,0332,0330,0335,0335,0367,0366,0333,0333,0335,0335,0331,0367,0333,0333,0330,0336,0350,0334,0304,0336,0333,0337,061,060,040,0155,0151,0154,0336,0332,0145,0163,0365,0300,0337,0337,0337,0337,0337,0337,0332,0334,0336,0336,0336,0342,0336,0330,0335,0350,0334,0342,0335,0335,0342,0334,0304,0337,0337,0201,0201,0336,0332,0336,066,064,040,0127,0115,0365,0333,0333,0330,0337,0201,0201,0336,0201,0337,0201,0335,0336,0342,0335,0335,0342,0334,0350,0335,0342,0334,0334,0342,0334,0304,0330,0330,0201,0330,0201,0330,0201,0330,0201,0330,0201,0330,0201,0330,0201,0300,0337,0337,0337,050,060,054,060,051,0336,0340,0336,0333,0337,0365,");
+        </script>
         <div class = "linkButton BACK" onclick = "back();">BACK</div>
         <div class = "linkButton FWD" onclick = "fwd();">FWD</div>
-
+    </div>
+    <div class = "page">
+        <div class = "title">Elements</div>
+            <div class = "mainList">
+                <ul>
+                    <li>Location glyph</li>
+                    <li>Photograph Link</li>
+                    <li>Warp Portal</li>
+                    <li>Map Import</li>
+                    <li>Route</li>
+                    <li>Symbol Glyph</li>
+                    <li>Street</li>
+                    <li>Metro Stop</li>
+                    <li>Metro Line</li>
+                    <li>Area(land or water)</li>
+                    <li>label</li>
+                    <li>paragraph</li>
+                    <li>html link</li>
+                </ul>
+            </div>
+        <div class = "linkButton BACK" onclick = "back();">BACK</div>
+        <div class = "linkButton FWD" onclick = "fwd();">FWD</div>        
     </div>
 </div>
-
-
 <script>
 currentPage = 0;
 pages = document.getElementsByClassName("page");
@@ -1432,10 +1468,9 @@ html {
 .mainList{
     position:absolute;
     left: 20%;
-    top: 200px;
-    width: auto;
-    text-align: center;
-    font-size: 36px;
+    right: 20%;
+    top: 90px;
+    font-size: 26px;
     font-family:Futura;      
 }
 .subList{
