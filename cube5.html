@@ -465,7 +465,7 @@ function redraw(){
         elementNameArray = [];
 
 
-        if((currentAddress >= 0500 && currentAddress <= 0777)||(currentAddress >= 01400 && currentAddress <= 01477)){
+        if((currentAddress >= 0500 && currentAddress <= 0777)||(currentAddress >= 01400 && currentAddress <= 01477)||(currentAddress >= 01 && currentAddress <= 06)){
             document.getElementById("editor").style.display = "block";
             document.getElementById("plotCanvas").style.display = "none";			
             for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){

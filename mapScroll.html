@@ -350,6 +350,7 @@ MathJax.Hub.Config({
 0601:0127,0150,0141,0164,040,0151,0163,040,0151,0164,077,
 0617:074,0144,0151,0166,040,0143,0154,0141,0163,0163,040,075,040,042,0163,0165,0142,0164,0151,0164,0154,0145,042,076
 0770:0143,0165,0162,0162,0145,0156,0164,0101,0144,0144,0162,0145,0163,0163,040,075,040,0160,0141,0162,0163,0145,0111,0156,0164,050,0144,0157,0143,0165,0155,0145,0156,0164,056,0147,0145,0164,0105,0154,0145,0155,0145,0156,0164,0102,0171,0111,0144,050,042,0141,0144,0144,0162,042,051,056,0166,0141,0154,0165,0145,054,070,051,073,012,0145,0144,0151,0164,0157,0162,056,0163,0145,0164,0126,0141,0154,0165,0145,050,0142,0171,0164,0145,0103,0157,0144,0145,062,0163,0164,0162,0151,0156,0147,050,0143,0165,0162,0162,0145,0156,0164,0124,0141,0142,0154,0145,0133,0143,0165,0162,0162,0145,0156,0164,0101,0144,0144,0162,0145,0163,0163,0135,051,051,073,012,
+0771:0156,0145,0167,0104,0151,0166,040,075,040,0144,0157,0143,0165,0155,0145,0156,0164,056,0143,0162,0145,0141,0164,0145,0105,0154,0145,0155,0145,0156,0164,050,042,0104,0111,0126,042,051,073,012,0156,0145,0167,0104,0151,0166,056,0143,0154,0141,0163,0163,0116,0141,0155,0145,040,040,075,040,042,0160,0141,0147,0145,042,073,012,0143,0165,0162,0162,0145,0156,0164,0110,0124,0115,0114,040,075,040,042,042,073,012,0144,0162,0141,0167,0107,0154,0171,0160,0150,050,042,060,066,061,062,054,060,066,060,060,054,060,066,061,063,054,060,066,061,067,054,060,066,060,061,054,060,066,061,063,054,060,066,061,066,054,060,066,064,060,054,060,066,061,063,054,060,066,061,064,054,060,066,061,065,042,051,073,012,0156,0145,0167,0104,0151,0166,056,0151,0156,0156,0145,0162,0110,0124,0115,0114,040,075,040,0143,0165,0162,0162,0145,0156,0164,0110,0124,0115,0114,073,012,0144,0157,0143,0165,0155,0145,0156,0164,056,0147,0145,0164,0105,0154,0145,0155,0145,0156,0164,0102,0171,0111,0144,050,042,0142,0151,0147,0103,0157,0156,0164,0141,0151,0156,0145,0162,042,051,056,0141,0160,0160,0145,0156,0144,0103,0150,0151,0154,0144,050,0156,0145,0167,0104,0151,0166,051,073,
 */
 </script>
 <script>
@@ -722,7 +723,7 @@ function doTheThing(localCommand){
 		 drawGlyph(currentTable[localCommand]);    	    
     }
     if(localCommand >= 0500 && localCommand <= 0577){
-        currentStyle = byteCode2string(currentTable[localCommand]);
+        document.getElementById("mainStyle").innerHTML += byteCode2string(currentTable[localCommand]);
     }
     if(localCommand >= 0600 && localCommand <= 0677){
         currentHTML += byteCode2string(currentTable[localCommand]);
@@ -1108,13 +1109,12 @@ function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII 
 		currentGlyph = currentTable[currentAddress];
 		currentGlyphArray = currentGlyph.split(",");
 		cursorPosition = currentGlyphArray.length;
-		redraw();
 
 	}
 	if(localCommand == 0027){//export full geometron hypercube		
 		var localString = "";
 		for(var index = 0;index < currentTable.length;index++){
-			if(currentTableStart[index] != currentTable[index] || fullCube){
+			if(currentTableStart[index] != currentTable[index] || (fullCube) && currentTable[index].length > 0){
 				localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
 			}
 		}
@@ -1456,8 +1456,16 @@ commands = commands1.concat(commands2,commands3,commands4);
     </div>
     <div class = "page">
             <div class = "title">Hypercube IO Panel</div>
+            <div id = "cubeControl"></div>
             <textarea id = "cubeIO"></textarea>
             <style>
+                #cubeControl{
+                    position:absolute;
+                    top:50%;
+                    left:10%;
+                    height:80px;
+                    width:160px;                   
+                }
                 #cubeIO{
                     border:solid;
                     border-width:2px;
@@ -1477,7 +1485,35 @@ commands = commands1.concat(commands2,commands3,commands4);
             <div class = "linkButton BACK" onclick = "back();">BACK</div>
             <div class = "linkButton FWD" onclick = "fwd();">FWD</div>         
     </div>
+    <div class = "page">
+            <div class = "title">Symbols used to build Pages</div>
+
+            <canvas id = "symbol1"></canvas>
+            <script>
+                W = 120;
+                H = 60;
+                X = 300;
+                Y = 300;
+
+
+                symbol1 = document.getElementById("symbol1");
+                symbol1.width = W+4;
+                symbol1.height = H+4;
+                symbol1.style.position = "absolute";
+                symbol1.style.top = Y.toString() + "px";
+                symbol1.style.left = X.toString() + "px";
+                ctx = symbol1.getContext("2d");
+                x0=2;
+                y0=62;
+                unit = 60;
+                drawGlyph("0300,01610");
+            </script>
+            <div class = "linkButton BACK" onclick = "back();">BACK</div>
+            <div class = "linkButton FWD" onclick = "fwd();">FWD</div>         
+    </div>
 </div>
+<style id = "mainStyle"></style>
+
 <script>
 fullCube = true;
 localRoot(027);
@@ -1485,14 +1521,18 @@ localRoot(027);
 currentNode = document.getElementById("glyphfwdback");
 buildPanel("022,023");
 
+currentNode = document.getElementById("cubeControl");
+buildPanel("027,026");
 
+/*
 newDiv = document.createElement("DIV");
 newDiv.className  = "page";
 currentHTML = "";
 drawGlyph("0612,0600,0613,0617,0601,0613,0616,0640,0613,0614,0615");
 newDiv.innerHTML = currentHTML;
 document.getElementById("bigContainer").appendChild(newDiv);
-
+*/
+doTheThing(0771);
 
 currentPage = 0;
 pages = document.getElementsByClassName("page");
@@ -1500,7 +1540,6 @@ for(var index = 0;index < pages.length;index++){
     pages[index].style.display = "none";
 }
 pages[currentPage].style.display = "block";
-
 
 editor = ace.edit("editor");
 editor.setTheme("ace/theme/terminal");
