@@ -1,0 +1,25 @@
+<html>
+<body>
+<button id = "derp" onclick="callPHP();">SAVE</button>
+
+<textarea id = "cubeIO"></textarea>
+
+<style>
+    #derp{
+        font-size:36px;
+    }
+</style>
+
+<script>
+
+function callPHP() {
+    var httpc = new XMLHttpRequest(); // simplified for clarity
+    var url = "test.php";
+    hypercube = document.getElementById("cubeIO").value;
+    httpc.open("POST", url, true); // sending as POST
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc.send("hypercube=" + hypercube);
+}    
+</script>
+</body>
+</html>
