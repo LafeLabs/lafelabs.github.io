@@ -2,6 +2,8 @@
 <body>
 <button id = "derp" onclick="callPHP();">SAVE</button>
 
+<button id = "zeep" onclick="callPHPload();">LOAD</button>
+
 <textarea id = "cubeIO"></textarea>
 
 <style>
@@ -13,12 +15,25 @@
 <script>
 
 function callPHP() {
-    var httpc = new XMLHttpRequest(); 
+    var httpc = new XMLHttpRequest();
     var url = "saver.php";
     hypercube = document.getElementById("cubeIO").value;
     httpc.open("POST", url, true);
     httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     httpc.send("hypercube=" + hypercube);
+}
+
+function callPHPload(){
+    var httpc = new XMLHttpRequest();
+    //var url = "loader.php";
+    httpc.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("cubeIO").value =
+            this.responseText;
+       }
+    };
+    httpc.open("GET", "cube.txt", true);
+    httpc.send();
 }
 </script>
 </body>
