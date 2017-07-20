@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<canvas id = "can"></canvas>
+<input id = "in" value = "y = y0 - .01*(x-100)*(x-100);"></input>
+<style>
+#can{
+  border:solid;
+}
+#in{
+  border:solid;
+}
+</style>
+<script>
+can = document.getElementById("can");
+can.width = 200;
+can.height = 200;
+ctx = can.getContext("2d");
+ctx.lineWidth = 2;
+y0 = 100;
+plot();
+ctx.strokeStyle="black";
+ctx.fillStyle="white";
+
+document.getElementById("in").onchange = function(){
+  ctx.fillRect(0,0,200,200);
+  plot();
+}
+
+function plot(){
+  y=0;
+  for(var index = 0;index < 200;index++){
+    x = index;
+    eval(document.getElementById("in").value);
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    x = index+1;
+    eval(document.getElementById("in").value);
+    ctx.lineTo(x,y);
+    ctx.stroke();		
+    ctx.closePath();
+  }
+
+  
+}
+
+</script>
+</body>
+</html>

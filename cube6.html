@@ -2,10 +2,8 @@
 <html>
 <head>
 <!-- PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS, NO PROPERTY NO MONEY NO MINING-->
-<title>Geometron Hypercube Editor</title>
+    <title>geometron cube 6</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.12.1/math.js">
-</script>
 <script>
 MathJax.Hub.Config({
   tex2jax: {
@@ -13,9 +11,6 @@ MathJax.Hub.Config({
     processEscapes: true
   }
 });</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
-
 <script id = "bytecodeScript">
 /*
 01012:0333,0200,0336,0332,0330,0336,0333,0330,0335,0335,0201,0201,0335,0201,0201,0335,0335,0350,0334,0342,0335,0335,0342,0334,0334,0334,0304,0332,0331,0337,0337,0333,
@@ -199,39 +194,10 @@ MathJax.Hub.Config({
 01375:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0331,0331,0333,0330,0335,0305,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0330,0330,0330,0334,0331,0331,0331,0331,0337,0337,0337
 01376:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0331,0331,0331,0333,0333,0335,0335,0342,0330,0334,0350,0334,0342,0334,0334,0342,0335,0351,0332,0332,0330,0330,0330,0335,0330,0306,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0330,0330,0330,0334,0337,0337,0331,0337
 01377:0333,0200,0336,0336,0332,0332,0336,0330,0337,0337,0342,0330,0336,0342,0331,0335,0342,0330,0336,0342,0330,0334,0342,0330,0337,0342,0330,0337,0336,0336,0342,0330,0334,0342,0330,0342,0330,0342,0330,0335,0331,0331,0332,0332,0335,0342,0330,0334,0334,0350,0335,0342,0334,0334,0342,0335,0335,0335,0351,0333,0331,0333,0335,0306,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334,0304,0333,0330,0330,0330,0334,0331,0331,0331,0337,0337,0337
-0274:0333,0331,0362,0203,0334,0203,0334,0203,0334,0203,0334,0363,0330,0332,
-0250:0305,0311,0336,0362,0203,0335,0350,0335,0337,0203,0305,0335,0335,0203,0363,0335,0350,0335,0305,
-0251:0305,0311,0336,0362,0203,0334,0350,0334,0337,0203,0305,0334,0334,0203,0363,0334,0350,0334,0305,
-0252:0305,0311,0337,0362,0203,0335,0335,0203,0335,0350,0335,0336,0203,0363,0335,0335,0335,0305,
-0253:0305,0311,0337,0362,0203,0334,0334,0203,0334,0350,0334,0336,0203,0363,0334,0334,0334,0305,
-0254:0305,0311,0335,0362,0203,0335,0335,0336,0203,0335,0203,0363,0335,0337,
-0255:0311,0305,0334,0362,0203,0334,0334,0336,0203,0334,0203,0363,0334,0337,
-0256:0305,0311,0335,0362,0203,0335,0335,0337,0203,0335,0335,0336,0203,0363,
-0257:0305,0311,0334,0362,0203,0334,0334,0337,0203,0334,0334,0336,0203,0363,
-0260:0311,0305,0333,0350,0334,0337,0362,0203,0305,0334,0334,0336,0203,0334,0203,0363,0334,0334,0334,0330,0335,0335,0350,0334,0305,
-0261:0311,0305,0332,0350,0335,0305,0337,0362,0203,0335,0335,0336,0203,0335,0203,0363,0331,0350,0335,0335,0335,0305,0336,0331,0337,
-01250:0333,0200,0336,0332,0330,0250,0304,0313,0331,0333,0337,
-01251:0333,0200,0336,0332,0330,0251,0304,0313,0331,0333,0337,
-01252:0333,0200,0336,0332,0330,0252,0304,0313,0331,0333,0337,
-01253:0333,0200,0336,0332,0330,0253,0304,0313,0331,0333,0337,
-01254:0333,0200,0336,0332,0330,0254,0304,0313,0331,0333,0337,
-01255:0333,0200,0336,0332,0330,0255,0304,0313,0331,0333,0337,
-01256:0333,0200,0336,0332,0330,0256,0304,0313,0331,0333,0337,
-01257:0333,0200,0336,0332,0330,0257,0304,0313,0331,0333,0337,
-01260:0333,0200,0336,0332,0330,0260,0304,0313,0331,0333,0337,
-01261:0333,0200,0336,0332,0330,0261,0304,0313,0331,0333,0337,
 0176:0330,0336,0336,0336,0331,0331,0333,0333,0341,0331,0331,0331,0331,0331,0331,0333,0333,0333,0333,0337,0337,0337,
 045:0336,0333,0330,0336,0332,0330,0335,0335,0366,0335,0332,0332,0331,0367,0335,0335,0366,0335,0335,0334,0332,0331,0331,0334,0336,0331,0337,0367,0336,0335,0335,0366,0332,0332,0334,0333,0337,0336,0334,0334,0367,0337,0335,0335,0201,0336,0342,0335,0335,0331,0331,0333,0333,0333,0333,0337,0337,0337,
 01364:0304,0313,0333,0200,0336,0332,0330,0336,0330,0332,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0334,0350,0334,0342,0334,0334,0342,0340,0335,0304,0331,0333,0337,0337,0332,0202,
 01007:0333,0200,0336,0332,0332,0336,0330,0337,01101,01102,01103,0330,0332,0201,0335,0335,0350,0336,0335,0342,0334,0334,0342,0335,0304,0335,0335,0331,0333,0337,0337,0331,
-0270:0333,0334,0201,0335,0201,0335,0201,0336,0201,0201,0335,0201,0201,0335,0201,0201,0335,0337,0336,0332,0336,0332,0334,0366,0333,0333,0335,0335,0331,0367,0366,0332,0332,0335,0335,0331,0367,0335,0331,0331,0331,0337,
-0271:0365,0336,0331,0332,0337,0333,0333,0337,0333,
-0272:0201,0335,0201,0336,0201,0201,0335,0201,0201,0335,0201,0201,0201,0342,0335,0337,0333,0336,0333,0336,0332,0335,0366,0332,0332,0335,0335,0331,0367,0366,0333,0333,0335,0335,0331,0367,0334,0332,0332,0331,0331,0331,0337,0332,0332,
-0273:0365,0336,0331,0332,0337,0333,0333,0337,0333,
-01270:0333,0200,0332,0336,0336,0333,0334,0366,0333,0333,0335,0335,0331,0367,0366,0332,0332,0335,0335,0331,0367,0331,0330,0336,0331,0337,0331,0366,0332,0332,0335,0335,0331,0367,0366,0333,0333,0335,0335,0331,0367,0335,0333,0336,0333,0337,0337,0337,
-01271:0333,0200,0336,0336,0332,0332,0336,0333,0334,0337,0366,0333,0333,0335,0335,0331,0367,0366,0332,0332,0330,0335,0335,0367,0335,0333,0336,0333,0337,0334,0335,0335,0333,0333,0333,0333,0331,0366,0332,0332,0335,0335,0331,0367,0366,0333,0333,0335,0335,0331,0367,0335,0332,0337,0337,0335,0335,0331,
-01272:0333,0200,0332,0336,0336,0333,0334,0366,0333,0333,0335,0335,0331,0367,0366,0332,0332,0335,0335,0331,0367,0335,0333,0336,0333,0337,0334,0330,0335,0335,0366,0333,0333,0330,0335,0335,0367,0366,0332,0332,0335,0335,0331,0367,0334,0333,0333,0336,0333,0337,0337,0337,
-01273:0333,0200,0336,0332,0336,0336,0332,0335,0337,0366,0332,0332,0335,0335,0331,0367,0366,0333,0333,0335,0335,0331,0367,0330,0330,0334,0336,0333,0337,0335,0331,0366,0333,0333,0330,0335,0335,0367,0366,0332,0332,0330,0335,0335,0367,0334,0333,0337,0337,
 01016:0333,0200,0336,0332,0330,0342,0330,0335,0335,0350,0335,0342,0334,0334,0342,0335,0330,0304,0335,0335,0331,0333,0337,
 01017:0333,0200,0336,0330,0332,0335,0335,0342,0330,0335,0335,0350,0334,0342,0335,0335,0342,0334,0304,0333,0337,
 01012:0333,0200,0336,0332,0330,0334,0342,0330,0335,0335,0350,0334,0342,0335,0335,0342,0334,0330,0304,0330,0334,0331,0337,
@@ -240,71 +206,11 @@ MathJax.Hub.Config({
 01005:0333,0200,0336,0332,0330,0336,0330,0335,0201,0335,0201,0335,0335,0350,0336,0334,0342,0335,0335,0342,0334,0304,0337,0333,0331,0331,0337,0337,
 01006:0333,0200,0336,0330,0332,0336,0332,0335,0342,0335,0335,0350,0334,0342,0335,0335,0342,0335,0304,0333,0335,0342,0330,0350,0334,0342,0335,0335,0342,0334,0334,0334,0304,0333,0337,0331,0337,
 01011:0333,0200,0336,0332,0330,0336,0342,0335,0342,0335,0342,0335,0342,0330,0350,0335,0342,0334,0334,0342,0335,0331,0331,0335,0335,0335,0342,0335,0335,0342,0334,0330,0304,0334,0331,0331,0337,0337,
-0230:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0110,0365,0333,0336,0330,0333,0337,0337,0337
-0231:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0130,0365,0333,0336,0330,0333,0337,0337,0337
-0232:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0131,0365,0333,0336,0330,0333,0337,0337,0337
-0233:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0132,0365,0333,0336,0330,0333,0337,0337,0337
-0234:0304,0313,0335,0336,0336,0342,0330,0330,0330,0342,0331,0331,0334,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0336,0336,0333,0330,0333,0330,0333,0337,0337,0133,0365,0333,0336,0330,0333,0337,0337,0337
-0235:0313,0304,0336,0330,0341,,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0330,0337,
-0240:0304,0313,0335,0342,0330,0336,0331,0336,0336,0347,0337,0337,0335,0342,0334,0334,0333,0337,
-0241:0304,0313,0335,0342,0336,0330,0334,0342,0335,0335,0336,0336,0342,0337,0337,0335,0335,0336,0336,0341,0337,0337,0333,0337,
-0242:0304,0313,0335,0336,0336,0310,0336,0313,0342,0330,0334,0342,0337,0342,0330,0335,0342,0330,0342,0330,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0342,0330,0335,0342,0330,0333,0336,0333,0331,0337,0306,0343,0350,0335,0310,0337,0342,0330,0336,0336,0336,0336,0336,0335,0335,0335,0335,0335,0342,0335,0335,0342,0335,0335,0335,0335,0335,0337,0337,0337,0337,0337,0331,0336,0334,0313,0304,0336,0331,0332,0332,0332,0330,0330,0332,0337,0337,0310,0337,0313
-0243:0304,0313,0335,0342,0336,0330,0334,0342,0335,0335,0336,0336,0342,0337,0337,0335,0335,0336,0336,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0337,0337,0333,0337,
-0250:0331,0334,0337,0362,0203,0334,0336,0203,0335,0350,0335,0337,0310,0337,0203,0335,0335,0203,0335,0335,0335,0336,0313,0336,0304,0203,0334,0337,0203,0203,0334,0336,0203,0335,0350,0335,0337,0310,0337,0203,0335,0335,0203,0335,0335,0335,0336,0313,0336,0203,0304,0334,0337,0203,0363,0335,0336,0330,
-0260:0336,0335,0366,0330,0330,0332,0335,0334,0330,0331,0331,0331,0332,0332,0336,0336,0330,0337,0337,0367,0335,0335,0366,0332,0332,0332,0331,0367,0335,0337,
-0261:0260,0260,0260,0260,
-0262:0334,0336,0336,0261,0335,0337,0337,
-0263:0336,0336,0201,0334,0331,0331,0337,0337,0342,0336,0336,0333,0333,0337,0337,0342,0336,0330,0335,0336,0201,0337,0337,
-0264:0336,0336,0201,0337,0263,0336,0201,0337,0337,
-0265:0306,0334,0201,0335,0335,0201,0201,0334,0334,0201,0335,
-0266:0336,0336,0336,0265,0265,0265,0337,0337,0337,0304,
-0267:0335,0335,0332,0264,0335,0201,0335,0266,0262,
-01230:0333,0200,0332,0330,0336,0331,0337,0230,0336,0336,0336,0333,0333,0336,0332,0337,0337,0337,0331,0337,
-01231:0333,0200,0332,0330,0336,0331,0337,0231,0336,0336,0336,0333,0333,0336,0332,0337,0337,0337,0331,0337,
-01232:0333,0200,0332,0330,0336,0331,0337,0232,0336,0336,0336,0333,0333,0336,0332,0337,0337,0337,0331,0337,
-01235:0333,0200,0332,0330,0336,0331,0337,0235,0336,0336,0336,0333,0333,0336,0332,0337,0337,0337,0331,0337,
-01233:0333,0200,0332,0330,0336,0331,0337,0233,0336,0336,0336,0333,0333,0336,0332,0337,0337,0337,0331,0337,
-01234:0333,0200,0332,0330,0336,0331,0337,0234,0336,0336,0336,0333,0333,0336,0332,0337,0337,0337,0331,0337,
-01236:0333,0200,0336,0330,0335,0331,0331,0337,0236,0334,0336,0331,0337
-01240:0333,0200,0336,0330,0332,0335,0342,0340,0335,0342,0335,0342,0335,0333,0331,0337,,
-01241:0333,0200,0336,0330,0334,0201,0201,0331,0335,0342,0336,0336,0341,0333,0333,0333,0333,0337,0337,0331,0337,
-01242:0333,0200,0336,0330,0332,0331,0330,0332,0310,0337,0313,0242,0310,0336,0313,0333,0333,0331,0337
-01243:0333,0200,0336,0330,0334,0201,0201,0331,0335,0342,0336,0350,0335,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0335,0304,0336,0333,0333,0333,0333,0337,0337,0331,0337,
-01250:0202,0200,0336,0336,0336,0330,0330,0330,0330,0332,0332,0332,0332,0250,0337,0337,0333,0331,0337
-01260:0333,0200,0336,0332,0260,0336,0333,0336,0332,0336,0333,0337,0337,0337,0337,
-01261:0333,0200,0336,0332,0334,0336,0333,0331,0337,0261,0336,0335,0331,0331,0331,0336,0333,0333,0331,0331,0337,0337,0331,0337,
-01262:0333,0200,0336,0332,0336,0331,0333,0201,0337,0337,0337,0262,0336,0336,0336,0342,0331,0333,0337,0337,0331,
-01263:0333,0200,0336,0332,0337,0263,0336,0333,0337,0331,
-01264:0333,0200,0336,0332,0337,0264,0336,0333,0337,0331,
-01265:0333,0200,0336,0332,0265,0304,0333,0337,0331,
-01266:0333,0200,0336,0332,0337,0336,0336,0336,0201,0337,0337,0337,0266,0336,0336,0336,0201,0337,0337,0333,0337,0331,
-01032:0333,0200,0336,0336,0200,0330,0200,0330,0200,0330,0200,0332,0200,0331,0200,0331,0200,0332,0331,0200,0330,0330,0200,0332,0330,0200,0331,0331,0200,0331,0332,0337,0337,0333,
-0730:0171,060,040,053,075,040,0166,0151,0145,0167,0123,0164,0145,0160,073,
-0731:0171,060,040,055,075,040,0166,0151,0145,0167,0123,0164,0145,0160,073,
-0732:0170,060,040,055,075,040,0166,0151,0145,0167,0123,0164,0145,0160,073,
-0733:0170,060,040,053,075,040,0166,0151,0145,0167,0123,0164,0145,0160,073,
-0734:0166,0151,0145,0167,0123,0164,0145,0160,040,057,075,040,062,073,
-0735:0166,0151,0145,0167,0123,0164,0145,0160,040,052,075,040,062,073,
-0736:0165,0156,0151,0164,040,057,075,040,062,073,
-0737:0165,0156,0151,0164,040,052,075,040,062,073,
-01730:0333,0200,0336,0332,0330,0342,0330,0335,0335,0350,0334,0336,0342,0335,0335,0342,0335,0304,0337,0331,0335,0337,0331,
-01731:0333,0200,0336,0332,0330,0335,0335,0201,0334,0334,0350,0335,0336,0342,0334,0334,0342,0335,0304,0337,0333,0337,
-01732:0333,0200,0336,0332,0330,0334,0201,0335,0335,0336,0350,0334,0342,0335,0335,0342,0334,0334,0334,0304,0337,0331,0337,0333,
-01733:0333,0200,0336,0332,0330,0335,0201,0335,0335,0336,0350,0335,0342,0334,0334,0342,0335,0335,0335,0304,0337,0331,0337,
-01734:0333,0200,0336,0332,0330,0334,0336,0201,0350,0335,0342,0334,0334,0342,0335,0335,0335,0335,0335,0330,0201,0334,0342,0335,0335,0342,0335,0304,0332,0335,0335,0337,0331,0337,
-01735:0333,0200,0336,0332,0330,0336,0342,0335,0342,0335,0342,0335,0201,0350,0335,0342,0334,0334,0342,0335,0331,0331,0335,0335,0335,0342,0335,0335,0342,0335,0304,0332,0335,0335,0337,0331,0337,
-01736:0333,0200,0336,0330,0332,0336,0334,0342,0335,0335,0342,0341,0334,0333,0333,0331,0331,0337,0337,
-01737:0333,0200,0336,0330,0332,0336,0341,0335,0342,0335,0342,0335,0342,0335,0342,0333,0331,0333,0331,0337,0337,
-0701:0166,0151,0145,0167,0123,0164,0145,0160,040,075,040,0165,0156,0151,0164,060,073,012,0165,0156,0151,0164,040,075,040,0165,0156,0151,0164,060,073,012,0170,060,040,075,040,0160,0154,0157,0164,0123,0151,0172,0145,057,062,073,012,0171,060,040,075,040,0160,0154,0157,0164,0123,0151,0172,0145,057,062,073,
-01701:0333,0200,0336,0332,0330,0342,0335,0342,0335,0342,0335,0342,0350,0335,0304,0342,0335,0335,0342,0334,0342,0335,0335,0342,0335,0350,0335,0304,0333,0331,0337,
-
+0220:0304,0313,0337,0340,0336,0336,0331,0331,0333,0330,0337,0332,0332,0201,0335,0201,0201,0201,0334,0336,0201,0335,0337,0350,0335,0310,0337,0201,0335,0335,0201,0335,0304,0335,0336,0313,0336,0201,0334,0337,0201,0201,0201,0335,0333,0333,0336,0330,0332,0337,
 */
 </script>
-<!--<script src = "https://lafelabs.github.io/libraries/foo.js"></script>-->
-<script src = "https://lafelabs.github.io/libraries/imageCube.js"></script>
 <script>
 
-//do things to string (one function, string to byte code):
 function string2byteCode(localString){
 	var localByteCode = "";
 	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
@@ -317,7 +223,7 @@ function string2byteCode(localString){
 	}
 	return localByteCode;
 }
-//do things to glyphs() there are 5 of these and they should be duplicated into 05xx where input is from the text area or some other glyph or string stack
+
 function byteCode2string(localByteCode){
 	var localString = "";
 	var stringArray = localByteCode.split(",");
@@ -342,347 +248,34 @@ function byteCode2string(localByteCode){
 	return localString;
 }
 
-function commaCleaner(dirtyGlyph){ //remove extra commas from glyph
-	var dirtyArray = dirtyGlyph.split(",");
-	var cleanGlyph = "";
-	for(var index = 0;index < dirtyArray.length;index++){
-		if(dirtyArray[index] != ""){
-			cleanGlyph += dirtyArray[index] + ",";
-		}
-	}
-	return cleanGlyph;
-}
-
 function drawGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
-		if(explodeIndex < explodeLimit){
-			doTheThing(parseInt(tempArray[index],8));
-		}
+		doTheThing(parseInt(tempArray[index],8));
 	}
 }
 
 function spellGlyph(localString){
 	var tempArray = localString.split(',');
 	for(var index = 0;index < tempArray.length;index++){
-		    ctx.lineWidth = 2;
-	      ctx.strokeStyle="black";
-
+		ctx.lineWidth = 2;
+	    ctx.strokeStyle="black";
 		doTheThing(parseInt(tempArray[index],8) + 01000);
-		if(index == cursorPosition-1){
-			drawGlyph("0336,0333,0336,0330,0341,0331,0337,0333,0337");
-		}
 	}
 }
-
-
-function buildPanel(glyphsGlyph){
-	var glyphsGlyphArray = glyphsGlyph.split(",");
-	var buttonArray = [];
-	for(var index = 0;index < glyphsGlyphArray.length;index++){
-		buttonArray.push(parseInt(glyphsGlyphArray[index],8));
-	}
-	for(var index = 0;index < buttonArray.length;index++){
-		appendGlyphButton(buttonArray[index]);
-	}
-}
-
-//functions with no arguement(these can all go into 05xx, there are 5 of them)  this can all go into a root code for genesis: 0,1,2,3,4
-
-function updateAddr(){
-	currentAddress = parseInt(document.getElementById("addr").value,8);
-	currentGlyph = currentTable[currentAddress];
-	currentGlyphArray = currentGlyph.split(",");
-	cursorPosition = currentGlyphArray.length;
-	redraw();
-}
-
-function updateGlyph(){
-	currentGlyph = document.getElementById("glyphBytecode").value;
-	currentGlyph = commaCleaner(currentGlyph);
-	currentTable[currentAddress] = currentGlyph;
-	currentGlyphArray = currentGlyph.split(",");
-	cursorPosition = currentGlyphArray.length;
-	redraw();	
-}
-
-function updateParagraph(){
-	currentTable[currentAddress] = string2byteCode(editor.getValue());
-    currentGlyph = currentTable[currentAddress];
-	cursorPosition = currentTable[currentAddress].length;
-}
-
-function updateShapeGlyphs(){
-	currentNode = document.getElementById("shapePad");
-	while (currentNode.hasChildNodes()) {
-		currentNode.removeChild(currentNode.childNodes[0]);
-	}
-    shapeTableGlyph = "";
-    for(var index = 0;index < 0100;index++){
-        if(currentTable[0200 + index].length > 0){
-            shapeTableGlyph += "0" + (0200 + index).toString(8) + ",";
-        }
-    }
-    currentNode = document.getElementById("shapePad");
-    buildPanel(shapeTableGlyph);
-}
-function getCursor(){
-
-	currentGlyphArray = currentGlyph.split(",");
-	var foo = "";
-	doTheThing(0300);
-	for(var index = 0;index < cursorPosition;index++){
-		foo += currentGlyphArray[index] + ",";	
-		var localAction = parseInt(currentGlyphArray[index],8);
-		doTheThing(localAction);
-	}
-	cursor.x = x;
-	cursor.y = y;
-	cursor.theta = theta;
-	cursor.thetaStep = thetaStep;
-	cursor.side = side;
-
-}
-
-function keyin(){
-    var key = document.getElementById("keyInput").value;
-    document.getElementById("keyInput").value = "";
-    for(var index = 0;index < keys.length;index++){
-        if(keys[index] == key){
-            //console.log("0" + commands[index].toString(8));
-            cursorAction(commands[index]);	
-            redraw();
-        }
-    }			
-}
-
-function redraw(){
-        currentNode = document.getElementById("plotCanvasContainer");
-        for(var index = 0;index < elementNameArray.length;index++){
-            var localElement = elementNameArray[index];
-            document.getElementById("plotCanvasContainer").removeChild(document.getElementById(localElement));
-        }
-        elementNameArray = [];
-
-
-        if((currentAddress >= 0500 && currentAddress <= 0777)||(currentAddress >= 01400 && currentAddress <= 01477)||(currentAddress >= 01 && currentAddress <= 06)){
-            document.getElementById("editor").style.display = "block";
-            document.getElementById("plotCanvas").style.display = "none";			
-            for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
-                document.getElementsByClassName("drawToolPanel")[index].style.display = "none";
-            }
-            document.getElementById("glyphControl").style.display = "block";
-            document.getElementById("spellDiv").style.display = "block";
-            if(currentTable[currentAddress] != null){
-                editor.setValue(byteCode2string(currentTable[currentAddress]));
-            }
-            else{
-                editor.setValue("");
-            }
-        }
-        else{
-            document.getElementById("editor").style.display = "none";	
-
-            document.getElementById("plotCanvas").style.display = "block";			
-                for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
-                    document.getElementsByClassName("drawToolPanel")[index].style.display = "block";
-                }
-        }
-
-        if(currentAddress >= 0600 && currentAddress <= 0677){
-            editor.getSession().setMode("ace/mode/html");
-        }
-        if(currentAddress >= 0700 && currentAddress <= 0777){
-            editor.getSession().setMode("ace/mode/javascript");
-        }
-        if(currentAddress >= 0500 && currentAddress <= 0577){
-            editor.getSession().setMode("ace/mode/css");
-        }
-
-        doTheThing(0500);
-        x0 = plotSize/2;
-        y0 = plotSize/2;
-        unit = plotSize/8;
-        unit0 = unit;
-        theta0 = -Math.PI/2; 
-        doTheThing(0300);
-        drawGlyph(viewGlyph);
-        doTheThing(0300);
-        //draw the glyph:
-        ctx = document.getElementById("plotCanvas").getContext("2d");
-        //draw current glyph:
-        doTheThing(0300);
-    //	ctx.fillStyle = "#808080"
-        ctx.clearRect(0,0,width,height);
-        doTheThing(0300);
-
-        drawGlyph(currentGlyph);
-        //draw the cursor:
-        ctx = document.getElementById("invisibleCanvas").getContext("2d");
-        getCursor();
-        if(wrenchMode == true){
-            ctx = document.getElementById("plotCanvas").getContext("2d");
-            drawGlyph(cursor.glyph);
-        }
-
-        //spell:
-        ctx = document.getElementById("spellCanvas").getContext("2d");
-        ctx.clearRect(0,0,3000,40);
-        unit = 20;
-        x0 = 5;
-        y0 = 25;
-        theta0 = -Math.PI/2; 
-
-        doTheThing(0300);
-        spellGlyph(currentGlyph);
-        
-        document.getElementById("addr").value = "0" + currentAddress.toString(8);
-        document.getElementById("glyphBytecode").value = currentGlyph;
-        explodeIndex = 0;	
-
-        if(wrenchMode == false){
-            for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
-                document.getElementsByClassName("drawToolPanel")[index].style.display = "none";
-            }
-        }
-        if(wrenchMode == true){
-            for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
-                document.getElementsByClassName("drawToolPanel")[index].style.display = "block";
-            }
-        }
-        MathJax.Hub.Typeset(); //update mathjax
-    }
-
-function roctalChar(localAddress){
-	drawGlyph("0313,0336,0336,0336,0274,0333,0331,0274,0333,0331,0337,");
-	for(var bitIndex = 8;bitIndex >= 0;bitIndex--){
-		if(((localAddress>>bitIndex)&1)==1){
-			doTheThing(0274);// data square
-		}
-		doTheThing(0333);
-		if((bitIndex == 6)||(bitIndex == 3)){
-			drawGlyph("0331,0332,0332,0332");
-		}
-	}
-	drawGlyph("0331,0337,0337,0200,0330");
-	
-	drawGlyph("0332,0336,0336,0331,0331,");
-	currentWord = ((localAddress >> 6)&7).toString();	
-	drawGlyph("0365,0331,");
-	currentWord = ((localAddress >> 3)&7).toString();	
-	drawGlyph("0365,0331,");
-	currentWord = ((localAddress)&7).toString();	
-	drawGlyph("0365,0331,");
-	drawGlyph("0330,0337,0337,0330,0333,");	
-}
-
-
-function jumpSlide(localCommand){
-		currentAddress = localCommand;
-		currentGlyph = currentTable[currentAddress];
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		wrenchMode = false;
-		redraw();
-}
-
-function appendGlyphButton(localCommand){
-	glyphButtonSize = 40;
-	var newCanvas = document.createElement("CANVAS");		
-	newCanvas.width = glyphButtonSize;
-	newCanvas.height = glyphButtonSize;
-	newCanvas.className = "glyphButtons";
-	ctx = newCanvas.getContext("2d");
-	ctx.fillStyle="white";
-	ctx.fillRect(5, 5, glyphButtonSize-10, glyphButtonSize-10);
-	ctx.fillStyle="black";
-	doTheThing(0300);			
-	x = 5;
-	y = glyphButtonSize-5;
-	side = glyphButtonSize-10;
-	doTheThing(localCommand + 01000);
-	if(localCommand < 040){
-		newCanvas.onclick = function(){
-			localRoot(localCommand);
-		}	
-	}
-	if(localCommand >= 040){
-		newCanvas.onclick = function(){
-			cursorAction(localCommand);	
-			redraw();	
-		}
-	}
-	currentNode.appendChild(newCanvas);
-}
-
-
-function cursorAction(localCommand){
-	currentGlyphArray = currentGlyph.split(",");
-	if(cursorPosition > currentGlyphArray.length){
-		cursorPosition = currentGlyphArray.length;
-	}
-	currentGlyph = "";
-	doTheThing(0300);
-	
-	for(var index = 0;index < cursorPosition;index++){
-		currentGlyph += currentGlyphArray[index] + ",";	
-		var localAction = parseInt(currentGlyphArray[index],8);
-		if( !((localAction >= 0340) && (localAction < 0344)) ){
-			doTheThing(localAction);
-		}
-	}
-	if(localCommand != undefined){
-		if( !((localCommand >= 0340) && (localCommand < 0344)) ){
-			doTheThing(localCommand);
-		}
-	}
-	cursor.x = x;
-	cursor.y = y;
-	cursor.theta = theta;
-	cursor.thetaStep = thetaStep;
-	cursor.side = side;
-	if(localCommand != undefined){
-		currentGlyph += "0" + localCommand.toString(8) + ",";
-	}	
-	for(var index = cursorPosition;index < currentGlyphArray.length;index++){
-		currentGlyph += currentGlyphArray[index] + ",";		
-	}
-	cursorPosition++;	
-	currentGlyph = commaCleaner(currentGlyph);
-		currentTable[currentAddress] = currentGlyph;
-
-}
-
-
 
 function doTheThing(localCommand){
- 	 explodeIndex++;
- 	 if(explodeIndex > explodeLimit){
-		explodeIndex = 0;
- 	 }
-     if((localCommand > 02000)&&(localCommand < 03000)){
-    	roctalChar(localCommand - 02000);
-    }
+
     if(localCommand >= 040 && localCommand <= 0176){
-    	currentWord += String.fromCharCode(localCommand);
-        currentString += String.fromCharCode(localCommand);
+		 currentHTML += String.fromCharCode(localCommand);
+         currentWord += String.fromCharCode(localCommand);	    
     }
     if(localCommand >= 0200 && localCommand <= 0277){//shapes 
 		 drawGlyph(currentTable[localCommand]);    	    
     }
     if(localCommand >= 01000 && localCommand <= 01777){//symbol glyphs
 		 drawGlyph(currentTable[localCommand]);    	    
-    }
-    if(localCommand >= 0500 && localCommand <= 0577){
-        currentStyle = byteCode2string(currentTable[localCommand]);
-    }
-    if(localCommand >= 0600 && localCommand <= 0677){
-        currentHTML = byteCode2string(currentTable[localCommand]);
-    }
-    if(localCommand >= 0700 && localCommand <= 0777){
-         eval(byteCode2string(currentTable[localCommand]));
-    }
-    
+    }    
     if(localCommand == 0300){
       x = x0;
       y = y0;
@@ -690,7 +283,7 @@ function doTheThing(localCommand){
       side = unit;
       thetaStep = Math.PI/2;
       scaleFactor = 2;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 4;
       ctx.strokeStyle="black";
       ctx.fillStyle="black";
       currentWord = "";
@@ -886,8 +479,6 @@ function doTheThing(localCommand){
 		currentSVG += "fill = \"black\" />\n";		
 
 	}
-
-
     if(localCommand == 0350){
       thetaStep /= 2;  //angle/2
     }
@@ -970,213 +561,15 @@ function doTheThing(localCommand){
 // stroke = "black" stroke-width = "2"
 }
 
-function localRoot(localCommand){//010 octal  = 8 decimal = delete as per ASCII spec
-//	localCommand = parseInt(localCommand,8);
 
-
-	if(localCommand == 010){
-		currentGlyphArray = currentGlyph.split(",");
-		
-		firstHalf = "";
-		secondHalf = "";	
-		for(var index = 0;index < cursorPosition - 1;index++){
-			firstHalf += currentGlyphArray[index] + ",";
-		}
-		for(var index = cursorPosition;index < currentGlyphArray.length;index++){
-			secondHalf += currentGlyphArray[index] + ",";
-		}				
-		currentGlyph = firstHalf + secondHalf;
-		if(cursorPosition > 0){
-			cursorPosition--;
-		}
-		currentGlyph = commaCleaner(currentGlyph);
-
-		redraw();
-	}
-
-	if(localCommand == 0020){//cursor forward
-		cursorPosition--;
-		if(cursorPosition < 0){
-			cursorPosition = currentGlyphArray.length;			
-		}
-
-		redraw();
-	}
-	if(localCommand == 0021){//cursor back
-		cursorPosition++;
-		if(cursorPosition > currentGlyphArray.length ){
-			cursorPosition = 0;
-		}
-		redraw();
-	}	
-	if(localCommand == 0022){//move to previous glyph in table
-		currentAddress--;
-		currentGlyph = currentTable[currentAddress];
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-	}
-	if(localCommand == 0023){//move to next glyph in table
-		currentAddress++;
-		currentGlyph = currentTable[currentAddress];
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-
-	}	
-	if(localCommand == 0024){//from action to symbol
-		if(currentAddress < 01000 && currentAddress > 0){
-			currentAddress += 01000;
-			currentGlyph = currentTable[currentAddress];
-
-		}
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-
-	}	
-	if(localCommand == 0025){//from symbol to action
-		if(currentAddress > 01000 && currentAddress < 02000){
-			currentAddress -= 01000;
-			currentGlyph = currentTable[currentAddress];
-		}
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-	}
-	
-	if(localCommand == 0026){//import full geometron hypercube
-		var localString = document.getElementById("mainTextArea").value;
-		var inputStack = localString.split("\n");
-		for(var index = 0;index < inputStack.length;index++){
-			var stackLine = inputStack[index].split(":");
-			var localAddress = parseInt(stackLine[0],8);
-			var localGlyph = stackLine[1];
-			currentTable[localAddress] = localGlyph;
-		}
-		currentGlyph = currentTable[currentAddress];
-		currentGlyphArray = currentGlyph.split(",");
-		cursorPosition = currentGlyphArray.length;
-		redraw();
-
-	}
-	if(localCommand == 0027){//export full geometron hypercube		
-		var localString = "";
-		for(var index = 0;index < currentTable.length;index++){
-			if(currentTableStart[index] != currentTable[index] || fullCube){
-				localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
-			}
-		}
-		document.getElementById("mainTextArea").value = localString;
-	}
-	if(localCommand == 030){
-		if(document.getElementById("bigContainer").style.display != "none"){
-			document.getElementById("bigContainer").style.display = "none";
-		}else{
-			document.getElementById("bigContainer").style.display = "block";
-		}
-	}
-	if(localCommand == 031){//export SVG
-		currentSVG = "";
-		x0 = 200;
-		y0 = 200;
-		unit = 100;
-		ctx = document.getElementById("invisibleCanvas").getContext("2d");
-		doTheThing(0300);		
-		drawGlyph(currentGlyph);
-
-		var localString= "<svg width=\"400\" height=\"400\" viewbox = \"0 0 400 400\"  xmlns=\"http://www.w3.org/2000/svg\" style = \"border:solid;\">\n";		
-		localString += currentSVG;
-		localString += "</svg>";
-		document.getElementById("mainTextArea").value = localString;
-	}
-    if(localCommand == 0032){
-        updateShapeGlyphs();
-    }
-    if(localCommand == 0033){
-        var foo = document.getElementsByClassName("drawToolPanel")[0].style.display;
-        if(foo == "block"){
-            for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
-                document.getElementsByClassName("drawToolPanel")[index].style.display = "none";
-            }
-        }else{
-            for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
-                document.getElementsByClassName("drawToolPanel")[index].style.display = "block";
-            }
-        }
-		wrenchMode = !wrenchMode;
-    }
-	if(localCommand == 007){
-		var textGlyph = string2byteCode(document.getElementById("mainTextArea").value);	        
-        var numLetters = textGlyph.split(",").length;
-        var bullshit = currentGlyph.split(",");
-        currentGlyph= "";
-        for(var index = 0;index < cursorPosition;index++){
-             currentGlyph += bullshit[index] + ",";
-        }
-        currentGlyph += textGlyph;
-        for(var index = cursorPosition;index < bullshit.length;index++){
-             currentGlyph += bullshit[index] + ",";
-        }
-        cursorPosition += numLetters-1;
-		redraw();
-	}
-    if(localCommand == 0016){
-		viewGlyph += "0530,";
-        redraw();
-    }
-    if(localCommand == 0017){
-        viewGlyph += "0531,";
-        redraw();
-    }
-    if(localCommand == 00012){
-        viewGlyph += "0532,";
-        redraw();
-    }
-    if(localCommand == 0014){
-        viewGlyph += "0533,";
-        redraw();
-    }
-    if(localCommand == 0006){
-        viewGlyph += "0536,";
-        redraw();
-    }
-    if(localCommand == 0011){
-        viewGlyph += "0537,";
-        redraw();
-    }
-    if(localCommand == 0013){
-        viewGlyph = "";
-        redraw();
-    }
-}
-
-
-/* Here is the setup code that sets all the globals inside the head element*/
-fullCube = true;
-inPath = false;//move to true after path started, back to false after path ended
-explodeIndex = 0;
-explodeLimit = 100000;
-wrenchMode = true;
-divIndex = 0;
-elementIndex = 0;
-elementNameArray = [];
-currentString = "";
-currentStyle = "";
-currentCode = "";
-currentHTML = "";
+fullCube = false;
 
 currentTable = []; 
-currentViewGlyphTable = [];
-scrollPage = 0400;
 for(var index = 0;index < 01777;index ++){
     currentTable.push("");
-    currentViewGlyphTable.push("");
-}  
+}
 var inputbytecode = document.getElementById("bytecodeScript").text;
-
 var bytecodearray = inputbytecode.split("\n");
-
 for(var index = 0;index < bytecodearray.length;index++){
     if(bytecodearray[index].includes(":")){
         var localBytecode = bytecodearray[index].split(":");
@@ -1185,377 +578,273 @@ for(var index = 0;index < bytecodearray.length;index++){
     }
 }
 
-for(var index = 040;index < 0177;index++){
-    currentTable[index + 01000] = currentTable[index];
+currentTableStart = [];
+for(var index = 0;index < currentTable.length;index++){
+    currentTableStart.push(currentTable[index]);
 }
-currentTableStart = currentTable.slice();
 
 myFont = "Futura";
 currentWord = "";
 currentSVG = "";
-currentAddress = 0400;
-currentGlyph = currentTable[currentAddress];
-currentGlyphArray = currentGlyph.split(",");
-cursorPosition = currentGlyphArray.length;
+currentHTML = "";
+currentAddress = 0210;
+currentGlyph = "0300,";
 phi = 0.5*(Math.sqrt(5) + 1);
 scaleFactor = 2;
 thetaStep = Math.PI/2;
 theta0 = -Math.PI/2; 
 theta = theta0;
-
-
-width = window.innerWidth;
-height = window.innerHeight;
-landscape = true;
-
-if(width < height){
-    plotSize = width;//width is smaller(portrait)
-    landscape = false;
-    remainder = height - plotSize;
-}
-else{
-    plotSize = height;//height is smaller in this case(landscape)
-    remainder = width - plotSize;
-}
-
-x0 = plotSize/2;
-y0 = plotSize/2;
+x0 = innerWidth/2;
+y0 = innerHeight/2;
 x = x0;
 y = y0;
-x00 = x0;
-y00 = y0;
 unit = 100;
-unit = plotSize/8;
 side = unit;
-unit0 = unit;
-viewStep = unit;
-viewGlyph = "";//glyph that describes the viewport
-
-hyperUnit = unit;
-
-cursor = {
-    x:x,
-    y:y,
-    theta:theta,
-    thetaStep:thetaStep,
-    side:side,
-    glyph:"0362,0344,0363,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,0334,0362,0344,0363,0335,0335,0362,0344,0363"
-}
-
-
-keys1 = ["4","5","6","0"];
-commands1 = [0304,0305,0306,0300];
-keys2 = ["q","w","e","r","t"];
-commands2 = [0310,0311,0312,0313,0314];
-keys3 = ["a","s","d","f","g","h","j","k","l",";"];
-commands3 = [0330,0331,0332,0333,0334,0335,0336,0337,0350,0351];
-keys4 = ["z","x","c","v",];
-commands4 = [0340,0341,0342,0343];	
-
-keys = keys1.concat(keys2,keys3,keys4);
-commands = commands1.concat(commands2,commands3,commands4);
-
 </script>
 </head>
 <body>
-<canvas style = "display:none;" id = "invisibleCanvas"></canvas>
 
-<div id = "bigContainer">
-    <div id = "plotCanvasContainer">
-        <canvas id = "plotCanvas" style = "border:solid;display:block;background:white;position:fixed;"></canvas>
-    </div>
+<!-- Image Layer: Z = -2 -->
+<div id = "div0600">
+    <div id = "urls0600" style = "display:none">https://i.imgur.com/xRUULq6.jpg
+https://i.imgur.com/vMwBsQW.jpg
+https://i.imgur.com/Su6zoQP.jpg
+https://i.imgur.com/2zsgvh2.jpg
+https://i.imgur.com/M49VKP4.jpg
+https://i.imgur.com/CCINcXz.jpg
+</div>
+    <img id = "img0600"></img>
+</div>
+<script id = "script0700">
+    urls = document.getElementById("urls0600").innerHTML.split("\n");
+    imageURL = urls[5];
 
-    <div id = "controlContainer">
-        <div id = "directionPad"></div>
-        <div id = "drawPad"></div>
-        <div id = "anglePad"></div>
-        <div id = "scalePad"></div>
-        <div id = "shapePad"></div>
-        <div id = "colorPad"></div>
-        <div id = "rootPad">
-              <textarea id = "mainTextArea"  cols = "20" rows = "8"   class = "drawToolPanel"></textarea>
-        </div>
-        <div id = "addrPad"></div>
-        <div id = "reloadShapePad"></div>
-        <div id = "glyphControl">
-                    <input size = "6" id = "addr" style = "float:left;" onchange = "updateAddr();"></input>
-        </div>
-        <div id = "keygrab">
-                <input size  = "4" onkeyup = "keyin()" id = "keyInput"></input>
-        </div>
-        <div id = "spellDiv"  class = "drawToolPanel">
-            <canvas width = "3000" height = "30" id = "spellCanvas" style = "border:solid;float:left;"></canvas>
-            <input style = "float:left;" size = "428" id = "glyphBytecode" onchange = "updateGlyph()"></input>
-        </div>
+    mainimage = document.getElementById("img0600");
+    mainimage.src = imageURL;
+    mainimage.onload = function(){
+            x0 = innerWidth/2;
+            y0 = innerHeight/2;
+            x = 0;
+            y = 0;
+            unit = innerHeight/4;
+            side = unit;
+            imageScale = 1;//fraction to scale, preserving aspectratio, fractional
+            console.log("image aspect ratio = " + (this.width/this.height).toString())
+            this.width *= imageScale;
+            this.style.left = (x).toString() + "px";
+            this.style.top = (y).toString() + "px";
+            this.style.zIndex = "-2";
+    }
+</script>
+<style id = "style0500">
+body{
+    overflow:hidden;
+}
+img{
+    z-index:-2;
+    position:absolute;
+}    
+</style>
+<!-- Mask Layer:  Z = -1-->
+<div id = "div0601">
+    <div class = "mask"></div>
+    <div class = "mask"></div>
+    <div class = "mask"></div>
+    <div class = "mask"></div>
+</div>
+<script id = "script0701">
+    topMask = 0.14;
+    bottomMask = 0.34;
+    leftMask = 0.30;
+    rightMask = 0.33;
+  
+    masks = document.getElementsByClassName("mask");
+    masks[0].style.top = "0px";
+    masks[0].style.width = (innerWidth*1.05).toString() + "px";
+    masks[0].style.height = (innerHeight*topMask).toString() + "px";
+    masks[1].style.width = innerWidth.toString() + "px";
+    masks[1].style.height = (innerHeight*(bottomMask)).toString() + "px";
+    masks[1].style.top = (innerHeight*(1 - bottomMask)).toString() + "px";
+    masks[2].style.height = innerHeight.toString() + "px";
+    masks[2].style.width = (innerWidth*(leftMask)).toString() + "px";
+    masks[2].style.right = (innerWidth*(leftMask)).toString() + "px";
+    masks[2].style.left = "0px";
+    masks[3].style.height = (1.1*innerHeight).toString() + "px";
+    masks[3].style.width = (innerWidth*(rightMask)).toString() + "px";
+    masks[3].style.left = (innerWidth*(1 - rightMask)).toString() + "px";
+    masks[3].style.right = "0px";
+</script>
+<style id = "style0501">
+.mask{
+    position:absolute;
+    z-index:-1;
+    background-color:#a0a0a0;
+}
+</style>
+
+<!-- Main Canvas Background Layer:  Z = 0 -->
+
+<div id = "div0602">
+    <canvas id = "maincanvas"></canvas>
+</div>
+<script id = "script0702">
+    maincanvas = document.getElementById("maincanvas");
+    maincanvas.width = innerWidth;
+    maincanvas.height = innerHeight;
+    ctx = maincanvas.getContext("2d");
+    drawGlyph("0300,0341,0333,0341,0327,0330,0341,0333,0103,0101,0120,0365");
+</script>
+<style id = "style0502">
+    #maincanvas{
+        position:absolute;
+        top:0px;
+        left:0px;
+        z-index:0;
+    }
+</style>
+
+<!-- Word Arrow Layer: Z = +1 -->
+<div id = "div0603">
+    <div id = "arrowwords" style = "display:none;">$\Gamma\epsilon\omega\mu\epsilon\tau\rho\nu$
+herpy derp 
     </div>
-    <div id="editor" onkeyup = "updateParagraph();"></div>
+    <div id = "arrowglyphs"  style = "display:none;">0341,0333,0341
+        0336,0341,0337,</div>
+    <div id = "arrowboxes"></div>
+    <style id = "arrowhovers"></style>
 
 </div>
 
-<script>
-
-editor = ace.edit("editor");
-editor.setTheme("ace/theme/cobalt");
-editor.getSession().setMode("ace/mode/javascript");
-document.getElementById("editor").style.height = (0.5*height).toString() + "px";
-document.getElementById("editor").style.width = (plotSize - 20).toString() + "px";
-
-editor.setValue(byteCode2string(currentTable[0565]));
-
-document.getElementById("plotCanvas").width = plotSize;
-document.getElementById("plotCanvas").height = plotSize;
-document.getElementById("plotCanvas").style.position = "absolute";
-document.getElementById("plotCanvas").style.left = "0px";
-document.getElementById("plotCanvas").style.top = "0px";
-
-if(landscape == true){
-    document.getElementById("controlContainer").style.width = remainder.toString() + "px";
-    document.getElementById("controlContainer").style.height = height.toString() + "px";
-    document.getElementById("controlContainer").style.top = "0px";
-    document.getElementById("controlContainer").style.left = plotSize.toString() + "px";    
+<script id = "script0703">
+arrowboxes = document.getElementById("arrowboxes");
+numberofarrows = 4;
+arrows = [];
+for(var index = 0;index < numberofarrows;index++){
+    arrows.push(document.createElement("DIV"));
+    arrows[index].id = "arrow" + index.toString();
+    arrows[index].className = "arrowdiv";
+    arrowboxes.appendChild(arrows[index]);
+    var localsubdiv = document.createElement("DIV");
+    localsubdiv.className = "arrowsubdiv";
+    arrows[index].appendChild(localsubdiv);
 }
 
-document.getElementById("spellDiv").style.width = (remainder-20).toString() + "px";
-document.getElementById("spellDiv").style.top =  (height - 80).toString() + "px";
-document.getElementById("spellDiv").style.left = "5px";
 
-currentNode = document.getElementById("directionPad");
-//buildPanel([0334,0330,0335,0332,0300,0333,0336,0331,0337]);
-buildPanel("0334,0330,0335,0332,0300,0333,0336,0331,0337");
-currentNode.className = "drawToolPanel";
-
-currentNode = document.getElementById("anglePad");
-buildPanel("0304,0305,0306,0350,0351,0352,0353");
-currentNode.className = "drawToolPanel";
-
-currentNode = document.getElementById("scalePad");
-buildPanel("0310,0311,0312,0313,0314,0316");
-currentNode.className = "drawToolPanel";
-
-currentNode = document.getElementById("colorPad");
-buildPanel("0320,0321,0322,0323,0324,0325,0326,0327");
-currentNode.className = "drawToolPanel";
-
-currentNode = document.getElementById("rootPad");
-buildPanel("026,027,031,07");
-currentNode.className = "drawToolPanel";
-
-currentNode = document.getElementById("addrPad");
-buildPanel("0701,0730,0731,0732,0733,0734,0735,0736,0737");
-//currentNode.className = "drawToolPanel";
-
-currentNode = document.getElementById("glyphControl");
-buildPanel("020,010,021,022,023,024,025");
-currentNode.className = "drawToolPanel";
-
-currentNode = document.getElementById("reloadShapePad");
-buildPanel("032");
-currentNode.className = "drawToolPanel";
-
-shapeTableGlyph = "";
-for(var index = 0;index < 0100;index++){
-    if(currentTable[0200 + index].length > 0){
-        shapeTableGlyph += "0" + (0200 + index).toString(8) + ",";
-    }
+aspectratio = 3;
+arrowcolor = "rgba(0,0, 0, 0)";
+ctx = maincanvas.getContext("2d");
+arrowwordsstring = document.getElementById("arrowwords").innerHTML;
+arrowwordarray = arrowwordsstring.split("\n");
+for(var index = arrowwordarray.length;index < arrows.length;index++){
+    arrowwordarray.push(" ");
 }
+drawGlyph("0300,0332,0332,0336,0350,0335,0220");
+drawArrow(0);
+//drawGlyph("0220");
+drawGlyph("0300,0332,0332,0330,0336,0333,0220");
+drawArrow(1);
+//drawGlyph("0220");
 
-currentNode = document.getElementById("shapePad");
-buildPanel(shapeTableGlyph);
-currentNode.className = "drawToolPanel";
-
-currentNode = document.getElementById("drawPad");
-drawGlyphsGlyph = "0200,0201,0340,0341,0342,0343,0362,0203,0363,0364,0366,0367,0344,0345,0346,0347,0365,0204,";
-buildPanel(drawGlyphsGlyph);
-currentNode.className = "drawToolPanel";
-
-ctx = document.getElementById("plotCanvas").getContext("2d");
-currentGlyph = currentTable[currentAddress];
-
-for(var index = 0; index < document.getElementsByClassName("drawToolPanel").length;index++){
-	document.getElementsByClassName("drawToolPanel")[index].style.display = "block";
+function drawArrow(localdivindex){
+    localdiv = arrows[localdivindex];
+    localdiv.style.position = "absolute";
+    localdiv.style.width = aspectratio*side.toString() + "px";
+    localdiv.style.height = side.toString() + "px";
+    localdiv.style.top = (y - side/2).toString() + "px";
+    localdiv.style.left = (x - aspectratio*side/2).toString() + "px";
+    localdiv.style.transform = "rotate(" + (theta + Math.PI/2).toString() + "rad)";
+    document.getElementById("arrowhovers").innerHTML += "#arrow" + localdivindex.toString() + "{background-color:" + arrowcolor + ";}\n #arrow" + localdivindex.toString() + ":hover{background-color:green;} #arrow" + localdivindex.toString() + ":active{background-color:#FFFFB0;}";
+    localdiv.getElementsByClassName("arrowsubdiv")[0].innerHTML = arrowwordarray[localdivindex];
+    localdiv.getElementsByClassName("arrowsubdiv")[0].style.fontSize = (0.5*side).toString() + "px";
+    localdiv.getElementsByClassName("arrowsubdiv")[0].style.position = "absolute";
+    localdiv.getElementsByClassName("arrowsubdiv")[0].style.top = (0.2*side).toString() + "px";
+    localdiv.getElementsByClassName("arrowsubdiv")[0].style.textAlign = "center";
+    localdiv.getElementsByClassName("arrowsubdiv")[0].style.width = "100%";
+    localdiv.getElementsByClassName("arrowsubdiv")[0].style.color = "black";
 }
-
-redraw();//redraw
-
 </script>
-
-<style>
-
-#controlContainer{
-    position:absolute;
+<style id = "style0503">
+.arrowdiv{
+    z-index:1;
 }
-#mainTextArea{
-    margin: 5px 5px 5px 5px;
-    float:right;
-}
-#glyphControl{
-    width:350px;
-    height:50px;
-    float:left;
-    margin: 0px 5px 5px 5px;
-}
-html {
-	height: 100%;
-	background: black;
-}
-
-.atom{
-	width: auto;
-	height: auto;
-	border-style: solid;
-	border-width: 6px;
-	border-color: purple;
-	border-radius: 25px;
-	padding: 10px 10px 10px 10px;
-	margin: 10px 10px 10px 10px;
-	background: white;	
-	font-size: 16px;
-	font-family: "Century Schoolbook";
-	text-align: left;
-	float:left;
-}
-
-
-#plotCanvas{
-	border-style: solid;
-	border-width: 1px;
-	border-color: black;
-	border-radius: 5px;
-
-}
-.glyphButtons{
-    border-style: solid;
-    border-width: 0px;
-    border-color: black;
-    background: white;	
-}
-.glyphButtons:hover{
-    background: gray;	
-
-}
-.glyphButtons:active{
-    background: yellow;	
-}
-
-td{
-	padding: 15px 15px 15px 15px;
-	margin: 10px 10px 10px 10px;
-
-}
-#scrollCanvas{
-	border:solid;
-	border-color: black;
-}
-
-#textDiv{
-	padding: 5px 5px 5px 5px;
-	width: 500px;	
-	font-size: 16px;
-	font-family: "Century Schoolbook";
-	text-align: justify;
-    float:left;
-}
-#currentImage{
-	width:300px;
-}
-
-.equation{
-	width: auto;
-	height: auto;
-	border-style: solid;
-	border-width: 2px;
-	border-color: red;
-	border-radius: 5px;
-	padding: 5px 5px 5px 5px;
-	margin: 5px 5px 5px 5px;
-	background: white;	
-	font-size: 16px;
-	font-family: "Century Schoolbook";
-	text-align: justify;
-}
-#keyInput{
-    border:solid;
-    border-color:yellow;
-}
-#bigContainer{
-    position:fixed;
-}
-#directionPad{       
-    border:solid;
-    border-width:1px;
-    border-color:green;
-    width:130px;
-    height:130px;
-    float:left;
-    margin: 5px 5px 5px 5px;
-}
-#addrPad{
-    width:380px;
-    height:50px;
-    margin: -25px 5px 5px 5px;
-    float:left;    
-}
-#colorPad{
-    width:180px;
-    height:100px;
-    margin: 5px 5px 5px 5px;
-    float:left;
-}
-#rootPad{
-    width:160px;
-    height:60px;
-    margin: 5px 5px 5px 5px;
-    float:right;
-}
-#anglePad{
-    width:95px;
-    height:100px;
-    margin: 5px 5px 5px 5px;
-    float:left;
-}
-#scalePad{
-    width:95px;
-    height:100px;
-    margin: 5px 5px 5px 5px;
-    float:left;
-}
-
-
-#drawPad{
-    width:250px;
-    height:250px;
-    margin: 5px 5px -50px 5px;
-    float:left;
-}
-#shapePad{
-    width:350px;
-    height:350px;
-    margin: 5px 5px -100px 5px;
-    float:left;
-}
-
-#spellDiv{
-    border:solid;
-    border-color:blue;
-    border-radius: 5px;
-    width: 500px;
-    height: auto;
-    position:absolute;
-    background: white;	
-    float:right;
-    overflow: scroll;
-    margin: 5px 5px 5px 5px;
-}
-#editor { 
-    position: absolute;
-    left:10px;
-    top:10px;
-    height:600px;
-    width:600px;
-    display:none;
-}
-
 </style>
-</center>
+
+<!-- Word Box Layer: Z = +2-->
+
+<div id = "div0604">
+    <div id = "boxwords" style = "display:none;">FOO
+        BAR 
+        ZEEP 
+    </div>
+    <div id = "boxglyphs"  style = "display:none;">0341,0333,0341
+        0336,0341,0337,</div>
+    <div id = "wordboxes"></div>
+    <style id = "wordhovers"></style>
+</div>
+
+<script id  = "script0704">
+    wordboxes = document.getElementById("wordboxes");
+    numberofboxes = 4;
+    boxes = [];
+    for(var index = 0;index < numberofboxes;index++){
+        boxes.push(document.createElement("DIV"));
+        boxes[index].id = "box" + index.toString();
+        boxes[index].className = "boxdiv";
+        wordboxes.appendChild(boxes[index]);
+        var localsubdiv = document.createElement("DIV");
+        localsubdiv.className = "boxsubdiv";
+        boxes[index].appendChild(localsubdiv);
+    }
+
+aspectratio = 1;
+boxcolor = "rgba(255,0,0,.5)";
+ctx = maincanvas.getContext("2d");
+boxwordsstring = document.getElementById("boxwords").innerHTML;
+boxwordarray = boxwordsstring.split("\n");
+for(var index = boxwordarray.length;index < boxes.length;index++){
+    boxwordarray.push(" ");
+}
+doTheThing(0300);
+ctx.fillStyle = boxcolor;
+drawGlyph("0332,0332,0332,0332,0332,0347");
+drawBox(0);
+doTheThing(0300);
+ctx.fillStyle = boxcolor;
+drawGlyph("0333,0333,0333,0333,0333,0336,0347");
+drawBox(1);
+
+function drawBox(localdivindex){
+    localdiv = boxes[localdivindex];
+    localdiv.style.position = "absolute";
+    localdiv.style.width = aspectratio*side.toString() + "px";
+    localdiv.style.height = side.toString() + "px";
+    localdiv.style.top = (y - side/2).toString() + "px";
+    localdiv.style.left = (x - aspectratio*side/2).toString() + "px";
+    localdiv.style.transform = "rotate(" + (theta + Math.PI/2).toString() + "rad)";
+    document.getElementById("arrowhovers").innerHTML += "#box" + localdivindex.toString() + "{background-color:" + boxcolor + ";}\n #box" + localdivindex.toString() + ":hover{background-color:green;} #box" + localdivindex.toString() + ":active{background-color:#FFFFB0;}";
+    localdiv.getElementsByClassName("boxsubdiv")[0].innerHTML = boxwordarray[localdivindex];
+    localdiv.getElementsByClassName("boxsubdiv")[0].style.fontSize = (0.5*side).toString() + "px";
+    localdiv.getElementsByClassName("boxsubdiv")[0].style.position = "absolute";
+    localdiv.getElementsByClassName("boxsubdiv")[0].style.top = (0.2*side).toString() + "px";
+    localdiv.getElementsByClassName("boxsubdiv")[0].style.textAlign = "center";
+    localdiv.getElementsByClassName("boxsubdiv")[0].style.width = "100%";
+    localdiv.getElementsByClassName("boxsubdiv")[0].style.color = "black";
+}
+</script>
+<style id = "style0504">
+.boxdiv{
+    z-index:2;
+}
+</style>
+<!-- Plot Canvas, diagram canvas, Dynamic Table, TextIO and GIS/route/map/CAD viewer Layer: Z = +3-->
+<div id = "div0605">
+</div>
+<!-- Control Panel Button Layer: Z = +4-->
+<div id = "div0606">
+</div>
+<!-- Edit Layer: Z = +5-->
+<div id = "div0607">
+</div>
+
 </body>
-</html>	
+</html>
