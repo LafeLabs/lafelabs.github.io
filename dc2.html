@@ -1031,6 +1031,8 @@ latlons[1].onchange = function(){
 
 document.getElementById("locatebutton").onclick = function(){
 getLocation();
+window.navigator.vibrate(200);
+
 }
 function getLocation() {
     if (navigator.geolocation) {
