@@ -842,6 +842,43 @@ function distanceUnits(Alat,Alon,Blat,Blon,unitvalue){
 <div style = "display:none" class = "json" id = "data0401">
 {
     "images":[
+        
+    ],
+    "glyphs":[
+        "0341,0333,0341,",
+         "01101,01102,01103,"
+    ],
+    "wordboxes":[
+        {
+            "name":"title",
+            "text":"",
+            "w":2,
+            "h":1,
+            "x":0,
+            "y":1,
+            "fontSize":1,
+            "theta":-30,
+            "glyph":""
+        },
+        {
+            "name":"rando1",
+            "text":"",
+            "w":0.4,
+            "h":0.5,
+            "x":0,
+            "y":-0.5,
+            "fontSize":0.2,
+            "theta":30,
+            "glyph":""            
+        }
+    ]
+}
+</div>        
+<!--</page0401>-->
+<!--<page0402>-->
+<div style = "display:none" class = "json" id = "data0402">
+{
+    "images":[
         {
             "name":"river",
             "url":"https://i.imgur.com/YyNnPiF.jpg",
@@ -869,38 +906,33 @@ function distanceUnits(Alat,Alon,Blat,Blon,unitvalue){
     ],
     "glyphs":[
         "0341,0333,0341,",
-         "01101,01102,01103,"
+            "01101,01102,01103,"
     ],
     "wordboxes":[
         {
             "name":"title",
-            "text":"Title Text Here",
+            "text":"",
             "w":2,
             "h":1,
             "x":0,
             "y":1,
             "fontSize":1,
             "theta":-30,
-            "glyph":"0200,0336,0341,0333,0326,0200,"
+            "glyph":""
         },
         {
             "name":"rando1",
-            "text":"Random Text",
+            "text":"",
             "w":0.4,
             "h":0.5,
             "x":0,
             "y":-0.5,
             "fontSize":0.2,
             "theta":30,
-            "glyph":"0336,0336,0336,0336,0333,0330,0337,0337,0200,"            
+            "glyph":""            
         }
     ]
 }
-</div>        
-<!--</page0401>-->
-<!--<page0402>-->
-<div style = "display:none" class = "json" id = "data0402">
-
 </div>
 <!--</page0402>-->        
 <!--<page0403>-->
@@ -910,7 +942,7 @@ function distanceUnits(Alat,Alon,Blat,Blon,unitvalue){
 <!--</page0403>-->                
 <!--<page0405>-->
 <div style = "display:none" class = "json" id = "data0405">
-
+    
 
 </div>
 <!--</page0405>-->
@@ -928,28 +960,6 @@ function distanceUnits(Alat,Alon,Blat,Blon,unitvalue){
 <!--<page0601>-->
 <div class = "page" id = "div0601">
     <canvas id = "canvas0601"></canvas>
-    <table id = "maintable0601">
-        <tr>
-            <td>
-                    <table id = "subtable0601">
-                            <tr>
-                                <td>A</td>
-                                <td>B</td>            
-                            </tr>
-                            <tr>
-                                <td>C</td>
-                                <td>D</td>            
-                            </tr>    
-                    </table>
-
-            </td>
-            <td>B</td>            
-        </tr>
-        <tr>
-            <td>C</td>
-            <td>D</td>            
-        </tr>    
-    </table>
     <table id = "viewcontrol0601">
         <tr>
             <td>LEFT</td><td>DOWN</td><td>UP</td><td>RIGHT</td><td>OUT</td><td>IN</td><td>RESET</td>
@@ -1049,17 +1059,7 @@ function redraw0701(){
     ctx = document.getElementById("canvas0601").getContext("2d");
     ctx.clearRect(0,0,innerWidth,innerHeight);
     drawGlyph("0300,0337,0271,");
-    maintablewidth = 0.4;
-    maintableheight = 0.4;
-    maintablex = 3;
-    maintabley = 3;
-    maintablefont = 0.2;
-    document.getElementById("maintable0601").style.width = (unit*maintablewidth).toString() + "px";
-    document.getElementById("maintable0601").style.height = (unit*maintableheight).toString() + "px";
-    document.getElementById("maintable0601").style.fontSize =  (unit*maintablefont).toString() + "px";
-    document.getElementById("maintable0601").style.left = (x0 + unit*maintablex - 0.5*unit*maintablewidth).toString() + "px";
-    document.getElementById("maintable0601").style.top = (y0 - unit*maintabley - 0.5*unit*maintableheight).toString() + "px";
-    document.getElementById("subtable0601").style.fontSize = (0.2*unit*maintablefont).toString() + "px";
+    drawGlyph("0300,0320,0335,0341,0336,0330,0341,0336,0330,0341,0336,0330,0341,0336,0330,0341,0336,0330,0341,0336,0330,0341,0336,0330,0341,");
 
     for(var index = 0;index < images0601.length;index++){
         images0601[index].style.width = (unit*json0401.images[index].w).toString() + "px";
@@ -1263,9 +1263,6 @@ table{
 <!--</page0500>-->
 <!--<page0501>-->
 <style id = "style0501">
-#subsubtable0601{
-    transform:rotate(30deg);
-}
 #viewcontrol0601{
     position: absolute;
     bottom:5px;
