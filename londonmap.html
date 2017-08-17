@@ -1,0 +1,1206 @@
+<!--<page01>-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS, NO PROPERTY NO MONEY NO MINING-->
+<!-- FREE INFORMATION FOR A WORLD FREE OF THE SOFTWARE ENGINEER -->
+    <title>One Page Map</title>
+<!--</page01>-->
+<script id = "bytecodeScript">
+/*
+01300:0333,0200,0336,0330,0332,0340,0350,0335,0336,0330,0342,0331,0331,0331,0342,0330,0330,0335,0335,0331,0331,0342,0330,0330,0330,0342,0331,0334,0334,0334,0351,0331,0331,0333,0333,0337,0337
+01304:0333,0200,0336,0330,0332,0341,0342,0335,0342,0335,0342,0335,0342,0350,0335,0351,0336,0336,0330,0330,0341,0331,0331,0335,0330,0330,0341,0331,0331,0335,0330,0330,0341,0331,0331,0335,0330,0330,0341,0331,0331,0350,0334,0351,0337,0337,0330,0335,0335,0333,0337
+01305:0333,0200,0336,0330,0332,0305,0342,0335,0342,0335,0342,0335,0342,0335,0342,0335,0341,0350,0335,0351,0336,0330,0336,0336,0341,0337,0337,0331,0335,0330,0336,0336,0341,0337,0337,0331,0335,0330,0336,0336,0341,0337,0337,0331,0335,0330,0336,0336,0341,0337,0337,0331,0335,0330,0336,0336,0341,0337,0337,0331,0350,0335,0304,0337,0331,0333,0337
+01306:0333,0200,0336,0330,0332,0306,0342,0335,0342,0335,0342,0335,0342,0335,0342,0335,0341,0350,0335,0351,0336,0330,0336,0336,0341,0337,0337,0331,0335,0330,0336,0336,0341,0337,0337,0331,0335,0330,0336,0336,0341,0337,0337,0331,0335,0330,0336,0336,0341,0337,0337,0331,0335,0330,0336,0336,0341,0337,0337,0331,0350,0335,0335,0335,0337,0342,0334,0336,0330,0336,0336,0341,0337,0337,0331,0304,0335,0337,0331,0333,0337
+01310:0333,0200,0336,0332,0350,0335,0310,0337,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0334,0351,0336,0313,0333,0337
+01311:0335,0305,0342,0334,0311,0337,0342,0336,0335,0330,0334,0350,0334,0337,0342,0334,0334,0304,0336,0313,0335,0200,0334,0305,0350,0335,0342,0330,0335,0335,0335,0311,0336,0342,0330,0334,0334,0334,0336,0342,0335,0335,0335,0337,0331,0334,0334,0334,0337,0331,0334,0313,0304,0335
+01312:0333,0200,0352,0334,0342,0330,0334,0334,0334,0334,0342,0334,0312,0337,0313,0336,0342,0330,0334,0334,0334,0334,0336,0342,0334,0334,0304,0312,0336,0313,0337,0333,0337
+01313:0333,0200,0336,0336,0332,0332,0330,0342,0334,0342,0330,0335,0342,0330,0335,0342,0330,0342,0330,0335,0342,0330,0335,0342,0335,0331,0333,0337,0337
+01314:0333,0200,0314,0336,0332,0332,0330,0200,0333,0200,0333,0200,0331,0337,0313
+01315:0333,0313,0200,0336,0330,0332,0341,0335,0342,0334,0334,0342,0334,0334,0330,0334,0331,0337
+01316:0333,0200,0336,0336,0330,0332,0332,0332,0336,0341,0330,0330,0330,0330,0341,0333,0333,0331,0331,0341,0333,0333,0330,0330,0341,0331,0331,0331,0331,0341,0333,0333,0331,0331,0337,0337,0337,
+01317:0333,0200,0336,0336,0330,0332,0336,0330,0333,0337,0342,0336,0330,0334,0337,0337,0342,0330,0336,0342,0330,0335,0336,0342,0331,0342,0332,0330,0337,0337,0333,0333,0331,0337
+01320:0333,0200,0336,0336,0330,0332,0337,0320,0204,0336,0333,0331,0337,0337,
+01321:0333,0200,0336,0336,0330,0332,0337,0321,0204,0336,0333,0331,0337,0337,
+01322:0333,0200,0336,0336,0330,0332,0337,0322,0204,0336,0333,0331,0337,0337,
+01323:0333,0200,0336,0336,0330,0332,0337,0323,0204,0336,0333,0331,0337,0337,
+01324:0333,0200,0336,0336,0330,0332,0337,0324,0204,0336,0333,0331,0337,0337,
+01325:0333,0200,0336,0336,0330,0332,0337,0325,0204,0336,0333,0331,0337,0337,
+01326:0333,0200,0336,0336,0330,0332,0337,0326,0204,0336,0333,0331,0337,0337,
+01327:0333,0200,0336,0336,0330,0332,0337,0327,0204,0336,0333,0331,0337,0337,
+01330:0333,0200,0313,0336,0336,0330,0332,0336,0332,0337,0342,0334,0342,0330,0335,0342,0330,0334,0336,0342,0330,0335,0350,0335,0337,0310,0337,0342,0330,0335,0335,0342,0330,0335,0335,0335,0336,0313,0336,0342,0330,0351,0335,0331,0331,0331,0331,0333,0333,0333,0337,0337,0337
+01331:0333,0200,0335,0335,0333,0331,0313,0336,0336,0330,0332,0336,0332,0337,0342,0334,0342,0330,0335,0342,0330,0334,0336,0342,0330,0335,0350,0335,0337,0310,0337,0342,0330,0335,0335,0342,0330,0335,0335,0335,0336,0313,0336,0342,0330,0351,0335,0331,0331,0331,0331,0333,0333,0333,0337,0337,0337,0332,0335,0335,0331
+01332:0333,0200,0334,0333,0313,0336,0336,0330,0332,0336,0332,0337,0342,0334,0342,0330,0335,0342,0330,0334,0336,0342,0330,0335,0350,0335,0337,0310,0337,0342,0330,0335,0335,0342,0330,0335,0335,0335,0336,0313,0336,0342,0330,0351,0335,0331,0331,0331,0331,0333,0333,0333,0337,0337,0337,0335,0331
+01333:0333,0200,0335,0331,0313,0336,0336,0330,0332,0336,0332,0337,0342,0334,0342,0330,0335,0342,0330,0334,0336,0342,0330,0335,0350,0335,0337,0310,0337,0342,0330,0335,0335,0342,0330,0335,0335,0335,0336,0313,0336,0342,0330,0351,0335,0331,0331,0331,0331,0333,0333,0333,0337,0337,0337,0330,0334
+01334:0333,0200,0336,0330,0332,0336,0350,0343,0334,0334,0343,0334,0334,0343,0334,0342,0335,0330,0336,0330,0334,0334,0334,0337,0342,0334,0351,0336,0331,0337,0337,0333,0337
+01335:0333,0200,0336,0330,0332,0336,0350,0343,0334,0334,0343,0334,0334,0343,0334,0334,0334,0342,0334,0330,0336,0330,0335,0335,0335,0337,0342,0336,0335,0331,0351,0337,0337,0332,0335,0335,0337,0331
+01336:0333,0200,0336,0330,0334,0336,0330,0337,0342,0336,0331,0335,0337,0331,0337
+01337:0333,0200,0336,0330,0332,0336,0342,0334,0342,0334,0342,0334,0342,0330,0330,0334,0337,0331,0337
+01340:0333,0200,0336,0330,0332,0340,0333,0331,0337
+01341:0333,0200,0336,0330,0332,0341,0340,0333,0331,0337
+01342:0333,0200,0336,0330,0332,0334,0336,0342,0330,0340,0331,0335,0335,0342,0330,0340,0333,0333,0330,0334,0337,0337
+01343:0333,0200,0336,0330,0332,0350,0343,0335,0342,0334,0334,0342,0335,0340,0351,0331,0333,0337
+01344:0304,0313,0333,0200,0336,0332,0344,0333,0337
+01345:0304,0313,0333,0200,0336,0332,0345,0333,0337
+01346:0304,0313,0333,0200,0336,0332,0346,0333,0337
+01347:0304,0313,0333,0200,0336,0332,0336,0330,0330,0347,0331,0331,0337,0333,0337,
+01350:0333,0200,0336,0330,0332,0350,0335,0342,0335,0335,0342,0334,0336,0336,0342,0330,0330,0342,0331,0331,0351,0337,0337,0334,0333,0331,0337
+01351:0333,0200,0336,0332,0330,0350,0335,0336,0336,0342,0330,0330,0342,0330,0330,0342,0331,0331,0331,0331,0335,0337,0337,0342,0335,0342,0334,0351,0333,0330,0334,0337
+01352:0333,0200,0336,0330,0332,0335,0350,0352,0334,0334,0334,0342,0335,0335,0336,0336,0342,0330,0330,0342,0331,0331,0335,0335,0342,0330,0330,0342,0331,0331,0335,0335,0337,0337,0342,0335,0335,0335,0351,0353,0330,0334,0334,0333,0337
+01353:0333,0200,0336,0330,0332,0335,0350,0352,0334,0342,0335,0335,0342,0335,0335,0336,0336,0342,0330,0330,0342,0331,0331,0334,0334,0334,0334,0334,0334,0342,0330,0330,0342,0331,0331,0335,0335,0335,0351,0353,0337,0337,0333,0330,0334,0337
+01360:0333,0200,
+01361:0333,0200,0336,0336,0330,0332,0337,0200,0306,0350,0336,0334,0342,0330,0334,0334,0334,0334,0342,0330,0335,0335,0335,0335,0342,0330,0334,0334,0334,0334,0342,0330,0334,0334,0334,0334,0334,0335,0330,0330,0330,0304,0334,0331,0337,0337,
+01362:0333,0200,0336,0336,0330,0332,0332,0332,0340,0342,0330,0342,0330,0335,0342,0330,0342,0330,0350,0334,0334,0334,0342,0334,0334,0335,0334,0342,0334,0304,0330,0330,0330,0334,0334,0333,0337,0337,
+01363:0304,0313,0333,0200,0336,0332,0330,0336,0330,0332,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0334,0350,0334,0342,0334,0334,0342,0340,0335,0304,0331,0333,0337,0337
+01365:0313,0304,0333,0200,0336,0330,0332,0336,0331,0332,0337,0350,0350,0334,0342,0335,0335,0342,0334,0304,0333,0350,0350,0334,0342,0335,0335,0342,0334,0304,0336,0333,0331,0337,0337
+01200:0333,0200,0336,0336,0330,0332,0337,0200,0336,0331,0333,0337,0337
+01201:0304,0313,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337
+01020:0304,0333,0200,0336,0330,0332,0336,0336,0332,0337,0200,0333,0333,0200,0332,0332,0336,0330,0335,0337,0342,0330,0350,0335,0335,0351,0333,0350,0336,0334,0342,0334,0334,0342,0337,0335,0351,0333,0336,0333,0331,0337,0337,0331,0337,0304,0336,0330,0330,0336,0330,0334,0331,0337,0337
+01021:0304,0333,0200,0336,0330,0332,0336,0336,0332,0337,0200,0333,0333,0200,0332,0332,0336,0330,0335,0337,0342,0330,0350,0335,0335,0335,0336,0342,0335,0335,0342,0337,0335,0351,0333,0336,0333,0331,0337,0337,0331,0337,0304
+01022:0333,0200,0336,0336,0330,0330,0332,0332,0332,0336,0336,0333,0337,0337,0336,0330,0336,0333,0337,0337,0200,0333,0200,0333,0200,0331,0331,0332,0332,0200,0333,0200,0333,0200,0336,0333,0331,0337,0337,0332,0330,0336,0336,0331,0337,0342,0330,0335,0350,0335,0336,0342,0335,0335,0342,0337,0335,0335,0335,0351,0331,0331,0331,0333,0333,0336,0330,0337,0337,0337
+01023:0333,0200,0336,0336,0330,0330,0332,0332,0332,0336,0336,0333,0337,0337,0336,0330,0336,0333,0337,0337,0200,0333,0200,0333,0200,0331,0331,0332,0332,0200,0333,0200,0333,0200,0336,0333,0331,0337,0337,0332,0330,0336,0336,0331,0337,0335,0335,0331,0342,0330,0335,0350,0335,0336,0342,0335,0335,0342,0337,0335,0335,0335,0351,0331,0331,0331,0333,0333,0336,0330,0337,0337,0337,0335,0335,0331,0333
+01024:0333,0200,0336,0336,0330,0332,0337,0200,0336,0336,0330,0332,0337,0200,0336,0336,0330,0332,0337,0200,0333,0333,0333,0331,0331,0331,0336,0331,0333,0337,0337,0337,0337
+01025:0333,0200,0336,0336,0330,0332,0337,0336,0336,0330,0332,0337,0200,0336,0336,0330,0332,0337,0200,0333,0333,0333,0331,0331,0331,0336,0331,0333,0337,0337,0337,0337
+01026:0333,0200,0336,0330,0332,0336,0336,0333,0331,0337,0200,0306,0335,0342,0332,0342,0330,0335,0335,0342,0335,0335,0335,0335,0331,0334,0304,0332,0306,0335,0342,0330,0350,0335,0342,0334,0331,0335,0304,0334,0331,0332,0335,0336,0332,0337,0342,0330,0350,0335,0335,0335,0336,0342,0335,0335,0342,0335,0304,0331,0331,0331,0331,0333,0333,0333,0333,0333,0337,0337,0337
+01027:0333,0200,0336,0330,0332,0336,0336,0333,0331,0337,0332,0200,0306,0335,0342,0332,0342,0330,0335,0335,0342,0335,0335,0335,0335,0331,0334,0304,0332,0306,0335,0342,0330,0350,0335,0342,0334,0331,0335,0304,0334,0331,0333,0333,0330,0335,0342,0330,0350,0335,0335,0335,0336,0342,0335,0335,0342,0335,0304,0331,0331,0331,0331,0331,0333,0337,0337,0337
+01031:0333,0200,0336,0330,0332,0336,0332,0331,0123,0126,0107,0365,0330,0330,0332,0332,0330,0335,0335,0336,0330,0332,0337,0201,0335,0350,0335,0336,0342,0335,0335,0342,0334,0304,0333,0333,0333,0333,0331,0331,0331,0331,0331,0332,0336,0333,0336,0332,0337,0337,0337,0337,0337,
+01010:0333,0200,0350,0334,0310,0337,0342,0336,0332,0335,0335,0337,0342,0336,0333,0334,0351,0313
+0200:0304,0342,0330,0334,0342,0330,0334,0342,0330,0334,0342,0330,0334
+0201:0342,0330,
+01201:0304,0313,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337
+01344:0333,0200,0336,0330,0332,0336,0332,0340,0335,0337,0342,0330,0340,0334,0332,0336,0331,0332,0331,0337,0337,0202,
+0202:0304,0313,0350,0335,0336,0336,0342,0333,0342,0333,0342,0333,0342,0333,0334,0304,0337,0337,
+01345:0202,0200,0350,0334,0343,0335,0304,
+01346:0202,0200,0350,0334,0332,0335,0335,0343,0333,0335,0304,0334,
+01202:0202,0200,
+01203:0304,0313,0202,0332,0333,0200,0336,0336,0330,0330,0332,0332,0332,0335,0336,0337,0337,0342,0330,0335,0350,0335,0336,0336,0342,0335,0335,0342,0335,0304,0337,0331,0331,0333,0337,0337,
+0203:0344,0330
+0204:0362,0203,0334,0203,0334,0203,0334,0203,0334,0363
+01204:0202,0200,0336,0336,0330,0332,0337,0200,0336,0331,0333,0337,0337,
+01365:0313,0304,0333,0200,0336,0330,0332,0336,0331,0332,0337,0350,0350,0334,0342,0335,0335,0342,0334,0304,0333,0350,0350,0334,0342,0335,0335,0342,0334,0304,0336,0333,0331,0337,0337
+01205:0202,0200,0336,0336,0330,0332,0332,0332,0330,0205,0331,0331,0332,0337,0337,0333,
+0205:0362,0203,0335,0203,0203,0335,0203,0335,0203,0203,0335,0363,0336,0330,0333,0336,0331,0332,0337,0365,0336,0332,0331,0337,0337,
+0206:0336,0332,0337,0362,0203,0334,0336,0203,0335,0350,0335,0337,0310,0337,0203,0335,0335,0203,0335,0304,0335,0336,0313,0336,0203,0334,0337,0203,0363,0335,0335,0336,0332,0337,
+01206:0202,0200,0336,0332,0206,0333,0337,
+01366:0333,0200,0336,0336,0332,0332,0332,0330,0335,0337,0366,0340,0342,0330,0332,0335,0335,0367,0335,0336,0333,0330,0337,0337,0331
+01367:0333,0200,0336,0336,0332,0332,0332,0330,0335,0337,0366,0330,0332,0335,0335,0367,0335,0336,0340,0334,0337,0342,0336,0333,0330,0337,0337,0331,0335,0331,0336,0332,0337,
+01364:0304,0313,0333,0200,0336,0332,0330,0336,0330,0332,0335,0342,0330,0342,0330,0335,0342,0330,0342,0330,0334,0350,0334,0342,0334,0334,0342,0340,0335,0304,0331,0333,0337,0337,0332,0202,
+0220:0304,0313,0337,0340,0336,0336,0331,0331,0333,0330,0337,0332,0332,0201,0335,0201,0201,0201,0334,0336,0201,0335,0337,0350,0335,0310,0337,0201,0335,0335,0201,0335,0304,0335,0336,0313,0336,0201,0334,0337,0201,0201,0201,0335,0333,0333,0336,0330,0332,0337,
+0210:0316,0336,0313,0336,0314,0337,0337,0313,
+01210:0333,0200,0336,0330,0336,0332,0334,0337,0342,0336,0330,0335,0336,0330,0332,0337,071,0365,0331,0331,061,060,0365,0333,0333,0336,0333,0331,0337,0337,0337,0337,
+0211:0316,0336,0336,0336,0313,0337,0337,0337,0337,0337,0337,0337,
+0207:0342,0334,0342,0335,0335,0342,0334,0336,0330,0340,0331,0337,0337,0330,0340,0331,0336,
+01207:0333,0336,0330,0332,0336,0336,0341,0337,0333,0333,0331,0331,0337,0337,
+0210:0335,0340,0341,0330,0340,0341,0334,0334,0306,0335,0330,0340,0341,0334,0334,0342,0330,0334,0334,0342,0330,0334,0334,0342,0314,0336,0330,0335,0330,0334,0334,0337,0341,0342,0330,0341,0334,0334,0342,0330,0341,0334,0334,0342,0330,0336,0331,0331,0341,0330,0341,0335,0334,0334,0330,0341,0334,0330,0341,0334,0330,0341,0334,0330,0341,0334,0300,0332,0332,0332,0330,0330,0300,0332,0332,0332,0332,0305,0311,0336,0330,0335,0350,0334,0335,0333,0335,0351,0337,0342,0341,0330,0335,0335,0342,0341,0330,0335,0335,0342,0341,0330,0335,0335,0342,0341,0330,0335,0335,0342,0341,0330,
+0140:0300,
+041:0310,
+061:0304,
+0100:0311,
+062:0305,
+043:0312,
+063:0306,
+044:0313,
+064:0350,
+045:0314,
+065:0351,
+0136:0316,
+066:0352,
+067:0353,
+052:0203,
+070:0201,
+050:0204,
+071:0347,
+060:0365,
+075:010,
+0161:0320,
+0167:0321,
+0145:0322,
+0162:0323,
+0164:0324,
+0171:0325,
+0165:0326,
+0151:0327,
+0157:0334,
+0160:0330,
+0133:0335,
+0175:022,
+0135:020,
+0174:023,
+0134:021,
+0141:0340,
+0163:0341,
+0144:0342,
+0146:0343,
+0147:0362,
+0150:0363,
+0152:0364,
+0153:0344,
+0154:0332,
+073:0333,
+0172:0366,
+0170:0367,
+0143:0345,
+0166:0346,
+054:0336,
+056:0331,
+057:0337,
+0250:0313,0336,0330,0337,
+0251:0313,0336,0331,0337,
+0252:0313,0336,0332,0337,
+0253:0313,0336,0333,0337,
+0254:0305,0311,0335,0362,0203,0335,0335,0336,0203,0335,0203,0363,0335,0337,
+0256:0313,0336,0336,0310,0336,0314,0337,0312,0337,0313,
+0257:0313,0337,0337,0310,0337,0314,0336,0312,0336,0313,
+0270:0256,0304,0313,0330,0336,0312,0331,0337,0335,0362,0203,0306,0335,0335,0203,0203,0335,0335,0203,0203,0335,0335,0203,0304,0334,0336,0313,0331,0337,0306,0364,0257,
+0271:0324,0270,0330,0335,0335,0335,0321,0304,0270,0330,0335,0330,0335,0335,0335,0327,0270,0330,0335,0330,0335,0335,0335,0325,0270,0330,0335,0304,0320,0331,0331,0332,0336,0330,0332,0114,0141,0146,0145,0114,0141,0142,0163,056,0157,0162,0147,0336,0336,0331,0332,0332,0332,0336,0333,0337,0337,0337,0365,
+01270:0333,0200,0336,0330,0332,0270,0313,0304,0333,0331,0337,
+01256:0333,0200,0336,0330,0332,0336,0331,0332,0336,0330,0332,0337,055,061,060,045,0365,0333,0333,0333,0336,0333,0331,0331,0331,0337,0337,0337,
+01257:0333,0200,0336,0330,0332,0336,0331,0332,0336,0330,0332,0337,053,061,060,045,0365,0333,0333,0333,0336,0333,0331,0331,0331,0337,0337,0337,
+*/
+</script>
+<!--<page02>-->
+<script>
+
+function string2byteCode(localString){
+	var localByteCode = "";
+	for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+		var tempCharCode = localString.charCodeAt(stringIndex);
+		if(tempCharCode != 0){
+			localByteCode += "0";
+			localByteCode += tempCharCode.toString(8);
+			localByteCode += ",";
+		}
+	}
+	return localByteCode;
+}
+
+function byteCode2string(localByteCode){
+	var localString = "";
+	var stringArray = localByteCode.split(",");
+	for(var index = 0;index < stringArray.length;index++){
+		var myCharCode = String.fromCharCode(parseInt(stringArray[index],8));
+		if(parseInt(stringArray[index],8) >= 040 && parseInt(stringArray[index],8) < 0177 ){
+			localString += myCharCode;
+		}
+		if(parseInt(stringArray[index],8) == 012){//newline
+			localString += myCharCode;
+		}
+		if(parseInt(stringArray[index],8) == 011){//vertical tab
+			localString += myCharCode;
+		}		
+		if(parseInt(stringArray[index],8) >= 0400 && parseInt(stringArray[index],8) <= 0777){
+			if(currentTable[parseInt(stringArray[index],8)].length > 0){
+				localString += byteCode2string(currentTable[parseInt(stringArray[index],8)]);
+			}
+		}		
+		
+	}
+	return localString;
+}
+
+function drawGlyph(localString){
+	var tempArray = localString.split(',');
+	for(var index = 0;index < tempArray.length;index++){
+		doTheThing(parseInt(tempArray[index],8));
+	}
+}
+ 
+function spellGlyph(localString){
+	var tempArray = localString.split(',');
+	for(var index = 0;index < tempArray.length;index++){
+		ctx.lineWidth = 2;
+	   // ctx.strokeStyle="black";
+        if(x > 0.94*innerWidth){
+            y+= 1.1*unit;
+            x = unit;
+        }
+		doTheThing(parseInt(tempArray[index],8) + 01000);
+	}
+}
+function spellGlyphVertical(localString){
+    theta = theta0;
+    doTheThing(0304);
+	var tempArray = localString.split(',');
+	for(var index = 0;index < tempArray.length;index++){
+		ctx.lineWidth = 2;
+		doTheThing(parseInt(tempArray[index],8) + 01000);
+		drawGlyph("0331,0332,");
+        if(y > innerHeight - 50){
+            x -= 40;
+            y = 100;
+        }
+	}
+}
+
+function doTheThing(localCommand){
+ 
+    if(localCommand >= 040 && localCommand <= 0176){
+		 currentHTML += String.fromCharCode(localCommand);
+         currentWord += String.fromCharCode(localCommand);	    
+    }
+    if(localCommand >= 0200 && localCommand <= 0277){//shapes 
+		 drawGlyph(currentTable[localCommand]);    	    
+    }
+    if(localCommand >= 01000 && localCommand <= 01777){//symbol glyphs
+		 drawGlyph(currentTable[localCommand]);    	    
+    } 
+    // </page02>
+
+    if(localCommand == 0300){// <page0300>
+      x = x0;
+      y = y0;
+      theta = theta0;
+      side = unit;
+      thetaStep = Math.PI/2;
+      scaleFactor = 2;
+      ctx.lineWidth = 2;
+      ctx.strokeStyle="#00ff00";
+      ctx.fillStyle="#00ff00";
+      currentWord = "";
+    //</page0300>
+    }
+    if(localCommand == 0304){//<page0304>
+      thetaStep = Math.PI/2;
+    //</page0304>
+    }
+    if(localCommand == 0305){//<page0305>
+      thetaStep = 2*Math.PI/5;
+    //</page0305>
+    }
+    if(localCommand == 0306){//<page0306>
+      thetaStep = Math.PI/3;
+    //</page0306>
+    }
+    if(localCommand == 0310){//<page0310>
+       scaleFactor = Math.sqrt(2); 
+    //</page0310>
+    }
+    if(localCommand == 0311){//<page0311>
+       scaleFactor = phi; //"golden" ratio 
+    //</page0311>
+    }
+    if(localCommand == 0312){//<page0312>
+       scaleFactor = Math.sqrt(3); 
+    //</page0312>
+    }
+    if(localCommand == 0313){//<page0313>
+      scaleFactor = 2;  //2x
+    //</page0313>
+    }
+    if(localCommand == 0314){//<page0314>
+      scaleFactor = 3;  //3x
+    //</page0314>
+    }
+    if(localCommand == 0315){//<page0315>
+      scaleFactor = 3.14159;  //pi*
+    //</page0315>
+    }
+    if(localCommand == 0316){//<page0316>
+      scaleFactor = 5;  //5*
+    //</page0316>
+    }
+    if(localCommand == 0317){//<page0317>
+       side = unit; 
+    //</page0317>
+    }
+    if(localCommand == 0320){//<page0320>
+		ctx.strokeStyle="black";
+    	ctx.lineWidth = 2;    	
+    	ctx.fillStyle = "black";
+    //</page0320>
+    }
+    if(localCommand == 0321){//<page0321>
+		ctx.strokeStyle = "yellow";
+    	ctx.lineWidth = 2;    	
+    	ctx.fillStyle = "yellow";
+    //</page0321>
+    }
+    if(localCommand == 0322){//<page0322>
+		ctx.strokeStyle="pink";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "pink";    
+    //</page0322>
+    }
+    if(localCommand == 0323){//<page0323>
+		ctx.strokeStyle="white";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "white";    
+    //</page0323>
+    }
+    if(localCommand == 0324){//<page0324>
+		ctx.strokeStyle="red";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "red";    
+    //</page0324>
+    }
+    if(localCommand == 0325){//<page0325>
+		ctx.strokeStyle="green";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "green";    
+    //</page0325>
+    }
+    if(localCommand == 0326){//<page0326>
+		ctx.strokeStyle="purple";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "purple";    
+    //</page0326>
+    }
+    if(localCommand == 0327){//<page0327>
+		ctx.strokeStyle="blue";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "blue";    
+    //</page0327>
+    }
+    if(localCommand == 0330){//<page0330>
+      x += side*Math.cos(theta);   
+      y += side*Math.sin(theta); 
+    //</page0330>
+    }
+    if(localCommand == 0331){//<page0331>
+      x -= side*Math.cos(theta);   
+      y -= side*Math.sin(theta); 
+    //</page0331>
+    }
+    if(localCommand == 0332){//<page0332>
+      x += side*Math.cos(theta - thetaStep);
+      y += side*Math.sin(theta - thetaStep);
+    //</page0332>
+    }
+    if(localCommand == 0333){//<page0333>
+      x += side*Math.cos(theta + thetaStep);
+      y += side*Math.sin(theta + thetaStep);
+    //</page0333>
+    }
+    if(localCommand == 0334){//<page0334>
+      theta -= thetaStep; // CCW
+    //</page0334>    
+    }
+    if(localCommand == 0335){//<page0335>
+      theta += thetaStep; // CW
+    //</page0335>
+    }
+    if(localCommand == 0336){//<page0336>
+      side /= scaleFactor; // -
+    //</page0336>
+    }
+    if(localCommand == 0337){//<page0337>
+      side *= scaleFactor; // +
+    //</page0337>
+    }
+    if(localCommand == 0340){//<page0340>
+ 
+    	//point
+		ctx.beginPath();
+		ctx.arc(x, y, 3, 0, 2 * Math.PI);
+		ctx.fill();	
+		ctx.closePath();
+		currentSVG += "<circle cx=\"";
+		currentSVG += Math.round(x).toString();
+		currentSVG += "\" cy = \"";
+		currentSVG += Math.round(y).toString();
+		currentSVG += "\" r = \"3\" stroke = \"black\" stroke-width = \"2\" ";
+		currentSVG += "fill = \"black\" />\n";		
+    //</page0340>
+    }
+    if(localCommand == 0341){//<page0341>
+      //circle
+		ctx.beginPath();
+		ctx.arc(x, y, side, 0, 2 * Math.PI);
+		ctx.closePath();
+		ctx.stroke();
+		currentSVG += "    <circle cx=\"";
+		currentSVG += Math.round(x).toString();
+		currentSVG += "\" cy = \"";
+		currentSVG += Math.round(y).toString();
+		currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\" ";
+		currentSVG += "fill = \"none\" />\n";		
+    //</page0341>
+    }
+    if(localCommand == 0342){//<page0342>
+        //line
+    	ctx.beginPath();
+    	ctx.moveTo(x,y);
+		ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
+		ctx.stroke();		
+   		ctx.closePath();
+   		
+   		var x2 = Math.round(x + side*Math.cos(theta));
+   		var y2 = Math.round(y + side*Math.sin(theta));
+   		currentSVG += "    <line x1=\""+Math.round(x).toString()+"\" y1=\""+Math.round(y).toString()+"\" x2=\""+x2.toString()+"\" y2=\""+y2.toString()+"\" style=\"stroke:black;stroke-width:2\" />\n"
+
+        //</page0342>
+    }
+    if(localCommand == 0343){//<page0343>
+    	ctx.beginPath();
+		ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
+		ctx.stroke();
+		ctx.closePath();
+		localString = "";
+		localString += "  <path d=\"";	
+		localString += "M";
+		var localInt = x + side*Math.cos(theta - thetaStep);
+		localString += localInt.toString();
+		localString += " ";
+		localInt = y + side*Math.sin(theta - thetaStep);
+		localString += localInt.toString();
+		currentSVG += localString;
+		localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+		localInt = x + side*Math.cos(theta + thetaStep);
+		localString += localInt.toString() + " ";
+		localInt = y + side*Math.sin(theta + thetaStep);
+		localString += localInt.toString() + "\" fill = \"none\" stroke = \"black\" stroke-width = \"2\" />\n";
+		currentSVG += localString;
+//</page0343>    
+    }
+    if(localCommand == 0344){//<page0344>
+       //part of a poly line or path 
+		ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
+		ctx.stroke();		
+
+   		var x2 = Math.round(x + side*Math.cos(theta));
+   		var y2 = Math.round(y + side*Math.sin(theta));
+   		currentSVG += "L" + x2 + " " + y2 + " ";
+
+    //</page0344>
+    }
+    if(localCommand == 0345){//<page0345>
+       //arc
+		ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
+		ctx.stroke();
+    //</page0345>
+    }
+    if(localCommand == 0346){//<page0346>
+      //arc, reverse direction
+		ctx.arc(x, y, side, theta + thetaStep,theta - thetaStep,true);
+		ctx.stroke();
+    //</page0346>
+    }
+    if(localCommand == 0347){//<page0347>
+        //filled circle
+		ctx.beginPath();
+		ctx.arc(x, y, side, 0, 2 * Math.PI);
+		ctx.closePath();
+		ctx.stroke();
+		ctx.fill();
+		currentSVG += "    <circle cx=\"";
+		currentSVG += Math.round(x).toString();
+		currentSVG += "\" cy = \"";
+		currentSVG += Math.round(y).toString();
+		currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"black\" stroke-width = \"2\" ";
+		currentSVG += "fill = \"black\" />\n";		
+
+    //</page0347>
+    }
+    if(localCommand == 0350){//<page0350>
+      thetaStep /= 2;  //angle/2
+    //</page0350>
+    }
+    if(localCommand == 0351){//<page0351>
+      thetaStep *= 2;  //2angle
+    //</page0351>
+    }
+    if(localCommand == 0352){//<page0352>
+      thetaStep /= 3; //angle/3
+    //</page0352>
+    }
+    if(localCommand == 0353){//<page0353>
+      thetaStep *= 3; //3angle
+	//</page0353>
+    }
+    if(localCommand == 0360){//<page0360>
+		imgData = imgctx.getImageData(x,y,side,side);
+	//</page0360>
+    }
+    if(localCommand == 0361){//<page0361>
+        var IMG = document.getElementById(currentImage);
+        IMG.style.left = (x - imgx0*(side/unit)).toString() + "px";
+        IMG.style.top = (y - imgy0*(side/unit)).toString() + "px";
+        IMG.style.width = (imgw*side/unit).toString() + "px";  
+        //</page0361>
+    }
+    if(localCommand == 0362){//<page0362>
+	   ctx.beginPath();
+	   ctx.moveTo(x,y);
+	   currentSVG += "	<path d = \"M";
+	   currentSVG += Math.round(x).toString() + " ";
+	   currentSVG += Math.round(y).toString() + " ";
+
+//	   currentSVG += "  <polyline points=\"";		
+    //</page0362>
+    }
+    if(localCommand == 0363){//<page0363>
+	   ctx.closePath();
+	   ctx.stroke();		
+	   ctx.fill();		
+	   currentSVG += "Z\""+ " stroke = \"black\" stroke-width = \"2\" fill = \"none\" "+"/>";
+    //</page0363>
+    }
+    if(localCommand == 0364){//<page0364>
+	   ctx.closePath();
+	   ctx.stroke();		
+	   ctx.fill();		
+	   currentSVG += "Z\""+ " stroke = \"black\" stroke-width = \"2\" fill = \"black\" "+"/>";
+    //</page0364>
+    }
+    if(localCommand == 0365){//<page0365>
+        ctx.font=side.toString(8) + "px " + myFont;
+		ctx.fillText(currentWord,x,y);
+		currentSVG += "    <text x=\"";
+		currentSVG += Math.round(x).toString();
+		currentSVG += "\" y = \"";
+		currentSVG += Math.round(y).toString();
+		currentSVG += "\" fill = \"black\""; 
+		currentSVG += " font-size = \"";
+		currentSVG += side + "px\"";
+		currentSVG += " font-family = \"futura\"";
+		currentSVG += ">";
+		currentSVG += currentWord;
+		currentSVG += "</text>\n";	
+	//</page0365>
+    }
+    if(localCommand == 0366){//<page0366>
+		ctx.beginPath();
+		ctx.moveTo(Math.round(x),Math.round(y));
+		cpx1 = Math.round(x + side*Math.cos(theta));
+		cpy1 = Math.round(y + side*Math.sin(theta));
+		currentSVG += "<path    d = \"M";
+		currentSVG += (Math.round(x)).toString() + ",";
+		currentSVG += (Math.round(y)).toString() + " C";
+		currentSVG += cpx1.toString() + "," + cpy1.toString() + " ";
+		
+//<path  d="M100,200 C150,150 200,150 250,200" />
+	//</page0366>
+    }
+    if(localCommand == 0367){//<page0367>
+		x2 = Math.round(x);
+		y2 = Math.round(y);
+		cpx2 = Math.round(x + side*Math.cos(theta));
+		cpy2 = Math.round(y + side*Math.sin(theta));
+		ctx.bezierCurveTo(cpx1,cpy1,cpx2,cpy2,x2,y2);
+		ctx.stroke();
+		currentSVG += cpx2.toString() + "," + cpy2.toString() + " ";
+		currentSVG += x2.toString() + "," + y2.toString() + "\" fill = \"none\" stroke-width = \"2\" stroke = \"black\" />";		
+    //</page0367>
+    }
+    if(localCommand == 06){ //<page06>
+        fullCube = false;
+        currentTable = []; 
+        for(var index = 0;index < 01777;index ++){
+            currentTable.push("");
+        }
+        var inputbytecode = document.getElementById("bytecodeScript").text;
+        var bytecodearray = inputbytecode.split("\n");
+        for(var index = 0;index < bytecodearray.length;index++){
+            if(bytecodearray[index].includes(":")){
+                var localBytecode = bytecodearray[index].split(":");
+                var localAddress = parseInt(localBytecode[0],8);
+                currentTable[localAddress] = localBytecode[1];
+            }
+        }
+        currentTableStart = [];
+        for(var index = 0;index < currentTable.length;index++){
+            currentTableStart.push(currentTable[index]);
+        }
+//</page06>
+    }
+    if(localCommand == 07){//<page07>
+        //intialize
+        myFont = "Futura";
+        currentWord = "";
+        currentSVG = "";
+        currentHTML = "";
+        currentAddress = 0210;
+        currentGlyph = "0300,";
+        currentAction = 0;
+        currentCommand = "0300";
+        phi = 0.5*(Math.sqrt(5) + 1);
+        scaleFactor = 2;
+        thetaStep = Math.PI/2;
+        theta0 = -Math.PI/2; 
+        theta = theta0;
+        x0 = innerWidth/2;
+        y0 = innerHeight/2;
+        x = x0;
+        y = y0;
+        unit = 300;
+        side = unit;
+        hereGlyph = "";
+        meglyph = "0320,0341,0337,0341,0337,0341,0337,0341,0342,0335,0342,0335,0342,0335,0342,0335,0336,0336,";
+        x0 = innerWidth/2;
+        y0 = innerHeight/2;
+        unit = x0/8;//16 wm span total screen size
+        side = unit;
+        currentGlyph = "0300,0330,0341,0333,0207,0336,0341,";
+        viewGlyph = "";
+        x0 = 5;
+        y0 = 55;
+        unit = 50;
+        side = unit;
+
+        currentImage = "image0606a";
+        imgx0 = 0;
+        imgy0 = 0;
+        imgw = 400; //natural width in pixels
+        imgunit = 200; //when width is natural width, this is "unit" in pixels
+        physicalunit = "555 feet";
+        lat0 = 38.8894427;//washington monument
+        lon0 = -77.035224;//washington monument
+
+        keys1 = ["","4","5","6","0","!"];
+        commands1 = [0300,0304,0305,0306,0300,027];
+        keys2 = ["q","w","e","r","t","[","]","p"];
+        commands2 = [0310,0311,0312,0313,0314,020,021,010];
+        keys3 = ["a","s","d","f","g","h","j","k","l",";"];
+        commands3 = [0330,0331,0332,0333,0334,0335,0336,0337,0350,0351];
+        keys4 = ["z","x","c","v",",",".","Q","W","E","R","T","Y","U","I"];
+        commands4 = [0340,0341,0342,0343,022,023,0200,0201,0202,0203,0204,0205,0206,020];	
+
+        keys = keys1.concat(keys2,keys3,keys4);
+        commands = commands1.concat(commands2,commands3,commands4);
+    //</page07>
+    }
+    if(localCommand == 010){//<page010>
+    //delete
+    var glypharray = currentGlyph.split(",");
+    currentGlyph = "";
+    for(var index = 0;index < glypharray.length-1;index++){
+      if(glypharray[index + 1] != "0207"){
+        currentGlyph += glypharray[index] + ",";
+      }
+    }
+    currentGlyph += glypharray[glypharray.length-1] + ",";
+    redraw(); 
+//</page010>
+    }
+    if(localCommand == 011){//<page011>
+//insert
+    var glypharray = currentGlyph.split(",");
+    currentGlyph = "";
+    for(var index = 0;index < glypharray.length-1;index++){
+      if(glypharray[index] != "0207"){
+        currentGlyph += glypharray[index] + ",";
+      }
+      else{
+        currentGlyph += currentCommand + ",0207,";
+      }
+    }
+    currentGlyph += glypharray[glypharray.length-1];
+    redraw();
+    //</page011>
+    }
+    if(localCommand == 020){//<page020>
+   //back arrow
+    var glypharray = currentGlyph.split(",");
+    currentGlyph = "";
+    if(glypharray[0] == "0207"){
+        for(var index = 1;index < glypharray.length-1;index++){
+            if(glypharray[index].length >0){
+                currentGlyph += glypharray[index] + ",";
+            }        
+        }
+        currentGlyph += "0207,";
+    }
+    else{
+      for(var index = 0;index < glypharray.length-1;index++){
+        if(glypharray[index + 1] == "0207"){
+          currentGlyph += "0207,";
+           if(glypharray[index].length >0){
+                currentGlyph += glypharray[index] + ",";
+            }        
+        }
+        if(glypharray[index] != "0207" && glypharray[index + 1] != "0207"){
+           if(glypharray[index].length >0){
+                currentGlyph += glypharray[index] + ",";
+            }        
+        }
+      }
+      if(glypharray[index].length >0){
+            currentGlyph += glypharray[glypharray.length-1] + ",";
+      }        
+
+    }
+
+    redraw();  
+    //</page020>
+    }
+    if(localCommand == 021){//<page021>
+   //forward arrow
+    var glypharray = currentGlyph.split(",");
+    currentGlyph = "";
+    if(glypharray[glypharray.length - 2] == "0207"){
+      currentGlyph += "0207,";
+      for(var index = 0;index < glypharray.length - 2;index++){
+         currentGlyph += glypharray[index] + ",";
+      }
+    }
+    else{
+      for(var index = 0;index < glypharray.length-1;index++){
+        if(glypharray[index] == "0207"){
+          currentGlyph += glypharray[index+1] + ",";
+          currentGlyph += "0207,";
+        }
+        if(glypharray[index] != "0207" && glypharray[index - 1] != "0207"){
+          currentGlyph += glypharray[index] + ",";
+        }
+      }
+      currentGlyph += glypharray[glypharray.length-1];
+    }
+    redraw();  
+    //</page021>
+    }
+    if(localCommand == 022){//<page022>
+   //previous glyph in table
+    currentAddress--;
+    var fooArray = currentTable[currentAddress].split(",");
+    currentGlyph = "";
+    for(var index = 0;index < fooArray.length;index++){
+        if(fooArray[index].length > 0){
+            currentGlyph +=  fooArray[index] + ",";
+        }
+    }
+    currentGlyph += "0207,";
+    document.getElementById("codeaddr").value = "0" + currentAddress.toString(8);
+    redraw();
+    //</page022>
+    }
+    if(localCommand == 023){//<page023>
+   //next glyph in table
+    currentAddress++;
+    var fooArray = currentTable[currentAddress].split(",");
+    currentGlyph = "";
+    for(var index = 0;index < fooArray.length;index++){
+        if(fooArray[index].length > 0){
+            currentGlyph +=  fooArray[index] + ",";
+        }
+    }
+    currentGlyph += "0207,";
+    document.getElementById("codeaddr").value = "0" + currentAddress.toString(8);
+    redraw();
+    //</page023>
+    }
+    if(localCommand == 027){//<page027>
+         //export cube, "!" is the key command to invok
+        var localString = "";
+		for(var index = 0;index < currentTable.length;index++){
+			if(currentTableStart[index] != currentTable[index] || fullCube){
+				localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+			}
+		}
+        editor.setValue(localString);
+        currentAddress = 0177;
+    //</page027>
+    }
+
+//<page03>
+
+}
+
+
+doTheThing(06);
+doTheThing(07);
+
+
+</script>
+</head>
+
+
+<body> 
+<button id = "backbutton" class = "navbutton">BACK</button>
+<button id = "fwdbutton" class = "navbutton">FWD</button>
+<!--</page03>-->
+<!--<page0401>-->
+<div style = "display:none" class = "json" id = "data0401">
+    {
+        "markers":[
+        {
+            "name":"15th and Crystal",
+            "latlon":"38.860032, -77.049316"
+        },
+        {
+            "name":"8th and Crystal",
+            "latlon":"38.857561, -77.049255"
+        }
+        ],
+        "mapimage":{
+            "name":"Old London",
+            "url":"https://upload.wikimedia.org/wikipedia/commons/3/3a/Rocque%27s_Map_of_London_1741-5.jpg",
+            "lonleft":-0.170,
+            "lonright":-0.027,
+            "lattop":51.5350,
+            "layer":-11    
+        },
+        "homeview":{
+            "name":"London Eye",
+            "latlon":"51.503254, -0.119529",
+            "feetperpixel":10,
+            "unitfeet":443
+        }
+    }
+</div>        
+<!--</page0401>-->
+<!--<page0402>-->
+<div style = "display:none" class = "json" id = "data0402">
+</div>
+<!--</page0402>-->        
+<!--<page0601>-->
+<div class = "page" id = "div0601">
+    <canvas id = "canvas0601"></canvas>
+    <table id = "mapcontrol0601">
+        <tr>
+            <td>lattop:</td><td><input></input></td>
+        </tr>
+        <tr>
+            <td>lonleft:</td><td><input></input></td>
+        </tr>
+        <tr>
+            <td>lonright:</td><td><input></input></td>
+        </tr>
+        <tr>
+            <td>feetperpixel:</td><td><input></input></td>
+        </tr>    
+        <tr>
+            <td>here:</td><td><input></input></td>
+        </tr>        
+        <tr>
+            <td>unitfeet:</td><td><input></input></td>
+        </tr>            
+    </table>
+    <button id = "locatebutton">LOCATE</button>
+    <table id = "viewcontrol0601">
+        <img id = "mainmap"></img>
+        <tr>
+            <td>LEFT</td><td>DOWN</td><td>UP</td><td>RIGHT</td><td>OUT</td><td>IN</td><td>RESET</td>
+        </tr>
+    </table>
+</div>
+<!--</page0601>-->
+<!--<page0700>-->
+<script id = "script0700">
+
+    pages = document.getElementsByClassName("page");
+    currentPage = 0;
+    for(index = 0;index < pages.length;index++){
+        if(index != currentPage){
+            pages[index].style.display = "none";
+        }
+    }
+    
+    document.getElementById("backbutton").onclick = function(){
+        pages[currentPage].style.display = "none";
+        currentPage--;
+        if(currentPage < 0){
+            currentPage = pages.length - 1;
+        }
+        pages[currentPage].style.display = "block";
+                
+    }
+    document.getElementById("fwdbutton").onclick = function(){
+        pages[currentPage].style.display = "none";
+        currentPage++;
+        if(currentPage > pages.length -1){
+            currentPage = 0;
+        }
+        pages[currentPage].style.display = "block";
+    }    
+</script>
+<!--</page0700>-->        
+<!--<page0701>-->
+<script id = "script0701">
+document.getElementById("canvas0601").width = innerWidth;
+document.getElementById("canvas0601").height = innerHeight;
+x0 = innerWidth/2;
+y0 = innerHeight/2;
+unit  = 100;
+viewbuttons = document.getElementById("viewcontrol0601").getElementsByTagName("TD");
+for(var index= 0;index < viewbuttons.length;index++){
+    viewbuttons[index].className = "viewbutton";
+}
+
+json0401 = JSON.parse(document.getElementById("data0401").innerHTML);
+document.getElementById("mainmap").src = json0401.mapimage.url;
+lonleft = json0401.mapimage.lonleft;
+lonright = json0401.mapimage.lonright;
+
+lattop = json0401.mapimage.lattop;
+
+feetperpixel = json0401.homeview.feetperpixel;
+here = json0401.homeview.latlon;
+
+unitfeet = json0401.homeview.unitfeet;
+
+inputs0601 = document.getElementById("div0601").getElementsByTagName("INPUT");
+inputs0601[0].value = lattop;
+inputs0601[1].value = lonleft;
+inputs0601[2].value = lonright;
+inputs0601[3].value = feetperpixel;
+inputs0601[4].value = here;
+inputs0601[5].value = unitfeet;
+
+inputs0601[0].onchange = function(){
+    lattop = this.value;
+    redraw0701();
+}
+inputs0601[1].onchange = function(){
+    lonleft = this.value;
+    redraw0701();
+}
+inputs0601[2].onchange = function(){
+    lonright = this.value;
+    redraw0701();
+}
+inputs0601[3].onchange = function(){
+    feetperpixel = this.value;
+    redraw0701();
+}
+inputs0601[4].onchange = function(){
+    here = this.value;
+    redraw0701();
+}
+inputs0601[5].onchange = function(){
+    unitfeet = this.value;
+    redraw0701();
+}
+
+redraw0701();
+function redraw0701(){
+    ctx = document.getElementById("canvas0601").getContext("2d");
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    lat0 = parseFloat(here.split(",")[0]);
+    lon0 = parseFloat(here.split(",")[1]);
+    var xleft = x0 + (lonleft - lon0)*Math.cos(lat0*Math.PI/180)*(60)*(1.15078)*(5280)/feetperpixel;
+    document.getElementById("mainmap").style.left = xleft.toString() + "px";
+    var xright = x0 + (lonright - lon0)*Math.cos(lat0*Math.PI/180)*(60)*(1.15078)*(5280)/feetperpixel;
+    document.getElementById("mainmap").style.width = (xright - xleft).toString() + "px";
+    y = y0 - (lattop - lat0)*(60)*(1.15078)*(5280)/feetperpixel;
+    document.getElementById("mainmap").style.top = y.toString() + "px";
+    unit = unitfeet/feetperpixel;
+    drawGlyph("0300,0340,0341,")
+}
+
+viewbuttons[0].onclick = function(){//left
+    x0 += 0.2*unit;
+    redraw0701();
+}
+viewbuttons[1].onclick = function(){//down
+    y0 -= 0.2*unit;
+    redraw0701();
+}
+viewbuttons[2].onclick = function(){//up
+    y0 += 0.2*unit;
+    redraw0701();
+}
+viewbuttons[3].onclick = function(){//right
+    x0 -= 0.2*unit;
+    redraw0701();
+}
+viewbuttons[4].onclick = function(){//out
+    feetperpixel *= 1.1;
+    redraw0701();
+}
+viewbuttons[5].onclick = function(){//in
+    feetperpixel /= 1.1;
+    redraw0701();
+}
+viewbuttons[6].onclick = function(){//reset
+    y0 = innerHeight/2;
+    x0 = innerWidth/2;
+    feetperpixel = json0401.homeview.feetperpixel;
+    redraw0701();
+}
+
+document.body.onkeypress= function(){
+    var key = event.key;
+    var keyaddress = key.charCodeAt(0);
+    if(key == "-" || key == "d"){//out
+        feetperpixel *= 1.1;
+        redraw0701();
+    }
+    if(key == "=" || key == "f"){//in
+        feetperpixel /= 1.1;
+        redraw0701();
+    }
+    if(key == "h"){//left
+        x0 += 0.2*unit;
+        redraw0701();
+    }
+    if(key == "l"){//right
+        x0 -= 0.2*unit;
+        redraw0701();
+    }
+    if(key == "k"){//up
+        y0 += 0.2*unit;
+        redraw0701();
+    }
+    if(key == "j"){//down
+        y0 -= 0.2*unit;
+        redraw0701();
+    }
+    if(key == "`"){//reset
+        y0 = innerHeight/2;
+        x0 = innerWidth/2;
+        feetperpixel = json0401.homeview.feetperpixel;
+        redraw0701();
+    }
+    if(key == " "){//locate
+        getLocation();
+    }
+}
+
+document.getElementById("locatebutton").onclick = function(){
+    getLocation();
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else { 
+        here = "Geolocation is not supported by this browser.";
+    }
+}
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            here = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            here = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            here = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            here = "An unknown error occurred."
+            break;
+    }
+}
+
+function showPosition(position) {
+    here = position.coords.latitude.toString() + "," + position.coords.longitude.toString();
+    redraw0701();
+
+}
+</script>
+<!--</page0701>-->   
+<!--<page0500>-->
+<style id = "style0500">
+html{
+    background-color:#f0f0f0;
+}
+body{ 
+    overflow:hidden;
+    font-family:Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+    color:black;
+    font-size:18px;
+}
+
+.title{
+    position:absolute;
+    z-index:2;
+    top:4%;
+    width:100%;
+    font-size:2em;
+    text-align:center;
+}
+
+table{
+    position: absolute;
+    z-index:3;
+}
+.navbutton{
+        position:absolute;
+        top:5px;
+        height:40px;
+        width:60px;
+        font-size:1em;
+        color:black;
+        background-color:#a0a0a0;
+        border-color:black;
+        cursor:pointer;
+        z-index:4;
+    }
+    .navbutton:hover{
+        background-color:green;
+    }
+    .navbutton:active{
+        background-color:#f0f000;
+    }
+    #backbutton{
+        left:5px;
+    }
+    #fwdbutton{
+        right:5px;
+    }
+    canvas{
+        position:absolute;
+        z-index:0;
+        left:0px;
+        top:0px;
+        overflow:hidden;
+    }
+    img{
+        z-index:-2;
+    }
+
+</style>
+<!--</page0500>-->
+<!--<page0501>-->
+<style id = "style0501">
+#viewcontrol0601{
+    position: absolute;
+    bottom:5px;
+    left:10px;
+    z-index:4;
+}
+.viewbutton{
+    font-size:1em;
+    text-align:center;
+    height:1.5em;
+    width:4em;
+    color:black;
+    background-color:#a0a0a0;
+    border-color:black;
+    border:solid;
+    border-radius:5px;
+    cursor:pointer;
+    z-index:4;
+}
+.viewbutton:hover{
+    background-color:green;
+}
+.viewbutton:active{
+    background-color:#f0f000;
+}
+.boxdiv{
+    position:absolute;
+    z-index:2;
+}
+.mapimage{
+    position: absolute;
+}
+#mainmap{
+    position: absolute;
+}
+#mapcontrol0601{
+    position: absolute;
+    left: 50px;
+    top:40%;
+    background-color:white;
+}
+#mapcontrol0601 td{
+    text-align:right;
+}
+#locatebutton{
+    position: absolute;
+    right: 50px;
+    bottom:50px;
+    cursor:pointer;
+}
+#locatebutton:hover{
+    background-color:#f0f000;
+}
+</style>
+<!--</page0501>-->   
+<!--<page05>-->
+</body>
+</html>
+<!--</page05>-->
