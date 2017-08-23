@@ -3,7 +3,7 @@
 <html>
 <head>
 <!-- PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS, NO PROPERTY NO MONEY NO MINING-->
-    <title>LafeLabs [dot] org</title>
+    <title>Book of Geometron</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>
     MathJax.Hub.Config({
@@ -13,6 +13,7 @@
       }
     });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>    
 <!--</page01>-->
 <script id = "bytecodeScript">
 /*
@@ -633,8 +634,6 @@ function doTheThing(localCommand){
         y = y0;
         unit = 300;
         side = unit;
-        hereGlyph = "";
-        meglyph = "0320,0341,0337,0341,0337,0341,0337,0341,0342,0335,0342,0335,0342,0335,0342,0335,0336,0336,";
         x0 = innerWidth/2;
         y0 = innerHeight/2;
         unit = x0/8;//16 wm span total screen size
@@ -646,26 +645,6 @@ function doTheThing(localCommand){
         unit = 50;
         side = unit;
 
-        currentImage = "image0606a";
-        imgx0 = 0;
-        imgy0 = 0;
-        imgw = 400; //natural width in pixels
-        imgunit = 200; //when width is natural width, this is "unit" in pixels
-        physicalunit = "555 feet";
-        lat0 = 38.8894427;//washington monument
-        lon0 = -77.035224;//washington monument
-
-        keys1 = ["","4","5","6","0","!"];
-        commands1 = [0300,0304,0305,0306,0300,027];
-        keys2 = ["q","w","e","r","t","[","]","p"];
-        commands2 = [0310,0311,0312,0313,0314,020,021,010];
-        keys3 = ["a","s","d","f","g","h","j","k","l",";"];
-        commands3 = [0330,0331,0332,0333,0334,0335,0336,0337,0350,0351];
-        keys4 = ["z","x","c","v",",",".","Q","W","E","R","T","Y","U","I"];
-        commands4 = [0340,0341,0342,0343,022,023,0200,0201,0202,0203,0204,0205,0206,020];	
-
-        keys = keys1.concat(keys2,keys3,keys4);
-        commands = commands1.concat(commands2,commands3,commands4);
     //</page07>
     }
     if(localCommand == 010){//<page010>
@@ -801,207 +780,407 @@ function doTheThing(localCommand){
     }
 
 //<page03>
-
 }
-
-
-doTheThing(06);
-doTheThing(07);
-
+doTheThing(06);//import embedded hypercube in this .html doc
+doTheThing(07);//initialize Geometron global variables
 </script>
 </head>
-
-
 <body> 
 <button id = "backbutton" class = "navbutton">BACK</button>
 <button id = "fwdbutton" class = "navbutton">FWD</button>
 <!--</page03>-->
+<!--<page0400>-->
+<div style = "display:none" class = "json" id = "data0400">
+{
+    "name":"bookofgeometron",
+    "title":"The Book of Geometron",
+    "url":"https://www.lafelabs.org/book/",
+    "format":"book",
+    "author":"Lafe Spietz",
+    "date":"2017",
+    "copyright":"All work is Public Domain with no restrictions whatsoever.",
+    "chapters":[
+        "data0401",
+        "data0402",
+        "data0403",
+        "data0404",
+        "data0405",
+        "data0406",
+        "data0407",
+        "data0410",        
+        "data0411",
+        "data0412",
+        "data0413",
+        "data0414",
+        "data0415",
+        "data0416"
+    ]
+}
+</div>
+<!--</page0400>-->
 <!--<page0401>-->
 <div style = "display:none" class = "json" id = "data0401">
 {
-    "name":"topmenu",
-    "data":[
-    {
-        "topic":"LafeLabs Vital Statistics",
-        "address":"data0410"
-    },
-    {
-        "topic":"About Lafe Spietz",
-        "address":"data0420"
-    },
-    {
-        "topic":"About the Geometron Metalanguage",
-        "address":"data0430"
-    },
-    {
-        "topic":"Geometron Gallery",
-        "address":"data0440"
-    }
+    "name":"chapter1",
+    "title":"Introduction and Getting Started",
+    "sections":[
+        {
+            "title":"What is Geometron?",
+            "data":[
+                {"paragraph":"Geometron is two things: a language, and a way of organizing information.  This whole project is based on the simple idea that as a civilization we already know far more than we need to and that the next frontier in knowledge is in <i>organizing</i> the knowledge we already have.  Another key idea used to build this structure is that the so-called \"open web\" is the single most powerful information processing system ever devised and that any attempt to better organize information must be based on it.  Geometron is also based on the idea that communication based on geometric ideas like symmetry and shape can have enormous power and have been vastly under-used due to the emphasis our civilization has put on numbers."},
+                {"paragraph":"In some sense, geometron is a computer language.  The vast majority of what is found in this volume is based on building a language that exists on computers and was written in computer languages(mostly javascript, html, and css, the languages of the open web).  But to lump it together with such languages as C or java would be to miss the point.  It is more like a human language in the sense that while you can use a computer language to do things like search for words in a English document or compose a book in English, that does not make English a computer language. Or is it?  Without comments, computer code is impossible to maintain or build in teams and without a output in a human language it is usually not very useful.  And which is math?  Machines do math, but generally are programmed in something more tailored to the machine and the human doing the coding."},
+                {"paragraph":"This idea of math-as-language really gets to the heart of the matter.  Geometron seeks to build a language that is useful both for human-human communication(like English) and for human-machine communication(like javascript), but which is independent of both.  That is to say, it should be possible to express things in this system using only shapes and symbols in a self-contained way, then run those operations on a machine or send them to a human without ever writing a line of code in javascript or C or a line of language in English or Chinese.  That is, this is an attempt to organize existing geometric knowledge into a language which can be used to communicate."},
+                {"paragraph":"As I said in the first paragraph here, this language is only half of Geometron. The other half is the way that information is organized.  This means doing things like considering how to sort words from images from equations in a way that helps organize document creation."}    
+            ]
+        },
+        {
+            "title":"Hello, World",
+            "data":[
+                {"paragraph":"There is a tradition in the world of computer languages of introducing a language by printing the words \"hello, world\" in the simplest possible way as an example.  I'm going to take the broader view of the \"hello world\" in this case however.  Part of the point of geometron is that it's not based on a human language."},
+                {"figure":{
+                    "element":"canvas",
+                    "w":400,
+                    "h":300,
+                    "x0":50,
+                    "y0":50,
+                    "unit":40,
+                    "glyph":"0300,01340,01341,01333,01341,01340,072,0300,0331,0337,0331,0333,0340,0341,0333,0341,0340",
+                    "caption":""
+                    }
+                },
+                {"paragraph":"There are three commands here, shown in the graphical code above here.  The first and last are the command for \"draw circle\", and the arrow indicates moving one unit to the right.  There are several ways to express this in Geometron.  Each of these commands also have an address in a stack of 8X8 grids.  I'll get into this more later, but will show for completeness what this looks like:"},
+                {"code":"0341,0333,0341"}
+            ]
+        },
+        {
+            "title":"Physical Implementation",
+            "data":[
+                {"figure":{
+                    "element":"IMG",
+                    "title":"",
+                    "url":"https://i.imgur.com/5jHlwLV.png",
+                    "caption":""}
+                },
+                {"figure":{
+                    "element":"IMG",
+                    "title":"",
+                    "url":"https://i.imgur.com/rC7FAAN.png",
+                    "caption":""}
+                },
+                {"figure":{
+                    "element":"IMG",
+                    "title":"",
+                    "url":"https://i.imgur.com/pzGs2lC.png",
+                    "caption":""}
+                },
+                {"figure":{
+                    "element":"IMG",
+                    "title":"",
+                    "url":"https://i.imgur.com/kCiNI4i.png",
+                    "caption":""}
+                },
+                {"figure":{
+                    "element":"IMG",
+                    "title":"",
+                    "url":"https://i.imgur.com/AH8eBp2.png",
+                    "caption":""}
+                },
+                {"figure":{
+                    "element":"IMG",
+                    "title":"",
+                    "url":"https://i.imgur.com/KwS46dt.png",
+                    "caption":""}
+                }
+            ]
+        },
+        {
+            "title":"Basic Shapes",
+            "data":[
+                {"paragraph":"To illustrate the power of geometron, I will now construct the most basic shapes beyond the circle: the equilateral triangle, square, regular pentagon and regular hexagon.  I'll go into much more detail about how the commands used here work later, but for now I'll just jump in with examples."},
+                {"figure":{
+                    "element":"canvas",
+                    "w":400,
+                    "h":250,
+                    "x0":30,
+                    "y0":30,
+                    "unit":20,
+                    "drawGlyph":"0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335",
+                    "spellGlyph":"0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"
+                    }
+                },
+                {"figure":{
+                    "element":"canvas",
+                    "w":400,
+                    "h":250,
+                    "x0":30,
+                    "y0":30,
+                    "unit":20,
+                    "drawGlyph":"0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335",
+                    "spellGlyph":"0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"
+                    }
+                },
+                {"figure":{
+                    "element":"canvas",
+                    "w":400,
+                    "h":250,
+                    "x0":30,
+                    "y0":30,
+                    "unit":20,
+                    "drawGlyph":"0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335",
+                    "spellGlyph":"0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"
+                    }
+                },
+                {"figure":{
+                    "element":"canvas",
+                    "w":400,
+                    "h":250,
+                    "x0":30,
+                    "y0":30,
+                    "unit":20,
+                    "drawGlyph":"0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335",
+                    "spellGlyph":"0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"
+                    }
+                },
+                {"figure":{
+                    "element":"canvas",
+                    "w":400,
+                    "h":250,
+                    "x0":30,
+                    "y0":30,
+                    "unit":20,
+                    "drawGlyph":"0300,0331,0331,0331,0331,0365,0331,0331,0337,0337,0331,0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335",
+                    "spellGlyph":"0305,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335,0342,0330,0335"
+                    }
+                }
+            ]
+        },
+        {
+            "title":"Structure of This Book",
+            "data":[
+                {"paragraph":"The Geometron language is not just a computer language like C or a human language like English.  It's more of a hybrid which includes building physical objects, navigating the physical world, creating physical documents with various media as well as communication with both humans and machines.  Therefore the structure will be unusual in that it will move freely between these spheres.  I will try to provide examples in multiple of these layers."}
+            ]
+        }
     ]
 }
 </div>        
 <!--</page0401>-->
+<!--<page0402>-->
+<div style = "display:none" class = "json" id = "data0402">
+{
+    "name":"chapter2",
+    "title":"Scale, Symmetry and the Global Cursor",
+    "sections":[]
+}
+</div>
+<!--</page0402>-->        
+<!--<page0403>-->
+<div style = "display:none" class = "json" id = "data0403">
+{
+    "name":"chapter3",
+    "title":"Geometry Actions",
+    "sections":[]
+}
+</div>
+<!--</page0403>-->        
+<!--<page0404>-->
+<div style = "display:none" class = "json" id = "data0404">
+{
+    "name":"chapter4",
+    "title":"Philosophy and Structure",
+    "sections":[]
+}
+</div>
+<!--</page0404>-->        
+<!--<page0405>-->
+<div style = "display:none" class = "json" id = "data0405">
+{
+    "name":"chapter5",
+    "title":"Geometron in a Web Browser",
+    "sections":[]
+}       
+</div>
+<!--</page0405>-->        
+<!--<page0406>-->
+<div style = "display:none" class = "json" id = "data0406">
+{
+    "name":"chapter6",
+    "title":"Shapes",
+    "sections":[]
+}
+</div>
+<!--</page0406>-->        
+<!--<page0407>-->
+<div style = "display:none" class = "json" id = "data0407">
+{
+    "name":"chapter7",
+    "title":"Human Language, Keyboards, and Fonts",
+    "sections":[]
+}
+</div>
+<!--</page0407>--> 
 <!--<page0410>-->
 <div style = "display:none" class = "json" id = "data0410">
 {
-    "name":"vitalstatistics",
-    "title":"LafeLabs Vital Statistics",
-    "data":{
-        "Founded":"Late 2016",
-        "Purpose":"To create self-replicating free technology which can satisfy all human needs with no input of capital, materials, or energy--just re-arangement, re-purposing, and upcycling of existing objects in our evnironments.",
-        "Main Creation":"The Geometron Metalanguage.  Geometron is a system for organizing information using the World Wide Web combined with simple geometric concepts which make more sense to the human mind than numbers. By using open and free software, and releasing the entirety of this language in the public domain with no restrictions, we hope to create a universal language for organizing information.  In particular a goal of Geometron is to make a system for explicitly documenting technologies which can be made for free out of readily available parts and components, which will then store and replicate information also encoded in Geometron.  It should thus form the informational backbone of a system of self-replicating free technology.  The long term goal of this is to create a technological complete set, capable of satisfying all human needs using self replicating technology based on existing hardware and software that people already have available, making capitalist industry obsolete.",
-        "Principal Investigator":"Lafe Spietz",
-        "Location":"Arlington, VA, walking distance from Washington DC",
-        "Contact":"lafelabs[at]gmail[dot]com",
-        "Structure":"LafeLabs, LLC is a one person Virginia LLC with no assets, no investors, no debt, no equipment, no physical or software products and no employees.",
-        "How to work with LafeLabs":""
-    }
-}
+    "name":"chapter8",
+    "title":"Images",
+    "sections":[]
+}   
 </div>
 <!--</page0410>-->        
+<!--<page0411>-->
+<div style = "display:none" class = "json" id = "data0411">
+{
+    "name":"chapter9",
+    "title":"The Third Dimension and Virtual Reality",
+    "sections":[]
+}
+</div>
+<!--</page0411>-->        
+<!--<page0412>-->
+<div style = "display:none" class = "json" id = "data0412">
+{
+    "name":"chapter10",
+    "title":"Maps",
+    "sections":[]
+}
+</div>
+<!--</page0412>-->        
+<!--<page0413>-->
+<div style = "display:none" class = "json" id = "data0413">
+{
+    "name":"chapter11",
+    "title":"Math",
+    "sections":[]
+}
+</div>
+<!--</page0413>-->        
+<!--<page0414>-->
+<div style = "display:none" class = "json" id = "data0414">
+{
+    "name":"chapter12",
+    "title":"Document Creation Process",
+    "sections":[]
+}
+</div>
+<!--</page0414>-->        
+<!--<page0415>-->
+<div style = "display:none" class = "json" id = "data0415">
+{
+    "name":"chapter13",
+    "title":"Physical Data and Printing",
+    "sections":[]
+}
+</div>
+<!--</page0415>--> 
+<!--<page0416>-->
+<div style = "display:none" class = "json" id = "data0416">
+{
+    "name":"chapter14",
+    "title":"Examples and Future Work",
+    "sections":[]
+}
+</div>
+<!--</page0416>--> 
 <!--<page0420>-->
 <div style = "display:none" class = "json" id = "data0420">
-{
-    "name":"Lafespietz",
-    "data":[
-        {"education":"PhD. Yale University 2006; BA UC Berkeley Math and Physics double major, 1998"},
-        {"Experience":[
-            "F/V Kona Kai",
-            "UC Berkeley",
-            "Yale University",
-            "NIST",
-            "KRISS",
-            "IBM",
-            "Boulder Applied Physics Inc.",
-            "Spietz Applied Sciences, LLC",
-            "LafeLabs LLC"
-            ],
-            "biography":"I have built technology in just about every possible scenario: tech startup, bluechip companies, non profit R and D, private universities, and public universities."
-        }
-    ]
-}
 </div>
 <!--</page0420>-->                
 <!--<page0430>-->
 <div style = "display:none" class = "json" id = "data0430">
-{
-    "name":"Birds Eye View of the Geometron Metalanguage",
-    "sections":[
-        {"introduction":""},
-        {"Laws of Geometron":""},
-        {"examples":""},
-        {"applications":""},
-        {"future work":""},
-        {"How you can Help":""}
-    ]
-}
 </div>
 <!--</page0430>-->
 <!--<page0440>-->
 <div style = "display:none" class = "json" id = "data0440">
- {
-    "name":"gallery",
-    "examples":[
-        {
-            "Title":"Interesting Recursion",
-            "Caption":""
-        }
-    ] 
- }
 </div>
 <!--</page0440>-->
-<!--<page0420>-->
-<div style = "display:none" class = "json" id = "data0420">
-
-    
+<!--<page0421>-->
+<div style = "display:none" class = "json" id = "data0421">
+{
+    "paragraphs":[
+        "Geometron is two things: a language, and a way of organizing information.  This whole project is based on the simple idea that as a civilization we already know far more than we need to and that the next frontier in knowledge is in <i>organizing</i> the knowledge we already have.  Another key idea used to build this structure is that the so-called \"open web\" is the single most powerful information processing system ever devised and that any attempt to better organize information must be based on it.  Geometron is also based on the idea that communication based on geometric ideas like symmetry and shape can have enormous power and have been vastly under-used due to the emphasis our civilization has put on numbers.",
+        "In some sense, geometron is a computer language.  The vast majority of what is found in this volume is based on building a language that exists on computers and was written in computer languages(mostly javascript, html, and css, the languages of the open web).  But to lump it together with such languages as C or java would be to miss the point.  It is more like a human language in the sense that while you can use a computer language to do things like search for words in a English document or compose a book in English, that does not make English a computer language. Or is it?  Without comments, computer code is impossible to maintain or build in teams and without a output in a human language it is usually not very useful.  And which is math?  Machines do math, but generally are programmed in something more tailored to the machine and the human doing the coding.",
+        "This idea of math-as-language really gets to the heart of the matter.  Geometron seeks to build a language that is useful both for human-human communication(like English) and for human-machine communication(like javascript), but which is independent of both.  That is to say, it should be possible to express things in this system using only shapes and symbols in a self-contained way, then run those operations on a machine or send them to a human without ever writing a line of code in javascript or C or a line of language in English or Chinese.  That is, this is an attempt to organize existing geometric knowledge into a language which can be used to communicate.",
+        "As I said in the first paragraph here, this language is only half of Geometron. The other half is the way that information is organized.  This means doing things like considering how to sort words from images from equations in a way that helps organize document creation.",
+        "There is a tradition in the world of computer languages of introducing a language by printing the words \"hello, world\" in the simplest possible way as an example.  I'm going to take the broader view of the \"hello world\" in this case however.  Part of the point of geometron is that it's not based on a human language.",
+        "There are three commands here, shown in the graphical code above here.  The first and last are the command for \"draw circle\", and the arrow indicates moving one unit to the right.  There are several ways to express this in Geometron.  Each of these commands also have an address in a stack of 8X8 grids.  I'll get into this more later, but will show for completeness what this looks like:",
+        "To illustrate the power of geometron, I will now construct the most basic shapes beyond the circle: the equilateral triangle, square, regular pentagon and regular hexagon.  I'll go into much more detail about how the commands used here work later, but for now I'll just jump in with examples.",
+        "The Geometron language is not just a computer language like C or a human language like English.  It's more of a hybrid which includes building physical objects, navigating the physical world, creating physical documents with various media as well as communication with both humans and machines.  Therefore the structure will be unusual in that it will move freely between these spheres.  I will try to provide examples in multiple of these layers."
+    ]
+}
 </div>
-<!--</page0420>-->
-<!--<page0601>-->
-<div class = "page" id = "div0601">
-    <canvas id = "canvas0601"></canvas>
-    <table id = "toplist"></table>    
+<!--</page0421>-->
+<!--<page0600>-->
+<div class = "page" id = "div0600">
 </div>
-<!--</page0601>-->
+<!--</page0600>-->            
+<!--<page0621>-->
+<div class = "page" id = "div0621">
+<div class = "title">Paragraphs</div>
+<div id = "scroll0621" class = "parascroll"></div><div class = "paraedit" id = "edit0621"></div>
+</div>
+<!--</page0621>-->
 <!--<page0610>-->
 <div class = "page" id = "div0610">
-    <canvas id = "canvas0610"></canvas>
-    <ul id = "list0610"></ul>    
 </div>
 <!--</page0610>-->    
 <!--<page0700>-->
 <script id = "script0700">
-        zoom = 1;
-        pages = document.getElementsByClassName("page");
+pages = document.getElementsByClassName("page");
+currentPage = 0;
+for(index = 0;index < pages.length;index++){
+    if(index != currentPage){
+        pages[index].style.display = "none";
+    }
+}
+
+document.getElementById("backbutton").onclick = function(){
+    pages[currentPage].style.display = "none";
+    currentPage--;
+    if(currentPage < 0){
+        currentPage = pages.length - 1;
+    }
+    pages[currentPage].style.display = "block";
+            
+}
+document.getElementById("fwdbutton").onclick = function(){
+    pages[currentPage].style.display = "none";
+    currentPage++;
+    if(currentPage > pages.length -1){
         currentPage = 0;
-        for(index = 0;index < pages.length;index++){
-            if(index != currentPage){
-                pages[index].style.display = "none";
-            }
-        }
-        
-        document.getElementById("backbutton").onclick = function(){
-            pages[currentPage].style.display = "none";
-            currentPage--;
-            if(currentPage < 0){
-                currentPage = pages.length - 1;
-            }
-            pages[currentPage].style.display = "block";
-                    
-        }
-        document.getElementById("fwdbutton").onclick = function(){
-            pages[currentPage].style.display = "none";
-            currentPage++;
-            if(currentPage > pages.length -1){
-                currentPage = 0;
-            }
-            pages[currentPage].style.display = "block";
-        }    
+    }
+    pages[currentPage].style.display = "block";
+}          
+json0400 = JSON.parse(document.getElementById("data0400").innerHTML);
+
+var newdiv = document.createElement("DIV");
+newdiv.className = "title";
+newdiv.id = "title0600";
+newdiv.innerHTML = json0400.title;
+document.getElementById("div0600").appendChild(newdiv);
+var newdiv = document.createElement("DIV");
+newdiv.className = "subtitle";
+newdiv.innerHTML = json0400.author;
+newdiv.innerHTML += "<br>" + json0400.date;
+newdiv.innerHTML += "<br>" + json0400.copyright;
+document.getElementById("title0600").appendChild(newdiv);
+var newdiv = document.createElement("DIV");
+newdiv.id = "toc0600";
+newdiv.className = "toc";
+newdiv.innerHTML = "<h2>Table of Contents:</h2>";
+document.getElementById("div0600").appendChild(newdiv);
+var newol = document.createElement("OL");
+newdiv.appendChild(newol);
+for(var index = 0;index < json0400.chapters.length;index++){
+    var newli = document.createElement("LI");
+    var chapter = JSON.parse(document.getElementById(json0400.chapters[index]).innerHTML);
+    newli.innerHTML = chapter.title;
+    newol.appendChild(newli);
+}
+
 </script>
 <!--</page0700>-->        
 <!--<page0701>-->
 <script id = "script0701">
-document.getElementById("canvas0601").width = innerWidth;
-document.getElementById("canvas0601").height = innerHeight;
-if(innerWidth <  innerHeight){
-    unit = innerWidth/16;
-}
-else{
-    unit = innerHeight/16;
-}
-x0 = innerWidth/2;
-y0 = 4*unit;
-
-
-json0401 = JSON.parse(document.getElementById("data0401").innerHTML);
-json0410 = JSON.parse(document.getElementById("data0410").innerHTML);
-json0420 = JSON.parse(document.getElementById("data0420").innerHTML);
-json0430 = JSON.parse(document.getElementById("data0430").innerHTML);
-json0440 = JSON.parse(document.getElementById("data0440").innerHTML);
-
-ctx = document.getElementById("canvas0601").getContext("2d");
-ctx.clearRect(0,0,innerWidth,innerHeight);
-drawGlyph("0300,0337,0271,");
-drawGlyph("0300,0337,0337,0331,0310,0337,0335,0342,0335,0335,0342");
-
-for(var index = 0;index < json0401.data.length;index++){
-    var newtr = document.createElement("TR");
-    var newtd = document.createElement("TD");
-    newtr.appendChild(newtd);
-    document.getElementById("toplist").appendChild(newtr);
-    newtd.innerHTML = json0401.data[index].topic;
-}
-
-var newdiv = document.createElement("DIV");
-newdiv.className = "title";
-newdiv.innerHTML = json0410.title;
-document.getElementById("div0610").appendChild(newdiv);
-
-for(var derp in json0410.data){
-    var newli = document.createElement("LI");
-    document.getElementById("list0610").appendChild(newli);
-    newli.innerHTML =  "<b>" +  derp + "</b>:";
-    newli.innerHTML +=  json0410.data[derp];
-}
 
 </script>
 <!--</page0701>-->   
@@ -1011,174 +1190,166 @@ for(var derp in json0410.data){
 
 </script>
 <!--</page0710>-->  
-<!--<page0720>-->
-<script id = "script0720">
-   
+<!--<page0721>-->
+<script id = "script0721">
+currentTable[0421] = string2byteCode(document.getElementById("data0421").innerHTML);
+
+editor0621 = ace.edit("edit0621");
+editor0621.setTheme("ace/theme/cobalt");
+editor0621.getSession().setMode("ace/mode/text");
+editor0621.getSession().setUseWrapMode(true);
+editor0621.$blockScrolling = Infinity;
+
+json0421 = JSON.parse(document.getElementById("data0421").innerHTML); 
+document.getElementById("scroll0621").innerHTML= "";
+pindex0421 = 0;
+paras0621 = [];
+for(var index = 0;index < json0421.paragraphs.length;index++){
+    var newp = document.createElement("P");
+    document.getElementById("scroll0621").appendChild(newp);
+    newp.innerHTML = json0421.paragraphs[index];
+    if(index == pindex0421){
+        newp.style.backgroundColor = "yellow";
+        editor0621.setValue(newp.innerHTML);
+    }
+    newp.style.cursor = "pointer";
+    newp.className = "p" + index.toString();
+    newp.onclick = function(){
+        paras0621[pindex0421].style.backgroundColor = "#f0f0f0";
+        this.style.backgroundColor = "yellow";
+        pindex0421 = parseInt(this.className.substring(1));
+        editor0621.setValue(json0421.paragraphs[pindex0421]);
+    }
+    paras0621.push(newp);
+}
+
+document.getElementById("edit0621").onkeyup = function(){
+    json0421.paragraphs[pindex0421] = editor0621.getValue();
+    paras0621[pindex0421].innerHTML = editor0621.getValue();
+}
+
+function redraw0721(){
+
+}
 </script>
-<!--</page0720>-->
+<!--</page0721>-->
 <!--<page0500>-->
 <style id = "style0500">
 html{
     background-color:#f0f0f0;
 }
 body{ 
-    font-family:Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
+    font-family:"century schoolbook";
     color:black;
-    font-size:18px;
-}
-
-.title{
-    position:absolute;
-    z-index:2;
-    top:4%;
-    width:100%;
-    font-size:2em;
-    text-align:center;
-}
-
-table{
-    position: absolute;
-    z-index:3;
+    font-size:16px;
+    overflow:hidden;
 }
 .navbutton{
-        position:absolute;
-        top:5px;
-        height:40px;
-        width:60px;
-        font-size:1em;
-        color:black;
-        background-color:#a0a0a0;
-        border-color:black;
-        cursor:pointer;
-        z-index:4;
-    }
-    .navbutton:hover{
-        background-color:green;
-    }
-    .navbutton:active{
-        background-color:#f0f000;
-    }
-    #backbutton{
-        left:5px;
-    }
-    #fwdbutton{
-        right:5px;
-    }
-    canvas{
-        position:absolute;
-        z-index:0;
-        left:0px;
-        top:0px;
-        overflow:hidden;
-    }
-    img{
-        z-index:-2;
-    }
-
+    position:absolute;
+    top:5px;
+    height:40px;
+    width:60px;
+    font-size:1em;
+    color:black;
+    background-color:#a0a0a0;
+    border-color:black;
+    cursor:pointer;
+    z-index:4;
+}
+.navbutton:hover{
+    background-color:green;
+}
+.navbutton:active{
+    background-color:#f0f000;
+}
+#backbutton{
+    left:5px;
+}
+#fwdbutton{
+    right:5px;
+}
+.title{
+    width:100%;
+    text-align:center;
+    font-family:Futura;
+    font-size:2.5em;
+    top:1em;
+}
+.subtitle{
+    font-size: 0.5em;
+    border-bottom:solid;
+    margin-bottom:1em;
+    padding-bottom:1em;
+}
+.toc{
+    width:100%;
+    text-align:left;
+    padding-left:10%;
+    float:left;
+    overflow:scroll;
+    bottom:5%;
+}
+canvas{
+    z-index:0;
+}
+img{
+    z-index:-2;
+}
 </style>
 <!--</page0500>-->
 <!--<page0501>-->
 <style id = "style0501">
-#viewcontrol0601{
-    position: absolute;
-    bottom:5px;
-    left:10px;
-    z-index:4;
-}
-.viewbutton{
-    font-size:1em;
-    text-align:center;
-    height:1.5em;
-    width:4em;
-    color:black;
-    background-color:#a0a0a0;
-    border-color:black;
-    border:solid;
-    border-radius:5px;
-    cursor:pointer;
-    z-index:4;
-}
-.viewbutton:hover{
-    background-color:green;
-}
-.viewbutton:active{
-    background-color:#f0f000;
-}
-
-
-.boxdiv{
-    position:absolute;
-    z-index:2;
-}
-.typicalimage{
-    position: absolute;
-    
-}
 </style>
 <!--</page0501>-->   
 <!--<page0502>-->
 <style id = "style0502">
-#toplist{
-    position:absolute;
-    width:100%;
-    top:50%;
-    text-align:center;
-    font-size:2em;
-}
-#toplist td{
-    cursor:pointer;
-}
-#toplist td:hover{
-    background-color:bisque;
-}
-#toplist td:active{
-    background-color:yellow;
-}
 </style>                
 <!--</page0502>-->
 <!--<page0503>-->
 <style id = "style0503">
-#list0610{
-    position:absolute;
-    top:15%;
-    text-align:left;
-    font-size:1em;
-    left:10%;
-    right:10%;
-}
-#list0610 li{
-    list-style: none;
-    text-align:justify;
-}
 </style>                
 <!--</page0503>-->
 <!--<page0505>-->
 <style id = "style0505">
-
-
 </style>
 <!--</page0505>-->
 <!--<page0506>-->
 <style id = "style0506">
-
-
 </style>
 <!--</page0506>-->
 <!--<page0507>-->
 <style id = "style0507">
-
 </style>
 <!--</page0507>-->
 <!--<page0510>-->
 <style id = "style0510">
-
 </style>
 <!--</page0510>-->
-<!--<page0520>-->
-<style id = "style0510">
+<!--<page0521>-->
+<style id = "style0521">
+.paraedit{
+    position:absolute;
+    left: 5%;
+    right:55%;
+    top:10%;
+    bottom:5%;
+    border:solid;
+}
+.parascroll{
+    position:absolute;
+    left: 55%;
+    right:5%;
+    top:10%;
+    bottom:5%;
+    border:solid;
+    padding:15px 15px 15px 15px;
+    border-radius:15px;
+    overflow:scroll;
+    text-align:justify;
 
+}
 </style>
-<!--</page0520>-->
+<!--</page0521>-->
 <!--<page05>-->
 </body>
 </html>
