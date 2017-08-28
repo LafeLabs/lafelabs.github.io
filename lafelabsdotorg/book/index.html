@@ -1113,6 +1113,7 @@ doTheThing(07);//initialize Geometron global variables
 <!--</page0600>-->
 <!--<page0602>-->
 <div class = "page" id = "div0602">
+    <div class = "title">Introduction</div>
     <div class = "scroll">
         <p>    
         Geometron is two things: a language, and a way of organizing information.  This whole project is based on the simple idea that as a civilization we already know far more than we need to and that the next frontier in knowledge is in <i>organizing</i> the knowledge we already have.  Another key idea used to build this structure is that the so-called "open web" is the single most powerful information processing system ever devised and that any attempt to better organize information must be based on it.  Geometron is also based on the idea that communication based on geometric ideas like symmetry and shape can have enormous power and have been vastly under-used due to the emphasis our civilization has put on numbers.
@@ -1130,9 +1131,102 @@ doTheThing(07);//initialize Geometron global variables
             To illustrate the power of geometron, I will now construct the most basic shapes beyond the circle: the equilateral triangle, square, regular pentagon and regular hexagon.  I'll go into much more detail about how the commands used here work later, but for now I'll just jump in with examples.
             <p>
             The Geometron language is not just a computer language like C or a human language like English.  It's more of a hybrid which includes building physical objects, navigating the physical world, creating physical documents with various media as well as communication with both humans and machines.  Therefore the structure will be unusual in that it will move freely between these spheres.  I will try to provide examples in multiple of these layers.            
-    </div>
+            <p>
+                Order of learning from zero to full language:
+                <ol>
+                    <li>HTML</li>
+                    <li>JavaScript</li>
+                    <li>CSS</li>
+                    <li>Hypercube Structure</li>
+                    <li>Document Layers and Levels</li>
+                    <li>Server side</li>              
+                    <li>Action Geometry</li>      
+                    <li>Geometric Actions</li>
+                    <li>Shape Tables</li>
+                    <li>SVG and XML</li>
+                    <li>Third Dimension</li>
+                    <li>Roctal Encoding</li>
+                    <li>Data Printer</li>
+
+                </ol>
+        </div>
 </div>
 <!--</page0602>-->
+<!--<page0610>-->
+<div class = "page" id = "div0610">
+    <div class = "title">HTML for Geometronists</div>
+    <div class = "scroll">
+        <p>
+            HTML stands for "Hypertext Markup Language".  It is the language which is used by all web browsers to format all the text and graphics we see when we look at a web page.  HTML is the universal language of the World Wide Web.  As of this writing, in 2017, the most up to date version of HTML is called HTML5, and that is what Geometron uses as a basis for everything we do on computers.  In the philosophical system of Geometron, we will try to create as close as possible to unversal literacy in our language for those who participate in it.  This means we all need some familiarity with the way that HTML works at least.
+        <p>
+            What HTML does specifically is turn a text-only format into the vast number of types of thing you can see in your web browser.  It can be thought of as a system for mapping just the limited number of keys on your computer keyboard to all the things you've ever seen on the Web: images, videos, drawings, cartoons, games, etc. etc.  All these things come from a sequence of characters interpreted a certain way.  
+        <p>
+            The most basic thing to understand in HTML in order to get started is the special role played by the "less than" and "greater than" symbols, or angle brackets: "&lt" and "&gt"
+        <p>
+    <h2>resources:</h2>
+    <ul>
+        <li><a href = "w3schools.com">www.w3schools.com</a></li>
+        <li>google stack overflow</li>
+        <li>CodePen.io</li>
+        <li>developer.mozilla.org</li>
+        <li></li>
+    </ul>
+    <p>
+        <h2>projects</h2>
+    <ul>
+        <li>Minimal HTML document</li>
+        <li>Customized HTML document live on Web</li>
+    </ul>
+    <p>
+        <h2>Things you must know</h2>
+        <ul>
+            <li>tag structure, including attributes and events</li>
+            <li>DIV tags</li>
+            <li>p</li>
+            <li>img</li>
+            <li>ul/ol</li>
+            <li>table/tr/td</li>
+            <li>comment</li>
+            <li>head,body,html,doctype</li>
+            <li>style</li>
+            <li>script</li>
+            <li>pre/code</li>
+            <li>input</li>
+            <li>textarea</li>
+            <li>button</li>
+            <li>canvas</li>
+            <li>svg</li>
+            <li>header</li>
+            <li>a</li>
+            <li>special/escape characters</li>
+            <li>unicode</li>
+            <li>DOM</li>
+            <li>b and i, em </li>            
+        </ul>
+        
+</div>
+</div>
+<!--</page0610>-->
+<!--<page0611>-->
+<div class = "page" id = "div0611">
+    <div class = "title">JavaScript for Geometronians I</div>
+        
+
+    <h2>Projects</h2>
+    <ul>
+        <li>button that lights up a div</li>
+        <li>calculator in a table</li>
+        <li>textarea and button conversion application</li>
+        <li>Build your own JS library and use it, put it on Github</li>
+        <li>understand and build your own doTheThing() function</li>
+        <li>Draw on a canvas</li>
+        <li>write a script to build a big random art web page</li>
+        <li>convert bytecode to text and vice versa</li>        
+    </ul>
+    <h2>Needed Tools</h2>
+    
+</div>
+<!--</page0611>-->
 <!--<page0603>-->
 <div class = "page" id = "div0603">
     <div class = "title">Laws of Geometron</div>
@@ -1202,7 +1296,76 @@ doTheThing(07);//initialize Geometron global variables
                 <td>01000-01777</td><td>Symbol glyphs</td><td>Symbols for everything in lower half of hypercube</td><td>geometron</td><td>Shadow of tree across the ground</td>
             </tr>                                                
         </table>
-        
+        <p>
+            <h2>0: Creator</h2>
+            The "seed" or "creator" element of the hypercube is simply a program to convert a raw hypercube in byte code format into a fully formatted HTML file.  This is in part to build files up from physical data tablets, which can be scanned in, converted to bytecode, put into a text file, and then converted.  Or it can be used for hypercubes stored on remote servers, to build a full instance locally on a server.              
+        </p>
+        <p>
+            The ASCII encoded information in address 0 gets converted into a Python program called "creator.py", which, when executed, will create index.html.  A separate program is used to convert the raw bytecode and make this file is called "metacreator.py", and this should could be written in any language, such as a native shell script.  An example of metacreator.py is as follows:
+        </p>
+        <pre>
+                #!/usr/bin/env python
+                import urllib2
+                
+                def string2byteCode(inputstring):
+                    outbytes = ""
+                    for index in range(len(inputstring)):
+                        thisbyte = ord(inputstring[index])
+                        thisbyte = oct(thisbyte)
+                        if thisbyte[1] == "o":
+                            outbytes += "0o" + thisbyte.lstrip("0") + ","
+                        else:
+                            outbytes += thisbyte + ","
+                    print outbytes
+                
+                def byteCode2string(inputcode):
+                    inputarray = inputcode.split(",")
+                    outputstring = ""
+                    for index in range(len(inputarray)):
+                        if len(inputarray[index]) > 0:
+                            #print chr(int(inputarray[index],8))
+                            outputstring += chr(int(inputarray[index],8))
+                    return outputstring
+                
+                
+                cubeurl = "https://pastebin.com/raw/X5p1F8L1"
+                response1 = urllib2.urlopen(cubeurl)
+                hypercubestring = response1.read()
+                response1.close()
+                
+                hyperCube = []
+                for index in range(1024):
+                    hyperCube.append("")
+                inputarray = hypercubestring.split("\n")
+                inputarray[0]
+                tableString = ""
+                for index in range(len(inputarray)):
+                    if len(inputarray[index]) > 0:
+                        foo = inputarray[index].split(":")
+                        address = int(foo[0],8)
+                        bytecode = foo[1].rstrip()
+                        hyperCube[address] = bytecode
+                        tableString += foo[0] + ":" + bytecode + "\n"
+                
+                
+                pythonOUT = ""
+                pythonOUT += byteCode2string(hyperCube[0])
+                
+                outputFile = 'creator.py'
+                f = open(outputFile, 'w')
+                f.write(pythonOUT)
+                f.close()
+        </pre>
+        Thus metacreator is simply a bytecode to text converter.  Creator on the other hand is somewhat more sophisticated, and needs to insert various types of information differently as it goes through the different layers of the cube.  
+        <p>
+            <h2>01-05:Base Cube</h2>
+                This set of ASCII bytecode data represent combined HTML, CSS and Javascript, with enough detail so that when converted to text and put in index.html it forms the basic core of the whole document, and should then be readable by a browser. 
+        </p>
+        <p>
+            <h2>06-037:Root Magick</h2>
+                These commands, like 0300-0377, are part of the JavaScript function called doTheThing().  This function is discussed in a separate section, as it is the beating heart of the Geometron Virtual Machine(GVM).  In general this is where commands go which enable editing of glyphs, such as moving the geometric cursor around during glyph editing, deleting glyphs, moving to different glyphs in the Hypercube, etc.  These commands are given the name "Root Magick" to denote their incredible power.  They are the commands used as the basis to alter the very fabric of the language, and by using the words "root", denoting a fundamental thing, and "magick", referencing certain types of the concept of deep and mysterious powers, I try to emphasize just how powerful this whole thing is.    
+        </p>    
+
     </div>            
 </div>
 <!--<page0604>-->               
