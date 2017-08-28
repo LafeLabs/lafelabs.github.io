@@ -1,0 +1,81 @@
+{
+    "name":"bookofgeometron",
+    "title":"The Book of Geometron",
+    "url":"https://www.lafelabs.org/book/",
+    "format":"book",
+    "author":"Lafe Spietz",
+    "date":"2017",
+    "copyright":"All work is Public Domain with no restrictions whatsoever.",
+    "chapters":[
+        {
+            "name":"chapter1",
+            "title":"Introduction",
+            "sections":[
+                {
+                    "name":"c1s1",
+                    "title":"What is Geometron?",
+                    "elements":[
+                        {
+                            "type":"p",
+                            "index":0,
+                            "location":"data0401"
+                        },
+                        {
+                            "type":"p",
+                            "index":1,
+                            "location":"data0401"
+                        },
+                        {
+                            "type":"p",
+                            "index":2,
+                            "location":"data0401"
+                        }
+                    ]
+                },
+                {
+                    "name":"c1s2",
+                    "title":"Shape Construction",
+                    "elements":[
+                        {
+                            "type":"p",
+                            "index":3,
+                            "location":"data0401"
+                        },
+                        {
+                            "type":"figure",
+                            "index":0,
+                            "location":"data0420"
+                        },
+                        {
+                            "type":"p",
+                            "index":4,
+                            "location":"data0401"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name":"chapter2",
+            "title":"Scale, Symmetry, and the Global Cursor",
+            "sections":[
+                 {
+                    "name":"c2s1",
+                    "title":"Dividing Up the Circle: Roots of Unity",
+                    "elements":[
+                        {
+                            "type":"p",
+                            "index":5,
+                            "location":"data0401"
+                        },
+                        {
+                            "type":"p",
+                            "index":5,
+                            "location":"data0401"
+                        }      
+                    ]
+                }   
+            ]
+        }
+    ]
+}
