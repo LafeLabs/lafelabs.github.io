@@ -1,0 +1,50 @@
+&lt!doctype html&gt
+&lthtml&gt
+&ltbody&gt
+
+&ltdiv id = "box1" class = "redbox"&gtSome Text&lt/div&gt
+
+&ltdiv id = "box2" class = "redbox"&gtbox 2&lt/div&gt
+
+&ltdiv id = "mygreenbox"&gt&lt/div&gt
+&ltstyle&gt
+
+div{
+    color:blue;
+}
+#box1{
+    left:50%;
+    top:40%;
+}
+#box2{
+    left:10%;
+    top:10%;
+}
+.redbox{
+    position:absolute;
+    border:solid;
+    border-color:red;
+    border-width:4px;
+    width:200px;
+    height:100px;
+    z-index:0;
+    border-radius:15px;
+    padding:5% 5% 5% 5%;
+    font-size:3em;
+    font-family:Futura;
+    text-align:center;
+    z-index:1;
+    background-color:#d0d0d0;
+}
+#mygreenbox{
+    position:absolute;
+    top:5%;
+    left:5%;
+    width:100px;
+    height:100px;
+    background-color:green;
+}
+
+&lt/style&gt
+&lt/body&gt
+&lt/html&gt

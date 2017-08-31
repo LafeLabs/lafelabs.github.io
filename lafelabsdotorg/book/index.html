@@ -1218,7 +1218,6 @@ doTheThing(07);//initialize Geometron global variables
     <p>
         After w3schools, the best reference for html, JavaScript and CSS is the <a href = "https://developer.mozilla.org/en-US/">Mozilla Developer Network</a>, maintained by the non-profit Mozilla corporation.  Since Mozilla is actually actively maintaining one of the major browsers of the Web, this tends to be way more complete than w3schools, but is less user friendly, has less tutorial material and tends to have more opaque examples.  If a subject is covered in w3schools I would always go there first, and use Mozilla when you can't find what you need.  As with Stack Overflow, I generally don't bother to try their search and just use google to find the right MDN page. 
         <p>
-            The final external resource I'll put on here is <a href = "https://codepen.io">codepen</a>.  Codepen is a fantastic tool for quickly testing and sharing code.  It recognizes the basic truth that CSS, JavaScript and HTML all go together and by default has everything set up for that.  For testing when working alone, I would say simply using your text editor and browser is better in most cases.  However, the sharing and community on there is amazing, especially from an artistic standpoint.  The most amazing aspect of this community is what people on there can accomplish with pure CSS.  When first exposed to CSS it seemed to me like a relatively dreary book-keeping system for simply storing style information. Browsing around CodePen shows that CSS is in
             The final external resource I'll put on here is <a href = "https://codepen.io">codepen</a>.  Codepen is a fantastic tool for quickly testing and sharing code.  It recognizes the basic truth that CSS, JavaScript and HTML all go together and by default has everything set up for that.  For testing when working alone, I would say simply using your text editor and browser is better in most cases.  However, the sharing and community on there is amazing, especially from an artistic standpoint.  The most amazing aspect of this community is what people on there can accomplish with pure CSS.  When first exposed to CSS it seemed to me like a relatively dreary book-keeping system for simply storing style information. Browsing around CodePen shows that just as a physical pen can be used for either tedious financial book keeping or making Great Art, this is also true of CSS. 
             <p>
     <h2>Getting Started</h2>
@@ -1517,11 +1516,70 @@ The way to find the unicode for something is to google "[thing you are looking f
 Don't skip this chapter!  CSS is critical for making things actually look decent enough on the Web that people will look at them, and it is extremely easy to get started if you focus on core parts you need and accept that you're just scratching the surface of the total whole to gain basic CSS literacy.  CSS stands for "cascaded style sheets".  It is the language used to describe how things will look on the Web.  When I first tried to understand why I should even care about CSS it seemed complicated and not something I needed, but I was very wrong!  </p>
 <p>
     We call CSS a "language", and it certainly is one, but it's not a language in the way of either something like JavaScript(covered in the next chapter) or Python(discussed way later) or whatever in that it doesn't go through some sequence of actions and do them in order, nor is it a markup language like HTML.  What it is is a set of rules for describing how things will look in html in the most efficient way possible.  It is difficult for someone like me to describe for you just how powerful CSS can be, since I use it to only a limited extent, but if you want to see the full range of CSS, go to <a href = "https://codepen.io">codepen.io</a>.  Nothing I can say here will possibly do justice to the amazing original art that the people on that site can produce.  I invite any CSS skeptic to go click at random on various art pages that are featured on the front page of that site.  
-</p><p>
-
-
 </p>
-        <h2>topics</h2>
+
+<h2>Structure of CSS</h2>
+<p>
+        
+Just as we can think of html as text separated by a bunch of "tags" made with angle brackets, we can think of CSS as a bunch of descriptions of elements inside twiddle brackets("{" and "}"), with various properties and their values separated by a colon.  So just as one might think of the prototype of html as "&ltp&gtsome text&lt/p&gt", we might think of the equivalent maximally simple prototype of CSS as being "p{color:red;}".  That code will make all paragraphs in a document "red" in their text color.  That's really about it!  To get from that prototype to the infinity of amazing art, design and technology buildable from CSS we mostly just get into specifics of different ways to call a element(not just its type but its class and id as we'll discuss shortly.)  
+</p>
+    
+<pre>
+&lt!doctype html&gt
+&lthtml&gt
+&ltbody&gt
+
+&ltdiv id = "box1" class = "redbox"&gtSome Text&lt/div&gt
+
+&ltdiv id = "box2" class = "redbox"&gtbox 2&lt/div&gt
+
+&ltdiv id = "mygreenbox"&gt&lt/div&gt
+&ltstyle&gt
+div{
+    color:blue;
+}
+#box1{
+    left:50%;
+    top:40%;
+}
+#box2{
+    left:10%;
+    top:10%;
+}
+.redbox{
+    position:absolute;
+    border:solid;
+    border-color:red;
+    border-width:4px;
+    width:200px;
+    height:100px;
+    z-index:0;
+    border-radius:15px;
+    padding:5% 5% 5% 5%;
+    font-size:3em;
+    font-family:Futura;
+    text-align:center;
+    z-index:1;
+    background-color:#d0d0d0;
+}
+#mygreenbox{
+    position:absolute;
+    top:5%;
+    left:5%;
+    width:100px;
+    height:100px;
+    background-color:green;
+}
+
+&lt/style&gt
+&lt/body&gt
+&lt/html&gt
+</pre>
+
+<h2>Tags, Id's, and Classes</h2>
+      
+There are three main ways CSS uses to identify a thing: tag, id, and class.  Fortunately, these names actually describe pretty much what they are.    
+      
         <ul>
             <li>classes</li>
             <li>id's</li>
@@ -1547,8 +1605,34 @@ Don't skip this chapter!  CSS is critical for making things actually look decent
             <li>div patchwork</li>
             <li>art animation</li>
             <li>physical flashcards</li>
+            <li>html resume</li>
+            <li>table of links</li>
+            <li>recipe</li>
         </ul>
-    </div>
+<ul>
+<li>
+
+</li>
+    <li>
+        <ul>
+            <li>background-color</li>
+            <li>border,border-color,border-radius,border-width</li>
+            <li>padding,margin</li>
+            <li>width,height</li>
+            <li>position,left,top,bottom,right</li>
+            <li>overflow</li>
+            <li>hover, active</li>
+            <li>font-size,font-family</li>
+            <li>z-index</li>
+            <li>text-align</li>
+            <li></li>
+            <li></li>
+            
+        </ul>
+    </li>
+</ul>
+
+</div>
 </div>
 <!--</page0605>-->        
 <!--<page0611>-->
@@ -1557,8 +1641,6 @@ Don't skip this chapter!  CSS is critical for making things actually look decent
         <div class = "scroll">
 <h2>Getting Started with Scripts</h2>
   
-
-
     <h2>Projects</h2>
     <ul>
         <li>button that lights up a div</li>
@@ -1573,21 +1655,42 @@ Don't skip this chapter!  CSS is critical for making things actually look decent
     </ul>
     <h2>Needed Tools</h2>
 <ul>
+        <li>comments</li>
+        <li>camelCase and indents</li>
+        <li>bases other than 10, conversion from/to numbers/strings</li>
+        <li>binary arithmetic bitwise</li>
+        <li>true, false, tests and comparisons</li>    
+        <li>strings, split,substring</li>
+        <li>string2byteCode, byteCode2string</li>
         <li>onclick</li>
+        <li>using built in objects</li>
         <li>onchange</li>
         <li>functions</li>
-        <li>very basic math</li>
+        <li>arrays</li>
+        <li>numberical types: float, int, comparison to C etc.</li>
+        <li>very basic math operations</li>
         <li>slightly more advanced math</li>
         <li>calling external libraries</li>
-        <li>getElementById</li>
-        <li>getElemntsByClassName</li>
+        <li>getElementById, id</li>
+        <li>createElement</li>
+        <li>getElemntsByClassName,className</li>
         <li>getElementsByTagName</li>
         <li>JSON.parse</li>
+        <li>using JSON to make your own objects and interact with them</li>
         <li>for loops through arrays and objects</li>
         <li>innerHTML</li>
+        <li>value for input and textarea</li>
         <li>appendChild</li>
         <li>canvas context</li>
+        <li>element.style.*</li>
 </ul>
+<h2>Geometron Functions, a taste</h2>
+    
+<p>doTheThing()</p>
+    <p>drawGlyph</p>
+    <p>spellGlyph</p>
+    
+    
         <h2>MathJax</h2>
         <h2>ACE</h2>        
         <h2>Other Libraries</h2>
@@ -1601,6 +1704,8 @@ Don't skip this chapter!  CSS is critical for making things actually look decent
 <div class = "page" id = "div0604">
     <div class = "title">The Structure of The Geometron Hypercube</div>
     <div class = "scroll">
+
+
         <table class = "treetable">
             <tr  style = "background-color:#c0c0c0;">
                 <td>Address Range(octal)</td><td>name</td><td>Purpose</td><td>Language</td><td>Tree Part</td>
@@ -1711,12 +1816,44 @@ Don't skip this chapter!  CSS is critical for making things actually look decent
             <h2>06-037:Root Magick</h2>
                 These commands, like 0300-0377, are part of the JavaScript function called doTheThing().  This function is discussed in a separate section, as it is the beating heart of the Geometron Virtual Machine(GVM).  In general this is where commands go which enable editing of glyphs, such as moving the geometric cursor around during glyph editing, deleting glyphs, moving to different glyphs in the Hypercube, etc.  These commands are given the name "Root Magick" to denote their incredible power.  They are the commands used as the basis to alter the very fabric of the language, and by using the words "root", denoting a fundamental thing, and "magick", referencing certain types of the concept of deep and mysterious powers, I try to emphasize just how powerful this whole thing is.    
         </p>    
+        <p>
+            <h2>040-0176:Keys, letters</h2>
+            ASCII.  ASCII stands for "American Standard Code for Information Interchange", although no one remembers that now.  The unicode is one extension of ASCII.  In some sense all of Geometron is an alternative extension.  ASCII connects all the printable letters from the standard English keyboard and maps them to numbers.  0-037 are a bunch of commands, many of which have to do with obsolete teletype equipment.  Thus I have replaced them all with the Root Magick actions above.  Geometron uses these two ways: as a physical map to each of the physical keys on a keyboard, and as the basis for fonts which can map to characters in (phonetic)human languages.  Non-phonetic languages will be built up from scratch elsewhere.
+        </p>
+            <h2>0177:Do Nothing.</h2>
+        <p>Sometimes you want a command that does nothing, this is it.  </p>
+        <h2>0200-0277:Shape Table</h2>
+        <p>
+            This is where shapes go.  Shapes are built up from the geometry actions of the 0300's as well as other shapes.  The real power of this system comes from the recursive nature, where shapes are built on shapes.  This stands in direct contrast with Unicode which is just a list of symbols and codes.  Using a very small set of shapes and actions one can build up an infinity of complex fractal structures.  This will be covered in much more detail shortly.
+        </p>
+        <h2>0300-0377:Geometry Actions</h2>
+        <p>The beating heart of Geometron!</p>
+        <p>
+            These commands describe actions taken on a generalized cursor type thing.  These are all in JavaScript, and are part of the function doTheThing().  The best way to understand these actions is by actually doing physical actions first, which is the entire subject of one of the next chapters.  The order you read the chapters in depends somewhat on your goals and path through this work.  If you're pushing through to get mastery over the software side, you might want to skim the physical chapter, but otherwise it is a good introduction to the mode of thought that led to the rest of the work.    
+        </p>
+        <h2>0400-0477:Metadata and Concept Topology</h2>
+        <p>
+            This is the total opposite of type of information from CSS.  It is where various structures of information are stored.  "Concept topology" sounds technical, but it's just how information relates to other information, in a raw form.  It is based on the JSON format which I shall discuss in more detail below.
+        </p>
+        <h2>0500-0577:CSS Styles</h2>
+        <p>
+ 
+        </p>
+        <h2>0600-0677:HTML Pages</h2>
+        <p></p>
+        <h2>0700-0777:JavaScript</h2>
+        <p></p>
+        <h2>01000-01777:Symbols</h2>
+        <p></p>
 
+        <h2>Structure of a Geometron HTML file</h2>
 
-
+        pages.
+        
         <h2>JSON, Metadata and Concept Topology</h2>
         <h2>What is JSON?</h2>
         <h2>How and Why Geometron Uses JSON</h2>
+
         <h2>Other JSON Applications</h2>
         <h2>Pages</h2>
         <h2>Layers</h2>
@@ -1730,6 +1867,21 @@ Don't skip this chapter!  CSS is critical for making things actually look decent
     <div class = "title">Physical Art Constructions By Hand: Action Geometry</div>
     <div class = "scroll">
         <h2>Tools and Methods</h2>
+        <ul>
+            <li>compass</li>
+            <li>ruler</li>
+            <li>pen</li>
+            <li>paper</li>
+            <li>clear packing tape</li>
+            <li>scissors</li>
+            <li>crayons, colored markers, or colored pencil</li>
+            <li>thin cardboard boxes</li>            
+            <li>thick corrugated cardboard boxes</li>
+            <li>duct tape</li>
+            <li>sticks or boards</li>
+            <li>electric drill and quarter inch bit</li>
+            <li>nylon parachute cord</li>             
+        </ul>
         <h2>Basic Shape Constructions</h2>        
         <h2>Platonic Solids</h2>
         <h2>Cardboard and Duct Tape</h2>
@@ -1773,10 +1925,9 @@ Don't skip this chapter!  CSS is critical for making things actually look decent
             <li>Diamond Stripes</li>
             <li>directed graphs</li>
             <li>flowcharts</li>
-            <li></li>
-            
+            <li>Metro Map lines and stations</li>            
         </ul>
-        <h2>Building Your Own Shape Tables</h2>                
+        <h2>Building Your Own Shape Tables</h2>       
     </div>
 </div>
 <!--</page0612>-->    
@@ -1789,7 +1940,8 @@ Don't skip this chapter!  CSS is critical for making things actually look decent
     <h2>Geometron Sans</h2>
     <h2>English Sign Pixel Font</h2>
     <h2>Katakana Sign Pixel Font</h2>
-    <h2>Keyboard Mapping for Geometric Actions</h2>                
+    <h2>Build arbitrary Pixel Font</h2>
+    <h2>Keyboard Mapping for Geometric Actions</h2>
 </div>
 </div>
 <!--</page0613>-->    
@@ -2036,6 +2188,9 @@ img{
 }
 table{
     z-index:3;
+}
+pre{
+    background-color:white;
 }
 </style>
 <!--</page0500>-->
