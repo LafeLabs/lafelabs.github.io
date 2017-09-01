@@ -3,16 +3,33 @@
 <body>
 
 <button id  = "vanish">VANISH</button>
-<button id  = "red">RED</button>
-
+<button class = "red" id  = "red">RED</button>
+<button id = "move">MOVE</button>
 <script>
+
+
+document.getElementById("move").style.left = "0px";
+document.getElementById("move").onclick = function(){
+    var moveX = parseInt(this.style.left.split("px")[0]);
+    moveX += 20;
+    this.style.left = moveX.toString() + "px";
+}
 
 document.getElementById("vanish").onclick = function(){
     this.style.display = "none";
 }
 document.getElementById("red").onclick = function(){
-    this.style.backgroundColor = "red";
+    
+    if(this.className == "red"){
+        this.className = "blue";
+    }
+    else{
+        this.className = "red";
+    }
+    this.style.backgroundColor = this.className;
+    console.log(this.className);
 }
+
 
 </script>
 <style>
@@ -26,8 +43,16 @@ document.getElementById("red").onclick = function(){
 }
 #red{
     position:absolute;
-    left:0px;
-    top:0px;    
+    left:10%;
+    top:10%;
+    font-size:3em; 
+    cursor:pointer;   
+}
+#move{
+    position:absolute;
+    top:300px;
+    font-size:3em;
+    cursor:pointer;
 }
 </style>
 </body>

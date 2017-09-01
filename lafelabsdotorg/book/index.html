@@ -169,7 +169,7 @@
 */
 </script>
 <!--<page02>-->
-<script>
+<script id = "mainHeadCode">
 
 function string2byteCode(localString){
 	var localByteCode = "";
@@ -1640,7 +1640,20 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
     <div class = "title">JavaScript for Geometronians</div>
         <div class = "scroll">
 <h2>Getting Started with Scripts</h2>
-  
+<p>
+    A script is a specific type of computer program. "Script" generally refers to the type of computer program which a human can read.  This is in contrast to "compiled" code, which is code that has been translated from human-readable code to pure binary which only the machine can read.  Historically, compiled code was important because it was so much faster.  Today, as computers have gotten exponentially faster, the purpose of compiled code is often for closed-source programmers to keep their work secret, and to prevent users from exercising their fundamental human rights to have power over their own hardware.  Behind almost every piece of compiled code there exists a crime against knowledge and freedom.  
+</p>
+<p>
+    There are numerous languages which can be considered scripting languages, as well as languages with can be either compiled or scripted.  JavaScript, as we'll be using it here, consists of scripts embedded in the html document.  This thus completes the "Holy Trinity" of the Open Web: HTML, CSS, and JavaScript.  Just as we embed CSS into HTML with the "style" tag and can use it to control how things look at any time in making HTML documents, the "script" tag will let us do the same thing with actions.  JavaScript is how you make a page actually do something, rather than be just a static piece of information.  There are numerous other languages you'll hear people saying they used to write a web application, but those will generally run on some remote server, such as used for Facebook or Google.  Not so JavaScript.  A script that lives inside your html document is run on YOUR computer.  If you don't use remote libraries or scripts, this can run without any connection to the Internet at all!  A physically isolated machine with a web browser can run the code, making it possible to, with cheap modern devices like Android burner phones, build all kinds of automation and robotics technology with nothing but html that runs in a browser! This is the true power of Geometron and the longer term goal of this work: a truly free and decentarlized method of industrial production.  And this is why it's so important to focus on JavaScript over its varous cousins like Java, C++ or Python.  Those languages are great for building commercial products and large web sites for millions of users, built by professionals, but to build free robots that can be deployed on the Street by amateurs, nothing can beat raw HTML for its freeness and universality.  
+</p>
+<p>
+    It's worth going into some more detail about the way we will use software in the Geometron system of knowledge and how it differs from that of the professional software developer.  In general, software development is an expensive endeavor, requireing that large amounts of central bank debt currency come from <em>somewhere</em> to compensate all the professioanls working on it.  To support the cost of labor, revenue must be at least one software person's salary, and since each user who clicks on a given web site is likely to only deliver a small amount of revenue, this means the only projects which can pay for the labor required to build something interesting are those with very large numbers of users.  To put real numbers on it, suppose your team of 10 software people cost 5,000 dollars a month each.  That's 50 grand a month.  Now if you get one percent of your users to spend 100 dollars(as might be expected for some specialty e-commerce site) or 1 dollar per click as might be the case for a referral system of reveneue, you need 50,000 clicks a month at a dollar a click to keep those software people paid.  This is more than 1000 people a day who need to be going to your site <em>every day</em> in order to just barely stay afloat.  But under the system of investor-funded computer capitalism, that math is woefully wrong, and it's much worse than this.  In order to initially get the 50k/month to set this up, you need investors, and they all invest in mostly idiotic companies which will mostly fail, so the few that succeed all need to make them massive returns of 10x or 20x or more of their initial investment.  This means that getting to the keeping-everyone-paid level will definitely result in them losing money. Therefore the company must be structured so that it has <em>sustained</em> exponential growth or it will fail due to how investor deals are all structured(they do this to put pressure on founders to constantly push for exponential growth and since they regard companies that simply break even as failures, which they call the "walking dead").  Thus that group of 10 programmers with a thousand hits a day need to be desparately working to turn it into 100,000 hits a day or they'll all be unemployed in 18 months.  Any tool that makes that happen faster and with lower chance of failure will therefore be used, no matter what. The stakes are high, and the pace is fast, the scale global.
+</p>
+<p>
+    Now, let me paint a picture of what we are trying to build with Geometron.  
+</p>
+
+
     <h2>Projects</h2>
     <ul>
         <li>button that lights up a div</li>
@@ -1655,12 +1668,13 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
     </ul>
     <h2>Needed Tools</h2>
 <ul>
-        <li>comments</li>
+        <li>comments, both kinds</li>
+        <li>console.log() and alert()</li>
         <li>camelCase and indents</li>
         <li>bases other than 10, conversion from/to numbers/strings</li>
         <li>binary arithmetic bitwise</li>
         <li>true, false, tests and comparisons</li>    
-        <li>strings, split,substring</li>
+        <li>strings, split,substring, add</li>
         <li>string2byteCode, byteCode2string</li>
         <li>onclick</li>
         <li>using built in objects</li>
@@ -1683,6 +1697,8 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
         <li>appendChild</li>
         <li>canvas context</li>
         <li>element.style.*</li>
+        <li>basic canvas commands</li>
+        
 </ul>
 <h2>Geometron Functions, a taste</h2>
     
@@ -1690,7 +1706,7 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
     <p>drawGlyph</p>
     <p>spellGlyph</p>
     
-    
+
         <h2>MathJax</h2>
         <h2>ACE</h2>        
         <h2>Other Libraries</h2>
@@ -1893,7 +1909,10 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
 <div class = "page" id = "div0606">
     <div class = "title">Geometric Actions</div>
     <div class = "scroll" id = "paragraphscroll">
-            <h2>Cursor and Global Variables of the GVM</h2>      
+<div id = "div0606A"></div>
+<div id = "div0606B"></div>
+
+    <h2>Cursor and Global Variables of the GVM</h2>      
             <h2>Movements</h2>          
             <h2>doTheThing() revisited</h2>
             <h2>Angles and symmetry</h2>
@@ -2053,8 +2072,6 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
     </div>
 </div>
 <!--</page0626>-->
-            
-
 <!--<page0700>-->
 <script id = "script0700">
 pages = document.getElementsByClassName("page");
@@ -2110,11 +2127,44 @@ for(var index = 0;index < json0400.chapters.length;index++){
 
 </script>
 <!--</page0700>-->        
-<!--<page0771>-->
-<script id = "script0771">
+<!--<page0706>-->
+<script id = "script0706">
+
+editor0606B = ace.edit("div0606B");
+editor0606B.setTheme("ace/theme/cobalt");
+editor0606B.getSession().setMode("ace/mode/javascript");
+
+editor0606B.$blockScrolling = Infinity;
+
+headcode = document.getElementById("mainHeadCode").text;
+unit = 48;
+for(var eights = 0;eights < 8;eights++){
+    for(var ones = 0;ones < 8;ones++){
+        var newcan = document.createElement("CANVAS");
+        newcan.width = 50;
+        newcan.height = 50;
+        newcan.className = "canvasButton";
+        ctx = newcan.getContext("2d");
+        doTheThing(0300);
+        x = 1;
+        y = 49;
+        doTheThing(01300 + ones + 8*eights);
+        document.getElementById("div0606A").appendChild(newcan);
+        newcan.id = "cb03" + eights.toString() + ones.toString(); 
+        newcan.onclick = function(){
+            var thisId = this.id;
+            var thisPage = "page" + thisId.substring(2);
+            var foo = headcode.split(thisPage)[1];
+            editor0606B.setValue(foo);
+        }
+    }
+}
+
+
+//var bar = foo.split("page0335")[1];
 
 </script>
-<!--</page0771>-->   
+<!--</page0706>-->   
 <!--<page0710>-->
 <script id = "script0710">
 </script>
@@ -2331,6 +2381,27 @@ pre{
 <!--</page0505>-->
 <!--<page0506>-->
 <style id = "style0506">
+#div0606A{
+    width:400px;
+    height:400px;
+    border:solid;
+}
+#div0606B{
+    width:400px;
+    height:200px;
+    border:solid;
+    font-size:16px;
+    overflow:scroll;
+}
+.canvasButton{
+    cursor:pointer;
+}
+.canvasButton:hover{
+    background-color:grey;   
+}
+.canvasButton:active{
+    background-color:yellow;   
+}
 </style>
 <!--</page0506>-->
 <!--<page0507>-->
