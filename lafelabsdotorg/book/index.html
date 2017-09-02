@@ -1507,6 +1507,102 @@ The way to find the unicode for something is to google "[thing you are looking f
     }
 </style>
 <!--</page0510>-->
+<!--<page0603>-->
+<div class = "page" id = "div0603">
+    <div class = "title">Self Replicating HTML Document</div>
+    <div class = "scroll">
+        <div id = "editor0603"></div>
+        
+        <div id = "littlepage0603">
+
+                <h1>HTML Template Heading</h2>
+                    <p>This is a paragraph of text.  Really just a couple sentences. Or three.  Fragments.</p>
+                    <h4>Some items, in random order:</h4>
+                    <ul>
+                        <li>A Thing</li>        
+                        <li>Another Thing</li>
+                        <li>...some more things</li>                
+                    </ul>
+                    <h4>Some items, in numerical order:</h4>
+                    <ol>
+                        <li>A Thing</li>        
+                        <li>Another Thing</li>
+                        <li>...some more things</li>                
+                    </ol>
+                
+                    <span>span doesn't do much on its own. but here it is.</span>
+                
+                    <div> div on the other hand is a "block element", so it starts a new line both before and...</div>...after each tag.
+                
+                
+                    You can input text in an input element:<input></input> or in a larger area with a textarea element:
+                
+                
+                    <textarea></textarea>. 
+                
+                 These require javascript to be useful as does the <button>button</button> element. 
+                
+                Images are included as follows:
+                
+                
+                    <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Treffpunkt.svg/40px-Treffpunkt.svg.png"></img>
+                
+                    <h4>Table:</h4>
+                    <table>
+                        <tr>
+                            <td>A</td><td>B</td>
+                        </tr>
+                
+                        <tr>
+                            <td>C</td><td>D</td>
+                        </tr>
+                    </table>
+                    <p>
+                        The svg and canvas elements get so much attention in Geometron that I'm leaving them out of this template. 
+                        
+                
+                
+                                <a href = "https://www.wikipedia.org">this is a link to Wikipedia</a>
+                    </p>
+
+        </div>
+    </div>
+</div>
+<!--</page0603>-->
+<!--<page0703>-->
+<script id = "script0703">
+
+editor0603 = ace.edit("editor0603");
+editor0603.setTheme("ace/theme/cobalt");
+editor0603.getSession().setMode("ace/mode/javascript");
+editor0603.$blockScrolling = Infinity;
+editor0603.setValue(document.getElementById("littlepage0603").innerHTML);     
+document.getElementById("editor0603").onkeyup = function(){
+    document.getElementById("littlepage0603").innerHTML = editor0603.getValue();
+}
+
+</script>
+<!--</page0703>-->                
+<!--<page0503>-->
+<style id = "style0503">
+#editor0603{
+    position:absolute;
+    width:80%;
+    height:50%;
+    top:10%;
+    left:10%;
+    font-size:16px;
+}
+#littlepage0603{
+    position:absolute;
+    width:90%;
+    height:150%;
+    top:100%;
+    left:5%;
+    border:solid;
+}   
+</style>            
+<!--</page0503>-->
 <!--<page0605>-->
 <div class = "page" id = "div0605">
     <div class = "title">CSS for Geometronians</div>
@@ -1979,7 +2075,49 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
 <div class = "page" id = "div0617">
     <div class = "title">Third Dimension(Software)</div>
     <div class = "scroll">
+        <h2>Conceptual 3d Geometron</h2>
+        <p>
+        For all the big talk first in the 1990s and now again about virtual reality being the "next big thing" it appears to still be extremely priimitive techonlogy overall.  This will likely change at some point, but as it does, the same problem that we are attempting to address with the two dimensional web will remain.  Overly complex software, patents, and the usual deliberate obfuscation of all commercial systems(including "open source") will threaten the freedom of those who use the systems.  The way out is as it always is an appeal to a more pure mathematical and artistic description of reality.  
+        </p>
+        <p>
+            This section is thus divided into two parts.  I will first describe how, conceptually, I believe we can think about three dimensional objects using the same principles as we do for two dimensional Geometron.  This will include building some physical structures out of sticks, which will be useful for the physical demployment of manufacturing infrastructure based on Geometron.  After an exploration of pure math(and some physics), and some stick-and-rope construction, we will move on to a specific 3d format that works in the Web browsers of today, the x3d format.  
+        </p>
         <h2>x3d format</h2>
+        <h2>five primitives:</h2>
+        <ul>
+            <li>box</li>
+            <li>cylinder</li>
+            <li>cone</li>
+            <li>sphere</li>
+            <li>text</li>
+        </ul>
+        <h2>actions</h2>
+        <ul>
+            <li>up</li>
+            <li>down</li>
+            <li>fwd</li>
+            <li>back</li>
+            <li>left</li>
+            <li>right</li>
+            <li>rotate+x</li>
+            <li>rotate-x</li>
+            <li>rotate+y</li>
+            <li>rotate-y</li>
+            <li>rotate+z</li>
+            <li>rotate-z</li>
+            
+            <li>minus XYZ</li>
+            <li>plus XYZ</li>            
+            <li>minus X</li>
+            <li>plus X</li>
+            <li>minus Y</li>
+            <li>plus Y</li>
+            <li>minus Z</li>
+            <li>plus Z</li>
+        </ul>
+
+        
+        <a href = "http://edutechwiki.unige.ch/en/X3D_shape_and_geometry">http://edutechwiki.unige.ch/en/X3D_shape_and_geometry</a>
     </div>
 </div>
 <!--</page0617>--> 

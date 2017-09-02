@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<body>
+<div class = "upperright">
+4096's:<input id = "ain" value = "2" onchange = "redraw()"></input><br>
+256's:<input id = "bin" value = "5" onchange = "redraw()"></input>
+</div>
+<table id = "uctable">
+</table>
+<script>
+a = 2;
+b = 5;
+c = 0;
+d = 0;
+
+redraw();
+function redraw(){
+    document.getElementById("uctable").innerHTML = "";
+    a = parseInt(document.getElementById("ain").value,16);
+    b = parseInt(document.getElementById("bin").value,16);
+    for(c = 0; c < 16;c++){
+    var newtr = document.createElement("TR");
+    for(d = 0;d < 16;d++){
+        var newtd = document.createElement("TD");
+        newtr.appendChild(newtd);
+        newtd.innerHTML = "&#x" + a.toString(16) + b.toString(16) + c.toString(16) + d.toString(16);       
+        var newdiv = document.createElement("DIV");
+        newdiv.className = "labeldiv";
+        newdiv.innerHTML = "&amp#x" +  a.toString(16) + b.toString(16) + c.toString(16) + d.toString(16); 
+        newtd.appendChild(newdiv);
+    }
+    document.getElementById("uctable").appendChild(newtr);
+    }
+}
+
+</script>
+<style>
+#uctable{
+    font-size:3em;
+    border-collapse:collapse;
+}
+td{
+    border:solid;
+}
+.labeldiv{
+    font-size:12px;
+}
+.upperright{
+    position:absolute;
+    right: 0px;
+    top:0px;
+    border:solid;
+    font-size:2em;
+    padding:10px 10px 10px 10px;
+    margin:10px 10px 10px 10px;
+    border-radius:10px;
+    text-align:right;
+}
+input{
+    font-family:courier;
+    font-size:18px;
+    width:2em;
+}
+
+</style>
+</body>
+</html>
