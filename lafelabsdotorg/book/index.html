@@ -215,8 +215,7 @@
 0162:0364,
 0164:0366,
 0171:0367,
-0165:0344,
-0151:0344,
+0165:0300,
 0151:0345,
 0157:0346,
 0160:0347,
@@ -236,6 +235,56 @@
 0143:0342,
 0166:0343,
 0142:0200,
+0176:0320,
+041:0321,
+0100:0322,
+043:0323,
+044:0324,
+045:0325,
+0136:0326,
+046:0327,
+050:0210,
+051:0211,
+052:0300,
+0137:0212,
+053:0213,
+0127:0220,
+0127:0221,
+0105:0222,
+0122:0223,
+0124:0224,
+0131:0225,
+0125:0226,
+0111:0227,
+0117:0230,
+0120:0231,
+0173:0232,
+0175:0233,
+0174:0234,
+0101:0235,
+0123:0236,
+0104:0237,
+0106:0240,
+0107:0241,
+0110:0242,
+0112:0243,
+0113:0244,
+0114:0245,
+073:0246,
+042:0247,
+0132:0250,
+0130:0251,
+0103:0252,
+0126:0253,
+0102:0254,
+0116:0255,
+0115:0256,
+077:035,
+057:034,
+0156:030,
+0155:036,
+054:032,
+056:033,
 0250:0313,0336,0330,0337,
 0251:0313,0336,0331,0337,
 0252:0313,0336,0332,0337,
@@ -403,27 +452,27 @@ function doTheThing(localCommand){
     //</page0320>
     }
     if(localCommand == 0321){//<page0321>
-		ctx.strokeStyle = "yellow";
+		ctx.strokeStyle = "white";
     	ctx.lineWidth = 2;    	
-    	ctx.fillStyle = "yellow";
+    	ctx.fillStyle = "white";
     //</page0321>
     }
     if(localCommand == 0322){//<page0322>
-		ctx.strokeStyle="pink";
-    	ctx.lineWidth = 2;
-    	ctx.fillStyle = "pink";    
-    //</page0322>
-    }
-    if(localCommand == 0323){//<page0323>
-		ctx.strokeStyle="white";
-    	ctx.lineWidth = 2;
-    	ctx.fillStyle = "white";    
-    //</page0323>
-    }
-    if(localCommand == 0324){//<page0324>
 		ctx.strokeStyle="red";
     	ctx.lineWidth = 2;
     	ctx.fillStyle = "red";    
+    //</page0322>
+    }
+    if(localCommand == 0323){//<page0323>
+		ctx.strokeStyle="orange";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "orange";    
+    //</page0323>
+    }
+    if(localCommand == 0324){//<page0324>
+		ctx.strokeStyle="yellow";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "yellow";    
     //</page0324>
     }
     if(localCommand == 0325){//<page0325>
@@ -433,15 +482,15 @@ function doTheThing(localCommand){
     //</page0325>
     }
     if(localCommand == 0326){//<page0326>
-		ctx.strokeStyle="purple";
-    	ctx.lineWidth = 2;
-    	ctx.fillStyle = "purple";    
-    //</page0326>
-    }
-    if(localCommand == 0327){//<page0327>
 		ctx.strokeStyle="blue";
     	ctx.lineWidth = 2;
     	ctx.fillStyle = "blue";    
+    //</page0326>
+    }
+    if(localCommand == 0327){//<page0327>
+		ctx.strokeStyle="purple";
+    	ctx.lineWidth = 2;
+    	ctx.fillStyle = "purple";    
     //</page0327>
     }
     if(localCommand == 0330){//<page0330>
@@ -702,7 +751,7 @@ function doTheThing(localCommand){
         currentWord = "";
         currentSVG = "";
         currentHTML = "";
-        currentAddress = 0210;
+        currentAddress = 0240;
         currentGlyph = "0300,";
         currentAction = 0;
         currentCommand = "0300";
@@ -2323,49 +2372,169 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
 <!--</page0626>-->
 <!--<page0440>-->
 <div style = "display:none" class = "json" id = "data0440">
+{
+    "nodes":[
+        {
+            "x":-2,
+            "y":1,
+            "w":1,
+            "h":1,
+            "glyph":"0304,0336,0332,0201,0201,0330,0331,0331,0331,0333,0333,0201,0201,0350,0334,0310,0337,0201,0334,0334,0201,0334,0336,0330,0330,0334,0334,0201,0201,",
+            "innerHTML":"derp",
+            "className":"mainBox",
+            "id":"box0640A",
+            "fontSize":0.25,
+            "theta":15
+        },
+        {
+            "x":2,
+            "y":-1,
+            "w":1.5,
+            "h":1,
+            "glyph":"0304,0336,0332,0201,0201,0330,0331,0331,0331,0333,0333,0201,0201,0350,0334,0310,0337,0201,0334,0334,0201,0334,0336,0330,0330,0334,0334,0201,0201,",
+            "innerHTML":"hERp",
+            "className":"mainBox",
+            "id":"box0640B",
+            "fontSize":0.5,
+            "theta":-15
+        }
+    ],
+    "flows":[
+        {
+            "x1":-2,
+            "y1":1,
+            "x2":2,
+            "y2":2,
+            "w":2,
+            "h":0.5,
+            "innerHTML":"derherp",
+            "fontSize":0.2,
+            "className":"mainFlow",
+            "id":"flow0640A",
+            "glyph":"0336,0336,0336,0330,0334,0201,0335,0201,0201,0201,0201,0334,0201,0335,0350,0335,0310,0337,0337,0337,0201,0335,0335,0201,0335,0335,0335,0336,0336,0336,0201,0304,0334,0201,0201,0201,0201,0335,0201,0335,"
+        }
+    ],
+    "maps":[
+        {
+            "top":3,
+            "left":-3,
+            "top":2,
+            "w":2,
+            "url":"https://i.imgur.com/tizWd8G.jpg",
+            "className":"mainMap",
+            "id":"map0640A",
+            "theta":0
+        },
+        {
+            "top":3,
+            "left":3,
+            "top":2,
+            "w":1.5,
+            "url":"https://i.imgur.com/tizWd8G.jpg",
+            "className":"mainMap",
+            "id":"map0640B",
+            "theta":0
+        }
+    ]
+}
 </div>                
 <!--</page0440>-->
 <!--<page0640>-->
 <div class = "page" id = "div0640">
-    <div class = "title">Editors</div>
-    <div id = "keyModeDiv">keyMode = <span id = "keyModeSpan"></span></div>
+    <div id = "keyModeDiv">keyMode = <span id = "keyModeSpan">action</span></div>
     <canvas id = "canvas0640"></canvas>
+    <canvas id = "invisible0640"></canvas>
     <table class = "paneltable"id = "table0640a">
         <tr>
             <td>0304</td><td>0305</td><td>0306</td><td>0350</td><td>0351</td><td>0352</td>
             <td>0353</td><td>0310</td><td>0311</td><td>0312</td><td>0313</td><td>0314</td><td>0316</td>
         </tr>        
         <tr>
-            <td>0362</td><td>0203</td><td>0363</td><td>0364</td><td>0366</td><td>0367</td><td>0344</td>
+            <td>0362</td><td>0203</td><td>0363</td><td>0364</td><td>0366</td><td>0367</td><td>0300</td>
             <td>0345</td><td>0346</td><td>0347</td><td>0365</td><td>0204</td><td>0201</td>
         </tr>    
         <tr>
             <td>0330</td><td>0331</td><td>0332</td><td>0333</td><td>0334</td><td>0335</td>
-            <td>0336</td><td>0337</td><td>0300</td>            
+            <td>0336</td><td>0337</td><td>0300</td><td>027</td><td>026</td><td>031</td>
         </tr>    
         <tr>
             <td>0340</td><td>0341</td><td>0342</td><td>0343</td><td>0200</td>
-            <td>020</td><td>010</td><td>021</td>
+            <td>020</td><td>010</td><td>021</td><td>027</td>
         </tr>                
     </table>    
+
+    <textarea id = "textIO0640"></textarea>
+    <div id = "addr0640box">    
+        <input id = "addr0640"></input>:
+        <input id = "glyphinput0640"></input>
+    </div>
 </div>
 <!--</page0640>-->
 <!--<page0740>-->
 <script id = "script0740">  
-glyph0640 = "0300,0341,0200,0333,0341,0207,";
+
+json0440 = JSON.parse(document.getElementById("data0440").innerHTML);
+nodes0640 = [];
+flows0640 = [];
+maps0640 = [];
+
+for(var index = 0;index < json0440.maps.length;index++){
+    var newimg = document.createElement("IMG");
+    maps0640.push(newimg);
+    newimg.className = json0440.maps[index].className;
+    document.getElementById("div0640").appendChild(newimg);
+    newimg.src = json0440.maps[index].url;
+}
+
+
+for(var index = 0;index < json0440.nodes.length;index++){
+    var newdiv = document.createElement("DIV");
+    nodes0640.push(newdiv);
+    newdiv.id = json0440.nodes[index].id;
+    newdiv.className = json0440.nodes[index].className;
+    newdiv.innerHTML = json0440.nodes[index].innerHTML;
+    document.getElementById("div0640").appendChild(newdiv);
+}
+for(var index = 0;index < json0440.flows.length;index++){
+    var newdiv = document.createElement("DIV");
+    flows0640.push(newdiv);
+    newdiv.id = json0440.flows[index].id;
+    newdiv.className = json0440.flows[index].className;
+    newdiv.innerHTML = json0440.flows[index].innerHTML;
+    document.getElementById("div0640").appendChild(newdiv);
+}
+
+glyph0640 = currentTable[currentAddress] + "0207";
+y0view = innerHeight/2;
+x0view = innerWidth/2;
+unitview = 100;
 
 document.onkeydown = function(e) {
-    if(e.keyCode == 010){
-        root0640(010);
-        redraw0740();
-    }
-    if(e.keyCode == 045){
-        root0640(020);
-        redraw0740();
-    }
-    if(e.keyCode == 047){
-        root0640(021);
-        redraw0740();
+    if(keyMode != "none"){
+//        alert(e.keyCode.toString(8));
+        if(e.keyCode == 010){
+            root0640(010);
+            redraw0740();
+        }
+        if(e.keyCode == 045){
+            root0640(020);
+            redraw0740();
+        }
+        if(e.keyCode == 047){
+            root0640(021);
+            redraw0740();
+        }
+        if(e.keyCode == 046){
+            root0640(023);
+            redraw0740();
+        }
+        if(e.keyCode == 050){
+            root0640(022);
+            redraw0740();
+        }
+        if(e.keyCode == 033){ //escape
+           // keyModeSwitch();
+        }
     }
 }
 
@@ -2374,7 +2543,6 @@ keyMode = "action";
 document.onkeypress = function(a){
     if(keyMode == "action"){
         if(parseInt(currentTable[a.keyCode],8) >= 0200){
-            console.log(currentTable[a.keyCode]);        
             var glyphSplit = glyph0640.split(",");
             glyph0640 = "";
             for(var index = 0;index < glyphSplit.length;index++){
@@ -2394,6 +2562,9 @@ document.onkeypress = function(a){
             }
             redraw0740();
         } 
+        if(parseInt(currentTable[a.keyCode],8) < 040){
+            root0640(parseInt(currentTable[a.keyCode],8));
+        }
     }
     if(keyMode == "print"){
         var glyphSplit = glyph0640.split(",");
@@ -2442,17 +2613,88 @@ document.getElementById("canvas0640").width = innerWidth;
 document.getElementById("canvas0640").height = innerHeight;
 redraw0740();
 function redraw0740(){
-    x0 = innerWidth/2;
-    y0 = innerHeight/2;
-    unit = 100;
+    x0 = x0view;//innerWidth/2;
+    y0 = y0view;//innerHeight/2;
+    unit = unitview;//100;
     ctx  = document.getElementById("canvas0640").getContext("2d");
     ctx.clearRect(0,0,innerWidth,innerHeight);
+
+    for(var index = 0;index < maps0640.length;index++){
+        maps0640[index].style.left = (x0 + json0440.maps[index].left*unit).toString() + "px";
+        maps0640[index].style.top = (y0 - json0440.maps[index].top*unit).toString() + "px";
+        maps0640[index].style.width = (json0440.maps[index].w*unit).toString() + "px";
+
+    }
+
+    for(var index = 0;index < flows0640.length;index++){
+        var xflow = 0.5*(x0 + json0440.flows[index].x1*unit + x0 + json0440.flows[index].x2*unit);
+        var yflow = 0.5*(y0 - json0440.flows[index].y1*unit + y0 - json0440.flows[index].y2*unit);
+        var thetaflow = -Math.atan((json0440.flows[index].y2 - json0440.flows[index].y1)/(json0440.flows[index].x2 - json0440.flows[index].x1))*180/Math.PI;
+
+        flows0640[index].style.left = (xflow  - 0.5*json0440.flows[index].w*unit).toString() + "px";
+        flows0640[index].style.top = (yflow - 0.5*json0440.flows[index].h*unit).toString() + "px";
+        flows0640[index].style.width = (json0440.flows[index].w*unit).toString() + "px";
+        flows0640[index].style.height = (json0440.flows[index].h*unit).toString() + "px";
+        flows0640[index].style.fontSize = (json0440.flows[index].fontSize*unit).toString() + "px";
+        flows0640[index].style.transform = "rotate(" + (thetaflow).toString() + "deg)"; 
+        doTheThing(0300);
+        x = x0 + json0440.flows[index].x1*unit;
+        y = y0 - json0440.flows[index].y1*unit;
+        side = unit*Math.sqrt((json0440.flows[index].x2-json0440.flows[index].x1)*(json0440.flows[index].x2-json0440.flows[index].x1) +(json0440.flows[index].y2-json0440.flows[index].y1)*(json0440.flows[index].y2-json0440.flows[index].y1));
+
+        theta =  thetaflow*Math.PI/180;
+        drawGlyph(json0440.flows[index].glyph);
+    }
+
+
+    for(var index = 0;index < nodes0640.length;index++){
+        nodes0640[index].style.left = (x0 + json0440.nodes[index].x*unit  - 0.5*json0440.nodes[index].w*unit).toString() + "px";
+        nodes0640[index].style.top = (y0 - json0440.nodes[index].y*unit - 0.5*json0440.nodes[index].h*unit).toString() + "px";
+        nodes0640[index].style.width = (json0440.nodes[index].w*unit).toString() + "px";
+        nodes0640[index].style.height = (json0440.nodes[index].h*unit).toString() + "px";
+        nodes0640[index].style.fontSize = (json0440.nodes[index].fontSize*unit).toString() + "px";
+        nodes0640[index].style.transform = "rotate(" + (json0440.nodes[index].theta).toString() + "deg)"; 
+        doTheThing(0300);
+        x = x0 + json0440.nodes[index].x*unit;
+        y = y0 - json0440.nodes[index].y*unit;
+        side = unit;
+        theta = theta0 + json0440.nodes[index].theta*Math.PI/180;
+        drawGlyph(json0440.nodes[index].glyph);
+    }
+
+
+
+    doTheThing(0300);
     drawGlyph(glyph0640);
     doTheThing(0300);
     x = 25;
     side = 25;
-    y = 50;
+    unit = side;
+    y = 70;
     spellGlyph(glyph0640);
+    currentTable[currentAddress] = "";
+    splitGlyph = glyph0640.split(",");
+    for(var index = 0;index < splitGlyph.length;index++){
+        if(splitGlyph[index] != "0207" && splitGlyph[index].length > 0){
+            currentTable[currentAddress] += splitGlyph[index] + ",";
+        }
+    }
+    document.getElementById("addr0640").value = "0" + currentAddress.toString(8);
+    document.getElementById("glyphinput0640").value = currentTable[currentAddress];
+}
+
+document.getElementById("addr0640").onchange = function(){
+    currentAddress = parseInt(this.value,8);
+    glyph0640 = currentTable[currentAddress] + "0207";
+    y0view = innerHeight/2;
+    x0view = innerWidth/2;
+    unitview = 100;
+    redraw0740();        
+}
+document.getElementById("glyphinput0640").onchange = function(){
+    currentTable[currentAddress] = this.value;
+    glyph0640 = currentTable[currentAddress] + "0207";
+    redraw0740();            
 }
 
 tds0640 = document.getElementById("table0640a").getElementsByTagName("td");
@@ -2542,7 +2784,6 @@ function root0640(localCommand){
     if(localCommand == 021){//cursor fwd
         var bottomGlyph = glyph0640.split("0207")[0];   
         var topGlyph = glyph0640.split("0207")[1]; 
-        console.log(topGlyph);
         if(topGlyph == ","){
             glyph0640 = "0207," + bottomGlyph;
         }
@@ -2566,26 +2807,94 @@ function root0640(localCommand){
         }
 
     }
+    if(localCommand == 022){//previous glyph in table
+        currentAddress--;
+        glyph0640 = currentTable[currentAddress] + "0207";
+        y0view = innerHeight/2;
+        x0view = innerWidth/2;
+        unitview = 100;
+    }
+    if(localCommand == 023){//next glyph in table
+        currentAddress++;
+        glyph0640 = currentTable[currentAddress] + "0207";
+        y0view = innerHeight/2;
+        x0view = innerWidth/2;
+        unitview = 100;
+
+    }
+    if(localCommand == 031){
+        currentSVG = "";
+        var glyphSplit = glyph0640.split(",");
+        var exportGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index] != "0207"){
+                exportGlyph += glyphSplit[index] + ",";
+            }
+        }
+        ctx = document.getElementById("invisible0640").getContext("2d");        
+        unit = 100;
+        var svglyph = "";
+        doTheThing(0300);
+        drawGlyph(exportGlyph);
+        document.getElementById("textIO0640").value = currentSVG;
+
+    }
+
+    if(localCommand == 030){
+        y0view -= unit;
+    }
+    if(localCommand == 036){
+        y0view += unit;
+    }
+    if(localCommand == 032){
+        x0view -= unit;
+    }
+    if(localCommand == 033){
+        x0view += unit;
+    }
+    if(localCommand == 034){
+        unitview /= 1.1;
+    }
+    if(localCommand == 035){
+        unitview *= 1.1;
+    }
+    if(localCommand == 027){
+        var localString = "";
+		for(var index = 0;index < currentTable.length;index++){
+			if(currentTableStart[index] != currentTable[index] || fullCube){
+				localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+			}
+		}
+        document.getElementById("textIO0640").value = localString;
+    }
 
     redraw0740();
 }
 
 document.getElementById("keyModeDiv").onclick  = function(){
+    keyModeSwitch();
+}
+function keyModeSwitch(){
     switch(keyMode){
         case "action":
             keyMode = "print";
             document.getElementById("keyModeSpan").innerHTML = "print";
-            this.style.backgroundColor = "green";
+            document.getElementById("keyModeDiv").style.backgroundColor = "green";
             break;
         case "print":
             keyMode = "stack";
             document.getElementById("keyModeSpan").innerHTML = "stack";
-            this.style.backgroundColor = "blue";
+            document.getElementById("keyModeDiv").style.backgroundColor = "blue";
             break;
         case "stack":
+            keyMode = "none";
+            document.getElementById("keyModeSpan").innerHTML = "none";
+            document.getElementById("keyModeDiv").style.backgroundColor = "white";
+            break;
+        case "none":
             keyMode = "action";
             document.getElementById("keyModeSpan").innerHTML = "action";
-            this.style.backgroundColor = "red";
+            document.getElementById("keyModeDiv").style.backgroundColor = "red";
             break;
     }
 }
@@ -2594,11 +2903,47 @@ document.getElementById("keyModeDiv").onclick  = function(){
 <!--</page0740>-->
 <!--<page0540>-->
 <style id = "style0540">
+.mainMap{
+    position:absolute;
+    left:0px;
+    top:0px;
+    z-index:-1;
+}
+.mainBox{
+    position:absolute;
+    z-index:2;
+    font-family:Futura;
+    text-align:center;
+}
+.mainFlow{
+    position:absolute;
+    z-index:1;
+    font-family:Futura;
+    text-align:center;    
+}
+#addr0640{
+    width:3em;   
+}
+#glyphinput0640{
+    width:20em;
+}
+#addr0640box{
+    z-index:3;
+    position:absolute;
+    left:40%;
+    top:5px;
+    font-size:12px;
+    font-family:courier;
+}
+#addr0640box input{
+    font-size:12px;
+    font-family:courier;    
+}
 #keyModeDiv{
     z-index:3;
     position:absolute;
-    right:10px;
-    bottom:10px;
+    left:20%;
+    top:10px;
     background-color:red;
     padding:5px 5px 5px 5px;
     font-family:courier;
@@ -2613,9 +2958,6 @@ document.getElementById("keyModeDiv").onclick  = function(){
     left:10px;
     bottom:10px;
 }
-#canvas0640{
-    background-color:white;
-}
 .paneltable td{
     cursor:pointer;
     background-color:white;
@@ -2628,7 +2970,17 @@ document.getElementById("keyModeDiv").onclick  = function(){
     background-color:yellow;
 }
 
-
+#textIO0640{
+    position:absolute;
+    z-index:3;
+    right:10px;
+    bottom:10px;
+    width:40em;
+    height:10em;    
+}
+#invisible0640{
+    display:none;
+}
 </style>
 <!--</page0540>-->
 <!--<page0700>-->
