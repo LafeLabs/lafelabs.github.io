@@ -215,7 +215,7 @@
 0162:0364,
 0164:0366,
 0171:0367,
-0165:0300,
+0165:024,
 0151:0345,
 0157:0346,
 0160:0347,
@@ -285,6 +285,12 @@
 0155:036,
 054:032,
 056:033,
+0154:027,
+073:026,
+047:031,
+074:0257,
+072:0246,
+0121:0220,
 0250:0313,0336,0330,0337,
 0251:0313,0336,0331,0337,
 0252:0313,0336,0332,0337,
@@ -1121,6 +1127,48 @@ doTheThing(07);//initialize Geometron global variables
 <!--</page0400>-->
 <!--<page0401>-->
 <div style = "display:none" class = "json" id = "data0401">
+{
+    "top":{
+        "lower":{
+            "ascii":"0140,061,062,063,064,065,066,067,070,072,060,055,075",
+            "action":"0304,0305,0306,0350,0351,0352,0353,0310,0311,0312,0313,0314,0316"
+        },
+        "upper":{
+            "ascii":"0176,041,0100,043,044,045,0136,046,052,050,051,0137,053",
+            "action":"0320,0321,0322,0323,0324,0325,0326,0327,0300,0210,0211,0212,0213"
+        }
+    },
+    "qwerty":{
+        "lower":{
+            "ascii":"0161,0167,0145,0162,0164,0171,0165,0151,0157,0160,0133,0135,0134",
+            "action":"0362,0203,0363,0364,0366,0367,024,0345,0346,0347,0365,0204,0201"
+        },
+        "upper":{
+            "ascii":"0121,0127,0105,0122,0124,0131,0125,0111,0117,0120,0173,0175,0174",
+            "action":"0220,0221,0222,0223,0224,0225,0226,0227,0230,0231,0232,0233,0234"
+        }
+    },
+    "asdf":{
+        "lower":{
+            "ascii":"0141,0163,0144,0146,0147,0150,0152,0153,0154,073,047",
+            "action":"0330,0331,0332,0333,0334,0335,0336,0337,027,026,031"
+        },
+        "upper":{
+            "ascii":"0101,0123,0104,0106,0107,0110,0112,0113,0114,072,042",
+            "action":"0235,0234,0236,0237,0240,0241,0242,0243,0244,0245,0246,0247"
+        }
+    },
+    "bottom":{
+        "lower":{
+            "ascii":"0172,0170,0143,0166,0142,0156,0155,054,056,057",
+            "action":"0340,0341,0342,0343,0200,030,036,032,033,034"
+        },
+        "upper":{
+            "ascii":"0132,0130,0103,0126,0102,0116,0115,074,076,077",
+            "action":"0250,0251,0252,0253,0254,0255,0256,0257,0177,035"
+        }
+    }
+}   
 </div>        
 <!--</page0401>-->
 <!--<page0402>-->
@@ -2370,67 +2418,291 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
     </div>
 </div>
 <!--</page0626>-->
+<!--<page0636>-->
+<div class = "page" id = "div0636">
+    <table id = "table0636">
+    </table>
+</div>
+<!--</page0636>-->
+<!--<page0736>-->
+<script>
+json0401 = JSON.parse(document.getElementById("data0401").innerHTML);
+
+
+var newtr = document.createElement("TR");
+document.getElementById("table0636").appendChild(newtr);
+var thisRow = json0401.top.lower.ascii.split(",");
+var thisRowLower = json0401.top.lower.action.split(",");
+var thisRowUpper = json0401.top.upper.action.split(",");
+var thisRowString = byteCode2string(json0401.top.lower.ascii);
+var thisRowStringUpper = byteCode2string(json0401.top.upper.ascii);
+for(var index = 0;index<thisRow.length;index++){
+    var newtd = document.createElement("TD");
+    newtr.appendChild(newtd);
+    newtd.innerHTML = thisRowStringUpper[index]+ "<br>"+ thisRowString[index];
+    newtd.id = "td0636l" + thisRowLower[index] + "u" + thisRowUpper[index];
+}
+
+var newtr = document.createElement("TR");
+
+document.getElementById("table0636").appendChild(newtr);
+var thisRow = json0401.qwerty.lower.ascii.split(",");
+var thisRowLower = json0401.qwerty.lower.action.split(",");
+var thisRowUpper = json0401.qwerty.upper.action.split(",");
+var thisRowString = byteCode2string(json0401.qwerty.lower.ascii);
+var thisRowStringUpper = byteCode2string(json0401.qwerty.upper.ascii);
+for(var index = 0;index<thisRow.length;index++){
+    var newtd = document.createElement("TD");
+    newtd.style.left = "90px";
+    newtr.appendChild(newtd);
+    newtd.innerHTML = thisRowStringUpper[index]+ "<br>"+ thisRowString[index];
+    newtd.id = "td0636l" + thisRowLower[index] + "u" + thisRowUpper[index];
+
+}
+
+var newtr = document.createElement("TR");
+document.getElementById("table0636").appendChild(newtr);
+var thisRow = json0401.asdf.lower.ascii.split(",");
+var thisRowLower = json0401.asdf.lower.action.split(",");
+var thisRowUpper = json0401.asdf.upper.action.split(",");
+var thisRowString = byteCode2string(json0401.asdf.lower.ascii);
+var thisRowStringUpper = byteCode2string(json0401.asdf.upper.ascii);
+for(var index = 0;index<thisRow.length;index++){
+    var newtd = document.createElement("TD");
+    newtd.style.left = "110px";
+    newtr.appendChild(newtd);
+    newtd.innerHTML = thisRowStringUpper[index]+ "<br>"+ thisRowString[index];
+    newtd.id = "td0636l" + thisRowLower[index] + "u" + thisRowUpper[index];
+
+}
+
+var newtr = document.createElement("TR");
+document.getElementById("table0636").appendChild(newtr);
+var thisRow = json0401.bottom.lower.ascii.split(",");
+var thisRowLower = json0401.bottom.lower.action.split(",");
+var thisRowUpper = json0401.bottom.upper.action.split(",");
+var thisRowString = byteCode2string(json0401.bottom.lower.ascii);
+var thisRowStringUpper = byteCode2string(json0401.bottom.upper.ascii);
+for(var index = 0;index<thisRow.length;index++){
+    var newtd = document.createElement("TD");
+    newtd.style.left = "130px";
+    newtr.appendChild(newtd);
+    newtd.innerHTML = thisRowStringUpper[index]+ "<br>"+ thisRowString[index];
+    newtd.id = "td0636l" + thisRowLower[index] + "u" + thisRowUpper[index];
+
+}
+
+tds = document.getElementById("table0636").getElementsByTagName("TD");
+for(var index = 0;index < tds.length;index++){
+    var newcan = document.createElement("CANVAS");
+    tds[index].appendChild(newcan);
+    newcan.width = 60;
+    newcan.height = 60;
+    newcan.style.position = "absolute";
+    newcan.style.left = "0px";
+    newcan.style.top = "0px";
+    ctx = newcan.getContext("2d");
+    doTheThing(0300);
+    x = 30;
+    y = 57;
+    side = 25;
+    doTheThing(parseInt(tds[index].id.substring(7).split("u")[0],8) + 01000);
+    x = 30;
+    y = 27;
+    doTheThing(parseInt(tds[index].id.substring(7).split("u")[1],8) + 01000);
+
+}
+
+</script>
+<!--</page0736>-->
+<!--<page0536>-->
+<style id = "style0536">
+#table0636{
+    margin-top:10%;
+    margin-left:10%;
+}
+#table0636 tr{
+    position:relative;
+}
+#table0636 td{
+    position:relative;
+    width:60px;
+    height:60px;
+    font-size:16px;
+    font-family:courier;
+    border:solid;
+}
+.topkbrow{
+    left:0px;
+}
+</style>
+<!--</page0536>-->
+<!--<page0437>-->
+<div style = "display:none" class = "json" id = "data0437">
+{
+    "nodes":[
+        {
+            "x":-4,
+            "y":0,
+            "h":0.5,
+            "w":0.5,
+            "fontSize":0.5,
+            "innerHTML":"concept",
+            "id":"node0437A",
+            "className":"mainBox",
+            "theta":0,
+            "glyph":""
+        },
+        {
+            "x":4,
+            "y":0,
+            "h":0.5,
+            "w":0.5,
+            "fontSize":0.5,
+            "innerHTML":"design",
+            "id":"node0437B",
+            "className":"mainBox",
+            "theta":0,
+            "glyph":""            
+        }
+    ],
+    "flows":[
+    {
+        "x1":-4,
+        "y1":0,
+        "x2":4,
+        "y2":0,
+        "w":4,
+        "h":0.3,
+        "innerHTML":"conceptual design",
+        "fontSize":0.4,
+        "className":"arrow",
+        "id":"flow0637A",
+        "glyph":"0336,0336,0336,0330,0330,0201,0201,0201,0201,0201,0336,0334,0350,0334,0362,0203,0334,0336,0336,0203,0334,0334,0334,0337,0337,0203,0335,0335,0203,0334,0334,0334,0336,0336,0203,0334,0337,0337,0203,0364,"
+    }
+    ],
+    "maps":[
+    ]
+}
+
+</div>                
+<!--</page0437>-->
+<!--<page0637>-->
+<div class = "page" id = "div0637">
+    <div class = "title">Graph Theory</div>
+    <canvas id = "canvas0637"></canvas>
+</div>
+<!--</page0637>-->
+<!--<page0737>-->
+<script id = "script0737"> 
+
+json0437 = JSON.parse(document.getElementById("data0437").innerHTML);
+nodes0637 = [];
+flows0637 = [];
+
+for(var index = 0;index < json0437.flows.length;index++){
+    var newdiv = document.createElement("DIV");
+    flows0637.push(newdiv);
+    newdiv.id = json0437.flows[index].id;
+    newdiv.className = json0437.flows[index].className;
+    newdiv.innerHTML = json0437.flows[index].innerHTML;
+    document.getElementById("div0637").appendChild(newdiv);
+}
+
+for(var index = 0;index < json0437.nodes.length;index++){
+    var newdiv = document.createElement("DIV");
+    nodes0637.push(newdiv);
+    newdiv.id = json0437.nodes[index].id;
+    newdiv.className = json0437.nodes[index].className;
+    newdiv.innerHTML = json0437.nodes[index].innerHTML;
+    document.getElementById("div0637").appendChild(newdiv);
+}
+
+
+document.getElementById("canvas0637").width = innerWidth;
+document.getElementById("canvas0637").height = innerHeight;
+redraw0737();
+function redraw0737(){
+    x0 = innerWidth/2;
+    y0 = innerHeight/2;
+    unit = 100;
+    ctx  = document.getElementById("canvas0637").getContext("2d");
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+
+    for(var index = 0;index < flows0637.length;index++){
+        var xflow = 0.5*(x0 + json0437.flows[index].x1*unit + x0 + json0437.flows[index].x2*unit);
+        var yflow = 0.5*(y0 - json0437.flows[index].y1*unit + y0 - json0437.flows[index].y2*unit);
+        var thetaflow = -Math.atan((json0437.flows[index].y2 - json0437.flows[index].y1)/(json0437.flows[index].x2 - json0437.flows[index].x1))*180/Math.PI;
+
+        flows0637[index].style.left = (xflow  - 0.5*json0437.flows[index].w*unit).toString() + "px";
+        flows0637[index].style.top = (yflow - 0.5*json0437.flows[index].h*unit).toString() + "px";
+        flows0637[index].style.width = (json0437.flows[index].w*unit).toString() + "px";
+        flows0637[index].style.height = (json0437.flows[index].h*unit).toString() + "px";
+        flows0637[index].style.fontSize = (json0437.flows[index].fontSize*unit).toString() + "px";
+        flows0637[index].style.transform = "rotate(" + (thetaflow).toString() + "deg)"; 
+        doTheThing(0300);
+        x = x0 + json0437.flows[index].x1*unit;
+        y = y0 - json0437.flows[index].y1*unit;
+        side = unit*Math.sqrt((json0437.flows[index].x2-json0437.flows[index].x1)*(json0437.flows[index].x2-json0437.flows[index].x1) +(json0437.flows[index].y2-json0437.flows[index].y1)*(json0437.flows[index].y2-json0437.flows[index].y1));
+
+        theta =  thetaflow*Math.PI/180;
+        drawGlyph(json0437.flows[index].glyph);
+    }
+
+
+    for(var index = 0;index < nodes0637.length;index++){
+        nodes0637[index].style.left = (x0 + json0437.nodes[index].x*unit  - 0.5*json0437.nodes[index].w*unit).toString() + "px";
+        nodes0637[index].style.top = (y0 - json0437.nodes[index].y*unit - 0.5*json0437.nodes[index].h*unit).toString() + "px";
+        nodes0637[index].style.width = (json0437.nodes[index].w*unit).toString() + "px";
+        nodes0637[index].style.height = (json0437.nodes[index].h*unit).toString() + "px";
+        nodes0637[index].style.fontSize = (json0437.nodes[index].fontSize*unit).toString() + "px";
+        nodes0637[index].style.transform = "rotate(" + (json0437.nodes[index].theta).toString() + "deg)"; 
+        doTheThing(0300);
+        x = x0 + json0437.nodes[index].x*unit;
+        y = y0 - json0437.nodes[index].y*unit;
+        side = unit;
+        theta = theta0 + json0437.nodes[index].theta*Math.PI/180;
+        drawGlyph(json0437.nodes[index].glyph);
+    }
+}
+
+</script>
+<!--</page0737>-->
+<!--<page0537>-->
+<style>
+    .arrow{
+        position:absolute;  
+        text-align:center;
+        font-family:Futura;
+
+    }
+</style>
+<!--</page0537>-->
 <!--<page0440>-->
 <div style = "display:none" class = "json" id = "data0440">
 {
     "nodes":[
         {
-            "x":-2,
-            "y":1,
+            "x":-4,
+            "y":0,
             "w":1,
             "h":1,
-            "glyph":"0304,0336,0332,0201,0201,0330,0331,0331,0331,0333,0333,0201,0201,0350,0334,0310,0337,0201,0334,0334,0201,0334,0336,0330,0330,0334,0334,0201,0201,",
-            "innerHTML":"derp",
+            "glyph":"",
+            "innerHTML":"A",
             "className":"mainBox",
             "id":"box0640A",
-            "fontSize":0.25,
-            "theta":15
-        },
-        {
-            "x":2,
-            "y":-1,
-            "w":1.5,
-            "h":1,
-            "glyph":"0304,0336,0332,0201,0201,0330,0331,0331,0331,0333,0333,0201,0201,0350,0334,0310,0337,0201,0334,0334,0201,0334,0336,0330,0330,0334,0334,0201,0201,",
-            "innerHTML":"hERp",
-            "className":"mainBox",
-            "id":"box0640B",
             "fontSize":0.5,
-            "theta":-15
+            "theta":0
         }
     ],
     "flows":[
-        {
-            "x1":-2,
-            "y1":1,
-            "x2":2,
-            "y2":2,
-            "w":2,
-            "h":0.5,
-            "innerHTML":"derherp",
-            "fontSize":0.2,
-            "className":"mainFlow",
-            "id":"flow0640A",
-            "glyph":"0336,0336,0336,0330,0334,0201,0335,0201,0201,0201,0201,0334,0201,0335,0350,0335,0310,0337,0337,0337,0201,0335,0335,0201,0335,0335,0335,0336,0336,0336,0201,0304,0334,0201,0201,0201,0201,0335,0201,0335,"
-        }
     ],
     "maps":[
         {
-            "top":3,
-            "left":-3,
-            "top":2,
-            "w":2,
-            "url":"https://i.imgur.com/tizWd8G.jpg",
-            "className":"mainMap",
-            "id":"map0640A",
-            "theta":0
-        },
-        {
-            "top":3,
-            "left":3,
-            "top":2,
-            "w":1.5,
-            "url":"https://i.imgur.com/tizWd8G.jpg",
+            "top":1,
+            "left":0,
+            "w":1,
+            "url":"https://i.imgur.com/q30Q98V.png",
             "className":"mainMap",
             "id":"map0640B",
             "theta":0
@@ -2450,7 +2722,7 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
             <td>0353</td><td>0310</td><td>0311</td><td>0312</td><td>0313</td><td>0314</td><td>0316</td>
         </tr>        
         <tr>
-            <td>0362</td><td>0203</td><td>0363</td><td>0364</td><td>0366</td><td>0367</td><td>0300</td>
+            <td>0362</td><td>0203</td><td>0363</td><td>0364</td><td>0366</td><td>0367</td><td>024</td>
             <td>0345</td><td>0346</td><td>0347</td><td>0365</td><td>0204</td><td>0201</td>
         </tr>    
         <tr>
@@ -2459,7 +2731,6 @@ There are three main ways CSS uses to identify a thing: tag, id, and class.  For
         </tr>    
         <tr>
             <td>0340</td><td>0341</td><td>0342</td><td>0343</td><td>0200</td>
-            <td>020</td><td>010</td><td>021</td><td>027</td>
         </tr>                
     </table>    
 
@@ -2858,7 +3129,7 @@ function root0640(localCommand){
     if(localCommand == 035){
         unitview *= 1.1;
     }
-    if(localCommand == 027){
+    if(localCommand == 027){//export hypercube
         var localString = "";
 		for(var index = 0;index < currentTable.length;index++){
 			if(currentTableStart[index] != currentTable[index] || fullCube){
@@ -2867,7 +3138,26 @@ function root0640(localCommand){
 		}
         document.getElementById("textIO0640").value = localString;
     }
-
+    if(localCommand == 026){//import hypercube
+        var localString = document.getElementById("textIO0640").value;
+		var inputStack = localString.split("\n");
+		for(var index = 0;index < inputStack.length;index++){
+			var stackLine = inputStack[index].split(":");
+			var localAddress = parseInt(stackLine[0],8);
+			var localGlyph = stackLine[1];
+			currentTable[localAddress] = localGlyph;
+		}
+        glyph0640 = currentTable[currentAddress] + "0207";   
+    }
+    if(localCommand == 024){
+		if(currentAddress > 01000 && currentAddress < 02000){
+			currentAddress -= 01000;
+		}
+        else{
+            currentAddress += 01000;
+        }
+        glyph0640 = currentTable[currentAddress] + "0207";   
+    }
     redraw0740();
 }
 
