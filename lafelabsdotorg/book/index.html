@@ -2913,7 +2913,6 @@ for(var index = 0;index < json0440.maps.length;index++){
     newimg.src = json0440.maps[index].url;
 }
 
-
 for(var index = 0;index < json0440.nodes.length;index++){
     var newdiv = document.createElement("DIV");
     nodes0640.push(newdiv);
@@ -2941,26 +2940,23 @@ document.onkeydown = function(e) {
 //        alert(e.keyCode.toString(8));
         if(e.keyCode == 010){
             root0640(010);
-            redraw0740();
+            redraw();
         }
         if(e.keyCode == 045){
             root0640(020);
-            redraw0740();
+            redraw();
         }
         if(e.keyCode == 047){
             root0640(021);
-            redraw0740();
+            redraw();
         }
         if(e.keyCode == 046){
             root0640(023);
-            redraw0740();
+            redraw();
         }
         if(e.keyCode == 050){
             root0640(022);
-            redraw0740();
-        }
-        if(e.keyCode == 033){ //escape
-           // keyModeSwitch();
+            redraw();
         }
     }
 }
@@ -3011,7 +3007,7 @@ document.onkeypress = function(a){
                 glyph0640 += glyphSplit[index] + ",";
             }
         }
-        redraw0740();        
+        redraw();        
     }
     if(keyMode == "stack"){
 
@@ -3032,7 +3028,7 @@ document.onkeypress = function(a){
                 glyph0640 += glyphSplit[index] + ",";
             }
         }
-        redraw0740();                
+        redraw();                
     }
 }
 
@@ -3209,6 +3205,7 @@ function root0640(localCommand){
         }
     }
     if(localCommand == 021){//cursor fwd
+
         var bottomGlyph = glyph0640.split("0207")[0];   
         var topGlyph = glyph0640.split("0207")[1]; 
         if(topGlyph == ","){
@@ -3314,7 +3311,7 @@ function root0640(localCommand){
         }
         glyph0640 = currentTable[currentAddress] + "0207";   
     }
-    redraw0740();
+    redraw();
 }
 
 document.getElementById("keyModeDiv").onclick  = function(){
@@ -3494,7 +3491,7 @@ function redraw(){
     if(current07xx == 0737){
         redraw0737();
     }
-    
+
 }
 
 </script>
