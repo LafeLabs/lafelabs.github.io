@@ -1219,6 +1219,372 @@ doTheThing(07);//initialize Geometron global variables
         }
 </div>
 <!--</page0422>-->
+<!--<page0430>-->
+<div id = "data0430" class = "text" style = "display:none;">
+<p>    
+Geometron is two things: a language, and a way of organizing information.  This whole project is based on the simple idea that as a civilization we already know far more than we need to and that the next frontier in knowledge is in <i>organizing</i> the knowledge we already have.  Another key idea used to build this structure is that the so-called "open web" is the single most powerful information processing system ever devised and that any attempt to better organize information must be based on it.  Geometron is also based on the idea that communication based on geometric ideas like symmetry and shape can have enormous power and have been vastly under-used due to the emphasis our civilization has put on numbers.
+</p>
+<p>
+In some sense, geometron is a computer language.  The vast majority of what is found in this volume is based on building a language that exists on computers and was written in computer languages(mostly javascript, html, and css, the languages of the open web).  But to lump it together with such languages as C or java would be to miss the point.  It is more like a human language in the sense that while you can use a computer language to do things like search for words in a English document or compose a book in English, that does not make English a computer language. Or is it?  Without comments, computer code is impossible to maintain or build in teams and without a output in a human language it is usually not very useful.  And which is math?  Machines do math, but generally are programmed in something more tailored to the machine and the human doing the coding.
+</p>
+<p>
+This idea of math-as-language really gets to the heart of the matter.  Geometron seeks to build a language that is useful both for human-human communication(like English) and for human-machine communication(like javascript), but which is independent of both.  That is to say, it should be possible to express things in this system using only shapes and symbols in a self-contained way, then run those operations on a machine or send them to a human without ever writing a line of code in javascript or C or a line of language in English or Chinese.  That is, this is an attempt to organize existing geometric knowledge into a language which can be used to communicate.
+</p>
+<p>
+As I said in the first paragraph here, this language is only half of Geometron. The other half is the way that information is organized.  This means doing things like considering how to sort words from images from equations in a way that helps organize document creation.
+</p>
+<p>
+There is a tradition in the world of computer languages of introducing a language by printing the words "hello, world" in the simplest possible way as an example.  I'm going to take the broader view of the "hello world" in this case however.  Part of the point of geometron is that it's not based on a human language.
+</p>
+<p>
+There are three commands here, shown in the graphical code above here.  The first and last are the command for "draw circle", and the arrow indicates moving one unit to the right.  There are several ways to express this in Geometron.  Each of these commands also have an address in a stack of 8X8 grids.  I'll get into this more later, but will show for completeness what this looks like:
+</p>
+<p>
+To illustrate the power of geometron, I will now construct the most basic shapes beyond the circle: the equilateral triangle, square, regular pentagon and regular hexagon.  I'll go into much more detail about how the commands used here work later, but for now I'll just jump in with examples.
+</p>
+<p>
+The Geometron language is not just a computer language like C or a human language like English.  It's more of a hybrid which includes building physical objects, navigating the physical world, creating physical documents with various media as well as communication with both humans and machines.  Therefore the structure will be unusual in that it will move freely between these spheres.  I will try to provide examples in multiple of these layers.            
+</p>
+<p>
+Geometron, like most languages, has a set of laws.  In human languages these laws often take the form of grammar.  In computer languages, they are syntax, and are generally very precise in specifying what is or is not valid code.  This is not quite what I mean by the "Laws of Geometron", however.  Those more syntax-like rules are documented elsewhere in this book.  
+</p>
+<p>
+The Laws of Geometron are a set of guides for how to think about the world when creating new things using Geometron.  This whole project is intended not just as another computer language but as a whole different approach to communication with technology.  I believe that some un-examined assumptions about philosophy have caused us(modern civilization) some problems, and that those can be corrected by trying other sets of assumptions.  To that end, I will present the laws that I live by as the creator of this language, then explain what each of the laws means and how it affects what we choose to do in using and developing Geometron further in the future. 
+</p>
+<p>
+In software situations, the number of pixels in a field determines a reasonable level of precision in most cases.  Thus for a 1000x1000 pixel area, 0.1% is the maximum that it ever makes sense to care about.  Realistically this is far more than we usually care about, though, since for example an icon on a desktop might be just a few pixels across, making it have a <i>relative</i> precision locally of a few percent.  Also, the exact position of the icon on the desktop relative to the overall screen shape is almost certainly not less than a few percent.  While these statements might seem obvious and trivial they are at odds with the behavior of engineers in almost all cases, especially when computers are involved. 
+</p>
+<p>
+A final note on "everything is fractal" must be made on the <i>limits</i> of this law.  I find the work of Mandelbrot in his book on the fractal geometry of nature to be pathalogical because it assumes a totally non-physical range of fractals.  In reality the world around us is almost always described by fractal structure, but that fractal nature <i>always</i> has limitations.  A leaf has veins in it which repeat in their behavior on multiple scales, but only up to a point: below the scale of a few leaf cells vein-like behavior is lost, and while vein like nature may exist in the branches that carry the leaves, it stops at the forrest level, and there is a clear phase change between leaf-vein and branch.  Ideas like those of Mandelbrot, like those of Newton mentioned above, can be both powerful and beautiful, but to view them as absolute truths with an existence independent of the human mind, with infinite extent in some imaginary universe is just religious nonsense and is holding back our ability to build more robust technological systems.
+</p>
+<p>
+Most of us are not great writers.  And yet we take literacy for granted as a basic skill needed to function in society.  Some people have argued that "code is literacy" now in society.  On its own this is a very bad idea.  Most of the code that professional software developers use changes very fast and is very specialized and building systems that require everyone to master that level of constantly changing highly technical material is unrealistic and simlpy leads to more divisions between the information haves and have-nots.  
+</p>
+<p>
+This book is predecated on a different path than the one in which every person on Earth becomes a software developer and the one where those of us who don't all have our lives controlled by those who do.  Just as non-writers can still write an email or a text, non coders should be able to make simple-but-effective  bits of code that can get the basic tasks of life done, just without the level of sophistication required by a professional.  As the so-called "Internet of Things" expands, as well as the mobile web, the number of potential web servers with documents on them will rapidly exceed the total number of humans on the planet.  These hardware devices are approaching zero cost, and thanks to the ubiquity of Cloud computing and internet of things, anyone who can master basic web code can be their own node in a totally decentralized version of the Internet.  
+</p>
+<p>
+I dream of a day when the current centralized Internet controlled by a few billionaires in California is totally replaced by a decentralized model where there are as many web servers as there are people on Earth, and roughly one in ever 100 people is the equivalent of a very basic level web programmer.  The way for this to happen is to ignore the trendy tools of the fast-moving commercial Internet and stick with the most open standards which have very wide support both in for profit and non profit areas, as well as totally internaionally.  What this all boils down to is that which runs in any web browser is vastly more free than any other kind of software.  To make things that run in a web browser we need three things: HTML, CSS, and JavaScript.  In this section I guide you into learning HTML.   
+</p>
+<p>
+HTML stands for "Hypertext Markup Language".  It is the language which is used by all web browsers to format all the text and graphics we see when we look at a web page.  HTML is the universal language of the World Wide Web.  As of this writing, in 2017, the most up to date version of HTML is called HTML5, and that is what Geometron uses as a basis for everything we do on computers.  In the philosophical system of Geometron, we will try to create as close as possible to unversal literacy in our language for those who participate in it.  This means we all need some familiarity with the way that HTML works at least.
+</p>
+<p>
+What HTML does specifically is turn a text-only format into the vast number of types of thing you can see in your web browser.  It can be thought of as a system for mapping just the limited number of keys on your computer keyboard to all the things you've ever seen on the Web: images, videos, drawings, cartoons, games, etc. etc.  All these things come from a sequence of characters interpreted a certain way.  
+</p>
+<p>
+The most basic thing to understand in HTML in order to get started is the special role played by the "less than" and "greater than" symbols, or angle brackets: "&lt" and "&gt".  
+</p>
+<p>
+Before diving into what is needed from HTML in order to work in Geometron I will discuss some online resources, which I used to learn HTML.  I would strongly recommend simply diving in and doing the <a href = "https://www.w3schools.com/html/default.asp">HTML intro tutorial on the w3schools site.</a>  This was my primary source for learning and I found it less frustrating than many of the alternatives.  While it is a commercial site, they are not too aggressive with trying to upsell you, the ads are not bad, and it is really free both to do the tutorial and to use them as a reference.  I would also recommend this site for learning CSS and JavaScript, as well as a general reference on web things.  The down side of this site is that it seems to be missing the latest jargon from what the professionals are up to in the field.  This is not so much a downside for us, however and avoiding trendy new tools is part of the philosophy of Geometron.  
+</p>
+<p>
+The next most useful resource is, unfortunately, "stack overflow".  Stack overflow is a for-profit corporation which exists to create a online community for software professionals to share information(and be aggressively advertised to).  It tends to be unfriendly, often has blatantly wrong and insulting answers up-voted, and is very poorly organized.  It's common for questions asked on here to be non-answered by patronizing blowhards who would rather explain why your whole approach is wrong and why you don't know what you're doing than actually help.  All that being said, if you google your <em>exact</em> problem, a stack overflow thread will often point you to a group of other people who have had the same problem, and at least one of them will often have an answer.  Every problem you will ever have with HTML, CSS, JavaScript, and server stuff has been had by numerous other people, and somewhere someone posted it to Stack Overflow.  One useful aspect of this is that if there is that googling your problem and looking at stack overflow can tell you information about your problem beyond just the solution.  It will tell you what kinds of people ran into it and how, and indeed can (in spite my criticism of this) point you in the direction of simply changing your whole approach or using a different tool.  Just be forewarned that the community on there is some of the worst on the Web and try not to take it personally.   I won't link to the main site, google does a much better job of indexing stack overflow than the site does and I don't want to link to them anyway.
+</p>
+<p>
+After w3schools, the best reference for html, JavaScript and CSS is the <a href = "https://developer.mozilla.org/en-US/">Mozilla Developer Network</a>, maintained by the non-profit Mozilla corporation.  Since Mozilla is actually actively maintaining one of the major browsers of the Web, this tends to be way more complete than w3schools, but is less user friendly, has less tutorial material and tends to have more opaque examples.  If a subject is covered in w3schools I would always go there first, and use Mozilla when you can't find what you need.  As with Stack Overflow, I generally don't bother to try their search and just use google to find the right MDN page. 
+</p>
+<p>
+The final external resource I'll put on here is <a href = "https://codepen.io">codepen</a>.  Codepen is a fantastic tool for quickly testing and sharing code.  It recognizes the basic truth that CSS, JavaScript and HTML all go together and by default has everything set up for that.  For testing when working alone, I would say simply using your text editor and browser is better in most cases.  However, the sharing and community on there is amazing, especially from an artistic standpoint.  The most amazing aspect of this community is what people on there can accomplish with pure CSS.  When first exposed to CSS it seemed to me like a relatively dreary book-keeping system for simply storing style information. Browsing around CodePen shows that just as a physical pen can be used for either tedious financial book keeping or making Great Art, this is also true of CSS. 
+</p>
+<p>
+There are so many ways to get started with creating computer code that it can be overwhelming.  Due to experts constantly strongly disagreeing with each other, tutorials tend to try to stay neutral in these disputes.  The problem with this is that it strands the total beginner in a series of random, frustrating web searches.  Thus I will somewhat arbitrarily choose and recommend a tool, the one I've decided to use.  
+</p>
+<p>
+I wanted a tool that was free--not just free but really free, as in you don't get annoying reminders constantly begging for money.  I also wanted something with a large number of users and a significant effort behind it so that it won't be abandonned.  I chose the free code editor from Microsoft, called Visual Studio Code. It can be downloaded for free and installed on pretty much any computer system.  Here is the link to get it directly from Microsoft:
+</p>
+<p>
+As a non professional, I probably use less than one percent of what this software can do, but it's good at staying out of my way for my simple tasks, and it's nice to know that if I <em>do</em> want to do more sophisticated or professional tasks that it can do that as well.  So my advice is that if you are like me and you're starting from scratch with no code background, just download and install this, and go from there.  
+</p>
+<p>
+Once you have installed Visual Studio Code, open it, and start a new file using the file menu to select "new" or using command-N or control-N depending on your operating system.  Now make a directory somewhere on your computer for your code stuff, and save your new blank file as "index.html"(without the quotes).  The ".html" ending is mandatory for your computer to recognize this as HTML rather than some other type of code.  It's useful to save this immediately not just to be in the habit of frequent saving but to tell your code editor that this is HTML.  That will immediately cause it to use highlighting to make everything much easier to read.  
+</p>
+<p>
+Now copy/paste the following code into the file(upper and lowercase letters are equivalent in HTML):
+</p>
+<p>
+Make sure to save that, then double click the icon for the file to open it in a browser.  That's it!  That is a file in the format readable by the several <em>billion</em> devices and people connected to the Web.  You can email a file like this to someone and they can read it, but that's true of a text document as well and so far we've added little.  To feel the true power of the web, this has to get put online somewhere.  We will deal with this in more detail in the "server side Geometron" chapter.  For this tutorial we will again somewhat arbitrarily choose a single method of doing this and stick with it for now.  Part of the idea of this book being all in the public domain is that future users can change this as needed(now that you know how to edit HTML you can do that).  
+</p>
+<p>
+For free and easy web hosting I use <a href = "https://www.000webhost.com">https://www.000webhost.com</a>.  Get an account, which, again, is free.  You'll need to put in your email address.  I have had no spam issues, I think this is fine.  Once you have an account go to "file manager", then click on "upload files now".  You should see a folder called "public_html".  Having a folder of this name is fairly universal when building a website.  Now drag the file called "index.html" into that folder.  Then go back to the tab on your browser that links to your site, which should be a address right under the word "File Manager", which ends with "000webhostapp.com", and starts with whatever name you picked.  Click on that link.  You should now see your file in your browser as before but now it's on the real Web!  The number of pople who can read your file just jumped from one to about 3 billion. Really.  This is staggering in its power and is worth contemplating at this time.  
+</p>
+<p>
+Now, go back to your code editor(Microsoft Visual Studio Code) and change the text to something actually interesting.  It doesn't matter what!  We'll make it look cool soon, but for now just change the words.  Now save it, drag and drop the new vesion of index.html over into 000webhost.com(it should ask you if you really want to over-write, and you do).  
+</p>
+<p>
+One of the principles on which Geometron is based is the incredible power of the modern web browser.  The major browsers are Chrome(by Google, used on Android Devices but runs on everything), Safari(Apple), Internet Explorer(Microsoft), Mozilla Firefox, and Opera(made by Opera).  Everything we do here is supposed to work on all browsers, and mostly it all should.  The exception will be when we start working with JavaScript, some things won't run in some browsers until you change the settings to allow scripts.  A rule of thumb is also that the worst browser will always be IE.  Microsoft has slowly given up on their campaign to break the Web, but it still lingers in IE, and some users have legacy copies of much older versions of IE which very deliberately break everything.  Avoid IE if you can.  If you're using a computer where IE is the default browser I recommend installng any of the other browsers listed above(shouldn't matter which), otherwise whatever your default browser is is probably fine.  
+</p>
+<p>
+All browsers have, by various names, "developer tools", which are incredibly useful as not just a development but a learning tool.  Whatever browser you have, google "[name of browser] view source" and you can find instructions on viewing the source code of any site using your browser.  Do this!  And repeat.  Again and again, all across the Web.  This is why it's called the "Open Web", and why profit driven companies like Microsoft and Oracle have worked so hard to break it.  The Web is totally open.  Without any special tools every single user on the Web can see all the code(most of it at least) of all the billions of sites out there.  When you put your stuff on the Web, everyone can read that as well.  So not only does this mean you can publish anything instantly to 3 billion people, they can read the equivalent of all your editorial markup for the printer as well, and see inside the workings of any active scripts you write, all without leaving their browser.  Incredible.  
+</p>
+<p>
+One thing you'll immediately notice as you start reading web sites' code is how some sites are easy to read and some are hard.  Often the more professional sites will have tons of hard to read code.  This is usually because those sites are not written by hand like what we are doing, but as part of some huge software system where the computer mostly handles the actual production of code seen the the browser.  This is one of the tensions that exists in the structure of the Web.  On the one hand, the free and open system allows people like us to make a new site in 10 minutes, which has incredible power.  On the other hand, if you want a site viewed by a million people a month, and you have a team of hundreds of developers buildng that site, writing out things by hand like we are doing is not practical.  One would hope that in the best interests of the Web that neither one "wins", and that huge systems continue to streamline the process of building things with a thousand developers and a billion users, while the browsers and developer ecosystems all continue to support the process of one amateur building a hand coded site from scratch in a few minutes and sharing it with a dozen people. 
+</p>
+<p>
+Pastebin
+</p>
+<p>
+Github is a commercial site used by just about everyone in software.  Personally I loathe Github and "Git", the software it's based on, but it's THE standard of all software people and it has some very useful features we'll need in Geometron and so until we have our own cloud infrastructure to replace it(which we will), we must all learn to use it.  
+</p>
+<p>        
+The following table contains the html tags used in this document.  Numerous useful and widely used tags are ommited.  However our focus here is getting a core set of tools for basic web literacy, and for that this list should suffice.  For each of these elements, it is helpful to make a physical flash card for reference on an index card or something similar.  Hopefully this list of links will help remind you also where to get the reference material on it quickly.  
+
+<p>
+Now cut and paste that up as needed, put your own personal content in there, and post it to the live web and send someone the link.  That's it.  This is the most powerful information sharing technology in history by orders of magnitude and that is all that is required to add to it(albeit without any nice formatting or dynamic actions yet.)  Probably a good place to start is with some lists of things, since that's not hard to be usful with even minimal formatting.  Now that you have control of this, you could change the list as many times as you want, share it with whoever you want, and use it as a real information channel in your day to day life.  
+</p>
+<p>
+The last bits of HTML I want to put in here because they are so widely useful and are not always in the early introductory materials is special characters of varoius kinds.  First of all, all the above code, if you look at the source code of this document, deals with the unique problem in html of formatting the "angle brackets" used for all the varoius html tags.  As I type this, if I want to express that symbol, and I just hit the key with the symbol on it, I'll see that in my editor, but the browser will always try to turn it into some kind of tag and will fail catastrophically and unpredictably to render your intended text.  The workaround is the use of the ampersand: "&amp", which preceds the letters "lt" for "less than" and "gt" for "greater than".  Of course this immediately opens yet another problem: if ampersand is used to mark special weird characters, how do you tell the browser to acually just print an ampersand?  To print an ampersand, put "&ampamp" into your text editor.  Note again that if you view the source of this document, that in order to have the browser render "&ampamp" I had to type "&ampampamp".  And in order to type that last explanatory sentence I had to type a third "amp"!  
+</p>
+<p>
+Finally we must address how to use unicode.  One of the motivations of Geometron is to, eventually, replace unicode in many situations.  Unicode is a list of ludicrous length(136,755 characters according to <a href = "https://en.wikipedia.org/wiki/Unicode">wikipedia</a>) of just about every random symbol or character that people could think of to put in the standard.  It has many languages, and can be useful in a pinch for grabbing one character from any given language, but the thing we use it for the most in Geometron is quick access to simple characters that are independent of human and machine language: arrows.  Unicode is inserted into html as follows:</p>
+</p>
+<p>&amp#[decimal code for your unicode here] or &amp#[hexidecimal code for your unicode here] </p>
+<p>
+The way to find the unicode for something is to google "[thing you are looking for] unicode" and you'll probably find it.  Be careful to note if the code you find is hexidecimal(base 16) or decmial.  Usually you can spot hexidecimal by letters, which are usually in all caps, for example: "&amp#x25C0" for "&#x25C0"(note the letter "C").  The drawback of unicode goes to the heart of the philosophy as explained in the Laws of Geometron, in this case "everything is fractal".  In almost no situations do you want to use 100 languages at the same time, along with a thousand arrows.  However, after you choose a langauge, being limited to just 2 or 3 typefaces is really frustrating--you are more likely to want a dozen or so(not for one document necesarilly as that's usually bad design but across your overall work/life).  You want huge weird looking art fonts, tiny fonts with nubs on them to make them readable, rainbow colored fonts, super modern designer fonts, etc.  And yet if unicode had that level of fractal complexity for every language it would be so big as to simply not function at all.  So you end up with, as is so often in computers, a dreary heirarchy of importance that gets imposed on all users.  Thus the English-speaking user, no matter how little they need of creative typesetting has a vast sea to choose from, while the user of traditional written Mongolian, a beautiful flowing vertical script is forced into one uninspired font, with no control over it and no options.  It is my hope that with Geometron a skilled caligrapher who is an expert on their script in the world of pen and ink but has no computer skills should be able to build numerous scripts on their own without consulting some international font bureaucracy to ask permission to write in their own language on their own hardware.   
+</p>
+<p>
+Don't skip this chapter!  CSS is critical for making things actually look decent enough on the Web that people will look at them, and it is extremely easy to get started if you focus on core parts you need and accept that you're just scratching the surface of the total whole to gain basic CSS literacy.  CSS stands for "cascaded style sheets".  It is the language used to describe how things will look on the Web.  When I first tried to understand why I should even care about CSS it seemed complicated and not something I needed, but I was very wrong!  </p>
+</p>
+<p>
+We call CSS a "language", and it certainly is one, but it's not a language in the way of either something like JavaScript(covered in the next chapter) or Python(discussed way later) or whatever in that it doesn't go through some sequence of actions and do them in order, nor is it a markup language like HTML.  What it is is a set of rules for describing how things will look in html in the most efficient way possible.  It is difficult for someone like me to describe for you just how powerful CSS can be, since I use it to only a limited extent, but if you want to see the full range of CSS, go to <a href = "https://codepen.io">codepen.io</a>.  Nothing I can say here will possibly do justice to the amazing original art that the people on that site can produce.  I invite any CSS skeptic to go click at random on various art pages that are featured on the front page of that site.  
+</p>
+<p>
+Just as we can think of html as text separated by a bunch of "tags" made with angle brackets, we can think of CSS as a bunch of descriptions of elements inside twiddle brackets("{" and "}"), with various properties and their values separated by a colon.  So just as one might think of the prototype of html as "&ltp&gtsome text&lt/p&gt", we might think of the equivalent maximally simple prototype of CSS as being "p{color:red;}".  That code will make all paragraphs in a document "red" in their text color.  That's really about it!  To get from that prototype to the infinity of amazing art, design and technology buildable from CSS we mostly just get into specifics of different ways to call a element(not just its type but its class and id as we'll discuss shortly.)  
+</p>
+<p>There are three main ways CSS uses to identify a thing: tag, id, and class.  Fortunately, these names actually describe pretty much what they are.    
+</p>
+<p>
+A script is a specific type of computer program. "Script" generally refers to the type of computer program which a human can read.  This is in contrast to "compiled" code, which is code that has been translated from human-readable code to pure binary which only the machine can read.  Historically, compiled code was important because it was so much faster.  Today, as computers have gotten exponentially faster, the purpose of compiled code is often for closed-source programmers to keep their work secret, and to prevent users from exercising their fundamental human rights to have power over their own hardware.  Behind almost every piece of compiled code there exists a crime against knowledge and freedom.  
+</p>
+<p>
+There are numerous languages which can be considered scripting languages, as well as languages with can be either compiled or scripted.  JavaScript, as we'll be using it here, consists of scripts embedded in the html document.  This thus completes the "Holy Trinity" of the Open Web: HTML, CSS, and JavaScript.  Just as we embed CSS into HTML with the "style" tag and can use it to control how things look at any time in making HTML documents, the "script" tag will let us do the same thing with actions.  JavaScript is how you make a page actually do something, rather than be just a static piece of information.  There are numerous other languages you'll hear people saying they used to write a web application, but those will generally run on some remote server, such as used for Facebook or Google.  Not so JavaScript.  A script that lives inside your html document is run on YOUR computer.  If you don't use remote libraries or scripts, this can run without any connection to the Internet at all!  A physically isolated machine with a web browser can run the code, making it possible to, with cheap modern devices like Android burner phones, build all kinds of automation and robotics technology with nothing but html that runs in a browser! This is the true power of Geometron and the longer term goal of this work: a truly free and decentarlized method of industrial production.  And this is why it's so important to focus on JavaScript over its varous cousins like Java, C++ or Python.  Those languages are great for building commercial products and large web sites for millions of users, built by professionals, but to build free robots that can be deployed on the Street by amateurs, nothing can beat raw HTML for its freeness and universality.  
+</p>
+<p>
+It's worth going into some more detail about the way we will use software in the Geometron system of knowledge and how it differs from that of the professional software developer.  In general, software development is an expensive endeavor, requireing that large amounts of central bank debt currency come from <em>somewhere</em> to compensate all the professioanls working on it.  To support the cost of labor, revenue must be at least one software person's salary, and since each user who clicks on a given web site is likely to only deliver a small amount of revenue, this means the only projects which can pay for the labor required to build something interesting are those with very large numbers of users.  To put real numbers on it, suppose your team of 10 software people cost 5,000 dollars a month each.  That's 50 grand a month.  Now if you get one percent of your users to spend 100 dollars(as might be expected for some specialty e-commerce site) or 1 dollar per click as might be the case for a referral system of reveneue, you need 50,000 clicks a month at a dollar a click to keep those software people paid.  This is more than 1000 people a day who need to be going to your site <em>every day</em> in order to just barely stay afloat.  But under the system of investor-funded computer capitalism, that math is woefully wrong, and it's much worse than this.  In order to initially get the 50k/month to set this up, you need investors, and they all invest in mostly idiotic companies which will mostly fail, so the few that succeed all need to make them massive returns of 10x or 20x or more of their initial investment.  This means that getting to the keeping-everyone-paid level will definitely result in them losing money. Therefore the company must be structured so that it has <em>sustained</em> exponential growth or it will fail due to how investor deals are all structured(they do this to put pressure on founders to constantly push for exponential growth and since they regard companies that simply break even as failures, which they call the "walking dead").  Thus that group of 10 programmers with a thousand hits a day need to be desparately working to turn it into 100,000 hits a day or they'll all be unemployed in 18 months.  Any tool that makes that happen faster and with lower chance of failure will therefore be used, no matter what. The stakes are high, and the pace is fast, the scale global.
+</p>
+<p>
+Now, let me paint a picture of what we are trying to build with Geometron.  
+</p>
+<p>
+For all the big talk first in the 1990s and now again about virtual reality being the "next big thing" it appears to still be extremely priimitive techonlogy overall.  This will likely change at some point, but as it does, the same problem that we are attempting to address with the two dimensional web will remain.  Overly complex software, patents, and the usual deliberate obfuscation of all commercial systems(including "open source") will threaten the freedom of those who use the systems.  The way out is as it always is an appeal to a more pure mathematical and artistic description of reality.  
+</p>
+<p>
+    This section is thus divided into two parts.  I will first describe how, conceptually, I believe we can think about three dimensional objects using the same principles as we do for two dimensional Geometron.  This will include building some physical structures out of sticks, which will be useful for the physical demployment of manufacturing infrastructure based on Geometron.  After an exploration of pure math(and some physics), and some stick-and-rope construction, we will move on to a specific 3d format that works in the Web browsers of today, the x3d format.  
+</p>
+</div>               
+<!--</page0430>-->
+<!--<page0431>-->
+<div id = "data0431" class = "text" style = "display:none;">
+<ol>
+        <li>HTML</li>
+        <li>JavaScript</li>
+        <li>CSS</li>
+        <li>Hypercube Structure</li>
+        <li>Document Layers and Levels</li>
+        <li>Server side</li>              
+        <li>Action Geometry</li>      
+        <li>Geometric Actions</li>
+        <li>Shape Tables</li>
+        <li>SVG and XML</li>
+        <li>Third Dimension</li>
+        <li>Roctal Encoding</li>
+        <li>Data Printer</li>
+
+</ol>
+<ol>
+    <li>Everything is physical</li>
+    <li>Everything is fractal</li>
+    <li>Everything is recursive</li>
+    <li>No money</li>
+    <li>No mining</li>
+    <li>No property</li>
+</ol>
+<ul>
+    <li>A Thing</li>        
+    <li>Another Thing</li>
+    <li>...some more things</li>                
+</ul>
+<ol>
+    <li>A Thing</li>        
+    <li>Another Thing</li>
+    <li>...some more things</li>                
+</ol>
+<ul>
+    <li>classes</li>
+    <li>id's</li>
+    <li>tags</li>
+    <li>class:tag etc</li>            
+    <li>background-color, color</li>
+    <li>fonts</li>
+    <li>position</li>
+    <li>padding and margin</li>
+    <li>text-align</li>
+    <li>units:em, px, percent</li>
+    <li>z-index</li>
+    <li>border</li>
+    <li>title class</li>
+    <li>scroll class</li>
+    <li>page class</li>
+    <li>hover and active</li>            
+    <li>animation</li>
+</ul>
+<ul>
+    <li>mouse over buttons</li>
+    <li>div patchwork</li>
+    <li>art animation</li>
+    <li>physical flashcards</li>
+    <li>html resume</li>
+    <li>table of links</li>
+    <li>recipe</li>
+</ul>
+<ul>
+    <li>background-color</li>
+    <li>border,border-color,border-radius,border-width</li>
+    <li>padding,margin</li>
+    <li>width,height</li>
+    <li>position,left,top,bottom,right</li>
+    <li>overflow</li>
+    <li>hover, active</li>
+    <li>font-size,font-family</li>
+    <li>z-index</li>
+    <li>text-align</li>    
+</ul>
+<ul>
+    <li>button that lights up a div</li>
+    <li>calculator in a table</li>
+    <li>textarea and button conversion application</li>
+    <li>Build your own JS library and use it, put it on Github</li>
+    <li>understand and build your own doTheThing() function</li>
+    <li>Draw on a canvas</li>
+    <li>write a script to build a big random art web page</li>
+    <li>convert bytecode to text and vice versa</li>        
+    <li>make physical flashcards with sharpie and index cards</li>
+</ul>
+<ul>
+        <li>comments, both kinds</li>
+        <li>console.log() and alert()</li>
+        <li>camelCase and indents</li>
+        <li>bases other than 10, conversion from/to numbers/strings</li>
+        <li>binary arithmetic bitwise</li>
+        <li>true, false, tests and comparisons</li>    
+        <li>strings, split,substring, add</li>
+        <li>string2byteCode, byteCode2string</li>
+        <li>onclick</li>
+        <li>using built in objects</li>
+        <li>onchange</li>
+        <li>functions</li>
+        <li>arrays</li>
+        <li>numberical types: float, int, comparison to C etc.</li>
+        <li>very basic math operations</li>
+        <li>slightly more advanced math</li>
+        <li>calling external libraries</li>
+        <li>getElementById, id</li>
+        <li>createElement</li>
+        <li>getElemntsByClassName,className</li>
+        <li>getElementsByTagName</li>
+        <li>JSON.parse</li>
+        <li>using JSON to make your own objects and interact with them</li>
+        <li>for loops through arrays and objects</li>
+        <li>innerHTML</li>
+        <li>value for input and textarea</li>
+        <li>appendChild</li>
+        <li>canvas context</li>
+        <li>element.style.*</li>
+        <li>basic canvas commands</li>
+</ul>                            
+<ul>
+    <li>compass</li>
+    <li>ruler</li>
+    <li>pen</li>
+    <li>paper</li>
+    <li>clear packing tape</li>
+    <li>scissors</li>
+    <li>crayons, colored markers, or colored pencil</li>
+    <li>thin cardboard boxes</li>            
+    <li>thick corrugated cardboard boxes</li>
+    <li>duct tape</li>
+    <li>sticks or boards</li>
+    <li>electric drill and quarter inch bit</li>
+    <li>nylon parachute cord</li>             
+</ul>
+<ul>
+    <li>circuit schematics</li>
+    <li>classical logic gates</li>
+    <li>quantum logic gates</li>
+    <li>words in boxes and arrows for big concepts</li>
+    <li>Penrose Tiles</li>
+    <li>Basic Geometric Shapes</li>
+    <li>Diamond Stripes</li>
+    <li>directed graphs</li>
+    <li>flowcharts</li>
+    <li>Metro Map lines and stations</li>            
+</ul>
+<ul>
+    <li>box</li>
+    <li>cylinder</li>
+    <li>cone</li>
+    <li>sphere</li>
+    <li>text</li>
+</ul>
+<ul>
+    <li>up</li>
+    <li>down</li>
+    <li>fwd</li>
+    <li>back</li>
+    <li>left</li>
+    <li>right</li>
+    <li>rotate+x</li>
+    <li>rotate-x</li>
+    <li>rotate+y</li>
+    <li>rotate-y</li>
+    <li>rotate+z</li>
+    <li>rotate-z</li>
+    <li>minus XYZ</li>
+    <li>plus XYZ</li>            
+    <li>minus X</li>
+    <li>plus X</li>
+    <li>minus Y</li>
+    <li>plus Y</li>
+    <li>minus Z</li>
+    <li>plus Z</li>
+</ul>
+<ul>
+    <li>Laws of Geometron</li>
+    <li>HTML intro, links</li>
+    <li>CSS intro, links</li>
+    <li>JS intro, links</li>
+    <li>03xx action/symbol tablet</li>
+    <li>ASCII tablet</li>
+    <li>roots of unity</li>
+    <li>scale constructions</li>
+    <li>shape constructions</li>
+    <li>sticks:octahedron(small technology frame), icosahedron(pod/yurt/hut)</li>
+    <li>printer</li>            
+    <li>shape table builder</li>
+    <li>shape table selector, distributor</li>
+    <li>books</li>
+    <li>papers</li>
+    <li>calculators</li>
+    <li>map</li>
+    <li>resume/CV</li>
+    <li>svg builder(s)</li>
+    <li>nodes and flows and feeds for value</li>
+    <li>Physical Web Server</li>
+    <li>tablet/phone</li>
+    <li>bluetooth keyboard</li>
+    <li>bike generator</li>
+    <li>battery pack</li>
+    <li>RGB Neopixel LED lights for pod</li>            
+</ul>
+</div>
+<!--</page0431>-->
+<!--<page01431>-->
+<div id = "data01431" class = "json" style = "display:none;">
+[
+    {"index":0,"name":"first list"}
+]
+</div>                
+<!--<page01431>-->
 <!--<page0440>-->
 <div id = "data0440" class = "text" style = "display:none;">
         <h2>Getting Started with Scripts</h2>
@@ -1349,12 +1715,48 @@ doTheThing(07);//initialize Geometron global variables
     <canvas id = "canvas0622" class = "canvas06xx"></canvas>
 </div>
 <!--</page0622>-->    
+<!--</page0630>-->    
+<div class = "page" id = "div0630">
+    <div class  = "title">P Editor</div>
+    <table id = "control0630" class = "lefttable">     
+        <tr>
+            <td>PREV</td><td>NEXT</td><td>MOVE BACK</td><td>MOVE FWD</td>
+        </tr>
+        <tr>
+            <td>ADD NEW</td><td>CUT</td><td>COPY</td><td>PASTE</td>
+        </tr>
+    </table>           
+    <div class = "middlescroll" id = "scroll0630">
+    </div>
+    <textarea class = "righteditor" id = "editor0630">
+    </textarea>
+    <div id = "bufferStack0630" class = "bufferStack">
+    </div>
+    <textarea class = "leftIO" id = "textIO0630">
+    </textarea>
+</div>
+<!--</page0630>-->    
+<!--<page0631>-->    
+<div class = "page" id = "div0631">
+    <div class  = "title">List Editor</div>
+    <div class = "leftlist">
+        <h2>List of Lists</h2>
+        <ul id = "list0631A"></ul>
+    </div>
+    <div class = "middlelist">
+        <h2>List</h2>
+        <ul id = "list0631B"></ul>            
+    </div>
+    <input class = "upperrightinput"></input>
+    <textarea class = "upperrighteditor" id = "editor0631">
+    </textarea>    
+</div>
+<!--</page0631>-->    
 <!--<page0640>-->
 <div class = "page" id = "div0640">
     <div class  = "title">Scroll Reader</div>
     <div class = "scroll" id = "scroll0640"> 
-        
-    </div>
+</div>
 </div>
 <!--</page0640>-->    
 <!--</page0642>-->    
@@ -1378,7 +1780,7 @@ doTheThing(07);//initialize Geometron global variables
         </div>
         <textarea class = "righteditor" id = "editor0642">
         </textarea>
-        <textarea id = "textIO0642">
+        <textarea  class = "leftIO"  id = "textIO0642">
         </textarea>
     </div>
 <!--</page0642>-->    
@@ -1996,6 +2398,83 @@ function redraw0722(){
 
 </script>
 <!--</page0722>-->
+<!--<page0730>-->
+<script>
+init0730();
+function init0730(){
+    buttons0630 = document.getElementById("control0630").getElementsByTagName("TD");
+    pindex0630 =0;
+    ps0430 = document.getElementById("data0430").getElementsByTagName("P");
+
+    for(var index = 0;index < ps0430.length;index++){
+        var newdiv = document.createElement("DIV");
+        newdiv.className = "psymbol";
+        newdiv.id = "psymbol" + index.toString();
+        newdiv.innerHTML = ps0430[index].innerHTML.substring(0,140);
+        ps0430[index].id = "p" + index.toString();
+        newdiv.style.height = (40*ps0430[index].innerHTML.length/140).toString() + "px";
+        document.getElementById("scroll0630").appendChild(newdiv);
+    }
+    document.getElementById("psymbol" + pindex0630.toString()).style.backgroundColor = "yellow";
+    document.getElementById("editor0630").value = document.getElementById("p" + pindex0630.toString()).innerHTML;
+    redraw0730();
+}
+
+document.getElementById("editor0630").onkeyup = function(){
+    document.getElementById("p" + pindex0630.toString()).innerHTML = this.value;
+}
+
+buttons0630[0].onclick = function(){
+    document.getElementById("psymbol" + pindex0630.toString()).style.backgroundColor = "white";
+    pindex0630--;
+    if(pindex0630 < 0){
+        pindex0630 = ps0430.length-1;
+    }
+    document.getElementById("editor0630").value = document.getElementById("p" + pindex0630.toString()).innerHTML;    
+    document.getElementById("psymbol" + pindex0630.toString()).style.backgroundColor = "yellow";
+}
+buttons0630[1].onclick = function(){//next p
+    document.getElementById("psymbol" + pindex0630.toString()).style.backgroundColor = "white";
+    pindex0630++;
+    if(pindex0630 > ps0430.length-1){
+        pindex0630 = 0;
+    }
+    document.getElementById("editor0630").value = document.getElementById("p" + pindex0630.toString()).innerHTML;    
+    document.getElementById("psymbol" + pindex0630.toString()).style.backgroundColor = "yellow";
+}
+
+function redraw0730(){
+}
+
+</script>
+<!--</page0730>-->
+<!--<page0731>-->
+<script>
+init0731();
+function init0731(){
+    ulindex0631 = 3;
+    olindex0631 = 0;
+    liindex0631 = 0;
+    uls0431 = document.getElementById("data0431").getElementsByTagName("UL");
+    ols0431 = document.getElementById("data0431").getElementsByTagName("OL");    
+    document.getElementById("list0631B").innerHTML = uls0431[ulindex0631].innerHTML;
+    document.getElementById("list0631B").getElementsByTagName("LI")[liindex0631].style.backgroundColor = "yellow";
+    document.getElementById("editor0631").value = document.getElementById("list0631B").getElementsByTagName("LI")[liindex0631].innerHTML;
+    for(var index = 0;index < document.getElementById("list0631B").getElementsByTagName("LI").length;index++){
+        document.getElementById("list0631B").getElementsByTagName("LI")[index].id = "li" + index.toString();
+        document.getElementById("list0631B").getElementsByTagName("LI")[index].onclick = function(){
+            document.getElementById("list0631B").getElementsByTagName("LI")[liindex0631].style.backgroundColor = "white";
+            liindex0631 = parseInt(this.id.substring(2));
+            document.getElementById("list0631B").getElementsByTagName("LI")[liindex0631].style.backgroundColor = "yellow";
+            document.getElementById("editor0631").value = document.getElementById("list0631B").getElementsByTagName("LI")[liindex0631].innerHTML;
+        }
+    }
+}
+document.getElementById("editor0631").onkeyup = function(){
+    document.getElementById("list0631B").getElementsByTagName("LI")[liindex0631].innerHTML = this.value;
+}
+</script>
+<!--</page0731>-->
 <!--<page0740>-->
 <script>
 init0740();
@@ -2012,47 +2491,47 @@ function redraw0740(){
 <script>
 init0742();
 function init0742(){
-     pindex0642 = 0;
-     document.getElementById("editor0642").value= document.getElementById("data0440").getElementsByTagName("P")[pindex0642].innerHTML;
-     document.getElementById("scroll0642").innerHTML = document.getElementById("data0440").innerHTML;
-     document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].style.backgroundColor = "yellow";
-     data0441 = JSON.parse(document.getElementById("data0441").innerHTML);
-     buttons0642 = document.getElementById("control0642").getElementsByTagName("TD");
-     for(var index = 0;index < data0441.buttons.length;index++){
-        buttons0642[index].innerHTML = data0441.buttons[index];
-     }
+    data0441 = JSON.parse(document.getElementById("data0441").innerHTML);
+    nodes0440 = document.getElementById("data0440").childNodes;
+    nindex0640 =0;
+    
+    pindex0642 = 0;
+    
+    document.getElementById("editor0642").value= nodes0440[nindex0640].innerHTML;;
+    document.getElementById("scroll0642").innerHTML = document.getElementById("data0440").innerHTML;
+    buttons0642 = document.getElementById("control0642").getElementsByTagName("TD");
+    for(var index = 0;index < data0441.buttons.length;index++){
+    buttons0642[index].innerHTML = data0441.buttons[index];
+    }
 }
 
 
 document.getElementById("editor0642").onkeydown = function(){
-    
-    document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].innerHTML = this.value;
-    document.getElementById("data0440").getElementsByTagName("P")[pindex0642].innerHTML = this.value;
-
+    nodes0440[nindex0640].textContent = this.value;
 }
 
 buttons0642[0].onclick = function(){//prev p
-    document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].style.backgroundColor = "white";
-    pindex0642--;
-    if(pindex0642 < 0){
-        pindex0642 = document.getElementById("data0440").getElementsByTagName("P").length - 1;
+//    document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].style.backgroundColor = "white";
+    nindex0640--;
+    if(nindex0640 < 0){
+        nindex0640 = nodes0440[nindex0640].length - 1;
     }
-    document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].style.backgroundColor = "yellow";
-    document.getElementById("editor0642").value= document.getElementById("data0440").getElementsByTagName("P")[pindex0642].innerHTML;
+  //  document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].style.backgroundColor = "yellow";
+    document.getElementById("editor0642").value= nodes0440[nindex0640].innerHTML;
 }
 
 buttons0642[1].onclick = function(){//next p
     document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].style.backgroundColor = "white";
-    pindex0642++;
-    if(pindex0642 > document.getElementById("data0440").getElementsByTagName("P").length - 1){
-        pindex0642 = 0;
+    nindex0640++;
+    if(nindex0640 > nodes0440[nindex0640].length - 1){
+        nindex0640 = 0;
     }
-    document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].style.backgroundColor = "yellow";
-    document.getElementById("editor0642").value= document.getElementById("data0440").getElementsByTagName("P")[pindex0642].innerHTML;
+//    document.getElementById("scroll0642").getElementsByTagName("P")[pindex0642].style.backgroundColor = "yellow";
+    document.getElementById("editor0642").value= nodes0440[nindex0640].innerHTML;
 }
 
 
-buttons0642[5].onclick = function(){//next p
+buttons0642[5].onclick = function(){//export json
  document.getElementById("textIO0642").value = document.getElementById("data0440").innerHTML;
 
 }
@@ -2504,9 +2983,109 @@ pre{
     }
 </style>
 <!--</page0510>-->
+<!--<page0530>-->
+<style>
+    .bufferStack{
+        position:absolute;
+        left:15px;
+        width:250px;
+        bottom:150px;
+        height: 150px;
+        overflow:scroll;
+        padding:10px 10px 10px 10px;
+        border:solid;
+        border-radius:15px;
+    }
+    .psymbol{
+        text-align:justify;
+        font-size:22px;
+        overflow:hidden;
+        border:solid;
+        margin:20px 20px 20px 20px;
+        padding:20px 20px 20px 20px;
+        font-family:courier;
+        border-width:3px;
+        border-radius:15px;
+        background-color:#a0a0ff;
+        cursor:pointer;
+    }
+    .psymbol:hover{
+        background-color:green;
+    }
+</style>
+<!--</page0530>-->
+<!--<page0531>-->
+<style>
+    .leftlist{
+        position:absolute;
+        left:5%;
+        right:70%;
+        bottom:5%;
+        top:15%;
+        border:solid;
+        border-radius:15px;
+        padding:15px 15px 15px 15px;
+    }
+    .middlelist{
+        position:absolute;
+        left:35%;
+        right:35%;
+        bottom:5%;
+        top:15%;
+        border:solid;
+        border-radius:15px;
+        padding:15px 15px 15px 15px;
+    }
+    .middlelist li{
+        cursor:pointer;
+    }
+    .middlelist li:hover{
+        background-color:green;
+    }
+    
+.unselected{
+    background-color:#f0f0f0;
+}
+.unselected:hover{
+    background-color:green;
+}
+.selected{
+    background-color:yellow;
+}
+.selected:hover{
+    background-color:green;
+}
+
+
+.upperrightinput{
+    position:absolute;
+    font-size:20px;
+    font-family:courier;    
+    border:solid;
+    top:100px;
+    right: 10px;
+    width:30%;
+
+}
+.upperrighteditor{
+    font-size:20px;
+    width:30%;
+    position:absolute;
+    right: 10px;
+    top:150px;
+    height:200px;
+    font-family:courier;
+    border:solid;
+    border-width:2px;
+    border-radius:15px;
+    padding: 1em 1em 1em 1em;
+}
+
+</style>
+<!--</page0531>-->
 <!--<page0542>-->
 <style>
-#textIO0642{
+.leftIO{
     position:absolute;
     z-index:3;
     left: 5px;

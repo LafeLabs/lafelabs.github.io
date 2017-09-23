@@ -1473,7 +1473,6 @@ WM Coordinates(x,y):<input id = "xyInput3"></input>
 
 <script>
 var x = document.getElementById("demo");
-
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -1497,7 +1496,6 @@ function showError(error) {
             break;
     }
 }
-
 function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + 
     "<br>Longitude: " + position.coords.longitude;
@@ -1509,14 +1507,12 @@ function showPosition(position) {
 	deltaLon = lon - WMlon;
 	deltaLonCorrected = deltaLon*Math.cos(WMlat*Math.PI/180);
 	deg2WM = 60*1.15*5280/555;
-
 	X = deg2WM*deltaLonCorrected;
 	Y = deg2WM*deltaLat;
 	
 	X = Math.round(10*X)/10;
 	Y = Math.round(10*Y)/10;
 	document.getElementById("xyInput3").value = X.toString() + "," + Y.toString();
-
 }
 
 </script>
