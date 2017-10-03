@@ -3,16 +3,26 @@
 <html>
 <head>
 <!-- PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
-LAWS OF GEOMETRON:
-    NO PROPERTY 
-    NO MONEY
-    NO MINING
-    EVERYTHING IS RECURSIVE
-    EVERYTHING IS FRACTAL
-    EVERYTHING IS PHYSICAL
-    RIDDLE OF STEEL
-    INEVITABILITY OF DEATH 
-    SUPREMACY OF INSECTS
+
+GEOMETRON:
+EVERYTHING IS PHYSICAL
+EVERYTHING IS FRACTAL
+EVERYTHING IS RECURSIVE
+NO MONEY 
+NO MINING
+NO PROPERTY
+[EGO DEATH]
+LOOK TO THE FUNGI
+LOOK TO THE INSECTS
+LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY
+
+PROCESSING SIMULATOR OF ARDUINO FOR TRASH PRINTER
+TRASHNET
+METADUMPSTER
+
+
+
+This document: arduino code stack
 -->
     <title>Physical Geometron Printer</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -28,6 +38,32 @@ LAWS OF GEOMETRON:
 <!--</page01>-->
 <script id = "bytecodeScript">
 /*
+01101:0340,0330,0335,0336,0330,0335,0336,0337,0330,0330,0335,0335,0330,0334,0330,0331,0335,0331,0336,0341,0333,0340,0337,0337,
+01102:0340,0330,0335,0336,0330,0335,0336,0330,0336,0330,0341,0330,0330,0340,0337,0330,0336,0330,0335,0337,0337,0330,0335,0330,0335,0336,0330,0336,0330,0350,0334,0310,0337,0330,0331,0335,0335,0330,0335,0304,0336,0313,0337,0336,0330,0337,0330,0335,0335,0336,0341,0333,0333,0337,0337,0337,0340,
+01103:0341,0336,0336,0333,0340,0350,0334,0330,0335,0330,0330,0335,0330,0335,0330,0335,0330,0331,0334,0331,0334,0331,0334,0331,0331,0334,0331,0335,0335,0335,0330,0334,0330,0331,0334,0304,0341,0333,0333,0340,0337,0337,
+01104:0340,0330,0335,0336,0336,0330,0350,0335,0310,0337,0330,0336,0313,0335,0330,0330,0335,0310,0337,0330,0335,0336,0313,0330,0304,0335,0335,0330,0341,0330,0330,0334,0337,0337,
+01105:0340,0330,0335,0336,0330,0331,0333,0336,0330,0331,0333,0333,0337,0330,0336,0341,0330,0334,0337,0337,0340,
+01106:0340,0330,0335,0336,0330,0331,0336,0333,0333,0330,0331,0333,0333,0337,0341,0330,0336,0330,0334,0337,0337,0340,
+01107:0336,0336,0341,0330,0340,0330,0330,0350,0335,0310,0337,0330,0335,0336,0330,0335,0337,0330,0335,0336,0313,0336,0330,0331,0334,0337,0310,0337,0331,0334,0336,0331,0334,0337,0331,0334,0336,0331,0331,0335,0335,0335,0337,0330,0334,0336,0330,0334,0337,0330,0334,0336,0334,0334,0330,0331,0335,0335,0335,0335,0335,0335,0330,0331,0335,0337,0330,0335,0335,0335,0304,0336,0313,0341,0333,0333,0337,0337,0340,
+01110:0340,0330,0336,0331,0333,0330,0331,0331,0336,0341,0333,0337,0337,0340,
+01111:0336,0336,0340,0333,0330,0330,0330,0330,0332,0333,0333,0332,0331,0331,0331,0331,0333,0341,0333,0337,0337,0340,
+01112:0336,0336,0341,0333,0340,0350,0334,0310,0337,0330,0335,0336,0330,0331,0334,0337,0331,0335,0335,0335,0336,0330,0334,0337,0330,0334,0336,0330,0330,0330,0304,0334,0313,0330,0331,0331,0330,0335,0341,0331,0331,0331,0331,0333,0333,0337,0337,
+01113:0340,0330,0336,0331,0350,0335,0310,0337,0330,0331,0335,0335,0330,0331,0334,0334,0334,0336,0304,0313,0331,0341,0333,0336,0333,0337,0337,
+01114:0340,0330,0331,0335,0336,0330,0334,0336,0341,0333,0337,0337,
+01115:0340,0313,0336,0312,0337,0330,0341,0331,0336,0313,0341,0333,0334,0306,0335,0337,0340,0330,0331,0335,0330,0331,0335,0304,0336,0341,0330,0334,0312,0337,0340,0330,0341,0331,0336,0313,0336,0341,0333,0340,0337,0337,
+01116:0336,0312,0337,0340,0330,0331,0336,0313,0341,0333,0334,0306,0335,0337,0340,0330,0341,0331,0334,0304,0335,0336,0312,0337,0340,0330,0341,0331,0336,0313,0336,0333,0337,0337,
+01117:0336,0336,0336,0341,0333,0335,0340,0330,0330,0310,0350,0334,0337,0330,0334,0336,0330,0330,0330,0330,0334,0337,0330,0334,0336,0330,0330,0334,0337,0330,0334,0336,0330,0330,0330,0330,0334,0337,0330,0334,0336,0304,0313,0330,0330,0341,0330,0334,0333,0333,0337,0337,0337,
+01120:0340,0330,0335,0336,0330,0335,0330,0335,0330,0335,0331,0341,0333,0336,0333,0337,0337,
+01121:0340,0330,0335,0336,0330,0335,0330,0330,0335,0330,0335,0333,0350,0334,0336,0330,0331,0335,0335,0335,0335,0330,0331,0334,0334,0334,0304,0341,0333,0337,0337,
+01122:0330,0335,0336,0330,0335,0330,0335,0330,0334,0350,0334,0310,0337,0330,0334,0336,0304,0313,0336,0341,0330,0340,0334,0337,0337,
+01123:0336,0336,0336,0330,0331,0335,0337,0330,0330,0334,0330,0330,0334,0330,0330,0335,0330,0330,0335,0330,0330,0335,0336,0330,0335,0335,0330,0337,0337,0341,0331,0331,0336,0333,0340,0337,0337,
+01124:0341,0330,0335,0336,0340,0330,0336,0331,0335,0337,0337,0340,0330,0335,0335,0336,0336,0341,0333,0333,0337,0337,0340,
+01125:0341,0336,0336,0336,0333,0350,0334,0310,0337,0340,0330,0335,0336,0330,0330,0330,0330,0330,0330,0330,0331,0331,0331,0331,0331,0331,0331,0334,0337,0331,0335,0335,0335,0336,0330,0330,0334,0337,0330,0334,0336,0330,0330,0330,0330,0330,0330,0330,0331,0331,0331,0331,0331,0331,0331,0331,0304,0313,0341,0333,0333,0340,0337,0337,0337,
+01126:0336,0336,0333,0337,0337,0350,0350,0334,0330,0331,0335,0335,0330,0331,0334,0304,0336,0341,0333,0336,0336,0333,0337,0337,0337,0340,
+01127:0336,0336,0341,0333,0337,0340,0337,0350,0350,0334,0330,0331,0335,0335,0330,0331,0334,0304,0336,0341,0333,0336,0336,0336,0332,0332,0332,0332,0337,0337,0337,0333,0337,0350,0350,0334,0340,0330,0331,0335,0335,0330,0331,0334,0304,0336,0341,0333,0336,0336,0333,0337,0337,0337,0340,
+01130:0350,0350,0335,0340,0330,0331,0334,0304,0336,0341,0333,0336,0336,0336,0332,0332,0337,0337,0337,0337,0350,0350,0334,0340,0330,0331,0335,0304,0336,0336,0341,0333,0340,0337,0337,
+01131:0336,0336,0341,0333,0337,0340,0330,0310,0350,0334,0337,0330,0331,0335,0335,0330,0331,0334,0304,0336,0313,0331,0341,0333,0336,0333,0337,0337,0340,
+01132:0336,0340,0333,0332,0335,0306,0334,0330,0330,0334,0334,0330,0331,0335,0335,0331,0331,0335,0330,0304,0334,0336,0341,0333,0340,0337,0337,
 01300:0333,0200,0336,0341,0330,0332,0336,0304,0350,0335,0330,0340,0330,0331,0341,0331,0331,0331,0340,0330,0341,0330,0335,0335,0330,0340,0330,0341,0331,0331,0331,0331,0340,0330,0341,0330,0334,0304,0334,0336,0336,0332,0340,0343,0343,0343,0343,0341,0333,0337,0337,0337,0333,0331,0337,
 01304:0333,0200,0341,0336,0332,0334,0340,0343,0343,0343,0343,0341,0333,0340,0330,0331,0335,0330,0331,0335,0330,0331,0335,0335,0335,0335,0335,0330,0331,0350,0335,0336,0341,0330,0304,0336,0330,0335,0340,0343,0343,0343,0343,0341,0333,0333,0333,0333,0340,0343,0343,0343,0343,0341,0332,0330,0330,0333,0340,0342,0342,0342,0342,0341,0332,0331,0331,0331,0331,0333,0340,0342,0342,0342,0342,0341,0332,0330,0330,0350,0335,0304,0337,0337,0341,0333,0331,0337,
 01305:0333,0200,0336,0341,0332,0334,0340,0343,0343,0343,0343,0341,0333,0335,0340,0305,0340,0330,0331,0335,0330,0331,0335,0330,0331,0335,0330,0331,0335,0330,0331,0350,0335,0336,0341,0330,0336,0304,0330,0341,0335,0340,0343,0343,0343,0343,0341,0333,0333,0333,0334,0340,0305,0350,0335,0335,0304,0341,0330,0330,0330,0335,0340,0343,0343,0343,0343,0341,0333,0333,0333,0334,0305,0350,0335,0335,0341,0330,0330,0330,0304,0335,0340,0343,0343,0343,0343,0341,0333,0333,0333,0334,0305,0350,0335,0335,0330,0330,0330,0304,0335,0340,0343,0343,0343,0343,0341,0333,0333,0333,0334,0305,0350,0335,0335,0330,0330,0330,0304,0335,0340,0343,0343,0343,0343,0341,0333,0333,0333,0334,0337,0337,0305,0350,0335,0335,0335,0304,0333,0331,0337,
@@ -193,6 +229,20 @@ LAWS OF GEOMETRON:
 01037:0333,0200,0336,0332,0330,0336,0332,0362,0335,0335,0203,0335,0350,0335,0310,0337,0203,0335,0335,0203,0335,0335,0335,0336,0203,0364,0335,0335,0330,0334,0335,0331,0331,0331,0331,0334,0337,0362,0203,0335,0335,0335,0336,0203,0203,0335,0335,0335,0337,0203,0364,0331,0335,0336,0304,0313,0333,0331,0337,0332,0335,0335,0337,0331,
 01036:0333,0200,0336,0332,0330,0336,0332,0362,0203,0335,0350,0335,0310,0337,0203,0335,0335,0203,0335,0335,0335,0336,0203,0364,0335,0335,0330,0334,0337,0362,0203,0335,0335,0335,0336,0203,0203,0335,0335,0335,0337,0203,0364,0331,0335,0336,0304,0313,0333,0331,0337,0337,
 0200:0340,0330,0332,0331,0333,
+0211:0341,0332,0332,0332,0332,0336,0332,0332,0330,0330,0330,0350,0350,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0335,0304,01101,01102,01103,01104,01105,01106,01107,01110,01111,01112,01113,01114,01115,01116,01117,01120,01121,01122,01123,01124,01125,01126,01127,01130,01131,01132,
+0212:0341,0333,0333,0332,0332,0332,0332,0332,0332,0330,0332,01115,01105,01124,01101,01104,01125,01115,01120,0250,0250,0340,01123,01124,01105,01122,0341,0333,0333,
+0210:0350,0340,0330,0335,0330,0335,0330,0335,0330,0335,0330,0335,0330,0335,0330,0335,0330,0335,0304,0310,0336,0333,0337,0330,0336,0332,0333,0330,0331,0337,0333,0336,0330,0331,0333,0332,0337,0331,0336,0333,0332,0331,0330,0337,0332,0336,0331,0330,0332,0341,
+0220:0340,0333,0336,0336,0330,0337,0337,0332,0336,0336,0330,0337,0337,0333,0336,0336,0330,0337,0337,0332,0336,0336,0330,0337,0337,0333,
+0221:0333,0336,0336,0336,0340,0330,0337,0337,0337,0332,0336,0336,0336,0330,0337,0337,0337,
+0222:0221,0221,0221,0221,0333,
+0223:0340,0333,0336,0336,0336,0336,0330,0337,0337,0337,0337,0332,0336,0336,0336,0336,0330,0337,0337,0337,0337,
+0224:0223,0223,0223,0223,0223,0223,0223,0223,0333,
+0225:0340,0333,0336,0336,0336,0336,0336,0330,0337,0337,0337,0337,0337,0332,0336,0336,0336,0336,0336,0330,0337,0337,0337,0337,0337,
+0226:0225,0225,0225,0225,0225,0225,0225,0225,0225,0225,0225,0225,0225,0225,0225,0225,0333,
+0213:0220,0333,0331,0222,0333,0331,0224,0333,0331,0226,
+0227:0213,0335,0213,0335,0213,0335,0213,0335,
+0214:0227,0337,0333,0341,0331,0336,0336,0330,0227,
+
 */
 </script>
 
@@ -826,6 +876,267 @@ doTheThing(07);//initialize Geometron global variables
 <div id = "data0405" class = "text" style = "display:none;">
 <ul id = "codeList0405">
 <li>
+
+    /*
+    GEOMETRON:
+    EVERYTHING IS PHYSICAL
+    EVERYTHING IS FRACTAL
+    EVERYTHING IS RECURSIVE
+    NO MONEY 
+    NO MINING
+    NO PROPERTY
+    [EGO DEATH]
+    LOOK TO THE FUNGI
+    LOOK TO THE INSECTS
+    LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY
+    
+    PROCESSING SIMULATOR OF ARDUINO FOR TRASH PRINTER
+    TRASHNET
+    METADUMPSTER
+    
+    */
+    
+    float x,y,x0,y0,xold,yold;
+    int xmotorIndex = 0;
+    int ymotorIndex = 0;
+    int[] xpins = {4,5,6,7};
+    int[] ypins = {8,9,10,11};
+    float side;
+    float scaleFactor, unit;
+    float theta,theta0,thetaStep;
+    float phi = 0.5*(sqrt(5) + 1);
+    boolean penDown = false;
+    
+    void setup(){
+      
+      ellipseMode(CENTER);
+      noFill();
+      strokeWeight(1);
+      unit = 75;
+      scaleFactor = 2;
+      side = 100;
+      thetaStep = PI/2;
+      theta0 = -PI/2; 
+      theta = theta0;
+      size(500,500);
+      x0 = 250;
+      y0 = 250;
+      x = x0;
+      y = y0;
+    
+    
+    }
+    
+    void draw(){    
+        background(255); 
+        drawGlyph("0300,0340,0350,0335,0330,0335,0330,0335,0330,0335,0330,0335,0330,0335,0330,0335,0330,0335,0330");
+    //    taxicab(200,200,300,300);
+        noLoop();
+    }
+    
+    
+    void drawGlyph(String localGlyph){
+      String[] glyphArray = split(localGlyph,",");
+      for(int index = 0;index < glyphArray.length;index++){
+        int tempAddress = (int(glyphArray[index].charAt(1))- 060)*64 + (int(glyphArray[index].charAt(2))  - 060)*8 + int(glyphArray[index].charAt(3)) - 060;
+        doTheThing(tempAddress);  
+      }  
+      
+    }
+    
+    void taxicab(float startx,float starty,float stopx,float stopy){
+       line(startx,starty,stopx,starty); //move x motor round(deltax) steps, deltax = x-xold
+       int xsteps = round(abs(stopx - startx));
+       for(int step =0;step < xsteps;step++){
+           if(stopx > startx){
+             xplus();
+           }
+           if(stopx < startx){
+             xminus();
+           }
+       }
+       
+       
+       line(stopx,starty,stopx,stopy);//move y motor round(deltay)steps, where deltay = y-yold
+       int ysteps = round(abs(stopy - starty));
+       for(int step =0;step < ysteps;step++){
+           if(stopy > starty){
+             yplus();
+           }
+           if(stopy < starty){
+             yminus();
+           }
+       }
+    
+    }
+    
+    
+    void xplus(){//one step up in x 
+      int localPin = 13;
+      int localTime = 10;
+    //  digitalWrite(localPin,HIGH);
+    //  delay(localTime)
+    //  digitalWrite(localPin,LOW);
+      
+    }
+    void xminus(){//one step down in x
+      int localPin = 13;//pin gets selected based on stepper or DC motor
+      int localTime = 10;// this is always some contsant for any given hardware config
+    //  digitalWrite(localPin,HIGH);
+    //  delay(localTime)
+    //  digitalWrite(localPin,LOW);
+    
+    }
+    void yplus(){//one step up in y
+      int localPin = 13;
+      int localTime = 10;
+    //  digitalWrite(localPin,HIGH);
+    //  delay(localTime)
+    //  digitalWrite(localPin,LOW);
+    
+    }
+    void yminus(){//one step down in y
+      int localPin = 13;
+      int localTime = 10;
+    //  digitalWrite(localPin,HIGH);
+    //  delay(localTime)
+    //  digitalWrite(localPin,LOW);
+    
+    }
+    
+    void doTheThing(int localCommand){
+        
+        //geometric native action commands
+        if(localCommand == 0300){
+          x = x0;
+          y = y0;
+          theta = theta0;
+          side = unit;
+          thetaStep = PI/2;
+          scaleFactor = 2;
+        }
+        if(localCommand == 0304){
+          thetaStep = PI/2;
+        }
+        if(localCommand == 0305){
+          thetaStep = 2*PI/5;
+        }
+        if(localCommand == 0306){
+          thetaStep = PI/3;
+        }    
+        if(localCommand == 0310){
+           scaleFactor = sqrt(2); 
+        }
+        if(localCommand == 0311){
+           scaleFactor = phi; //"golden" ratio 
+        }
+        if(localCommand == 0312){
+           scaleFactor = sqrt(3); 
+        }
+        if(localCommand == 0313){
+          scaleFactor = 2;  //2x
+        }
+        if(localCommand == 0314){
+          scaleFactor = 3;  //3x
+        }
+        if(localCommand == 0315){
+          scaleFactor = 5;  //3x
+        }
+        
+        if(localCommand == 0330){
+          xold = x;
+          yold = y;
+          for(int index = 1;index <= int(side);index++){
+              x = x + cos(theta)*float(index)/side;
+              y = y + sin(theta)*float(index)/side;
+              if(penDown){
+                taxicab(xold,yold,x,y); 
+              }
+              xold = x;
+              yold = y;
+           }
+        }
+        if(localCommand == 0331){
+          xold = x;
+          yold = y;
+          for(int index = 1;index <= int(side);index++){
+              x = x - cos(theta)*float(index)/side;
+              y = y - sin(theta)*float(index)/side;
+              if(penDown){
+                  taxicab(xold,yold,x,y); 
+              }
+              xold = x;
+              yold = y;
+           }      
+        }
+        if(localCommand == 0332){
+          xold = x;
+          yold = y;
+          for(int index = 1;index <= int(side);index++){
+              x = x + cos(theta - thetaStep)*float(index)/side;
+              y = y + sin(theta - thetaStep)*float(index)/side;
+              if(penDown){
+                taxicab(xold,yold,x,y); 
+              }
+              xold = x;
+              yold = y;
+           }
+          
+        }
+        if(localCommand == 0333){
+          xold = x;
+          yold = y;
+          for(int index = 1;index <= int(side);index++){
+              x = x + cos(theta + thetaStep)*float(index)/side;
+              y = y + sin(theta + thetaStep)*float(index)/side;
+              if(penDown){
+                taxicab(xold,yold,x,y); 
+              }
+              xold = x;
+              yold = y;
+           }
+        }
+        if(localCommand == 0334){
+          theta -= thetaStep; // CCW
+        }
+        if(localCommand == 0335){
+          theta += thetaStep; // CW
+        }
+        if(localCommand == 0336){
+          side /= scaleFactor; // -
+        }
+        if(localCommand == 0337){
+          side *= scaleFactor; // +
+        }
+        if(localCommand == 0340){
+          penDown = true;
+        }
+        if(localCommand == 0341){
+          penDown = false;      
+        }
+        if(localCommand == 0342){
+          //arc left
+          
+        }
+        if(localCommand == 0343){
+          //arc right
+        }
+        if(localCommand == 0350){
+          thetaStep /= 2;  //angle/2
+        }
+        if(localCommand == 0351){
+          thetaStep *= 2;  //2angle
+        }
+        if(localCommand == 0352){
+          thetaStep /= 3; //angle/3
+        }
+        if(localCommand == 0353){
+          thetaStep *= 3; //3angle
+        }
+    
+    }
+</li>
+    <li>
 int a,b,c,d;
 int pwmLevel = 255;
 int deltat = 10;
@@ -901,6 +1212,287 @@ void loop() {
     
 }
 </li>
+<li>
+        int x1,x2,x3,x4;
+        bool b1,b2,b3,b4;
+        int threshold = 25;
+        
+        void setup()
+        {
+          Serial.begin(115200);
+          pinMode(10, OUTPUT);
+          pinMode(11, OUTPUT);
+          pinMode(12, OUTPUT);
+          pinMode(13, OUTPUT);
+          b1 = false;
+          b2 = false;
+          b3 = false;
+          b4 = false;
+          
+          
+        }
+        
+        void loop()
+        {
+        
+          x1 = 1023 - analogRead(A0);
+          if(x1 > threshold){
+            b1 = true;
+          }
+          else{
+            b1 = false;
+          }
+          x2 = 1023 - analogRead(A1);
+          if(x2 > threshold){
+            b2 = true;
+          }
+          else{
+            b2 = false;
+          }
+          x3 = 1023 - analogRead(A2);      
+          if(x3 > threshold){
+            b3 = true;
+          }
+          else{
+            b3 = false;
+          }
+          x4 = 1023 - analogRead(A3);
+          if(x4 > threshold){
+            b4 = true;
+          }
+          else{
+            b4 = false;
+          }
+          if(!b1 && !b2 && !b3 && !b4){//if all 4 inputs are low, make all outputs low
+            digitalWrite(11,LOW);
+            digitalWrite(12,LOW);
+            digitalWrite(13,LOW);
+            digitalWrite(10,LOW);    
+          }
+          if(b1 && !b2 && !b3 && !b4){
+            digitalWrite(11,LOW);
+            digitalWrite(12,LOW);
+            digitalWrite(13,LOW);
+            digitalWrite(10,HIGH);
+          }
+          if(!b1 && b2 && !b3 && !b4){
+            digitalWrite(10,LOW);
+            digitalWrite(12,LOW);
+            digitalWrite(13,LOW);
+            digitalWrite(11,HIGH);
+          }
+          if(!b1 && !b2 && b3 && !b4){
+            digitalWrite(10,LOW);
+            digitalWrite(11,LOW);
+            digitalWrite(13,LOW);
+            digitalWrite(12,HIGH);
+          }
+          if(!b1 && !b2 && !b3 && b4){
+            digitalWrite(10,LOW);
+            digitalWrite(11,LOW);
+            digitalWrite(12,LOW);
+            digitalWrite(13,HIGH);
+          }
+        
+          
+          Serial.print(x1);
+          Serial.print(",");
+          Serial.print(x2);
+          Serial.print(",");
+          Serial.print(x3);   
+          Serial.print(",");
+          Serial.println(x4);
+        
+        }        
+</li>
+<li>
+int deltat = 20;
+bool buttonin;
+
+void setup() {
+    pinMode(8,OUTPUT);
+    pinMode(9,OUTPUT);
+    pinMode(10,OUTPUT);
+    pinMode(11,OUTPUT);
+    pinMode(2,INPUT);
+    
+}
+
+void loop() {
+
+    buttonin = digitalRead(2);
+
+    if(buttonin){
+        digitalWrite(8,HIGH);
+        delay(deltat);
+        digitalWrite(8,LOW);
+        digitalWrite(10,HIGH);
+        delay(deltat);
+        digitalWrite(10,LOW);
+        digitalWrite(9,HIGH);
+        delay(deltat);
+        digitalWrite(9,LOW);
+        digitalWrite(11,HIGH);
+        delay(deltat);
+        digitalWrite(11,LOW);
+    }
+    else{
+        digitalWrite(8,LOW);
+        digitalWrite(9,LOW);
+        digitalWrite(10,LOW);
+        digitalWrite(11,LOW);  
+    }  
+}
+</li>
+<li>
+
+//EVERYTHING IS PHYSICAL
+//EVERYTHING IS ALWAYS RECURSIVE
+//everything is fractal
+//NO LAWS NO PROPERTY NO MINING NO NUMBERS
+//THE SOLE PURPOSE OF THE EXISTING SOFTWARE INDUSTRY IS TO CREATE AND MAINTAIN STRUCTURAL VIOLENCE
+//ALL COMPUTER "SCIENCE" IS AN EVIL RELIGION
+//ALL "TECH" COMPANIES ARE BASED ON FRAUD AND LIES
+//SMASH THE TECHNOCRATIC PRIESTHOOD
+
+float x,y,x0,y0;
+float side;
+float scaleFactor, unit;
+float theta,theta0,thetaStep;
+float phi = 0.5*(sqrt(5) + 1);
+
+void setup(){
+  
+  ellipseMode(CENTER);
+  noFill();
+  strokeWeight(1);
+  unit = 75;
+  scaleFactor = 2;
+  side = 50;
+  thetaStep = PI/2;
+  theta0 = -PI/2; 
+  theta = theta0;
+  size(500,500);
+  x0 = 250;
+  y0 = 250;
+  x = x0;
+  y = y0;
+
+
+}
+
+void draw(){    
+    background(255); 
+    drawGlyph("0300,0336,0341,0332,0341,0336,0341,0340,0332,0341");
+    noLoop();
+}
+
+
+void drawGlyph(String localGlyph){
+  String[] glyphArray = split(localGlyph,",");
+  for(int index = 0;index < glyphArray.length;index++){
+    int tempAddress = (int(glyphArray[index].charAt(1))- 060)*64 + (int(glyphArray[index].charAt(2))  - 060)*8 + int(glyphArray[index].charAt(3)) - 060;
+    doTheThing(tempAddress);  
+  }  
+  
+}
+
+void doTheThing(int localCommand){
+    
+    //geometric native action commands
+    if(localCommand == 0300){
+      x = x0;
+      y = y0;
+      theta = theta0;
+      side = unit;
+      thetaStep = PI/2;
+      scaleFactor = 2;
+    }
+    if(localCommand == 0304){
+      thetaStep = PI/2;
+    }
+    if(localCommand == 0305){
+      thetaStep = 2*PI/5;
+    }
+    if(localCommand == 0306){
+      thetaStep = PI/3;
+    }    
+    if(localCommand == 0310){
+       scaleFactor = sqrt(2); 
+    }
+    if(localCommand == 0311){
+       scaleFactor = phi; //"golden" ratio 
+    }
+    if(localCommand == 0312){
+       scaleFactor = sqrt(3); 
+    }
+    if(localCommand == 0313){
+      scaleFactor = 2;  //2x
+    }
+    if(localCommand == 0314){
+      scaleFactor = 3;  //3x
+    }
+    if(localCommand == 0315){
+      scaleFactor = 5;  //3x
+    }
+    
+    if(localCommand == 0330){
+      x += side*cos(theta);   
+      y += side*sin(theta); 
+    }
+    if(localCommand == 0331){
+      x -= side*cos(theta);   
+      y -= side*sin(theta); 
+    }
+    if(localCommand == 0332){
+      x += side*cos(theta - thetaStep);
+      y += side*sin(theta - thetaStep);
+    }
+    if(localCommand == 0333){
+      x += side*cos(theta + thetaStep);
+      y += side*sin(theta + thetaStep);
+    }
+    if(localCommand == 0334){
+      theta -= thetaStep; // CCW
+    }
+    if(localCommand == 0335){
+      theta += thetaStep; // CW
+    }
+    if(localCommand == 0336){
+      side /= scaleFactor; // -
+    }
+    if(localCommand == 0337){
+      side *= scaleFactor; // +
+    }
+    if(localCommand == 0340){
+      strokeWeight(5);
+      point(x,y);
+      strokeWeight(1);//point
+    }
+    if(localCommand == 0341){
+      ellipse(x,y,2*side,2*side);//circle
+    }
+    if(localCommand == 0342){
+      line(x,y,x + side*cos(theta),y + side*sin(theta));//line
+    }
+    if(localCommand == 0343){
+        arc(x,y,2*side,2*side,theta - thetaStep,theta + thetaStep);//arc
+    }
+    if(localCommand == 0350){
+      thetaStep /= 2;  //angle/2
+    }
+    if(localCommand == 0351){
+      thetaStep *= 2;  //2angle
+    }
+    if(localCommand == 0352){
+      thetaStep /= 3; //angle/3
+    }
+    if(localCommand == 0353){
+      thetaStep *= 3; //3angle
+    }
+
+}
+</li>
 </ul>
 </div>
 <!--</page0405>-->
@@ -916,14 +1508,42 @@ void loop() {
 <div class = "page" id = "div0601">
     <div class  = "title">Printer</div>
     <canvas id = "canvas0601" class = "canvas06xx"></canvas>
+    <div id = "scroll0601"></div>
 </div>
 <!--</page0601>-->
 <!--<page0605>-->
 <div class = "page" id = "div0605">
     <div class  = "title">Arduino Code</div>
     <div id = "editor0605"></div>    
+    <table id = "control0605" class = "control06xx">
+            <tr>            
+                <td>Index:</td><td><input></input></td>
+            </tr>      
+            <tr class = "viewButt">
+                <td>PREV</td><td>PROGRAM</td>
+            </tr>        
+            <tr class = "viewButt">
+                <td>NEXT</td><td>PROGRAM</td>
+            </tr>    
+            <tr class = "viewButt">
+                <td>NEW</td><td>PROGRAM</td>
+            </tr>
+            <tr class = "viewButt">
+                <td>SAVE</td><td>PROGRAM(S)</td>
+            </tr>
+            <tr class = "viewButt">
+                <td>LOAD</td><td>PROGRAM(S)</td>
+            </tr>
+            <tr class = "viewButt">
+                <td>IMPORT</td><td>BYTECODE</td>
+            </tr>     
+            <tr class = "viewButt">
+                <td>EXPORT</td><td>BYTECODE</td>
+            </tr>    
+        </table>
+        <textarea id = "textIO0605" class = "textIO06xxleft"></textarea>
 </div>
-<!--</page0601>-->
+<!--</page0605>-->
 <!--<page0615>-->
 <div class = "page" id = "div0615">
     <div class  = "title">Scroll</div>
@@ -964,6 +1584,9 @@ void loop() {
         </tr>
         <tr class = "viewButt" >
             <td>BYTECODE</td><td>IMPORT</td>
+        </tr>
+        <tr class = "viewButt">
+            <td>DUINO BYTECODE</td><td>EXPORT</td>
         </tr>
     </table>
     <canvas id = "canvas0630" class = "canvas06xx"></canvas>
@@ -1046,13 +1669,99 @@ for(var index = 0;index < viewButts.length;index++){
 <!--</page0700>-->
 <!--<page0705>-->
 <script>
-
+programIndex = 0;
 codeList0405 = document.getElementById("codeList0405").getElementsByTagName("LI");
 editor0605 = ace.edit("editor0605");
 editor0605.setTheme("ace/theme/cobalt");
 editor0605.getSession().setMode("ace/mode/java");
 editor0605.$blockScrolling = Infinity;
-editor0605.setValue(codeList0405[0].innerHTML);
+editor0605.setValue(codeList0405[programIndex].innerHTML);
+buttons0605 = document.getElementById("control0605").getElementsByClassName("viewButt");
+inputs0605 = document.getElementById("control0605").getElementsByTagName("INPUT");
+inputs0605[0].value = programIndex.toString();
+
+document.getElementById("editor0605").onkeyup = function(){
+    codeList0405[programIndex].innerHTML = editor0605.getValue();
+}
+
+inputs0605[0].onchange = function(){
+    programIndex = parseInt(this.value);
+    editor0605.setValue(codeList0405[programIndex].innerHTML);    
+}
+
+buttons0605[0].onclick = function(){
+    programIndex--;
+    if(programIndex < 0){
+        programIndex = codeList0405.length - 1;
+    }
+    editor0605.setValue(codeList0405[programIndex].innerHTML);
+    inputs0605[0].value = programIndex.toString();
+}
+
+buttons0605[1].onclick = function(){
+    programIndex++;
+    if(programIndex > codeList0405.length - 1){
+        programIndex = 0;
+    }
+    editor0605.setValue(codeList0405[programIndex].innerHTML);
+    inputs0605[0].value = programIndex.toString();
+}
+
+buttons0605[2].onclick = function(){
+    var newli = document.createElement("LI");
+    newli.innerHTML = "void setup() {\n// put your setup code here, to run once:\n}\nvoid loop() {\n}\n";
+    document.getElementById("codeList0405").appendChild(newli);
+    codeList0405 = document.getElementById("codeList0405").getElementsByTagName("LI");
+    programIndex = codeList0405.length - 1;
+    editor0605.setValue(codeList0405[programIndex].innerHTML);
+    inputs0605[0].value = programIndex.toString();
+}
+
+buttons0605[3].onclick = function(){//SAVE data
+    callPHP();
+}
+
+buttons0605[4].onclick = function(){//LOAD data
+    callPHPload();
+}
+
+buttons0605[5].onclick = function(){//import bytecode
+    var instring = document.getElementById("textIO0605").value;
+    document.getElementById("data0405").innerHTML = byteCode2string(instring.split(":")[1]);
+    codeList0405 = document.getElementById("codeList0405").getElementsByTagName("LI");
+    editor0605.setValue(codeList0405[programIndex].innerHTML);
+}
+
+
+buttons0605[6].onclick = function(){//export bytecode    
+    document.getElementById("textIO0605").value = "0405:" + string2byteCode(document.getElementById("data0405").innerHTML);
+}
+
+
+function callPHP() {
+    var httpc = new XMLHttpRequest();
+    var url = "saver.php";
+    var duinodata = document.getElementById("data0405").innerHTML;
+    outdata = "0405:" + string2byteCode(duinodata);
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc.send("arduino=" + outdata);
+}
+
+function callPHPload(){
+    var httpc = new XMLHttpRequest();
+    httpc.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var instring = this.responseText;
+            document.getElementById("data0405").innerHTML = byteCode2string(instring.split(":")[1]);
+            codeList0405 = document.getElementById("codeList0405").getElementsByTagName("LI");
+            editor0605.setValue(codeList0405[programIndex].innerHTML);
+       }
+    };
+    httpc.open("GET", "arduino.txt", true);
+    httpc.send();
+}
+                
 
 
 </script>
@@ -1280,6 +1989,15 @@ buttons0630[5].onclick = function(){//import hypercube
 
 }
 
+buttons0630[6].onclick = function(){//export shapes into arduino format
+    var localString = "";
+    for(var index = 040;index < 0300;index++){
+        if(currentTable[index].length > 0){
+            localString += "shapes[0" + index.toString(8) + "] =  \"" + currentTable[index] + "\";\n";
+        }
+    }
+    document.getElementById("textIO0630").value = localString;
+}
 
 
 
@@ -1465,6 +2183,15 @@ pre{
     border:solid;
     z-index:3;
 }
+.textIO06xxleft{
+    position: absolute;
+    left:15px;
+    bottom:15px;
+    width:200px;
+    height:100px;
+    border:solid;
+    z-index:3;
+}
 
 .lefttable{
     width:30%;
@@ -1535,6 +2262,14 @@ pre{
 .img06xx{
     position:absolute;
 }    
+#scroll0601{
+    position:absolute;
+    left: 50px;
+    bottom:50px;
+    width:400px;
+    overflow:scroll;
+    
+}
 </style>
 <!--</page0501>-->
 <!--<page0505>-->
