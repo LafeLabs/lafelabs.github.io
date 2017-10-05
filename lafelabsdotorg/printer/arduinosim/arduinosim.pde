@@ -123,35 +123,68 @@ void taxicab(float startx,float starty,float stopx,float stopy){
 
 void xplus(){//one step up in x 
   int localPin = 13;
-  int localTime = 10;
+  int highTime = 10;//length of pulse set manually based on hardware
+  int lowTime = 10;//the pause after the pulse
 //  digitalWrite(localPin,HIGH);
-//  delay(localTime)
+//  delay(highTime)
 //  digitalWrite(localPin,LOW);
+//  delay(lowTime)
   
 }
 void xminus(){//one step down in x
   int localPin = 13;//pin gets selected based on stepper or DC motor
-  int localTime = 10;// this is always some contsant for any given hardware config
+  int highTime = 10;//length of pulse set manually based on hardware
+  int lowTime = 10;//the pause after the pulse
 //  digitalWrite(localPin,HIGH);
-//  delay(localTime)
+//  delay(highTime)
 //  digitalWrite(localPin,LOW);
+//  delay(lowTime)
 
 }
 void yplus(){//one step up in y
   int localPin = 13;
-  int localTime = 10;
+  int highTime = 10;//length of pulse set manually based on hardware
+  int lowTime = 10;//the pause after the pulse
 //  digitalWrite(localPin,HIGH);
-//  delay(localTime)
+//  delay(highTime)
 //  digitalWrite(localPin,LOW);
+//  delay(lowTime)
 
 }
 void yminus(){//one step down in y
   int localPin = 13;
-  int localTime = 10;
+  int highTime = 10;//length of pulse set manually based on hardware
+  int lowTime = 10;//the pause after the pulse
 //  digitalWrite(localPin,HIGH);
-//  delay(localTime)
+//  delay(highTime)
 //  digitalWrite(localPin,LOW);
+//  delay(lowTime)
 
+}
+
+void zplus(){//one step up in y
+  int localPin = 13;
+  int highTime = 10;//length of pulse set manually based on hardware
+  int lowTime = 10;//the pause after the pulse
+//  digitalWrite(localPin,HIGH);
+//  delay(highTime)
+//  digitalWrite(localPin,LOW);
+//  delay(lowTime)
+
+}
+void zminus(){//one step down in y
+  int localPin = 13;
+  int highTime = 10;//length of pulse set manually based on hardware
+  int lowTime = 10;//the pause after the pulse
+//  digitalWrite(localPin,HIGH);
+//  delay(highTime)
+//  digitalWrite(localPin,LOW);
+//  delay(lowTime)
+
+}
+void penUp(){
+}
+void penDown(){
 }
 
 void doTheThing(int localCommand){
