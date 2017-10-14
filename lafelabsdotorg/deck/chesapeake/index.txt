@@ -18,11 +18,12 @@ LAWS OF GEOMETRON:
 /CHESAPEAKEWATERSHED/
 /POTOMACCITY/
 /LAFELABS.ORG/
-/DECK/
+/deck/
+/chesapeake/
 -->
-    <title>/DECK/</title>
+    <title>/deck/chesapeake/</title>
 
-    <script src="qrcode.js"></script><!--https://davidshimjs.github.io/qrcodejs/-->
+   <!-- <script src="qrcode.js"></script>https://davidshimjs.github.io/qrcodejs/-->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>
     MathJax.Hub.Config({
@@ -334,7 +335,6 @@ LAWS OF GEOMETRON:
 01225:0333,0200,0332,0336,0330,0337,0225,0336,0331,0337,0337,0336,0333,
 01226:0333,0200,0332,0336,0330,0337,0226,0336,0331,0337,0337,0336,0333,
 01227:0333,0200,0332,0336,0330,0337,0227,0336,0331,0337,0337,0336,0333,
-01230:0333,0200,0336,0332,0332,0330,0336,0333,0337,0230,0313,0337,0337,0333,0331,0331,0336,0336,0333,0331,0337,0337,0337,0310,0337,0313,
 */
 </script>
 <!--<page02>-->
@@ -663,43 +663,12 @@ function doTheThing(localCommand){
     //arc
     ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
     ctx.stroke();
-
-    localString = "";
-    localString += "M";
-    var localInt = x + side*Math.cos(theta - thetaStep);
-    localString += localInt.toString();
-    localString += " ";
-    localInt = y + side*Math.sin(theta - thetaStep);
-    localString += localInt.toString();
-    currentSVG += localString;
-    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
-    localInt = x + side*Math.cos(theta + thetaStep);
-    localString += localInt.toString() + " ";
-    localInt = y + side*Math.sin(theta + thetaStep);
-    localString += localInt.toString();
-    currentSVG += localString;
-
     //</page0345>
     }
     if(localCommand == 0346){//<page0346>
     //arc, reverse direction
     ctx.arc(x, y, side, theta + thetaStep,theta - thetaStep,true);
     ctx.stroke();
-
-    localString = "";
-    localString += "M";
-    var localInt = x + side*Math.cos(theta - thetaStep);
-    localString += localInt.toString();
-    localString += " ";
-    localInt = y + side*Math.sin(theta - thetaStep);
-    localString += localInt.toString();
-    currentSVG += localString;
-    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
-    localInt = x + side*Math.cos(theta + thetaStep);
-    localString += localInt.toString() + " ";
-    localInt = y + side*Math.sin(theta + thetaStep);
-    localString += localInt.toString();
-    currentSVG += localString;
     //</page0346>
     }
     if(localCommand == 0347){//<page0347>
@@ -759,7 +728,7 @@ function doTheThing(localCommand){
     ctx.closePath();
     ctx.stroke();		
     ctx.fill();		
-    currentSVG += "Z\""+ " stroke = \"" + currentStroke + "\" stroke-width = \"2\" fill = \"" + currentFill + "\" "+"/>";
+    currentSVG += "Z\""+ " stroke = \"" + currentStroke + "\" stroke-width = \"2\" fill = \"none\" "+"/>";
     //</page0363>
     }
     if(localCommand == 0364){//<page0364>
@@ -1095,46 +1064,11 @@ doTheThing(07);//initialize Geometron global variables
 ]
 </div>
 <!--</page0462>-->                
-<!--<page0466>-->   
-<div id = "data0466" class = "json" style = "display:none;">
-[
-    {
-        "type":"canvas",
-        "date":"October 13, 2017",
-        "shapes":[
-            "0220:0321,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0221:0322,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0222:0323,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0223:0324,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0224:0325,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0225:0326,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0226:0327,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,0304,0304,",
-            "0227:0336,0336,0336,0336,0333,0331,0337,0337,0337,0337,",
-            "0230:0220,0227,0221,0227,0222,0227,0223,0227,0224,0227,0225,0227,0226,0336,0336,0330,0330,0330,0333,0336,0310,0337,0331,0331,0331,0331,0336,0331,0337,0104,0105,0103,0113,0365,0330,0330,056,0117,0122,0107,0365,0330,0330,0114,0101,0102,0123,0365,0330,0330,0114,0101,0106,0105,0365,",
-            "01220:0333,0200,0332,0336,0330,0337,0220,0336,0331,0337,0337,0336,0333,",
-            "01221:0333,0200,0332,0336,0330,0337,0221,0336,0331,0337,0337,0336,0333,",
-            "01222:0333,0200,0332,0336,0330,0337,0222,0336,0331,0337,0337,0336,0333,",
-            "01223:0333,0200,0332,0336,0330,0337,0223,0336,0331,0337,0337,0336,0333,",
-            "01224:0333,0200,0332,0336,0330,0337,0224,0336,0331,0337,0337,0336,0333,",
-            "01225:0333,0200,0332,0336,0330,0337,0225,0336,0331,0337,0337,0336,0333,",
-            "01226:0333,0200,0332,0336,0330,0337,0226,0336,0331,0337,0337,0336,0333,",
-            "01227:0333,0200,0332,0336,0330,0337,0227,0336,0331,0337,0337,0336,0333,"
-        ],
-        "glyph":"0230,",
-        "w":400,
-        "h":400,
-        "x0":200,
-        "y0":200,
-        "unit":100
-    }
-]
-</div>        
-<!--<page0466>-->                
 <!--<page0600>-->
 <div class = "page coverpage" id = "div0600">
-    <h1 style = "text-align:center;width:100%">/DECK/</h1>        
+    <h1 style = "text-align:center;width:100%">/deck/chesapeake/</h1>        
     <img src = "QRCODE.png"></img>
-    <h1><a href = "http://www.lafelabs.org/deck/">http://www.lafelabs.org/deck/</a></h1>
+    <h1><a href = "http://www.lafelabs.org/deck/chesapeake/">http://www.lafelabs.org/deck/chesapeake/</a></h1>
     <ul>
         <li><a href = "index.txt">Raw text of this document</a></li>
         <li><a href = "http://www.lafelabs.org/deck/keyboard/">Keyboard</a><img src = "http://www.lafelabs.org/deck/keyboard/QRCODE.png" style = "width:50px;"></img></li>            
@@ -1163,7 +1097,7 @@ doTheThing(07);//initialize Geometron global variables
         <li>Shapes of Action Geometry</li>
         <li>Solenoids</li>
         <li>schematic builder</li>
-        <li><a href = "http://www.lafelabs.org/deck/chesapeake/">Chesapeake Watershed</a></li>
+        <li>Chesapeake Watershed</li>
         <li>Washington DC</li>
         <li>Penn Ave. NE</li>
         <li>Navy memorial</li>
@@ -1263,7 +1197,6 @@ doTheThing(07);//initialize Geometron global variables
 <!--</page0612>-->
 <!--<page0630>-->
 <div class = "page screenpage" id = "div0630">
-        <canvas id = "invisibleCanvas" style = "display:none"></canvas>
         
     <table id = "control0630" class = "control06xx">
         <tr>
@@ -1278,12 +1211,6 @@ doTheThing(07);//initialize Geometron global variables
         <tr>            
             <td>Stack:</td><td><input></input></td>
         </tr>           
-        <tr>            
-            <td>Width:</td><td><input></input></td>
-        </tr>           
-        <tr>            
-            <td>Height:</td><td><input></input></td>
-        </tr>               
         <tr class = "viewButt">
             <td>ACTION/</td><td>SYMBOL</td>
         </tr>        
@@ -1299,15 +1226,6 @@ doTheThing(07);//initialize Geometron global variables
         <tr class = "viewButt" >
             <td>LOAD</td><td>SHAPETABLE</td>
         </tr>                
-        <tr class = "viewButt" >
-            <td>EXPORT</td><td>SVG</td>
-        </tr>                    
-        <tr class = "viewButt" >
-            <td>EXPORT</td><td>JSON</td>
-        </tr>
-        <tr class = "viewButt" >
-            <td>PUSH TO</td><td>FEED</td>
-        </tr>    
     </table>
     <canvas id = "canvas0630" class = "canvas06xx"></canvas>
     <textarea id = "textIO0630" class = "textIO06xx"></textarea>
@@ -1326,14 +1244,7 @@ doTheThing(07);//initialize Geometron global variables
     <div class = "imageinputs">URL:<input></input>TEXT:<input></input><button id = "pushimage">PUSH IMAGE</button></div>
     <div class = "imagescroll" id = "imagestream"></div> 
 </div>
-<!--<page0662>-->                          
-<!--<page0666>-->
-<div class = "page screenpage" id = "div0666">
-    <div class = "feed">
-
-    </div>
-</div> 
-<!--</page0666>-->
+<!--<page0662>-->                                                     
 <!--<page0700>-->
 <script id = "script0700">
     pages = document.getElementsByClassName("page");
@@ -1771,19 +1682,11 @@ init0730();
 function init0730(){
     currentAddress = 0230;
     unit = 100;
-
-    width0630 = innerWidth-50;
-    height0630 = innerHeight-50;
-
-
     document.getElementById("canvas0630").width = innerWidth;
     document.getElementById("canvas0630").height = innerHeight;
     x0 = innerWidth/2;
     y0 = innerHeight/2;    
     inputs0630 = document.getElementById("control0630").getElementsByTagName("input");   
-    inputs0630[4].value = width0630;
-    inputs0630[5].value = height0630;
-
     buttons0630 = document.getElementById("control0630").getElementsByClassName("viewButt");
     currentGlyph = currentTable[currentAddress] + ",0207,";
     redraw0730();
@@ -1791,8 +1694,6 @@ function init0730(){
     function redraw0730(){
         ctx = document.getElementById("canvas0630").getContext("2d");
         ctx.clearRect(0,0,innerWidth,innerHeight);
-        doTheThing(0300);
-        ctx.strokeRect((innerWidth - width0630)/2,(innerHeight - height0630)/2,width0630,height0630)
         doTheThing(0300);
         drawGlyph(currentGlyph);
         doTheThing(0300);
@@ -1949,15 +1850,6 @@ function init0730(){
         redraw();
     }
     
-    inputs0630[4].onchange = function(){
-        width0630 = parseInt(this.value);
-        redraw0730();
-    }
-    inputs0630[5].onchange = function(){
-        height0630 = parseInt(this.value);
-        redraw0730();
-    }
-
     buttons0630[0].onclick = function(){//symbol/shape
         if(currentAddress < 01000){
             currentAddress += 01000;
@@ -2003,37 +1895,6 @@ function init0730(){
         loadPHP();
     }
     
-    buttons0630[5].onclick = function(){//Export SVG        
-        width0630 = parseInt(inputs0630[4].value);
-        height0630 = parseInt(inputs0630[5].value);
-        tempx0 = x0;
-        tempy0 = y0;
-
-        x0 -= 0.5*(innerWidth - width0630);
-        y0 -= 0.5*(innerHeight - height0630);
-        var fooGlyph = "";
-        var barArray = currentGlyph.split(",");
-        for(var index = 0;index < barArray.length;index++){
-            if(barArray[index] != "0207" && barArray[index].length > 0){
-                fooGlyph += barArray[index] + ",";
-            }
-        }
-        currentSVG = "<svg width=\"" + width0630.toString() + "\" height=\"" + height0630.toString() + "\" viewbox = \"0 0 " + width0630.toString() + " " + height0630.toString() + "\"  xmlns=\"http://www.w3.org/2000/svg\">\n";
-        currentSVG += "<!--" + fooGlyph + "-->";
-        ctx = document.getElementById("invisibleCanvas").getContext("2d");
-        doTheThing(0300);
-        drawGlyph(fooGlyph);
-        currentSVG += "</svg>";
-        document.getElementById("textIO0630").value = currentSVG;
-        x0 = tempx0;
-        y0 = tempy0;
-    }
-    buttons0630[6].onclick = function(){//Export JSON        
-        var jsonout = "";
-
-
-    }
-
     function savePHP() {
         var httpc = new XMLHttpRequest();
         var url = "saver.php";
@@ -2139,12 +2000,7 @@ pushimage.onclick = function(){
 
 </script>
 <!--</page0762>--> 
-<!--<page0766>-->  
-<script>
-    data0466 = JSON.parse(document.getElementById("data0466").innerHTML);
-
-</script>
-<!--</page0766>-->  
+                
 <!--<page0500>-->
 <style id = "style0500">
 html{
@@ -2350,21 +2206,7 @@ table{
 }
 </style>
 <!--</page0562>-->
-<!--<page0566>-->
-<style>
-    .feed{
-        overflow:scroll;
-        position:absolute;
-        left:5px;
-        right:5px;
-        bottom:5px;
-        top:50px;
-        border:solid;
-        border-color:red;
-        border-radius:10px;
-    }
-</style>
-<!--</page0566>-->
+                
 <!--<page05>-->
 </body>
 </html>
