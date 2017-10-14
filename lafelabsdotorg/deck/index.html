@@ -335,6 +335,10 @@ LAWS OF GEOMETRON:
 01226:0333,0200,0332,0336,0330,0337,0226,0336,0331,0337,0337,0336,0333,
 01227:0333,0200,0332,0336,0330,0337,0227,0336,0331,0337,0337,0336,0333,
 01230:0333,0200,0336,0332,0332,0330,0336,0333,0337,0230,0313,0337,0337,0333,0331,0331,0336,0336,0333,0331,0337,0337,0337,0310,0337,0313,
+0231:0336,0336,0362,0203,0203,0203,0310,0350,0335,0337,0203,0336,0335,0203,0203,0335,0337,0203,0335,0336,0203,0203,0203,0335,0337,0203,0335,0336,0203,0203,0335,0337,0203,0363,0336,0334,0304,0331,0347,0331,0331,0347,0333,0333,0333,0347,0330,0330,0347,0335,0331,0331,0320,0332,0201,0201,0333,0350,0334,0343,0335,0330,0335,0335,0201,0201,0335,0333,0334,0334,0343,0335,0330,0335,0335,0201,0201,0201,0335,0333,0334,0334,0343,0335,0330,0335,0335,0201,0201,0335,0333,0334,0334,0343,0335,0330,0335,0335,0201,0304,0331,0333,0333,0332,0332,0313,0337,0337,0336,0336,0336,0333,0331,0337,0337,0337,
+0232:0332,0235,0321,0231,0322,0231,0323,0231,0324,0231,0325,0231,0326,0231,0327,0231,0336,0330,0336,0330,0336,01114,01101,01106,01105,01114,01101,01102,01123,0331,0331,0332,0332,0332,0332,0332,0332,01056,01117,01122,01107,0331,0331,0332,0332,0332,0332,01057,01144,01145,01143,01153,01057,0332,0332,0332,0337,0332,0332,0332,0332,0337,0337,0337,
+01231:0333,0200,0336,0332,0332,0330,0336,0336,0336,0333,0333,0333,0331,0331,0337,0337,0337,0321,0231,0321,0231,0333,0336,0333,0331,0336,0332,0336,0333,0337,0337,0337,0337,
+01232:0333,0200,0336,0332,0330,0232,0333,0336,0331,0336,0330,0336,0336,0330,0332,0336,0333,0337,0337,0337,0337,0337,
 */
 </script>
 <!--<page02>-->
@@ -1037,6 +1041,7 @@ doTheThing(07);//initialize Geometron global variables
 <div id = "pageNumber"></div>        
 <button id = "backbutton" class = "navbutton">&#x25C5</button>
 <button id = "fwdbutton" class = "navbutton">&#x25BB</button> 
+
 <table id = "table0600">
         <tr>
             <td>030</td><td>031</td><td>032</td><td>033</td><td>036</td><td>037</td>  
@@ -1097,37 +1102,22 @@ doTheThing(07);//initialize Geometron global variables
 <!--</page0462>-->                
 <!--<page0466>-->   
 <div id = "data0466" class = "json" style = "display:none;">
-[
-    {
-        "type":"canvas",
-        "date":"October 13, 2017",
-        "shapes":[
-            "0220:0321,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0221:0322,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0222:0323,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0223:0324,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0224:0325,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0225:0326,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
-            "0226:0327,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,0304,0304,",
-            "0227:0336,0336,0336,0336,0333,0331,0337,0337,0337,0337,",
-            "0230:0220,0227,0221,0227,0222,0227,0223,0227,0224,0227,0225,0227,0226,0336,0336,0330,0330,0330,0333,0336,0310,0337,0331,0331,0331,0331,0336,0331,0337,0104,0105,0103,0113,0365,0330,0330,056,0117,0122,0107,0365,0330,0330,0114,0101,0102,0123,0365,0330,0330,0114,0101,0106,0105,0365,",
-            "01220:0333,0200,0332,0336,0330,0337,0220,0336,0331,0337,0337,0336,0333,",
-            "01221:0333,0200,0332,0336,0330,0337,0221,0336,0331,0337,0337,0336,0333,",
-            "01222:0333,0200,0332,0336,0330,0337,0222,0336,0331,0337,0337,0336,0333,",
-            "01223:0333,0200,0332,0336,0330,0337,0223,0336,0331,0337,0337,0336,0333,",
-            "01224:0333,0200,0332,0336,0330,0337,0224,0336,0331,0337,0337,0336,0333,",
-            "01225:0333,0200,0332,0336,0330,0337,0225,0336,0331,0337,0337,0336,0333,",
-            "01226:0333,0200,0332,0336,0330,0337,0226,0336,0331,0337,0337,0336,0333,",
-            "01227:0333,0200,0332,0336,0330,0337,0227,0336,0331,0337,0337,0336,0333,"
-        ],
-        "glyph":"0230,",
-        "w":400,
-        "h":400,
-        "x0":200,
-        "y0":200,
-        "unit":100
-    }
-]
+        [
+        {
+            "shapes":[
+            "0236:0341,0333,0341,0336,",
+            "0237:0235,0236,0236,0236,0236,0236,0236,0236,",
+            "01236:0333,0200,0336,0330,0332,0236,0331,0331,0337,0337,",
+            "01237:0333,0200,0336,0332,0330,0337,0336,0332,0330,0237,0337,0337,0337,0337,0337,0337,0337,0332,0331,0331,0333,0337,"
+            ],
+            "glyph":"0236,0236,0236,0236,0236,0236,0236,",
+            "w":500,
+            "h":500,
+            "x0":250,
+            "y0":250,
+            "unit":100
+        }
+        ]
 </div>        
 <!--<page0466>-->                
 <!--<page0600>-->
@@ -1306,7 +1296,7 @@ doTheThing(07);//initialize Geometron global variables
             <td>EXPORT</td><td>JSON</td>
         </tr>
         <tr class = "viewButt" >
-            <td>PUSH TO</td><td>FEED</td>
+            <td>PUSH</td><td>JSON</td>
         </tr>    
     </table>
     <canvas id = "canvas0630" class = "canvas06xx"></canvas>
@@ -1329,7 +1319,7 @@ doTheThing(07);//initialize Geometron global variables
 <!--<page0662>-->                          
 <!--<page0666>-->
 <div class = "page screenpage" id = "div0666">
-    <div class = "feed">
+    <div class = "feed" id = "feed0666">
 
     </div>
 </div> 
@@ -1482,10 +1472,8 @@ function makeqrs(){
 imageIndex0610 = 0;
 data0410 = JSON.parse(document.getElementById("data0410").innerHTML);
 
-init0710();
-
 buttons0610 = document.getElementById("control0610").getElementsByClassName("viewButt");
-
+init0710();
 function init0710(){
     currentAddress = 0260;
     for(var index = 0;index < 0100;index++){
@@ -1769,12 +1757,19 @@ document.getElementById("scroll0612").innerHTML = document.getElementById("data0
     
 init0730();
 function init0730(){
-    currentAddress = 0230;
+    currentAddress = 0232;
     unit = 100;
+
 
     width0630 = innerWidth-50;
     height0630 = innerHeight-50;
 
+    if(width0630 > 500){
+        width0630 = 500;
+    }
+    if(height0630 > 500){
+        height0630 = 500;
+    }
 
     document.getElementById("canvas0630").width = innerWidth;
     document.getElementById("canvas0630").height = innerHeight;
@@ -2029,9 +2024,91 @@ function init0730(){
         y0 = tempy0;
     }
     buttons0630[6].onclick = function(){//Export JSON        
-        var jsonout = "";
+        var jsonout = "{\n\"shapes\":[\n";
+        for(var index = 040;index < 01777;index++){
+            if(currentTableStart[index] != currentTable[index]){
+                jsonout += "    \"0" + index.toString(8) + ":" + currentTable[index] + "\",\n";
+            }
+        }
+        if(jsonout.substring(jsonout.length-2,jsonout.length) == ",\n"){
+            jsonout = jsonout.substring(0,jsonout.length - 2) + "\n";
+        }
+        jsonout += "],\n";
+        jsonout += "\"glyph\":\"";
+        var fooGlyph = "";
+        var barArray = currentGlyph.split(",");
+        for(var index = 0;index < barArray.length;index++){
+            if(barArray[index] != "0207" && barArray[index].length > 0){
+                fooGlyph += barArray[index] + ",";
+            }
+        }
+        jsonout += fooGlyph + "\",\n";
+        jsonout += "\"w\":" + inputs0630[4].value + ",\n";
+        jsonout += "\"h\":" + inputs0630[5].value + ",\n";
+        jsonout += "\"x0\":" + (x0 - 0.5*(innerWidth - width0630)).toString() + ",\n";
+        jsonout += "\"y0\":" + (y0 - 0.5*(innerHeight - height0630)).toString() + ",\n";
+        jsonout += "\"unit\":" + unit.toString() + "\n}\n";
+        document.getElementById("textIO0630").value = jsonout;
+
+    }
+    buttons0630[7].onclick = function(){//Push JSON        
+        jsonout = "{\n\"shapes\":[\n";
+        for(var index = 040;index < 01777;index++){
+            if(currentTableStart[index] != currentTable[index]){
+                jsonout += "    \"0" + index.toString(8) + ":" + currentTable[index] + "\",\n";
+            }
+        }
+        if(jsonout.substring(jsonout.length-2,jsonout.length) == ",\n"){
+            jsonout = jsonout.substring(0,jsonout.length - 2) + "\n";
+        }
+        jsonout += "],\n";
+        jsonout += "\"glyph\":\"";
+        var fooGlyph = "";
+        var barArray = currentGlyph.split(",");
+        for(var index = 0;index < barArray.length;index++){
+            if(barArray[index] != "0207" && barArray[index].length > 0){
+                fooGlyph += barArray[index] + ",";
+            }
+        }
+        jsonout += fooGlyph + "\",\n";
+        jsonout += "\"w\":" + inputs0630[4].value + ",\n";
+        jsonout += "\"h\":" + inputs0630[5].value + ",\n";
+        jsonout += "\"x0\":" + (x0 - 0.5*(innerWidth - width0630)).toString() + ",\n";
+        jsonout += "\"y0\":" + (y0 - 0.5*(innerHeight - height0630)).toString() + ",\n";
+        jsonout += "\"unit\":" + unit.toString() + "\n}";
+        var jsonoutjson = JSON.parse(jsonout);
+        data0466.push(jsonoutjson);
+
+        var newp  = document.createElement("P");
+        document.getElementById("feed0666").appendChild(newp);            
+        var newcan  = document.createElement("CANVAS");
+        newcan.width = data0466[data0466.length - 1].w;
+        newcan.height = data0466[data0466.length - 1].h;
+        newcan.style.border = "solid";
+        document.getElementById("feed0666").appendChild(newcan);
+        ctx = newcan.getContext("2d");
+        ctx.clearRect(0,0,data0466[data0466.length - 1].w,data0466[data0466.length - 1].h);
+        x0temp = x0;
+        y0temp = y0;
+        unittemp = unit;
+        x0 = data0466[data0466.length - 1].x0;
+        y0 = data0466[data0466.length - 1].y0;
+        unit = data0466[data0466.length - 1].unit;
+        doTheThing(0300);
+        drawGlyph(data0466[data0466.length - 1].glyph);
+        savePHPdata0466();
+        x0 = x0temp;
+        y0 = y0temp;
+        unit = unittemp;
+    }
 
 
+    function savePHPdata0466() {
+        var httpc = new XMLHttpRequest();
+        var url = "saver0466.php";        
+        httpc.open("POST", url, true);
+        httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        httpc.send("data0466=" + jsonout);
     }
 
     function savePHP() {
@@ -2141,7 +2218,54 @@ pushimage.onclick = function(){
 <!--</page0762>--> 
 <!--<page0766>-->  
 <script>
-    data0466 = JSON.parse(document.getElementById("data0466").innerHTML);
+//    data0466 = JSON.parse(document.getElementById("data0466").innerHTML);
+
+    var httpc = new XMLHttpRequest();
+    httpc.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var instring = this.responseText;
+            data0466 = JSON.parse("["+instring + "]");
+            for(var index = 0;index < data0466.length;index++){ 
+                for(var shapeindex = 0;shapeindex < data0466[index].shapes.length;shapeindex++){
+                    var localAddr = parseInt(data0466[index].shapes[shapeindex].split(":")[0],8);
+                    currentTable[localAddr] = data0466[index].shapes[shapeindex].split(":")[1];
+                }   
+                var newp  = document.createElement("P");
+                document.getElementById("feed0666").appendChild(newp);           
+                var newcan  = document.createElement("CANVAS");
+                newcan.width = data0466[index].w;
+                newcan.height = data0466[index].h;
+                newcan.style.border = "solid";
+                document.getElementById("feed0666").appendChild(newcan);
+                ctx = newcan.getContext("2d");
+                ctx.clearRect(0,0,data0466[index].w,data0466[index].h);
+                x0 = data0466[index].x0;
+                y0 = data0466[index].y0;
+                unit = data0466[index].unit;
+                doTheThing(0300);
+                drawGlyph(data0466[index].glyph);        
+            }
+        }
+    };
+    httpc.open("GET", "data0466.txt", true);
+    httpc.send();
+
+    currentTable = []; 
+    for(var index = 0;index < 01777;index ++){
+        currentTable.push("");
+    }
+    var inputbytecode = document.getElementById("bytecodeScript").text;
+    var bytecodearray = inputbytecode.split("\n");
+    for(var index = 0;index < bytecodearray.length;index++){
+        if(bytecodearray[index].includes(":")){
+            var localBytecode = bytecodearray[index].split(":");
+            var localAddress = parseInt(localBytecode[0],8);
+            currentTable[localAddress] = localBytecode[1];
+        }
+    }
+
+
+
 
 </script>
 <!--</page0766>-->  
@@ -2362,6 +2486,7 @@ table{
         border:solid;
         border-color:red;
         border-radius:10px;
+        text-align:center;
     }
 </style>
 <!--</page0566>-->

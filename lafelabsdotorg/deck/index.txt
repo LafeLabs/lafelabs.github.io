@@ -21,6 +21,19 @@ LAWS OF GEOMETRON:
 /DECK/
 -->
     <title>/DECK/</title>
+
+    <script src="qrcode.js"></script><!--https://davidshimjs.github.io/qrcodejs/-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>    
+-->
 <!--</page01>-->
 <script id = "bytecodeScript">
 /*
@@ -321,6 +334,7 @@ LAWS OF GEOMETRON:
 01225:0333,0200,0332,0336,0330,0337,0225,0336,0331,0337,0337,0336,0333,
 01226:0333,0200,0332,0336,0330,0337,0226,0336,0331,0337,0337,0336,0333,
 01227:0333,0200,0332,0336,0330,0337,0227,0336,0331,0337,0337,0336,0333,
+01230:0333,0200,0336,0332,0332,0330,0336,0333,0337,0230,0313,0337,0337,0333,0331,0331,0336,0336,0333,0331,0337,0337,0337,0310,0337,0313,
 */
 </script>
 <!--<page02>-->
@@ -649,12 +663,43 @@ function doTheThing(localCommand){
     //arc
     ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
     ctx.stroke();
+
+    localString = "";
+    localString += "M";
+    var localInt = x + side*Math.cos(theta - thetaStep);
+    localString += localInt.toString();
+    localString += " ";
+    localInt = y + side*Math.sin(theta - thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+    localInt = x + side*Math.cos(theta + thetaStep);
+    localString += localInt.toString() + " ";
+    localInt = y + side*Math.sin(theta + thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+
     //</page0345>
     }
     if(localCommand == 0346){//<page0346>
     //arc, reverse direction
     ctx.arc(x, y, side, theta + thetaStep,theta - thetaStep,true);
     ctx.stroke();
+
+    localString = "";
+    localString += "M";
+    var localInt = x + side*Math.cos(theta - thetaStep);
+    localString += localInt.toString();
+    localString += " ";
+    localInt = y + side*Math.sin(theta - thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+    localInt = x + side*Math.cos(theta + thetaStep);
+    localString += localInt.toString() + " ";
+    localInt = y + side*Math.sin(theta + thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
     //</page0346>
     }
     if(localCommand == 0347){//<page0347>
@@ -714,7 +759,7 @@ function doTheThing(localCommand){
     ctx.closePath();
     ctx.stroke();		
     ctx.fill();		
-    currentSVG += "Z\""+ " stroke = \"" + currentStroke + "\" stroke-width = \"2\" fill = \"none\" "+"/>";
+    currentSVG += "Z\""+ " stroke = \"" + currentStroke + "\" stroke-width = \"2\" fill = \"" + currentFill + "\" "+"/>";
     //</page0363>
     }
     if(localCommand == 0364){//<page0364>
@@ -991,8 +1036,100 @@ doTheThing(07);//initialize Geometron global variables
 <body> 
 <div id = "pageNumber"></div>        
 <button id = "backbutton" class = "navbutton">&#x25C5</button>
-<button id = "fwdbutton" class = "navbutton">&#x25BB</button>        
+<button id = "fwdbutton" class = "navbutton">&#x25BB</button> 
+<table id = "table0600">
+        <tr>
+            <td>030</td><td>031</td><td>032</td><td>033</td><td>036</td><td>037</td>  
+        </tr>
+</table>
+
 <!--</page03>-->
+<!--<page0410>-->
+<div id = "data0410" class = "json" style = "display:none;">
+{
+"images": [
+    {
+        "name": "Chesapeake Watershed",
+        "url": "https://www.nrcs.usda.gov/Internet/FSE_MEDIA/stelprdb1046486.png",
+        "w": "8",
+        "top": "6.3",
+        "left": "-4.25",
+        "latlon0": "38.89, -77.02",
+        "location0": "DC",
+        "latlon1": "39.54, -76.08",
+        "location1": "Susquehanna River Mouth",
+        "unit": "290000",
+        "glyph": ""
+    },
+    {
+        "name": "DC Diamond",
+        "url": "https://i.imgur.com/cN0ZimG.jpg",
+        "w": "9.8",
+        "top": "4.96",
+        "left": "-4.85",
+        "latlon0": "38.889437, -77.035244",
+        "location0": "washington monument",
+        "latlon1": "38.892859, -76.909398",
+        "location1": "East Corner Boundary",
+        "unit": "8000",
+        "glyph": "0332,0332,0332,0332,0350,0335,0337,0201,0201,0201,0335,0335,0201,0201,0201,0335,0335,0201,0201,0201,0335,0335,0201,0201,0201,0300,"
+    }
+]
+}
+</div>
+<!--</page0410>-->
+<!--<page0412>-->
+<div id = "data0412" style = "display:none;">
+<p>
+    Paragraph 1.  
+</p>                
+</div>
+<!--</page0412>-->
+<!--<page0462>-->
+<div id = "data0462"  style = "display:none;">
+[
+    {
+        "url": "https://i.imgur.com/n6GrKSK.jpg",
+        "text": "trash net"
+    }
+]
+</div>
+<!--</page0462>-->                
+<!--<page0466>-->   
+<div id = "data0466" class = "json" style = "display:none;">
+[
+    {
+        "type":"canvas",
+        "date":"October 13, 2017",
+        "shapes":[
+            "0220:0321,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
+            "0221:0322,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
+            "0222:0323,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
+            "0223:0324,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
+            "0224:0325,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
+            "0225:0326,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,",
+            "0226:0327,0362,0203,0336,0336,0333,0350,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0333,0335,0335,0335,0203,0203,0203,0203,0335,0335,0330,0334,0334,0334,0345,0333,0335,0335,0335,0203,0203,0335,0333,0334,0334,0345,0363,0320,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0201,0201,0335,0333,0334,0334,0343,0333,0335,0335,0335,0201,0201,0335,0335,0304,0330,0332,0337,0337,0304,0304,",
+            "0227:0336,0336,0336,0336,0333,0331,0337,0337,0337,0337,",
+            "0230:0220,0227,0221,0227,0222,0227,0223,0227,0224,0227,0225,0227,0226,0336,0336,0330,0330,0330,0333,0336,0310,0337,0331,0331,0331,0331,0336,0331,0337,0104,0105,0103,0113,0365,0330,0330,056,0117,0122,0107,0365,0330,0330,0114,0101,0102,0123,0365,0330,0330,0114,0101,0106,0105,0365,",
+            "01220:0333,0200,0332,0336,0330,0337,0220,0336,0331,0337,0337,0336,0333,",
+            "01221:0333,0200,0332,0336,0330,0337,0221,0336,0331,0337,0337,0336,0333,",
+            "01222:0333,0200,0332,0336,0330,0337,0222,0336,0331,0337,0337,0336,0333,",
+            "01223:0333,0200,0332,0336,0330,0337,0223,0336,0331,0337,0337,0336,0333,",
+            "01224:0333,0200,0332,0336,0330,0337,0224,0336,0331,0337,0337,0336,0333,",
+            "01225:0333,0200,0332,0336,0330,0337,0225,0336,0331,0337,0337,0336,0333,",
+            "01226:0333,0200,0332,0336,0330,0337,0226,0336,0331,0337,0337,0336,0333,",
+            "01227:0333,0200,0332,0336,0330,0337,0227,0336,0331,0337,0337,0336,0333,"
+        ],
+        "glyph":"0230,",
+        "w":400,
+        "h":400,
+        "x0":200,
+        "y0":200,
+        "unit":100
+    }
+]
+</div>        
+<!--<page0466>-->                
 <!--<page0600>-->
 <div class = "page coverpage" id = "div0600">
     <h1 style = "text-align:center;width:100%">/DECK/</h1>        
@@ -1001,14 +1138,12 @@ doTheThing(07);//initialize Geometron global variables
     <ul>
         <li><a href = "index.txt">Raw text of this document</a></li>
         <li><a href = "http://www.lafelabs.org/deck/keyboard/">Keyboard</a><img src = "http://www.lafelabs.org/deck/keyboard/QRCODE.png" style = "width:50px;"></img></li>            
-        <li>Shape table editor</li>
-        <li>Trash Magic Manifesto</li>
-        <li>HTML Reference</li>    
+        <li><a href = "http://www.lafelabs.org/deck/html/">HTML</a></li>    
         <li>CSS Reference</li>    
         <li>JavaScript Reference</li>        
         <li>Hypercube Address Structure</li>
         <li>Geometry Actions</li>
-        <li>Laws of Geometron</li>
+        <li><a href = "http://www.lafelabs.org/deck/laws/">Laws of Geometron</a></li>
         <li>Geometron 3d hypercube navigation and construction</li>
         <li>Font from photo builder</li>
         <li>Units of Distance</li>
@@ -1028,7 +1163,7 @@ doTheThing(07);//initialize Geometron global variables
         <li>Shapes of Action Geometry</li>
         <li>Solenoids</li>
         <li>schematic builder</li>
-        <li>Chesapeake Watershed</li>
+        <li><a href = "http://www.lafelabs.org/deck/chesapeake/">Chesapeake Watershed</a></li>
         <li>Washington DC</li>
         <li>Penn Ave. NE</li>
         <li>Navy memorial</li>
@@ -1038,16 +1173,97 @@ doTheThing(07);//initialize Geometron global variables
         <li>quantum amplifier calculators</li>
         <li>quantum noise calculators</li>
         <li>quantum micro/nanofabrication</li>
+        <li>
+            <input id="text0615" type="text" value="http://www.lafelabs.org/deck/" />            
+    </li>    
+    <li>
+        <div id="qrcode"></div>
+    </li>    
     </ul>    
+    <h2 onclick = "makeqrs();" class= "greenhover">Click for QR Codes</h2>
+
 </div> 
 <!--</page0600>-->
+<!--<page0610>-->
+<div class = "page screenpage" id = "div0610">
+    <div class  = "title">Map Editor</div>
+    <table id = "control0610" class = "control06xx">
+        <tr>
+            <td>Address:</td><td><input></input></td>           
+        </tr>      
+        <tr>            
+            <td>Action:</td><td><input></input></td>
+        </tr>      
+        <tr>            
+            <td>Print:</td><td><input></input></td>
+        </tr>      
+        <tr>            
+            <td>Stack:</td><td><input></input></td>
+        </tr>                  
+        <tr>            
+            <td>Img URL:</td><td><input></input></td>
+        </tr>                  
+        <tr>            
+            <td>Img w:</td><td><input></input></td>
+        </tr>                  
+        <tr>            
+            <td>Img Top:</td><td><input></input></td>
+        </tr>                  
+        <tr>            
+            <td>Img Left:</td><td><input></input></td>
+        </tr>         
+        <tr>            
+            <td>Name:</td><td><input></input></td>
+        </tr>
+        <tr>            
+            <td>latlon0:</td><td><input></input></td>
+        </tr>
+        <tr>            
+            <td>location0:</td><td><input></input></td>
+        </tr>
+        <tr>            
+            <td>latlon1:</td><td><input></input></td>
+        </tr>
+        <tr>            
+            <td>location1:</td><td><input></input></td>
+        </tr>
+        <tr>            
+            <td>unit:</td><td><input></input></td>
+        </tr>
+        <tr class = "viewButt" id = "nextImageButton0610">
+                <td>NEXT</td><td>IMAGE</td>
+        </tr>
+        <tr class = "viewButt" id = "prevImageButton0610">
+                <td>PREV</td><td>IMAGE</td>
+        </tr>
+        <tr class = "viewButt" id = "jsonButton0610">
+                <td>JSON</td><td>EXPORT</td>
+        </tr>
+        <tr class = "viewButt" id = "bytecodeButton0610">
+                <td>BYTECODE</td><td>EXPORT</td>
+        </tr>
+        <tr class = "viewButt" id = "jsonButton0610">
+                <td>BYTECODE</td><td>IMPORT</td>
+        </tr>   
+        <tr class = "viewButt" >
+                <td>EXPORT</td><td>SVG</td>
+        </tr>                
+    </table>
+    <img id = "img0610" src = "https://i.imgur.com/xD9JsR7.png"></img>
+    <canvas id = "canvas0610" class = "canvas06xx"></canvas>
+    <textarea id = "textIO0610" class = "textIO06xx"></textarea>
+</div>
+<!--</page0610>-->
+<!--<page0612>-->
+<div class = "page screenpage" id = "div0612">
+<div class = "title">Scroll</div>
+<div class = "scroll" id = "scroll0612">        
+</div>
+</div> 
+<!--</page0612>-->
 <!--<page0630>-->
 <div class = "page screenpage" id = "div0630">
-        <table id = "table0600">
-                <tr>
-                    <td>030</td><td>031</td><td>032</td><td>033</td><td>036</td><td>037</td>  
-                </tr>
-        </table>
+        <canvas id = "invisibleCanvas" style = "display:none"></canvas>
         
     <table id = "control0630" class = "control06xx">
         <tr>
@@ -1062,6 +1278,12 @@ doTheThing(07);//initialize Geometron global variables
         <tr>            
             <td>Stack:</td><td><input></input></td>
         </tr>           
+        <tr>            
+            <td>Width:</td><td><input></input></td>
+        </tr>           
+        <tr>            
+            <td>Height:</td><td><input></input></td>
+        </tr>               
         <tr class = "viewButt">
             <td>ACTION/</td><td>SYMBOL</td>
         </tr>        
@@ -1077,6 +1299,15 @@ doTheThing(07);//initialize Geometron global variables
         <tr class = "viewButt" >
             <td>LOAD</td><td>SHAPETABLE</td>
         </tr>                
+        <tr class = "viewButt" >
+            <td>EXPORT</td><td>SVG</td>
+        </tr>                    
+        <tr class = "viewButt" >
+            <td>EXPORT</td><td>JSON</td>
+        </tr>
+        <tr class = "viewButt" >
+            <td>PUSH TO</td><td>FEED</td>
+        </tr>    
     </table>
     <canvas id = "canvas0630" class = "canvas06xx"></canvas>
     <textarea id = "textIO0630" class = "textIO06xx"></textarea>
@@ -1085,9 +1316,24 @@ doTheThing(07);//initialize Geometron global variables
 <!--</page0630>-->
 <!--<page0660>-->
 <div class = "page screenpage" id = "div0660">
+    <div class = "title">MOTD</div>        
     <textarea class = "motd" id = "motd0660"></textarea>
 </div> 
 <!--<page0660>-->               
+<!--<page0662>-->
+<div class = "page screenpage" id = "div0662">
+    <div class = "title">Image Stream</div>
+    <div class = "imageinputs">URL:<input></input>TEXT:<input></input><button id = "pushimage">PUSH IMAGE</button></div>
+    <div class = "imagescroll" id = "imagestream"></div> 
+</div>
+<!--<page0662>-->                          
+<!--<page0666>-->
+<div class = "page screenpage" id = "div0666">
+    <div class = "feed">
+
+    </div>
+</div> 
+<!--</page0666>-->
 <!--<page0700>-->
 <script id = "script0700">
     pages = document.getElementsByClassName("page");
@@ -1122,19 +1368,36 @@ doTheThing(07);//initialize Geometron global variables
         if(pages[currentPage].id == "div0601"){
             redraw0701();
         }
+        if(pages[currentPage].id == "div0610"){
+            redraw0710();
+        }
         if(pages[currentPage].id == "div0630"){
             redraw0730();
         }
     
     }
     function initPage(){
-        if(pages[currentPage].id == "div0601"){
-            init0701();
+        if(pages[currentPage].id == "div0600"){
+            table0600.style.display = "none";
+        }
+        if(pages[currentPage].id == "div0610"){
+            table0600.style.display = "block";
+            init0710();
+        }
+        if(pages[currentPage].id == "div0612"){
+            table0600.style.display = "none";
+            init0712();
         }
         if(pages[currentPage].id == "div0630"){
+            table0600.style.display = "block";
             init0730();
         }
         if(pages[currentPage].id == "div0660"){
+            table0600.style.display = "none";
+            init0760();
+        }
+        if(pages[currentPage].id == "div0662"){
+            table0600.style.display = "none";
             init0760();
         }
         document.getElementById("pageNumber").innerHTML = "Page " + pages[currentPage].id.substring(3);
@@ -1167,9 +1430,340 @@ doTheThing(07);//initialize Geometron global variables
             doTheThing(parseInt(this.className.substring(1),8));
         }
     }
-    
+
+linkarray = [
+    "/deck/",
+    "/deck/keyboard/",
+    "/deck/html/",
+    "/deck/css/",
+    "/deck/javascript/",
+    "/deck/geometronactions/",
+    "/deck/actiongeometry/",
+    "/deck/distance/",
+    "/deck/laws/",
+    "/deck/hypercube/",
+    "/deck/printer/",
+    "/deck/skeletron/",
+    "/deck/vibratron/",
+    "/deck/quantum/",
+    "/deck/quantum/noise/",    
+    "/deck/quantum/computing/",
+    "/deck/quantum/amplifiers/",        
+    "/deck/chesapeake/",
+    "/deck/chesapeake/dc/",
+    "/deck/chesapeake/dc/pennave/",
+    "/deck/chesapeake/dc/pennave/navymemorial/",
+    "/deck/chesapeake/dc/pennave/navymemorial/triangle/",
+    "/deck/trashmagic/"
+]
+
+
+function makeqrs(){
+
+
+    for(var index = 0;index < linkarray.length;index++){
+        var newh = document.createElement("H2");
+        newh.innerHTML = linkarray[index];// "/deck/keyboard/:";
+        document.getElementById("div0600").appendChild(newh);
+        var newdiv = document.createElement("DIV");
+        newdiv.style.margin = "5px 50px 50px 50px";
+        document.getElementById("div0600").appendChild(newdiv);
+        newdiv.id = "qr" + index.toString();
+        var qrcode = new QRCode("qr" + + index.toString(),{width:128, height:128});
+        qrcode.makeCode("http://www.lafelabs.org" + linkarray[index]);
+    }
+}
+
+
 </script>
 <!--</page0700>-->
+<!--<page0710>-->
+<script>
+imageIndex0610 = 0;
+data0410 = JSON.parse(document.getElementById("data0410").innerHTML);
+
+init0710();
+
+buttons0610 = document.getElementById("control0610").getElementsByClassName("viewButt");
+
+function init0710(){
+    currentAddress = 0260;
+    for(var index = 0;index < 0100;index++){
+        currentTable[0200+index] = currentTableStart[0200+index];
+        currentTable[01200+index] = currentTableStart[01200+index];
+    }
+    for(var index = 0;index < data0410.images.length;index++){
+        currentTable[0260 + index] = data0410.images[index].glyph;
+    }
+    unit = 100;
+    x0 = innerWidth/2;
+    y0 = innerHeight/2;    
+    document.getElementById("canvas0610").width = innerWidth;
+    document.getElementById("canvas0610").height = innerHeight;
+    inputs0610 = document.getElementById("control0610").getElementsByTagName("input");   
+    inputs0610[4].value = data0410.images[imageIndex0610].url;
+    inputs0610[4].style.width = "100px";
+    inputs0610[5].value = data0410.images[imageIndex0610].w;
+    inputs0610[6].value = data0410.images[imageIndex0610].top;
+    inputs0610[7].value = data0410.images[imageIndex0610].left;
+
+    inputs0610[8].value = data0410.images[imageIndex0610].name;
+    inputs0610[8].style.width = "100px";
+    inputs0610[9].value = data0410.images[imageIndex0610].latlon0;
+    inputs0610[9].style.width = "100px";
+    inputs0610[10].value = data0410.images[imageIndex0610].location0;
+    inputs0610[10].style.width = "100px";
+    inputs0610[11].value = data0410.images[imageIndex0610].latlon1;
+    inputs0610[11].style.width = "100px";
+    inputs0610[12].value = data0410.images[imageIndex0610].location1;
+    inputs0610[12].style.width = "100px";
+    inputs0610[13].value = data0410.images[imageIndex0610].unit;
+
+    document.getElementById("img0610").src = data0410.images[imageIndex0610].url;
+    currentGlyph = currentTable[currentAddress] + ",0207,";
+    redraw0710();
+}
+function redraw0710(){
+    inputs0610[0].value = "0" + currentAddress.toString(8);
+
+    document.getElementById("img0610").style.width = (data0410.images[imageIndex0610].w*unit).toString() + "px";
+    document.getElementById("img0610").style.left = (x0 + data0410.images[imageIndex0610].left*unit).toString() + "px";
+    document.getElementById("img0610").style.top = (y0 - data0410.images[imageIndex0610].top*unit).toString() + "px";
+
+    ctx = document.getElementById("canvas0610").getContext("2d");
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    doTheThing(0300);
+    drawGlyph("0341,0340,");
+    doTheThing(0300);
+    lat0 = data0410.images[imageIndex0610].latlon0.split(",")[0];
+    lon0 = data0410.images[imageIndex0610].latlon0.split(",")[1];
+    lat1 = data0410.images[imageIndex0610].latlon1.split(",")[0];
+    lon1 = data0410.images[imageIndex0610].latlon1.split(",")[1];
+    deltalatfeet = (lat1-lat0)*364567;//60*5280*1.15
+    deltalonfeet = Math.cos(lat0*Math.PI/180)*(lon1-lon0)*364567;//60*5280*1.15
+
+    xlon = unit*deltalonfeet/data0410.images[imageIndex0610].unit;
+    xlon = unit*deltalonfeet/data0410.images[imageIndex0610].unit;
+
+    ylat = unit*deltalatfeet/data0410.images[imageIndex0610].unit;
+    x= x0 + xlon;
+    y= y0 - ylat;
+    drawGlyph("0341,0340,");
+    doTheThing(0300);
+    drawGlyph(currentGlyph);
+    doTheThing(0300);
+    x = 50;
+    y = innerHeight  - 50;
+    side = 25;
+    spellGlyph(currentGlyph);    
+    var glyphArray = currentGlyph.split(",");
+    currentTable[currentAddress] = "";
+    for(var index = 0;index < glyphArray.length;index++){
+        if(glyphArray[index] != "0207" && glyphArray[index].length > 0){
+            currentTable[currentAddress] += glyphArray[index] + ",";
+        }
+    }
+    data0410.images[currentAddress-0260].glyph = currentTable[currentAddress];
+}
+
+inputs0610[1].onkeydown = function(e) {
+    if(e.keyCode == 010){
+        doTheThing(010);
+        redraw();
+    }
+    if(e.keyCode == 045){
+        doTheThing(020);
+        redraw();
+    }
+    if(e.keyCode == 047){
+        doTheThing(021);
+        redraw();
+    }
+    if(e.keyCode == 046){
+        doTheThing(023);
+        redraw();
+    }
+    if(e.keyCode == 050){
+        doTheThing(022);
+        redraw();
+    }    
+}
+inputs0610[1].onkeypress = function(a){//action
+    if(parseInt(currentTable[a.keyCode],8) >= 0200){
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+            if(glyphSplit[index] == "0207"){
+                currentGlyph += currentTable[a.keyCode] + ",0207,";
+            }
+        }
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+        redraw();
+    } 
+    if(parseInt(currentTable[a.keyCode],8) < 040){
+        doTheThing(parseInt(currentTable[a.keyCode],8));
+    }
+    this.value = "";
+}
+inputs0610[2].onkeypress = function(a){//print
+    var glyphSplit = currentGlyph.split(",");
+    currentGlyph = "";
+    for(var index = 0;index < glyphSplit.length;index++){
+        if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+            currentGlyph += glyphSplit[index] + ",";
+        }
+        if(glyphSplit[index] == "0207"){
+            currentGlyph += "0" + (a.keyCode + 01000).toString(8) + ",0207,";
+        }
+    }
+    var glyphSplit = currentGlyph.split(",");
+    currentGlyph = "";
+    for(var index = 0;index < glyphSplit.length;index++){
+        if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+            currentGlyph += glyphSplit[index] + ",";
+        }
+    }
+    redraw();    
+    this.value = "";
+}
+
+
+inputs0610[3].onkeypress = function(a){//stack
+    var glyphSplit = currentGlyph.split(",");
+    currentGlyph = "";
+    for(var index = 0;index < glyphSplit.length;index++){
+        if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+            currentGlyph += glyphSplit[index] + ",";
+        }
+        if(glyphSplit[index] == "0207"){
+            currentGlyph += "0" + (a.keyCode).toString(8) + ",0207,";
+        }
+    }
+    var glyphSplit = currentGlyph.split(",");
+    currentGlyph = "";
+    for(var index = 0;index < glyphSplit.length;index++){
+        if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+            currentGlyph += glyphSplit[index] + ",";
+        }
+    }
+    redraw();
+
+    this.value = "";
+}
+inputs0610[0].onchange = function(){//Jump address
+    currentAddress = parseInt(this.value,8);
+    currentGlyph = currentTable[currentAddress] + ",0207,";
+    redraw();
+}
+
+inputs0610[4].onchange = function(){//Image URL
+    document.getElementById("img0610").src = this.value;
+}
+inputs0610[5].onchange = function(){//Image w
+    data0410.images[imageIndex0610].w = this.value;
+    redraw();
+}
+inputs0610[6].onchange = function(){//Image top
+    data0410.images[imageIndex0610].top = this.value;
+    redraw();
+}
+inputs0610[7].onchange = function(){//Image left
+    data0410.images[imageIndex0610].left = this.value;
+    redraw();
+}
+
+inputs0610[13].onchange = function(){//unit in feet
+    data0410.images[imageIndex0610].unit = this.value;
+    redraw();
+}
+
+document.getElementById("nextImageButton0610").onclick = function(){
+    imageIndex0610++;
+    currentAddress++;
+    if(imageIndex0610 > data0410.images.length - 1){
+        imageIndex0610 = 0;
+        currentAddress = 0260;
+    }
+    inputs0610[4].value = data0410.images[imageIndex0610].url;
+    inputs0610[5].value = data0410.images[imageIndex0610].w;
+    inputs0610[6].value = data0410.images[imageIndex0610].top;
+    inputs0610[7].value = data0410.images[imageIndex0610].left;
+    inputs0610[8].value = data0410.images[imageIndex0610].name;
+    inputs0610[9].value = data0410.images[imageIndex0610].latlon0;
+    inputs0610[10].value = data0410.images[imageIndex0610].location0;
+    inputs0610[11].value = data0410.images[imageIndex0610].latlon1;
+    inputs0610[12].value = data0410.images[imageIndex0610].location1;
+    inputs0610[13].value = data0410.images[imageIndex0610].unit;
+
+    currentTable[currentAddress] = data0410.images[imageIndex0610].glyph;
+    document.getElementById("img0610").src = data0410.images[imageIndex0610].url;
+    currentGlyph = currentTable[currentAddress] + ",0207,";
+    redraw0710();
+
+}
+document.getElementById("prevImageButton0610").onclick = function(){
+    imageIndex0610--;
+    currentAddress--;
+    if(imageIndex0610 < 0){
+        imageIndex0610 = data0410.images.length - 1;
+        currentAddress = 260 + data0410.images.length - 1
+    }
+
+    inputs0610[4].value = data0410.images[imageIndex0610].url;
+    inputs0610[5].value = data0410.images[imageIndex0610].w;
+    inputs0610[6].value = data0410.images[imageIndex0610].top;
+    inputs0610[7].value = data0410.images[imageIndex0610].left;
+    inputs0610[8].value = data0410.images[imageIndex0610].name;
+    inputs0610[9].value = data0410.images[imageIndex0610].latlon0;
+    inputs0610[10].value = data0410.images[imageIndex0610].location0;
+    inputs0610[11].value = data0410.images[imageIndex0610].latlon1;
+    inputs0610[12].value = data0410.images[imageIndex0610].location1;
+    inputs0610[13].value = data0410.images[imageIndex0610].unit;
+
+    currentTable[currentAddress] = data0410.images[imageIndex0610].glyph;
+    document.getElementById("img0610").src = data0410.images[imageIndex0610].url;
+    currentGlyph = currentTable[currentAddress] + ",0207,";
+    redraw0710();
+}
+
+document.getElementById("jsonButton0610").onclick = function(){
+
+        document.getElementById("textIO0610").value = JSON.stringify(data0410,null,"   ");
+
+}
+
+buttons0610[5].onclick = function(){//export svg
+    width0610 = innerWidth;
+    height0610 = innerHeight;
+    currentSVG = "<svg width=\"" + width0610.toString() + "\" height=\"" + height0610.toString() + "\" viewbox = \"0 0 " + width0610.toString() + " " + height0610.toString() + "\"  xmlns=\"http://www.w3.org/2000/svg\">\n";
+    currentSVG += "<!--0260:" + currentTable[0260 + imageIndex0610] + "-->";
+    ctx = document.getElementById("invisibleCanvas").getContext("2d");
+    doTheThing(0300);
+    drawGlyph(currentTable[0260 + imageIndex0610]);
+    currentSVG += "</svg>";
+    document.getElementById("textIO0610").value = currentSVG;
+}
+
+
+
+</script>
+<!--</page0710>-->
+<!--<page0712>-->
+<script>
+function init0712(){
+document.getElementById("scroll0612").innerHTML = document.getElementById("data0412").innerHTML;
+}
+</script>
+<!--</page0712>-->
 <!--<page0730>-->
 <script>
     
@@ -1177,11 +1771,19 @@ init0730();
 function init0730(){
     currentAddress = 0230;
     unit = 100;
+
+    width0630 = innerWidth-50;
+    height0630 = innerHeight-50;
+
+
     document.getElementById("canvas0630").width = innerWidth;
     document.getElementById("canvas0630").height = innerHeight;
     x0 = innerWidth/2;
     y0 = innerHeight/2;    
     inputs0630 = document.getElementById("control0630").getElementsByTagName("input");   
+    inputs0630[4].value = width0630;
+    inputs0630[5].value = height0630;
+
     buttons0630 = document.getElementById("control0630").getElementsByClassName("viewButt");
     currentGlyph = currentTable[currentAddress] + ",0207,";
     redraw0730();
@@ -1189,6 +1791,8 @@ function init0730(){
     function redraw0730(){
         ctx = document.getElementById("canvas0630").getContext("2d");
         ctx.clearRect(0,0,innerWidth,innerHeight);
+        doTheThing(0300);
+        ctx.strokeRect((innerWidth - width0630)/2,(innerHeight - height0630)/2,width0630,height0630)
         doTheThing(0300);
         drawGlyph(currentGlyph);
         doTheThing(0300);
@@ -1345,6 +1949,15 @@ function init0730(){
         redraw();
     }
     
+    inputs0630[4].onchange = function(){
+        width0630 = parseInt(this.value);
+        redraw0730();
+    }
+    inputs0630[5].onchange = function(){
+        height0630 = parseInt(this.value);
+        redraw0730();
+    }
+
     buttons0630[0].onclick = function(){//symbol/shape
         if(currentAddress < 01000){
             currentAddress += 01000;
@@ -1390,6 +2003,37 @@ function init0730(){
         loadPHP();
     }
     
+    buttons0630[5].onclick = function(){//Export SVG        
+        width0630 = parseInt(inputs0630[4].value);
+        height0630 = parseInt(inputs0630[5].value);
+        tempx0 = x0;
+        tempy0 = y0;
+
+        x0 -= 0.5*(innerWidth - width0630);
+        y0 -= 0.5*(innerHeight - height0630);
+        var fooGlyph = "";
+        var barArray = currentGlyph.split(",");
+        for(var index = 0;index < barArray.length;index++){
+            if(barArray[index] != "0207" && barArray[index].length > 0){
+                fooGlyph += barArray[index] + ",";
+            }
+        }
+        currentSVG = "<svg width=\"" + width0630.toString() + "\" height=\"" + height0630.toString() + "\" viewbox = \"0 0 " + width0630.toString() + " " + height0630.toString() + "\"  xmlns=\"http://www.w3.org/2000/svg\">\n";
+        currentSVG += "<!--" + fooGlyph + "-->";
+        ctx = document.getElementById("invisibleCanvas").getContext("2d");
+        doTheThing(0300);
+        drawGlyph(fooGlyph);
+        currentSVG += "</svg>";
+        document.getElementById("textIO0630").value = currentSVG;
+        x0 = tempx0;
+        y0 = tempy0;
+    }
+    buttons0630[6].onclick = function(){//Export JSON        
+        var jsonout = "";
+
+
+    }
+
     function savePHP() {
         var httpc = new XMLHttpRequest();
         var url = "saver.php";
@@ -1454,6 +2098,53 @@ document.getElementById("motd0660").onkeydown = function(e) {
 
 </script>
 <!--<page0760>-->  
+<!--<page0762>-->  
+<script>
+
+data0462 = JSON.parse(document.getElementById("data0462").innerHTML);
+for(var index = 0;index < data0462.length;index++){
+
+    var newimg = document.createElement("IMG");
+    newimg.src = data0462[index].url;
+    if(innerWidth < 500){
+        newimg.style.width = (0.9*innerWidth).toString() + "px";
+    }
+    else{
+        newimg.style.width = "500px";            
+    }
+    document.getElementById("imagestream").appendChild(newimg);
+    var newp = document.createElement("p");      
+    newp.innerHTML = data0462[index].text;
+    document.getElementById("imagestream").appendChild(newp);
+
+}
+inputs0662 = document.getElementById("div0662").getElementsByTagName("INPUT");
+pushimage = document.getElementById("pushimage");
+pushimage.onclick = function(){
+    var newimg = document.createElement("IMG");
+    newimg.src = inputs0662[0].value;
+    if(innerWidth < 500){
+        newimg.style.width = (0.9*innerWidth).toString() + "px";
+    }
+    else{
+        newimg.style.width = "500px";            
+    }
+    document.getElementById("imagestream").appendChild(newimg);
+    var newp = document.createElement("p");      
+    newp.innerHTML = inputs0662[1].value;
+    document.getElementById("imagestream").appendChild(newp);
+    var pushedimage  = JSON.parse("{\"url\":\"" + inputs0662[0].value + "\",\"text\":\"" + inputs0662[1].value +  "\"}");
+    data0462.push(pushedimage);
+}
+
+</script>
+<!--</page0762>--> 
+<!--<page0766>-->  
+<script>
+    data0466 = JSON.parse(document.getElementById("data0466").innerHTML);
+
+</script>
+<!--</page0766>-->  
 <!--<page0500>-->
 <style id = "style0500">
 html{
@@ -1462,7 +2153,7 @@ html{
 body{ 
     font-family:"century schoolbook";
     color:black;
-    font-size:16px;
+    font-size:20px;
     
 }
 .coverpage{
@@ -1471,6 +2162,7 @@ body{
     top:10%;
     width:500px;
     height:500px;
+    padding:10px 10px 10px 10px;
 }
 .screenpage{
     position:absolute;
@@ -1510,8 +2202,10 @@ body{
 canvas{
     z-index:0;
 }
+img{
+    z-index:-2;
+}
 table{
-    position:absolute;
     z-index:3;
 }
 .control06xx{
@@ -1564,22 +2258,113 @@ table{
     height:2em;
 
 }
-
+.greenhover{
+    cursor:pointer;
+}
+.greenhover:hover{
+    background-color:green;
+}
+.title{
+    position:absolute;
+    top:10px;
+    width:100%;
+    z-index: 2;
+    text-align:center;
+    font-size:3em;
+    font-family:Futura;
+}
 </style>
 <!--</page0500>-->
+<!--<page0510>-->
+<style>
+    #img0610{
+        position:absolute;
+    }
+</style>            
+<!--</page0510>-->            
+<!--<page0512>-->
+<style>
+.scroll{
+    overflow:scroll;
+    position:absolute;
+    top:10%;
+    left:5%;
+    right:5%;
+    bottom:5%;
+    text-align:justify;
+    padding:1em 1em 1em 1em;
+}
+.elementtable{
+    border-collapse:collapse;
+}
+.elementtable td{
+    border:solid;
+}
+
+</style>
+<!--</page0512>-->
 <!--<page0560>-->
 <style>
 .motd{
     font-family:courier;
     font-size:16px;
     position:absolute;
-    left:15%;
-    right:5%;
-    bottom:5%;
+    left:5px;
+    right:5px;
+    bottom:5px;
     top:15%;
 }
 </style>
 <!--</page0560>-->
+<!--<page0562>-->
+<style>
+.imagescroll{
+    font-family:courier;
+    font-size:16px;
+    position:absolute;
+    left:5px;
+    right:5px;
+    bottom:5px;
+    top:25%;
+    background-color:white;
+    overflow:scroll;
+    text-align:center;
+}
+.imageinputs{
+    position:absolute;
+    bottom:75%;
+    height:2em;
+    left:5%;
+    right:5%;
+    border:solid;
+    font-family:courier;
+    font-size:1em;
+    text-align:center;
+    border-radius:10px;
+    border-width:3px;
+}
+.imageinputs input{
+    font-family:courier;
+    font-size:1em;
+
+}
+</style>
+<!--</page0562>-->
+<!--<page0566>-->
+<style>
+    .feed{
+        overflow:scroll;
+        position:absolute;
+        left:5px;
+        right:5px;
+        bottom:5px;
+        top:50px;
+        border:solid;
+        border-color:red;
+        border-radius:10px;
+    }
+</style>
+<!--</page0566>-->
 <!--<page05>-->
 </body>
 </html>
