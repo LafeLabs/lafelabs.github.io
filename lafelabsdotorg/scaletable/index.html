@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <title>scale table</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+    </script>
+    
+</head>
+<body>
+    <h2>Scale Table</h2>
+    <h3><a href = "http://www.lafelabs.org/">www.lafelabs.org</a></h3>
+    <h3>/scaletable/</h3>
+    <img src = "qrcode.png">
+<div>$x = $<input id = "xin" value = "3"></div>
+<table id = "main">
+        <tr>
+            <td>n</td>
+            <td>
+                $(\sqrt{2})^nx$
+            </td>
+            <td>
+$(\phi)^nx$
+            </td>
+            <td>
+                    $(\sqrt{3})^nx$
+            </td>    
+        </tr>
+
+    </table>
+<script>
+
+nmin = -6;
+nmax = 10;
+x = parseInt(document.getElementById("xin").value);
+
+for(var index = nmin;index < nmax;index++){
+    var newtr = document.createElement("TR");
+    document.getElementById("main").appendChild(newtr);
+    var newtd = document.createElement("TD");
+    newtr.appendChild(newtd);
+    newtd.innerHTML = index;
+    for(var dindex = 0;dindex < 3;dindex++){
+        var newtd = document.createElement("TD");
+        newtr.appendChild(newtd);
+    }
+
+}
+
+rows = document.getElementById("main").getElementsByTagName("TR");
+phi = (Math.sqrt(5) + 1)/2;
+compute();
+function compute(){
+    for(var index = 1;index < rows.length; index++){
+        var cells = rows[index].getElementsByTagName("TD");
+        var n = parseInt(cells[0].innerHTML);
+        cells[1].innerHTML = Math.round(100*x*Math.pow(Math.sqrt(2),n))/100;
+        cells[2].innerHTML = Math.round(100*x*Math.pow(phi,n))/100;
+        cells[3].innerHTML = Math.round(100*x*Math.pow(Math.sqrt(3),n))/100;
+    }
+}
+
+document.getElementById("xin").onchange = function(){
+    x = parseFloat(this.value);
+    compute();
+}
+</script>
+<style>
+body{
+    font-size:36px; 
+    text-align:center;
+}
+input{
+    font-family:courier;
+    font-size:36px;
+    width:4em;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+
+}
+table{
+    border-collapse:collapse;
+    width:96%;
+}
+td{
+    border:solid;
+    font-size:36px;
+    width:20%;
+    text-align:center;
+}
+
+</style>
+</body>
+</html>

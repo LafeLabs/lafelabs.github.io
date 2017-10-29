@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- 
+PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+http://www.lafelabs.org/editor/
+-->
+    <title>/editor/</title>
+</head>
+<body> 
+<div id = "main">
+    <h3>/editor/editor.html</h3><button id = "template">TEMPLATE</button>
+    <textarea id = "editor"></textarea>        
+    <p>
+        <a href = "http://www.lafelabs.org/editor/index.html">index.html:</a><img src = "qrcode.png">   
+    </p>
+    <p>            
+        <a href = "http://www.lafelabs.org/editor/editor.html">editor.html(this page):</a><img src = "editor.png">    
+    </p>    
+</div>
+<script>
+document.getElementById("editor").onkeypress = function(){//save on every key press
+    var httpc = new XMLHttpRequest();
+    var url = "saver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc.send("text=" + document.getElementById("editor").value);//send text to saver.php
+}        
+
+document.getElementById("template").onclick = function(){
+    var template = "<!doctype html>\n<html>\n<head>\n<title>template</title>\n</head>\n<body>\n\n\n</body>\n<html>";
+    document.getElementById("editor").value = template;
+}
+
+</script>
+<style>
+button{
+    font-family:courier;
+    font-size:30px;
+    border-radius:10px;
+    cursor:pointer;
+}
+button:hover{
+    background-color:green;
+}
+button:active{
+    backface-color:yellow; 
+}
+p{
+    width:200px;
+    height:200px;
+    border:solid;
+    padding:1em 1em 1em 1em;
+    border-radius:1em;
+}
+p img{
+    width:80%;
+}
+#main{
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    overflow:scroll;
+    padding:1em 1em 1em 1em;
+    font-size:25px;
+}
+textarea{
+    font-family:courier;
+    font-size:20px;
+    border:solid;
+    width:100%;
+    height:50em;
+}
+</style>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<title>QR Code Generator</title>
+<script src = "qrcode.js"></script>
+</head>
+<body>
+    <img src = "qrcode.png">
+    <h1><a href = "http://www.lafelabs.org/">www.lafelabs.org</a></h1>        
+    <h1>/qrcodegenerator/</h1>
+    <div>
+       <span>URL Input:<input id = "urlinput" value = "http://www.lafelabs.org/"></span>
+    </div>
+    <div id="qrcode"></div>
+
+<script type="text/javascript">
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: "http://www.lafelabs.org/",
+	width: 256,
+	height: 256,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
+document.getElementById("urlinput").onchange = function(){
+    qrcode.clear(); // clear the code.
+    qrcode.makeCode(this.value); // make another code.
+}
+</script>   
+<style>
+body{
+    font-size:20px;
+    font-family:courier;
+}
+#urlinput{
+    font-size:20px;
+}
+#qrcode{
+    margin:2em 2em 2em 2em;
+}
+
+</style>
+</body>
+</html>

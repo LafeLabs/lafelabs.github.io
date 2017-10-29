@@ -1,0 +1,961 @@
+<svg width="1365" height="649" viewbox = "0 0 1365 649"  xmlns="http://www.w3.org/2000/svg">
+    <line x1="100" y1="200" x2="100" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="100" y1="120" x2="20" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="20" y1="120" x2="20" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="20" y1="200" x2="100" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="30" y = "150" fill = "black" font-size = "20px" font-family = "futura">~</text>
+    <text x="30" y = "190" fill = "black" font-size = "20px" font-family = "futura">`</text>
+    <line x1="90" y1="190" x2="90" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="90" y1="170" x2="70" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="70" y1="170" x2="70" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="70" y1="190" x2="90" y2="190" style="stroke:black;stroke-width:2" />
+    <circle cx="80" cy = "180" r = "10" stroke = "black" stroke-width = "2" fill = "none" />
+    <line x1="80" y1="180" x2="80" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="80" y1="180" x2="90" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="80" y1="180" x2="80" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="80" y1="180" x2="70" y2="180" style="stroke:black;stroke-width:2" />
+    <circle cx="76" cy = "176" r = "2.5" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="84" cy = "176" r = "2.5" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="84" cy = "184" r = "2.5" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="76" cy = "184" r = "2.5" stroke = "black" stroke-width = "2" fill = "none" />
+    <text x="90" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="90" y1="150" x2="90" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="90" y1="130" x2="70" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="70" y1="130" x2="70" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="70" y1="150" x2="90" y2="150" style="stroke:black;stroke-width:2" />
+	<path d = "M85 145 L85 135 L75 135 L75 145 L85 145 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="180" y1="200" x2="180" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="180" y1="120" x2="100" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="100" y1="120" x2="100" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="100" y1="200" x2="180" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="110" y = "150" fill = "black" font-size = "20px" font-family = "futura">!</text>
+    <text x="110" y = "190" fill = "black" font-size = "20px" font-family = "futura">1</text>
+    <line x1="170" y1="190" x2="170" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="170" y1="170" x2="150" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="150" y1="170" x2="150" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="150" y1="190" x2="170" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="160" y1="180" x2="160" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="160" y1="180" x2="170" y2="177" style="stroke:black;stroke-width:2" />
+    <line x1="160" y1="180" x2="166" y2="188" style="stroke:black;stroke-width:2" />
+    <line x1="160" y1="180" x2="154" y2="188" style="stroke:black;stroke-width:2" />
+    <line x1="160" y1="180" x2="150" y2="177" style="stroke:black;stroke-width:2" />
+    <circle cx="160" cy = "180" r = "10" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="163" cy = "176" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="165" cy = "182" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="160" cy = "185" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="155" cy = "182" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="157" cy = "176" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <text x="170" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="170" y1="150" x2="170" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="170" y1="130" x2="150" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="150" y1="130" x2="150" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="150" y1="150" x2="170" y2="150" style="stroke:black;stroke-width:2" />
+	<path d = "M165 145 L165 135 L155 135 L155 145 L165 145 Z" stroke = "white" stroke-width = "2" fill = "white" />    <line x1="260" y1="200" x2="260" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="260" y1="120" x2="180" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="180" y1="120" x2="180" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="180" y1="200" x2="260" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="190" y = "150" fill = "black" font-size = "20px" font-family = "futura">@</text>
+    <text x="190" y = "190" fill = "black" font-size = "20px" font-family = "futura">2</text>
+    <line x1="250" y1="190" x2="250" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="250" y1="170" x2="230" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="230" y1="170" x2="230" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="230" y1="190" x2="250" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="240" y1="180" x2="240" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="240" y1="180" x2="249" y2="175" style="stroke:black;stroke-width:2" />
+    <line x1="240" y1="180" x2="249" y2="185" style="stroke:black;stroke-width:2" />
+    <line x1="240" y1="180" x2="240" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="240" y1="180" x2="231" y2="185" style="stroke:black;stroke-width:2" />
+    <circle cx="240" cy = "180" r = "10" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="238" cy = "176" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="243" cy = "176" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="245" cy = "180" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="243" cy = "184" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="238" cy = "184" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <line x1="240" y1="180" x2="231" y2="175" style="stroke:black;stroke-width:2" />
+    <circle cx="235" cy = "180" r = "1.25" stroke = "black" stroke-width = "2" fill = "none" />
+    <text x="250" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="250" y1="150" x2="250" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="250" y1="130" x2="230" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="230" y1="130" x2="230" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="230" y1="150" x2="250" y2="150" style="stroke:black;stroke-width:2" />
+	<path d = "M245 145 L245 135 L235 135 L235 145 L245 145 Z" stroke = "red" stroke-width = "2" fill = "red" />    <line x1="340" y1="200" x2="340" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="340" y1="120" x2="260" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="260" y1="120" x2="260" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="260" y1="200" x2="340" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="270" y = "150" fill = "black" font-size = "20px" font-family = "futura">#</text>
+    <text x="270" y = "190" fill = "black" font-size = "20px" font-family = "futura">3</text>
+    <line x1="330" y1="190" x2="330" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="330" y1="170" x2="310" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="310" y1="170" x2="310" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="310" y1="190" x2="330" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="320" y1="180" x2="327" y2="173" style="stroke:black;stroke-width:2" />
+    <line x1="320" y1="180" x2="327" y2="187" style="stroke:black;stroke-width:2" />
+    <line x1="320" y1="180" x2="323" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="325" y1="180" x2="328" y2="180" style="stroke:black;stroke-width:2" />
+    <text x="330" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="330" y1="150" x2="330" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="330" y1="130" x2="310" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="310" y1="130" x2="310" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="310" y1="150" x2="330" y2="150" style="stroke:black;stroke-width:2" />
+	<path d = "M325 145 L325 135 L315 135 L315 145 L325 145 Z" stroke = "orange" stroke-width = "2" fill = "orange" />    <line x1="420" y1="200" x2="420" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="420" y1="120" x2="340" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="340" y1="120" x2="340" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="340" y1="200" x2="420" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="350" y = "150" fill = "black" font-size = "20px" font-family = "futura">$</text>
+    <text x="350" y = "190" fill = "black" font-size = "20px" font-family = "futura">4</text>
+    <line x1="410" y1="190" x2="410" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="410" y1="170" x2="390" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="390" y1="170" x2="390" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="390" y1="190" x2="410" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="400" y1="180" x2="402" y2="178" style="stroke:black;stroke-width:2" />
+    <line x1="404" y1="176" x2="405" y2="175" style="stroke:black;stroke-width:2" />
+    <line x1="407" y1="173" x2="409" y2="171" style="stroke:black;stroke-width:2" />
+    <line x1="400" y1="180" x2="410" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="400" y1="180" x2="407" y2="187" style="stroke:black;stroke-width:2" />
+    <text x="410" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="410" y1="150" x2="410" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="410" y1="130" x2="390" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="390" y1="130" x2="390" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="390" y1="150" x2="410" y2="150" style="stroke:black;stroke-width:2" />
+	<path d = "M405 145 L405 135 L395 135 L395 145 L405 145 Z" stroke = "yellow" stroke-width = "2" fill = "yellow" />    <line x1="500" y1="200" x2="500" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="500" y1="120" x2="420" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="420" y1="120" x2="420" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="420" y1="200" x2="500" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="430" y = "150" fill = "black" font-size = "20px" font-family = "futura">%</text>
+    <text x="430" y = "190" fill = "black" font-size = "20px" font-family = "futura">5</text>
+    <line x1="490" y1="190" x2="490" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="490" y1="170" x2="470" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="470" y1="170" x2="470" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="470" y1="190" x2="490" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="480" y1="180" x2="487" y2="173" style="stroke:black;stroke-width:2" />
+    <line x1="480" y1="180" x2="482" y2="179" style="stroke:black;stroke-width:2" />
+    <line x1="485" y1="179" x2="487" y2="178" style="stroke:black;stroke-width:2" />
+    <line x1="480" y1="180" x2="482" y2="181" style="stroke:black;stroke-width:2" />
+    <line x1="485" y1="181" x2="487" y2="182" style="stroke:black;stroke-width:2" />
+    <line x1="480" y1="180" x2="487" y2="187" style="stroke:black;stroke-width:2" />
+    <text x="490" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="490" y1="150" x2="490" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="490" y1="130" x2="470" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="470" y1="130" x2="470" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="470" y1="150" x2="490" y2="150" style="stroke:black;stroke-width:2" />
+	<path d = "M485 145 L485 135 L475 135 L475 145 L485 145 Z" stroke = "green" stroke-width = "2" fill = "green" />    <line x1="580" y1="200" x2="580" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="580" y1="120" x2="500" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="500" y1="120" x2="500" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="500" y1="200" x2="580" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="510" y = "150" fill = "black" font-size = "20px" font-family = "futura">^</text>
+    <text x="510" y = "190" fill = "black" font-size = "20px" font-family = "futura">6</text>
+    <line x1="570" y1="190" x2="570" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="570" y1="170" x2="550" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="550" y1="170" x2="550" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="550" y1="190" x2="570" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="560" y1="180" x2="570" y2="177" style="stroke:black;stroke-width:2" />
+    <line x1="560" y1="180" x2="570" y2="183" style="stroke:black;stroke-width:2" />
+    <line x1="560" y1="180" x2="562" y2="182" style="stroke:black;stroke-width:2" />
+    <line x1="564" y1="184" x2="565" y2="185" style="stroke:black;stroke-width:2" />
+    <line x1="560" y1="180" x2="562" y2="178" style="stroke:black;stroke-width:2" />
+    <line x1="564" y1="176" x2="565" y2="175" style="stroke:black;stroke-width:2" />
+    <text x="570" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="570" y1="150" x2="570" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="570" y1="130" x2="550" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="550" y1="130" x2="550" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="550" y1="150" x2="570" y2="150" style="stroke:black;stroke-width:2" />
+	<path d = "M565 145 L565 135 L555 135 L555 145 L565 145 Z" stroke = "blue" stroke-width = "2" fill = "blue" />    <line x1="660" y1="200" x2="660" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="660" y1="120" x2="580" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="580" y1="120" x2="580" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="580" y1="200" x2="660" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="590" y = "150" fill = "black" font-size = "20px" font-family = "futura">&amp;</text>
+    <text x="590" y = "190" fill = "black" font-size = "20px" font-family = "futura">7</text>
+    <line x1="650" y1="190" x2="650" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="650" y1="170" x2="630" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="630" y1="170" x2="630" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="630" y1="190" x2="650" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="640" y1="190" x2="650" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="650" y1="180" x2="640" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="640" y1="170" x2="630" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="630" y1="180" x2="640" y2="190" style="stroke:black;stroke-width:2" />
+    <text x="650" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="650" y1="150" x2="650" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="650" y1="130" x2="630" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="630" y1="130" x2="630" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="630" y1="150" x2="650" y2="150" style="stroke:black;stroke-width:2" />
+	<path d = "M645 145 L645 135 L635 135 L635 145 L645 145 Z" stroke = "purple" stroke-width = "2" fill = "purple" />    <line x1="740" y1="200" x2="740" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="740" y1="120" x2="660" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="660" y1="120" x2="660" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="660" y1="200" x2="740" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="670" y = "150" fill = "black" font-size = "20px" font-family = "futura">*</text>
+    <text x="670" y = "190" fill = "black" font-size = "20px" font-family = "futura">8</text>
+    <line x1="710" y1="190" x2="730" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="710" y1="190" x2="720" y2="159" style="stroke:black;stroke-width:2" />
+    <line x1="730" y1="190" x2="720" y2="159" style="stroke:black;stroke-width:2" />
+    <line x1="730" y1="190" x2="730" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="730" y1="170" x2="710" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="710" y1="170" x2="710" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="710" y1="190" x2="730" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="730" y1="190" x2="714" y2="178" style="stroke:black;stroke-width:2" />
+    <line x1="714" y1="178" x2="724" y2="171" style="stroke:black;stroke-width:2" />
+    <line x1="724" y1="171" x2="718" y2="166" style="stroke:black;stroke-width:2" />
+    <text x="730" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="730" y1="150" x2="730" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="730" y1="130" x2="710" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="710" y1="130" x2="710" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="710" y1="150" x2="730" y2="150" style="stroke:black;stroke-width:2" />
+<circle cx="720" cy = "140" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="724" y1="136" x2="727" y2="133" style="stroke:black;stroke-width:2" />
+    <line x1="713" y1="147" x2="716" y2="144" style="stroke:black;stroke-width:2" />
+    <line x1="713" y1="133" x2="716" y2="136" style="stroke:black;stroke-width:2" />
+    <line x1="724" y1="144" x2="727" y2="147" style="stroke:black;stroke-width:2" />
+    <line x1="820" y1="200" x2="820" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="820" y1="120" x2="740" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="740" y1="120" x2="740" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="740" y1="200" x2="820" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="750" y = "150" fill = "black" font-size = "20px" font-family = "futura">(</text>
+    <text x="750" y = "190" fill = "black" font-size = "20px" font-family = "futura">9</text>
+    <line x1="810" y1="190" x2="810" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="810" y1="170" x2="790" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="790" y1="170" x2="790" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="790" y1="190" x2="810" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="810" y1="190" x2="800" y2="173" style="stroke:black;stroke-width:2" />
+    <line x1="800" y1="173" x2="790" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="800" y1="173" x2="800" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="800" y1="190" x2="807" y2="186" style="stroke:black;stroke-width:2" />
+    <text x="810" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="810" y1="150" x2="810" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="810" y1="130" x2="790" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="790" y1="130" x2="790" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="790" y1="150" x2="810" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="805" y1="145" x2="805" y2="135" style="stroke:black;stroke-width:2" />
+    <line x1="805" y1="135" x2="795" y2="135" style="stroke:black;stroke-width:2" />
+    <line x1="795" y1="135" x2="795" y2="145" style="stroke:black;stroke-width:2" />
+    <line x1="795" y1="145" x2="805" y2="145" style="stroke:black;stroke-width:2" />
+    <line x1="805" y1="145" x2="805" y2="134" style="stroke:black;stroke-width:2" />
+    <line x1="805" y1="134" x2="794" y2="134" style="stroke:black;stroke-width:2" />
+    <line x1="794" y1="134" x2="794" y2="145" style="stroke:black;stroke-width:2" />
+    <line x1="794" y1="145" x2="805" y2="145" style="stroke:black;stroke-width:2" />
+    <line x1="798" y1="140" x2="803" y2="140" style="stroke:black;stroke-width:2" />
+    <line x1="900" y1="200" x2="900" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="900" y1="120" x2="820" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="820" y1="120" x2="820" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="820" y1="200" x2="900" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="830" y = "150" fill = "black" font-size = "20px" font-family = "futura">)</text>
+    <text x="830" y = "190" fill = "black" font-size = "20px" font-family = "futura">0</text>
+    <line x1="890" y1="190" x2="890" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="890" y1="170" x2="870" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="870" y1="170" x2="870" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="870" y1="190" x2="890" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="880" y1="185" x2="880" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="880" y1="185" x2="875" y2="185" style="stroke:black;stroke-width:2" />
+    <line x1="875" y1="185" x2="875" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="875" y1="180" x2="880" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="880" y1="180" x2="885" y2="180" style="stroke:black;stroke-width:2" />
+    <line x1="885" y1="180" x2="885" y2="185" style="stroke:black;stroke-width:2" />
+    <line x1="885" y1="185" x2="880" y2="185" style="stroke:black;stroke-width:2" />
+    <text x="890" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="890" y1="150" x2="890" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="890" y1="130" x2="870" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="870" y1="130" x2="870" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="870" y1="150" x2="890" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="885" y1="145" x2="885" y2="135" style="stroke:black;stroke-width:2" />
+    <line x1="885" y1="135" x2="875" y2="135" style="stroke:black;stroke-width:2" />
+    <line x1="875" y1="135" x2="875" y2="145" style="stroke:black;stroke-width:2" />
+    <line x1="875" y1="145" x2="885" y2="145" style="stroke:black;stroke-width:2" />
+    <line x1="885" y1="145" x2="885" y2="134" style="stroke:black;stroke-width:2" />
+    <line x1="885" y1="134" x2="874" y2="134" style="stroke:black;stroke-width:2" />
+    <line x1="874" y1="134" x2="874" y2="145" style="stroke:black;stroke-width:2" />
+    <line x1="874" y1="145" x2="885" y2="145" style="stroke:black;stroke-width:2" />
+    <line x1="878" y1="140" x2="883" y2="140" style="stroke:black;stroke-width:2" />
+    <line x1="880" y1="140" x2="880" y2="138" style="stroke:black;stroke-width:2" />
+    <line x1="880" y1="140" x2="880" y2="143" style="stroke:black;stroke-width:2" />
+    <line x1="980" y1="200" x2="980" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="980" y1="120" x2="900" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="900" y1="120" x2="900" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="900" y1="200" x2="980" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="910" y = "150" fill = "black" font-size = "20px" font-family = "futura">_</text>
+    <text x="910" y = "190" fill = "black" font-size = "20px" font-family = "futura">-</text>
+    <line x1="970" y1="190" x2="970" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="970" y1="170" x2="950" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="950" y1="170" x2="950" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="950" y1="190" x2="970" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="957" y1="183" x2="957" y2="177" style="stroke:black;stroke-width:2" />
+    <line x1="957" y1="177" x2="950" y2="177" style="stroke:black;stroke-width:2" />
+    <line x1="950" y1="177" x2="950" y2="183" style="stroke:black;stroke-width:2" />
+    <line x1="950" y1="183" x2="957" y2="183" style="stroke:black;stroke-width:2" />
+    <line x1="963" y1="183" x2="963" y2="177" style="stroke:black;stroke-width:2" />
+    <line x1="963" y1="177" x2="957" y2="177" style="stroke:black;stroke-width:2" />
+    <line x1="957" y1="177" x2="957" y2="183" style="stroke:black;stroke-width:2" />
+    <line x1="957" y1="183" x2="963" y2="183" style="stroke:black;stroke-width:2" />
+    <line x1="970" y1="183" x2="970" y2="177" style="stroke:black;stroke-width:2" />
+    <line x1="970" y1="177" x2="963" y2="177" style="stroke:black;stroke-width:2" />
+    <line x1="963" y1="177" x2="963" y2="183" style="stroke:black;stroke-width:2" />
+    <line x1="963" y1="183" x2="970" y2="183" style="stroke:black;stroke-width:2" />
+    <text x="970" y = "190" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="970" y1="150" x2="970" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="970" y1="130" x2="950" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="950" y1="130" x2="950" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="950" y1="150" x2="970" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="960" y1="150" x2="960" y2="140" style="stroke:black;stroke-width:2" />
+    <line x1="960" y1="140" x2="958" y2="142" style="stroke:black;stroke-width:2" />
+    <line x1="960" y1="140" x2="962" y2="142" style="stroke:black;stroke-width:2" />
+    <line x1="960" y1="140" x2="963" y2="132" style="stroke:black;stroke-width:2" />
+    <line x1="963" y1="132" x2="961" y2="133" style="stroke:black;stroke-width:2" />
+    <line x1="963" y1="132" x2="964" y2="134" style="stroke:black;stroke-width:2" />
+    <line x1="1060" y1="200" x2="1060" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="1060" y1="120" x2="980" y2="120" style="stroke:black;stroke-width:2" />
+    <line x1="980" y1="120" x2="980" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="980" y1="200" x2="1060" y2="200" style="stroke:black;stroke-width:2" />
+    <text x="990" y = "150" fill = "black" font-size = "19.999999999999996px" font-family = "futura">+</text>
+    <text x="990" y = "190" fill = "black" font-size = "19.999999999999996px" font-family = "futura">=</text>
+    <line x1="1050" y1="190" x2="1050" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="1050" y1="170" x2="1030" y2="170" style="stroke:black;stroke-width:2" />
+    <line x1="1030" y1="170" x2="1030" y2="190" style="stroke:black;stroke-width:2" />
+    <line x1="1030" y1="190" x2="1050" y2="190" style="stroke:black;stroke-width:2" />
+    <circle cx="1035" cy = "185" r = "2.4999999999999996" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="1035" cy = "175" r = "2.4999999999999996" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="1040" cy = "180" r = "2.4999999999999996" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="1045" cy = "175" r = "2.4999999999999996" stroke = "black" stroke-width = "2" fill = "none" />
+    <circle cx="1045" cy = "185" r = "2.4999999999999996" stroke = "black" stroke-width = "2" fill = "none" />
+    <text x="1050" y = "190" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="1050" y1="150" x2="1050" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="1050" y1="130" x2="1030" y2="130" style="stroke:black;stroke-width:2" />
+    <line x1="1030" y1="130" x2="1030" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="1030" y1="150" x2="1050" y2="150" style="stroke:black;stroke-width:2" />
+    <line x1="1040" y1="150" x2="1040" y2="140" style="stroke:black;stroke-width:2" />
+    <line x1="1040" y1="140" x2="1038" y2="142" style="stroke:black;stroke-width:2" />
+    <line x1="1040" y1="140" x2="1042" y2="142" style="stroke:black;stroke-width:2" />
+    <line x1="1040" y1="140" x2="1037" y2="132" style="stroke:black;stroke-width:2" />
+    <line x1="1037" y1="132" x2="1036" y2="134" style="stroke:black;stroke-width:2" />
+    <line x1="1037" y1="132" x2="1039" y2="133" style="stroke:black;stroke-width:2" />
+    <line x1="220" y1="280" x2="220" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="220" y1="200" x2="140" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="140" y1="200" x2="140" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="140" y1="280" x2="220" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="150" y = "230" fill = "black" font-size = "20px" font-family = "futura">Q</text>
+    <text x="150" y = "270" fill = "black" font-size = "20px" font-family = "futura">q</text>
+    <line x1="210" y1="270" x2="210" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="210" y1="250" x2="190" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="190" y1="250" x2="190" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="190" y1="270" x2="210" y2="270" style="stroke:black;stroke-width:2" />
+<circle cx="195" cy = "265" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="195" y1="265" x2="195" y2="260" style="stroke:black;stroke-width:2" />
+    <line x1="195" y1="260" x2="195" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="195" y1="255" x2="200" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="255" x2="205" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="205" y1="255" x2="201" y2="251" style="stroke:black;stroke-width:2" />
+    <line x1="205" y1="255" x2="201" y2="259" style="stroke:black;stroke-width:2" />
+    <text x="210" y = "270" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="210" y1="230" x2="210" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="210" y1="210" x2="190" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="190" y1="210" x2="190" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="190" y1="230" x2="210" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M205 225 L205 215 L195 215 L195 225 L205 225 Z" stroke = "red" stroke-width = "2" fill = "red" />    <line x1="200" y1="220" x2="200" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="220" x2="210" y2="220" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="220" x2="190" y2="220" style="stroke:black;stroke-width:2" />
+<circle cx="200" cy = "215" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+<circle cx="200" cy = "200" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="205" y1="225" x2="205" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="205" y1="215" x2="195" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="195" y1="215" x2="195" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="195" y1="225" x2="205" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="300" y1="280" x2="300" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="300" y1="200" x2="220" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="220" y1="200" x2="220" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="220" y1="280" x2="300" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="230" y = "230" fill = "black" font-size = "20px" font-family = "futura">W</text>
+    <text x="230" y = "270" fill = "black" font-size = "20px" font-family = "futura">w</text>
+    <line x1="270" y1="270" x2="274" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="275" y1="270" x2="279" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="280" y1="270" x2="284" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="285" y1="270" x2="289" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="290" y1="270" x2="290" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="290" y1="250" x2="270" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="270" y1="250" x2="270" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="270" y1="270" x2="290" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="275" y1="260" x2="285" y2="260" style="stroke:black;stroke-width:2" />
+    <line x1="285" y1="260" x2="283" y2="262" style="stroke:black;stroke-width:2" />
+    <line x1="285" y1="260" x2="283" y2="258" style="stroke:black;stroke-width:2" />
+    <text x="290" y = "270" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="290" y1="230" x2="290" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="290" y1="210" x2="270" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="270" y1="210" x2="270" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="270" y1="230" x2="290" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M285 215 L285 205 L275 205 L275 215 L285 215 Z" stroke = "red" stroke-width = "2" fill = "red" />    <line x1="280" y1="210" x2="280" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="280" y1="210" x2="290" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="280" y1="210" x2="270" y2="210" style="stroke:black;stroke-width:2" />
+<circle cx="280" cy = "205" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+<circle cx="280" cy = "190" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="285" y1="215" x2="285" y2="205" style="stroke:black;stroke-width:2" />
+    <line x1="285" y1="205" x2="275" y2="205" style="stroke:black;stroke-width:2" />
+    <line x1="275" y1="205" x2="275" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="275" y1="215" x2="285" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="380" y1="280" x2="380" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="380" y1="200" x2="300" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="300" y1="200" x2="300" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="300" y1="280" x2="380" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="310" y = "230" fill = "black" font-size = "20px" font-family = "futura">E</text>
+    <text x="310" y = "270" fill = "black" font-size = "20px" font-family = "futura">e</text>
+    <line x1="370" y1="270" x2="370" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="370" y1="250" x2="350" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="350" y1="250" x2="350" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="350" y1="270" x2="370" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="355" y1="255" x2="360" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="360" y1="255" x2="365" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="365" y1="255" x2="365" y2="260" style="stroke:black;stroke-width:2" />
+    <line x1="365" y1="260" x2="365" y2="265" style="stroke:black;stroke-width:2" />
+    <line x1="365" y1="265" x2="369" y2="261" style="stroke:black;stroke-width:2" />
+    <line x1="365" y1="265" x2="361" y2="261" style="stroke:black;stroke-width:2" />
+<circle cx="365" cy = "265" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <text x="370" y = "270" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="370" y1="230" x2="370" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="370" y1="210" x2="350" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="350" y1="210" x2="350" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="350" y1="230" x2="370" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M364 224 L364 216 L356 216 L356 224 L364 224 Z" stroke = "red" stroke-width = "2" fill = "red" />    <line x1="360" y1="220" x2="360" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="360" y1="220" x2="370" y2="220" style="stroke:black;stroke-width:2" />
+    <line x1="360" y1="220" x2="350" y2="220" style="stroke:black;stroke-width:2" />
+<circle cx="360" cy = "215" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+<circle cx="360" cy = "200" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="365" y1="225" x2="365" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="365" y1="215" x2="355" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="355" y1="215" x2="355" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="355" y1="225" x2="365" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="460" y1="280" x2="460" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="460" y1="200" x2="380" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="380" y1="200" x2="380" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="380" y1="280" x2="460" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="390" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">R</text>
+    <text x="390" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">r</text>
+    <line x1="450" y1="270" x2="450" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="450" y1="250" x2="430" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="430" y1="250" x2="430" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="430" y1="270" x2="450" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="435" y1="255" x2="440" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="440" y1="255" x2="445" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="445" y1="255" x2="445" y2="260" style="stroke:black;stroke-width:2" />
+    <line x1="445" y1="260" x2="445" y2="265" style="stroke:black;stroke-width:2" />
+    <line x1="445" y1="265" x2="449" y2="261" style="stroke:black;stroke-width:2" />
+    <line x1="445" y1="265" x2="441" y2="261" style="stroke:black;stroke-width:2" />
+<circle cx="445" cy = "265" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="430" y1="270" x2="434" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="435" y1="270" x2="439" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="440" y1="270" x2="444" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="445" y1="270" x2="449" y2="266" style="stroke:black;stroke-width:2" />
+    <text x="450" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="450" y1="230" x2="450" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="450" y1="210" x2="430" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="430" y1="210" x2="430" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="430" y1="230" x2="450" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M444 214 L444 206 L436 206 L436 214 L444 214 Z" stroke = "red" stroke-width = "2" fill = "red" />    <line x1="440" y1="210" x2="440" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="440" y1="210" x2="450" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="440" y1="210" x2="430" y2="210" style="stroke:black;stroke-width:2" />
+<circle cx="440" cy = "205" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+<circle cx="440" cy = "190" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="445" y1="215" x2="445" y2="205" style="stroke:black;stroke-width:2" />
+    <line x1="445" y1="205" x2="435" y2="205" style="stroke:black;stroke-width:2" />
+    <line x1="435" y1="205" x2="435" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="435" y1="215" x2="445" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="540" y1="280" x2="540" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="540" y1="200" x2="460" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="460" y1="200" x2="460" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="460" y1="280" x2="540" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="470" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">T</text>
+    <text x="470" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">t</text>
+    <line x1="530" y1="270" x2="530" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="530" y1="250" x2="510" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="510" y1="250" x2="510" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="510" y1="270" x2="530" y2="270" style="stroke:black;stroke-width:2" />
+<circle cx="515" cy = "265" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="515" y1="265" x2="525" y2="265" style="stroke:black;stroke-width:2" />
+<path    d = "M515,265 C525,265 515,255 525,255" fill = "none" stroke-width = "2" stroke = "black" />    <text x="530" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="530" y1="230" x2="530" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="530" y1="210" x2="510" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="510" y1="210" x2="510" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="510" y1="230" x2="530" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M520 220 L520 210 L511 215 L520 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="520" y1="210" x2="529" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="529" y1="215" x2="529" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="529" y1="225" x2="520" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="520" y1="230" x2="511" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="511" y1="225" x2="511" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="620" y1="280" x2="620" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="620" y1="200" x2="540" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="540" y1="200" x2="540" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="540" y1="280" x2="620" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="550" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">Y</text>
+    <text x="550" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">y</text>
+    <line x1="610" y1="270" x2="610" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="610" y1="250" x2="590" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="590" y1="250" x2="590" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="590" y1="270" x2="610" y2="270" style="stroke:black;stroke-width:2" />
+<path    d = "M595,265 C605,265 595,255 605,255" fill = "none" stroke-width = "2" stroke = "black" /><circle cx="605" cy = "255" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="605" y1="255" x2="595" y2="255" style="stroke:black;stroke-width:2" />
+    <text x="610" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="610" y1="230" x2="610" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="610" y1="210" x2="590" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="590" y1="210" x2="590" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="590" y1="230" x2="610" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M600 220 L600 210 L609 215 L600 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="600" y1="210" x2="609" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="609" y1="215" x2="609" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="609" y1="225" x2="600" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="600" y1="230" x2="591" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="591" y1="225" x2="591" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="700" y1="280" x2="700" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="700" y1="200" x2="620" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="620" y1="200" x2="620" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="620" y1="280" x2="700" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="630" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">U</text>
+    <text x="630" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">u</text>
+    <line x1="690" y1="270" x2="690" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="690" y1="250" x2="670" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="670" y1="250" x2="670" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="670" y1="270" x2="690" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="685" y1="265" x2="685" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="685" y1="255" x2="675" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="675" y1="255" x2="675" y2="265" style="stroke:black;stroke-width:2" />
+    <line x1="675" y1="265" x2="685" y2="265" style="stroke:black;stroke-width:2" />
+    <line x1="682" y1="263" x2="682" y2="258" style="stroke:black;stroke-width:2" />
+    <line x1="682" y1="258" x2="677" y2="258" style="stroke:black;stroke-width:2" />
+    <line x1="677" y1="258" x2="677" y2="263" style="stroke:black;stroke-width:2" />
+    <line x1="677" y1="263" x2="682" y2="263" style="stroke:black;stroke-width:2" />
+    <line x1="681" y1="261" x2="681" y2="259" style="stroke:black;stroke-width:2" />
+    <line x1="681" y1="259" x2="679" y2="259" style="stroke:black;stroke-width:2" />
+    <line x1="679" y1="259" x2="679" y2="261" style="stroke:black;stroke-width:2" />
+    <line x1="679" y1="261" x2="681" y2="261" style="stroke:black;stroke-width:2" />
+    <text x="690" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="690" y1="230" x2="690" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="690" y1="210" x2="670" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="670" y1="210" x2="670" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="670" y1="230" x2="690" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M680 220 L671 215 L671 225 L680 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="680" y1="210" x2="689" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="689" y1="215" x2="689" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="689" y1="225" x2="680" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="680" y1="230" x2="671" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="671" y1="225" x2="671" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="780" y1="280" x2="780" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="780" y1="200" x2="700" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="700" y1="200" x2="700" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="700" y1="280" x2="780" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="710" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">I</text>
+    <text x="710" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">i</text>
+    <line x1="750" y1="270" x2="754" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="755" y1="270" x2="759" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="760" y1="270" x2="764" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="765" y1="270" x2="769" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="770" y1="270" x2="770" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="770" y1="250" x2="750" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="750" y1="250" x2="750" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="750" y1="270" x2="770" y2="270" style="stroke:black;stroke-width:2" />
+  <path d="M749.9999999999866 270.0000000000413           A19.999999999999996 19.999999999999996 0 0 1 769.9999999999945 250.00000000004934" fill = "none" stroke = "black" stroke-width = "2" />
+    <text x="770" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="770" y1="230" x2="770" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="770" y1="210" x2="750" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="750" y1="210" x2="750" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="750" y1="230" x2="770" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M760 220 L769 215 L769 225 L760 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="760" y1="210" x2="769" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="769" y1="215" x2="769" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="769" y1="225" x2="760" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="760" y1="230" x2="751" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="751" y1="225" x2="751" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="860" y1="280" x2="860" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="860" y1="200" x2="780" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="780" y1="200" x2="780" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="780" y1="280" x2="860" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="790" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">O</text>
+    <text x="790" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">o</text>
+    <line x1="830" y1="270" x2="834" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="835" y1="270" x2="839" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="840" y1="270" x2="844" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="845" y1="270" x2="849" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="850" y1="270" x2="850" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="850" y1="250" x2="830" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="830" y1="250" x2="830" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="830" y1="270" x2="850" y2="270" style="stroke:black;stroke-width:2" />
+  <path d="M829.9999999999918 250.00000000007742           A19.999999999999996 19.999999999999996 0 0 1 849.9999999999812 270.00000000008794" fill = "none" stroke = "black" stroke-width = "2" />
+    <text x="850" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="850" y1="230" x2="850" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="850" y1="210" x2="830" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="830" y1="210" x2="830" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="830" y1="230" x2="850" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M840 220 L840 230 L831 225 L840 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="840" y1="210" x2="849" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="849" y1="215" x2="849" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="849" y1="225" x2="840" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="840" y1="230" x2="831" y2="225" style="stroke:black;stroke-width:2" />
+    <line x1="831" y1="225" x2="831" y2="215" style="stroke:black;stroke-width:2" />
+    <line x1="940" y1="280" x2="940" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="940" y1="200" x2="860" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="860" y1="200" x2="860" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="860" y1="280" x2="940" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="870" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">P</text>
+    <text x="870" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">p</text>
+    <line x1="930" y1="270" x2="930" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="930" y1="250" x2="910" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="910" y1="250" x2="910" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="910" y1="270" x2="930" y2="270" style="stroke:black;stroke-width:2" />
+    <circle cx="920" cy = "260" r = "4.999999999999999" stroke = "black" stroke-width = "2" fill = "black" />
+    <text x="930" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="930" y1="230" x2="930" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="930" y1="210" x2="910" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="910" y1="210" x2="910" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="910" y1="230" x2="930" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M920 220 L920 230 L929 225 L920 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="1020" y1="280" x2="1020" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="1020" y1="200" x2="940" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="940" y1="200" x2="940" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="940" y1="280" x2="1020" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="950" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">{</text>
+    <text x="950" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">[</text>
+    <line x1="1010" y1="270" x2="1010" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="1010" y1="250" x2="990" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="990" y1="250" x2="990" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="990" y1="270" x2="1010" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="995" y1="265" x2="991" y2="256" style="stroke:black;stroke-width:2" />
+    <line x1="995" y1="265" x2="999" y2="256" style="stroke:black;stroke-width:2" />
+    <line x1="1005" y1="265" x2="1001" y2="256" style="stroke:black;stroke-width:2" />
+    <line x1="1005" y1="265" x2="1009" y2="256" style="stroke:black;stroke-width:2" />
+    <text x="1010" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="1010" y1="230" x2="1010" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="1010" y1="210" x2="990" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="990" y1="210" x2="990" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="990" y1="230" x2="1010" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M1000 220 L1000 210 L991 205 L983 210 L983 220 L991 225 L1000 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="1100" y1="280" x2="1100" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="1100" y1="200" x2="1020" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="1020" y1="200" x2="1020" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="1020" y1="280" x2="1100" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="1030" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">}</text>
+    <text x="1030" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">]</text>
+    <line x1="1070" y1="270" x2="1074" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="1075" y1="270" x2="1079" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="1080" y1="270" x2="1084" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="1085" y1="270" x2="1089" y2="266" style="stroke:black;stroke-width:2" />
+    <line x1="1090" y1="270" x2="1090" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="1090" y1="250" x2="1070" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="1070" y1="250" x2="1070" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="1070" y1="270" x2="1090" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="1085" y1="265" x2="1085" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="1085" y1="255" x2="1075" y2="255" style="stroke:black;stroke-width:2" />
+    <line x1="1075" y1="255" x2="1075" y2="265" style="stroke:black;stroke-width:2" />
+    <line x1="1075" y1="265" x2="1085" y2="265" style="stroke:black;stroke-width:2" />
+    <text x="1090" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="1090" y1="230" x2="1090" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="1090" y1="210" x2="1070" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="1070" y1="210" x2="1070" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="1070" y1="230" x2="1090" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M1080 220 L1080 210 L1089 205 L1097 210 L1097 220 L1089 225 L1080 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="1180" y1="280" x2="1180" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="1180" y1="200" x2="1100" y2="200" style="stroke:black;stroke-width:2" />
+    <line x1="1100" y1="200" x2="1100" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="1100" y1="280" x2="1180" y2="280" style="stroke:black;stroke-width:2" />
+    <text x="1110" y = "230" fill = "black" font-size = "19.999999999999996px" font-family = "futura">|</text>
+    <text x="1110" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura">\</text>
+    <line x1="1170" y1="270" x2="1170" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="1170" y1="250" x2="1150" y2="250" style="stroke:black;stroke-width:2" />
+    <line x1="1150" y1="250" x2="1150" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="1150" y1="270" x2="1170" y2="270" style="stroke:black;stroke-width:2" />
+    <line x1="1155" y1="260" x2="1165" y2="260" style="stroke:black;stroke-width:2" />
+    <line x1="1165" y1="260" x2="1163" y2="262" style="stroke:black;stroke-width:2" />
+    <line x1="1165" y1="260" x2="1163" y2="258" style="stroke:black;stroke-width:2" />
+    <text x="1170" y = "270" fill = "black" font-size = "19.999999999999996px" font-family = "futura"></text>
+    <line x1="1170" y1="230" x2="1170" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="1170" y1="210" x2="1150" y2="210" style="stroke:black;stroke-width:2" />
+    <line x1="1150" y1="210" x2="1150" y2="230" style="stroke:black;stroke-width:2" />
+    <line x1="1150" y1="230" x2="1170" y2="230" style="stroke:black;stroke-width:2" />
+	<path d = "M1160 220 L1160 210 L1175 215 L1160 220 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="240" y1="360" x2="240" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="240" y1="280" x2="160" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="160" y1="280" x2="160" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="160" y1="360" x2="240" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="170" y = "310" fill = "black" font-size = "20px" font-family = "futura">A</text>
+    <text x="170" y = "350" fill = "black" font-size = "20px" font-family = "futura">a</text>
+    <line x1="230" y1="350" x2="230" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="230" y1="330" x2="210" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="210" y1="330" x2="210" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="210" y1="350" x2="230" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="222" y1="345" x2="222" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="222" y1="345" x2="217" y2="345" style="stroke:black;stroke-width:2" />
+    <line x1="217" y1="345" x2="217" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="217" y1="340" x2="215" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="215" y1="340" x2="220" y2="335" style="stroke:black;stroke-width:2" />
+    <line x1="220" y1="335" x2="225" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="225" y1="340" x2="222" y2="340" style="stroke:black;stroke-width:2" />
+    <text x="230" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="230" y1="310" x2="230" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="230" y1="290" x2="210" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="210" y1="290" x2="210" y2="310" style="stroke:black;stroke-width:2" />
+    <line x1="210" y1="310" x2="230" y2="310" style="stroke:black;stroke-width:2" />
+	<path d = "M220 300 L220 290 L205 295 L220 300 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="320" y1="360" x2="320" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="320" y1="280" x2="240" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="240" y1="280" x2="240" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="240" y1="360" x2="320" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="250" y = "310" fill = "black" font-size = "20px" font-family = "futura">S</text>
+    <text x="250" y = "350" fill = "black" font-size = "20px" font-family = "futura">s</text>
+    <line x1="310" y1="350" x2="310" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="310" y1="330" x2="290" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="290" y1="330" x2="290" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="290" y1="350" x2="310" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="298" y1="335" x2="298" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="298" y1="335" x2="303" y2="335" style="stroke:black;stroke-width:2" />
+    <line x1="303" y1="335" x2="303" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="303" y1="340" x2="305" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="305" y1="340" x2="300" y2="345" style="stroke:black;stroke-width:2" />
+    <line x1="300" y1="345" x2="295" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="295" y1="340" x2="298" y2="340" style="stroke:black;stroke-width:2" />
+    <text x="310" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="310" y1="310" x2="310" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="310" y1="290" x2="290" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="290" y1="290" x2="290" y2="310" style="stroke:black;stroke-width:2" />
+    <line x1="290" y1="310" x2="310" y2="310" style="stroke:black;stroke-width:2" />
+	<path d = "M300 300 L300 290 L310 287 L300 300 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="400" y1="360" x2="400" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="400" y1="280" x2="320" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="320" y1="280" x2="320" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="320" y1="360" x2="400" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="330" y = "310" fill = "black" font-size = "20px" font-family = "futura">D</text>
+    <text x="330" y = "350" fill = "black" font-size = "20px" font-family = "futura">d</text>
+    <line x1="390" y1="350" x2="390" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="390" y1="330" x2="370" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="370" y1="330" x2="370" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="370" y1="350" x2="390" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="385" y1="337" x2="380" y2="337" style="stroke:black;stroke-width:2" />
+    <line x1="385" y1="337" x2="385" y2="342" style="stroke:black;stroke-width:2" />
+    <line x1="385" y1="342" x2="380" y2="342" style="stroke:black;stroke-width:2" />
+    <line x1="380" y1="342" x2="380" y2="345" style="stroke:black;stroke-width:2" />
+    <line x1="380" y1="345" x2="375" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="375" y1="340" x2="380" y2="335" style="stroke:black;stroke-width:2" />
+    <line x1="380" y1="335" x2="380" y2="337" style="stroke:black;stroke-width:2" />
+    <text x="390" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="390" y1="310" x2="390" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="390" y1="290" x2="370" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="370" y1="290" x2="370" y2="310" style="stroke:black;stroke-width:2" />
+    <line x1="370" y1="310" x2="390" y2="310" style="stroke:black;stroke-width:2" />
+	<path d = "M380 300 L380 290 L370 287 L380 300 Z" stroke = "black" stroke-width = "2" fill = "black" />    <line x1="480" y1="360" x2="480" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="480" y1="280" x2="400" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="400" y1="280" x2="400" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="400" y1="360" x2="480" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="410" y = "310" fill = "black" font-size = "20px" font-family = "futura">F</text>
+    <text x="410" y = "350" fill = "black" font-size = "20px" font-family = "futura">f</text>
+    <line x1="470" y1="350" x2="470" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="470" y1="330" x2="450" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="450" y1="330" x2="450" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="450" y1="350" x2="470" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="455" y1="342" x2="460" y2="342" style="stroke:black;stroke-width:2" />
+    <line x1="455" y1="342" x2="455" y2="337" style="stroke:black;stroke-width:2" />
+    <line x1="455" y1="337" x2="460" y2="337" style="stroke:black;stroke-width:2" />
+    <line x1="460" y1="337" x2="460" y2="335" style="stroke:black;stroke-width:2" />
+    <line x1="460" y1="335" x2="465" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="465" y1="340" x2="460" y2="345" style="stroke:black;stroke-width:2" />
+    <line x1="460" y1="345" x2="460" y2="342" style="stroke:black;stroke-width:2" />
+    <text x="470" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="470" y1="310" x2="470" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="470" y1="290" x2="450" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="450" y1="290" x2="450" y2="310" style="stroke:black;stroke-width:2" />
+    <line x1="450" y1="310" x2="470" y2="310" style="stroke:black;stroke-width:2" />
+    <circle cx="460" cy = "300" r = "5" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="460" cy = "290" r = "5" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="560" y1="360" x2="560" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="560" y1="280" x2="480" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="480" y1="280" x2="480" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="480" y1="360" x2="560" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="490" y = "310" fill = "black" font-size = "20px" font-family = "futura">G</text>
+    <text x="490" y = "350" fill = "black" font-size = "20px" font-family = "futura">g</text>
+    <line x1="550" y1="350" x2="550" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="550" y1="330" x2="530" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="530" y1="330" x2="530" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="530" y1="350" x2="550" y2="350" style="stroke:black;stroke-width:2" />
+  <path d="M536.4644660940679 336.46446609406064           A5 5 0 0 1 543.5355339059333 336.4644660940601" fill = "none" stroke = "black" stroke-width = "2" />
+  <path d="M536.4644660940684 343.5355339059261           A5 5 0 0 1 536.4644660940679 336.46446609406064" fill = "none" stroke = "black" stroke-width = "2" />
+  <path d="M543.5355339059339 343.53553390592566           A5 5 0 0 1 536.4644660940684 343.5355339059261" fill = "none" stroke = "black" stroke-width = "2" />
+    <line x1="540" y1="340" x2="544" y2="344" style="stroke:black;stroke-width:2" />
+    <line x1="540" y1="347" x2="544" y2="344" style="stroke:black;stroke-width:2" />
+    <text x="550" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="550" y1="310" x2="550" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="550" y1="290" x2="530" y2="290" style="stroke:black;stroke-width:2" />
+    <line x1="530" y1="290" x2="530" y2="310" style="stroke:black;stroke-width:2" />
+    <line x1="530" y1="310" x2="550" y2="310" style="stroke:black;stroke-width:2" />
+    <circle cx="540" cy = "295" r = "5" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="540" cy = "280" r = "5" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="640" y1="360" x2="640" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="640" y1="280" x2="560" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="560" y1="280" x2="560" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="560" y1="360" x2="640" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="570" y = "310" fill = "black" font-size = "20px" font-family = "futura">H</text>
+    <text x="570" y = "350" fill = "black" font-size = "20px" font-family = "futura">h</text>
+    <line x1="630" y1="350" x2="630" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="630" y1="330" x2="610" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="610" y1="330" x2="610" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="610" y1="350" x2="630" y2="350" style="stroke:black;stroke-width:2" />
+  <path d="M616.4644660940667 336.4644660940564           A5 5 0 0 1 623.5355339059321 336.46446609405643" fill = "none" stroke = "black" stroke-width = "2" />
+  <path d="M616.4644660940666 343.5355339059218           A5 5 0 0 1 616.4644660940667 336.4644660940564" fill = "none" stroke = "black" stroke-width = "2" />
+  <path d="M623.535533905932 343.53553390592197           A5 5 0 0 1 616.4644660940666 343.5355339059218" fill = "none" stroke = "black" stroke-width = "2" />
+    <line x1="620" y1="340" x2="624" y2="336" style="stroke:black;stroke-width:2" />
+    <line x1="620" y1="332" x2="624" y2="336" style="stroke:black;stroke-width:2" />
+    <text x="630" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="720" y1="360" x2="720" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="720" y1="280" x2="640" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="640" y1="280" x2="640" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="640" y1="360" x2="720" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="650" y = "310" fill = "black" font-size = "20px" font-family = "futura">J</text>
+    <text x="650" y = "350" fill = "black" font-size = "20px" font-family = "futura">j</text>
+    <line x1="710" y1="350" x2="710" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="710" y1="330" x2="690" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="690" y1="330" x2="690" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="690" y1="350" x2="710" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="705" y1="340" x2="695" y2="340" style="stroke:black;stroke-width:2" />
+    <text x="710" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="800" y1="360" x2="800" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="800" y1="280" x2="720" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="720" y1="280" x2="720" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="720" y1="360" x2="800" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="730" y = "310" fill = "black" font-size = "20px" font-family = "futura">K</text>
+    <text x="730" y = "350" fill = "black" font-size = "20px" font-family = "futura">k</text>
+    <line x1="790" y1="350" x2="790" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="790" y1="330" x2="770" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="770" y1="330" x2="770" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="770" y1="350" x2="790" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="780" y1="340" x2="780" y2="335" style="stroke:black;stroke-width:2" />
+    <line x1="780" y1="340" x2="775" y2="340" style="stroke:black;stroke-width:2" />
+    <line x1="780" y1="340" x2="780" y2="345" style="stroke:black;stroke-width:2" />
+    <line x1="780" y1="340" x2="785" y2="340" style="stroke:black;stroke-width:2" />
+    <text x="790" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="880" y1="360" x2="880" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="880" y1="280" x2="800" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="800" y1="280" x2="800" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="800" y1="360" x2="880" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="810" y = "310" fill = "black" font-size = "20px" font-family = "futura">L</text>
+    <text x="810" y = "350" fill = "black" font-size = "20px" font-family = "futura">l</text>
+    <line x1="870" y1="350" x2="870" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="870" y1="330" x2="850" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="850" y1="330" x2="850" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="850" y1="350" x2="870" y2="350" style="stroke:black;stroke-width:2" />
+	<path d = "M855 340 L855 335 L860 340 L855 345 L855 340 Z" stroke = "black" stroke-width = "2" fill = "black" />	<path d = "M860 340 L865 335 L865 340 L865 345 L860 340 Z" stroke = "black" stroke-width = "2" fill = "black" />    <text x="870" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="960" y1="360" x2="960" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="960" y1="280" x2="880" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="880" y1="280" x2="880" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="880" y1="360" x2="960" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="890" y = "310" fill = "black" font-size = "20px" font-family = "futura">:</text>
+    <text x="890" y = "350" fill = "black" font-size = "20px" font-family = "futura">;</text>
+    <line x1="950" y1="350" x2="950" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="950" y1="330" x2="930" y2="330" style="stroke:black;stroke-width:2" />
+    <line x1="930" y1="330" x2="930" y2="350" style="stroke:black;stroke-width:2" />
+    <line x1="930" y1="350" x2="950" y2="350" style="stroke:black;stroke-width:2" />
+	<path d = "M935 340 L935 345 L930 340 L935 335 L935 340 Z" stroke = "black" stroke-width = "2" fill = "black" />	<path d = "M950 340 L945 345 L945 340 L945 335 L950 340 Z" stroke = "black" stroke-width = "2" fill = "black" />    <text x="950" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="1040" y1="360" x2="1040" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="1040" y1="280" x2="960" y2="280" style="stroke:black;stroke-width:2" />
+    <line x1="960" y1="280" x2="960" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="960" y1="360" x2="1040" y2="360" style="stroke:black;stroke-width:2" />
+    <text x="970" y = "310" fill = "black" font-size = "20px" font-family = "futura">"</text>
+    <text x="970" y = "350" fill = "black" font-size = "20px" font-family = "futura">'</text>
+    <text x="1010" y = "350" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="280" y1="440" x2="280" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="280" y1="360" x2="200" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="360" x2="200" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="200" y1="440" x2="280" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="210" y = "390" fill = "black" font-size = "20px" font-family = "futura">Z</text>
+    <text x="210" y = "430" fill = "black" font-size = "20px" font-family = "futura">z</text>
+    <line x1="270" y1="430" x2="270" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="270" y1="410" x2="250" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="250" y1="410" x2="250" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="250" y1="430" x2="270" y2="430" style="stroke:black;stroke-width:2" />
+<circle cx="260" cy = "420" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <text x="270" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="360" y1="440" x2="360" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="360" y1="360" x2="280" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="280" y1="360" x2="280" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="280" y1="440" x2="360" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="290" y = "390" fill = "black" font-size = "20px" font-family = "futura">X</text>
+    <text x="290" y = "430" fill = "black" font-size = "20px" font-family = "futura">x</text>
+    <line x1="350" y1="430" x2="350" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="350" y1="410" x2="330" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="330" y1="410" x2="330" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="330" y1="430" x2="350" y2="430" style="stroke:black;stroke-width:2" />
+    <circle cx="340" cy = "420" r = "10" stroke = "black" stroke-width = "2" fill = "none" />
+<circle cx="340" cy = "420" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <text x="350" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="440" y1="440" x2="440" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="440" y1="360" x2="360" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="360" y1="360" x2="360" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="360" y1="440" x2="440" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="370" y = "390" fill = "black" font-size = "20px" font-family = "futura">C</text>
+    <text x="370" y = "430" fill = "black" font-size = "20px" font-family = "futura">c</text>
+    <line x1="430" y1="430" x2="430" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="430" y1="410" x2="410" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="410" y1="410" x2="410" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="410" y1="430" x2="430" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="420" y1="420" x2="415" y2="420" style="stroke:black;stroke-width:2" />
+<circle cx="415" cy = "420" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <line x1="420" y1="420" x2="425" y2="420" style="stroke:black;stroke-width:2" />
+<circle cx="425" cy = "420" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <text x="430" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="520" y1="440" x2="520" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="520" y1="360" x2="440" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="440" y1="360" x2="440" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="440" y1="440" x2="520" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="450" y = "390" fill = "black" font-size = "20px" font-family = "futura">V</text>
+    <text x="450" y = "430" fill = "black" font-size = "20px" font-family = "futura">v</text>
+    <line x1="510" y1="430" x2="510" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="510" y1="410" x2="490" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="490" y1="410" x2="490" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="490" y1="430" x2="510" y2="430" style="stroke:black;stroke-width:2" />
+  <path d="M492.9289321881344 412.9289321881335           A10 10 0 0 1 507.0710678118653 412.928932188133" fill = "none" stroke = "black" stroke-width = "2" />
+    <line x1="500" y1="420" x2="507" y2="413" style="stroke:black;stroke-width:2" />
+    <line x1="500" y1="420" x2="493" y2="413" style="stroke:black;stroke-width:2" />
+<circle cx="500" cy = "420" r = "3" stroke = "black" stroke-width = "2" fill = "black" />
+    <text x="510" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="600" y1="440" x2="600" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="600" y1="360" x2="520" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="520" y1="360" x2="520" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="520" y1="440" x2="600" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="530" y = "390" fill = "black" font-size = "20px" font-family = "futura">B</text>
+    <text x="530" y = "430" fill = "black" font-size = "20px" font-family = "futura">b</text>
+    <line x1="590" y1="430" x2="590" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="590" y1="410" x2="570" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="570" y1="410" x2="570" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="570" y1="430" x2="590" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="585" y1="425" x2="585" y2="415" style="stroke:black;stroke-width:2" />
+    <line x1="585" y1="415" x2="575" y2="415" style="stroke:black;stroke-width:2" />
+    <line x1="575" y1="415" x2="575" y2="425" style="stroke:black;stroke-width:2" />
+    <line x1="575" y1="425" x2="585" y2="425" style="stroke:black;stroke-width:2" />
+    <text x="590" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="680" y1="440" x2="680" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="680" y1="360" x2="600" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="600" y1="360" x2="600" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="600" y1="440" x2="680" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="610" y = "390" fill = "black" font-size = "20px" font-family = "futura">N</text>
+    <text x="610" y = "430" fill = "black" font-size = "20px" font-family = "futura">n</text>
+    <line x1="670" y1="430" x2="670" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="670" y1="410" x2="650" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="650" y1="410" x2="650" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="650" y1="430" x2="670" y2="430" style="stroke:black;stroke-width:2" />
+	<path d = "M660 420 L655 420 L660 415 L665 420 L660 420 Z" stroke = "black" stroke-width = "2" fill = "black" />    <text x="670" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="760" y1="440" x2="760" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="760" y1="360" x2="680" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="680" y1="360" x2="680" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="680" y1="440" x2="760" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="690" y = "390" fill = "black" font-size = "20px" font-family = "futura">M</text>
+    <text x="690" y = "430" fill = "black" font-size = "20px" font-family = "futura">m</text>
+    <line x1="750" y1="430" x2="750" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="750" y1="410" x2="730" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="730" y1="410" x2="730" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="730" y1="430" x2="750" y2="430" style="stroke:black;stroke-width:2" />
+	<path d = "M740 420 L745 420 L740 425 L735 420 L740 420 Z" stroke = "black" stroke-width = "2" fill = "black" />    <text x="750" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="840" y1="440" x2="840" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="840" y1="360" x2="760" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="760" y1="360" x2="760" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="760" y1="440" x2="840" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="770" y = "390" fill = "black" font-size = "20px" font-family = "futura">&lt;</text>
+    <text x="770" y = "430" fill = "black" font-size = "20px" font-family = "futura">,</text>
+    <line x1="830" y1="430" x2="830" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="830" y1="410" x2="810" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="810" y1="410" x2="810" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="810" y1="430" x2="830" y2="430" style="stroke:black;stroke-width:2" />
+	<path d = "M820 420 L820 425 L815 420 L820 415 L820 420 Z" stroke = "black" stroke-width = "2" fill = "black" />    <text x="830" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="920" y1="440" x2="920" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="920" y1="360" x2="840" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="840" y1="360" x2="840" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="840" y1="440" x2="920" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="850" y = "390" fill = "black" font-size = "20px" font-family = "futura">></text>
+    <text x="850" y = "430" fill = "black" font-size = "20px" font-family = "futura">.</text>
+    <line x1="910" y1="430" x2="910" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="910" y1="410" x2="890" y2="410" style="stroke:black;stroke-width:2" />
+    <line x1="890" y1="410" x2="890" y2="430" style="stroke:black;stroke-width:2" />
+    <line x1="890" y1="430" x2="910" y2="430" style="stroke:black;stroke-width:2" />
+	<path d = "M900 420 L900 415 L905 420 L900 425 L900 420 Z" stroke = "black" stroke-width = "2" fill = "black" />    <text x="910" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+    <line x1="1000" y1="440" x2="1000" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="1000" y1="360" x2="920" y2="360" style="stroke:black;stroke-width:2" />
+    <line x1="920" y1="360" x2="920" y2="440" style="stroke:black;stroke-width:2" />
+    <line x1="920" y1="440" x2="1000" y2="440" style="stroke:black;stroke-width:2" />
+    <text x="930" y = "390" fill = "black" font-size = "20px" font-family = "futura">?</text>
+    <text x="930" y = "430" fill = "black" font-size = "20px" font-family = "futura">/</text>
+    <text x="970" y = "430" fill = "black" font-size = "20px" font-family = "futura"></text>
+</svg>

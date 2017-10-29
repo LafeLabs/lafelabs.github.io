@@ -1,0 +1,261 @@
+<!--<page01>-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--     
+    PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+
+LAWS OF GEOMETRON:
+    NO PROPERTY 
+    NO MONEY
+    NO MINING
+    EVERYTHING IS RECURSIVE
+    EVERYTHING IS FRACTAL
+    EVERYTHING IS PHYSICAL
+[EGO DEATH]:
+    LOOK TO THE FUNGI
+    LOOK TO THE INSECTS
+    LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY-->    
+    <title>/www.lafelabs.org/phpreference/</title>
+<!--</page01>-->
+<!--<page02>-->
+</head>
+<body> 
+<!--</page02>-->        
+<!--<page03>-->
+    <div id = "main" class = "scroll">
+    <h1>PHP reference</h1>
+    <h2><a href = "http://www.lafelabs.org/">lafelabs.org</a></h2>
+    <h2>/phpreference/</h2>
+    <img src = "qrcode.png">
+    <h2>PHP, the recursive acronym:</h2>
+    <p>
+        <span class = "one">P</span>
+            <span class = "three">H<span class = "four">ypertext</span>P<span class = "four">rocessor</span></span>
+            <span class = "two">H<span class = "three">ypertext</span>P<span class = "three">rocessor</span></span>
+        <span class = "one">H</span><span class = "two">ypertext</span>
+        <span class = "one">P</span><span class = "two">rocessor</span>        
+    </p>
+    <p>
+        PHP is used to communicate between the web browser, which runs on your machine, called the "client", and the 
+        machine that stores the web page information, called the "server".  If you are viewing an HTML file on your
+        own computer, not using a server, PHP doesn't do anything useful.  But for pages stored on pretty much any server,
+        PHP is such a widely used standard that we can generally assume any of the numerous choices for web hosting and
+        serving will support it.  
+        </p><p>
+                This is important for two things as far as Geometron is concerned: saving files to the server, allowing your
+                work to remain permanent without saving on your local machine, and connecting to the physical aspects of the machine 
+                for robotics and measurement. In the latter case, PHP will be combined with python scripts and shell scripts to be
+                discussed later. In the former case, everything is based on one template that we use over and over, called
+                saver.php or something like it.   
+        </p>
+        <p>
+            Here is saver.php:
+        </p>
+        <pre>
+                &lt?php
+                /* javascript this pairs with:
+                
+                document.getElementById("editor").onkeypress = function(){//save on every key press
+                    var httpc = new XMLHttpRequest();
+                    var url = "saver.php";        
+                    httpc.open("POST", url, true);
+                    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    httpc.send("text=" + document.getElementById("editor").value);//send text to saver.php
+                }        
+                */
+                
+                   $str = $_POST["text"]; //get text from textarea at /editor/editor.html 
+                   $filename = "index.html";  //put it in main webpage there
+                   $file = fopen($filename,"w");// create new file with this name
+                   fwrite($file,$str); //write data to file
+                   fclose($file);  //close file
+                ?&gt
+        </pre>
+
+        <p>
+                Of course this is a small subset of the PHP language.  PHP can do just about anything any other language can do.
+                But for Geometron we want only a tiny range of actions, for simplicity.  The code above shows the PHP required to save
+                a file(while creating that file).  The only two things that I want in this reference taht are not in that code are 
+                joining strings together and running commands.  
+              </p>  
+              <p>
+                  The joining of strings is mostly worth mentioning because it's so odd.  In numerous languages including JavaScript, 
+                  joining strings is done via a simple "+" sign just as in addition of numbers.  In PHP, string variables are added with a "." 
+                  as follows:
+    
+              </p>
+    <pre>
+$outputstring = $string1.$string2;
+    </pre>
+<p>
+    Comments in PHP are either a "//" or "/*   */" as with JavaScript.  Variables of all types are denoted by a dollars sign before
+    the name of the variable.  
+</p>
+<p>Now all that remains is to add a reference on running arbitrary programs on the command line from php. Here is 
+    an example of that.
+</p>
+<pre>
+        &lt ?php
+        exec ("./pythonprogram.py");
+    ?&gt
+</pre>
+<p>
+    That's it! the command "exec" runs whatever goes in the quotes and parentheses, in this case a python 
+    program which has been made into an executable(see the Python section of the Geometron docs).
+</p>
+<pre>
+        &lt?php
+        $basecube = file_get_contents('https://pastebin.com/raw/NQMMPPdT');
+        $basecubearray = explode("\n", $basecube);
+        for($index = 0;$index &lt count($basecubearray);$index++){
+            $subarray = explode(":",$basecubearray[$index]);
+            echo byteCode2string($subarray[1]);
+        }
+        
+        function byteCode2string($inputbytecode) {
+            $bytecodearray = explode(",", $inputbytecode);
+            $outputstring = " ";
+            for ($index = 0; $index &lt count($bytecodearray); $index++) {
+                if(strlen($bytecodearray[$index]) &gt 0){
+                    $outputstring .= chr(octdec($bytecodearray[$index]));
+                }
+            }
+            return $outputstring;
+        }
+        function string2byteCode($inputstring){
+            $outputcode = "";
+            for( $index = 0; $index &lt strlen($inputstring);$index++){
+                $outputcode .= "0".decoct(ord($inputstring[$index])).",";
+            }
+            return $outputcode;
+        }
+        ?&gt
+</pre>
+<pre>
+        &lt?php
+        $homepage = file_get_contents('https://pastebin.com/raw/NQMMPPdT');
+        echo $homepage;
+        ?&gt
+</pre>
+
+<pre>
+        &lt?php
+        $basecube = file_get_contents("origin.txt");
+        $basecubearray = explode("\n", $basecube);
+        $subarray = explode(":",$basecubearray[0]);
+        $indexhtml = byteCode2string($subarray[1]);
+        $indexhtml .= "\n";
+        $indexhtml .= $basecube;
+        $indexhtml .= "\n";
+        $indexhtml .= file_get_contents('root.txt');
+        $indexhtml .= "\n";
+        $indexhtml .= file_get_contents('font.txt');
+        $indexhtml .= "\n";
+        $indexhtml .= file_get_contents('shapes.txt');
+        $indexhtml .= "\n";
+        $indexhtml .= file_get_contents('geometron.txt');
+        $indexhtml .= "\n";
+        $indexhtml .= file_get_contents('generators.txt');
+        $indexhtml .= "\n";
+        $indexhtml .= file_get_contents('scrolls.txt');
+        $indexhtml .= "\n";
+        for($index = 1;$index &lt count($basecubearray);$index++){    
+            $subarray = explode(":",$basecubearray[$index]);
+            $indexhtml .= byteCode2string($subarray[1]);
+        }
+        $file = fopen("index.html","w");
+        fwrite($file,$indexhtml);
+        fclose($file);
+        
+        ##############
+        function byteCode2string($inputbytecode) {
+            $bytecodearray = explode(",", $inputbytecode);
+            $outputstring = " ";
+            for ($index = 0; $index &lt count($bytecodearray); $index++) {
+                if(strlen($bytecodearray[$index]) &gt 1){
+                    $outputstring .= chr(octdec($bytecodearray[$index]));
+                }
+            }
+            return $outputstring;
+        }
+        function string2byteCode($inputstring){
+            $outputcode = "";
+            for( $index = 0; $index &lt strlen($inputstring);$index++){
+                $outputcode .= "0".decoct(ord($inputstring[$index])).",";
+            }
+            return $outputcode;
+        }
+        ?&gt
+</pre>
+<p>Here is the JavaScript required to run a php program, in this case creator.php:</p>
+<pre>
+        document.getElementById("create").onclick = function(){
+            var httpc = new XMLHttpRequest();
+            var url = "creator.php";
+            httpc.open("GET", url, true);
+            httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            httpc.send();
+        }
+
+</pre>
+</div>            
+
+<!--</page03>-->
+<style>
+    .one{
+        font-size:8em;
+    }
+    .two{
+        font-size:2em;
+    }
+    .three{
+        font-size:0.5em;
+    }
+    .four{
+        font-size:0.012em;
+    }
+</style>
+<!--<page0700>-->
+<script>
+
+
+
+</script>
+<!--</page0700>-->
+<!--<page04>-->
+<style>
+.scroll{
+    left:1px;
+    top:1px;
+    right:1px;
+    bottom:1px;
+    overflow:scroll;
+    margin:3% 3% 3% 3%;
+
+}
+textarea{
+    width:80%;
+    height:300px;
+    font-size:16px;
+    font-family:courier;
+}
+.element{
+    padding:1em 1em 1em 1em;
+    border:solid;
+    border-radius:1em;
+    margin-top:1em;
+}
+pre{
+    padding: 1em 1em 1em 1em;
+    margin: 1em 1em 1em 1em;
+    border:solid;
+    border-radius:1em;
+
+}
+</style>
+<!--</page04>-->
+<!--<page05>-->
+</body>
+</html>
+<!--</page05>-->
