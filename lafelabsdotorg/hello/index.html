@@ -27,6 +27,16 @@ https://raw.githubusercontent.com/LafeLabs/master/hello/index.html
 
 -->
     <title>/hello/</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+    </script>
+    
 <!--</page01>-->
 <script id = "bytecodeScript">
 /*
@@ -369,6 +379,19 @@ https://raw.githubusercontent.com/LafeLabs/master/hello/index.html
 01373:0333,0200,0336,0336,0330,0331,0332,0330,0337,0200,0330,0332,0336,0336,0342,0334,0342,0335,0331,0331,0331,0333,0337,063,0365,0333,0333,0336,0333,0331,0331,0331,0337,0337,0337,
 01374:0333,0200,0336,0336,0330,0331,0332,0330,0337,0200,0330,0332,0336,0336,0342,0334,0342,0335,0331,0331,0331,0333,0337,064,0365,0333,0333,0336,0333,0331,0331,0331,0337,0337,0337,
 01375:0333,0200,0336,0336,0330,0331,0332,0330,0337,0200,0330,0332,0336,0336,0342,0334,0342,0335,0331,0331,0331,0333,0337,065,0365,0333,0333,0336,0333,0331,0331,0331,0337,0337,0337,
+01600:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,060,066,060,060,0365,0336,0332,0331,0337,0337,0333,0333,
+01601:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,060,066,060,061,0365,0336,0332,0331,0337,0337,0333,0333,
+01602:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,060,066,060,062,0365,0336,0332,0331,0337,0337,0333,0333,
+01603:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,060,066,060,063,0365,0336,0332,0331,0337,0337,0333,0333,
+01604:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,060,066,060,064,0365,0336,0332,0331,0337,0337,0333,0333,
+01605:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,060,066,060,065,0365,0336,0332,0331,0337,0337,0333,0333,
+01606:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,060,066,060,066,0365,0336,0332,0331,0337,0337,0333,0333,
+01607:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,060,066,060,067,0365,0336,0332,0331,0337,0337,0333,0333,
+0610:074,0160,0162,0145,076,
+0611:074,057,0160,0162,0145,076,
+01610:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0333,0337,074,0160,0162,0145,076,0365,0336,0331,0332,0337,0337,0333,0333,
+01611:0201,0335,0201,0201,0335,0201,0335,0201,0201,0335,0336,0336,0330,0337,074,057,0160,0162,0145,076,0365,0336,0331,0337,0337,0333,0333,
+
 */
 </script>
 <!--<page02>-->
@@ -454,6 +477,19 @@ function doTheThing(localCommand){
     if(localCommand >= 0200 && localCommand <= 0277){//shapes 
             drawGlyph(currentTable[localCommand]);    	    
     }
+    if(localCommand >= 0400 && localCommand < 0500){//jump to an element, warp portals
+        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
+        currentDataIndex = localCommand - 0400;
+        if(currentDataIndex > currentDataArray.length - 1){
+            currentDataIndex = currentDataArray.length - 1;
+        }
+        currentData = currentDataArray[currentDataIndex];
+        initPage();    
+    }
+    if(localCommand >= 0600 && localCommand < 0700){
+        currentHTML += byteCode2string(currentTable[localCommand]);
+    }
+
     if(localCommand >= 01000 && localCommand <= 01777){//symbol glyphs
             drawGlyph(currentTable[localCommand]);    	    
     } 
@@ -471,6 +507,9 @@ function doTheThing(localCommand){
         currentStroke = "black";
         currentFill = "black";
         currentWord = "";
+        currentHTML = "";
+        currentStyle = "";
+
         //</page0300>
     }
     if(localCommand == 0304){//<page0304>
@@ -951,6 +990,8 @@ function doTheThing(localCommand){
     currentWord = "";
     currentSVG = "";
     currentHTML = "";
+    currentStyle = "";
+    latex = true;
     currentAddress = 0260;
     currentGlyph = "0300,";
     currentStroke = "black";
@@ -1181,7 +1222,7 @@ doTheThing(07);//initialize Geometron global variables
         
     <table id = "control0630" class = "control06xx">
         <tr>
-            <td>Address:</td><td><input></input></td>
+            <td>Addr:</td><td><input></input></td>
         </tr>      
         <tr>            
             <td>Action:</td><td><input></input></td>
@@ -1230,13 +1271,13 @@ doTheThing(07);//initialize Geometron global variables
             <td>EXPORT</td><td>SVG</td>
         </tr>                    
         <tr class = "viewButt" >
-            <td>EXPORT</td><td>JSON</td>
+            <td></td><td></td>
         </tr>
         <tr class = "viewButt" >
             <td>PUSH</td><td>JSON</td>
         </tr>    
         <tr class = "viewButt" >
-            <td>IMPORT</td><td>JSON</td>
+            <td></td><td></td>
         </tr>    
         <tr class = "viewButt" >
             <td>SAVE</td><td>SVG</td>
@@ -1251,6 +1292,11 @@ doTheThing(07);//initialize Geometron global variables
     <div class = "box0630"></div>
     <textarea id = "textIO0630" class = "textIO06xx"></textarea>
     <img id = "img0630"/>
+    <input id = "glyphspellinput">
+    <div id = "editorblock">
+        06xx:<input id = "addr06xx" value = "0600"> 
+        <textarea id = "editor06xx"></textarea>
+    </div>
 </div>
 <!--</page0630>-->
 <!--<page0700>-->
@@ -1325,6 +1371,7 @@ doTheThing(07);//initialize Geometron global variables
 <!--<page0730>-->
 <script>
     
+textAddress = 0600;
 currentDataArray = [];
 currentData = JSON.parse(document.getElementById("data0400").innerHTML);
 currentDataArray.push(currentData);
@@ -1398,8 +1445,10 @@ function init0730(){
         }
         currentData.glyph = currentTable[currentAddress];
         inputs0630[0].value = "0" + currentAddress.toString(8);
-        
-
+        document.getElementById("glyphspellinput").value = currentTable[currentAddress];
+        if(latex){
+            MathJax.Hub.Typeset();//tell Mathjax to update the math
+        }
     }
     inputs0630[1].onkeydown = function(e) {
         if(e.keyCode == 010){
@@ -1602,7 +1651,9 @@ function init0730(){
         redraw0730();
     }
 
-    buttons0630[3].onclick = function(){//Export JSON array        
+    buttons0630[3].onclick = function(){//Export JSON array     
+        currentData = JSON.parse(getJSON());       
+        currentDataArray[currentDataIndex] = currentData;
         document.getElementById("textIO0630").value = JSON.stringify(currentDataArray,null,"    ");
     }
 
@@ -1618,11 +1669,7 @@ function init0730(){
     buttons0630[5].onclick = function(){//Export SVG        
         exportSVG();
     }
-    buttons0630[6].onclick = function(){//Export JSON        
-        var jsonout = getJSON();  
-        document.getElementById("textIO0630").value = jsonout;
 
-    }
     buttons0630[7].onclick = function(){//PUSH JSON PAGE 
         currentData = JSON.parse(getJSON());       
         currentDataArray[currentDataIndex] = currentData;
@@ -1632,31 +1679,7 @@ function init0730(){
 
         init0730();
     }
-    buttons0630[8].onclick = function(){//IMPORT JSON        
-        var jsonin = JSON.parse(document.getElementById("textIO0630").value);
-        var inputStack = jsonin.shapes;
-        for(var index = 0;index < inputStack.length;index++){
-            var stackLine = inputStack[index].split(":");
-            var localAddress = parseInt(stackLine[0],8);
-            var localGlyph = stackLine[1];
-            currentTable[localAddress] = localGlyph;
-        }
-        currentTable[currentAddress] = jsonin.glyph;
-        unit = jsonin.unit;
-        width0630 = jsonin.w;
-        height0630 = jsonin.h;
-        inputs0630[4].value = width0630;
-        inputs0630[5].value = height0630;
-        x0 = jsonin.x0;
-        y0 = jsonin.y0;
-        currentGlyph = currentTable[currentAddress] + ",0207,";
-        inputs0630[6].value  = jsonin.imgurl;        
-        inputs0630[7].value  = jsonin.imgw;        
-        inputs0630[8].value  = jsonin.left;        
-        inputs0630[9].value  = jsonin.top;        
-        document.getElementById("img0630").src = jsonin.imgurl;
-        redraw0730();
-    }
+
 
     buttons0630[9].onclick = function(){//SAVE SVG FROM TEXTIO, after exporting svg into TEXTIO
         var httpc = new XMLHttpRequest();
@@ -1674,38 +1697,7 @@ function exportSVG(){
         tempy0 = y0;
         x0 -= 0.5*(innerWidth - width0630);
         y0 -= 0.5*(innerHeight - height0630);
-        var jsonout = "{\n\"shapes\":[\n";
-
-        for(var index = 040;index < 01777;index++){
-            if(currentTableStart[index] != currentTable[index]){
-                jsonout += "    \"0" + index.toString(8) + ":" + currentTable[index] + "\",\n";
-            }
-        }
-        if(jsonout.substring(jsonout.length-2,jsonout.length) == ",\n"){
-            jsonout = jsonout.substring(0,jsonout.length - 2) + "\n";
-        }
-        jsonout += "],\n";
-        jsonout += "\"glyph\":\"";
-        var fooGlyph = "";
-        var barArray = currentGlyph.split(",");
-        for(var index = 0;index < barArray.length;index++){
-            if(barArray[index] != "0207" && barArray[index].length > 0){
-                fooGlyph += barArray[index] + ",";
-            }
-        }
-        jsonout += fooGlyph + "\",\n";
-        jsonout += "\"url\":\"http://www.lafelabs.org/hello/\",\n";
-        jsonout += "\"raw\":\"https://raw.githubusercontent.com/LafeLabs/master/hello/index.html\",\n";
-        jsonout += "\"w\":" + inputs0630[4].value + ",\n";
-        jsonout += "\"h\":" + inputs0630[5].value + ",\n";
-        jsonout += "\"x0\":" + (tempx0).toString() + ",\n";
-        jsonout += "\"y0\":" + (tempy0).toString() + ",\n";
-        jsonout += "\"unit\":" + unit.toString() + ",\n";
-        jsonout += "\"imgurl\":\"" + inputs0630[6].value + "\",\n";
-        jsonout += "\"imgw\":" + inputs0630[7].value + ",\n";
-        jsonout += "\"left\":" + inputs0630[8].value + ",\n";
-        jsonout += "\"top\":" + inputs0630[9].value + "\n}\n";
-    
+        jsonout = getJSON();
         currentSVG = "<svg width=\"" + width0630.toString() + "\" height=\"" + height0630.toString() + "\" viewbox = \"0 0 " + width0630.toString() + " " + height0630.toString() + "\"  xmlns=\"http://www.w3.org/2000/svg\">\n";
         currentSVG += "\n<!--\n<json>\n" + jsonout + "\n</json>\n-->\n";
         ctx = document.getElementById("invisibleCanvas").getContext("2d");
@@ -1751,6 +1743,35 @@ function getJSON(){
 
     return jsonout;
 
+}
+
+document.getElementById("glyphspellinput").onchange = function(){
+    currentTable[currentAddress] = this.value;
+    currentGlyph = currentTable[currentAddress] + "0207,";
+    redraw();
+}
+
+document.getElementById("editor06xx").onkeydown = function(){
+    currentTable[textAddress] = string2byteCode(this.value);
+}
+document.getElementById("addr06xx").onchange = function(){
+    textAddress = parseInt(this.value,8);
+    document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+}
+
+
+document.getElementById("addr06xx").onkeydown = function(e) {
+     
+        if(e.keyCode == 046){
+            textAddress++;
+            document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+            this.value = "0" + textAddress.toString(8);
+        }
+        if(e.keyCode == 050){
+            textAddress--;
+            document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+            this.value = "0" + textAddress.toString(8);
+        }    
 }
 
 </script>
@@ -1899,12 +1920,43 @@ table{
     position:absolute;
     z-index:2;
     font-family:Futura;
-    border:solid;
 }
 .box0630 img{
     width:50%;
     z-index:-2;
 }
+#glyphspellinput{
+    position:absolute;
+    left:2%;
+    right:2%;
+    bottom:100px;
+    font-size:16px;
+    font-family:courier;
+}
+#editorblock{
+    position:absolute;
+    border:solid;
+    border-radius:0.5em;
+    padding:0.5em 0.5em 0.5em 0.5em;
+    right:1em;
+    bottom:25%;
+    width:20%;
+    height:50%;
+    text-align:center;
+}
+#addr06xx{
+    font-family:courier;
+    font-size:16px;
+    width:4em;
+}
+#editor06xx{
+    font-family:courier;
+    font-size:16px;
+    width:90%;
+    height:90%;
+}
+
+
 </style>
 <!--</page0530>-->
 <!--<page05>-->
