@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+    }
+});//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+</script>
+</head>
+<body>
+<div style = "display:none" class = "data" id = "data0400">
+{
+    "Angle 1":30,
+    "Angle 2":-30,
+    "LOR thickness":1,
+    "Top thickness":0.5,
+    "Bridge width":1.5,
+    "overlap":1,
+    "Bridge Length":10,
+    "Area":10
+}
+</div>
+<div class = "page" id = "div0600">
+    <h2>Angle Evaporation</h2>
+    <div style = "width:50%;font-size:80px;height:50%;border:solid;margin:auto;">
+        SVG HERE
+    </div>
+    <div id = "calcscroll">
+        <table id = "calctable"></table>
+        <textarea id = "jsonout"></textarea>
+    </div>
+</div>
+<script>
+
+if(innerWidth < innerHeight){
+    document.getElementById("calcscroll").style.width = innerWidth.toString() + "px";
+    tableWidth = innerWidth;
+}
+else{
+    document.getElementById("calcscroll").style.width = innerHeight.toString() + "px";
+    tableWidth = innerHeight;
+}
+calctable = document.getElementById("calctable");
+numChars = 14;
+calctable.style.fontSize = (tableWidth/numChars).toString() + "px";
+
+data0400 = JSON.parse(document.getElementById("data0400").innerHTML);
+
+for(line in data0400){
+    var newtr = document.createElement("TR");
+    var newtd = document.createElement("TD");
+    newtd.innerHTML = line;
+    newtr.appendChild(newtd);
+    var newtd = document.createElement("TD");
+    var newinput = document.createElement("INPUT");
+    newtd.appendChild(newinput);
+    newinput.value = data0400[line];
+    newtr.appendChild(newtd);
+    calctable.appendChild(newtr);
+}
+
+calcInputs = document.getElementById("calctable").getElementsByTagName("INPUT");
+document.getElementById("jsonout").value = JSON.stringify(data0400,null,"    ");
+
+
+</script>
+<style>
+.page{
+    position:absolute;
+    overflow:scroll;
+    width:100%;
+    height:100%;
+    text-align:center;
+}
+#calcscroll{
+    border:solid;
+    margin: auto;
+    font-family:courier;
+}
+#calctable{
+    border-collapse: collapse;
+    width:100%;
+}
+#calctable td{
+    border:solid;
+    width:50%;
+}
+#calctable td input{
+    width:95%;
+    font-size: 1em;
+    font-family:courier;
+}
+#jsonout{
+    width:95%;
+    height:10em;
+    font-size:1em;
+    font-family:courier;
+}
+</style>
+</body>
+</html>

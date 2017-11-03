@@ -1,0 +1,205 @@
+<!--<page01>-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--     
+    PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+
+LAWS OF GEOMETRON:
+    NO PROPERTY 
+    NO MONEY
+    NO MINING
+    EVERYTHING IS RECURSIVE
+    EVERYTHING IS FRACTAL
+    EVERYTHING IS PHYSICAL
+[EGO DEATH]:
+    LOOK TO THE FUNGI
+    LOOK TO THE INSECTS
+    LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY-->    
+
+<title>/jslibraries/</title>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.5/math.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+    }
+});//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+</script>
+<!--</page01>-->
+<!--<page02>-->
+</head>
+<body> 
+<!--</page02>-->
+<div style = "display:none" class = "text">
+    <h2>MathJax</h2>
+    The most useful library for Geometron is <a href = "https://www.mathjax.org">MathJax</a>.  This library makes
+    it possible to make beautiful mathematical symbols in HTML, based on the $\LaTeX$ system of typesetting.
+    The following is the code required to import the package.  With this code any math can be put inside single dollars signs
+    and it will be typeset according to the rules of $\LaTeX$.  Double dollars signs will make a separate equation. 
+    The commented out code MathJax.Hub.Typeset() is as a reference for the code needed to update mathjax, which is 
+    needed in various redraw() functions in Geometron where text elements with math in them need to be updated as they are 
+    moved, edited, etc.
+</div>
+            
+<div class = "code"><!--
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+    MathJax.Hub.Config({
+        tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+        }
+    });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+    </script>
+
+--></div>
+
+<div style = "display:none" class = "text">
+    <h2>Ace Editor</h2>
+    The next most useful library is Ace, a editor with syntax highlighting for most types of computer code. This is the 
+    code needed to import it in the "head" element:
+</div>
+            
+<div class = "code"><!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>--></div>
+<div style = "display:none" class = "text">
+   Here is the code to turn a div element into an editor.  Various themes and such can be tested at <a href = "https://ace.c9.io/build/kitchen-sink.html">this link to the 
+    makers of this library</a>.
+</div>
+<div class = "code"><!--editor = ace.edit("maineditor");
+    editor.setTheme("ace/theme/cobalt");
+    editor.getSession().setMode("ace/mode/html");
+    editor.setValue(document.getElementById("div0605").innerHTML);
+    var text = editor.getValue();--></div>
+
+<div style = "display:none" class = "text">
+    <h2>QR Codes</h2>
+Another library of use for Geometron is the qr code generator, <a href = "https://davidshimjs.github.io/qrcodejs/">qrcode.js</a>.  I have been unable to get a remote library to work
+for this for some reason, so when used the file "qrcode.js" has to be on the host, in general in the same directory as the 
+html file that calls it.  If it is in the same directory, the code to get it is:
+</div>
+<div class = "code"><!--<script src = "qrcode.js"></script>
+--></div>
+<div style = "display:none" class = "text">
+The code to generate a QR code is 
+</div>
+<div class = "code"><!-- <div>
+    <span>URL Input:<input id = "urlinput" value = "http://www.lafelabs.org/"></span>
+ </div>
+ <div id="qrcode"></div>
+
+<script type="text/javascript">
+qrcode = new QRCode(document.getElementById("qrcode"), {
+ text: "http://www.lafelabs.org/",
+ width: 256,
+ height: 256,
+ colorDark : "#000000",
+ colorLight : "#ffffff",
+ correctLevel : QRCode.CorrectLevel.H
+});
+
+
+document.getElementById("urlinput").onchange = function(){
+ qrcode.clear(); // clear the code.
+ qrcode.makeCode(this.value); // make another code.
+}
+</script>--></div>         
+
+<div style = "display:none" class = "text">
+    <h2>Math.js</h2>
+    For math that is not in the standard javascript math object there is <a href = "http://mathjs.org/index.html">math.js</a>, 
+    which supports complex numbers.
+</div>
+<div class = "code"><!--<script src = "https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.16.5/math.js"></script>--></div>
+<div style = "display:none" class = "text">
+    Overwhelmingly the most useful part of this is complex numbers.  Matrices are also useful and documented 
+    <a href = "http://mathjs.org/examples/matrices.js.html">here</a>.  Here are some examples of that, all lifted from 
+    <a href = "http://mathjs.org/examples/complex_numbers.js.html">here</a>:
+</div>
+<div class = "code"><!--var a = math.complex(2, 3); //2+3i
+var realLocal = a.re  // 2
+var imagLocal = a.im //3
+console.log(math.add(a, b); //complex add
+console.log(math.multiply(a, b)); //complex mutiply
+//create complex numbers with polar coordinates
+var c = math.complex({r: math.sqrt(2), phi: math.pi / 4});
+var d = math.complex(3, 4);
+console.log(d.abs(), d.arg());      // radius = 5, phi = 0.9272952180016122
+/**
+ * Helper function to output a value in the console. Value will be formatted.
+ * @param {*} value
+ */
+function print (value) {
+  var precision = 14;
+  console.log(math.format(value, precision));
+}--></div>
+
+
+<!--<page03>-->
+<div id = "main" class = "scroll">
+    <h1>JavaScript Libraries Reference</h1>
+    <h2><a href = "http://www.lafelabs.org/">lafelabs.org</a></h2>
+    <img src = "qrcode.png">
+</div>            
+<div>
+<!--</page03>-->
+<!--<page0700>-->
+<script>
+
+text = document.getElementsByClassName("text");
+code = document.getElementsByClassName("code");
+
+
+for(var index = 0;index < 7;index++){
+    var newp = document.createElement("P");
+    newp.innerHTML = text[index].innerHTML;
+    document.getElementById("main").appendChild(newp);
+    var newta = document.createElement("textarea");
+    newta.value = code[index].innerHTML.substring(4,code[index].innerHTML.length-4);
+    document.getElementById("main").appendChild(newta);
+}
+
+
+
+
+</script>
+<!--</page0700>-->
+<!--<page04>-->
+<style>
+.scroll{
+    left:1px;
+    top:1px;
+    right:1px;
+    bottom:1px;
+    overflow:scroll;
+    margin:3% 3% 3% 3%;
+
+}
+textarea{
+    width:90%;
+    height:100px;
+    font-size:16px;
+    font-family:courier;
+}
+.element{
+    padding:1em 1em 1em 1em;
+    border:solid;
+    border-radius:1em;
+    margin-top:1em;
+}
+pre{
+    border:solid;
+    padding:1em 1em 1em 1em;
+    border-radius:1em;
+    margin-top:1em;
+
+}
+
+</style>
+<!--</page04>-->
+<!--<page05>-->
+</body>
+</html>
+<!--</page05>-->

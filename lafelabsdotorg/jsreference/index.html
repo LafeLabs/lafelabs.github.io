@@ -1,0 +1,1375 @@
+<!--<page01>-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<!--     
+    PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+
+LAWS OF GEOMETRON:
+    NO PROPERTY 
+    NO MONEY
+    NO MINING
+    EVERYTHING IS RECURSIVE
+    EVERYTHING IS FRACTAL
+    EVERYTHING IS PHYSICAL
+[EGO DEATH]:
+    LOOK TO THE FUNGI
+    LOOK TO THE INSECTS
+    LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY-->    
+    <title>/www.lafelabs.org/jsreference/</title>
+<!--</page01>-->
+<!--<page02>-->
+</head>
+<body> 
+<!--</page02>-->
+<div style = "display:none" class = "text">
+    These are the core functions to translate octal bytecode to strings and vice versa and to draw glyphs and spell glyphs:
+</div>
+<div style = "display:none" class = "text">
+    The function <span style = "font-family:courier;">doTheThing()</span> is the heart of Geometron and might also be called the "Geometron Virtual Machine" or GVM.
+</div>
+
+
+<div style = "display:none" class = "text">
+    Standard setup of editor page buttons(this needs to be improved for better look on mobile).
+</div>
+<div style = "display:none" class = "text">
+    Standard editor page: this is the main user interface for creating Geometron documents.
+</div>
+            
+<script id = "scripts1" class = "scripts">
+function string2byteCode(localString){
+    var localByteCode = "";
+    for(var stringIndex = 0;stringIndex < localString.length;stringIndex++){
+        var tempCharCode = localString.charCodeAt(stringIndex);
+        if(tempCharCode != 0){
+            localByteCode += "0";
+            localByteCode += tempCharCode.toString(8);
+            localByteCode += ",";
+        }
+    }
+    return localByteCode;
+}
+        
+function byteCode2string(localByteCode){
+    var localString = "";
+    var stringArray = localByteCode.split(",");
+    for(var index = 0;index < stringArray.length;index++){
+        var myCharCode = String.fromCharCode(parseInt(stringArray[index],8));
+        if(parseInt(stringArray[index],8) >= 040 && parseInt(stringArray[index],8) < 0177 ){
+            localString += myCharCode;
+        }
+        if(parseInt(stringArray[index],8) == 012){//newline
+            localString += myCharCode;
+        }
+        if(parseInt(stringArray[index],8) == 011){//vertical tab
+            localString += myCharCode;
+        }		
+        if(parseInt(stringArray[index],8) >= 0400 && parseInt(stringArray[index],8) <= 0777){
+            if(currentTable[parseInt(stringArray[index],8)].length > 0){
+                localString += byteCode2string(currentTable[parseInt(stringArray[index],8)]);
+            }
+        }		
+        
+    }
+    return localString;
+}
+        
+function drawGlyph(localString){
+    var tempArray = localString.split(',');
+    for(var index = 0;index < tempArray.length;index++){
+        doTheThing(parseInt(tempArray[index],8));
+    }
+}
+    
+function spellGlyph(localString){
+    var tempArray = localString.split(',');
+    for(var index = 0;index < tempArray.length;index++){
+        ctx.lineWidth = 2;
+        // ctx.strokeStyle="black";
+        if(x > 0.94*innerWidth){
+            y+= 1.1*side;
+            x = side;
+        }
+        doTheThing(parseInt(tempArray[index],8) + 01000);
+    }
+}
+</script>               
+
+<script id = "scripts2" class = "scripts">
+function doTheThing(localCommand){
+    
+    if(localCommand >= 040 && localCommand <= 0176){
+            currentHTML += String.fromCharCode(localCommand);
+            currentWord += String.fromCharCode(localCommand);	    
+    }
+    if(localCommand >= 0200 && localCommand <= 0277){//shapes 
+            drawGlyph(currentTable[localCommand]);    	    
+    }
+    if(localCommand >= 0400 && localCommand < 0500){//jump to an element, warp portals
+        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
+        currentDataIndex = localCommand - 0400;
+        if(currentDataIndex > currentDataArray.length - 1){
+            currentDataIndex = currentDataArray.length - 1;
+        }
+        currentData = currentDataArray[currentDataIndex];
+        initPage();    
+    }
+    if(localCommand >= 0600 && localCommand < 0700){
+        currentHTML += byteCode2string(currentTable[localCommand]);
+    }
+
+    if(localCommand >= 01000 && localCommand <= 01777){//symbol glyphs
+            drawGlyph(currentTable[localCommand]);    	    
+    } 
+    // </page02>
+    if(localCommand == 0300){// <page0300>
+        x = x0;
+        y = y0;
+        theta = theta0;
+        side = unit;
+        thetaStep = Math.PI/2;
+        scaleFactor = 2;
+        ctx.lineWidth = 2;
+        ctx.strokeStyle="black";
+        ctx.fillStyle="black";
+        currentStroke = "black";
+        currentFill = "black";
+        currentWord = "";
+        currentHTML = "";
+        currentStyle = "";
+
+        //</page0300>
+    }
+    if(localCommand == 0304){//<page0304>
+    thetaStep = Math.PI/2;
+    //</page0304>
+    }
+    if(localCommand == 0305){//<page0305>
+    thetaStep = 2*Math.PI/5;
+    //</page0305>
+    }
+    if(localCommand == 0306){//<page0306>
+    thetaStep = Math.PI/3;
+    //</page0306>
+    }
+    if(localCommand == 0310){//<page0310>
+    scaleFactor = Math.sqrt(2); 
+    //</page0310>
+    }
+    if(localCommand == 0311){//<page0311>
+    scaleFactor = phi; //"golden" ratio 
+    //</page0311>
+    }
+    if(localCommand == 0312){//<page0312>
+    scaleFactor = Math.sqrt(3); 
+    //</page0312>
+    }
+    if(localCommand == 0313){//<page0313>
+    scaleFactor = 2;  //2x
+    //</page0313>
+    }
+    if(localCommand == 0314){//<page0314>
+    scaleFactor = 3;  //3x
+    //</page0314>
+    }
+    if(localCommand == 0315){//<page0315>
+    scaleFactor = 3.14159;  //pi*
+    //</page0315>
+    }
+    if(localCommand == 0316){//<page0316>
+    scaleFactor = 5;  //5*
+    //</page0316>
+    }
+    if(localCommand == 0317){//<page0317>
+    side = unit; 
+    //</page0317>
+    }
+    if(localCommand == 0320){//<page0320>
+    ctx.strokeStyle="black";
+    ctx.lineWidth = 2;    	
+    ctx.fillStyle = "black";
+    currentStroke = "black";
+    currentFill = "black";
+    //</page0320>
+    }
+    if(localCommand == 0321){//<page0321>
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 2;    	
+    ctx.fillStyle = "white";
+    currentStroke = "white";
+    currentFill = "white";
+    //</page0321>
+    }
+    if(localCommand == 0322){//<page0322>
+    ctx.strokeStyle="red";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "red";    
+    currentStroke = "red";
+    currentFill = "red";
+    //</page0322>
+    }
+    if(localCommand == 0323){//<page0323>
+    ctx.strokeStyle="orange";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "orange";    
+    currentStroke = "orange";
+    currentFill = "orange";
+    //</page0323>
+    }
+    if(localCommand == 0324){//<page0324>
+    ctx.strokeStyle="yellow";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "yellow";    
+    currentStroke = "yellow";
+    currentFill = "yellow";
+    //</page0324>
+    }
+    if(localCommand == 0325){//<page0325>
+    ctx.strokeStyle="green";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "green";    
+    currentStroke = "green";
+    currentFill = "green";
+    //</page0325>
+    }
+    if(localCommand == 0326){//<page0326>
+    ctx.strokeStyle="blue";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "blue";    
+    currentStroke = "blue";
+    currentFill = "blue";
+    //</page0326>
+    }
+    if(localCommand == 0327){//<page0327>
+    ctx.strokeStyle="purple";
+    ctx.lineWidth = 2;
+    ctx.fillStyle = "purple";    
+    currentStroke = "purple";
+    currentFill = "purple";
+    //</page0327>
+    }
+    if(localCommand == 0330){//<page0330>
+    x += side*Math.cos(theta);   
+    y += side*Math.sin(theta); 
+    //</page0330>
+    }
+    if(localCommand == 0331){//<page0331>
+    x -= side*Math.cos(theta);   
+    y -= side*Math.sin(theta); 
+    //</page0331>
+    }
+    if(localCommand == 0332){//<page0332>
+    x += side*Math.cos(theta - thetaStep);
+    y += side*Math.sin(theta - thetaStep);
+    //</page0332>
+    }
+    if(localCommand == 0333){//<page0333>
+    x += side*Math.cos(theta + thetaStep);
+    y += side*Math.sin(theta + thetaStep);
+    //</page0333>
+    }
+    if(localCommand == 0334){//<page0334>
+    theta -= thetaStep; // CCW
+    //</page0334>    
+    }
+    if(localCommand == 0335){//<page0335>
+    theta += thetaStep; // CW
+    //</page0335>
+    }
+    if(localCommand == 0336){//<page0336>
+    side /= scaleFactor; // -
+    //</page0336>
+    }
+    if(localCommand == 0337){//<page0337>
+    side *= scaleFactor; // +
+    //</page0337>
+    }
+    if(localCommand == 0340){//<page0340>
+
+    //point
+    ctx.beginPath();
+    ctx.arc(x, y, 3, 0, 2 * Math.PI);
+    ctx.fill();	
+    ctx.closePath();
+    currentSVG += "<circle cx=\"";
+    currentSVG += Math.round(x).toString();
+    currentSVG += "\" cy = \"";
+    currentSVG += Math.round(y).toString();
+    currentSVG += "\" r = \"3\" stroke = \"" + currentStroke + "\" stroke-width = \"2\" ";
+    currentSVG += "fill = \"" + currentStroke + "\" />\n";		
+    //</page0340>
+    }
+    if(localCommand == 0341){//<page0341>
+    //circle
+    ctx.beginPath();
+    ctx.arc(x, y, side, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.stroke();
+    currentSVG += "    <circle cx=\"";
+    currentSVG += Math.round(x).toString();
+    currentSVG += "\" cy = \"";
+    currentSVG += Math.round(y).toString();
+    currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"" + currentStroke + "\" stroke-width = \"2\" ";
+    currentSVG += "fill = \"none\" />\n";		
+    //</page0341>
+    }
+    if(localCommand == 0342){//<page0342>
+    //line
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
+    ctx.stroke();		
+    ctx.closePath();
+
+    var x2 = Math.round(x + side*Math.cos(theta));
+    var y2 = Math.round(y + side*Math.sin(theta));
+    currentSVG += "    <line x1=\""+Math.round(x).toString()+"\" y1=\""+Math.round(y).toString()+"\" x2=\""+x2.toString()+"\" y2=\""+y2.toString()+"\" style=\"stroke:" + currentStroke + ";stroke-width:2\" />\n"
+
+    //</page0342>
+    }
+    if(localCommand == 0343){//<page0343>
+    ctx.beginPath();
+    ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
+    ctx.stroke();
+    ctx.closePath();
+    localString = "";
+    localString += "  <path d=\"";	
+    localString += "M";
+    var localInt = x + side*Math.cos(theta - thetaStep);
+    localString += localInt.toString();
+    localString += " ";
+    localInt = y + side*Math.sin(theta - thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+    localInt = x + side*Math.cos(theta + thetaStep);
+    localString += localInt.toString() + " ";
+    localInt = y + side*Math.sin(theta + thetaStep);
+    localString += localInt.toString() + "\" fill = \"none\" stroke = \"" + currentStroke + "\" stroke-width = \"2\" />\n";
+    currentSVG += localString;
+    //</page0343>    
+    }
+    if(localCommand == 0344){//<page0344>
+    //part of a poly line or path 
+    ctx.lineTo(x + side*Math.cos(theta),y + side*Math.sin(theta));
+    ctx.stroke();		
+
+    var x2 = Math.round(x + side*Math.cos(theta));
+    var y2 = Math.round(y + side*Math.sin(theta));
+    currentSVG += "L" + x2 + " " + y2 + " ";
+
+    //</page0344>
+    }
+    if(localCommand == 0345){//<page0345>
+    //arc
+    ctx.arc(x, y, side, theta - thetaStep,theta + thetaStep);
+    ctx.stroke();
+
+    localString = "";
+    localString += "M";
+    var localInt = x + side*Math.cos(theta - thetaStep);
+    localString += localInt.toString();
+    localString += " ";
+    localInt = y + side*Math.sin(theta - thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+    localInt = x + side*Math.cos(theta + thetaStep);
+    localString += localInt.toString() + " ";
+    localInt = y + side*Math.sin(theta + thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+
+    //</page0345>
+    }
+    if(localCommand == 0346){//<page0346>
+    //arc, reverse direction
+    ctx.arc(x, y, side, theta + thetaStep,theta - thetaStep,true);
+    ctx.stroke();
+
+    localString = "";
+    localString += "M";
+    var localInt = x + side*Math.cos(theta - thetaStep);
+    localString += localInt.toString();
+    localString += " ";
+    localInt = y + side*Math.sin(theta - thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    localString = "           A" + side.toString() + " " + side.toString() + " 0 0 1 ";
+    localInt = x + side*Math.cos(theta + thetaStep);
+    localString += localInt.toString() + " ";
+    localInt = y + side*Math.sin(theta + thetaStep);
+    localString += localInt.toString();
+    currentSVG += localString;
+    //</page0346>
+    }
+    if(localCommand == 0347){//<page0347>
+    //filled circle
+    ctx.beginPath();
+    ctx.arc(x, y, side, 0, 2 * Math.PI);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fill();
+    currentSVG += "    <circle cx=\"";
+    currentSVG += Math.round(x).toString();
+    currentSVG += "\" cy = \"";
+    currentSVG += Math.round(y).toString();
+    currentSVG += "\" r = \"" + side.toString() + "\" stroke = \"" + currentStroke + "\" stroke-width = \"2\" ";
+    currentSVG += "fill = \"" + currentFill + "\" />\n";		
+
+    //</page0347>
+    }
+    if(localCommand == 0350){//<page0350>
+    thetaStep /= 2;  //angle/2
+    //</page0350>
+    }
+    if(localCommand == 0351){//<page0351>
+    thetaStep *= 2;  //2angle
+    //</page0351>
+    }
+    if(localCommand == 0352){//<page0352>
+    thetaStep /= 3; //angle/3
+    //</page0352>
+    }
+    if(localCommand == 0353){//<page0353>
+    thetaStep *= 3; //3angle
+    //</page0353>
+    }
+    if(localCommand == 0360){//<page0360>
+    imgData = imgctx.getImageData(x,y,side,side);
+    //</page0360>
+    }
+    if(localCommand == 0361){//<page0361>
+    var IMG = document.getElementById(currentImage);
+    IMG.style.left = (x - imgx0*(side/unit)).toString() + "px";
+    IMG.style.top = (y - imgy0*(side/unit)).toString() + "px";
+    IMG.style.width = (imgw*side/unit).toString() + "px";  
+    //</page0361>
+    }
+    if(localCommand == 0362){//<page0362>
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    currentSVG += "	<path d = \"M";
+    currentSVG += Math.round(x).toString() + " ";
+    currentSVG += Math.round(y).toString() + " ";
+
+    //	   currentSVG += "  <polyline points=\"";		
+    //</page0362>
+    }
+    if(localCommand == 0363){//<page0363>
+    ctx.closePath();
+    ctx.stroke();		
+    ctx.fill();		
+    currentSVG += "Z\""+ " stroke = \"" + currentStroke + "\" stroke-width = \"2\" fill = \"" + currentFill + "\" "+"/>";
+    //</page0363>
+    }
+    if(localCommand == 0364){//<page0364>
+    ctx.closePath();
+    ctx.stroke();		
+    ctx.fill();		
+    currentSVG += "Z\""+ " stroke = \"" + currentStroke + "\" stroke-width = \"2\" fill = \"" + currentFill + "\" "+"/>";
+    //</page0364>
+    }
+    if(localCommand == 0365){//<page0365>
+    ctx.font=side.toString(8) + "px " + myFont;
+    ctx.fillText(currentWord,x,y);
+    currentSVG += "    <text x=\"";
+    currentSVG += Math.round(x).toString();
+    currentSVG += "\" y = \"";
+    currentSVG += Math.round(y).toString();
+    currentSVG += "\" fill = \"" + currentStroke + "\""; 
+    currentSVG += " font-size = \"";
+    currentSVG += side + "px\"";
+    currentSVG += " font-family = \"futura\"";
+    currentSVG += ">";
+    currentSVG += currentWord;
+    currentSVG += "</text>\n";	
+    currentWord = "";
+    currentHTML = "";
+    //</page0365>
+    }
+    if(localCommand == 0366){//<page0366>
+    ctx.beginPath();
+    ctx.moveTo(Math.round(x),Math.round(y));
+    cpx1 = Math.round(x + side*Math.cos(theta));
+    cpy1 = Math.round(y + side*Math.sin(theta));
+    currentSVG += "<path    d = \"M";
+    currentSVG += (Math.round(x)).toString() + ",";
+    currentSVG += (Math.round(y)).toString() + " C";
+    currentSVG += cpx1.toString() + "," + cpy1.toString() + " ";
+
+    //<path  d="M100,200 C150,150 200,150 250,200" />
+    //</page0366>
+    }
+    if(localCommand == 0367){//<page0367>
+    x2 = Math.round(x);
+    y2 = Math.round(y);
+    cpx2 = Math.round(x + side*Math.cos(theta));
+    cpy2 = Math.round(y + side*Math.sin(theta));
+    ctx.bezierCurveTo(cpx1,cpy1,cpx2,cpy2,x2,y2);
+    ctx.stroke();
+    currentSVG += cpx2.toString() + "," + cpy2.toString() + " ";
+    currentSVG += x2.toString() + "," + y2.toString() + "\" fill = \"none\" stroke-width = \"2\" stroke = \"" + currentStroke + "\" />";		
+    //</page0367>
+    }
+    if(localCommand == 0370){//<page0370>
+        boxes0630[0].innerHTML = currentHTML;
+        currentHTML = "";
+        boxes0630[0].style.transform = "rotate(" + (theta - theta0).toString() + "rad)";
+        boxes0630[0].style.display = "block";
+        boxes0630[0].style.width = side.toString() + "px";
+        boxes0630[0].style.left = x.toString() + "px";
+        boxes0630[0].style.top = y.toString() + "px";
+        boxes0630[0].style.fontSize = (boxFontSize*side).toString() + "px";
+        boxes0630[0].style.height = side.toString() + "px";
+
+    //</page0370>
+    }
+    if(localCommand == 0371){//<page0371>
+        boxes0630[1].innerHTML = currentHTML;
+        currentHTML = "";
+        boxes0630[1].style.transform = "rotate(" + (theta - theta0).toString() + "rad)";
+        boxes0630[1].style.display = "block";
+        boxes0630[1].style.width = side.toString() + "px";
+        boxes0630[1].style.left = x.toString() + "px";
+        boxes0630[1].style.top = y.toString() + "px";
+        boxes0630[1].style.fontSize = (boxFontSize*side).toString() + "px";
+        boxes0630[1].style.height = side.toString() + "px";
+    //</page0371>
+    }
+    if(localCommand == 0372){//<page0372>
+        boxes0630[2].innerHTML = currentHTML;
+        currentHTML = "";
+        boxes0630[2].style.transform = "rotate(" + (theta - theta0).toString() + "rad)";
+        boxes0630[2].style.display = "block";
+        boxes0630[2].style.width = side.toString() + "px";
+        boxes0630[2].style.left = x.toString() + "px";
+        boxes0630[2].style.top = y.toString() + "px";
+        boxes0630[2].style.fontSize = (boxFontSize*side).toString() + "px";
+        boxes0630[2].style.height = side.toString() + "px";
+
+    //</page0372>
+    }
+    if(localCommand == 0373){//<page0373>
+        boxes0630[3].innerHTML = currentHTML;
+        currentHTML = "";
+        boxes0630[3].style.transform = "rotate(" + (theta - theta0).toString() + "rad)";
+        boxes0630[3].style.display = "block";
+        boxes0630[3].style.width = side.toString() + "px";
+        boxes0630[3].style.left = x.toString() + "px";
+        boxes0630[3].style.top = y.toString() + "px";
+        boxes0630[3].style.fontSize = (boxFontSize*side).toString() + "px";
+        boxes0630[3].style.height = side.toString() + "px";
+
+    //</page0373>
+    }
+    if(localCommand == 0374){//<page0374>
+        boxes0630[4].innerHTML = currentHTML;
+        currentHTML = "";
+        boxes0630[4].style.transform = "rotate(" + (theta - theta0).toString() + "rad)";
+        boxes0630[4].style.display = "block";
+        boxes0630[4].style.width = side.toString() + "px";
+        boxes0630[4].style.left = x.toString() + "px";
+        boxes0630[4].style.top = y.toString() + "px";
+        boxes0630[4].style.fontSize = (boxFontSize*side).toString() + "px";
+        boxes0630[4].style.height = side.toString() + "px";
+
+    //</page0374>
+    }
+    if(localCommand == 0375){//<page0375>
+        boxes0630[5].innerHTML = currentHTML;
+        currentHTML = "";
+        boxes0630[5].style.transform = "rotate(" + (theta - theta0).toString() + "rad)";
+        boxes0630[5].style.display = "block";
+        boxes0630[5].style.width = side.toString() + "px";
+        boxes0630[5].style.left = x.toString() + "px";
+        boxes0630[5].style.top = y.toString() + "px";
+        boxes0630[5].style.fontSize = (boxFontSize*side).toString() + "px";
+        boxes0630[5].style.height = side.toString() + "px";
+
+    //</page0375>
+    }
+
+    if(localCommand == 06){ //<page06>
+    fullCube = false;
+    currentTable = []; 
+    for(var index = 0;index < 01777;index ++){
+        currentTable.push("");
+    }
+    var inputbytecode = document.getElementById("bytecodeScript").text;
+    var bytecodearray = inputbytecode.split("\n");
+    for(var index = 0;index < bytecodearray.length;index++){
+        if(bytecodearray[index].includes(":")){
+            var localBytecode = bytecodearray[index].split(":");
+            var localAddress = parseInt(localBytecode[0],8);
+            currentTable[localAddress] = localBytecode[1];
+        }
+    }
+    currentTableStart = [];
+    for(var index = 0;index < currentTable.length;index++){
+        currentTableStart.push(currentTable[index]);
+    }
+    //</page06>
+    }
+    if(localCommand == 07){//<page07>
+    //intialize
+    myFont = "Futura";
+    boxFontSize = 0.2;
+    currentWord = "";
+    currentSVG = "";
+    currentHTML = "";
+    currentStyle = "";
+    latex = true;
+    currentAddress = 0260;
+    currentGlyph = "0300,";
+    currentStroke = "black";
+    currentFill = "black";
+    currentAction = 0;
+    currentCommand = "0300";
+    phi = 0.5*(Math.sqrt(5) + 1);
+    scaleFactor = 2;
+    thetaStep = Math.PI/2;
+    theta0 = -Math.PI/2; 
+    theta = theta0;
+    x0 = innerWidth/2;
+    y0 = innerHeight/2;
+    x = x0;
+    y = y0;
+    unit = 300;
+    side = unit;
+    x0 = innerWidth/2;
+    y0 = innerHeight/2;
+    unit = x0/8;//16 wm span total screen size
+    side = unit;
+    currentGlyph = "0300,0330,0341,0333,0207,0336,0341,";
+    viewGlyph = "";
+    x0 = 5;
+    y0 = 55;
+    unit = 50;
+    side = unit;
+    keyMode = "none";
+    //</page07>
+    }
+    //root magic here
+
+    if(localCommand == 010){//delete
+        var bottomGlyph = currentGlyph.split("0207")[0];   
+        var topGlyph = currentGlyph.split("0207")[1]; 
+        glyphSplit = bottomGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length - 2;index++){
+            if(glyphSplit[index].length > 0){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+        currentGlyph += "0207,";
+        currentGlyph += topGlyph;
+        glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+    }    
+    //<page014>
+    if(localCommand == 014){//export JSON        
+        if(pages[currentPage].id == "div0660"){
+        }
+    }
+//</page014>
+    if(localCommand == 020){//cursor back
+        var bottomGlyph = currentGlyph.split("0207")[0];   
+        var topGlyph = currentGlyph.split("0207")[1]; 
+        glyphSplit = bottomGlyph.split(",");
+        if(bottomGlyph.length == 0){
+            currentGlyph = topGlyph + "0207,";
+        }
+        else{
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length - 2;index++){
+                if(glyphSplit[index].length > 0){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+            }
+            currentGlyph += "0207,";
+            currentGlyph += glyphSplit[glyphSplit.length - 2];
+            currentGlyph += topGlyph;
+        }
+        glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+    }
+    if(localCommand == 021){//cursor fwd
+
+        var bottomGlyph = currentGlyph.split("0207")[0];   
+        var topGlyph = currentGlyph.split("0207")[1]; 
+        if(topGlyph == ","){
+            currentGlyph = "0207," + bottomGlyph;
+        }
+        else{
+            glyphSplit = topGlyph.split(",");
+            currentGlyph = bottomGlyph + ",";
+            currentGlyph += glyphSplit[1] + ",";
+            currentGlyph += "0207,";
+            for(var index = 2;index < glyphSplit.length - 1;index++){
+                if(glyphSplit[index].length > 0){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+            }
+        }
+        glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+
+    }
+    if(localCommand == 022){//previous glyph in table
+        currentAddress--;
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+    }
+    if(localCommand == 023){//next glyph in table
+        currentAddress++;
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+    }
+    if(localCommand == 026){//import hypercube
+        localString = "";
+        if(pages[currentPage].id == "div0660"){            
+            localString = document.getElementById("textIO0660").value;
+        }
+        var inputStack = localString.split("\n");
+        for(var index = 0;index < inputStack.length;index++){
+            var stackLine = inputStack[index].split(":");
+            var localAddress = parseInt(stackLine[0],8);
+            var localGlyph = stackLine[1];
+            currentTable[localAddress] = localGlyph;
+        }
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+    }
+    if(localCommand == 027){//export hypercube
+        var localString = "";
+        for(var index = 0;index < currentTable.length;index++){
+            if(currentTableStart[index] != currentTable[index] || fullCube){
+                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+            }
+        }
+        if(pages[currentPage].id == "div0660"){
+            document.getElementById("textIO0660").value = localString;
+        }
+    }
+    if(localCommand == 030){
+//<page030>
+        y0 -= 0.2*unit; 
+        redraw();
+//</page030>
+    }
+    if(localCommand == 031){
+//<page031>
+        y0 += 0.2*unit; 
+        redraw();
+//</page031>
+    }
+    if(localCommand == 032){
+//<page032>
+        x0 -= 0.2*unit; 
+        redraw();
+//</page032>
+    }
+    if(localCommand == 033){
+//<page033>
+        x0 += 0.2*unit; 
+        redraw();
+//</page033>
+    }
+    if(localCommand == 036){
+//<page036>
+        unit /= 1.1; 
+        redraw();
+
+//</page036>
+    }
+    if(localCommand == 037){
+//<page037>
+        unit *= 1.1; 
+        redraw();
+//</page037>
+    }
+
+    if(localCommand == 0700){
+        redraw0700();
+    }
+    if(localCommand == 01700){
+        init0700();
+    }
+
+    //<page03>
+
+}
+doTheThing(06);//import embedded hypercube in this .html doc
+doTheThing(07);//initialize Geometron global variables
+</script>        
+<script id = "scripts3" class = "scripts">
+pages = document.getElementsByClassName("page");
+currentPage = 0;
+for(index = 0;index < pages.length;index++){
+    if(index != currentPage){
+        pages[index].style.display = "none";
+    }
+}
+
+document.getElementById("backbutton").onclick = function(){
+    //prev json
+    currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
+    
+    currentDataIndex--;
+    if(currentDataIndex < 0){
+        currentDataIndex = currentDataArray.length - 1;
+    }
+    currentData = currentDataArray[currentDataIndex];
+    initPage();
+}
+document.getElementById("fwdbutton").onclick = function(){
+    //next json
+    currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
+    currentDataIndex++;
+    if(currentDataIndex > currentDataArray.length - 1){
+        currentDataIndex = 0;
+    }
+    currentData = currentDataArray[currentDataIndex];
+    initPage();    
+}          
+
+function redraw(){
+        redraw0730();    
+}
+function initPage(){
+        init0730();
+}    
+
+var viewButts = document.getElementById("table0600").getElementsByTagName("TD");
+for(var index = 0;index < viewButts.length;index++){
+    viewButts[index].className = "b" + viewButts[index].innerHTML;
+    var buttCommand = parseInt(viewButts[index].innerHTML,8);
+    viewButts[index].innerHTML = "";    
+    var newcanvas = document.createElement("CANVAS");
+    viewButts[index].appendChild(newcanvas);
+
+    var buttonSize = innerWidth*0.8/10;
+
+    side = buttonSize;
+    newcanvas.width = side + 4;
+    newcanvas.height = side + 4;
+    newcanvas.className = "viewButt";    
+    ctx = newcanvas.getContext("2d");
+    ctx.clearRect(0,0,side+4,side+4);
+    doTheThing(0300);
+    side = buttonSize;
+
+    x = 2;
+    y = side+2;
+    doTheThing(buttCommand + 01000);    
+    
+    viewButts[index].onclick = function(){
+        doTheThing(parseInt(this.className.substring(1),8));
+    }
+}
+
+</script>
+<script id = "scripts4" class = "scripts">
+textAddress = 0600;
+currentDataArray = [];
+currentData = JSON.parse(document.getElementById("data0400").innerHTML);
+currentDataArray.push(currentData);
+currentDataIndex = 0;
+boxes0630 = document.getElementsByClassName("box0630");
+inputs0630 = document.getElementById("control0630").getElementsByTagName("input");   
+
+init0730();
+function init0730(){
+    for(var index = 0;index < boxes0630.length;index++){
+        boxes0630[index].style.display = "none";
+    }
+    var inputStack = currentData.shapes;
+    for(var index = 0;index < inputStack.length;index++){
+        var stackLine = inputStack[index].split(":");
+        var localAddress = parseInt(stackLine[0],8);
+        var localGlyph = stackLine[1];
+        currentTable[localAddress] = localGlyph;
+    }
+
+    inputs0630[7].value = currentData.imgw;
+    inputs0630[8].value = currentData.imgleft;
+    inputs0630[9].value = currentData.imgtop;
+    if(currentData.imgurl.length > 0){
+        document.getElementById("img0630").style.display = "block";
+        document.getElementById("img0630").src = currentData.imgurl;
+        inputs0630[6].value = currentData.imgurl;
+    }
+    else{
+        document.getElementById("img0630").style.display = "none";
+        inputs0630[6].value = "";
+    }
+    currentAddress = 0250;
+    currentTable[currentAddress] = currentData.glyph;    
+    unit = currentData.unit;
+    width0630 = innerWidth;
+    height0630 = innerHeight;
+    document.getElementById("canvas0630").width = innerWidth;
+    document.getElementById("canvas0630").height = innerHeight;
+    x0 = innerWidth/2 + currentData.x0rel*unit;
+    y0 = innerHeight/2 + currentData.y0rel*unit;    
+    inputs0630[4].value = width0630;
+    inputs0630[5].value = height0630;
+    buttons0630 = document.getElementById("control0630").getElementsByClassName("viewButt");
+    currentGlyph = currentTable[currentAddress] + ",0207,";
+    redraw0730();
+}
+
+    function redraw0730(){
+        document.getElementById("img0630").style.width = (parseFloat(inputs0630[7].value)*unit).toString()  + "px";
+        document.getElementById("img0630").style.left = (x0 + parseFloat(inputs0630[8].value)*unit).toString()  + "px";
+        document.getElementById("img0630").style.top = (y0 + parseFloat(inputs0630[9].value)*unit).toString()  + "px";
+
+        ctx = document.getElementById("canvas0630").getContext("2d");
+        ctx.clearRect(0,0,innerWidth,innerHeight);
+        doTheThing(0300);
+        ctx.strokeRect((innerWidth - width0630)/2,(innerHeight - height0630)/2,width0630,height0630)
+        doTheThing(0300);
+        drawGlyph(currentGlyph);
+        doTheThing(0300);
+        x = 50;
+        y = innerHeight  - 50;
+        side = 25;
+        spellGlyph(currentGlyph);        
+        var glyphArray = currentGlyph.split(",");
+        currentTable[currentAddress] = "";
+        for(var index = 0;index < glyphArray.length;index++){
+            if(glyphArray[index] != "0207" && glyphArray[index].length > 0){
+                currentTable[currentAddress] += glyphArray[index] + ",";
+            }
+        }
+        currentData.glyph = currentTable[currentAddress];
+        inputs0630[0].value = "0" + currentAddress.toString(8);
+        document.getElementById("glyphspellinput").value = currentTable[currentAddress];
+        if(latex){
+            MathJax.Hub.Typeset();//tell Mathjax to update the math
+        }
+    }
+    inputs0630[1].onkeydown = function(e) {
+        if(e.keyCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(e.keyCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(e.keyCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+        if(e.keyCode == 046){
+//        doTheThing(023);
+            currentAddress++;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+            redraw();
+        }
+        if(e.keyCode == 050){
+//        doTheThing(022);
+            currentAddress--;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+            redraw();
+        }    
+    }
+    
+    
+    inputs0630[2].onkeydown = function(e) {
+        if(e.keyCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(e.keyCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(e.keyCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+    }
+    
+    inputs0630[3].onkeydown = function(e) {
+        if(e.keyCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(e.keyCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(e.keyCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+    }
+    inputs0630[1].onkeypress = function(a){//action
+        if(parseInt(currentTable[a.keyCode],8) >= 0200){
+            var glyphSplit = currentGlyph.split(",");
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length;index++){
+                if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+                if(glyphSplit[index] == "0207"){
+                    currentGlyph += currentTable[a.keyCode] + ",0207,";
+                }
+            }
+            var glyphSplit = currentGlyph.split(",");
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length;index++){
+                if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+            }
+            redraw();
+        } 
+        if(parseInt(currentTable[a.keyCode],8) < 040){
+            doTheThing(parseInt(currentTable[a.keyCode],8));
+            redraw0730();
+        }
+        this.value = "";
+    }
+    
+    
+    inputs0630[2].onkeypress = function(a){//print
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+            if(glyphSplit[index] == "0207"){
+                currentGlyph += "0" + (a.keyCode + 01000).toString(8) + ",0207,";
+            }
+        }
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+        redraw();
+        
+        this.value = "";
+    }
+    
+    
+    inputs0630[3].onkeypress = function(a){//stack
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+            if(glyphSplit[index] == "0207"){
+                currentGlyph += "0" + (a.keyCode).toString(8) + ",0207,";
+            }
+        }
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+        redraw();
+        this.value = "";
+    }
+    
+    inputs0630[0].onchange = function(){
+        currentAddress = parseInt(this.value,8);
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+        redraw();
+    }
+    
+    inputs0630[4].onchange = function(){
+        width0630 = parseInt(this.value);
+        redraw0730();
+    }
+    inputs0630[5].onchange = function(){
+        height0630 = parseInt(this.value);
+        redraw0730();
+    }
+
+    inputs0630[6].onchange = function(){
+        document.getElementById("img0630").style.display = "block";
+        document.getElementById("img0630").src = this.value;
+        redraw0730();
+    }
+    inputs0630[7].onchange = function(){
+        redraw0730();
+    }
+    inputs0630[8].onchange = function(){
+
+        redraw0730();
+    }
+    inputs0630[9].onchange = function(){
+        redraw0730();
+    }
+
+
+    buttons0630[0].onclick = function(){//symbol/shape
+        if(currentAddress < 01000){
+            currentAddress += 01000;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+        }
+        else{
+            currentAddress -= 01000;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+        }
+        redraw();    
+    }
+    
+    
+    buttons0630[1].onclick = function(){//export hypercube
+        var localString = "";
+        for(var index = 040;index < 01777;index++){
+            if(currentTableStart[index] != currentTable[index]){
+                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+            }
+        }
+        document.getElementById("textIO0630").value = localString;
+    }
+    
+    buttons0630[2].onclick = function(){//import hypercube
+        localString = "";
+        localString = document.getElementById("textIO0630").value;
+        var inputStack = localString.split("\n");
+        for(var index = 0;index < inputStack.length;index++){
+            var stackLine = inputStack[index].split(":");
+            var localAddress = parseInt(stackLine[0],8);
+            var localGlyph = stackLine[1];
+            currentTable[localAddress] = localGlyph;
+        }
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+        redraw0730();
+    }
+
+    buttons0630[3].onclick = function(){//Export JSON array     
+        currentData = JSON.parse(getJSON());       
+        currentDataArray[currentDataIndex] = currentData;
+        document.getElementById("textIO0630").value = JSON.stringify(currentDataArray,null,"    ");
+    }
+
+    buttons0630[4].onclick = function(){//IMPORT JSON array        
+        currentDataArray = JSON.parse(document.getElementById("textIO0630").value);
+        currentDataIndex = 0;
+        currentData = currentDataArray[currentDataIndex];
+        init0730();
+
+    }
+
+
+    buttons0630[5].onclick = function(){//Export SVG        
+        exportSVG();
+    }
+
+    buttons0630[7].onclick = function(){//PUSH JSON PAGE 
+        currentData = JSON.parse(getJSON());       
+        currentDataArray[currentDataIndex] = currentData;
+        currentData =  JSON.parse(document.getElementById("data0400").innerHTML);
+        currentDataArray.push(currentData);
+        currentDataIndex = currentDataArray.length - 1;
+
+        init0730();
+    }
+
+
+    buttons0630[9].onclick = function(){//SAVE SVG FROM TEXTIO, after exporting svg into TEXTIO
+        var httpc = new XMLHttpRequest();
+        var url = "savesvg.php";        
+        httpc.open("POST", url, true);
+        httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        exportSVG();//put the text of the svg code in textio
+        httpc.send("svg=" + document.getElementById("textIO0630").value);//send it along
+    }        
+
+function exportSVG(){
+    width0630 = parseInt(inputs0630[4].value);
+        height0630 = parseInt(inputs0630[5].value);
+        tempx0 = x0;
+        tempy0 = y0;
+        x0 -= 0.5*(innerWidth - width0630);
+        y0 -= 0.5*(innerHeight - height0630);
+        jsonout = getJSON();
+        currentSVG = "<svg width=\"" + width0630.toString() + "\" height=\"" + height0630.toString() + "\" viewbox = \"0 0 " + width0630.toString() + " " + height0630.toString() + "\"  xmlns=\"http://www.w3.org/2000/svg\">\n";
+        currentSVG += "\n<!--\n<json>\n" + jsonout + "\n</json>\n-->\n";
+        ctx = document.getElementById("invisibleCanvas").getContext("2d");
+        doTheThing(0300);
+        drawGlyph(fooGlyph);
+        currentSVG += "</svg>";
+        document.getElementById("textIO0630").value = currentSVG;
+        x0 = tempx0;
+        y0 = tempy0;
+}
+
+function getJSON(){
+    var jsonout = "{\n\"shapes\":[\n";
+    for(var index = 040;index < 01777;index++){
+        if(currentTableStart[index] != currentTable[index]){
+            jsonout += "    \"0" + index.toString(8) + ":" + currentTable[index] + "\",\n";
+        }
+    }
+    if(jsonout.substring(jsonout.length-2,jsonout.length) == ",\n"){
+        jsonout = jsonout.substring(0,jsonout.length - 2) + "\n";
+    }
+    jsonout += "],\n";
+    jsonout += "\"glyph\":\"";
+    var fooGlyph = "";
+    var barArray = currentGlyph.split(",");
+    for(var index = 0;index < barArray.length;index++){
+        if(barArray[index] != "0207" && barArray[index].length > 0){
+            fooGlyph += barArray[index] + ",";
+        }
+    }
+    jsonout += fooGlyph + "\",\n";
+    jsonout += "\"w\":" + inputs0630[4].value + ",\n";
+    jsonout += "\"h\":" + inputs0630[5].value + ",\n";
+    jsonout += "\"x0\":" + (x0).toString() + ",\n";
+    jsonout += "\"y0\":" + (y0).toString() + ",\n";
+    jsonout += "\"x0rel\":" + ((x0 - 0.5*innerWidth)/unit).toString() + ",\n";
+    jsonout += "\"y0rel\":" + ((y0 - 0.5*innerHeight)/unit).toString() + ",\n";
+    jsonout += "\"unit\":" + unit.toString() + ",\n";
+    jsonout += "\"imgurl\":\"" + inputs0630[6].value + "\",\n";
+    jsonout += "\"imgw\":" + inputs0630[7].value + ",\n";
+    jsonout += "\"imgleft\":" + inputs0630[8].value + ",\n";
+    jsonout += "\"imgtop\":" + inputs0630[9].value + "\n}\n";
+
+    return jsonout;
+
+}
+
+document.getElementById("glyphspellinput").onchange = function(){
+    currentTable[currentAddress] = this.value;
+    currentGlyph = currentTable[currentAddress] + "0207,";
+    redraw();
+}
+
+document.getElementById("editor06xx").onkeydown = function(){
+    currentTable[textAddress] = string2byteCode(this.value);
+}
+document.getElementById("addr06xx").onchange = function(){
+    textAddress = parseInt(this.value,8);
+    document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+}
+
+
+document.getElementById("addr06xx").onkeydown = function(e) {
+     
+        if(e.keyCode == 046){
+            textAddress++;
+            document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+            this.value = "0" + textAddress.toString(8);
+        }
+        if(e.keyCode == 050){
+            textAddress--;
+            document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+            this.value = "0" + textAddress.toString(8);
+        }    
+}
+
+</script>
+
+
+<!--<page03>-->
+<div id = "main" class = "scroll">
+    <h1>JavaScript Reference</h1>
+    <img src = "qrcode.png">
+    <h2><a href = "http://www.lafelabs.org/">lafelabs.org</a></h2>
+
+</div>            
+<div>
+<!--</page03>-->
+<!--<page0700>-->
+<script>
+
+texts = document.getElementsByClassName("text");
+
+var newpre = document.createElement("PRE");
+newpre.innerHTML = document.getElementById("scripts1").text;
+var newp = document.createElement("P");
+newp.innerHTML = texts[0].innerHTML;
+document.getElementById("main").appendChild(newp);
+document.getElementById("main").appendChild(newpre);
+
+var newpre = document.createElement("PRE");
+newpre.innerHTML = document.getElementById("scripts2").text;
+var newp = document.createElement("P");
+newp.innerHTML = texts[1].innerHTML;
+document.getElementById("main").appendChild(newp);
+document.getElementById("main").appendChild(newpre);
+
+
+var newpre = document.createElement("PRE");
+newpre.innerHTML = document.getElementById("scripts3").text;
+var newp = document.createElement("P");
+newp.innerHTML = texts[2].innerHTML;
+document.getElementById("main").appendChild(newp);
+document.getElementById("main").appendChild(newpre);
+
+var newpre = document.createElement("PRE");
+newpre.innerHTML = document.getElementById("scripts4").text;
+var newp = document.createElement("P");
+newp.innerHTML = texts[3].innerHTML;
+document.getElementById("main").appendChild(newp);
+document.getElementById("main").appendChild(newpre);
+
+
+</script>
+<!--</page0700>-->
+<!--<page04>-->
+<style>
+.scroll{
+    left:1px;
+    top:1px;
+    right:1px;
+    bottom:1px;
+    overflow:scroll;
+    margin:3% 3% 3% 3%;
+
+}
+textarea{
+    width:80%;
+    height:300px;
+    font-size:16px;
+    font-family:courier;
+}
+.element{
+    padding:1em 1em 1em 1em;
+    border:solid;
+    border-radius:1em;
+    margin-top:1em;
+}
+pre{
+    border:solid;
+    padding:1em 1em 1em 1em;
+    border-radius:1em;
+    margin-top:1em;
+
+}
+
+</style>
+<!--</page04>-->
+<!--<page05>-->
+</body>
+</html>
+<!--</page05>-->
