@@ -15,21 +15,27 @@ LAWS OF GEOMETRON:
     LOOK TO THE INSECTS
     LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY
     
-reader
+hello card, your first geometron card, the start of a new deck, a new hypercube, a new universe of universes.  
 
-http://www.lafelabs.org/hello/reader.html
+http://www.lafelabs.org/hello/
+
+QR Code image:
+http://www.lafelabs.org/hello/qrcode.png
+
+this code:
+https://raw.githubusercontent.com/LafeLabs/master/hello/index.html
 
 -->
-<title>/reader/</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-MathJax.Hub.Config({
-    tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    processEscapes: true
-    }
-});//			MathJax.Hub.Typeset();//tell Mathjax to update the math
-</script>
+    <title>/hello/</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+    </script>
     
 <!--</page01>-->
 <script id = "bytecodeScript">
@@ -463,6 +469,7 @@ function spellGlyphVertical(localString){
 }
         
 function doTheThing(localCommand){
+    
     if(localCommand >= 040 && localCommand <= 0176){
             currentHTML += String.fromCharCode(localCommand);
             currentWord += String.fromCharCode(localCommand);	    
@@ -471,6 +478,7 @@ function doTheThing(localCommand){
             drawGlyph(currentTable[localCommand]);    	    
     }
     if(localCommand >= 0400 && localCommand < 0500){//jump to an element, warp portals
+        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
         currentDataIndex = localCommand - 0400;
         if(currentDataIndex > currentDataArray.length - 1){
             currentDataIndex = currentDataArray.length - 1;
@@ -940,79 +948,81 @@ function doTheThing(localCommand){
 
     //</page0374>
     }
-if(localCommand == 0375){//<page0375>
-    boxes0630[5].innerHTML = currentHTML;
-    currentHTML = "";
-    boxes0630[5].style.transform = "rotate(" + (theta - theta0).toString() + "rad)";
-    boxes0630[5].style.display = "block";
-    boxes0630[5].style.width = side.toString() + "px";
-    boxes0630[5].style.left = x.toString() + "px";
-    boxes0630[5].style.top = y.toString() + "px";
-    boxes0630[5].style.fontSize = (boxFontSize*side).toString() + "px";
-    boxes0630[5].style.height = side.toString() + "px";
+    if(localCommand == 0375){//<page0375>
+        boxes0630[5].innerHTML = currentHTML;
+        currentHTML = "";
+        boxes0630[5].style.transform = "rotate(" + (theta - theta0).toString() + "rad)";
+        boxes0630[5].style.display = "block";
+        boxes0630[5].style.width = side.toString() + "px";
+        boxes0630[5].style.left = x.toString() + "px";
+        boxes0630[5].style.top = y.toString() + "px";
+        boxes0630[5].style.fontSize = (boxFontSize*side).toString() + "px";
+        boxes0630[5].style.height = side.toString() + "px";
 
     //</page0375>
     }
+
     if(localCommand == 06){ //<page06>
-        fullCube = false;
-        currentTable = []; 
-        for(var index = 0;index < 01777;index ++){
-            currentTable.push("");
+    fullCube = false;
+    currentTable = []; 
+    for(var index = 0;index < 01777;index ++){
+        currentTable.push("");
+    }
+    var inputbytecode = document.getElementById("bytecodeScript").text;
+    var bytecodearray = inputbytecode.split("\n");
+    for(var index = 0;index < bytecodearray.length;index++){
+        if(bytecodearray[index].includes(":")){
+            var localBytecode = bytecodearray[index].split(":");
+            var localAddress = parseInt(localBytecode[0],8);
+            currentTable[localAddress] = localBytecode[1];
         }
-        var inputbytecode = document.getElementById("bytecodeScript").text;
-        var bytecodearray = inputbytecode.split("\n");
-        for(var index = 0;index < bytecodearray.length;index++){
-            if(bytecodearray[index].includes(":")){
-                var localBytecode = bytecodearray[index].split(":");
-                var localAddress = parseInt(localBytecode[0],8);
-                currentTable[localAddress] = localBytecode[1];
-            }
-        }
-        currentTableStart = [];
-        for(var index = 0;index < currentTable.length;index++){
-            currentTableStart.push(currentTable[index]);
-        }
-        //</page06>
+    }
+    currentTableStart = [];
+    for(var index = 0;index < currentTable.length;index++){
+        currentTableStart.push(currentTable[index]);
+    }
+    //</page06>
     }
     if(localCommand == 07){//<page07>
-        //intialize
-        myFont = "Futura";
-        boxFontSize = 0.2;
-        viewStep = 50;
-        currentWord = "";
-        currentSVG = "";
-        currentHTML = "";
-        currentStyle = "";
-        latex = true;
-        currentAddress = 0260;
-        currentGlyph = "0300,";
-        currentStroke = "black";
-        currentFill = "black";
-        currentAction = 0;
-        currentCommand = "0300";
-        phi = 0.5*(Math.sqrt(5) + 1);
-        scaleFactor = 2;
-        thetaStep = Math.PI/2;
-        theta0 = -Math.PI/2; 
-        theta = theta0;
-        x0 = innerWidth/2;
-        y0 = innerHeight/2;
-        x = x0;
-        y = y0;
-        unit = 300;
-        side = unit;
-        x0 = innerWidth/2;
-        y0 = innerHeight/2;
-        unit = x0/8;//16 wm span total screen size
-        side = unit;
-        currentGlyph = "0300,0330,0341,0333,0207,0336,0341,";
-        viewGlyph = "";
-        x0 = 5;
-        y0 = 55;
-        unit = 50;
-        side = unit;
-        keyMode = "none";
-        //</page07>
+    //intialize
+    myFont = "Futura";
+    boxFontSize = 0.2;
+    viewStep = 50;
+
+    currentWord = "";
+    currentSVG = "";
+    currentHTML = "";
+    currentStyle = "";
+    latex = true;
+    currentAddress = 0260;
+    currentGlyph = "0300,";
+    currentStroke = "black";
+    currentFill = "black";
+    currentAction = 0;
+    currentCommand = "0300";
+    phi = 0.5*(Math.sqrt(5) + 1);
+    scaleFactor = 2;
+    thetaStep = Math.PI/2;
+    theta0 = -Math.PI/2; 
+    theta = theta0;
+    x0 = innerWidth/2;
+    y0 = innerHeight/2;
+    x = x0;
+    y = y0;
+    unit = 300;
+    side = unit;
+    x0 = innerWidth/2;
+    y0 = innerHeight/2;
+    unit = x0/8;//16 wm span total screen size
+    side = unit;
+    currentGlyph = "0300,0330,0341,0333,0207,0336,0341,";
+    viewGlyph = "";
+    x0 = 5;
+    y0 = 55;
+    unit = 50;
+    side = unit;
+    keyMode = "none";
+    //</page07>
     }
     //root magic here
 
@@ -1041,7 +1051,7 @@ if(localCommand == 0375){//<page0375>
         if(pages[currentPage].id == "div0660"){
         }
     }
-    //</page014>
+//</page014>
     if(localCommand == 020){//cursor back
         var bottomGlyph = currentGlyph.split("0207")[0];   
         var topGlyph = currentGlyph.split("0207")[1]; 
@@ -1129,45 +1139,41 @@ if(localCommand == 0375){//<page0375>
         }
     }
     if(localCommand == 030){
-    //<page030>
-       // y0 -= 0.2*unit; 
+//<page030>
         y0 -= viewStep; 
         redraw();
-    //</page030>
+//</page030>
     }
     if(localCommand == 031){
-    //<page031>
-       // y0 += 0.2*unit; 
+//<page031>
         y0 += viewStep; 
         redraw();
-    //</page031>
+//</page031>
     }
     if(localCommand == 032){
-    //<page032>
-       // x0 -= 0.2*unit; 
-        x0 -= viewStep;
+//<page032>
+        x0 -= viewStep; 
         redraw();
-    //</page032>
+//</page032>
     }
     if(localCommand == 033){
-    //<page033>
-       // x0 += 0.2*unit; 
-        x0 += viewStep;
+//<page033>
+        x0 += viewStep; 
         redraw();
-    //</page033>
+//</page033>
     }
     if(localCommand == 036){
-    //<page036>
+//<page036>
         unit /= 1.1; 
         redraw();
 
-    //</page036>
+//</page036>
     }
     if(localCommand == 037){
-    //<page037>
+//<page037>
         unit *= 1.1; 
         redraw();
-    //</page037>
+//</page037>
     }
 
     if(localCommand == 0700){
@@ -1178,6 +1184,7 @@ if(localCommand == 0375){//<page0375>
     }
 
     //<page03>
+
 }
 doTheThing(06);//import embedded hypercube in this .html doc
 doTheThing(07);//initialize Geometron global variables
@@ -1211,52 +1218,73 @@ doTheThing(07);//initialize Geometron global variables
 }
 </div> 
 <!--</page0401>-->
-<!--<page0402>-->
-<div style = "display:none" class = "data" id = "data0402">
-[
-{
-    "shapes": [
-        "0250:0332,0332,0335,0306,0334,0337,0201,0335,0201,0335,0201,0335,0201,0335,0201,0335,0201,0331,0350,0335,0312,0337,0342,0304,0313,0336,0336,0336,0332,0332,0330,0332,061,0336,0330,0333,0333,0333,0365,0330,0333,0333,0333,0330,0330,0330,0332,0330,0333,0600,0370,0330,0330,0333,0333,0333,0333,0300,0330,0330,0330,",
-        "0600:044,0134,0163,0161,0162,0164,0173,063,0175,044,012,"
-    ],
-    "glyph": "0332,0332,0335,0306,0334,0337,0201,0335,0201,0335,0201,0335,0201,0335,0201,0335,0201,0331,0350,0335,0312,0337,0342,0304,0313,0336,0336,0336,0332,0332,0330,0332,061,0336,0330,0333,0333,0333,0365,0330,0333,0333,0333,0330,0330,0330,0332,0330,0333,0600,0370,0330,0330,0333,0333,0333,0333,0300,0330,0330,0330,",
-    "w": 1366,
-    "h": 649,
-    "x0": 683,
-    "y0": 336,
-    "x0rel": 0,
-    "y0rel": 0.12649999999999997,
-    "unit": 90.90909090909092,
-    "imgurl": "",
-    "imgw": 2,
-    "imgleft": -1,
-    "imgtop": -1
-},
-{
-    "shapes": [
-        "0250:0334,0311,0305,0201,0335,0350,0335,0337,0201,0335,0335,0335,0335,0201,0334,0334,0304,0334,0313,0336,0336,0336,0332,0332,0332,0336,0336,0330,0337,061,0365,0330,0330,0330,0330,0330,0330,0333,0333,0333,0333,0333,0600,0370,",
-        "0600:044,0134,0160,0150,0151,044,040,"
-    ],
-    "glyph": "0334,0311,0305,0201,0335,0350,0335,0337,0201,0335,0335,0335,0335,0201,0334,0334,0304,0334,0313,0336,0336,0336,0332,0332,0332,0336,0336,0330,0337,061,0365,0330,0330,0330,0330,0330,0330,0333,0333,0333,0333,0333,0600,0370,",
-    "w": 1366,
-    "h": 649,
-    "x0": 760.948684,
-    "y0": 480.39736800000014,
-    "x0rel": 0.39999999999999947,
-    "y0rel": 0.8000000000000002,
-    "unit": 194.87171000000015,
-    "imgurl": "",
-    "imgw": 2,
-    "imgleft": -1,
-    "imgtop": -1
-}
-]
-</div>
-<!--</page0402>-->
-
 <!--<page0630>-->
 <div class = "page screenpage" id = "div0630">
-    <canvas id = "invisibleCanvas" style = "display:none"></canvas>
+        <canvas id = "invisibleCanvas" style = "display:none"></canvas>
+        
+    <table id = "control0630" class = "control06xx">
+        <tr>
+            <td>Addr:</td><td><input></input></td>
+        </tr>      
+        <tr>            
+            <td>Action:</td><td><input></input></td>
+        </tr>      
+        <tr>            
+            <td>Print:</td><td><input></input></td>
+        </tr>      
+        <tr>            
+            <td>Stack:</td><td><input></input></td>
+        </tr>           
+        <tr>            
+            <td>Width:</td><td><input></input></td>
+        </tr>           
+        <tr>            
+            <td>Height:</td><td><input></input></td>
+        </tr>               
+
+        <tr>            
+            <td>IMG URL:</td><td><input></input></td>
+        </tr>               
+        <tr>            
+            <td>IMG w:</td><td><input value = "2"></input></td>
+        </tr>               
+        <tr>            
+            <td>IMG left:</td><td><input value = "-1"></input></td>
+        </tr>               
+        <tr>            
+            <td>IMG top:</td><td><input value = "-1"></input></td>
+        </tr>               
+        <tr class = "viewButt">
+            <td>ACTION/</td><td>SYMBOL</td>
+        </tr>        
+        <tr class = "viewButt">
+            <td>BYTECODE</td><td>EXPORT</td>
+        </tr>
+        <tr class = "viewButt" >
+            <td>BYTECODE</td><td>IMPORT</td>
+        </tr>
+        <tr class = "viewButt" >
+            <td>EXPORT</td><td>ARRAY</td>
+        </tr>
+        <tr class = "viewButt" >
+            <td>IMPORT</td><td>ARRAY</td>
+        </tr>                
+        <tr class = "viewButt" >
+            <td>EXPORT</td><td>SVG</td>
+        </tr>                    
+        <tr class = "viewButt" >
+            <td></td><td></td>
+        </tr>
+        <tr class = "viewButt" >
+            <td>PUSH</td><td>JSON</td>
+        </tr>    
+        <tr class = "viewButt" >
+            <td></td><td></td>
+        </tr>    
+        <tr class = "viewButt" >
+            <td>SAVE</td><td>SVG</td>
+        </tr>    
+    </table>
     <canvas id = "canvas0630" class = "canvas06xx"></canvas>
     <div class = "box0630"></div>
     <div class = "box0630"></div>
@@ -1266,15 +1294,26 @@ doTheThing(07);//initialize Geometron global variables
     <div class = "box0630"></div>
     <textarea id = "textIO0630" class = "textIO06xx"></textarea>
     <img id = "img0630"/>
-    <button id = "jsonbutt">INPUT</button>
+    <input id = "glyphspellinput">
+    <div id = "editorblock">
+        06xx:<input id = "addr06xx" value = "0600"> 
+        <textarea id = "editor06xx"></textarea>
+    </div>
 </div>
 <!--</page0630>-->
 <!--<page0700>-->
 <script id = "script0700">
-
+    pages = document.getElementsByClassName("page");
+    currentPage = 0;
+    for(index = 0;index < pages.length;index++){
+        if(index != currentPage){
+            pages[index].style.display = "none";
+        }
+    }
     
     document.getElementById("backbutton").onclick = function(){
         //prev json
+        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
         
         currentDataIndex--;
         if(currentDataIndex < 0){
@@ -1285,7 +1324,7 @@ doTheThing(07);//initialize Geometron global variables
     }
     document.getElementById("fwdbutton").onclick = function(){
         //next json
-
+        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
         currentDataIndex++;
         if(currentDataIndex > currentDataArray.length - 1){
             currentDataIndex = 0;
@@ -1302,8 +1341,8 @@ doTheThing(07);//initialize Geometron global variables
     }    
 
     buttonSize = 48;
-
     document.getElementById("table0600").style.left = (0.5*innerWidth - 3.5*buttonSize).toString() + "px";
+
     var viewButts = document.getElementById("table0600").getElementsByTagName("TD");
     for(var index = 0;index < viewButts.length;index++){
         viewButts[index].className = "b" + viewButts[index].innerHTML;
@@ -1311,6 +1350,7 @@ doTheThing(07);//initialize Geometron global variables
         viewButts[index].innerHTML = "";    
         var newcanvas = document.createElement("CANVAS");
         viewButts[index].appendChild(newcanvas);
+
         side = buttonSize;
         newcanvas.width = side + 4;
         newcanvas.height = side + 4;
@@ -1333,15 +1373,14 @@ doTheThing(07);//initialize Geometron global variables
 <!--</page0700>-->
 <!--<page0730>-->
 <script>
-
-document.getElementById("textIO0630").value = document.getElementById("data0402").innerHTML;
-
+    
 textAddress = 0600;
 currentDataArray = [];
 currentData = JSON.parse(document.getElementById("data0400").innerHTML);
 currentDataArray.push(currentData);
 currentDataIndex = 0;
 boxes0630 = document.getElementsByClassName("box0630");
+inputs0630 = document.getElementById("control0630").getElementsByTagName("input");   
 
 init0730();
 function init0730(){
@@ -1356,14 +1395,19 @@ function init0730(){
         currentTable[localAddress] = localGlyph;
     }
 
+    inputs0630[7].value = currentData.imgw;
+    inputs0630[8].value = currentData.imgleft;
+    inputs0630[9].value = currentData.imgtop;
     if(currentData.imgurl.length > 0){
         document.getElementById("img0630").style.display = "block";
         document.getElementById("img0630").src = currentData.imgurl;
+        inputs0630[6].value = currentData.imgurl;
     }
     else{
         document.getElementById("img0630").style.display = "none";
+        inputs0630[6].value = "";
     }
-    currentAddress = 0260;
+    currentAddress = 0250;
     currentTable[currentAddress] = currentData.glyph;    
     unit = currentData.unit;
     width0630 = innerWidth;
@@ -1372,45 +1416,366 @@ function init0730(){
     document.getElementById("canvas0630").height = innerHeight;
     x0 = innerWidth/2 + currentData.x0rel*unit;
     y0 = innerHeight/2 + currentData.y0rel*unit;    
-    currentGlyph = currentTable[currentAddress];
+    inputs0630[4].value = width0630;
+    inputs0630[5].value = height0630;
+    buttons0630 = document.getElementById("control0630").getElementsByClassName("viewButt");
+    currentGlyph = currentTable[currentAddress] + ",0207,";
     redraw0730();
 }
 
+    function redraw0730(){
+        document.getElementById("img0630").style.width = (parseFloat(inputs0630[7].value)*unit).toString()  + "px";
+        document.getElementById("img0630").style.left = (x0 + parseFloat(inputs0630[8].value)*unit).toString()  + "px";
+        document.getElementById("img0630").style.top = (y0 + parseFloat(inputs0630[9].value)*unit).toString()  + "px";
 
-function redraw0730(){
-    document.getElementById("img0630").style.width = (currentData.imgw*unit).toString()  + "px";
-    document.getElementById("img0630").style.left = (x0 + currentData.imgleft*unit).toString()  + "px";
-    document.getElementById("img0630").style.top = (y0 + currentData.imgtop*unit).toString()  + "px";
-    ctx = document.getElementById("canvas0630").getContext("2d");
-    ctx.clearRect(0,0,innerWidth,innerHeight);
-    doTheThing(0300);
-    ctx.strokeRect((innerWidth - width0630)/2,(innerHeight - height0630)/2,width0630,height0630)
-    doTheThing(0300);
-    drawGlyph(currentGlyph);
-    var glyphArray = currentGlyph.split(",");
-    currentTable[currentAddress] = "";
-    for(var index = 0;index < glyphArray.length;index++){
-        if(glyphArray[index] != "0207" && glyphArray[index].length > 0){
-            currentTable[currentAddress] += glyphArray[index] + ",";
+        ctx = document.getElementById("canvas0630").getContext("2d");
+        ctx.clearRect(0,0,innerWidth,innerHeight);
+        doTheThing(0300);
+        ctx.strokeRect((innerWidth - width0630)/2,(innerHeight - height0630)/2,width0630,height0630)
+        doTheThing(0300);
+        drawGlyph(currentGlyph);
+        doTheThing(0300);
+        x = 50;
+        y = innerHeight  - 50;
+        side = 25;
+        spellGlyph(currentGlyph);        
+        var glyphArray = currentGlyph.split(",");
+        currentTable[currentAddress] = "";
+        for(var index = 0;index < glyphArray.length;index++){
+            if(glyphArray[index] != "0207" && glyphArray[index].length > 0){
+                currentTable[currentAddress] += glyphArray[index] + ",";
+            }
+        }
+        currentData.glyph = currentTable[currentAddress];
+        inputs0630[0].value = "0" + currentAddress.toString(8);
+        document.getElementById("glyphspellinput").value = currentTable[currentAddress];
+        if(latex){
+            MathJax.Hub.Typeset();//tell Mathjax to update the math
         }
     }
-    currentData.glyph = currentTable[currentAddress];
-    if(latex){
-        MathJax.Hub.Typeset();//tell Mathjax to update the math
+    inputs0630[1].onkeydown = function(e) {
+        if(e.keyCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(e.keyCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(e.keyCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+        if(e.keyCode == 046){
+//        doTheThing(023);
+            currentAddress++;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+            redraw();
+        }
+        if(e.keyCode == 050){
+//        doTheThing(022);
+            currentAddress--;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+            redraw();
+        }    
     }
+    
+    
+    inputs0630[2].onkeydown = function(e) {
+        if(e.keyCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(e.keyCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(e.keyCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+    }
+    
+    inputs0630[3].onkeydown = function(e) {
+        if(e.keyCode == 010){
+            doTheThing(010);
+            redraw();
+        }
+        if(e.keyCode == 045){
+            doTheThing(020);
+            redraw();
+        }
+        if(e.keyCode == 047){
+            doTheThing(021);
+            redraw();
+        }
+    }
+    inputs0630[1].onkeypress = function(a){//action
+        if(parseInt(currentTable[a.keyCode],8) >= 0200){
+            var glyphSplit = currentGlyph.split(",");
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length;index++){
+                if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+                if(glyphSplit[index] == "0207"){
+                    currentGlyph += currentTable[a.keyCode] + ",0207,";
+                }
+            }
+            var glyphSplit = currentGlyph.split(",");
+            currentGlyph = "";
+            for(var index = 0;index < glyphSplit.length;index++){
+                if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                    currentGlyph += glyphSplit[index] + ",";
+                }
+            }
+            redraw();
+        } 
+        if(parseInt(currentTable[a.keyCode],8) < 040){
+            doTheThing(parseInt(currentTable[a.keyCode],8));
+            redraw0730();
+        }
+        this.value = "";
+    }
+    
+    
+    inputs0630[2].onkeypress = function(a){//print
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+            if(glyphSplit[index] == "0207"){
+                currentGlyph += "0" + (a.keyCode + 01000).toString(8) + ",0207,";
+            }
+        }
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+        redraw();
+        
+        this.value = "";
+    }
+    
+    
+    inputs0630[3].onkeypress = function(a){//stack
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+            if(glyphSplit[index] == "0207"){
+                currentGlyph += "0" + (a.keyCode).toString(8) + ",0207,";
+            }
+        }
+        var glyphSplit = currentGlyph.split(",");
+        currentGlyph = "";
+        for(var index = 0;index < glyphSplit.length;index++){
+            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
+                currentGlyph += glyphSplit[index] + ",";
+            }
+        }
+        redraw();
+        this.value = "";
+    }
+    
+    inputs0630[0].onchange = function(){
+        currentAddress = parseInt(this.value,8);
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+        redraw();
+    }
+    
+    inputs0630[4].onchange = function(){
+        width0630 = parseInt(this.value);
+        redraw0730();
+    }
+    inputs0630[5].onchange = function(){
+        height0630 = parseInt(this.value);
+        redraw0730();
+    }
+
+    inputs0630[6].onchange = function(){
+        document.getElementById("img0630").style.display = "block";
+        document.getElementById("img0630").src = this.value;
+        redraw0730();
+    }
+    inputs0630[7].onchange = function(){
+        redraw0730();
+    }
+    inputs0630[8].onchange = function(){
+
+        redraw0730();
+    }
+    inputs0630[9].onchange = function(){
+        redraw0730();
+    }
+
+
+    buttons0630[0].onclick = function(){//symbol/shape
+        if(currentAddress < 01000){
+            currentAddress += 01000;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+        }
+        else{
+            currentAddress -= 01000;
+            currentGlyph = currentTable[currentAddress] + ",0207,";
+        }
+        redraw();    
+    }
+    
+    
+    buttons0630[1].onclick = function(){//export hypercube
+        var localString = "";
+        for(var index = 040;index < 01777;index++){
+            if(currentTableStart[index] != currentTable[index]){
+                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
+            }
+        }
+        document.getElementById("textIO0630").value = localString;
+    }
+    
+    buttons0630[2].onclick = function(){//import hypercube
+        localString = "";
+        localString = document.getElementById("textIO0630").value;
+        var inputStack = localString.split("\n");
+        for(var index = 0;index < inputStack.length;index++){
+            var stackLine = inputStack[index].split(":");
+            var localAddress = parseInt(stackLine[0],8);
+            var localGlyph = stackLine[1];
+            currentTable[localAddress] = localGlyph;
+        }
+        currentGlyph = currentTable[currentAddress] + ",0207,";
+        redraw0730();
+    }
+
+    buttons0630[3].onclick = function(){//Export JSON array     
+        currentData = JSON.parse(getJSON());       
+        currentDataArray[currentDataIndex] = currentData;
+        document.getElementById("textIO0630").value = JSON.stringify(currentDataArray,null,"    ");
+    }
+
+    buttons0630[4].onclick = function(){//IMPORT JSON array        
+        currentDataArray = JSON.parse(document.getElementById("textIO0630").value);
+        currentDataIndex = 0;
+        currentData = currentDataArray[currentDataIndex];
+        init0730();
+
+    }
+
+
+    buttons0630[5].onclick = function(){//Export SVG        
+        exportSVG();
+    }
+
+    buttons0630[7].onclick = function(){//PUSH JSON PAGE 
+        currentData = JSON.parse(getJSON());       
+        currentDataArray[currentDataIndex] = currentData;
+        currentData =  JSON.parse(document.getElementById("data0400").innerHTML);
+        currentDataArray.push(currentData);
+        currentDataIndex = currentDataArray.length - 1;
+
+        init0730();
+    }
+
+
+    buttons0630[9].onclick = function(){//SAVE SVG FROM TEXTIO, after exporting svg into TEXTIO
+        var httpc = new XMLHttpRequest();
+        var url = "savesvg.php";        
+        httpc.open("POST", url, true);
+        httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        exportSVG();//put the text of the svg code in textio
+        httpc.send("svg=" + document.getElementById("textIO0630").value);//send it along
+    }        
+
+function exportSVG(){
+    width0630 = parseInt(inputs0630[4].value);
+        height0630 = parseInt(inputs0630[5].value);
+        tempx0 = x0;
+        tempy0 = y0;
+        x0 -= 0.5*(innerWidth - width0630);
+        y0 -= 0.5*(innerHeight - height0630);
+        jsonout = getJSON();
+        currentSVG = "<svg width=\"" + width0630.toString() + "\" height=\"" + height0630.toString() + "\" viewbox = \"0 0 " + width0630.toString() + " " + height0630.toString() + "\"  xmlns=\"http://www.w3.org/2000/svg\">\n";
+        currentSVG += "\n<!--\n<json>\n" + jsonout + "\n</json>\n-->\n";
+        ctx = document.getElementById("invisibleCanvas").getContext("2d");
+        doTheThing(0300);
+        drawGlyph(fooGlyph);
+        currentSVG += "</svg>";
+        document.getElementById("textIO0630").value = currentSVG;
+        x0 = tempx0;
+        y0 = tempy0;
 }
 
-document.getElementById("jsonbutt").onclick = function(){//IMPORT JSON array        
-    currentDataArray = JSON.parse(document.getElementById("textIO0630").value);
-    currentDataIndex = 0;
-    currentData = currentDataArray[currentDataIndex];
-    init0730();
+function getJSON(){
+    var jsonout = "{\n\"shapes\":[\n";
+    for(var index = 040;index < 01777;index++){
+        if(currentTableStart[index] != currentTable[index]){
+            jsonout += "    \"0" + index.toString(8) + ":" + currentTable[index] + "\",\n";
+        }
+    }
+    if(jsonout.substring(jsonout.length-2,jsonout.length) == ",\n"){
+        jsonout = jsonout.substring(0,jsonout.length - 2) + "\n";
+    }
+    jsonout += "],\n";
+    jsonout += "\"glyph\":\"";
+    var fooGlyph = "";
+    var barArray = currentGlyph.split(",");
+    for(var index = 0;index < barArray.length;index++){
+        if(barArray[index] != "0207" && barArray[index].length > 0){
+            fooGlyph += barArray[index] + ",";
+        }
+    }
+    jsonout += fooGlyph + "\",\n";
+    jsonout += "\"w\":" + inputs0630[4].value + ",\n";
+    jsonout += "\"h\":" + inputs0630[5].value + ",\n";
+    jsonout += "\"x0\":" + (x0).toString() + ",\n";
+    jsonout += "\"y0\":" + (y0).toString() + ",\n";
+    jsonout += "\"x0rel\":" + ((x0 - 0.5*innerWidth)/unit).toString() + ",\n";
+    jsonout += "\"y0rel\":" + ((y0 - 0.5*innerHeight)/unit).toString() + ",\n";
+    jsonout += "\"unit\":" + unit.toString() + ",\n";
+    jsonout += "\"imgurl\":\"" + inputs0630[6].value + "\",\n";
+    jsonout += "\"imgw\":" + inputs0630[7].value + ",\n";
+    jsonout += "\"imgleft\":" + inputs0630[8].value + ",\n";
+    jsonout += "\"imgtop\":" + inputs0630[9].value + "\n}\n";
+
+    return jsonout;
+
 }
-    
-currentDataArray = JSON.parse(document.getElementById("textIO0630").value);
-currentDataIndex = 0;
-currentData = currentDataArray[currentDataIndex];
-init0730();
+
+document.getElementById("glyphspellinput").onchange = function(){
+    currentTable[currentAddress] = this.value;
+    currentGlyph = currentTable[currentAddress] + "0207,";
+    redraw();
+}
+
+document.getElementById("editor06xx").onkeydown = function(){
+    currentTable[textAddress] = string2byteCode(this.value);
+}
+document.getElementById("addr06xx").onchange = function(){
+    textAddress = parseInt(this.value,8);
+    document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+}
+
+
+document.getElementById("addr06xx").onkeydown = function(e) {
+     
+        if(e.keyCode == 046){
+            textAddress++;
+            document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+            this.value = "0" + textAddress.toString(8);
+        }
+        if(e.keyCode == 050){
+            textAddress--;
+            document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
+            this.value = "0" + textAddress.toString(8);
+        }    
+}
 
 </script>
 <!--</page0730>-->  
@@ -1456,7 +1821,6 @@ body{
     width:10%;
     height:50px;
     font-size:40px;
-
 }
 .navbutton{
     position:absolute;
@@ -1521,7 +1885,6 @@ table{
     top:0px;
     border-collapse:collapse;
 }
-
 
 #pageNumber{
     position:absolute;
@@ -1596,19 +1959,6 @@ table{
     height:90%;
 }
 
-#jsonbutt{
-    position:absolute;
-    left:0px;
-    bottom:0px;
-    width:100px;
-    height:30px;
-    cursor:pointer;
-    font-family:courier;
-    font-size:14px;
-}
-#jsonbutt:hover{
-    background-color:green;     
-}
 
 </style>
 <!--</page0530>-->

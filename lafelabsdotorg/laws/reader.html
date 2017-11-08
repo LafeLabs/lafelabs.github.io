@@ -1138,7 +1138,7 @@ if(localCommand == 0375){//<page0375>
     if(localCommand == 031){
     //<page031>
        // y0 += 0.2*unit; 
-        y0 += viewStep; 
+        y0 -= viewStep; 
         redraw();
     //</page031>
     }
@@ -1363,7 +1363,7 @@ function init0730(){
     else{
         document.getElementById("img0630").style.display = "none";
     }
-    currentAddress = 0260;
+    currentAddress = 0250;
     currentTable[currentAddress] = currentData.glyph;    
     unit = currentData.unit;
     width0630 = innerWidth;

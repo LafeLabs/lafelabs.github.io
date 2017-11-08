@@ -21,11 +21,86 @@ LAWS OF GEOMETRON:
 <!--<page03>-->
 </head>
 <body> 
+<!--website:-->
 <h1>www.lafelabs.org</h1>
+
+<!--
+Websites are containers for information which exists in hyperspace.
+
+A website is literally a website, although it can be local, it will generally be world readable.  A website has a purpose,
+defined by actions and symbols and narrative.  Website = A Universe defined by a path of actions, a way of life. 
+
+A website represents a mode of human existence.  A commercial website divides these modes into
+worker, manager, investor, user, advertiser.  A geometron website does not.  The site defines a mode of existence, and 
+to live another way is to use another site.  As there will be trillions of sites, this means there will be thousands of sites 
+per human for all of humanity, thus vastly expanding the human experience beyond what has ever even been considered before.
+ 
+Hyperspace is the space of information which can be parsed with Geometron.
+
+Geometron hypercubes are instances of the geometron metalanguage, which are like a 
+conceptual lense through which the mind can interact with information, just as
+a microscope or telescope is a optical lense to literally let the human eye interact with a wider range of optics. 
+
+Each hypercube is constantly changing.  The viewpoint of the hypercube, along with various links and metadata are in a
+JSON object which represents a "page" on a "card".  Pages are sequential, and are just indexed by how they exist in the
+array of a given card.
+
+A deck is an array of cards, where each card has an address in 04xx space.  A card is a JSON array stored at currentDataArray,
+and the current *page* in the current card is in currentData, a global JavaScript object.  
+
+A deck is an array of objects.  Each of these objects is a card, represented by a name, an address, and an array of page objects.
+Each deck should be a directory.  Each directory has index.html, editor.html, data.txt.   data.txt has text representing 
+the array of objects as described.  editor.html edits this whole thing, and can navigate it all, and references saver.php 
+to save to data.txt if there is permission to do that.  A cron job with some python can push diffs of data.txt to various 
+public feeds or archives.  
+
+website has index.html which links to decks
+decks are directories with cards in data.txt, edited with editor.html, viewed with index.html
+
+each deck directory has a subdirectory "/svg" which has the saved svg's in it.  
+SVGfeed.html lets one view these in an html file.
+
+www.lafelabs.org/geometron/
+www.lafelabs.org/learnweb/
+www.lafelabs.org/map/
+www.lafelabs.org/printer/
+
+www.quantumnoise.org/quantumnoiseamps/
+www.quantumnoise.org/quantumcomputing/
+www.quantumnoise.org/quantumcircuits/
+
+
+
+
+
+
+-->
+
+<!--Deck:-->    
 <h2>Geometron Language</h2>
 <ul>
+<!--card: (0401)-->    
     <li><a href = "hello/index.html">Hello, Geometron</a></li>
+<!--card: (0402)-->    
     <li><a href = "hello/reader.html">Reader</a></li>    
+    
+    <li><a href = "machineorigins/index.html">Where do machines come from?</a></li>
+    <li><a href = "networkscale/index.html">On the mathematics of network scale in relation to ego death</a></li>
+    <li><a href = "symmetry/index.html">symmetry</a></li>
+    <li><a href = "scaletable/index.html">Scale Table</a></li>
+    <li><a href = "scaletriangles/index.html">Scale Triangles</a></li>
+    <li><a href = "scale2angle/index.html">Scale to Angle, Angle to Scale</a></li>
+    <li><a href = "movement/index.html">Basic Movements of Geometron</a></li>    
+    <li><a href = "bezier/index.html">Bezier Curves in Geometron</a></li>
+    <li><a href = "laws/index.html">Laws of Geometron</a></li>
+    <li>geometron actions tablet documentation</li>
+    <li>keyboards</li>    
+    <li>Structure of hypercube as a sequence of graphics</li>
+    <li>Construction instrutions of physical cursors: triangles(equilateral, golden), square</li>
+    <li>Geometron in 3d: how to use geometron to build 3d structures and how to use those structures to exchange information in the geometron system</li>
+</ul>
+<h2>Build The Web</h2>
+<ul>
     <li><a href = "minimumhtml/index.html">Minimum HTML file structure</a></li>
     <li><a href = "htmlreference/index.html">HTML reference</a></li>    
     <li><a href = "htmlresources/index.html">HTML resources</a></li>
@@ -37,27 +112,11 @@ LAWS OF GEOMETRON:
     <li><a href = "jsreference/index.html">JavaScript Reference</a></li>
     <li><a href = "jslibraries/index.html">JavaScript Libraries Reference(mathjax,ace,qrcode,math.js)</a></li>    
     <li><a href = "pythonreference/index.html">Python reference for geometron</a></li>    
-    <li>UNIX reference: macos, windows, raspbian, openwrt</li>
-    <li>Where do machines come from?</li>
-    <li>On the mathematics of network scale in relation to ego death</li>
-    <li><a href = "symmetry/index.html">symmetry</a></li>
-    <li><a href = "scaletable/index.html">Scale Table</a></li>
-    <li><a href = "scaletriangles/index.html">Scale Triangles</a></li>
-    <li><a href = "scale2angle/index.html">Scale to Angle, Angle to Scale</a></li>
-    <li><a href = "movement/index.html">Basic Movements of Geometron</a></li>    
-    <li>Build a font from photos</li>
-    <li>Tour of annotated code of whole index.html</li>
-    <li>Laws of Geometron</li>
     <li>Unicode, ASCII, font reference</li>
-    <li>geometron actions tablet documentation</li>
-    <li>keyboards</li>    
-    <li>Structure of hypercube as a sequence of graphics</li>
-    <li>Construction instrutions of physical cursors: triangles(equilateral, golden), square</li>
-    <li>general sacered geometry</li>
-    <li>Tree of life</li>
-    <li>pentagons for pentagonians</li>
-    <li>Geometron in 3d: how to use geometron to build 3d structures and how to use those structures to exchange information in the geometron system</li>
+    <li>Cloud Web hosting</li>
+    <li>Local Hosting</li>
 </ul>
+
 <h2>Map</h2>
 <ul>
     <li>penn ave NW</li>
