@@ -15,18 +15,12 @@ LAWS OF GEOMETRON:
     LOOK TO THE INSECTS
     LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY
     
-hello card, your first geometron card, the start of a new deck, a new hypercube, a new universe of universes.  
-
-http://www.lafelabs.org/hello/
-
-QR Code image:
-http://www.lafelabs.org/hello/qrcode.png
-
-this code:
-https://raw.githubusercontent.com/LafeLabs/master/hello/index.html
+reader
 
 -->
-    <title>/hello/</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<title>/reader/</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>
     MathJax.Hub.Config({
@@ -460,14 +454,15 @@ function doTheThing(localCommand){
     if(localCommand >= 0200 && localCommand <= 0277){//shapes 
             drawGlyph(currentTable[localCommand]);    	    
     }
-    if(localCommand >= 0400 && localCommand < 0500){//jump to an element, warp portals
-        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
-        currentDataIndex = localCommand - 0400;
-        if(currentDataIndex > currentDataArray.length - 1){
-            currentDataIndex = currentDataArray.length - 1;
-        }
+    if(localCommand >= 0400 && localCommand < 0500){//jump to an element, warp portals        
+        deckIndex = parseInt(byteCode2string(currentTable[localCommand]),8);
+        currentDataArray = dataTXT[deckIndex].data;
+        deckAddress = parseInt(dataTXT[deckIndex].address,8);
+        deckName  = dataTXT[deckIndex].name;
+        currentDataIndex = 0;
         currentData = currentDataArray[currentDataIndex];
-        initPage();    
+        initPage();
+  
     }
     if(localCommand >= 0600 && localCommand < 0700){
         currentHTML += byteCode2string(currentTable[localCommand]);
@@ -1058,22 +1053,14 @@ function doTheThing(localCommand){
     }    
     //<page014>
     if(localCommand == 014){//export JSON        
-        if(pages[currentPage].id == "div0660"){
-        }
+
     }
 //</page014>
-    if(localCommand == 015){
-        currentData = JSON.parse(getJSON());
-        currentDataArray[currentDataIndex] = currentData;
-        document.getElementById("textIO0630").value = JSON.stringify(currentDataArray,null,"    ");
-        var fileName = document.getElementById("name04xx").value;
-        var saveText = "\"" + fileName + "\":" +document.getElementById("textIO0630").value;
-        var httpc = new XMLHttpRequest();
-        var url = "saver04xx.php";        
-        httpc.open("POST", url, true);
-        httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        httpc.send("text=" + saveText);//send text to saver04xx.php
-
+    if(localCommand == 015){ //save JSON
+    }
+    if(localCommand == 015){ //Previous Deck
+    }
+    if(localCommand == 016){ //Next Deck
     }
     if(localCommand == 020){//cursor back
         var bottomGlyph = currentGlyph.split("0207")[0];   
@@ -1137,29 +1124,8 @@ function doTheThing(localCommand){
         currentGlyph = currentTable[currentAddress] + ",0207,";
     }
     if(localCommand == 026){//import hypercube
-        localString = "";
-        if(pages[currentPage].id == "div0660"){            
-            localString = document.getElementById("textIO0660").value;
-        }
-        var inputStack = localString.split("\n");
-        for(var index = 0;index < inputStack.length;index++){
-            var stackLine = inputStack[index].split(":");
-            var localAddress = parseInt(stackLine[0],8);
-            var localGlyph = stackLine[1];
-            currentTable[localAddress] = localGlyph;
-        }
-        currentGlyph = currentTable[currentAddress] + ",0207,";
     }
     if(localCommand == 027){//export hypercube
-        var localString = "";
-        for(var index = 0;index < currentTable.length;index++){
-            if(currentTableStart[index] != currentTable[index] || fullCube){
-                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
-            }
-        }
-        if(pages[currentPage].id == "div0660"){
-            document.getElementById("textIO0660").value = localString;
-        }
     }
     if(localCommand == 030){
 //<page030>
@@ -1199,12 +1165,6 @@ function doTheThing(localCommand){
 //</page037>
     }
 
-    if(localCommand == 0700){
-        redraw0700();
-    }
-    if(localCommand == 01700){
-        init0700();
-    }
 
     //<page03>
 
@@ -1217,6 +1177,9 @@ doTheThing(07);//initialize Geometron global variables
 <div id = "pageNumber"></div>        
 <button id = "backbutton" class = "navbutton">&#x25C5</button>
 <button id = "fwdbutton" class = "navbutton">&#x25BB</button> 
+
+<button id = "prevdeck" class = "navbutton">&#x25B3</button>
+<button id = "nextdeck" class = "navbutton">&#x25BD</button> 
 
 <table id = "table0600">
         <tr>
@@ -1243,71 +1206,7 @@ doTheThing(07);//initialize Geometron global variables
 <!--</page0401>-->
 <!--<page0630>-->
 <div class = "page screenpage" id = "div0630">
-        <canvas id = "invisibleCanvas" style = "display:none"></canvas>
-        
-    <table id = "control0630" class = "control06xx">
-        <tr>
-            <td>Addr:</td><td><input></input></td>
-        </tr>      
-        <tr>            
-            <td>Action:</td><td><input></input></td>
-        </tr>      
-        <tr>            
-            <td>Print:</td><td><input></input></td>
-        </tr>      
-        <tr>            
-            <td>Stack:</td><td><input></input></td>
-        </tr>           
-        <tr>            
-            <td>Width:</td><td><input></input></td>
-        </tr>           
-        <tr>            
-            <td>Height:</td><td><input></input></td>
-        </tr>               
-
-        <tr>            
-            <td>IMG URL:</td><td><input></input></td>
-        </tr>               
-        <tr>            
-            <td>IMG w:</td><td><input value = "2"></input></td>
-        </tr>               
-        <tr>            
-            <td>IMG left:</td><td><input value = "-1"></input></td>
-        </tr>               
-        <tr>            
-            <td>IMG top:</td><td><input value = "-1"></input></td>
-        </tr>               
-        <tr class = "viewButt">
-            <td>ACTION/</td><td>SYMBOL</td>
-        </tr>        
-        <tr class = "viewButt">
-            <td>BYTECODE</td><td>EXPORT</td>
-        </tr>
-        <tr class = "viewButt" >
-            <td>BYTECODE</td><td>IMPORT</td>
-        </tr>
-        <tr class = "viewButt" >
-            <td>EXPORT</td><td>ARRAY</td>
-        </tr>
-        <tr class = "viewButt" >
-            <td>IMPORT</td><td>ARRAY</td>
-        </tr>                
-        <tr class = "viewButt" >
-            <td>EXPORT</td><td>SVG</td>
-        </tr>                    
-        <tr class = "viewButt" >
-            <td></td><td></td>
-        </tr>
-        <tr class = "viewButt" >
-            <td>PUSH</td><td>JSON</td>
-        </tr>    
-        <tr class = "viewButt" >
-            <td></td><td></td>
-        </tr>    
-        <tr class = "viewButt" >
-            <td>SAVE</td><td>SVG</td>
-        </tr>    
-    </table>
+    <canvas id = "invisibleCanvas" style = "display:none"></canvas>
     <canvas id = "canvas0630" class = "canvas06xx"></canvas>
     <div class = "box0630"></div>
     <div class = "box0630"></div>
@@ -1317,43 +1216,60 @@ doTheThing(07);//initialize Geometron global variables
     <div class = "box0630"></div>
     <div class = "box0630"></div>
     <div class = "box0630"></div>    
-    <textarea id = "textIO0630" class = "textIO06xx"></textarea>
+    <textarea id = "textIO0630" style = "display:none" class = "textIO06xx"></textarea>
     <img id = "img0630"/>
-    <input id = "glyphspellinput">
-    <div id = "editorblock">
-        06xx:<input id = "addr06xx" value = "0600"> 
-        <textarea id = "editor06xx"></textarea>
-    </div>
-    <div id = "pageblock">
-        04xx:<input id = "addr04xx" value = "0400"><button id = "saveFileButton">SAVE</button> <br>
-        name:<input id = "name04xx" value = "filename.txt">
-    </div>
+
 </div>
 <!--</page0630>-->
 <!--<page0700>-->
 <script id = "script0700">
-    pages = document.getElementsByClassName("page");
-    currentPage = 0;
-    for(index = 0;index < pages.length;index++){
-        if(index != currentPage){
-            pages[index].style.display = "none";
+deckIndex = 0;
+deckAddress = 0400;
+deckName = "";
+
+
+    document.getElementById("prevdeck").onclick = function(){
+        deckIndex--;
+        if(deckIndex < 0){
+            deckIndex = dataTXT.length - 1;
         }
+        currentDataArray = dataTXT[deckIndex].data;//this is some magic object crap, these are linked
+        deckAddress = parseInt(dataTXT[deckIndex].address,8);
+        deckName  = dataTXT[deckIndex].name;
+        currentDataIndex = 0;
+        currentData = currentDataArray[currentDataIndex];
+        initPage();
     }
-    
+    document.getElementById("nextdeck").onclick = function(){
+        deckIndex++;
+        if(deckIndex > dataTXT.length - 1){
+            deckIndex = 0;
+        }
+        currentDataArray = dataTXT[deckIndex].data;
+        deckAddress = parseInt(dataTXT[deckIndex].address,8);
+        deckName  = dataTXT[deckIndex].name;
+        currentDataIndex = 0;
+        currentData = currentDataArray[currentDataIndex];
+        initPage();
+
+    }
+
     document.getElementById("backbutton").onclick = function(){
         //prev json
-        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
+        currentDataArray[currentDataIndex] = currentData;       
         
         currentDataIndex--;
         if(currentDataIndex < 0){
             currentDataIndex = currentDataArray.length - 1;
         }
         currentData = currentDataArray[currentDataIndex];
+        dataTXT[deckIndex].data = currentDataArray;
         initPage();
     }
     document.getElementById("fwdbutton").onclick = function(){
         //next json
-        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
+        currentDataArray[currentDataIndex] = currentData;       
+
         currentDataIndex++;
         if(currentDataIndex > currentDataArray.length - 1){
             currentDataIndex = 0;
@@ -1409,10 +1325,10 @@ currentData = JSON.parse(document.getElementById("data0400").innerHTML);
 currentDataArray.push(currentData);
 currentDataIndex = 0;
 boxes0630 = document.getElementsByClassName("box0630");
-inputs0630 = document.getElementById("control0630").getElementsByTagName("input");   
 
 init0730();
 function init0730(){
+
     for(var index = 0;index < boxes0630.length;index++){
         boxes0630[index].style.display = "none";
     }
@@ -1424,17 +1340,12 @@ function init0730(){
         currentTable[localAddress] = localGlyph;
     }
 
-    inputs0630[7].value = currentData.imgw;
-    inputs0630[8].value = currentData.imgleft;
-    inputs0630[9].value = currentData.imgtop;
     if(currentData.imgurl.length > 0){
         document.getElementById("img0630").style.display = "block";
         document.getElementById("img0630").src = currentData.imgurl;
-        inputs0630[6].value = currentData.imgurl;
     }
     else{
         document.getElementById("img0630").style.display = "none";
-        inputs0630[6].value = "";
     }
     currentAddress = 0260;
     currentTable[currentAddress] = currentData.glyph;    
@@ -1445,380 +1356,49 @@ function init0730(){
     document.getElementById("canvas0630").height = innerHeight;
     x0 = innerWidth/2 + currentData.x0rel*unit;
     y0 = innerHeight/2 + currentData.y0rel*unit;    
-    inputs0630[4].value = width0630;
-    inputs0630[5].value = height0630;
-    buttons0630 = document.getElementById("control0630").getElementsByClassName("viewButt");
-    currentGlyph = currentTable[currentAddress] + ",0207,";
+    
+    currentGlyph = currentTable[currentAddress];
     redraw0730();
 }
 
     function redraw0730(){
-        document.getElementById("img0630").style.width = (parseFloat(inputs0630[7].value)*unit).toString()  + "px";
-        document.getElementById("img0630").style.left = (x0 + parseFloat(inputs0630[8].value)*unit).toString()  + "px";
-        document.getElementById("img0630").style.top = (y0 + parseFloat(inputs0630[9].value)*unit).toString()  + "px";
-
+        document.getElementById("img0630").style.width = (currentData.imgw*unit).toString()  + "px";
+        document.getElementById("img0630").style.left = (x0 + currentData.imgleft*unit).toString()  + "px";
+        document.getElementById("img0630").style.top = (y0 + currentData.imgtop*unit).toString()  + "px";
         ctx = document.getElementById("canvas0630").getContext("2d");
         ctx.clearRect(0,0,innerWidth,innerHeight);
         doTheThing(0300);
         ctx.strokeRect((innerWidth - width0630)/2,(innerHeight - height0630)/2,width0630,height0630)
         doTheThing(0300);
         drawGlyph(currentGlyph);
-        doTheThing(0300);
-        x = 50;
-        y = innerHeight  - 50;
-        side = 25;
-        spellGlyph(currentGlyph);        
-        var glyphArray = currentGlyph.split(",");
-        currentTable[currentAddress] = "";
-        for(var index = 0;index < glyphArray.length;index++){
-            if(glyphArray[index] != "0207" && glyphArray[index].length > 0){
-                currentTable[currentAddress] += glyphArray[index] + ",";
-            }
-        }
-        currentData.glyph = currentTable[currentAddress];
-        inputs0630[0].value = "0" + currentAddress.toString(8);
-        document.getElementById("glyphspellinput").value = currentTable[currentAddress];
         if(latex){
             MathJax.Hub.Typeset();//tell Mathjax to update the math
         }
     }
-    inputs0630[1].onkeydown = function(e) {
-        charCode = e.keyCode || e.which;
-        if(charCode == 010){
-            doTheThing(010);
-            redraw();
-        }
-        if(charCode == 045){
-            doTheThing(020);
-            redraw();
-        }
-        if(charCode == 047){
-            doTheThing(021);
-            redraw();
-        }
-        if(charCode == 046){
-//        doTheThing(023);
-            currentAddress++;
-            currentGlyph = currentTable[currentAddress] + ",0207,";
-            redraw();
-        }
-        if(charCode == 050){
-//        doTheThing(022);
-            currentAddress--;
-            currentGlyph = currentTable[currentAddress] + ",0207,";
-            redraw();
-        }    
-    }
     
-    
-    inputs0630[2].onkeydown = function(e) {
-        charCode = e.keyCode || e.which;
-        if(charCode == 010){
-            doTheThing(010);
-            redraw();
-        }
-        if(charCode == 045){
-            doTheThing(020);
-            redraw();
-        }
-        if(charCode == 047){
-            doTheThing(021);
-            redraw();
-        }
-    }
-    
-    inputs0630[3].onkeydown = function(e) {
-        charCode = e.keyCode || e.which;
-        if(charCode == 010){
-            doTheThing(010);
-            redraw();
-        }
-        if(charCode == 045){
-            doTheThing(020);
-            redraw();
-        }
-        if(charCode == 047){
-            doTheThing(021);
-            redraw();
-        }
-    }
-    inputs0630[1].onkeypress = function(a){//action
-        charCode = a.keyCode || a.which;
-        console.log(a.which);
-        if(parseInt(currentTable[charCode],8) >= 0200){
-            var glyphSplit = currentGlyph.split(",");
-            currentGlyph = "";
-            for(var index = 0;index < glyphSplit.length;index++){
-                if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
-                    currentGlyph += glyphSplit[index] + ",";
-                }
-                if(glyphSplit[index] == "0207"){
-                    currentGlyph += currentTable[charCode] + ",0207,";
-                }
-            }
-            var glyphSplit = currentGlyph.split(",");
-            currentGlyph = "";
-            for(var index = 0;index < glyphSplit.length;index++){
-                if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
-                    currentGlyph += glyphSplit[index] + ",";
-                }
-            }
-            redraw();
-        } 
-        if(parseInt(currentTable[charCode],8) < 040){
-            doTheThing(parseInt(currentTable[charCode],8));
-            redraw0730();
-        }
-        this.value = "";
-    }
-    
-    
-    inputs0630[2].onkeypress = function(a){//print
-        charCode = a.keyCode || a.which;
-        var glyphSplit = currentGlyph.split(",");
-        currentGlyph = "";
-        for(var index = 0;index < glyphSplit.length;index++){
-            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
-                currentGlyph += glyphSplit[index] + ",";
-            }
-            if(glyphSplit[index] == "0207"){
-                currentGlyph += "0" + (charCode + 01000).toString(8) + ",0207,";
-            }
-        }
-        var glyphSplit = currentGlyph.split(",");
-        currentGlyph = "";
-        for(var index = 0;index < glyphSplit.length;index++){
-            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
-                currentGlyph += glyphSplit[index] + ",";
-            }
-        }
-        redraw();
-        
-        this.value = "";
-    }
-    
-    
-    inputs0630[3].onkeypress = function(a){//stack
-        charCode = a.keyCode || a.which;    
-        var glyphSplit = currentGlyph.split(",");
-        currentGlyph = "";
-        for(var index = 0;index < glyphSplit.length;index++){
-            if(glyphSplit[index].length > 0 && glyphSplit[index] != "0207"){
-                currentGlyph += glyphSplit[index] + ",";
-            }
-            if(glyphSplit[index] == "0207"){
-                currentGlyph += "0" + (charCode).toString(8) + ",0207,";
-            }
-        }
-        var glyphSplit = currentGlyph.split(",");
-        currentGlyph = "";
-        for(var index = 0;index < glyphSplit.length;index++){
-            if(glyphSplit[index].length > 0  && parseInt(glyphSplit[index]) >= 040){
-                currentGlyph += glyphSplit[index] + ",";
-            }
-        }
-        redraw();
-        this.value = "";
-    }
-    
-    inputs0630[0].onchange = function(){
-        currentAddress = parseInt(this.value,8);
-        currentGlyph = currentTable[currentAddress] + ",0207,";
-        redraw();
-    }
-    
-    inputs0630[4].onchange = function(){
-        width0630 = parseInt(this.value);
-        redraw0730();
-    }
-    inputs0630[5].onchange = function(){
-        height0630 = parseInt(this.value);
-        redraw0730();
-    }
-
-    inputs0630[6].onchange = function(){
-        document.getElementById("img0630").style.display = "block";
-        document.getElementById("img0630").src = this.value;
-        redraw0730();
-    }
-    inputs0630[7].onchange = function(){
-        redraw0730();
-    }
-    inputs0630[8].onchange = function(){
-
-        redraw0730();
-    }
-    inputs0630[9].onchange = function(){
-        redraw0730();
-    }
 
 
-    buttons0630[0].onclick = function(){//symbol/shape
-        if(currentAddress < 01000){
-            currentAddress += 01000;
-            currentGlyph = currentTable[currentAddress] + ",0207,";
-        }
-        else{
-            currentAddress -= 01000;
-            currentGlyph = currentTable[currentAddress] + ",0207,";
-        }
-        redraw();    
-    }
-    
-    
-    buttons0630[1].onclick = function(){//export hypercube
-        var localString = "";
-        for(var index = 040;index < 01777;index++){
-            if(currentTableStart[index] != currentTable[index]){
-                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
-            }
-        }
-        document.getElementById("textIO0630").value = localString;
-    }
-    
-    buttons0630[2].onclick = function(){//import hypercube
-        localString = "";
-        localString = document.getElementById("textIO0630").value;
-        var inputStack = localString.split("\n");
-        for(var index = 0;index < inputStack.length;index++){
-            var stackLine = inputStack[index].split(":");
-            var localAddress = parseInt(stackLine[0],8);
-            var localGlyph = stackLine[1];
-            currentTable[localAddress] = localGlyph;
-        }
-        currentGlyph = currentTable[currentAddress] + ",0207,";
-        redraw0730();
-    }
+var httpc = new XMLHttpRequest(); //load data.txt JSON data, an array of objects(decks) each of which 
+//has another array of objects(slides)
 
-    buttons0630[3].onclick = function(){//Export JSON array     
-        currentData = JSON.parse(getJSON());       
-        currentDataArray[currentDataIndex] = currentData;
-        document.getElementById("textIO0630").value = JSON.stringify(currentDataArray,null,"    ");
-    }
-
-    buttons0630[4].onclick = function(){//IMPORT JSON array        
-        currentDataArray = JSON.parse(document.getElementById("textIO0630").value);
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        dataTXT = JSON.parse(this.responseText);
+        currentDataArray = dataTXT[deckIndex].data;
+        deckAddress = parseInt(dataTXT[deckIndex].address,8);
+        deckName  = dataTXT[deckIndex].name;
         currentDataIndex = 0;
         currentData = currentDataArray[currentDataIndex];
-        init0730();
 
-    }
-
-
-    buttons0630[5].onclick = function(){//Export SVG        
-        exportSVG();
-    }
-
-    buttons0630[7].onclick = function(){//PUSH JSON PAGE 
-        currentData = JSON.parse(getJSON());       
-        currentDataArray[currentDataIndex] = currentData;
-        currentData =  JSON.parse(document.getElementById("data0400").innerHTML);
-        currentDataArray.push(currentData);
-        currentDataIndex = currentDataArray.length - 1;
-
-        init0730();
-    }
-
-
-    buttons0630[9].onclick = function(){//SAVE SVG FROM TEXTIO, after exporting svg into TEXTIO
-        var httpc = new XMLHttpRequest();
-        var url = "savesvg.php";        
-        httpc.open("POST", url, true);
-        httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        exportSVG();//put the text of the svg code in textio
-        httpc.send("svg=" + document.getElementById("textIO0630").value);//send it along
-    }        
-
-function exportSVG(){
-    width0630 = parseInt(inputs0630[4].value);
-        height0630 = parseInt(inputs0630[5].value);
-        tempx0 = x0;
-        tempy0 = y0;
-        x0 -= 0.5*(innerWidth - width0630);
-        y0 -= 0.5*(innerHeight - height0630);
-        jsonout = getJSON();
-        currentSVG = "<svg width=\"" + width0630.toString() + "\" height=\"" + height0630.toString() + "\" viewbox = \"0 0 " + width0630.toString() + " " + height0630.toString() + "\"  xmlns=\"http://www.w3.org/2000/svg\">\n";
-        currentSVG += "\n<!--\n<json>\n" + jsonout + "\n</json>\n-->\n";
-        ctx = document.getElementById("invisibleCanvas").getContext("2d");
-        var fooGlyph = "";
-        var barArray = currentGlyph.split(",");
-        for(var index = 0;index < barArray.length;index++){
-            if(barArray[index] != "0207" && barArray[index].length > 0){
-                fooGlyph += barArray[index] + ",";
-            }
+        for(var index = 0;index < dataTXT.length;index++){
+            currentTable[parseInt(dataTXT[index].address,8)] = string2byteCode(index.toString()); 
         }
-        doTheThing(0300);
-        drawGlyph(fooGlyph);
-        currentSVG += "</svg>";
-        document.getElementById("textIO0630").value = currentSVG;
-        x0 = tempx0;
-        y0 = tempy0;
-}
+        initPage();
+   }
+};
 
-function getJSON(){
-    var jsonout = "{\n\"shapes\":[\n";
-    for(var index = 040;index < 01777;index++){
-        if(currentTableStart[index] != currentTable[index]){
-            jsonout += "    \"0" + index.toString(8) + ":" + currentTable[index] + "\",\n";
-        }
-    }
-    if(jsonout.substring(jsonout.length-2,jsonout.length) == ",\n"){
-        jsonout = jsonout.substring(0,jsonout.length - 2) + "\n";
-    }
-    jsonout += "],\n";
-    jsonout += "\"glyph\":\"";
-    var fooGlyph = "";
-    var barArray = currentGlyph.split(",");
-    for(var index = 0;index < barArray.length;index++){
-        if(barArray[index] != "0207" && barArray[index].length > 0){
-            fooGlyph += barArray[index] + ",";
-        }
-    }
-    jsonout += fooGlyph + "\",\n";
-    jsonout += "\"w\":" + inputs0630[4].value + ",\n";
-    jsonout += "\"h\":" + inputs0630[5].value + ",\n";
-    jsonout += "\"x0\":" + (x0).toString() + ",\n";
-    jsonout += "\"y0\":" + (y0).toString() + ",\n";
-    jsonout += "\"x0rel\":" + ((x0 - 0.5*innerWidth)/unit).toString() + ",\n";
-    jsonout += "\"y0rel\":" + ((y0 - 0.5*innerHeight)/unit).toString() + ",\n";
-    jsonout += "\"unit\":" + unit.toString() + ",\n";
-    jsonout += "\"imgurl\":\"" + inputs0630[6].value + "\",\n";
-    jsonout += "\"imgw\":" + inputs0630[7].value + ",\n";
-    jsonout += "\"imgleft\":" + inputs0630[8].value + ",\n";
-    jsonout += "\"imgtop\":" + inputs0630[9].value + "\n}\n";
-
-    return jsonout;
-
-}
-
-document.getElementById("glyphspellinput").onchange = function(){
-    currentTable[currentAddress] = this.value;
-    currentGlyph = currentTable[currentAddress] + "0207,";
-    redraw();
-}
-
-document.getElementById("editor06xx").onkeydown = function(){
-    currentTable[textAddress] = string2byteCode(this.value);
-}
-document.getElementById("addr06xx").onchange = function(){
-    textAddress = parseInt(this.value,8);
-    document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
-}
-
-
-document.getElementById("addr06xx").onkeydown = function(e) {
-     
-        if(e.keyCode == 046){
-            textAddress++;
-            document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
-            this.value = "0" + textAddress.toString(8);
-        }
-        if(e.keyCode == 050){
-            textAddress--;
-            document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
-            this.value = "0" + textAddress.toString(8);
-        }    
-}
+httpc.open("GET", "data.txt", true);
+httpc.send(); 
 
 </script>
 <!--</page0730>-->  
@@ -1853,17 +1433,34 @@ body{
     position:absolute;
     left:0px;
     top:0px;
-    width:10%;
+    width:50px;
     height:50px;
     font-size:40px;
 }
+#prevdeck{
+    position:absolute;
+    left:60px;
+    top:0px;
+    width:50px;
+    height:50px;
+    font-size:40px;
+}
+
 #fwdbutton{
     position:absolute;
     right:0px;
     top:0px;
-    width:10%;
+    width:50px;
     height:50px;
     font-size:40px;
+}
+#nextdeck{
+    position:absolute;
+    right:60px;
+    top:0px;
+    width:50px;
+    height:50px;
+    font-size:40px;    
 }
 .navbutton{
     position:absolute;

@@ -1,0 +1,182 @@
+[
+{
+    "name":"deck0400",
+    "address":"0400",
+    "data":
+    [
+    {
+        "shapes": [
+        ],
+        "glyph": "",
+        "w": 1357,
+        "h": 672,
+        "x0": 678.5,
+        "y0": 336,
+        "x0rel": 0,
+        "y0rel": 0,
+        "unit": 100,
+        "imgurl": "",
+        "imgw": 2,
+        "imgleft": -1,
+        "imgtop": -1
+    }
+    ]
+},
+{
+    "name":"deck0401",
+    "address":"0401",
+    "data":
+    [
+    {
+        "shapes": [
+        ],
+        "glyph": "",
+        "w": 1357,
+        "h": 672,
+        "x0": 678.5,
+        "y0": 336,
+        "x0rel": 0,
+        "y0rel": 0,
+        "unit": 100,
+        "imgurl": "",
+        "imgw": 2,
+        "imgleft": -1,
+        "imgtop": -1
+    }
+    ]
+},
+{
+    "name":"deck0402",
+    "address":"0402",
+    "data":
+    [
+    {
+        "shapes": [
+        ],
+        "glyph": "",
+        "w": 1357,
+        "h": 672,
+        "x0": 678.5,
+        "y0": 336,
+        "x0rel": 0,
+        "y0rel": 0,
+        "unit": 100,
+        "imgurl": "",
+        "imgw": 2,
+        "imgleft": -1,
+        "imgtop": -1
+    }
+    ]
+},
+{
+    "name":"deck0403",
+    "address":"0403",
+    "data":
+    [
+    {
+        "shapes": [
+        ],
+        "glyph": "",
+        "w": 1357,
+        "h": 672,
+        "x0": 678.5,
+        "y0": 336,
+        "x0rel": 0,
+        "y0rel": 0,
+        "unit": 100,
+        "imgurl": "",
+        "imgw": 2,
+        "imgleft": -1,
+        "imgtop": -1
+    }]
+},
+{
+    "name":"deck0404",
+    "address":"0404",
+    "data":
+    [
+    {
+        "shapes": [
+        ],
+        "glyph": "",
+        "w": 1357,
+        "h": 672,
+        "x0": 678.5,
+        "y0": 336,
+        "x0rel": 0,
+        "y0rel": 0,
+        "unit": 100,
+        "imgurl": "",
+        "imgw": 2,
+        "imgleft": -1,
+        "imgtop": -1
+    }]
+},
+{
+    "name":"deck0405",
+    "address":"0405",
+    "data":
+    [
+    {
+        "shapes": [
+        ],
+        "glyph": "",
+        "w": 1357,
+        "h": 672,
+        "x0": 678.5,
+        "y0": 336,
+        "x0rel": 0,
+        "y0rel": 0,
+        "unit": 100,
+        "imgurl": "",
+        "imgw": 2,
+        "imgleft": -1,
+        "imgtop": -1
+    }]
+},
+{
+    "name":"deck0406",
+    "address":"0406",
+    "data":
+    [
+    {
+        "shapes": [
+        ],
+        "glyph": "",
+        "w": 1357,
+        "h": 672,
+        "x0": 678.5,
+        "y0": 336,
+        "x0rel": 0,
+        "y0rel": 0,
+        "unit": 100,
+        "imgurl": "",
+        "imgw": 2,
+        "imgleft": -1,
+        "imgtop": -1
+    }]
+},
+{
+    "name":"deck0407",
+    "address":"0407",
+    "data":
+    [
+    {
+        "shapes": [
+        ],
+        "glyph": "",
+        "w": 1357,
+        "h": 672,
+        "x0": 678.5,
+        "y0": 336,
+        "x0rel": 0,
+        "y0rel": 0,
+        "unit": 100,
+        "imgurl": "",
+        "imgw": 2,
+        "imgleft": -1,
+        "imgtop": -1
+    }
+]
+}
+]

@@ -1,0 +1,212 @@
+<svg width="350" height="500" viewbox = "0 0 350 500"  xmlns="http://www.w3.org/2000/svg">
+
+<!--
+<json>
+{
+"shapes":[
+    "0220:0336,0336,0347,0321,0336,0347,0320,0337,0337,0337,",
+    "0221:0331,0220,",
+    "0222:0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,0221,",
+    "0223:0330,0222,0335,0335,0332,0330,0222,0335,0335,0332,0336,0336,0322,0347,0337,0337,0337,0336,0333,0331,0320,0336,0336,0331,0331,0331,0331,0347,0337,0337,0331,0331,0331,0331,0336,0336,0347,0337,0337,0330,0330,0332,0336,0336,0347,0337,0337,0333,0331,0331,0331,0331,0331,0336,0336,0347,0337,0337,0331,0331,0331,0331,0331,0336,0336,0347,0337,0337,0331,0331,0336,0336,0347,0337,0337,0331,0331,0331,0332,0336,0336,0347,0337,0337,0330,0330,0330,0330,0330,0330,0330,0336,0336,0347,0337,0337,0330,0330,0330,0322,0336,0336,0330,0330,0330,0330,0347,0331,0331,0331,0331,0337,0337,0320,0304,0330,0330,0330,0330,0330,0330,0330,0330,0330,0333,0336,0350,0335,0342,0334,0334,0342,0335,0335,0335,0335,0342,0335,0335,0342,0332,0332,0342,0335,0335,0342,0335,0335,0342,0335,0335,0342,0334,0304,0334,0337,0337,0336,0330,0332,0336,0336,0331,0333,0337,0200,0336,0330,0332,0337,0337,",
+    "0224:0331,0336,0365,0337,",
+    "0225:0223,0332,0332,063,056,063,0330,0336,0336,0336,0332,0331,0336,0332,0332,0337,0337,0337,0337,0126,0224,062,0224,063,0224,064,0224,0107,0116,0104,0224,061,067,0224,062,067,0224,062,062,0224,063,056,063,0126,0224,061,060,0224,071,0224,061,061,0224,0107,0116,0104,0224,060,0224,065,0224,066,0224,061,063,0224,061,071,0224,062,066,0224,0107,0116,0104,0224,0330,0330,0330,0330,0330,0330,0330,0333,0333,0330,0330,0330,0330,0330,0330,0330,0330,0330,0330,0330,0330,0333,0330,065,0126,0333,0333,0224,065,0126,0224,0107,0116,0104,0224,061,064,0224,061,065,0224,061,070,0224,0107,0116,0104,0224,062,063,0224,062,064,0224,0107,0116,0104,0224,062,065,0224,070,0224,067,0224,061,0224,0107,0116,0104,0224,061,062,0224,0107,0116,0104,0224,061,066,0224,062,060,0224,062,061,0224,",
+    "0226:0225,0334,0336,0336,0336,0333,0330,0337,0337,0337,0342,0333,0342,0333,0342,0333,0333,0342,0333,0333,0342,0333,0342,0333,0342,0333,0342,0333,0333,0342,0333,0342,0333,0333,0342,0333,0342,0333,0342,0335,0335,0331,0331,0331,0331,0336,0336,0336,0331,0337,0337,0337,0342,0333,0333,0342,0333,0342,0333,0342,0332,0332,0332,0332,0332,0342,0332,0342,0333,0333,0333,0333,0333,0333,0333,0333,0342,0333,0342,0333,0342,0333,0333,0342,0333,0342,0333,0342,0333,0342,0333,0342,0333,0342,",
+    "0227:0226,0334,0332,0332,0332,0332,",
+    "0260:0333,0226,0334,",
+    "0400:060,",
+    "0401:061,",
+    "0402:062,",
+    "0403:063,",
+    "0404:064,",
+    "0405:065,",
+    "0406:066,",
+    "0407:067,",
+    "01220:0333,0200,0336,0332,0330,0336,0331,0337,0220,0333,0331,0336,0330,0337,0337,"
+],
+"glyph":"0333,0226,0334,",
+"w":350,
+"h":500,
+"x0":125,
+"y0":50.00000000000003,
+"x0rel":-25.433175479487222,
+"y0rel":-13.141622740981655,
+"unit":21.76291357901485,
+"imgurl":"",
+"imgw":2,
+"imgleft":-1,
+"imgtop":-1
+}
+
+</json>
+-->
+    <circle cx="147" cy = "50" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "50" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "72" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "72" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "94" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "94" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "115" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "115" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "137" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "137" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "159" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "159" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "181" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "181" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "202" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "202" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "224" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "224" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "246" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "246" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "268" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "268" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "289" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "289" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "311" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "311" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "333" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "333" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "355" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "355" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "376" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "376" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "398" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "398" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "420" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "420" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "442" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "442" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "463" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "463" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "463" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "463" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "442" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "442" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "420" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "420" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "398" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "398" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "376" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "376" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "355" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "355" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "333" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "333" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "311" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "311" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "289" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "289" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "268" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "268" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "246" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "246" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "224" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "224" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "202" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "202" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "181" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "181" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "159" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "159" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "137" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "137" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "115" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "115" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "94" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "94" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "72" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "72" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="169" cy = "50" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "50" r = "2.720364197376856" stroke = "white" stroke-width = "2" fill = "white" />
+    <circle cx="147" cy = "50" r = "5.440728394753712" stroke = "red" stroke-width = "2" fill = "red" />
+    <circle cx="169" cy = "94" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "181" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "137" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "246" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "355" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="169" cy = "398" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "463" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "311" r = "5.440728394753712" stroke = "black" stroke-width = "2" fill = "black" />
+    <circle cx="147" cy = "224" r = "5.440728394753712" stroke = "red" stroke-width = "2" fill = "red" />
+    <line x1="169" y1="50" x2="176" y2="42" style="stroke:black;stroke-width:2" />
+    <line x1="169" y1="50" x2="161" y2="42" style="stroke:black;stroke-width:2" />
+    <line x1="169" y1="50" x2="176" y2="58" style="stroke:black;stroke-width:2" />
+    <line x1="169" y1="50" x2="161" y2="58" style="stroke:black;stroke-width:2" />
+    <line x1="169" y1="72" x2="161" y2="79" style="stroke:black;stroke-width:2" />
+    <line x1="169" y1="72" x2="161" y2="64" style="stroke:black;stroke-width:2" />
+    <line x1="169" y1="72" x2="176" y2="64" style="stroke:black;stroke-width:2" />
+    <line x1="169" y1="72" x2="176" y2="79" style="stroke:black;stroke-width:2" />
+    <line x1="152" y1="55" x2="152" y2="45" style="stroke:black;stroke-width:2" />
+    <line x1="152" y1="45" x2="141" y2="45" style="stroke:black;stroke-width:2" />
+    <line x1="141" y1="45" x2="141" y2="55" style="stroke:black;stroke-width:2" />
+    <line x1="141" y1="55" x2="152" y2="55" style="stroke:black;stroke-width:2" />
+    <text x="98" y = "53" fill = "black" font-size = "10.881456789507425px" font-family = "futura">3.3V</text>
+    <text x="98" y = "74" fill = "black" font-size = "10.881456789507425px" font-family = "futura">2</text>
+    <text x="98" y = "96" fill = "black" font-size = "10.881456789507425px" font-family = "futura">3</text>
+    <text x="98" y = "118" fill = "black" font-size = "10.881456789507425px" font-family = "futura">4</text>
+    <text x="98" y = "140" fill = "black" font-size = "10.881456789507425px" font-family = "futura">GND</text>
+    <text x="98" y = "162" fill = "black" font-size = "10.881456789507425px" font-family = "futura">17</text>
+    <text x="98" y = "183" fill = "black" font-size = "10.881456789507425px" font-family = "futura">27</text>
+    <text x="98" y = "205" fill = "black" font-size = "10.881456789507425px" font-family = "futura">22</text>
+    <text x="98" y = "227" fill = "black" font-size = "10.881456789507425px" font-family = "futura">3.3V</text>
+    <text x="98" y = "249" fill = "black" font-size = "10.881456789507425px" font-family = "futura">10</text>
+    <text x="98" y = "270" fill = "black" font-size = "10.881456789507425px" font-family = "futura">9</text>
+    <text x="98" y = "292" fill = "black" font-size = "10.881456789507425px" font-family = "futura">11</text>
+    <text x="98" y = "314" fill = "black" font-size = "10.881456789507425px" font-family = "futura">GND</text>
+    <text x="98" y = "336" fill = "black" font-size = "10.881456789507425px" font-family = "futura">0</text>
+    <text x="98" y = "357" fill = "black" font-size = "10.881456789507425px" font-family = "futura">5</text>
+    <text x="98" y = "379" fill = "black" font-size = "10.881456789507425px" font-family = "futura">6</text>
+    <text x="98" y = "401" fill = "black" font-size = "10.881456789507425px" font-family = "futura">13</text>
+    <text x="98" y = "423" fill = "black" font-size = "10.881456789507425px" font-family = "futura">19</text>
+    <text x="98" y = "444" fill = "black" font-size = "10.881456789507425px" font-family = "futura">26</text>
+    <text x="98" y = "466" fill = "black" font-size = "10.881456789507425px" font-family = "futura">GND</text>
+    <text x="207" y = "53" fill = "black" font-size = "10.881456789507425px" font-family = "futura">5V</text>
+    <text x="207" y = "74" fill = "black" font-size = "10.881456789507425px" font-family = "futura">5V</text>
+    <text x="207" y = "96" fill = "black" font-size = "10.881456789507425px" font-family = "futura">GND</text>
+    <text x="207" y = "118" fill = "black" font-size = "10.881456789507425px" font-family = "futura">14</text>
+    <text x="207" y = "140" fill = "black" font-size = "10.881456789507425px" font-family = "futura">15</text>
+    <text x="207" y = "162" fill = "black" font-size = "10.881456789507425px" font-family = "futura">18</text>
+    <text x="207" y = "183" fill = "black" font-size = "10.881456789507425px" font-family = "futura">GND</text>
+    <text x="207" y = "205" fill = "black" font-size = "10.881456789507425px" font-family = "futura">23</text>
+    <text x="207" y = "227" fill = "black" font-size = "10.881456789507425px" font-family = "futura">24</text>
+    <text x="207" y = "249" fill = "black" font-size = "10.881456789507425px" font-family = "futura">GND</text>
+    <text x="207" y = "270" fill = "black" font-size = "10.881456789507425px" font-family = "futura">25</text>
+    <text x="207" y = "292" fill = "black" font-size = "10.881456789507425px" font-family = "futura">8</text>
+    <text x="207" y = "314" fill = "black" font-size = "10.881456789507425px" font-family = "futura">7</text>
+    <text x="207" y = "336" fill = "black" font-size = "10.881456789507425px" font-family = "futura">1</text>
+    <text x="207" y = "357" fill = "black" font-size = "10.881456789507425px" font-family = "futura">GND</text>
+    <text x="207" y = "379" fill = "black" font-size = "10.881456789507425px" font-family = "futura">12</text>
+    <text x="207" y = "401" fill = "black" font-size = "10.881456789507425px" font-family = "futura">GND</text>
+    <text x="207" y = "423" fill = "black" font-size = "10.881456789507425px" font-family = "futura">16</text>
+    <text x="207" y = "444" fill = "black" font-size = "10.881456789507425px" font-family = "futura">20</text>
+    <text x="207" y = "466" fill = "black" font-size = "10.881456789507425px" font-family = "futura">21</text>
+    <line x1="204" y1="463" x2="182" y2="463" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="442" x2="182" y2="442" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="420" x2="182" y2="420" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="376" x2="182" y2="376" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="333" x2="182" y2="333" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="311" x2="182" y2="311" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="289" x2="182" y2="289" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="268" x2="182" y2="268" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="224" x2="182" y2="224" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="202" x2="182" y2="202" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="159" x2="182" y2="159" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="137" x2="182" y2="137" style="stroke:black;stroke-width:2" />
+    <line x1="204" y1="115" x2="182" y2="115" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="115" x2="136" y2="115" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="159" x2="136" y2="159" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="181" x2="136" y2="181" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="202" x2="136" y2="202" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="94" x2="136" y2="94" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="72" x2="136" y2="72" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="246" x2="136" y2="246" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="268" x2="136" y2="268" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="289" x2="136" y2="289" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="333" x2="136" y2="333" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="355" x2="136" y2="355" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="376" x2="136" y2="376" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="398" x2="136" y2="398" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="420" x2="136" y2="420" style="stroke:black;stroke-width:2" />
+    <line x1="114" y1="442" x2="136" y2="442" style="stroke:black;stroke-width:2" />
+</svg>

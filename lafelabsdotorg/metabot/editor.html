@@ -15,18 +15,12 @@ LAWS OF GEOMETRON:
     LOOK TO THE INSECTS
     LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY
     
-hello card, your first geometron card, the start of a new deck, a new hypercube, a new universe of universes.  
-
-http://www.lafelabs.org/hello/
-
-QR Code image:
-http://www.lafelabs.org/hello/qrcode.png
-
-this code:
-https://raw.githubusercontent.com/LafeLabs/master/hello/index.html
+editor
 
 -->
-    <title>/hello/</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+<title>/editor/</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script>
     MathJax.Hub.Config({
@@ -460,14 +454,15 @@ function doTheThing(localCommand){
     if(localCommand >= 0200 && localCommand <= 0277){//shapes 
             drawGlyph(currentTable[localCommand]);    	    
     }
-    if(localCommand >= 0400 && localCommand < 0500){//jump to an element, warp portals
-        currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
-        currentDataIndex = localCommand - 0400;
-        if(currentDataIndex > currentDataArray.length - 1){
-            currentDataIndex = currentDataArray.length - 1;
-        }
+    if(localCommand >= 0400 && localCommand < 0500){//jump to an element, warp portals        
+        deckIndex = parseInt(byteCode2string(currentTable[localCommand]),8);
+        currentDataArray = dataTXT[deckIndex].data;
+        deckAddress = parseInt(dataTXT[deckIndex].address,8);
+        deckName  = dataTXT[deckIndex].name;
+        currentDataIndex = 0;
         currentData = currentDataArray[currentDataIndex];
-        initPage();    
+        initPage();
+  
     }
     if(localCommand >= 0600 && localCommand < 0700){
         currentHTML += byteCode2string(currentTable[localCommand]);
@@ -1058,12 +1053,11 @@ function doTheThing(localCommand){
     }    
     //<page014>
     if(localCommand == 014){//export JSON        
-        if(pages[currentPage].id == "div0660"){
-        }
+
     }
 //</page014>
-    if(localCommand == 015){
-        currentData = JSON.parse(getJSON());
+    if(localCommand == 015){ //save JSON
+        currentData = JSON.parse(getJSON());  
         currentDataArray[currentDataIndex] = currentData;
         document.getElementById("textIO0630").value = JSON.stringify(currentDataArray,null,"    ");
         var fileName = document.getElementById("name04xx").value;
@@ -1073,7 +1067,10 @@ function doTheThing(localCommand){
         httpc.open("POST", url, true);
         httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         httpc.send("text=" + saveText);//send text to saver04xx.php
-
+    }
+    if(localCommand == 015){ //Previous Deck
+    }
+    if(localCommand == 016){ //Next Deck
     }
     if(localCommand == 020){//cursor back
         var bottomGlyph = currentGlyph.split("0207")[0];   
@@ -1137,29 +1134,8 @@ function doTheThing(localCommand){
         currentGlyph = currentTable[currentAddress] + ",0207,";
     }
     if(localCommand == 026){//import hypercube
-        localString = "";
-        if(pages[currentPage].id == "div0660"){            
-            localString = document.getElementById("textIO0660").value;
-        }
-        var inputStack = localString.split("\n");
-        for(var index = 0;index < inputStack.length;index++){
-            var stackLine = inputStack[index].split(":");
-            var localAddress = parseInt(stackLine[0],8);
-            var localGlyph = stackLine[1];
-            currentTable[localAddress] = localGlyph;
-        }
-        currentGlyph = currentTable[currentAddress] + ",0207,";
     }
     if(localCommand == 027){//export hypercube
-        var localString = "";
-        for(var index = 0;index < currentTable.length;index++){
-            if(currentTableStart[index] != currentTable[index] || fullCube){
-                localString += "0" + index.toString(8) + ":" + currentTable[index] + "\n";
-            }
-        }
-        if(pages[currentPage].id == "div0660"){
-            document.getElementById("textIO0660").value = localString;
-        }
     }
     if(localCommand == 030){
 //<page030>
@@ -1199,12 +1175,6 @@ function doTheThing(localCommand){
 //</page037>
     }
 
-    if(localCommand == 0700){
-        redraw0700();
-    }
-    if(localCommand == 01700){
-        init0700();
-    }
 
     //<page03>
 
@@ -1217,6 +1187,9 @@ doTheThing(07);//initialize Geometron global variables
 <div id = "pageNumber"></div>        
 <button id = "backbutton" class = "navbutton">&#x25C5</button>
 <button id = "fwdbutton" class = "navbutton">&#x25BB</button> 
+
+<button id = "prevdeck" class = "navbutton">&#x25B3</button>
+<button id = "nextdeck" class = "navbutton">&#x25BD</button> 
 
 <table id = "table0600">
         <tr>
@@ -1325,21 +1298,44 @@ doTheThing(07);//initialize Geometron global variables
         <textarea id = "editor06xx"></textarea>
     </div>
     <div id = "pageblock">
-        04xx:<input id = "addr04xx" value = "0400"><button id = "saveFileButton">SAVE</button> <br>
-        name:<input id = "name04xx" value = "filename.txt">
+        04xx:<input id = "addr04xx" value = "0400"><button id = "saveFileButton">SAVE</button><br>
+        name:<input id = "name04xx" value = "name">
     </div>
 </div>
 <!--</page0630>-->
 <!--<page0700>-->
 <script id = "script0700">
-    pages = document.getElementsByClassName("page");
-    currentPage = 0;
-    for(index = 0;index < pages.length;index++){
-        if(index != currentPage){
-            pages[index].style.display = "none";
+deckIndex = 0;
+deckAddress = 0400;
+deckName = "";
+
+
+    document.getElementById("prevdeck").onclick = function(){
+        deckIndex--;
+        if(deckIndex < 0){
+            deckIndex = dataTXT.length - 1;
         }
+        currentDataArray = dataTXT[deckIndex].data;//this is some magic object crap, these are linked
+        deckAddress = parseInt(dataTXT[deckIndex].address,8);
+        deckName  = dataTXT[deckIndex].name;
+        currentDataIndex = 0;
+        currentData = currentDataArray[currentDataIndex];
+        initPage();
     }
-    
+    document.getElementById("nextdeck").onclick = function(){
+        deckIndex++;
+        if(deckIndex > dataTXT.length - 1){
+            deckIndex = 0;
+        }
+        currentDataArray = dataTXT[deckIndex].data;
+        deckAddress = parseInt(dataTXT[deckIndex].address,8);
+        deckName  = dataTXT[deckIndex].name;
+        currentDataIndex = 0;
+        currentData = currentDataArray[currentDataIndex];
+        initPage();
+
+    }
+
     document.getElementById("backbutton").onclick = function(){
         //prev json
         currentDataArray[currentDataIndex] = JSON.parse(getJSON());       
@@ -1349,6 +1345,7 @@ doTheThing(07);//initialize Geometron global variables
             currentDataIndex = currentDataArray.length - 1;
         }
         currentData = currentDataArray[currentDataIndex];
+        dataTXT[deckIndex].data = currentDataArray;
         initPage();
     }
     document.getElementById("fwdbutton").onclick = function(){
@@ -1413,6 +1410,9 @@ inputs0630 = document.getElementById("control0630").getElementsByTagName("input"
 
 init0730();
 function init0730(){
+    document.getElementById("addr04xx").value = "0" + deckAddress.toString(8);
+        document.getElementById("name04xx").value = deckName;
+
     for(var index = 0;index < boxes0630.length;index++){
         boxes0630[index].style.display = "none";
     }
@@ -1484,6 +1484,7 @@ function init0730(){
     }
     inputs0630[1].onkeydown = function(e) {
         charCode = e.keyCode || e.which;
+
         if(charCode == 010){
             doTheThing(010);
             redraw();
@@ -1542,9 +1543,8 @@ function init0730(){
             redraw();
         }
     }
-    inputs0630[1].onkeypress = function(a){//action
-        charCode = a.keyCode || a.which;
-        console.log(a.which);
+    inputs0630[1].onkeypress = function(e){//action
+        charCode = e.keyCode || e.which;
         if(parseInt(currentTable[charCode],8) >= 0200){
             var glyphSplit = currentGlyph.split(",");
             currentGlyph = "";
@@ -1573,8 +1573,8 @@ function init0730(){
     }
     
     
-    inputs0630[2].onkeypress = function(a){//print
-        charCode = a.keyCode || a.which;
+    inputs0630[2].onkeypress = function(e){//print
+        charCode = e.keyCode || e.which;
         var glyphSplit = currentGlyph.split(",");
         currentGlyph = "";
         for(var index = 0;index < glyphSplit.length;index++){
@@ -1598,8 +1598,8 @@ function init0730(){
     }
     
     
-    inputs0630[3].onkeypress = function(a){//stack
-        charCode = a.keyCode || a.which;    
+    inputs0630[3].onkeypress = function(e){//stack
+        charCode = e.keyCode || e.which;
         var glyphSplit = currentGlyph.split(",");
         currentGlyph = "";
         for(var index = 0;index < glyphSplit.length;index++){
@@ -1805,19 +1805,55 @@ document.getElementById("addr06xx").onchange = function(){
     document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
 }
 
-
 document.getElementById("addr06xx").onkeydown = function(e) {
-     
-        if(e.keyCode == 046){
+    charCode = e.keyCode || e.which;
+
+        if(charCode == 046){
             textAddress++;
             document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
             this.value = "0" + textAddress.toString(8);
         }
-        if(e.keyCode == 050){
+        if(charCode == 050){
             textAddress--;
             document.getElementById("editor06xx").value = byteCode2string(currentTable[textAddress]);
             this.value = "0" + textAddress.toString(8);
         }    
+}
+
+
+var httpc = new XMLHttpRequest(); //load data.txt JSON data, an array of objects(decks) each of which 
+//has another array of objects(slides)
+
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        dataTXT = JSON.parse(this.responseText);
+        currentDataArray = dataTXT[deckIndex].data;
+        deckAddress = parseInt(dataTXT[deckIndex].address,8);
+        deckName  = dataTXT[deckIndex].name;
+        currentDataIndex = 0;
+        currentData = currentDataArray[currentDataIndex];
+
+        for(var index = 0;index < dataTXT.length;index++){
+            currentTable[parseInt(dataTXT[index].address,8)] = string2byteCode(index.toString()); 
+        }
+        initPage();
+   }
+};
+
+httpc.open("GET", "data.txt", true);
+httpc.send(); 
+
+document.getElementById("saveFileButton").onclick = function(){
+    document.getElementById("textIO0630").value = JSON.stringify(dataTXT,null,"   ");
+    var httpc = new XMLHttpRequest();
+    var url = "saver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    httpc.send("data=" + document.getElementById("textIO0630").value);//send text to saver.php
+}
+
+document.getElementById("name04xx").onchange = function(){
+    dataTXT[deckIndex].name = this.value;
 }
 
 </script>
@@ -1853,17 +1889,34 @@ body{
     position:absolute;
     left:0px;
     top:0px;
-    width:10%;
+    width:50px;
     height:50px;
     font-size:40px;
 }
+#prevdeck{
+    position:absolute;
+    left:60px;
+    top:0px;
+    width:50px;
+    height:50px;
+    font-size:40px;
+}
+
 #fwdbutton{
     position:absolute;
     right:0px;
     top:0px;
-    width:10%;
+    width:50px;
     height:50px;
     font-size:40px;
+}
+#nextdeck{
+    position:absolute;
+    right:60px;
+    top:0px;
+    width:50px;
+    height:50px;
+    font-size:40px;    
 }
 .navbutton{
     position:absolute;
@@ -2034,7 +2087,6 @@ table{
 #saveFileButton:active{
     background-color: yellow;
 }
-
 
 </style>
 <!--</page0530>-->
