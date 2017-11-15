@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+LAWS OF GEOMETRON:
+    NO PROPERTY 
+    NO MONEY
+    NO MINING
+    EVERYTHING IS RECURSIVE
+    EVERYTHING IS FRACTAL
+    EVERYTHING IS PHYSICAL
+[EGO DEATH]:
+    LOOK TO THE FUNGI
+    LOOK TO THE INSECTS
+    LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY
+    
+reader
+
+http://www.lafelabs.org/hello/reader.html
+
+-->
+<title>/calculator/</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+    }
+});//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+</script>
+</head>
+<body> 
+<div class = "calculatorPage">
+    <button id = "backbutton" class = "navbutton">&#x25C5</button>
+    <button id = "fwdbutton" class = "navbutton">&#x25BB</button>         
+    <button id = "prevdeck" class = "navbutton">&#x25B3</button>
+    <button id = "nextdeck" class = "navbutton">&#x25BD</button> 
+    <div id = "title"></div>
+    <div id = "mainEquation"></div>
+    <div id = "tableScroll">
+        <table id = "mainTable"></table>
+    </div>
+</div>
+<div style = "display:none;" id = "xmldata">
+    <deck>
+        <title>Lossless LC Oscillator</title>
+        <equation>
+            $$\omega = \sqrt{\frac{1}{LC}}$$   
+        </equation>
+        <function>
+            function squarex(x){
+                console.log(x*x);
+            }
+        </function>
+        <variable>
+            <name>LnH</name>
+            <label>$L\textrm{ [nH]}$</label>
+            <units>nH</units>
+            <default>1</default>
+            <value>1</value>
+            <precision>0.01</precision>
+            <action>
+                LnH = 1;
+                C = 1e-12;
+                L = 1e-9*LnH;
+                omega = Math.sqrt(1/(L*C));
+                f = omega/(2*Math.PI);
+                console.log(f/1e9);
+            </action>
+        </variable>
+        <variable>
+                <name>CpF</name>
+                <label>$C\textrm{ [pF]}$</label>
+                <units>pF</units>
+                <default>1</default>
+                <value>1</value>
+                <precision>0.01</precision>
+                <action>
+                    LnH = 1;
+                    C = 1e-12;
+                    L = 1e-9*LnH;
+                    omega = Math.sqrt(1/(L*C));
+                    f = omega/(2*Math.PI);
+                    console.log(f/1e9);
+                </action>
+        </variable>    
+        <variable>
+                <name>omega</name>
+                <label>$\omega\textrm{ [rad/s]}$</label>
+                <units>rad/s</units>
+                <default>1</default>
+                <value>1</value>
+                <precision>0.01</precision>
+                <action>
+                    LnH = 1;
+                    C = 1e-12;
+                    L = 1e-9*LnH;
+                    omega = Math.sqrt(1/(L*C));
+                    f = omega/(2*Math.PI);
+                    console.log(f/1e9);
+                </action>
+        </variable>    
+        <variable>
+                <name>fGHz</name>
+                <label>$f\textrm{ [GHz]}$</label>
+                <units>GHz</units>
+                <default>1</default>
+                <value>1</value>
+                <precision>0.01</precision>
+                <action>
+                    LnH = 1;
+                    C = 1e-12;
+                    L = 1e-9*LnH;
+                    omega = Math.sqrt(1/(L*C));
+                    f = omega/(2*Math.PI);
+                    console.log(f/1e9);
+                </action>
+        </variable>    
+
+    </deck>
+</div>
+<script>
+
+deckIndex = 0;
+xmldata = document.getElementById("xmldata").innerHTML;
+parser = new DOMParser();
+xmlDoc = parser.parseFromString(xmldata,"text/xml");
+eval(xmlDoc.getElementsByTagName("action")[0].innerHTML);
+
+document.getElementById("mainEquation").style.fontSize = (innerHeight/30).toString() + "px";
+
+document.getElementById("title").innerHTML = xmlDoc.getElementsByTagName("title")[deckIndex].innerHTML;
+document.getElementById("mainEquation").innerHTML = xmlDoc.getElementsByTagName("equation")[deckIndex].innerHTML;
+
+variables = xmlDoc.getElementsByTagName("deck")[deckIndex].getElementsByTagName("variable");
+
+document.getElementById("mainTable").style.width = "500px";
+
+for(var index = 0;index < variables.length;index++){
+    var newtr = document.createElement("TR");
+
+    var newtd = document.createElement("TD");
+    newtr.appendChild(newtd);
+    newtd.innerHTML = variables[index].getElementsByTagName("label")[0].innerHTML;
+    var newtd = document.createElement("TD");
+    newtr.appendChild(newtd);
+    var newinput = document.createElement("INPUT");
+    newtd.appendChild(newinput);
+
+    newinput.value = variables[index].getElementsByTagName("value")[0].innerHTML;
+
+    document.getElementById("mainTable").appendChild(newtr);
+}
+
+
+</script>
+<style>
+#mainTable{
+    border:solid;
+    margin:auto;
+    border-collapse:collapse;
+
+}
+#mainTable td{
+    border:solid;
+    width:50%;
+}
+td input{
+    width:90%;
+    font-family:courier;
+    font-size: 20px;
+}
+#tableScroll{
+    position:absolute;
+    left:0px;
+    right:0px;
+    overflow:scroll;
+    padding: 1em 1em 1em 1em;
+    top:25%;
+    bottom:0%;
+    border:solid;
+}
+.calculatorPage{
+    position:absolute;
+    left:0px;
+    right:0px;
+    top:0px;
+    bottom:0px;
+}
+#mainEquation{
+    position: absolute;
+    z-index:2;
+    top:50px;
+    left:25%;
+    right:25%;
+    padding: 1em 1em 1em 1em;
+    bottom:80%;
+}
+
+
+#backbutton{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:50px;
+    height:50px;
+    font-size:40px;
+}
+#fwdbutton{
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:50px;
+    height:50px;
+    font-size:40px;
+}
+
+#prevdeck{
+    position:absolute;
+    left:60px;
+    top:0px;
+    width:50px;
+    height:50px;
+    font-size:40px;
+}
+#nextdeck{
+    position:absolute;
+    right:60px;
+    top:0px;
+    width:50px;
+    height:50px;
+    font-size:40px;    
+}
+.navbutton{
+    position:absolute;
+    font-size:3em;
+    cursor:pointer;
+    z-index:4;
+}
+.navbutton:hover{
+    background-color:green;
+}
+.navbutton:active{
+    background-color:yellow;
+}
+#title{
+    position:absolute;
+    top:5px;
+    height:50px;
+    font-family:Futura;
+    font-size:40px;
+    left:0px;
+    right:0px;
+    z-index:2;
+    text-align:center;
+}
+
+</style>
+</body>
+</html>        
