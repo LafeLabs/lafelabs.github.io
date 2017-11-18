@@ -1,0 +1,96 @@
+<deck>
+        <title>Lossless LC Oscillator</title>
+        <equation>
+            $$\omega = \sqrt{\frac{1}{LC}}$$
+            $$f = \frac{\omega}{2\pi}$$   
+        </equation>
+        <init>
+            LnH = data[dataIndex].LnH;
+            L = LnH*1e-9;
+            CpF = data[dataIndex].CpF;
+            C = CpF*1e-12;
+            omega = Math.sqrt(1/(C*L));
+            f = omega/(2*Math.PI);
+            Z = Math.sqrt(L/C);
+            fGHz = f/1e9;
+        </init>
+        <update>
+            omega = Math.sqrt(1/(L*C));
+            f = omega/(2*Math.PI);
+            fGHz = f/1e9;         
+            Z = Math.sqrt(L/C);
+            
+            inputs[0].value = LnH.toPrecision(precision);
+            inputs[1].value = CpF.toPrecision(precision);
+            inputs[2].value = omega.toPrecision(precision);
+            inputs[3].value = fGHz.toPrecision(precision);
+            inputs[4].value = Z.toPrecision(precision);
+        </update>
+        <precision>
+            3
+        </precision>
+        <data>
+            [
+            {
+                "LnH":1.5,
+                "CpF":1
+            },
+            {
+                "LnH":2,
+                "CpF":2
+            },
+            {
+                "LnH":4,
+                "CpF":4
+            }
+            ]
+        </data>
+        <variable>
+            <name>LnH</name>
+            <label>$L\textrm{ [nH]}$</label>
+            <units>nH</units>
+            <action>
+                LnH = parseFloat(this.value);
+                L = 1e-9*LnH;
+                update();
+            </action>
+        </variable>
+        <variable>
+            <name>CpF</name>
+            <label>$C\textrm{ [pF]}$</label>
+            <units>pF</units>
+            <action>
+                CpF = parseFloat(this.value); 
+                C = 1e-12*CpF;
+                update();    
+            </action>
+        </variable>    
+        <variable>
+            <name>omega</name>
+            <label>$\omega\textrm{ [rad/s]}$</label>
+            <units>rad/s</units>
+            <action>
+                alert("not an input");
+                update();                    
+            </action>
+        </variable>    
+        <variable>
+            <name>fGHz</name>
+            <label>$f\textrm{ [GHz]}$</label>
+            <units>GHz</units>
+            <action>
+                    alert("not an input");
+                    update();    
+            </action>
+        </variable>    
+        <variable>
+                <name>Z</name>
+                <label>$Z [\Omega]$</label>
+                <units>Ohms</units>
+                <action>
+                        alert("not an input");
+                        update();    
+                </action>
+            </variable>    
+    
+    </deck>

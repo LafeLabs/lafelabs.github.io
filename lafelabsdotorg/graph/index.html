@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script>
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+        </script>
+    
+</head>
+<body>
+<canvas id = "mainCanvas"></canvas>
+
+<div id = "mainEquations">
+  $$
+  \Gamma\epsilon\omega\mu\epsilon\tau\rho\omicron\nu
+  $$
+  $$x = x_0 - \frac{w}{2} + index;$$
+  
+  $$
+  X = X_{min} + index \times \frac{X_{max} - X_{min}}{w}
+  $$
+  $$Y = f(X)$$
+$$
+y = y_0 - \frac{h}{2} +   (Y - Y_{min}) \times \frac{h}{Y_{max} - Y_{min}}
+$$
+</div>
+<div style = "display:none">
+
+</div>
+<script>
+mainCanvas = document.getElementById("mainCanvas");
+mainCanvas.width = innerWidth;
+mainCanvas.height = innerHeight;
+ctx = mainCanvas.getContext("2d");
+x0 = innerWidth/2;
+y0 = innerHeight/2;
+x = x0;
+y = y0;
+ctx.clearRect(0,0,innerWidth,innerHeight);
+ctx.lineWidth = 1;
+ctx.strokeStyle="#c0c0ff";
+
+
+variables = {
+  "A":2.1,
+  "omega":2,
+  "phi":0,
+  "tau":10
+}
+
+plotparams = {
+  "w":600,
+  "h":600,
+  "ymax":2,
+  "ymin":-2,
+  "xmin":0,
+  "xmax":40
+}
+
+ctx.strokeRect(x0 - 0.5*plotparams.w,y0 - 0.5*plotparams.h,plotparams.w,plotparams.h);
+
+X = plotparams.xmin;
+Y = variables.A*Math.sin(variables.omega*(X + variables.phi))*Math.exp(-X/variables.tau);
+
+x = x0 - 0.5*plotparams.w;
+y = y0 + 0.5*plotparams.h - (Y - plotparams.ymin)*plotparams.h/(plotparams.ymax - plotparams.ymin);
+ctx.beginPath();
+ctx.moveTo(x,y);
+
+for(index = 1;index < plotparams.w;index++){ 
+  X = plotparams.xmin + index*(plotparams.xmax - plotparams.xmin)/plotparams.w;
+
+  Y = variables.A*Math.sin(variables.omega*(X + variables.phi))*Math.exp(-X/variables.tau);
+
+  x = x0 - 0.5*plotparams.w + index;
+  y = y0 + 0.5*plotparams.h - (Y - plotparams.ymin)*plotparams.h/(plotparams.ymax - plotparams.ymin);
+
+  ctx.lineTo(x,y);
+  ctx.stroke();		
+}
+
+
+
+
+
+
+/*currentSVG += "	<path d = \"M";
+currentSVG += Math.round(x).toString() + " ";
+currentSVG += Math.round(y).toString() + " ";*/
+
+
+/*var x2 = Math.round(x + side*Math.cos(theta));
+var y2 = Math.round(y + side*Math.sin(theta));
+currentSVG += "L" + x2 + " " + y2 + " ";*/
+
+
+</script>
+<style>
+#mainCanvas{
+    position:absolute;
+    left:0px;
+    top:0px;
+    background-color:#4070ff;
+}
+#mainEquations{
+    position:absolute;
+    left:0px;
+    top:0px;
+    color:white;
+    font-size:1.4em;
+}
+</style>
+</body>
+</html>

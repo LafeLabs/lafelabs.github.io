@@ -1,0 +1,302 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+<h2>Glossary</h2>
+<ul>
+<li>
+<b>Geometron</b>A language which uses geometry to bridge the gap 
+between humans and machines and between humans of different linguistic backgrounds.  The name follows the convention of adding a "tron"
+ ending to words to describe a machine based on that word.  This is to convey that language is, in effect, a machine, and indeed the basis of all other machines.
+ Geometron consists of three major parts: the Actions, the Laws, and the Hypercube structure.
+</li>
+<li>
+<b>GVM(Geometron Virtual Machine)</b>Geometron is composed of sequences of actions, and those actions can be carried out in many ways.
+The Geometron Virtual Machine is a mental construct which aids in understanding this abstractly, but putting these actions into a black box,
+which we can think of as a machine regardless of how those actions are actually carried out.
+</li>
+<li>
+<b>doTheThing</b>This is the name of the function which actually carries out the Geometron actions in JavaScript in the main Geometron code on computers.
+</li>                
+<li>
+<b>Deck</b>A deck is a document on a certain topic, consisting of a sequence of "slides".  This format is modelled off of 
+that of PowerPoint or Keynote.  The word has a double meaning and can also refer to a "deck of cards", and can in some cases
+correspond to a physical deck of cards with art corresponding to elements of a document.  
+</li>
+<li>
+<b>hyperdeck</b>A hyperdeck is a collection of decks, and represents another layer up in organization of information.  
+For example, while a sequence of maps of a given area might be in a "deck", the collection of all maps stored on a given 
+machine would be a "map hyperdeck".  In general, a hyperdeck has a unique web address which references data stored in a file called
+"data.txt", which is in JSON format as an array of deck objects, each of which is an array of slide objects, which describe
+information to be displayed on a screen. 
+</li>
+<li>
+<b>hypercube</b>The Geometron Hypercube is a geometric method of organizing information.  Types of information, such as 
+style, actions, keys on a keyboard, etc.  are stored in 8X8 arrays called tablets.  There are a stack of 8 tablets
+(with some odd exceptions in terms of size of each), making a cube of 8X8X8 cells of information.  Each of these cells
+is described by an address in base 8, with a leading zero to denote that it's base 8.  Each cell corresponds to both 
+an action and a symbol to describe that action.  The term "hypercube" refers to the fact that there are thus two cubes, 
+one for symbols and one for actions, making it a four dimensional object, traditionally referred to as a hypercube.  
+The hypercube is designed to be easily represented in virtual reality to facilitate rapid exchange of components of 
+the hypercube with other Geometron users.  Each cell in each cube consists of a sequence of addresses of cells in the 
+hypercube(thus demonstrating the law that "everything is recursive").
+</li>
+<li>
+<b>Address</b>The location of a cell of information in the Geometron Hypercube.  This is generally either a 3 or 4 digit number
+in base 8.   
+</li>
+<li>
+<b>glyph</b>Glyphs in Geometron are a sequence of actions.  Each action is in turn a glyph, and is symbolized by a symbol which 
+is drawn with a sequence of actions which are also glyphs and which also have symbols.  Everything is recursive.
+</li>
+<li>
+<b>Action</b>Action is one of the two fundamental types of information that exist in the Geometron world view, along with symbol.
+An action is like a "verb" in a human language or a function in a computer language.
+</li>
+<li>
+<b>Symbol</b>Symbols are the other of the two fundamental types of information that exist in the Geometron world view, along with actions.
+A symbol is like a pictograph in a human language(a character in Chinese or a letter in English for example), or a 
+variable name in a computer language.  
+</li>
+<li>
+<b>Metabot</b>Metabot is a machine architecture designed to apply the Geometron language in the most general possible way to 
+electro mechanical devices.  Physically it consists of a Geometron hypercube which self documents the whole system, generalized
+control boards for motors, heaters, drive coils or other devices for doing mechanical work, and software.
+</li>
+<li>
+<b>Ego death</b> The process by which the modern human rejects failed models of the self by examining and contemplating
+forms observed in other organisms such as insects and fungi, as well as the fundamental study of the nature of language.  
+</li>
+<li>
+<b>Laws</b> Sets of statements wich are easy to learn and easy to understand and remember which, when believed, lead to 
+a desired outcome for the believer.
+</li>
+<li>
+<b>Cubic Bezier curve(or path)</b>A way of defining smooth non circular curves in which the end points and a pair of anchor points 
+are used to describe the whole curve.  Geometron allows arbitrary Bezier paths to be defined using the position, orientation 
+and scale of the cursor at the start and end of the curve.  
+</li>
+<li>
+<b>Cursor</b>From the Latin for "runner", the cursor is a graphical element that represents the 
+users position in a sequence of actions.  On a computer, in familiar software, the cursor either represents the position of
+a mouse pointer for graphical interfaces or of text insertion for keyboard driven interfaces.  Geometron generalizes this 
+concept to include a larger set of properties of the editor.  In addition to position, the cursor contains information about 
+symmetry, angle, scale, and size.  Also, this is not limited to computers.  When Geometron actions are carried out with 
+physical, non-digital art supplies, a physical cursor may be used in the form of various shapes of different sizes, 
+documented here.
+</li>
+<li>
+<b>H Bridge</b>This is a circuit which allows a source of electrical voltage such as a battery or USB power supply to 
+drive somthing in either direction, where some externally controlled switch can turn it on or off in either 
+direction of current flow.  In general an H bridg has 4 transistors, all four of which are required.  It is one of the 
+fundamental building blocks of the Metabot, and needed for almost all robotics technology.
+</li>
+<li>
+<b>HTML(Hypertext Markup Language)</b>This is a way of formatting raw text so that, when read by a web browser, it is 
+rendered into visually complex displays, including various fonts, languages, images, shapes, etc.  Standard Geometron
+ is built on top of HTML, along with several other computer languages.  HTML is the most widely used language for communication 
+ over a computer by far, and is readable by most of the several billion mobile devices currently in use.
+</li>
+<li>
+<b>CSS(Cascaded Style Sheets)</b>CSS is bound together with HTML, and can be embedded inside an HTML document using the 
+"style" tag. Its purpose is to streamline the description of style information in web documents.  Geometron places 
+CSS information in the 0500's address space(0500-0577).
+</li>
+<li>
+<b>JavaScript</b> The language for taking action in a web browser.  Like CSS, this language is built into the modern 
+version of HTML(HTML5), and is accssed via the "script" tag.  Standard Geometron uses JavaScript for almost all actions, 
+building graphics, moving from one place to another in a file, changing the content of documents, and connecting with 
+other computers and files than the one currently in use.  
+</li>
+<li>
+<b>JSON(JavaScript Object Notation)</b>A simple system for organizing information using curly 
+brackets "{" and "}", square brackets "[" and "]", colons,
+and names that go in quotes.  
+</li>
+<li>
+<b>PHP(Php Hypertext Processor)</b>A computer language used to carry out actions on a web server.  This is 
+by far the most commonly and easily used "server side" language, and is used in standard Geometron via programs called 
+saver.php to save files on the web server which hosts the Geometron Hypercube currently in use. 
+</li>
+<li>
+<b>Hypertext</b> The concept of which HTML is a specific implementation: text which contains links to other text.  
+</li>
+<li>
+<b>Web Browser</b> Any of several free pieces of software which render HTML documents into pixels displayed on a screen.
+Web browsers exist for almost all computers in existence today, including mobile phones, tablets, desktop computers, laptops, 
+game consoles, modern "smart" televisions and numerous newly developed devices.  There are numerous browser to choose from, 
+all of which are free, many of which work on many platforms.  
+</li>        
+<li>
+<b>QR Code</b> An array of black and white squares which can be easily scanned by a smart phone or tablet to launch a 
+web browser pointed to a specific web page.
+</li>
+<li>
+<b>Server</b> A computer which stores HTML files and distributes them over a network connection to "clients", which then
+display those files in a web browser.   This, along with clients, is a fundamental building block of the current Web.
+</li>
+<li>
+<b>Client</b>For the purposes of Geometron, any computer running a web browser.
+</li>
+<li>
+<b>WWW(World Wide Web)</b>
+</li>
+<li>
+<b>Internet</b>
+</li>
+<li>
+<b>Art Replicator</b>The machine frequently mistakenly called a "computer" is, in many contexts, better described by this term.
+Over time the machines called "computers" have evolved more and more into something centered on a very high resolution screen, 
+designed to rapidly share images to other screens.  Since the decision to create more machines is made largely based on how
+information travels to the humans making those decisions, this is the replication path for the machine.  Thus rather than 
+studying "computers" if we want to understand these machines we must understand art raplicators instead.
+</li>
+<li>
+<b>Art layer</b> In modern computer science, the different functions of a computer system are often reffered to as a 
+"stack", with "layers", where for some reason all technology is a vertical pile of objects.  In this world view, the "art stack" 
+is a layer focused exclusively on art.  
+</li>        
+<li>
+<b>Vector graphics</b> 
+</li>
+<li>
+<b>SVG(Scalable Vector Graphics)</b>
+</li>
+<li>
+<b>XML(eXtensible Markup Language)</b>
+</li>
+<li>
+<b>Octal</b>
+</li>
+<li>
+<b>Roctal</b>
+</li>
+<li>
+<b>LaTeX</b>
+</li>
+<li>
+<b>Metabolization</b>
+</li>
+<li>
+<b>Upcycle</b>
+</li>
+<li>
+<b>Technological complete set</b>
+</li>
+<li>
+<b>Quantum noise</b>
+</li>                        
+<li>
+<b>Arduino</b>
+</li>
+<li>
+<b>Raspberry Pi</b>
+</li>
+<li>
+<b>Watershed</b>
+</li>
+<li>
+<b>Action geometry</b>
+</li>
+<li>
+<b>IoT(Internet of Things)</b>
+</li>
+<li>
+<b>Turing machine</b>
+</li>
+<li>
+<b>Cloud</b>
+</li>
+<li>
+<b>ASCII</b>
+</li>
+<li>
+<b>Unicode</b>
+</li>
+<li>
+<b>Python</b>
+</li>                           
+<li>
+<b>Psychogeography</b>
+</li>
+<li>
+<b>Golden ratio</b>
+</li>
+<li>
+<b>Golden triangle</b>
+</li>
+<li>
+<b>Golden gnomon</b>
+</li>
+<li>
+<b>Golden rectangle</b>
+</li>
+<li>
+<b>Euclidian geometry</b>
+</li>                        
+<li>
+<b>Stack</b>
+</li>
+<li>
+<b>Shape Table</b>
+</li>
+<li>
+<b>Root Magic</b>
+</li>
+<li>
+<b>Recursion</b>
+</li>
+<li>
+<b>Fractal</b>
+</li>
+<li>
+<b>Machine Replication</b>
+</li>
+<li>
+<b>superego</b>
+</li>
+<li>
+<b>index.html</b>
+</li>
+<li>
+<b>Money</b>
+</li>
+<li>
+<b>Capitalism</b>
+</li>
+<li>
+<b>Language</b>
+</li>
+<li>
+<b>Quantum Computer</b>
+</li>
+<li>
+<b>Sacred Geometry</b>
+</li>
+<li>
+<b>Alchemy</b>
+</li>
+<li>
+<b>Trash Magic</b>
+</li>
+<li>
+<b>Feedstock</b>
+</li>
+<li>
+<b>Reality</b>
+</li>
+<li>
+<b>Insect</b>
+</li>
+                                                
+</ul>
+<style>
+li{
+    margin-top:1em;
+}
+b{
+    margin-right:1em;
+}
+</style>
+</body>
+</html>
