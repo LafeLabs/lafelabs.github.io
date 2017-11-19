@@ -14,74 +14,111 @@
 </head>
 <body>
 <canvas id = "mainCanvas"></canvas>
+<div id = "mainEquations"></div>
 
-<div id = "mainEquations">
-  $$
-  \Gamma\epsilon\omega\mu\epsilon\tau\rho\omicron\nu
-  $$
-  $$x = x_0 - \frac{w}{2} + index;$$
-  
-  $$
-  X = X_{min} + index \times \frac{X_{max} - X_{min}}{w}
-  $$
-  $$Y = f(X)$$
-$$
-y = y_0 - \frac{h}{2} +   (Y - Y_{min}) \times \frac{h}{Y_{max} - Y_{min}}
-$$
-</div>
-<div style = "display:none">
+<button id = "importButton">IMPORT</button>
 
+<textarea id = "textIO"></textarea>
+<div style = "display:none" id = "datadiv">
+  <deck>
+    <equation>
+      $$
+      \Gamma\epsilon\omega\mu\epsilon\tau\rho\omicron\nu
+      $$
+      $$x = x_0 - \frac{w}{2} + index;$$
+      
+      $$
+      X = X_{min} + index \times \frac{X_{max} - X_{min}}{w}
+      $$
+      $$Y = f(X)$$
+    $$
+    y = y_0 - \frac{h}{2} +   (Y - Y_{min}) \times \frac{h}{Y_{max} - Y_{min}}
+    $$
+    </equation>
+    <action>
+        Y = variables.A*Math.sin(variables.omega*(X + variables.phi))*Math.exp(-X/variables.tau);        
+    </action>
+    <variables>
+      {
+        "A":2.1,
+        "omega":2,
+        "phi":0,
+        "tau":10
+      }
+    </variables>
+    <plotparams>
+      {
+        "w":600,
+        "h":600,
+        "ymax":2,
+        "ymin":-2,
+        "xmin":0,
+        "xmax":40
+      }
+    </plotparams>
+  </deck>
 </div>
 <script>
+
+if(innerWidth < innerHeight){
+  side = innerWidth;
+  document.getElementById("mainEquations").style.top = side.toString() + "px";
+  document.getElementById("mainEquations").style.height = (innerHeight - side).toString() + "px";
+  document.getElementById("mainEquations").style.width = (side).toString() + "px";
+  
+}
+else{
+  side = innerHeight;
+  document.getElementById("mainEquations").style.left = side.toString() + "px";
+  document.getElementById("mainEquations").style.width = (innerWidth - side).toString() + "px";
+  document.getElementById("mainEquations").style.height = (side).toString() + "px";
+
+}
 mainCanvas = document.getElementById("mainCanvas");
-mainCanvas.width = innerWidth;
-mainCanvas.height = innerHeight;
+mainCanvas.width = side;
+mainCanvas.height = side;
 ctx = mainCanvas.getContext("2d");
-x0 = innerWidth/2;
-y0 = innerHeight/2;
+x0 = side/2;
+y0 = side/2;
 x = x0;
 y = y0;
-ctx.clearRect(0,0,innerWidth,innerHeight);
-ctx.lineWidth = 1;
-ctx.strokeStyle="#c0c0ff";
+ctx.lineWidth = 2;
+ctx.strokeStyle="#00ff00";
 
 
-variables = {
-  "A":2.1,
-  "omega":2,
-  "phi":0,
-  "tau":10
-}
+document.getElementById("textIO").value = document.getElementById("datadiv").innerHTML;
 
-plotparams = {
-  "w":600,
-  "h":600,
-  "ymax":2,
-  "ymin":-2,
-  "xmin":0,
-  "xmax":40
-}
-
-ctx.strokeRect(x0 - 0.5*plotparams.w,y0 - 0.5*plotparams.h,plotparams.w,plotparams.h);
-
-X = plotparams.xmin;
-Y = variables.A*Math.sin(variables.omega*(X + variables.phi))*Math.exp(-X/variables.tau);
-
-x = x0 - 0.5*plotparams.w;
-y = y0 + 0.5*plotparams.h - (Y - plotparams.ymin)*plotparams.h/(plotparams.ymax - plotparams.ymin);
-ctx.beginPath();
-ctx.moveTo(x,y);
-
-for(index = 1;index < plotparams.w;index++){ 
-  X = plotparams.xmin + index*(plotparams.xmax - plotparams.xmin)/plotparams.w;
+plot();
+function plot(){
+  xmldata = document.getElementById("textIO").value;
+  parser = new DOMParser();
+  xmlDoc = parser.parseFromString(xmldata,"text/xml");
+  plotparams = JSON.parse(xmlDoc.getElementsByTagName("plotparams")[0].innerHTML);
+  variables = JSON.parse(xmlDoc.getElementsByTagName("variables")[0].innerHTML);
+  equation = xmlDoc.getElementsByTagName("equation")[0].innerHTML;
+  document.getElementById("mainEquations").innerHTML = equation;
+  ctx.clearRect(0,0,side,side);
+  margin = 50;
+  plotparams.w = side - 2*margin;
+  plotparams.h = side - 2*margin;
+  ctx.strokeRect(x0 - 0.5*plotparams.w,y0 - 0.5*plotparams.h,plotparams.w,plotparams.h);
+  X = plotparams.xmin;
 
   Y = variables.A*Math.sin(variables.omega*(X + variables.phi))*Math.exp(-X/variables.tau);
 
-  x = x0 - 0.5*plotparams.w + index;
+  x = x0 - 0.5*plotparams.w;
   y = y0 + 0.5*plotparams.h - (Y - plotparams.ymin)*plotparams.h/(plotparams.ymax - plotparams.ymin);
+  ctx.beginPath();
+  ctx.moveTo(x,y);
+  for(index = 1;index < plotparams.w;index++){ 
+    X = plotparams.xmin + index*(plotparams.xmax - plotparams.xmin)/plotparams.w;
+    eval(xmlDoc.getElementsByTagName("action")[0].innerHTML);
+    x = x0 - 0.5*plotparams.w + index;
+    y = y0 + 0.5*plotparams.h - (Y - plotparams.ymin)*plotparams.h/(plotparams.ymax - plotparams.ymin);
+    ctx.lineTo(x,y);
+    ctx.stroke();		
+  }
 
-  ctx.lineTo(x,y);
-  ctx.stroke();		
 }
 
 
@@ -98,21 +135,54 @@ currentSVG += Math.round(y).toString() + " ";*/
 var y2 = Math.round(y + side*Math.sin(theta));
 currentSVG += "L" + x2 + " " + y2 + " ";*/
 
+document.getElementById("importButton").onclick = function(){
+  plot();
+  MathJax.Hub.Typeset();//tell Mathjax to update the math
+}
 
 </script>
 <style>
+textarea,button{
+    background-color:black;
+    color:#00ff00;
+    font-family:courier;
+    border-color:#00ff00;
+  }
+
 #mainCanvas{
     position:absolute;
     left:0px;
     top:0px;
-    background-color:#4070ff;
+    background-color:black;
 }
 #mainEquations{
     position:absolute;
     left:0px;
     top:0px;
-    color:white;
+    color:#00ff00;
     font-size:1.4em;
+    background-color:black;
+}
+
+#importButton{
+ position:absolute;
+  right:250px;
+  bottom:20px;
+  cursor:pointer;
+}
+#importButton:hover{
+  background-color: green;
+}
+#importButton:active{
+background-color:yellow;
+}
+#textIO{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  width:200px;
+  height:200px;
+
 }
 </style>
 </body>
