@@ -56,6 +56,13 @@
         "xmax":40
       }
     </plotparams>
+    <graticule>
+      {
+        "vertical":8,
+        "horizontal":8,
+        "lineWidth":1
+      }
+    </graticule>
   </deck>
 </div>
 <script>
@@ -95,6 +102,8 @@ function plot(){
   xmlDoc = parser.parseFromString(xmldata,"text/xml");
   plotparams = JSON.parse(xmlDoc.getElementsByTagName("plotparams")[0].innerHTML);
   variables = JSON.parse(xmlDoc.getElementsByTagName("variables")[0].innerHTML);
+  graticule = JSON.parse(xmlDoc.getElementsByTagName("graticule")[0].innerHTML);
+
   equation = xmlDoc.getElementsByTagName("equation")[0].innerHTML;
   document.getElementById("mainEquations").innerHTML = equation;
   ctx.clearRect(0,0,side,side);
@@ -110,7 +119,7 @@ function plot(){
   y = y0 + 0.5*plotparams.h - (Y - plotparams.ymin)*plotparams.h/(plotparams.ymax - plotparams.ymin);
   ctx.beginPath();
   ctx.moveTo(x,y);
-  for(index = 1;index < plotparams.w;index++){ 
+  for(var index = 1;index < plotparams.w;index++){ 
     X = plotparams.xmin + index*(plotparams.xmax - plotparams.xmin)/plotparams.w;
     eval(xmlDoc.getElementsByTagName("action")[0].innerHTML);
     x = x0 - 0.5*plotparams.w + index;
@@ -118,6 +127,31 @@ function plot(){
     ctx.lineTo(x,y);
     ctx.stroke();		
   }
+
+  ctx.lineWidth = graticule.lineWidth;
+  for(var index = 1;index <= graticule.vertical;index++){
+     
+    x = x0 - 0.5*plotparams.w + index*(plotparams.w/graticule.vertical);
+    y = y0 + 0.5*plotparams.h;
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    y = y0 - 0.5*plotparams.h;
+    ctx.lineTo(x,y);
+    ctx.stroke();		
+  }
+  for(var index = 1;index <= graticule.horizontal;index++){
+
+    x = x0 - 0.5*plotparams.w;
+    y = y0 - 0.5*plotparams.h + index*(plotparams.h/graticule.horizontal);
+
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+    x = x0 + 0.5*plotparams.w;
+    ctx.lineTo(x,y);
+    ctx.stroke();		
+  }
+
+  ctx.lineWidth = 2;
 
 }
 

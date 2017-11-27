@@ -1,0 +1,148 @@
+<svg width="500" height="480" viewbox = "0 0 500 480"  xmlns="http://www.w3.org/2000/svg">
+
+<!--
+<json>
+{
+"shapes":[
+    "0220:0313,0336,0210,0304,0312,0330,0334,0337,0201,0306,0334,0334,0201,0201,0334,0334,0201,0201,0334,0334,0201,0304,0335,0336,0331,0313,0306,0211,0337,",
+    "0221:0322,0220,0335,0335,0335,0331,0324,0220,0330,0335,0330,0335,0335,0335,0326,0220,0330,0335,0330,0335,0335,0335,0325,0220,0330,0335,0304,0336,0336,0320,",
+    "0222:0221,0335,0335,0211,0211,0211,0221,0335,0335,0211,0211,0221,0335,0335,0211,0211,0221,0335,0335,0211,0211,0221,0337,0337,0337,0337,0337,0337,0337,0337,0330,0336,0331,0336,0330,0332,0332,0336,0336,0332,0337,0337,0114,0141,0146,0145,0114,0141,0142,0163,0365,"
+],
+"glyph":"0221,0335,0335,0211,0211,0211,0221,0335,0335,0211,0211,0221,0335,0335,0211,0211,0221,0335,0335,0211,0211,0221,0337,0337,0337,0337,0337,0337,0337,0337,0330,0336,0331,0336,0330,0332,0332,0336,0336,0332,0337,0337,0114,0141,0146,0145,0114,0141,0142,0163,0365,",
+"w":500,
+"h":480,
+"x0":250,
+"y0":290,
+"x0rel":-2.9096373198551997,
+"y0rel":-0.31418618946793236,
+"unit":146.41000000000008,
+"imgurl":"",
+"imgw":2,
+"imgleft":-1,
+"imgtop":-1
+}
+
+</json>
+-->
+    <line x1="250" y1="226" x2="139" y2="226" style="stroke:red;stroke-width:2" />
+    <line x1="139" y1="226" x2="195" y2="322" style="stroke:red;stroke-width:2" />
+    <line x1="195" y1="322" x2="250" y2="418" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="418" x2="305" y2="322" style="stroke:red;stroke-width:2" />
+    <line x1="305" y1="322" x2="361" y2="226" style="stroke:red;stroke-width:2" />
+    <line x1="361" y1="226" x2="250" y2="226" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="208" x2="361" y2="208" style="stroke:yellow;stroke-width:2" />
+    <line x1="361" y1="208" x2="305" y2="112" style="stroke:yellow;stroke-width:2" />
+    <line x1="305" y1="112" x2="250" y2="16" style="stroke:yellow;stroke-width:2" />
+    <line x1="250" y1="16" x2="195" y2="112" style="stroke:yellow;stroke-width:2" />
+    <line x1="195" y1="112" x2="139" y2="208" style="stroke:yellow;stroke-width:2" />
+    <line x1="139" y1="208" x2="250" y2="208" style="stroke:yellow;stroke-width:2" />
+    <line x1="179" y1="331" x2="123" y2="235" style="stroke:blue;stroke-width:2" />
+    <line x1="123" y1="235" x2="68" y2="331" style="stroke:blue;stroke-width:2" />
+    <line x1="68" y1="331" x2="12" y2="427" style="stroke:blue;stroke-width:2" />
+    <line x1="12" y1="427" x2="123" y2="427" style="stroke:blue;stroke-width:2" />
+    <line x1="123" y1="427" x2="234" y2="427" style="stroke:blue;stroke-width:2" />
+    <line x1="234" y1="427" x2="179" y2="331" style="stroke:blue;stroke-width:2" />
+    <line x1="321" y1="331" x2="266" y2="427" style="stroke:green;stroke-width:2" />
+    <line x1="266" y1="427" x2="377" y2="427" style="stroke:green;stroke-width:2" />
+    <line x1="377" y1="427" x2="488" y2="427" style="stroke:green;stroke-width:2" />
+    <line x1="488" y1="427" x2="432" y2="331" style="stroke:green;stroke-width:2" />
+    <line x1="432" y1="331" x2="377" y2="235" style="stroke:green;stroke-width:2" />
+    <line x1="377" y1="235" x2="321" y2="331" style="stroke:green;stroke-width:2" />
+    <line x1="250" y1="314" x2="291" y2="314" style="stroke:red;stroke-width:2" />
+    <line x1="291" y1="314" x2="271" y2="278" style="stroke:red;stroke-width:2" />
+    <line x1="271" y1="278" x2="250" y2="242" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="242" x2="229" y2="278" style="stroke:red;stroke-width:2" />
+    <line x1="229" y1="278" x2="209" y2="314" style="stroke:red;stroke-width:2" />
+    <line x1="209" y1="314" x2="250" y2="314" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="321" x2="209" y2="321" style="stroke:yellow;stroke-width:2" />
+    <line x1="209" y1="321" x2="229" y2="357" style="stroke:yellow;stroke-width:2" />
+    <line x1="229" y1="357" x2="250" y2="393" style="stroke:yellow;stroke-width:2" />
+    <line x1="250" y1="393" x2="271" y2="357" style="stroke:yellow;stroke-width:2" />
+    <line x1="271" y1="357" x2="291" y2="321" style="stroke:yellow;stroke-width:2" />
+    <line x1="291" y1="321" x2="250" y2="321" style="stroke:yellow;stroke-width:2" />
+    <line x1="277" y1="275" x2="297" y2="311" style="stroke:blue;stroke-width:2" />
+    <line x1="297" y1="311" x2="318" y2="275" style="stroke:blue;stroke-width:2" />
+    <line x1="318" y1="275" x2="339" y2="239" style="stroke:blue;stroke-width:2" />
+    <line x1="339" y1="239" x2="297" y2="239" style="stroke:blue;stroke-width:2" />
+    <line x1="297" y1="239" x2="256" y2="239" style="stroke:blue;stroke-width:2" />
+    <line x1="256" y1="239" x2="277" y2="275" style="stroke:blue;stroke-width:2" />
+    <line x1="223" y1="275" x2="244" y2="239" style="stroke:green;stroke-width:2" />
+    <line x1="244" y1="239" x2="203" y2="239" style="stroke:green;stroke-width:2" />
+    <line x1="203" y1="239" x2="161" y2="239" style="stroke:green;stroke-width:2" />
+    <line x1="161" y1="239" x2="182" y2="275" style="stroke:green;stroke-width:2" />
+    <line x1="182" y1="275" x2="203" y2="311" style="stroke:green;stroke-width:2" />
+    <line x1="203" y1="311" x2="223" y2="275" style="stroke:green;stroke-width:2" />
+    <line x1="250" y1="282" x2="236" y2="282" style="stroke:red;stroke-width:2" />
+    <line x1="236" y1="282" x2="243" y2="294" style="stroke:red;stroke-width:2" />
+    <line x1="243" y1="294" x2="250" y2="306" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="306" x2="257" y2="294" style="stroke:red;stroke-width:2" />
+    <line x1="257" y1="294" x2="264" y2="282" style="stroke:red;stroke-width:2" />
+    <line x1="264" y1="282" x2="250" y2="282" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="280" x2="264" y2="280" style="stroke:yellow;stroke-width:2" />
+    <line x1="264" y1="280" x2="257" y2="268" style="stroke:yellow;stroke-width:2" />
+    <line x1="257" y1="268" x2="250" y2="256" style="stroke:yellow;stroke-width:2" />
+    <line x1="250" y1="256" x2="243" y2="268" style="stroke:yellow;stroke-width:2" />
+    <line x1="243" y1="268" x2="236" y2="280" style="stroke:yellow;stroke-width:2" />
+    <line x1="236" y1="280" x2="250" y2="280" style="stroke:yellow;stroke-width:2" />
+    <line x1="241" y1="295" x2="234" y2="283" style="stroke:blue;stroke-width:2" />
+    <line x1="234" y1="283" x2="228" y2="295" style="stroke:blue;stroke-width:2" />
+    <line x1="228" y1="295" x2="221" y2="307" style="stroke:blue;stroke-width:2" />
+    <line x1="221" y1="307" x2="234" y2="307" style="stroke:blue;stroke-width:2" />
+    <line x1="234" y1="307" x2="248" y2="307" style="stroke:blue;stroke-width:2" />
+    <line x1="248" y1="307" x2="241" y2="295" style="stroke:blue;stroke-width:2" />
+    <line x1="259" y1="295" x2="252" y2="307" style="stroke:green;stroke-width:2" />
+    <line x1="252" y1="307" x2="266" y2="307" style="stroke:green;stroke-width:2" />
+    <line x1="266" y1="307" x2="279" y2="307" style="stroke:green;stroke-width:2" />
+    <line x1="279" y1="307" x2="272" y2="295" style="stroke:green;stroke-width:2" />
+    <line x1="272" y1="295" x2="266" y2="283" style="stroke:green;stroke-width:2" />
+    <line x1="266" y1="283" x2="259" y2="295" style="stroke:green;stroke-width:2" />
+    <line x1="250" y1="293" x2="254" y2="293" style="stroke:red;stroke-width:2" />
+    <line x1="254" y1="293" x2="252" y2="289" style="stroke:red;stroke-width:2" />
+    <line x1="252" y1="289" x2="250" y2="285" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="285" x2="248" y2="289" style="stroke:red;stroke-width:2" />
+    <line x1="248" y1="289" x2="246" y2="293" style="stroke:red;stroke-width:2" />
+    <line x1="246" y1="293" x2="250" y2="293" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="293" x2="246" y2="293" style="stroke:yellow;stroke-width:2" />
+    <line x1="246" y1="293" x2="248" y2="297" style="stroke:yellow;stroke-width:2" />
+    <line x1="248" y1="297" x2="250" y2="301" style="stroke:yellow;stroke-width:2" />
+    <line x1="250" y1="301" x2="252" y2="297" style="stroke:yellow;stroke-width:2" />
+    <line x1="252" y1="297" x2="254" y2="293" style="stroke:yellow;stroke-width:2" />
+    <line x1="254" y1="293" x2="250" y2="293" style="stroke:yellow;stroke-width:2" />
+    <line x1="253" y1="288" x2="255" y2="292" style="stroke:blue;stroke-width:2" />
+    <line x1="255" y1="292" x2="257" y2="288" style="stroke:blue;stroke-width:2" />
+    <line x1="257" y1="288" x2="260" y2="284" style="stroke:blue;stroke-width:2" />
+    <line x1="260" y1="284" x2="255" y2="284" style="stroke:blue;stroke-width:2" />
+    <line x1="255" y1="284" x2="251" y2="284" style="stroke:blue;stroke-width:2" />
+    <line x1="251" y1="284" x2="253" y2="288" style="stroke:blue;stroke-width:2" />
+    <line x1="247" y1="288" x2="249" y2="284" style="stroke:green;stroke-width:2" />
+    <line x1="249" y1="284" x2="245" y2="284" style="stroke:green;stroke-width:2" />
+    <line x1="245" y1="284" x2="240" y2="284" style="stroke:green;stroke-width:2" />
+    <line x1="240" y1="284" x2="243" y2="288" style="stroke:green;stroke-width:2" />
+    <line x1="243" y1="288" x2="245" y2="292" style="stroke:green;stroke-width:2" />
+    <line x1="245" y1="292" x2="247" y2="288" style="stroke:green;stroke-width:2" />
+    <line x1="250" y1="289" x2="249" y2="289" style="stroke:red;stroke-width:2" />
+    <line x1="249" y1="289" x2="249" y2="290" style="stroke:red;stroke-width:2" />
+    <line x1="249" y1="290" x2="250" y2="292" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="292" x2="251" y2="290" style="stroke:red;stroke-width:2" />
+    <line x1="251" y1="290" x2="251" y2="289" style="stroke:red;stroke-width:2" />
+    <line x1="251" y1="289" x2="250" y2="289" style="stroke:red;stroke-width:2" />
+    <line x1="250" y1="289" x2="251" y2="289" style="stroke:yellow;stroke-width:2" />
+    <line x1="251" y1="289" x2="251" y2="288" style="stroke:yellow;stroke-width:2" />
+    <line x1="251" y1="288" x2="250" y2="286" style="stroke:yellow;stroke-width:2" />
+    <line x1="250" y1="286" x2="249" y2="288" style="stroke:yellow;stroke-width:2" />
+    <line x1="249" y1="288" x2="249" y2="289" style="stroke:yellow;stroke-width:2" />
+    <line x1="249" y1="289" x2="250" y2="289" style="stroke:yellow;stroke-width:2" />
+    <line x1="249" y1="291" x2="248" y2="289" style="stroke:blue;stroke-width:2" />
+    <line x1="248" y1="289" x2="248" y2="291" style="stroke:blue;stroke-width:2" />
+    <line x1="248" y1="291" x2="247" y2="292" style="stroke:blue;stroke-width:2" />
+    <line x1="247" y1="292" x2="248" y2="292" style="stroke:blue;stroke-width:2" />
+    <line x1="248" y1="292" x2="250" y2="292" style="stroke:blue;stroke-width:2" />
+    <line x1="250" y1="292" x2="249" y2="291" style="stroke:blue;stroke-width:2" />
+    <line x1="251" y1="291" x2="250" y2="292" style="stroke:green;stroke-width:2" />
+    <line x1="250" y1="292" x2="252" y2="292" style="stroke:green;stroke-width:2" />
+    <line x1="252" y1="292" x2="253" y2="292" style="stroke:green;stroke-width:2" />
+    <line x1="253" y1="292" x2="252" y2="291" style="stroke:green;stroke-width:2" />
+    <line x1="252" y1="291" x2="252" y2="289" style="stroke:green;stroke-width:2" />
+    <line x1="252" y1="289" x2="251" y2="291" style="stroke:green;stroke-width:2" />
+    <text x="181" y = "198" fill = "black" font-size = "30.74004788901757px" font-family = "futura">LafeLabs</text>
+</svg>

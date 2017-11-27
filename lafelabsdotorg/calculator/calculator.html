@@ -1,0 +1,503 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<!-- PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+LAWS OF GEOMETRON:
+    NO PROPERTY 
+    NO MONEY
+    NO MINING
+    EVERYTHING IS RECURSIVE
+    EVERYTHING IS FRACTAL
+    EVERYTHING IS PHYSICAL
+[EGO DEATH]:
+    LOOK TO THE FUNGI
+    LOOK TO THE INSECTS
+    LANGUAGE IS THE TOOL THE MIND USES TO PARSE REALITY
+    
+calculator
+
+http://www.lafelabs.org/calculator/index.html
+
+-->
+<title>/calculator/</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+    }
+});//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+</script>
+</head>
+<body> 
+<button id = "backbutton" class = "navbutton">&#x25C5</button>
+<button id = "fwdbutton" class = "navbutton">&#x25BB</button>         
+<button id = "prevdeck" class = "navbutton">&#x25B3</button>
+<button id = "nextdeck" class = "navbutton">&#x25BD</button> 
+
+<div id = "title"></div>
+
+<div id = "tableScroll">
+    <img src = "LC.svg" style = "width:50%;"><br>
+    <div id = "mainEquation"></div>    
+    <div id = "outputEquation"></div>        
+    <table id = "mainTable"></table>
+    <table id = "actionTable">
+        <tr>
+            <td>CALC TO TXT</td>                
+        </tr>
+        <tr>
+            <td>TXT TO CALC</td>            
+        </tr>
+        <tr>
+            <td>TXT TO XML</td>
+        </tr>
+        <tr>
+            <td>XML TO TXT</td>
+        </tr>    
+    </table>
+    <textarea id = "textIO"></textarea>
+    <br>
+    <table id = "editControls">
+        <tr>
+            <td>title</td><td><input id = "titleInput"></td>
+        </tr>            
+        <tr>
+            <td>figure</td><td><input id = "figureInput"></td>
+        </tr>
+        <tr>
+            <td>precision</td><td><input id = "precisionInput"></td>
+        </tr>        
+    </table>
+    <br>
+    <h2>Equation</h2>    
+    <textarea id = "mainEquationEditor" class = "editor"></textarea>
+    <h2>Init</h2>
+    <div id = "jseditor" class = "editor"></div>
+    <h2>Update</h2>    
+    <div id = "jseditor2" class = "editor"></div>
+    <table id = "vartable">
+        <tr>
+            <th>name</th><th>label</th><th>units</th><th>action</th>
+        </tr>
+    </table>    
+    <h2>Action</h2>    
+    <div id = "jseditor3" class = "editor"></div>    
+</div>
+
+<div style = "display:none;" id = "xmldata">
+    <deck>
+        <title>Lossless LC Oscillator</title>
+        <figure>LC.svg</figure>
+        <equation>
+            $$\omega = \sqrt{\frac{1}{LC}}$$
+            $$f = \frac{\omega}{2\pi}$$   
+        </equation>
+        <init>
+            LnH = data[dataIndex].LnH;
+            L = LnH*1e-9;
+            CpF = data[dataIndex].CpF;
+            C = CpF*1e-12;
+            omega = Math.sqrt(1/(C*L));
+            f = omega/(2*Math.PI);
+            Z = Math.sqrt(L/C);
+            fGHz = f/1e9;
+        </init>
+        <update>
+            omega = Math.sqrt(1/(L*C));
+            f = omega/(2*Math.PI);
+            fGHz = f/1e9;         
+            Z = Math.sqrt(L/C);
+            
+            inputs[0].value = LnH.toPrecision(precision);
+            inputs[1].value = CpF.toPrecision(precision);
+            inputs[2].value = omega.toPrecision(precision);
+            inputs[3].value = fGHz.toPrecision(precision);
+            inputs[4].value = Z.toPrecision(precision);
+        </update>
+        <precision>3</precision>
+        <data>
+            [
+            {
+                "LnH":1.5,
+                "CpF":1
+            },
+            {
+                "LnH":2,
+                "CpF":2
+            },
+            {
+                "LnH":4,
+                "CpF":4
+            }
+            ]
+        </data>
+        <variable>
+            <name>LnH</name>
+            <label>$L\textrm{ [nH]}$</label>
+            <units>nH</units>
+            <action>
+                LnH = parseFloat(this.value);
+                L = 1e-9*LnH;
+                update();
+            </action>
+        </variable>
+        <variable>
+            <name>CpF</name>
+            <label>$C\textrm{ [pF]}$</label>
+            <units>pF</units>
+            <action>
+                CpF = parseFloat(this.value); 
+                C = 1e-12*CpF;
+                update();    
+            </action>
+        </variable>    
+        <variable>
+            <name>omega</name>
+            <label>$\omega\textrm{ [rad/s]}$</label>
+            <units>rad/s</units>
+            <action>output</action>
+        </variable>    
+        <variable>
+            <name>fGHz</name>
+            <label>$f\textrm{ [GHz]}$</label>
+            <units>GHz</units>
+            <action>output</action>
+        </variable>    
+        <variable>
+            <name>Z</name>
+            <label>$Z [\Omega]$</label>
+            <units>Ohms</units>
+            <action>output</action>
+        </variable>        
+    </deck>
+</div>
+<script>
+if(innerWidth< innerHeight){
+    side = innerWidth;
+}
+else{
+    side = innerHeight;
+}
+
+deckIndex = 0;
+dataIndex = 0;
+document.getElementById("mainEquation").style.fontSize = (side/30).toString() + "px";
+document.getElementById("mainTable").style.width = (side-50).toString() + "px";
+document.getElementById("mainTable").style.fontSize = (side/30).toString() + "px";
+document.getElementById("vartable").style.fontSize = (side/30).toString() + "px";
+document.getElementById("vartable").style.width = (side-50).toString() + "px";
+
+function loadData(){
+    document.getElementById("mainTable").innerHTML = "";
+
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(xmldata,"text/xml");
+    document.getElementById("title").innerHTML = xmlDoc.getElementsByTagName("title")[deckIndex].innerHTML;
+    document.getElementById("mainEquation").innerHTML = xmlDoc.getElementsByTagName("equation")[deckIndex].innerHTML;
+    variables = xmlDoc.getElementsByTagName("deck")[deckIndex].getElementsByTagName("variable");
+    precision = parseInt(xmlDoc.getElementsByTagName("precision")[0].innerHTML);
+    data = JSON.parse(xmlDoc.getElementsByTagName("data")[0].innerHTML);
+
+
+    for(var index = 0;index < variables.length;index++){
+        var newtr = document.createElement("TR");
+        var newtd = document.createElement("TD");
+        if(variables[index].getElementsByTagName("action")[0].innerHTML == "output"){
+            newtd.style.backgroundColor = "#e0e0e0";
+        }    
+        else{
+            newtd.style.backgroundColor = "#c0ffc0";
+        }
+        newtr.appendChild(newtd);
+        newtd.innerHTML = variables[index].getElementsByTagName("label")[0].innerHTML;
+        var newtd = document.createElement("TD");
+        newtr.appendChild(newtd);
+        var newinput = document.createElement("INPUT");
+        newtd.appendChild(newinput);
+        newinput.id = "i" + index.toString();
+        newinput.style.fontSize = (side/20).toString() + "px";
+        if(variables[index].getElementsByTagName("action")[0].innerHTML == "output"){
+            newinput.onchange = function(){
+                alert("not an input");
+                update();  
+            } 
+        }
+        else{
+            newinput.onchange = function(){
+                var localIndex = parseInt(this.id.substring(1));
+                eval(variables[localIndex].getElementsByTagName("action")[0].innerHTML);
+                var newjson = JSON.parse(JSON.stringify(data[0]));
+                var localName = variables[localIndex].getElementsByTagName("name")[0].innerHTML
+                newjson[localName] = parseFloat(this.value);
+                data.push(newjson);
+            }
+        }
+        document.getElementById("mainTable").appendChild(newtr);
+    }
+    inputs = document.getElementById("mainTable").getElementsByTagName("INPUT");
+    eval(xmlDoc.getElementsByTagName("init")[0].innerHTML);
+
+    update();
+
+}
+
+document.getElementById("backbutton").onclick = function(){
+    dataIndex--;
+    if(dataIndex < 0){
+        dataIndex = data.length - 1;
+    }
+    eval(xmlDoc.getElementsByTagName("init")[0].innerHTML);
+    update();
+}
+document.getElementById("fwdbutton").onclick = function(){
+    dataIndex++;
+    if(dataIndex > data.length - 1){
+        dataIndex = 0;
+    }
+    eval(xmlDoc.getElementsByTagName("init")[0].innerHTML);
+    update();    
+}
+
+buttons = document.getElementById("actionTable").getElementsByTagName("TD");
+
+buttons[1].onclick = function(){
+    xmldata = document.getElementById("textIO").value;
+    loadData();
+    MathJax.Hub.Typeset();//tell Mathjax to update the math
+}
+
+xmldata = document.getElementById("xmldata").innerHTML;
+loadData();
+function update(){
+    eval(xmlDoc.getElementsByTagName("update")[0].innerHTML);
+}
+
+document.getElementById("textIO").value = document.getElementById("xmldata").innerHTML;
+
+
+editor = ace.edit("jseditor");
+editor.$blockScrolling = Infinity;
+editor.setTheme("ace/theme/cobalt");
+editor.getSession().setMode("ace/mode/javascript");
+
+editor2 = ace.edit("jseditor2");
+editor2.$blockScrolling = Infinity;
+
+editor2.setTheme("ace/theme/cobalt");
+editor2.getSession().setMode("ace/mode/javascript");
+
+editor3 = ace.edit("jseditor3");
+editor3.$blockScrolling = Infinity;
+editor3.setTheme("ace/theme/cobalt");
+editor3.getSession().setMode("ace/mode/javascript");
+
+txt2xml();
+buttons[2].onclick = function(){
+    txt2xml();
+}
+function txt2xml(){
+    xmldata = document.getElementById("textIO").value;
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(xmldata,"text/xml");
+    variables = xmlDoc.getElementsByTagName("deck")[deckIndex].getElementsByTagName("variable");
+
+    document.getElementById("titleInput").value = xmlDoc.getElementsByTagName("title")[0].innerHTML;
+    document.getElementById("figureInput").value = xmlDoc.getElementsByTagName("figure")[0].innerHTML;
+    document.getElementById("precisionInput").value = xmlDoc.getElementsByTagName("precision")[0].innerHTML;
+    document.getElementById("mainEquationEditor").value = xmlDoc.getElementsByTagName("equation")[0].innerHTML;
+    editor.setValue(xmlDoc.getElementsByTagName("init")[0].innerHTML);
+    editor2.setValue(xmlDoc.getElementsByTagName("update")[0].innerHTML);
+    editor3.setValue(xmlDoc.getElementsByTagName("action")[0].innerHTML);
+
+    if(document.getElementById("vartable").getElementsByTagName("TR").length > 1){
+        //delete all but top row
+        document.getElementById("vartable").innerHTML = "<tr><th>name</th><th>label</th><th>units</th><th>action</th></tr>";
+        for(var index = document.getElementById("vartable").getElementsByTagName("TR").length - 1;index > 1;index--){
+            var foo = document.getElementById("vartable").getElementsByTagName("TR")[index];
+            document.getElementById("vartable").removeChild(foo);
+        }
+    }
+
+    for(var index = 0;index < variables.length;index++){
+        var newtr = document.createElement("TR");
+        var newtd = document.createElement("TD");
+        var newinput = document.createElement("INPUT");
+        newtd.appendChild(newinput);
+        newinput.value = variables[index].getElementsByTagName("name")[0].innerHTML;
+        newtr.appendChild(newtd);
+        var newtd = document.createElement("TD");
+        var newinput = document.createElement("INPUT");
+        newtd.appendChild(newinput);
+        newinput.value = variables[index].getElementsByTagName("label")[0].innerHTML;
+        newtr.appendChild(newtd);
+        var newtd = document.createElement("TD");
+        var newinput = document.createElement("INPUT");
+        newtd.appendChild(newinput);
+        newinput.value = variables[index].getElementsByTagName("units")[0].innerHTML;
+        newtr.appendChild(newtd);
+
+        var newtd = document.createElement("TD");
+        if(variables[index].getElementsByTagName("action")[0].innerHTML == "output"){
+            newtd.innerHTML = "output";
+        }
+        else{
+            newtd.innerHTML = "ACTION";
+            newtd.className = "actionButton";
+            newtd.id = "ac" + index.toString();
+            newtd.onclick = function(){
+                var localIndex = parseInt(this.id.substring(2));
+                editor3.setValue(xmlDoc.getElementsByTagName("action")[localIndex].innerHTML);
+            }
+        }
+        newtr.appendChild(newtd);
+
+        document.getElementById("vartable").appendChild(newtr);
+    }
+}
+
+
+
+
+
+</script>
+<style>
+body{
+    font-family:courier;
+    background-color:#fdfdfd;    
+}
+#textIO{
+    margin:auto;
+    width:50%;
+    border:solid;
+    border-radius:1em;
+    margin-top:1em;
+    height:20em;
+}
+#actionTable{
+    margin:auto;
+    margin-top:1em;    
+}
+#actionTable td{
+    cursor:pointer;
+    font-size:36px;
+    padding:0.5em 0.5em 0.5em 0.5em;
+    border-radius: 1em;
+    border:solid;
+    font-family: courier;
+}
+#actionTable td:hover{
+    background-color: green;
+}
+#actionTable td:active{
+    background-color: yellow;
+}
+
+#mainTable{
+    border:solid;
+    margin:auto;
+    border-collapse:collapse;
+}
+#mainTable td{
+    border:solid;
+    width:50%;
+}
+#vartable{
+    border:solid;
+    margin:auto;
+    border-collapse:collapse;    
+}
+#vartable td,th{
+    border:solid;
+    width:25%;
+}
+
+td input{
+    width:90%;
+    font-family:courier;
+    font-size: 20px;
+}
+#tableScroll{
+    position:absolute;
+    left:0px;
+    right:0px;
+    overflow:scroll;
+    padding: 1em 1em 1em 1em;
+    top:60px;
+    bottom:0%;
+    text-align:center;
+}
+#backbutton{
+    left:0px;
+}
+#fwdbutton{
+    right:0px;
+}
+#prevdeck{
+    left:60px;
+}
+#nextdeck{
+    right:60px;
+}
+.navbutton{
+    top:0px;
+    width:50px;
+    height:50px;
+    position:absolute;
+    font-size:40px;    
+    cursor:pointer;
+    z-index:4;
+}
+.navbutton:hover{
+    background-color:green;
+}
+.navbutton:active{
+    background-color:yellow;
+}
+
+#title{
+    position:absolute;
+    top:5px;
+    height:50px;
+    font-family:Futura;
+    font-size:40px;
+    left:0px;
+    right:0px;
+    z-index:2;
+    text-align:center;
+}
+.editor{
+    margin:auto;
+    width:50%;
+    border:solid;
+    border-radius:1em;
+    margin-top:1em;
+    height:15em;
+}
+#editControls{
+    margin:auto;
+    width:50%;
+    font-size:40px;
+    font-family:courier;
+}
+#editControls input{
+    font-size:40px;
+}
+h2{
+    font-size:40px;
+}
+.actionButton{
+    cursor:pointer;
+}
+.actionButton:hover{
+    background-color: green;
+}
+.actionButton:active{
+    background-color: yellow;
+}
+
+</style>
+</body>
+</html>        

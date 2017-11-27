@@ -22,68 +22,49 @@ LAWS OF GEOMETRON:
 </head>
 <body> 
 <!--website:-->
-<h1>www.lafelabs.org</h1>
+<img src = "triangleLogo.svg">
+<a href = "about.html">About</a>
+<div class = "blurb">About this site, and its creator</div>
+<a href = "http://www.quantumart.org">Quantum Art</a>
+<div class = "blurb">The Quantum Art Project: application of the Geometron langauge to graphical communication about quantum information science</div>
+<a href = "http://www.geometronics.org">Geometron Language</a>
+<div class = "blurb">Core documentation on the Geometron language</div>
+<a href = "http://www.quantumnoise.org">QuantumNoise.org</a>
+<div class = "blurb">An experiment in real time web-based mathematical(little data) communication, as applied to the quantum noise field.</div>
+
+<style>
+img{
+    margin:auto;
+    display:block;
+}
+a{
+    font-family:courier;
+    font-size:2em;
+    text-decoration: none;
+    color:black;
+    display:block;
+    margin:auto;
+    text-align:center;
+}
+a:hover{
+    background-color:#b0b0b0;
+}
+.blurb{
+    font-size:1em;
+    margin-left: 45%;
+    width:30%;
+    text-align:justify;
+}
+
+</style>
+    
+
 
 <!--
-Websites are containers for information which exists in hyperspace.
-
-A website is literally a website, although it can be local, it will generally be world readable.  A website has a purpose,
-defined by actions and symbols and narrative.  Website = A Universe defined by a path of actions, a way of life. 
-
-A website represents a mode of human existence.  A commercial website divides these modes into
-worker, manager, investor, user, advertiser.  A geometron website does not.  The site defines a mode of existence, and 
-to live another way is to use another site.  As there will be trillions of sites, this means there will be thousands of sites 
-per human for all of humanity, thus vastly expanding the human experience beyond what has ever even been considered before.
- 
-Hyperspace is the space of information which can be parsed with Geometron.
-
-Geometron hypercubes are instances of the geometron metalanguage, which are like a 
-conceptual lense through which the mind can interact with information, just as
-a microscope or telescope is a optical lense to literally let the human eye interact with a wider range of optics. 
-
-Each hypercube is constantly changing.  The viewpoint of the hypercube, along with various links and metadata are in a
-JSON object which represents a "page" on a "card".  Pages are sequential, and are just indexed by how they exist in the
-array of a given card.
-
-A deck is an array of cards, where each card has an address in 04xx space.  A card is a JSON array stored at currentDataArray,
-and the current *page* in the current card is in currentData, a global JavaScript object.  
-
-A deck is an array of objects.  Each of these objects is a card, represented by a name, an address, and an array of page objects.
-Each deck should be a directory.  Each directory has index.html, editor.html, data.txt.   data.txt has text representing 
-the array of objects as described.  editor.html edits this whole thing, and can navigate it all, and references saver.php 
-to save to data.txt if there is permission to do that.  A cron job with some python can push diffs of data.txt to various 
-public feeds or archives.  
-
-website has index.html which links to decks
-decks are directories with cards in data.txt, edited with editor.html, viewed with index.html
-
-each deck directory has a subdirectory "/svg" which has the saved svg's in it.  
-SVGfeed.html lets one view these in an html file.
-
-www.lafelabs.org/geometron/
-www.lafelabs.org/learnweb/
-www.lafelabs.org/map/
-www.lafelabs.org/printer/
-
-
-
-www.quantumnoise.org/quantumnoiseamps/
-www.quantumnoise.org/quantumcomputing/
-www.quantumnoise.org/quantumcircuits/
-
-
-
-
-
-
--->
-
-<!--Deck:-->    
 <h2>Geometron Language</h2>
 <ul>
-<!--card: (0401)-->    
+
     <li><a href = "hello/index.html">Hello, Geometron</a></li>
-<!--card: (0402)-->    
     <li><a href = "hello/reader.html">Reader</a></li>    
     <li><a href = "hyperdeck/index.html">hyperdeck</a></li>
     <li><a href = "machineorigins/index.html">Where do machines come from?</a></li>
@@ -400,8 +381,52 @@ www.quantumnoise.org/quantumcircuits/
     </li>
 </ul>
 
-<!--</page03>-->
-<!--<page05>-->
-    </body>
-    </html>
-<!--</page05>-->
+Websites are containers for information which exists in hyperspace.
+
+A website is literally a website, although it can be local, it will generally be world readable.  A website has a purpose,
+defined by actions and symbols and narrative.  Website = A Universe defined by a path of actions, a way of life. 
+
+A website represents a mode of human existence.  A commercial website divides these modes into
+worker, manager, investor, user, advertiser.  A geometron website does not.  The site defines a mode of existence, and 
+to live another way is to use another site.  As there will be trillions of sites, this means there will be thousands of sites 
+per human for all of humanity, thus vastly expanding the human experience beyond what has ever even been considered before.
+ 
+Hyperspace is the space of information which can be parsed with Geometron.
+
+Geometron hypercubes are instances of the geometron metalanguage, which are like a 
+conceptual lense through which the mind can interact with information, just as
+a microscope or telescope is a optical lense to literally let the human eye interact with a wider range of optics. 
+
+Each hypercube is constantly changing.  The viewpoint of the hypercube, along with various links and metadata are in a
+JSON object which represents a "page" on a "card".  Pages are sequential, and are just indexed by how they exist in the
+array of a given card.
+
+A deck is an array of cards, where each card has an address in 04xx space.  A card is a JSON array stored at currentDataArray,
+and the current *page* in the current card is in currentData, a global JavaScript object.  
+
+A deck is an array of objects.  Each of these objects is a card, represented by a name, an address, and an array of page objects.
+Each deck should be a directory.  Each directory has index.html, editor.html, data.txt.   data.txt has text representing 
+the array of objects as described.  editor.html edits this whole thing, and can navigate it all, and references saver.php 
+to save to data.txt if there is permission to do that.  A cron job with some python can push diffs of data.txt to various 
+public feeds or archives.  
+
+website has index.html which links to decks
+decks are directories with cards in data.txt, edited with editor.html, viewed with index.html
+
+each deck directory has a subdirectory "/svg" which has the saved svg's in it.  
+SVGfeed.html lets one view these in an html file.
+
+www.lafelabs.org/geometron/
+www.lafelabs.org/learnweb/
+www.lafelabs.org/map/
+www.lafelabs.org/printer/
+
+www.quantumnoise.org/quantumnoiseamps/
+www.quantumnoise.org/quantumcomputing/
+www.quantumnoise.org/quantumcircuits/
+
+-->
+</body>
+</html>
+
+    
