@@ -2,61 +2,31 @@
 import math
 import urllib2   
 import time
-'''
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 
-
-GPIO.setup(9,GPIO.IN, pull_up_down=GPIO.PUD_UP) #
-GPIO.setup(11,GPIO.IN, pull_up_down=GPIO.PUD_UP) # 
-GPIO.setup(0,GPIO.IN, pull_up_down=GPIO.PUD_UP) # 
-GPIO.setup(5,GPIO.IN, pull_up_down=GPIO.PUD_UP) #
-GPIO.setup(6,GPIO.IN, pull_up_down=GPIO.PUD_UP) # 
-GPIO.setup(13,GPIO.IN, pull_up_down=GPIO.PUD_UP) #
-GPIO.setup(19,GPIO.IN, pull_up_down=GPIO.PUD_UP) # 
-GPIO.setup(26,GPIO.IN, pull_up_down=GPIO.PUD_UP) #
-
-'''
-'''
-PI pins:
-
-buttons:
-9     0270
-11    0271
-0     0272
-5     0273
-
-6     0274
-13    0275
-19    0276
-26    0277
+#button input pins, in sequence of physical layout:
+GPIO.setup(9,GPIO.IN, pull_up_down=GPIO.PUD_UP) #0270
+GPIO.setup(11,GPIO.IN, pull_up_down=GPIO.PUD_UP) #0271
+GPIO.setup(0,GPIO.IN, pull_up_down=GPIO.PUD_UP) #0272
+GPIO.setup(5,GPIO.IN, pull_up_down=GPIO.PUD_UP) #0273
+GPIO.setup(26,GPIO.IN, pull_up_down=GPIO.PUD_UP) #0274
+GPIO.setup(19,GPIO.IN, pull_up_down=GPIO.PUD_UP) #0275
+GPIO.setup(13,GPIO.IN, pull_up_down=GPIO.PUD_UP) #0276
+GPIO.setup(6,GPIO.IN, pull_up_down=GPIO.PUD_UP) #0277
 
 
-outputs:
-25   heater on
-8    oscillator on
-7    Z up
-1    Z down
+GPIO.setup(25,GPIO.OUT)#heater
+GPIO.setup(8,GPIO.OUT)# oscillator
+GPIO.setup(7,GPIO.OUT)#Z up
+GPIO.setup(1,GPIO.OUT)#Z down
 
-12   Y - 
-16   Y + 
-20   X -
-21   X +
+GPIO.setup(12,GPIO.OUT)#X+
+GPIO.setup(16,GPIO.OUT)#X-
+GPIO.setup(20,GPIO.OUT)#Y+
+GPIO.setup(21,GPIO.OUT)#Y-
 
-'''
-'''
-GPIO.setup(25,GPIO.OUT)
-GPIO.setup(8,GPIO.OUT)
-GPIO.setup(7,GPIO.OUT)
-GPIO.setup(1,GPIO.OUT)
-
-GPIO.setup(12,GPIO.OUT)
-GPIO.setup(16,GPIO.OUT)
-GPIO.setup(20,GPIO.OUT)
-GPIO.setup(21,GPIO.OUT)
-
-'''
 
 class geometron:
     def __init__(self,unit):
@@ -110,35 +80,35 @@ class geometron:
         if localCommand == 0330:
             print "move in y direction by +" + str(self.side)
             #turn on y+
-            #GPIO.output(20,GPIO.HIGH)
+            GPIO.output(20,GPIO.HIGH)
             #wait side
-            #time.sleep(self.side / 1000.0)
+            time.sleep(self.side / 1000.0)
             #turn off y+
-            #GPIO.output(20,GPIO.LOW)
+            GPIO.output(20,GPIO.LOW)
         if localCommand == 0331:
             print "move in y direction by -" + str(self.side)
             #turn on y- :
-            #GPIO.output(21,GPIO.HIGH)
+            GPIO.output(21,GPIO.HIGH)
             #wait side
-            #time.sleep(self.side / 1000.0)
+            time.sleep(self.side / 1000.0)
             #turn off y-
-            #GPIO.output(21,GPIO.LOW)
+            GPIO.output(21,GPIO.LOW)
         if localCommand == 0332:
-            print "move in x direction by +" + str(self.side)
-            #turn on x-
-            #GPIO.output(16,GPIO.HIGH)
-            #wait side
-            #time.sleep(self.side / 1000.0)
-            #turn off x-
-            #GPIO.output(16,GPIO.LOW)
-        if localCommand == 0333:
             print "move in x direction by -" + str(self.side)
-            #turn on x+
-            #GPIO.output(12,GPIO.HIGH)
+            #turn on x-
+            GPIO.output(16,GPIO.HIGH)
             #wait side
-            #time.sleep(self.side / 1000.0)
+            time.sleep(self.side / 1000.0)
+            #turn off x-
+            GPIO.output(16,GPIO.LOW)
+        if localCommand == 0333:
+            print "move in x direction by +" + str(self.side)
+            #turn on x+
+            GPIO.output(12,GPIO.HIGH)
+            #wait side
+            time.sleep(self.side / 1000.0)
             #turn off x+
-            #GPIO.output(12,GPIO.LOW)
+            GPIO.output(12,GPIO.LOW)
         if localCommand == 0336:
             self.side /= self.scaleFactor
         if localCommand == 0337:
@@ -146,42 +116,39 @@ class geometron:
         if localCommand == 0360: 
             #pen down
             print "pen down"
-            #GPIO.output(1,GPIO.HIGH)
-            #time.sleep(self.zstep / 1000.0)  
-            #GPIO.output(1,GPIO.LOW)
-
+            GPIO.output(1,GPIO.HIGH)
+            time.sleep(self.zstep / 1000.0)  
+            GPIO.output(1,GPIO.LOW)
         if localCommand == 0361:
             #pen up
-            #GPIO.output(7,GPIO.HIGH)
-            #time.sleep(self.zstep / 1000.0)  
-            #GPIO.output(7,GPIO.LOW)
+            GPIO.output(7,GPIO.HIGH)
+            time.sleep(self.zstep / 1000.0)  
+            GPIO.output(7,GPIO.LOW)
             print "pen up"
         if localCommand == 0362: 
             #heat on
             print "heat on"
-            #GPIO.output(25,GPIO.HIGH)
+            GPIO.output(25,GPIO.HIGH)
         if localCommand == 0363:
             #heat off
             print "heat off"
-            #GPIO.output(25,GPIO.LOW)
+            GPIO.output(25,GPIO.LOW)
         if localCommand == 0364: 
             #oscillator on
-            #GPIO.output(8,GPIO.HIGH)
+            GPIO.output(8,GPIO.HIGH)
             print "oscillator on"
         if localCommand == 0365:
             #osctillator off
-            #GPIO.output(8,GPIO.LOW)
+            GPIO.output(8,GPIO.LOW)
             print "oscillator off"
+        if localCommand == 0377:
+            #wait side while doing nothing
+            time.sleep(self.side / 1000.0)
+
+g = geometron(50)#Initiate geometron object "g", with "unit" = 50 miliseconds
 
 
-
-g = geometron(50)
-g.doTheThing(0201)
-
-
-#test a button, do a shape based on that button
-'''
-print("Here we go! Press CTRL+C to exit")
+print("Starting Geometron. Press CTRL+C to exit")
 try:
     while 1:
         if not GPIO.input(9): #
@@ -212,5 +179,3 @@ try:
 
 except KeyboardInterrupt: # If CTRL+C is pressed, exit cleanly:
     GPIO.cleanup() # cleanup all GPIO
-
-'''
