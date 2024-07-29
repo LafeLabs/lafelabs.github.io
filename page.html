@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<!--
+
+GEOMETRON/TRASH MAGIC!
+
+NO MONEY!
+NO MINING!
+NO PROPERTY!
+
+EVERYTHING IS PHYSICSAL!
+EVERYTHING IS FRACTAL!
+EVERYTHING IS RECURSIVE!
+
+LOOK AT THE INSECTS!
+LOOK AT THE FUNGI!
+LANGUAGE IS HOW THE MIND PARSES REALITY!
+
+
+
+CAPS LOCK ALWAYS ON!
+
+USE CARDBOARD TRASH TO SPREAD THE MEMES!
+
+USE STICKS TO SPREAD THE MEMES!
+
+
+-->
+
+<head>
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACe8wAAnHMAAO7vAAD//wAA+D8AAPu/AADauwAAirEAANq7AAD7vwAA8B8AAPx/AADv7wAAnvMAAJxzAAD+/wAA" rel="icon" type="image/x-icon" />
+    
+    
+   <!--Stop Google:-->
+   <META NAME="robots" CONTENT="noindex,nofollow">
+    
+    
+    <meta charset="utf-8" />
+        <!--
+
+    WEBAMP is a JavaScript Library which brings back the magic of winamp!
+    
+    Winamp was the mp3 player of choice for a whole lot of the Napster generation, sharing music back in the 90s.
+    
+    I WAS THERE, GANDALF! I WAS THERE 3000 YEARS AGO!
+    
+        https://webamp.org/ has the information on web amp
+        
+    main code page for the project:
+    
+        https://github.com/captbaritone/webamp
+        
+    api reference:
+        
+        https://github.com/captbaritone/webamp/blob/master/packages/webamp/docs/usage.md
+        
+    webamp skins museum:
+    
+        https://skins.webamp.org/
+        
+        -->
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
+        <script src="https://unpkg.com/butterchurn@2.6.7/lib/butterchurn.min.js"></script>
+    <script src="https://unpkg.com/butterchurn-presets@2.4.7/lib/butterchurnPresets.min.js"></script>
+    
+       <script src = "trashmagic.js"></script>
+   <link rel="stylesheet" href="trashmagic.css">
+
+</head>
+
+<body>
+    <div id="app" style = "position:absolute;left:0px;top:0px">
+        <!-- Webamp will attempt to center itself within this div -->
+    </div>
+
+
+    <div id = "mainscroll">
+
+        <h1>A Page From My Book</h1>
+    
+        <img src = "images/cover.jpg"/>    
+            
+        <img src = "images/The Last Poet - A Page from My Book - PSX_20201214_192012.jpg"/>    
+
+
+
+        <a href = "http://paypal.me/roseviolets">PayPal roseviolets</a>
+        <a href = "http://venmo.com/apathykathy">Venmo</a>
+        <a href = "http://cash.app/roseviolets">Cashapp $roseviolets</a>
+        <a href = "https://www.tiktok.com/@thelastpoet/">@thelastpoet on Tiktok</a>
+        <a href = "https://beacons.ai/thelastpoet">beacons.ai links</a>
+
+
+
+        <div id = "qrcode"></div>
+
+
+    </div>
+    <script>
+        const Webamp = window.Webamp;
+        const webamp = new Webamp({
+            initialTracks: [
+            ],
+            // Optional. The default skin is included in the js bundle, and will be loaded by default.
+    //        initialSkin: {
+                // NOTE: Your skin file must be served from the same domain as your HTML
+                // file, or served with permissive CORS HTTP headers:
+                // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+                // Can be downloaded from https://github.com/captbaritone/webamp/raw/master/skins/TopazAmp1-2.wsz
+  //              url: "skins/Matrix_by_sukhi.wsz"
+//            },
+            availableSkins: [
+       //      { url: "./osx.wsz", name: "Mac OSX v1.5 (Aqua)" }
+            ],
+            __butterchurnOptions: {
+                importButterchurn: () => Promise.resolve(window.butterchurn),
+                getPresets: () => {
+                    const presets = window.butterchurnPresets.getPresets();
+                    return Object.keys(presets).map((name) => {
+                        return {
+                            name,
+                            butterchurnPresetObject: presets[name]
+                        };
+                    });
+                },
+                butterchurnOpen: true
+            },
+            __initialWindowLayout: {
+                main: { position: { x: 0, y: 0 } },
+                equalizer: { position: { x: 0, y: 116 } },
+                playlist: { position: { x: 0, y: 232 }, size: [0, 4] },
+                milkdrop: { position: { x: 275, y: 0 }, size: [7, 12] }
+            }
+        });
+
+        // Returns a promise indicating when it's done loading.
+        webamp.renderWhenReady(document.getElementById('app'));
+        
+
+webamp.appendTracks([
+    {url: 'The%20Last%20Poet%20-%20A%20Page%20from%20My%20Book%20-%2001%20I%20Gotcha%20(Prod.%20by%20Yung%20N%27%20Icy).mp3'},
+]);
+
+
+
+
+
+
+titles = document.getElementsByTagName("H1");
+for(var index = 0;index < titles.length;index++){
+    rainbowstring(titles[index]);    
+}
+
+//googleyeyes(12);
+
+
+rainbow(document.getElementsByTagName("A"));
+
+
+
+</script>
+</body>
+<style>
+
+</style>
+</html>
